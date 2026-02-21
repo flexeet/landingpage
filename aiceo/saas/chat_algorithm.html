@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AICEO Chat - Algorithm Insight</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FBBF24",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0B0F19",
+                        "card-dark": "#161B22",
+                        "sidebar-dark": "#0D1117",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Inter', sans-serif; }
+        }
+        .glass-sidebar {
+            backdrop-filter: blur(12px);
+            background-color: rgba(13, 17, 23, 0.85);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        @media (max-width: 1024px) {
+            .mobile-stack {
+                flex-direction: column !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+            .sidebar-collapsed {
+                display: none !important;
+            }
+            /* Drawer Mobile */
+            .sidebar-mobile-open {
+                display: flex !important;
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 75% !important;
+                max-width: 300px;
+                height: 100vh !important;
+                z-index: 100 !important;
+                background-color: rgba(13, 17, 23, 0.95);
+                backdrop-filter: blur(12px);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .content-area {
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col lg:flex-row lg:overflow-hidden">
+    <!-- Mobile Header -->
+    <header
+        class="lg:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-sidebar-dark sticky top-0 z-50 shrink-0">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-slate-900 text-lg">psychology</span>
+            </div>
+            <span class="text-lg font-bold tracking-tight">AICEO</span>
+        </div>
+        <button class="p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()"
+        class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden backdrop-blur-sm transition-opacity"></div>
+
+    <div class="flex flex-1 w-full h-full overflow-hidden mobile-stack">
+        <!-- Sidebar -->
+        <aside id="main-sidebar"
+            class="w-64 sidebar-collapsed hidden lg:flex glass-sidebar border-r border-slate-200 dark:border-slate-800 flex-col z-20 shrink-0 h-screen sticky top-0">
+            <!-- Scrollable Content Area -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 pb-2">
+                <!-- Brand -->
+                <div class="flex items-center gap-3 mb-8">
+                    <div
+                        class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-slate-900">psychology</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">AICEO</span>
+                </div>
+
+                <!-- Admin Status -->
+                <div class="bg-primary/10 border border-primary/20 rounded-lg p-3 mb-6">
+                    <div class="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-sm">verified_user</span>
+                        Admin Workspace
+                    </div>
+                </div>
+
+                <!-- Main Nav -->
+                <nav class="space-y-1">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="index.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-all"
+                        href="chat.html">
+                        <span class="material-symbols-outlined">chat_bubble</span>
+                        <span>Chat</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="credits.html">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                        <span>Credits</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="decision_units.html">
+                        <span class="material-symbols-outlined">shield</span>
+                        <span>Decision Units</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="bot_personas.html">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                        <span>Bots</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="news.html">
+                        <span class="material-symbols-outlined">newspaper</span>
+                        <span>News & Updates</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="faq.html">
+                        <span class="material-symbols-outlined">quiz</span>
+                        <span>FAQ</span>
+                    </a>
+                </nav>
+
+                <!-- Mentor Favorit -->
+                <div class="mt-8">
+                    <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3 px-3">
+                        Mentor Favorit</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 px-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-700 overflow-hidden ring-2 ring-primary/30">
+                                <img alt="Adrian" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8" />
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-semibold truncate">Adrian Firnanda</p>
+                                <p class="text-xs text-slate-500">TikTok Expert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Footer (Fixed Bottom) -->
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800 space-y-4 bg-white/5 backdrop-blur-md">
+                <!-- Theme Toggles -->
+                <div class="flex p-1 bg-slate-200 dark:bg-white/5 rounded-lg items-center">
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">light_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md bg-white dark:bg-white/10 shadow-sm text-xs flex justify-center items-center text-slate-900 dark:text-white">
+                        <span class="material-symbols-outlined text-sm">dark_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">settings_brightness</span>
+                    </button>
+                </div>
+
+                <!-- SidebarUserCard -->
+                <div onclick="window.location.href='settings.html'"
+                    class="bg-[#0d0d0f] rounded-[16px] p-3 border border-white/5 flex items-center justify-between group cursor-pointer hover:bg-[#121214] transition-all mb-1">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-[40px] h-[40px] rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-lg shadow-lg shadow-amber-500/10">
+                            A
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <span class="text-white font-semibold text-[13px] leading-tight truncate">AICEO Admin</span>
+                            <span class="text-slate-500 text-[10px] truncate">admin@aiceo.id</span>
+                        </div>
+                    </div>
+                    <button
+                        class="text-slate-500 hover:text-primary transition-all group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.6)] shrink-0">
+                        <span class="material-symbols-outlined text-lg">logout</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Chat Area -->
+        <main class="flex-1 flex flex-col h-full bg-background-light dark:bg-background-dark relative overflow-hidden">
+            <!-- Chat Header -->
+            <div
+                class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-white/50 dark:bg-background-dark/50 backdrop-blur-sm z-10">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-slate-800 overflow-hidden ring-2 ring-primary">
+                        <img alt="Adrian" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRvoIlIfuwCIoTolhlE_SdDZ6SlYMYalu4JwjrI8XY2sa0wj_d6jg_kCkOU7nmdBpRctQpmihGN3u6M7n9us7n4K7IIDyzUMEr2t9qHT1p2sZ1Rf1JSCPJqPQKL0bawAjiN_RWo4GgDRg_nUGLrtMW6fOnFAk-W4iiP7dY5LSaJsPaEyPQjaRqzKRCG_Z1funClBy--DSVjHn2X_uT7lUEKhcb_1qDE5pdZnn8hn0DnNYf0IbQnwka5xfCVfwj1ADAs1BWPA1UrW0" />
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-sm lg:text-base">Adrian Firnanda <span
+                                class="text-slate-400 font-normal text-xs ml-2">via Strategic Bulletin</span></h2>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                            <span class="text-[10px] font-bold text-primary uppercase tracking-wider">Online • Algorithm
+                                Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-white/5 transition-all group">
+                        <span
+                            class="material-symbols-outlined text-slate-400 group-hover:text-yellow-500 transition-colors">star</span>
+                        <span class="text-xs font-bold text-slate-500 dark:text-slate-400">Add To Favorite</span>
+                    </button>
+                    <button class="p-2 text-slate-500 hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages Area -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-4 lg:p-8 space-y-8">
+                <!-- User Message -->
+                <div class="flex justify-end">
+                    <div class="max-w-2xl">
+                        <div
+                            class="bg-slate-200 dark:bg-white/10 p-4 rounded-2xl rounded-tr-sm text-sm lg:text-base text-slate-800 dark:text-slate-200 shadow-sm">
+                            <p>Video barusan upload tapi view stuck di 200-an. Apakah perlu dipush pakai ads sekarang
+                                atau tunggu dulu?</p>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2 text-right">You • 16:45 PM</p>
+                    </div>
+                </div>
+
+                <!-- AI Response -->
+                <div class="flex gap-4 w-full pr-4 lg:pr-10">
+                    <div
+                        class="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-primary flex items-center justify-center shrink-0 mt-1 shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-slate-900 text-lg">smart_toy</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-baseline justify-between mb-2">
+                            <p class="text-xs font-bold text-primary uppercase">Strategic Bulletin: TikTok Algorithm
+                                Phase</p>
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20">
+                                    <span class="material-symbols-outlined text-[12px] text-amber-500">token</span>
+                                    <span class="text-[9px] font-black text-amber-500 uppercase tracking-widest">1.2
+                                        Credits</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Grounded Logic V4.0</p>
+                            </div>
+                        </div>
+
+                        <!-- Bulletin Card -->
+                        <div
+                            class="bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+                            <!-- Quick Insights Header -->
+                            <div
+                                class="p-5 lg:p-7 bg-slate-50 dark:bg-white/[0.03] border-b border-slate-200 dark:border-slate-800">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div
+                                        class="p-5 rounded-xl bg-orange-500/10 border border-orange-500/30 relative overflow-hidden group hover:border-orange-500/40 transition-all">
+                                        <div
+                                            class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                                            <span
+                                                class="material-symbols-outlined text-5xl text-orange-500">school</span>
+                                        </div>
+                                        <p
+                                            class="text-[10px] uppercase font-black text-orange-500 mb-2 flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
+                                            Current State
+                                        </p>
+                                        <p class="text-base font-bold text-slate-900 dark:text-white mb-1">Learning Base
+                                            1</p>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Video
+                                            sedang di-test ke audience kecil (200-300 view).</p>
+                                    </div>
+                                    <div
+                                        class="p-5 rounded-xl bg-green-500/10 border border-green-500/20 relative overflow-hidden group hover:border-green-500/40 transition-all">
+                                        <div
+                                            class="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-30 transition-opacity">
+                                            <span
+                                                class="material-symbols-outlined text-5xl text-green-500">rocket_launch</span>
+                                        </div>
+                                        <p
+                                            class="text-[10px] uppercase font-black text-green-500 mb-2 flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                            Accelerator
+                                        </p>
+                                        <p class="text-base font-bold text-slate-900 dark:text-white mb-1">Buzzer /
+                                            Spark Code</p>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Push ke
+                                            Page 2 (50k view) jika engagement kuat di awal.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bulletin Content -->
+                            <div
+                                class="p-4 lg:p-6 space-y-6 text-sm lg:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <div>
+                                    <h3 class="text-slate-900 dark:text-white font-bold mb-2 flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                        Phase 1 Breakdown
+                                    </h3>
+                                    <p>Video baru biasanya dapat quota 200-300 view. Ini adalah kriteria filtrasi awal.
+                                        Jika engagement-nya tinggi (Like, Comment, Share), AI akan otomatis melemparnya
+                                        ke Page 2 dengan jangkauan 1.000 hingga 50.000 view.</p>
+                                </div>
+
+                                <!-- Specific Thresholds Section -->
+                                <div class="mt-8 mb-6">
+                                    <div class="flex items-center gap-2 mb-4">
+                                        <span class="material-symbols-outlined text-primary text-sm">filter_alt</span>
+                                        <span
+                                            class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-xs">Algorithm
+                                            Thresholds</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                        <div
+                                            class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-white/5">
+                                            <div class="flex items-center gap-2 mb-2 text-slate-500">
+                                                <span class="text-xs font-bold uppercase">Learning View</span>
+                                            </div>
+                                            <p class="font-mono font-bold text-slate-900 dark:text-white">300 View</p>
+                                        </div>
+                                        <div
+                                            class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-white/5">
+                                            <div class="flex items-center gap-2 mb-2 text-slate-500">
+                                                <span class="text-xs font-bold uppercase">Page 2 Min</span>
+                                            </div>
+                                            <p class="font-mono font-bold text-slate-900 dark:text-white">1,000</p>
+                                        </div>
+                                        <div
+                                            class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-white/5">
+                                            <div class="flex items-center gap-2 mb-2 text-slate-500">
+                                                <span class="text-xs font-bold uppercase">Page 2 Max</span>
+                                            </div>
+                                            <p class="font-mono font-bold text-slate-900 dark:text-white">50,000</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mahal Lesson Footer -->
+                            <div class="bg-primary p-3 lg:p-4 flex items-center gap-3">
+                                <div class="bg-slate-900 rounded-full p-1.5 shrink-0">
+                                    <span class="material-symbols-outlined text-primary text-lg">priority_high</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <p
+                                        class="text-xs font-bold uppercase tracking-widest text-slate-900 opacity-70 mb-0.5">
+                                        Failure Scar</p>
+                                    <p class="font-bold text-slate-900 text-sm leading-snug">
+                                        "Push video yang tidak perform di Learning Base 1 hanya akan membuang budget ads
+                                        Anda tanpa hasil konversi."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input Area (Sticky Bottom) -->
+            <div
+                class="absolute bottom-0 left-0 right-0 p-4 lg:p-6 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800">
+                <div class="w-full flex items-end gap-3">
+                    <div
+                        class="flex-1 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center shadow-sm focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+                        <textarea rows="1" placeholder="Tanya Adrian tentang algoritma TikTok..."
+                            class="w-full bg-transparent border-none text-slate-900 dark:text-white placeholder-slate-400 focus:ring-0 py-3 px-4 resize-none max-h-32 custom-scrollbar text-sm"></textarea>
+                        <button class="p-2 mr-2 text-slate-400 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">mic</span>
+                        </button>
+                    </div>
+                    <button
+                        class="p-3 bg-primary text-slate-900 rounded-xl font-bold hover:bg-amber-400 transition-all shadow-lg shadow-primary/20 shrink-0 flex items-center justify-center">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </div>
+                <p class="text-center text-[10px] text-slate-400 mt-2">Adrian uses GPT-4o • Check important info.</p>
+            </div>
+        </main>
+
+        <!-- Right Sidebar (Bot Info) -->
+        <aside
+            class="content-area w-full lg:w-80 border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-sidebar-dark overflow-y-auto custom-scrollbar flex flex-col shrink-0">
+            <div class="p-6 lg:p-8 flex flex-col items-center">
+                <!-- Profile Pic -->
+                <div class="relative mb-6">
+                    <div class="w-24 h-24 rounded-full bg-slate-800 overflow-hidden ring-4 ring-primary/20">
+                        <img alt="Adrian" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRvoIlIfuwCIoTolhlE_SdDZ6SlYMYalu4JwjrI8XY2sa0wj_d6jg_kCkOU7nmdBpRctQpmihGN3u6M7n9us7n4K7IIDyzUMEr2t9qHT1p2sZ1Rf1JSCPJqPQKL0bawAjiN_RWo4GgDRg_nUGLrtMW6fOnFAk-W4iiP7dY5LSaJsPaEyPQjaRqzKRCG_Z1funClBy--DSVjHn2X_uT7lUEKhcb_1qDE5pdZnn8hn0DnNYf0IbQnwka5xfCVfwj1ADAs1BWPA1UrW0" />
+                    </div>
+                    <div
+                        class="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-white dark:border-sidebar-dark">
+                    </div>
+                </div>
+
+                <h2 class="text-xl font-bold text-center">Adrian Firnanda</h2>
+                <p class="text-xs text-primary font-bold uppercase tracking-wide mt-1 text-center">Founder Alastar
+                    Global Sinergi</p>
+
+                <!-- Refined Stats Grid -->
+                <div class="grid grid-cols-3 gap-3 w-full mt-6">
+                    <div
+                        class="p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center text-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase mb-1">EXP</span>
+                        <span class="text-base font-bold">12Y</span>
+                    </div>
+                    <div
+                        class="p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center text-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase mb-1">CASES</span>
+                        <span class="text-base font-bold">842</span>
+                    </div>
+                    <div
+                        class="p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center text-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase mb-1">SCARS</span>
+                        <span class="text-base font-bold text-red-500">42</span>
+                    </div>
+                </div>
+
+                <!-- Skill Radar (Standardized) -->
+                <div
+                    class="w-full mt-8 p-6 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/10">
+                    <div class="flex justify-between items-center mb-6">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Skill Radar</p>
+                        <span class="material-symbols-outlined text-slate-400 text-sm">help</span>
+                    </div>
+                    <div class="h-40 flex items-center justify-center">
+                        <div class="relative w-32 h-32 flex items-center justify-center">
+                            <div class="absolute inset-0 border border-slate-300 dark:border-white/10 rounded-full">
+                            </div>
+                            <div class="absolute inset-2 border border-slate-300 dark:border-white/10 rounded-full">
+                            </div>
+                            <div class="absolute inset-4 border border-slate-300 dark:border-white/10 rounded-full">
+                            </div>
+                            <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+                                <polygon fill="rgba(251, 191, 36, 0.4)" points="50,10 85,35 75,85 25,85 15,35"
+                                    stroke="#FBBF24" stroke-width="2"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-4">
+                        <div class="text-center">
+                            <p class="text-xs text-slate-500 font-bold">MKT</p>
+                            <p class="text-sm font-bold">98%</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xs text-slate-500 font-bold">ALG</p>
+                            <p class="text-sm font-bold">94%</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xs text-slate-500 font-bold">PSY</p>
+                            <p class="text-sm font-bold">88%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Riwayat Chat Nav -->
+                <div class="w-full mt-8 mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-sm font-bold uppercase tracking-tight text-slate-400">Riwayat Chat</h3>
+                        <a href="index.html"
+                            class="text-primary text-xs font-bold flex items-center gap-1 hover:underline">
+                            <span class="material-symbols-outlined text-sm">dashboard</span> DASHBOARD
+                        </a>
+                    </div>
+                    <div class="space-y-3">
+                        <a href="chat_logistics.html"
+                            class="block p-3 bg-transparent rounded-xl border-l-2 border-transparent hover:bg-slate-100 dark:hover:bg-white/5 cursor-pointer transition-colors group">
+                            <div class="flex justify-between items-start">
+                                <p class="text-xs font-bold mb-1 text-slate-800 dark:text-slate-200">Multi-Warehouse
+                                    Strategy</p>
+                                <span
+                                    class="material-symbols-outlined text-xs text-slate-500 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Logistics • 28 JAN</p>
+                        </a>
+                        <a href="chat_algorithm.html"
+                            class="block p-3 bg-slate-100 dark:bg-white/5 rounded-xl border-l-2 border-primary hover:bg-slate-200 dark:hover:bg-white/10 cursor-pointer transition-colors group">
+                            <div class="flex justify-between items-start">
+                                <p class="text-xs font-bold mb-1">TikTok Algorithm Phase</p>
+                                <span
+                                    class="material-symbols-outlined text-xs text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Marketing • 26 JAN</p>
+                        </a>
+                        <a href="chat_commission.html"
+                            class="block p-3 bg-transparent rounded-xl border-l-2 border-transparent hover:bg-slate-100 dark:hover:bg-white/5 cursor-pointer transition-colors group">
+                            <div class="flex justify-between items-start">
+                                <p class="text-xs font-bold mb-1 text-slate-800 dark:text-slate-200">Competitor
+                                    Commission SOP</p>
+                                <span
+                                    class="material-symbols-outlined text-xs text-slate-500 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Execution • 25 JAN</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Mobile Navigation Bar -->
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-sidebar-dark border-t border-slate-200 dark:border-slate-800 flex justify-around items-center p-2 z-50">
+        <a href="index.html" class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-xs font-bold mt-1">Dash</span>
+        </a>
+        <a href="chat.html" class="flex flex-col items-center p-2 text-primary">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="text-xs font-bold mt-1">Chat</span>
+        </a>
+        <a href="bot_personas.html"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <span class="text-xs font-bold mt-1">Bots</span>
+        </a>
+        <button onclick="toggleSidebar()"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+            <span class="text-xs font-bold mt-1">Menu</span>
+        </button>
+    </nav>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('main-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            if (sidebar.classList.contains('sidebar-collapsed') || sidebar.classList.contains('hidden')) {
+                // Open
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.classList.remove('hidden');
+                sidebar.classList.add('sidebar-mobile-open');
+                overlay.classList.remove('hidden');
+            } else {
+                // Close
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('sidebar-mobile-open');
+                overlay.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>

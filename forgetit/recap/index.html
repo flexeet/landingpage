@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORGETIT Training Curriculum | 6 Week Program</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Grid Lines -->
+    <div class="grid-lines">
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo magnetic">
+                <span class="logo-bracket">[</span>
+                <span>FORGETIT</span>
+                <span class="logo-bracket">]</span>
+                <span class="logo-sub">curriculum</span>
+            </a>
+            <div class="nav-links">
+                <a href="#overview" class="nav-link magnetic">Overview</a>
+                <a href="#weeks" class="nav-link magnetic">Materi</a>
+                <a href="#projects" class="nav-link magnetic">Projects</a>
+                <a href="#enroll" class="nav-link magnetic">Daftar</a>
+            </div>
+            <a href="#enroll" class="btn-primary magnetic">
+                <span>Mulai Belajar</span>
+                <span class="btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <canvas id="neural-canvas"></canvas>
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Training Program 2024</span>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="title-line">
+                    <span class="word">Master</span>
+                    <span class="word italic">Knowledge</span>
+                </span>
+                <span class="title-line">
+                    <span class="word">Curation</span>
+                </span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Program 6 minggu untuk menguasai sistem Knowledge Curation<br>
+                dari fundamental hingga production deployment
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="6">6</span>
+                    <span class="stat-label">Weeks</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="21">21</span>
+                    <span class="stat-label">Sessions</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="42">~42</span>
+                    <span class="stat-label">Hours</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="5">5</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+            </div>
+            
+            <div class="hero-cta">
+                <a href="#enroll" class="btn-primary magnetic">
+                    <span>Daftar Sekarang</span>
+                    <span class="btn-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+                <a href="#overview" class="btn-secondary magnetic">
+                    <span>Lihat Kurikulum</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll untuk explore</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section" id="overview">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">// PROGRAM OVERVIEW</span>
+                <h2 class="section-title">
+                    <span>Apa yang akan</span>
+                    <span class="italic">dipelajari?</span>
+                </h2>
+            </div>
+            
+            <div class="learning-path">
+                <div class="path-stage" data-stage="1">
+                    <div class="stage-icon">📚</div>
+                    <div class="stage-content">
+                        <h4>Foundation</h4>
+                        <p>Understand the WHY</p>
+                    </div>
+                    <div class="stage-week">W1</div>
+                </div>
+                <div class="path-connector">
+                    <svg viewBox="0 0 60 20"><path d="M0 10h60" stroke="currentColor" stroke-dasharray="4 4"/></svg>
+                </div>
+                <div class="path-stage" data-stage="2">
+                    <div class="stage-icon">🧠</div>
+                    <div class="stage-content">
+                        <h4>Core Concepts</h4>
+                        <p>Learn the WHAT</p>
+                    </div>
+                    <div class="stage-week">W2-3</div>
+                </div>
+                <div class="path-connector">
+                    <svg viewBox="0 0 60 20"><path d="M0 10h60" stroke="currentColor" stroke-dasharray="4 4"/></svg>
+                </div>
+                <div class="path-stage" data-stage="3">
+                    <div class="stage-icon">⚙️</div>
+                    <div class="stage-content">
+                        <h4>Implementation</h4>
+                        <p>Build the HOW</p>
+                    </div>
+                    <div class="stage-week">W4-5</div>
+                </div>
+                <div class="path-connector">
+                    <svg viewBox="0 0 60 20"><path d="M0 10h60" stroke="currentColor" stroke-dasharray="4 4"/></svg>
+                </div>
+                <div class="path-stage active" data-stage="4">
+                    <div class="stage-icon">🚀</div>
+                    <div class="stage-content">
+                        <h4>Production</h4>
+                        <p>Deploy & Scale</p>
+                    </div>
+                    <div class="stage-week">W6</div>
+                </div>
+            </div>
+            
+            <div class="weeks-grid">
+                <div class="week-card magnetic" data-week="1">
+                    <div class="week-number">01</div>
+                    <div class="week-badge">Week 1</div>
+                    <h3>Foundation</h3>
+                    <p>RAG fundamentals, traditional problems, FORGETIT philosophy</p>
+                    <div class="week-meta">
+                        <span class="sessions-count">3 Sessions</span>
+                        <span class="hours-count">6 Hours</span>
+                    </div>
+                </div>
+                
+                <div class="week-card magnetic" data-week="2">
+                    <div class="week-number">02</div>
+                    <div class="week-badge">Week 2</div>
+                    <h3>Curation Core</h3>
+                    <p>Classification L1-L4, chunking strategies, entity extraction</p>
+                    <div class="week-meta">
+                        <span class="sessions-count">4 Sessions</span>
+                        <span class="hours-count">8 Hours</span>
+                    </div>
+                </div>
+                
+                <div class="week-card magnetic" data-week="3">
+                    <div class="week-number">03</div>
+                    <div class="week-badge">Week 3</div>
+                    <h3>Advanced Curation</h3>
+                    <p>Timeline, comparison sections, quality scoring, filtering</p>
+                    <div class="week-meta">
+                        <span class="sessions-count">4 Sessions</span>
+                        <span class="hours-count">8 Hours</span>
+                    </div>
+                </div>
+                
+                <div class="week-card magnetic" data-week="4">
+                    <div class="week-number">04</div>
+                    <div class="week-badge">Week 4</div>
+                    <h3>Implementation</h3>
+                    <p>n8n workflows, Claude integration, JSON output mode</p>
+                    <div class="week-meta">
+                        <span class="sessions-count">4 Sessions</span>
+                        <span class="hours-count">8 Hours</span>
+                    </div>
+                </div>
+                
+                <div class="week-card magnetic" data-week="5">
+                    <div class="week-number">05</div>
+                    <div class="week-badge">Week 5</div>
+                    <h3>Vector & Retrieval</h3>
+                    <p>Pinecone setup, embeddings, metadata optimization</p>
+                    <div class="week-meta">
+                        <span class="sessions-count">3 Sessions</span>
+                        <span class="hours-count">6 Hours</span>
+                    </div>
+                </div>
+                
+                <div class="week-card magnetic" data-week="6">
+                    <div class="week-number">06</div>
+                    <div class="week-badge">Week 6</div>
+                    <h3>Production</h3>
+                    <p>Reranking, query processing, deployment, monitoring</p>
+                    <div class="week-meta">
+                        <span class="sessions-count">3 Sessions</span>
+                        <span class="hours-count">6 Hours</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Week Details Section -->
+    <section class="weeks-detail" id="weeks">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">// DETAILED CURRICULUM</span>
+                <h2 class="section-title">
+                    <span>Session</span>
+                    <span class="italic">Breakdown</span>
+                </h2>
+            </div>
+            
+            <!-- Week 1 -->
+            <div class="week-detail-block" data-week="1">
+                <div class="week-header-detail">
+                    <div class="week-number-large">01</div>
+                    <div class="week-info">
+                        <span class="week-label">WEEK 1</span>
+                        <h3>Foundation & Concepts</h3>
+                        <p>Memahami masalah RAG tradisional dan filosofi FORGETIT</p>
+                    </div>
+                </div>
+                
+                <div class="sessions-list">
+                    <div class="session-item magnetic">
+                        <div class="session-number">1.1</div>
+                        <div class="session-content">
+                            <h4>Introduction to RAG</h4>
+                            <p>What is RAG, components, use cases, current landscape</p>
+                            <div class="session-topics">
+                                <span>• Apa itu Retrieval Augmented Generation</span>
+                                <span>• Components: Embedding, Vector Store, Retrieval, Generation</span>
+                                <span>• Real-world use cases</span>
+                                <span>• Demo: Simple RAG dengan OpenAI + Pinecone</span>
+                            </div>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">📖 Theory + Demo</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">1.2</div>
+                        <div class="session-content">
+                            <h4>Traditional RAG Problems</h4>
+                            <p>Chunking issues, context loss, hallucination, cost explosion</p>
+                            <div class="session-topics">
+                                <span>• Problem 1: Naive chunking breaks context</span>
+                                <span>• Problem 2: Entity scattered across chunks</span>
+                                <span>• Problem 3: Generic content = noise</span>
+                                <span>• Problem 4: Cost explosion (20+ LLM calls/doc)</span>
+                            </div>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">📊 Case Study</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">1.3</div>
+                        <div class="session-content">
+                            <h4>FORGETIT Philosophy</h4>
+                            <p>Smart curation vs dumb chunking, quality over quantity</p>
+                            <div class="session-topics">
+                                <span>• Philosophy: "Curate once, query forever"</span>
+                                <span>• 1× LLM Call principle - front-load intelligence</span>
+                                <span>• Quality chunks > quantity chunks</span>
+                                <span>• Workshop: Design curation strategy</span>
+                            </div>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">🎯 Workshop</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-deliverable">
+                    <span class="deliverable-icon">📦</span>
+                    <div class="deliverable-content">
+                        <span class="deliverable-label">Week 1 Deliverable</span>
+                        <span class="deliverable-text">Problem analysis document untuk 1 use case pilihan</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 2 -->
+            <div class="week-detail-block" data-week="2">
+                <div class="week-header-detail">
+                    <div class="week-number-large">02</div>
+                    <div class="week-info">
+                        <span class="week-label">WEEK 2</span>
+                        <h3>Knowledge Curation Core</h3>
+                        <p>Sistem klasifikasi, strategi chunking, dan entity extraction</p>
+                    </div>
+                </div>
+                
+                <div class="sessions-list">
+                    <div class="session-item magnetic">
+                        <div class="session-number">2.1</div>
+                        <div class="session-content">
+                            <h4>Document Classification (L1-L4)</h4>
+                            <p>4-level classification system, document types, routing logic</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">📖 Theory + Practice</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">2.2</div>
+                        <div class="session-content">
+                            <h4>Semantic Chunking</h4>
+                            <p>Beyond character limits, topic-based splits, context preservation</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">💻 Hands-on</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">2.3</div>
+                        <div class="session-content">
+                            <h4>Entity Extraction</h4>
+                            <p>Named entities, aliases, relationships, graph building</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">💻 Hands-on</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">2.4</div>
+                        <div class="session-content">
+                            <h4>Content Type Detection</h4>
+                            <p>Facts vs opinions, procedures vs policies, static vs temporal</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">🎯 Workshop</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-deliverable">
+                    <span class="deliverable-icon">📦</span>
+                    <div class="deliverable-content">
+                        <span class="deliverable-label">Week 2 Deliverable</span>
+                        <span class="deliverable-text">Classification prompt yang working untuk 3 document types berbeda</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 3 -->
+            <div class="week-detail-block" data-week="3">
+                <div class="week-header-detail">
+                    <div class="week-number-large">03</div>
+                    <div class="week-info">
+                        <span class="week-label">WEEK 3</span>
+                        <h3>Advanced Curation</h3>
+                        <p>Timeline detection, comparison sections, quality filtering</p>
+                    </div>
+                </div>
+                
+                <div class="sessions-list">
+                    <div class="session-item magnetic">
+                        <div class="session-number">3.1</div>
+                        <div class="session-content">
+                            <h4>Timeline Detection</h4>
+                            <p>Temporal markers, date extraction, event sequencing</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">💻 Hands-on</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">3.2</div>
+                        <div class="session-content">
+                            <h4>Before/After Comparison</h4>
+                            <p>Detecting change narratives, policy updates, version diffs</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">💻 Hands-on</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">3.3</div>
+                        <div class="session-content">
+                            <h4>Generic Content Filtering</h4>
+                            <p>Identifying filler, greetings, off-topic, uniqueness scoring</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">🎯 Workshop</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">3.4</div>
+                        <div class="session-content">
+                            <h4>Quality Scoring System</h4>
+                            <p>Confidence scores, retrieval hints, chunk prioritization</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">📊 Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-deliverable">
+                    <span class="deliverable-icon">📦</span>
+                    <div class="deliverable-content">
+                        <span class="deliverable-label">Week 3 Deliverable</span>
+                        <span class="deliverable-text">Complete curation prompt dengan timeline + comparison + filtering</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 4 -->
+            <div class="week-detail-block" data-week="4">
+                <div class="week-header-detail">
+                    <div class="week-number-large">04</div>
+                    <div class="week-info">
+                        <span class="week-label">WEEK 4</span>
+                        <h3>Technical Implementation</h3>
+                        <p>n8n workflows, Claude integration, production setup</p>
+                    </div>
+                </div>
+                
+                <div class="sessions-list">
+                    <div class="session-item magnetic">
+                        <div class="session-number">4.1</div>
+                        <div class="session-content">
+                            <h4>n8n Workflow Fundamentals</h4>
+                            <p>Nodes, connections, expressions, error handling basics</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">💻 Hands-on</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">4.2</div>
+                        <div class="session-content">
+                            <h4>Claude Integration</h4>
+                            <p>API setup, thinking mode, JSON output, token optimization</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">💻 Hands-on</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">4.3</div>
+                        <div class="session-content">
+                            <h4>Document Loader Setup</h4>
+                            <p>File triggers, metadata extraction, batch processing</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">💻 Hands-on</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">4.4</div>
+                        <div class="session-content">
+                            <h4>Full Pipeline Assembly</h4>
+                            <p>Connect all components, testing, debugging, logging</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">🎯 Workshop</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-deliverable">
+                    <span class="deliverable-icon">📦</span>
+                    <div class="deliverable-content">
+                        <span class="deliverable-label">Week 4 Deliverable</span>
+                        <span class="deliverable-text">Working n8n workflow: File → Claude Curation → JSON chunks</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 5 -->
+            <div class="week-detail-block" data-week="5">
+                <div class="week-header-detail">
+                    <div class="week-number-large">05</div>
+                    <div class="week-info">
+                        <span class="week-label">WEEK 5</span>
+                        <h3>Vector Database & Retrieval</h3>
+                        <p>Pinecone mastery, embedding strategies, metadata optimization</p>
+                    </div>
+                </div>
+                
+                <div class="sessions-list">
+                    <div class="session-item magnetic">
+                        <div class="session-number">5.1</div>
+                        <div class="session-content">
+                            <h4>Pinecone Deep Dive</h4>
+                            <p>Index types, namespaces, metadata filtering, serverless vs pods</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">💻 Hands-on</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">5.2</div>
+                        <div class="session-content">
+                            <h4>Embedding Strategies</h4>
+                            <p>Model comparison, hybrid search, dense vs sparse, cost optimization</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">📊 Analysis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">5.3</div>
+                        <div class="session-content">
+                            <h4>Metadata Schema Design</h4>
+                            <p>Filterable fields, query optimization, namespace strategy</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">🎯 Workshop</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-deliverable">
+                    <span class="deliverable-icon">📦</span>
+                    <div class="deliverable-content">
+                        <span class="deliverable-label">Week 5 Deliverable</span>
+                        <span class="deliverable-text">Populated Pinecone index dengan 100+ curated chunks + metadata</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 6 -->
+            <div class="week-detail-block" data-week="6">
+                <div class="week-header-detail">
+                    <div class="week-number-large">06</div>
+                    <div class="week-info">
+                        <span class="week-label">WEEK 6</span>
+                        <h3>Production & Optimization</h3>
+                        <p>Reranking, query processing, deployment, monitoring</p>
+                    </div>
+                </div>
+                
+                <div class="sessions-list">
+                    <div class="session-item magnetic">
+                        <div class="session-number">6.1</div>
+                        <div class="session-content">
+                            <h4>Reranking dengan Cohere</h4>
+                            <p>Two-stage retrieval, score interpretation, cross-lingual challenges</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">💻 Hands-on</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">6.2</div>
+                        <div class="session-content">
+                            <h4>Query Processing</h4>
+                            <p>Query expansion, intent classification, entity resolution</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">📊 Analysis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="session-item magnetic">
+                        <div class="session-number">6.3</div>
+                        <div class="session-content">
+                            <h4>Production Deployment</h4>
+                            <p>Error handling, logging, monitoring, scaling considerations</p>
+                        </div>
+                        <div class="session-meta">
+                            <span class="duration">⏱️ 2 jam</span>
+                            <span class="type">🎯 Workshop</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-deliverable">
+                    <span class="deliverable-icon">📦</span>
+                    <div class="deliverable-content">
+                        <span class="deliverable-label">Week 6 Deliverable</span>
+                        <span class="deliverable-text">Production-ready RAG system dengan reranking + query processing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">// CAPSTONE PROJECTS</span>
+                <h2 class="section-title">
+                    <span>Pilih</span>
+                    <span class="italic">Project</span>
+                </h2>
+                <p class="section-desc">Pilih 1 dari 5 project untuk final assessment</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card magnetic">
+                    <div class="project-number">01</div>
+                    <h4>Tax Knowledge Bot</h4>
+                    <p>Build RAG system untuk Q&A pajak UMKM dari workshop transcripts</p>
+                    <div class="project-tags">
+                        <span>Transcript</span>
+                        <span>Timeline</span>
+                        <span>Policy</span>
+                    </div>
+                </div>
+                
+                <div class="project-card magnetic">
+                    <div class="project-number">02</div>
+                    <h4>Product Manual Assistant</h4>
+                    <p>Knowledge base untuk technical product documentation</p>
+                    <div class="project-tags">
+                        <span>Manual</span>
+                        <span>Procedure</span>
+                        <span>Troubleshoot</span>
+                    </div>
+                </div>
+                
+                <div class="project-card magnetic">
+                    <div class="project-number">03</div>
+                    <h4>HR Policy Navigator</h4>
+                    <p>Internal wiki untuk company policies dan employee handbook</p>
+                    <div class="project-tags">
+                        <span>Policy</span>
+                        <span>Versioned</span>
+                        <span>Access Control</span>
+                    </div>
+                </div>
+                
+                <div class="project-card magnetic">
+                    <div class="project-number">04</div>
+                    <h4>Sales Playbook AI</h4>
+                    <p>Knowledge system untuk sales methodology dan objection handling</p>
+                    <div class="project-tags">
+                        <span>Playbook</span>
+                        <span>Persona</span>
+                        <span>Scenario</span>
+                    </div>
+                </div>
+                
+                <div class="project-card magnetic">
+                    <div class="project-number">05</div>
+                    <h4>Research Paper Synthesizer</h4>
+                    <p>Curate dan query academic papers dalam specific domain</p>
+                    <div class="project-tags">
+                        <span>Academic</span>
+                        <span>Citation</span>
+                        <span>Cross-ref</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="requirements-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">// PROGRAM INFO</span>
+                <h2 class="section-title">
+                    <span>Requirements &</span>
+                    <span class="italic">Format</span>
+                </h2>
+            </div>
+            
+            <div class="requirements-grid">
+                <div class="req-card">
+                    <div class="req-icon">📅</div>
+                    <h4>Schedule</h4>
+                    <div class="req-list">
+                        <div class="req-item">
+                            <span>Duration</span>
+                            <strong>6 weeks</strong>
+                        </div>
+                        <div class="req-item">
+                            <span>Sessions/Week</span>
+                            <strong>3-4 sessions</strong>
+                        </div>
+                        <div class="req-item">
+                            <span>Hours/Session</span>
+                            <strong>~2 hours</strong>
+                        </div>
+                        <div class="req-item">
+                            <span>Total</span>
+                            <strong>~42 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="req-card">
+                    <div class="req-icon">💻</div>
+                    <h4>Prerequisites</h4>
+                    <div class="prereq-list">
+                        <div class="prereq-item check">Basic programming (any language)</div>
+                        <div class="prereq-item check">Familiar dengan API calls</div>
+                        <div class="prereq-item check">Account: OpenAI, Anthropic, Pinecone</div>
+                        <div class="prereq-item check">n8n self-hosted or cloud</div>
+                        <div class="prereq-item optional">LLM/RAG experience (helpful)</div>
+                    </div>
+                </div>
+                
+                <div class="req-card">
+                    <div class="req-icon">📦</div>
+                    <h4>Weekly Deliverables</h4>
+                    <div class="deliverables-list">
+                        <div class="del-item">W1: Problem analysis document</div>
+                        <div class="del-item">W2: Classification prompts</div>
+                        <div class="del-item">W3: Complete curation prompt</div>
+                        <div class="del-item">W4: Working n8n pipeline</div>
+                        <div class="del-item">W5: Populated vector index</div>
+                        <div class="del-item">W6: Production RAG system</div>
+                    </div>
+                </div>
+                
+                <div class="req-card">
+                    <div class="req-icon">🎓</div>
+                    <h4>Certification</h4>
+                    <div class="cert-info">
+                        <p>Requirements untuk certificate:</p>
+                        <div class="cert-list">
+                            <div class="cert-item">Complete all 6 weekly deliverables</div>
+                            <div class="cert-item">Pass capstone project review</div>
+                            <div class="cert-item">Minimum 80% session attendance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="enroll">
+        <div class="section-inner">
+            <div class="cta-content">
+                <h2>Ready to Master<br><span class="italic">Knowledge Curation?</span></h2>
+                <p>Join the next cohort dan build production-ready RAG systems</p>
+                
+                <div class="pricing-options">
+                    <div class="pricing-card magnetic">
+                        <div class="pricing-badge">Full Program</div>
+                        <div class="pricing-icon">🎓</div>
+                        <h4>Live Cohort</h4>
+                        <p>6 weeks, 21 sessions, certificate</p>
+                        <div class="pricing-amount">
+                            <span class="currency">Rp</span>
+                            <span class="price">7.500.000</span>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20FORGETIT%20Training%20Full%20Program" class="btn-primary magnetic">
+                            <span>Daftar Full Program</span>
+                        </a>
+                    </div>
+                    
+                    <div class="pricing-card magnetic">
+                        <div class="pricing-badge secondary">Self-Paced</div>
+                        <div class="pricing-icon">📚</div>
+                        <h4>Recorded</h4>
+                        <p>Recorded sessions, community access</p>
+                        <div class="pricing-amount">
+                            <span class="currency">Rp</span>
+                            <span class="price">3.500.000</span>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20FORGETIT%20Training%20Self-Paced" class="btn-secondary magnetic">
+                            <span>Akses Self-Paced</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="pricing-guarantee">
+                    <span class="guarantee-icon">🛡️</span>
+                    <div class="guarantee-text">
+                        <strong>30-Day Money Back Guarantee</strong>
+                        <p>Tidak puas? Uang kembali 100%, no questions asked.</p>
+                    </div>
+                </div>
+                
+                <div class="cta-alternative">
+                    <span>Ada pertanyaan?</span>
+                    <a href="https://wa.me/6281234567890" class="wa-button">
+                        <span class="wa-icon">💬</span>
+                        Chat via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <span class="logo-bracket">[</span>
+                <span>FORGETIT</span>
+                <span class="logo-bracket">]</span>
+            </div>
+            <p>Knowledge Curation Training Program</p>
+            <div class="footer-links">
+                <a href="mailto:training@flexeet.com">training@flexeet.com</a>
+            </div>
+            <p class="copyright">© 2024 Flexeet. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

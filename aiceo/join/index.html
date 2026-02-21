@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Manager — Your AI Second Brain for Business</title>
+    <meta name="description" content="Transform your business knowledge into an AI system accessible 24/7. Stop being the bottleneck. Let AI handle the repetitive, you focus on strategic.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cursor Follower -->
+    <div class="cursor-follower" id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">🤖</span>
+                <span class="logo-text">AI Manager</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Fitur</a>
+                <a href="#how-it-works">Cara Kerja</a>
+                <a href="#pricing">Harga</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <a href="#cta" class="nav-cta">
+                <span>Mulai Sekarang</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-grid"></div>
+            <div class="hero-glow hero-glow-1"></div>
+            <div class="hero-glow hero-glow-2"></div>
+            <div class="hero-particles" id="particles"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>AI-Powered Business Intelligence</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line">Your AI</span>
+                    <span class="title-line title-gradient">Second Brain</span>
+                    <span class="title-line">for Business</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Transform pengetahuan lo jadi sistem AI yang bisa diakses tim 24/7. 
+                    Stop jadi bottleneck. Biar AI handle yang repetitif, lo fokus yang strategic.
+                </p>
+                
+                <div class="hero-cta">
+                    <a href="#cta" class="btn btn-primary">
+                        <span>Jadwalkan Demo</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#how-it-works" class="btn btn-ghost">
+                        <span>Lihat Cara Kerja</span>
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" data-count="24">0</span><span class="stat-suffix">/7</span>
+                        <span class="stat-label">Always Available</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value" data-count="30">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">AI Advisors</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value" data-count="196">0</span><span class="stat-suffix">%</span>
+                        <span class="stat-label">Average ROI</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="chat-demo">
+                    <div class="chat-header">
+                        <div class="chat-avatar">🤖</div>
+                        <div class="chat-info">
+                            <span class="chat-name">AI Manager</span>
+                            <span class="chat-status">● Online</span>
+                        </div>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="message message-user">
+                            <p>Gimana SOP handle refund di atas 7 hari?</p>
+                        </div>
+                        <div class="message message-ai">
+                            <p>Untuk refund >7 hari, cek dulu history customer:</p>
+                            <p><strong>VIP (>3x order):</strong> Tawarkan store credit 110%</p>
+                            <p><strong>Non-VIP:</strong> Jelaskan policy dengan empati, offer exchange</p>
+                            <p><strong>Eskalasi:</strong> Jika tetap minta full refund, ke CS Lead</p>
+                        </div>
+                        <div class="message message-user">
+                            <p>Kalau customernya marah-marah?</p>
+                        </div>
+                        <div class="message message-ai typing">
+                            <span class="typing-dot"></span>
+                            <span class="typing-dot"></span>
+                            <span class="typing-dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll untuk explore</span>
+            <div class="scroll-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section problem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">The Problem</span>
+                <h2 class="section-title">Kenapa Bisnis Lo <span class="text-gradient">Bocor Miliaran</span> Tiap Tahun?</h2>
+                <p class="section-subtitle">Dan lo mungkin gak sadar...</p>
+            </div>
+            
+            <div class="problem-grid">
+                <div class="problem-card" data-animate>
+                    <div class="problem-icon">⏰</div>
+                    <div class="problem-content">
+                        <h3>Owner Jadi Google-nya Tim</h3>
+                        <p>10-15 jam/minggu habis jawab pertanyaan yang SAMA berulang-ulang. Pertanyaan yang seharusnya tim bisa cari sendiri.</p>
+                        <div class="problem-stat">
+                            <span class="stat-number">~Rp 260jt</span>
+                            <span class="stat-desc">waktu terbuang per tahun</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="problem-card" data-animate>
+                    <div class="problem-icon">🎓</div>
+                    <div class="problem-content">
+                        <h3>Onboarding Makan Waktu</h3>
+                        <p>3-6 bulan sampai karyawan baru produktif. Selama itu, gaji jalan terus tapi output belum maksimal.</p>
+                        <div class="problem-stat">
+                            <span class="stat-number">~Rp 45jt</span>
+                            <span class="stat-desc">cost per hire</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="problem-card" data-animate>
+                    <div class="problem-icon">🚪</div>
+                    <div class="problem-content">
+                        <h3>Key Person Resign = Chaos</h3>
+                        <p>Satu orang resign, knowledge 5 tahun HILANG. Tim bingung, revenue drop, recovery berbulan-bulan.</p>
+                        <div class="problem-stat">
+                            <span class="stat-number">~Rp 300jt</span>
+                            <span class="stat-desc">per key person lost</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="problem-card problem-card-highlight" data-animate>
+                    <div class="problem-icon">💸</div>
+                    <div class="problem-content">
+                        <h3>Total Knowledge Leak</h3>
+                        <p>Gabungin semua di atas, dan ini yang BOCOR dari bisnis lo setiap tahun tanpa lo sadari.</p>
+                        <div class="problem-stat large">
+                            <span class="stat-number">Rp 1-2 Miliar</span>
+                            <span class="stat-desc">per tahun (average)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section solution-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">The Solution</span>
+                <h2 class="section-title">Kenalan sama <span class="text-gradient">AI Manager</span></h2>
+                <p class="section-subtitle">Your AI Second Brain — Never Forget, Always Available, Forever Consistent</p>
+            </div>
+            
+            <div class="solution-intro">
+                <div class="solution-text">
+                    <h3>Bukan ChatGPT biasa.</h3>
+                    <p>AI Manager adalah AI yang di-training KHUSUS dengan knowledge, cara pikir, dan decision framework dari bisnis LO SENDIRI.</p>
+                    <p>Bayangkan punya "clone" otak lo yang bisa jawab pertanyaan tim 24/7, dengan konsistensi 100%, tanpa mood swing, tanpa resign.</p>
+                </div>
+                <div class="solution-comparison">
+                    <div class="comparison-item old">
+                        <h4>❌ AI Biasa (ChatGPT, dll)</h4>
+                        <ul>
+                            <li>Generic knowledge</li>
+                            <li>Gak tau bisnis lo</li>
+                            <li>Jawaban template</li>
+                            <li>No context</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-item new">
+                        <h4>✅ AI Manager</h4>
+                        <ul>
+                            <li>YOUR knowledge</li>
+                            <li>Paham bisnis lo</li>
+                            <li>Jawaban contextual</li>
+                            <li>Trained by you</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Features</span>
+                <h2 class="section-title">Apa yang Lo <span class="text-gradient">Dapat</span></h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-animate>
+                    <div class="feature-icon">🧠</div>
+                    <h3>AI CEO</h3>
+                    <p>AI yang di-training dengan cara pikir owner. Strategic sparring partner untuk diskusi keputusan bisnis.</p>
+                    <ul class="feature-list">
+                        <li>Strategic decision support</li>
+                        <li>Business philosophy recall</li>
+                        <li>Historical context</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-animate>
+                    <div class="feature-icon">🏢</div>
+                    <h3>AI Divisions</h3>
+                    <p>AI spesifik per divisi dengan SOP, product knowledge, dan FAQ masing-masing.</p>
+                    <ul class="feature-list">
+                        <li>Sales, Marketing, Ops</li>
+                        <li>CS, Finance, HR</li>
+                        <li>Product Knowledge</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-animate>
+                    <div class="feature-icon">👥</div>
+                    <h3>30 AI Advisors</h3>
+                    <p>Virtual advisory board dengan expertise berbagai bidang. Konsultasi unlimited.</p>
+                    <ul class="feature-list">
+                        <li>Marketing & Sales experts</li>
+                        <li>Operations & Finance</li>
+                        <li>Leadership & Industry</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-animate>
+                    <div class="feature-icon">💬</div>
+                    <h3>Telegram Bot</h3>
+                    <p>Interface simple via Telegram. Familiar, no learning curve, accessible di mobile.</p>
+                    <ul class="feature-list">
+                        <li>Chat-based interaction</li>
+                        <li>Voice message support</li>
+                        <li>File sharing</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-animate>
+                    <div class="feature-icon">🔄</div>
+                    <h3>Monthly Extraction</h3>
+                    <p>1x session per bulan untuk update knowledge base dengan informasi baru.</p>
+                    <ul class="feature-list">
+                        <li>2 jam recorded session</li>
+                        <li>New SOPs & policies</li>
+                        <li>Continuous improvement</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-animate>
+                    <div class="feature-icon">📊</div>
+                    <h3>Monitoring & Alerts</h3>
+                    <p>Track usage, detect anomalies, identify knowledge gaps.</p>
+                    <ul class="feature-list">
+                        <li>Usage analytics</li>
+                        <li>Unanswered questions</li>
+                        <li>Adoption tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section how-section" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">How It Works</span>
+                <h2 class="section-title">Dari <span class="text-gradient">Ngobrol</span> ke AI yang Kerja 24/7</h2>
+                <p class="section-subtitle">Framework ForgetIt: Forget Everything, Recall Anything</p>
+            </div>
+            
+            <div class="process-flow">
+                <div class="process-step" data-step="1">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">🎙️</div>
+                    <h3>Capture</h3>
+                    <p>Lo ngobrol seperti biasa. Kami record & transcribe semuanya.</p>
+                </div>
+                
+                <div class="process-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                
+                <div class="process-step" data-step="2">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">⚡</div>
+                    <h3>Extract</h3>
+                    <p>AI extract key decisions, SOPs, insights dari conversation.</p>
+                </div>
+                
+                <div class="process-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                
+                <div class="process-step" data-step="3">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">🗂️</div>
+                    <h3>Structure</h3>
+                    <p>Organize into searchable knowledge base dengan metadata.</p>
+                </div>
+                
+                <div class="process-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+                
+                <div class="process-step" data-step="4">
+                    <div class="step-number">04</div>
+                    <div class="step-icon">🤖</div>
+                    <h3>Activate</h3>
+                    <p>Deploy as AI yang bisa diakses tim 24/7 via Telegram.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-section">
+                <h3>Timeline Implementasi</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-label">Week 1-2</span>
+                            <h4>Onboarding & Extraction</h4>
+                            <p>Kick-off call, 2-3 extraction sessions, understand bisnis lo</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-label">Week 3</span>
+                            <h4>Setup & Configuration</h4>
+                            <p>Build knowledge base, configure AI, deploy bot</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-label">Week 4</span>
+                            <h4>Testing & Go-Live</h4>
+                            <p>QA, soft launch, team onboarding, full launch 🚀</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="section impact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Impact</span>
+                <h2 class="section-title">Real <span class="text-gradient">Results</span></h2>
+            </div>
+            
+            <div class="impact-grid">
+                <div class="impact-card" data-animate>
+                    <div class="impact-metric">
+                        <span class="metric-value">10-12</span>
+                        <span class="metric-unit">jam/minggu</span>
+                    </div>
+                    <h4>Owner Time Saved</h4>
+                    <p>Dari 15 jam jadi 3 jam per minggu jawab pertanyaan tim</p>
+                </div>
+                
+                <div class="impact-card" data-animate>
+                    <div class="impact-metric">
+                        <span class="metric-value">2-4</span>
+                        <span class="metric-unit">bulan</span>
+                    </div>
+                    <h4>Faster Onboarding</h4>
+                    <p>Onboarding dari 6 bulan jadi 2 bulan atau kurang</p>
+                </div>
+                
+                <div class="impact-card" data-animate>
+                    <div class="impact-metric">
+                        <span class="metric-value">80%</span>
+                        <span class="metric-unit">retained</span>
+                    </div>
+                    <h4>Knowledge Retention</h4>
+                    <p>Knowledge tetap stay walau key person resign</p>
+                </div>
+                
+                <div class="impact-card" data-animate>
+                    <div class="impact-metric">
+                        <span class="metric-value">&lt;1</span>
+                        <span class="metric-unit">menit</span>
+                    </div>
+                    <h4>Response Time</h4>
+                    <p>Dari 2-24 jam tunggu owner, jadi instant response</p>
+                </div>
+            </div>
+            
+            <div class="roi-calculator">
+                <h3>💰 ROI Calculator</h3>
+                <div class="roi-content">
+                    <div class="roi-investment">
+                        <h4>Investment (Year 1)</h4>
+                        <div class="roi-line">
+                            <span>Setup fee</span>
+                            <span>Rp 15.000.000</span>
+                        </div>
+                        <div class="roi-line">
+                            <span>Monthly (12x)</span>
+                            <span>Rp 120.000.000</span>
+                        </div>
+                        <div class="roi-line total">
+                            <span>Total</span>
+                            <span>Rp 135.000.000</span>
+                        </div>
+                    </div>
+                    <div class="roi-return">
+                        <h4>Savings (Year 1)</h4>
+                        <div class="roi-line">
+                            <span>Owner time</span>
+                            <span>Rp 260.000.000</span>
+                        </div>
+                        <div class="roi-line">
+                            <span>Faster onboarding</span>
+                            <span>Rp 40.000.000</span>
+                        </div>
+                        <div class="roi-line">
+                            <span>Knowledge retention</span>
+                            <span>Rp 100.000.000</span>
+                        </div>
+                        <div class="roi-line total">
+                            <span>Total</span>
+                            <span>Rp 400.000.000</span>
+                        </div>
+                    </div>
+                    <div class="roi-result">
+                        <div class="roi-metric">
+                            <span class="roi-number">196%</span>
+                            <span class="roi-label">ROI</span>
+                        </div>
+                        <div class="roi-metric">
+                            <span class="roi-number">4 bulan</span>
+                            <span class="roi-label">Payback Period</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Pricing</span>
+                <h2 class="section-title">Simple, <span class="text-gradient">Transparent</span> Pricing</h2>
+                <p class="section-subtitle">No hidden fees. No surprise charges.</p>
+            </div>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-badge">ONE-TIME</div>
+                    <h3>Setup Fee</h3>
+                    <div class="pricing-amount">
+                        <span class="currency">Rp</span>
+                        <span class="price">15.000.000</span>
+                    </div>
+                    <p class="pricing-desc">Bayar sekali di awal</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>2-3 extraction sessions</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>AI CEO + Divisions setup</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>Telegram Bot deployment</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>Team onboarding</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>Go-live dalam 2-4 minggu</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MONTHLY</div>
+                    <div class="popular-tag">Most Popular</div>
+                    <h3>Subscription</h3>
+                    <div class="pricing-amount">
+                        <span class="currency">Rp</span>
+                        <span class="price">10.000.000</span>
+                        <span class="period">/bulan</span>
+                    </div>
+                    <p class="pricing-desc">Minimum 3 bulan commitment</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>Unlimited divisions & users</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>30 AI Advisors access</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>1x extraction/bulan</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>Monitoring & alerts</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>WA/Email support</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                            <span>Free token s.d. Rp 1jt/bulan</span>
+                        </li>
+                    </ul>
+                    <a href="#cta" class="btn btn-primary btn-full">Mulai Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="pricing-summary">
+                <div class="summary-box">
+                    <h4>Total Investment (3 Bulan Pertama)</h4>
+                    <div class="summary-breakdown">
+                        <div class="summary-line">
+                            <span>Bulan 1 (Setup + Monthly)</span>
+                            <span>Rp 25.000.000</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Bulan 2</span>
+                            <span>Rp 10.000.000</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Bulan 3</span>
+                            <span>Rp 10.000.000</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span>Total</span>
+                            <span>Rp 45.000.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-comparison">
+                <h4>⚖️ Bandingkan Sendiri</h4>
+                <div class="comparison-table">
+                    <div class="table-header">
+                        <span></span>
+                        <span>Hire Manager</span>
+                        <span class="highlight">AI Manager</span>
+                    </div>
+                    <div class="table-row">
+                        <span>Cost/bulan</span>
+                        <span class="old">Rp 15-25jt</span>
+                        <span class="new">Rp 10jt</span>
+                    </div>
+                    <div class="table-row">
+                        <span>Availability</span>
+                        <span class="old">8 jam/hari</span>
+                        <span class="new">24/7</span>
+                    </div>
+                    <div class="table-row">
+                        <span>Bisa resign?</span>
+                        <span class="old">Ya ❌</span>
+                        <span class="new">Tidak ✓</span>
+                    </div>
+                    <div class="table-row">
+                        <span>Knowledge loss?</span>
+                        <span class="old">Ya ❌</span>
+                        <span class="new">Tidak ✓</span>
+                    </div>
+                    <div class="table-row">
+                        <span>Mood swing?</span>
+                        <span class="old">Ya ❌</span>
+                        <span class="new">Tidak ✓</span>
+                    </div>
+                    <div class="table-row">
+                        <span>Scale instantly?</span>
+                        <span class="old">Tidak ❌</span>
+                        <span class="new">Ya ✓</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Frequently Asked <span class="text-gradient">Questions</span></h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Industri saya berbeda, bisa applicable?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Yes.</strong> Framework ini universal. Yang beda cuma CONTEXT-nya. Extraction, structure, activate — sama prosesnya. Sudah proven di fashion, tax consulting, e-commerce, F&B, dan berbagai industri lainnya.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Berapa lama sampai keliatan ROI-nya?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>1-2 bulan</strong> biasanya udah kerasa impact-nya. Yang lo rasain: waktu owner lebih freed up, onboarding lebih cepat, tim lebih mandiri. ROI financial baru keliatan bulan ke-3+.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Gimana dengan keamanan data?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Separate database per client.</strong> Data lo gak nyampur sama client lain. Lo own raw data (dokumen, transcript, notes). NDA available kalau needed. API keys di account lo sendiri.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Kalau AI-nya salah jawab?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Feedback loop.</strong> Tim flag jawaban yang salah, kita fix. Sistem improve over time. AI gak perfect dari day 1, tapi dengan feedback, accuracy naik terus. Target: >90% accuracy dalam 2-3 bulan.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Saya gak ngerti teknikal, bisa?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Lo cuma perlu NGOBROL.</strong> Seriously. Tim kita handle semua technical stuff. Lo cerita bisnis lo, kita extract, structure, deploy. Lo tinggal pakai via Telegram.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Kalau stop setelah 3 bulan?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Raw data tetap milik lo.</strong> Dokumen, transcript, notes — bisa export. Tapi AI system (vector database, prompt logic, fine-tuning) = Flexeet IP, gak transfer.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>AI bikin owner jadi malas dong?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>KEBALIKANNYA.</strong> Sekarang owner spend waktu di hal REPETITIF (jawab pertanyaan sama, briefing ulang). Dengan AI, waktu itu FREED UP untuk hal STRATEGIS — explore market baru, develop produk, atau REST biar gak burnout. Owner capek = bisnis stagnan.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Apa bedanya sama hire manager?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>AI Manager: Rp 10jt/bulan, 24/7, gak resign, gak mood swing, knowledge gak hilang.</strong> Human manager tetap penting untuk leadership & creativity. AI complement, bukan replace. Think of it as giving your managers superpowers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" id="cta">
+        <div class="cta-bg">
+            <div class="cta-grid"></div>
+            <div class="cta-glow cta-glow-1"></div>
+            <div class="cta-glow cta-glow-2"></div>
+        </div>
+        
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to <span class="text-gradient">Transform</span> Your Business?</h2>
+                <p>Stop jadi bottleneck. Mulai systemize knowledge lo hari ini.</p>
+                
+                <form class="cta-form" id="ctaForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" name="name" required placeholder="Nama lo...">
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor WhatsApp</label>
+                            <input type="tel" name="phone" required placeholder="08xxxxxxxxxx">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nama Bisnis</label>
+                            <input type="text" name="business" required placeholder="Nama perusahaan/brand...">
+                        </div>
+                        <div class="form-group">
+                            <label>Revenue Bulanan</label>
+                            <select name="revenue" required>
+                                <option value="">Pilih range...</option>
+                                <option value="< 1M">< Rp 1 Miliar</option>
+                                <option value="1-5M">Rp 1-5 Miliar</option>
+                                <option value="5-10M">Rp 5-10 Miliar</option>
+                                <option value="> 10M">> Rp 10 Miliar</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label>Apa challenge terbesar lo sekarang?</label>
+                        <textarea name="challenge" rows="3" placeholder="Ceritain sedikit..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                        <span>Jadwalkan Discovery Call</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </form>
+                
+                <div class="cta-trust">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span>Data Aman</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <path d="M22 4L12 14.01l-3-3"/>
+                        </svg>
+                        <span>No Commitment Call</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <span>Response < 24 Jam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🤖</span>
+                        <span class="logo-text">AI Manager</span>
+                    </div>
+                    <p>Your AI Second Brain for Business</p>
+                    <p class="footer-tagline">by Flexeet — AI Implementation Partner</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#features">Fitur</a>
+                    <a href="#how-it-works">Cara Kerja</a>
+                    <a href="#pricing">Harga</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <a href="#" class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <path d="M22 6l-10 7L2 6"/>
+                        </svg>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Flexeet. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

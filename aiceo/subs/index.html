@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICEO for Owners — Decision Infrastructure</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">
+            <span class="logo-icon">◈</span>
+            <span class="logo-text">AICEO</span>
+        </div>
+        <div class="nav-links">
+            <a href="#tentang">Tentang</a>
+            <a href="#cara-kerja">Cara Kerja</a>
+            <a href="#produk">Produk</a>
+            <a href="#owner">Jadi Partner</a>
+        </div>
+        <a href="#mulai" class="nav-cta">Mulai Sekarang</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="grain-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Decision Infrastructure</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">AICEO</span>
+                <span class="title-line title-accent">for Owners</span>
+            </h1>
+            <p class="hero-subtitle">Perluas ruang berpikir sebelum keputusan diambil.</p>
+            <p class="hero-tagline">Akses perspektif dari owner & operator nyata — bukan teori, bukan AI generik.</p>
+            <div class="hero-ctas">
+                <a href="#produk" class="btn btn-primary">Lihat Produk</a>
+                <a href="#owner" class="btn btn-secondary">Jadi Owner Partner</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section section-dark" id="masalah">
+        <div class="container">
+            <span class="section-label">Masalah</span>
+            <h2 class="section-title">Keputusan besar <span class="text-accent">jarang punya jawaban tunggal</span>.</h2>
+            <div class="problem-grid">
+                <div class="problem-card" data-aos="1">
+                    <span class="problem-icon">🔒</span>
+                    <h3>Proximity Blindness</h3>
+                    <p>Terlalu dekat dengan masalah, sulit melihat dari sudut lain. Lo butuh perspektif dari luar.</p>
+                </div>
+                <div class="problem-card" data-aos="2">
+                    <span class="problem-icon">💭</span>
+                    <h3>Echo Chamber</h3>
+                    <p>Tim lo setuju terus. Konsultan mahal. Mentor sibuk. Siapa yang bisa kasih second opinion?</p>
+                </div>
+                <div class="problem-card" data-aos="3">
+                    <span class="problem-icon">🤖</span>
+                    <h3>AI Generik</h3>
+                    <p>ChatGPT kasih teori. Tapi lo butuh perspektif dari orang yang pernah di posisi lo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is AICEO Section -->
+    <section class="section" id="tentang">
+        <div class="container">
+            <span class="section-label">Apa Itu AICEO</span>
+            <h2 class="section-title">Bukan AI biasa.<br><span class="text-accent">Decision Infrastructure.</span></h2>
+            <div class="about-content">
+                <div class="about-main">
+                    <blockquote class="about-quote">
+                        "AICEO tidak bertujuan memberi jawaban paling benar.<br>
+                        AICEO membantu <span class="text-accent">memperluas ruang berpikir</span> sebelum keputusan diambil."
+                    </blockquote>
+                    <p class="about-desc">AICEO menyalurkan cara berpikir, judgment, dan pengalaman nyata dari berbagai owner & operator ke dalam sistem AI terkurasi — supaya lo bisa akses perspektif mereka kapan saja, tanpa harus kenal langsung.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <span class="feature-check">✓</span>
+                        <div class="feature-text">
+                            <strong>Multi-Lens System</strong>
+                            <p>Satu pertanyaan, beberapa perspektif berbeda — tanpa disatukan jadi satu kesimpulan.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-check">✓</span>
+                        <div class="feature-text">
+                            <strong>Experience-Based</strong>
+                            <p>Jawaban dari pengalaman nyata, bukan teori atau halusinasi AI.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-check">✓</span>
+                        <div class="feature-text">
+                            <strong>Honest Boundaries</strong>
+                            <p>Kalau konteks belum ada, sistem bilang belum ada — bukan mengarang.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What AICEO is NOT -->
+    <section class="section section-dark" id="bukan">
+        <div class="container">
+            <span class="section-label">Klarifikasi</span>
+            <h2 class="section-title">Apa yang <span class="text-accent">BUKAN</span> AICEO</h2>
+            <div class="not-grid">
+                <div class="not-card bad">
+                    <span class="not-icon">✗</span>
+                    <p>Sistem yang menentukan siapa paling benar</p>
+                </div>
+                <div class="not-card bad">
+                    <span class="not-icon">✗</span>
+                    <p>Alat untuk meranking atau membandingkan expert</p>
+                </div>
+                <div class="not-card bad">
+                    <span class="not-icon">✗</span>
+                    <p>Konsensus buatan dari berbagai pendapat</p>
+                </div>
+                <div class="not-card bad">
+                    <span class="not-icon">✗</span>
+                    <p>Chatbot pintar yang jawab semua</p>
+                </div>
+                <div class="not-card bad">
+                    <span class="not-icon">✗</span>
+                    <p>Pengganti owner atau decision maker</p>
+                </div>
+                <div class="not-card bad">
+                    <span class="not-icon">✗</span>
+                    <p>AI yang mengarang pengalaman</p>
+                </div>
+            </div>
+            <div class="not-punchline">
+                <p>Perbedaan perspektif adalah <strong class="text-accent">fitur</strong>, bukan bug.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="cara-kerja">
+        <div class="container">
+            <span class="section-label">Cara Kerja</span>
+            <h2 class="section-title">Sistem yang <span class="text-accent">hidup</span>, bukan knowledge base mati.</h2>
+            <div class="flow-grid">
+                <div class="flow-card" data-aos="1">
+                    <span class="flow-num">01</span>
+                    <h3>Interview Owner</h3>
+                    <p>Owner diwawancara mendalam — fokus pada keputusan, trade-off, dan kegagalan nyata. Bukan teori.</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-card" data-aos="2">
+                    <span class="flow-num">02</span>
+                    <h3>Knowledge Capture</h3>
+                    <p>Pengalaman disimpan sebagai perspektif utuh — tidak dilebur atau dirata-ratakan dengan owner lain.</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-card" data-aos="3">
+                    <span class="flow-num">03</span>
+                    <h3>AI Agent Deploy</h3>
+                    <p>AI Agent aktif — bisa ditanya kapan saja, menjawab berbasis pengalaman yang tersedia.</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-card" data-aos="4">
+                    <span class="flow-num">04</span>
+                    <h3>R&D Loop</h3>
+                    <p>Pertanyaan baru dikumpulkan, owner update jika relevan. Sistem makin tajam seiring waktu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section section-dark" id="produk">
+        <div class="container">
+            <span class="section-label">Produk</span>
+            <h2 class="section-title">Dua cara akses <span class="text-accent">AICEO</span></h2>
+            <div class="product-grid">
+                <!-- AICEO Private -->
+                <div class="product-card" data-aos="1">
+                    <div class="product-header">
+                        <span class="product-badge">Internal</span>
+                        <h3>AICEO Private</h3>
+                        <p class="product-tagline">Knowledge Engine untuk perusahaan lo sendiri</p>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-currency">Rp</span>
+                        <span class="price-amount">5.000.000</span>
+                        <span class="price-period">/bulan</span>
+                    </div>
+                    <ul class="product-features">
+                        <li>AI Agent khusus perusahaan lo</li>
+                        <li>Knowledge dari owner + SOP + keputusan historis</li>
+                        <li>Tim lo bisa tanya 24/7</li>
+                        <li>Monitoring & insight organisasi</li>
+                        <li>Monthly extraction session</li>
+                        <li>R&D loop berkelanjutan</li>
+                    </ul>
+                    <div class="product-benefit">
+                        <p><strong>Cocok untuk:</strong> Owner yang capek jadi "Google-nya tim" dan mau transfer knowledge tanpa distorsi.</p>
+                    </div>
+                    <a href="#mulai" class="btn btn-primary btn-full">Mulai AICEO Private</a>
+                </div>
+
+                <!-- AICEO Network -->
+                <div class="product-card featured" data-aos="2">
+                    <div class="product-header">
+                        <span class="product-badge">Public</span>
+                        <h3>AICEO Network</h3>
+                        <p class="product-tagline">Second opinion dari berbagai owner terkurasi</p>
+                    </div>
+                    <div class="product-tiers">
+                        <div class="tier">
+                            <span class="tier-name">Tier 1 — Entry</span>
+                            <span class="tier-price">Rp 199.000/bln</span>
+                            <p>Mindset & perspektif umum. Cocok untuk UMKM awal & Gen Z founder.</p>
+                        </div>
+                        <div class="tier">
+                            <span class="tier-name">Tier 2 — Business Owner</span>
+                            <span class="tier-price">Rp 399.000/bln</span>
+                            <p>Pengalaman kontekstual + studi kasus nyata. Untuk owner dengan bisnis berjalan.</p>
+                        </div>
+                        <div class="tier highlight">
+                            <span class="tier-name">Tier 3 — Decision Class</span>
+                            <span class="tier-price">Rp 1.500.000/bln</span>
+                            <p>Decision lens & pertimbangan abu-abu. Untuk keputusan besar dan kompleks.</p>
+                        </div>
+                    </div>
+                    <div class="product-benefit">
+                        <p><strong>Value utama:</strong> Akses second opinion dari owner yang pernah di posisi serupa — bukan konsultan yang cuma baca buku.</p>
+                    </div>
+                    <a href="#mulai" class="btn btn-secondary btn-full">Join AICEO Network</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Owner Partner Section -->
+    <section class="section" id="owner">
+        <div class="container">
+            <span class="section-label">Untuk Owner</span>
+            <h2 class="section-title">Jadi <span class="text-accent">Owner Partner</span> di AICEO Network</h2>
+            <div class="owner-content">
+                <div class="owner-left">
+                    <p class="owner-intro">Pengalaman lo punya nilai. AICEO membantu mendistribusikannya tanpa lo harus tampil, bikin konten, atau jadi influencer.</p>
+                    <div class="owner-benefits">
+                        <div class="owner-benefit">
+                            <span class="benefit-icon">💰</span>
+                            <div>
+                                <strong>Revenue Share 60%</strong>
+                                <p>Dari subscription user yang berinteraksi dengan perspektif lo.</p>
+                            </div>
+                        </div>
+                        <div class="owner-benefit">
+                            <span class="benefit-icon">🔒</span>
+                            <div>
+                                <strong>Kontrol Penuh</strong>
+                                <p>Lo tentukan apa yang boleh dibagi publik dan apa yang tidak.</p>
+                            </div>
+                        </div>
+                        <div class="owner-benefit">
+                            <span class="benefit-icon">🎯</span>
+                            <div>
+                                <strong>Positioning</strong>
+                                <p>Dikenal sebagai decision-class owner tanpa personal branding.</p>
+                            </div>
+                        </div>
+                        <div class="owner-benefit">
+                            <span class="benefit-icon">⏰</span>
+                            <div>
+                                <strong>Low Effort</strong>
+                                <p>Cukup 1x interview + update bulanan opsional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owner-right">
+                    <div class="owner-criteria">
+                        <h4>AICEO cocok untuk owner yang:</h4>
+                        <ul>
+                            <li>Punya pengalaman nyata (bukan teori)</li>
+                            <li>Sudah pernah ambil keputusan besar</li>
+                            <li>Mau berbagi tanpa harus tampil</li>
+                            <li>Percaya judgment adalah aset</li>
+                        </ul>
+                        <h4 class="not-for">AICEO <strong>tidak cocok</strong> untuk:</h4>
+                        <ul class="not-list">
+                            <li>Yang mau instan terkenal</li>
+                            <li>Yang cari validasi</li>
+                            <li>Yang belum punya keputusan layak dibagikan</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-primary btn-full">Diskusi Jadi Partner</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Second Opinion Philosophy -->
+    <section class="section section-dark" id="filosofi">
+        <div class="container container-narrow">
+            <span class="section-label">Filosofi</span>
+            <h2 class="section-title">Second Opinion & <span class="text-accent">Decision Maturity</span></h2>
+            <div class="philosophy-content">
+                <blockquote class="philosophy-quote">
+                    "Keputusan besar jarang punya jawaban tunggal."
+                </blockquote>
+                <p>Seorang owner yang sudah lama di bisnisnya sering mengalami <strong>proximity blindness</strong> — terlalu dekat dengan masalah hingga sulit melihat dari sudut lain.</p>
+                <p>AICEO hadir bukan untuk memberi jawaban yang lebih benar. AICEO hadir untuk <strong class="text-accent">memperluas ruang berpikir</strong>.</p>
+                <p>Dengan akses ke perspektif dari owner lain yang pernah menghadapi situasi serupa — walau di industri berbeda — lo bisa:</p>
+                <ul class="philosophy-list">
+                    <li>Melihat opsi yang sebelumnya tidak terpikirkan</li>
+                    <li>Menguji asumsi yang selama ini dianggap benar</li>
+                    <li>Mengambil keputusan dengan lebih tenang</li>
+                </ul>
+                <div class="philosophy-final">
+                    <p><strong>Keputusan tetap milik lo. AICEO hanya memperluas peta.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-cta" id="mulai">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="grain-overlay"></div>
+        </div>
+        <div class="container container-narrow">
+            <span class="section-label">Mulai</span>
+            <h2 class="section-title">Ready to <span class="text-accent">expand</span> your thinking?</h2>
+            <div class="cta-options">
+                <div class="cta-card">
+                    <h3>Untuk User</h3>
+                    <p>Akses perspektif owner terkurasi</p>
+                    <a href="#" class="btn btn-secondary btn-full">Join AICEO Network</a>
+                </div>
+                <div class="cta-card featured">
+                    <h3>Untuk Owner</h3>
+                    <p>Jadikan pengalaman lo aset yang bekerja</p>
+                    <a href="#" class="btn btn-primary btn-full">Diskusi Partnership</a>
+                </div>
+                <div class="cta-card">
+                    <h3>AICEO Private</h3>
+                    <p>Knowledge Engine untuk tim lo</p>
+                    <a href="#" class="btn btn-secondary btn-full">Konsultasi Gratis</a>
+                </div>
+            </div>
+            <div class="cta-contact" id="contact">
+                <p>Atau langsung hubungi:</p>
+                <a href="https://wa.me/62xxx" class="contact-link">
+                    <span class="contact-icon">📱</span>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">◈</span>
+                    <span class="logo-text">AICEO for Owners</span>
+                    <p class="footer-tagline">Leverage cara berpikir owner,<br>tanpa owner harus hadir.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#tentang">Tentang</a>
+                    <a href="#cara-kerja">Cara Kerja</a>
+                    <a href="#produk">Produk</a>
+                    <a href="#owner">Jadi Partner</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 AICEO for Owners. Decision Infrastructure, not an AI product.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

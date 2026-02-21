@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForgetIt — Bagaimana Kami Membangun AI Knowledge Assistant untuk Bisnis Anda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress-bar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">ForgetIt</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <div class="nav-links">
+                <a href="#masalah">Masalah</a>
+                <a href="#solusi">Solusi</a>
+                <a href="#proses">Proses</a>
+                <a href="#teknis">Teknis</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#deliverables">Hasil</a>
+                <a href="#harga">Investasi</a>
+            </div>
+            <a href="#kontak" class="btn btn-nav">Mulai Sekarang</a>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         SLIDE 1: COVER / HERO
+         ========================================== -->
+    <section class="slide slide-hero" id="hero">
+        <div class="slide-number">01</div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">📋</span>
+                    <span>Service Overview Deck</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Bagaimana Kami Membangun<br>
+                    <span class="highlight">AI Knowledge Assistant</span><br>
+                    untuk Bisnis Anda
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Panduan lengkap: dari masalah yang Anda hadapi, solusi yang kami tawarkan, 
+                    proses implementasi, hingga hasil yang akan Anda dapatkan.
+                </p>
+                
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">⏱️</span>
+                        <span>Waktu baca: 10 menit</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📄</span>
+                        <span>12 Slides</span>
+                    </div>
+                </div>
+                
+                <a href="#masalah" class="scroll-cta">
+                    <span>Scroll untuk mulai</span>
+                    <span class="scroll-arrow">↓</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 2: MASALAH
+         ========================================== -->
+    <section class="slide slide-problem" id="masalah">
+        <div class="slide-number">02</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Masalah</span>
+                <h2>Apakah ini situasi Anda?</h2>
+            </div>
+            
+            <div class="problem-showcase">
+                <div class="problem-visual">
+                    <div class="chat-simulation">
+                        <div class="chat-bubble">
+                            <span class="chat-sender">Tim Sales</span>
+                            <span class="chat-text">"Pak, SOP handling komplain yang mana ya?"</span>
+                        </div>
+                        <div class="chat-bubble">
+                            <span class="chat-sender">Karyawan Baru</span>
+                            <span class="chat-text">"Kak, cara input data ke sistem gimana?"</span>
+                        </div>
+                        <div class="chat-bubble">
+                            <span class="chat-sender">Tim CS</span>
+                            <span class="chat-text">"Bu, policy refund kita yang terbaru apa?"</span>
+                        </div>
+                        <div class="chat-bubble">
+                            <span class="chat-sender">Tim Marketing</span>
+                            <span class="chat-text">"Mas, guideline brand ada dimana?"</span>
+                        </div>
+                        <div class="chat-bubble you">
+                            <span class="chat-text">😩 (mengetik jawaban yang sama untuk ke-10 kalinya minggu ini...)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <div class="problem-icon">🔄</div>
+                        <div class="problem-content">
+                            <h3>Pertanyaan Repetitif</h3>
+                            <p>Ditanya hal yang sama 5-10x per minggu oleh tim berbeda</p>
+                            <div class="problem-stat">5-10× per minggu</div>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-item">
+                        <div class="problem-icon">📁</div>
+                        <div class="problem-content">
+                            <h3>Dokumen Berserakan</h3>
+                            <p>SOP di Drive, panduan di Notion, email penting di inbox, catatan di WhatsApp</p>
+                            <div class="problem-stat">30+ menit cari dokumen</div>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-item">
+                        <div class="problem-icon">👋</div>
+                        <div class="problem-content">
+                            <h3>Knowledge Loss</h3>
+                            <p>Orang resign = ilmu hilang. Training ulang dari nol.</p>
+                            <div class="problem-stat">3-6 bulan training ulang</div>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-item">
+                        <div class="problem-icon">⏰</div>
+                        <div class="problem-content">
+                            <h3>Waktu Founder Terbuang</h3>
+                            <p>Harusnya mikir strategi, malah jadi "Google internal"</p>
+                            <div class="problem-stat">5+ jam/minggu terbuang</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 3: DAMPAK FINANSIAL
+         ========================================== -->
+    <section class="slide slide-impact" id="dampak">
+        <div class="slide-number">03</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Dampak</span>
+                <h2>Berapa kerugian yang Anda tanggung?</h2>
+            </div>
+            
+            <div class="calculator-card">
+                <div class="calc-inputs">
+                    <div class="calc-row">
+                        <label>Pertanyaan repetitif per minggu</label>
+                        <div class="calc-slider">
+                            <input type="range" id="q-slider" min="5" max="50" value="15">
+                            <span class="calc-value" id="q-value">15×</span>
+                        </div>
+                    </div>
+                    <div class="calc-row">
+                        <label>Waktu menjawab per pertanyaan</label>
+                        <div class="calc-slider">
+                            <input type="range" id="t-slider" min="5" max="30" value="10">
+                            <span class="calc-value" id="t-value">10 menit</span>
+                        </div>
+                    </div>
+                    <div class="calc-row">
+                        <label>Nilai waktu Anda per jam</label>
+                        <div class="calc-slider">
+                            <input type="range" id="r-slider" min="100" max="2000" step="50" value="500">
+                            <span class="calc-value" id="r-value">Rp 500rb</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calc-result">
+                    <div class="result-box loss">
+                        <span class="result-label">Kerugian per Tahun</span>
+                        <span class="result-amount">Rp <span id="loss-value">78</span> Juta</span>
+                    </div>
+                    <div class="result-breakdown">
+                        <div class="breakdown-item">
+                            <span id="hours-month">10</span> jam/bulan
+                            <small>waktu terbuang</small>
+                        </div>
+                        <div class="breakdown-item">
+                            <span id="days-year">15</span> hari kerja/tahun
+                            <small>produktivitas hilang</small>
+                        </div>
+                        <div class="breakdown-item">
+                            <span id="roi-month">1</span> bulan
+                            <small>balik modal ForgetIt</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 4: SOLUSI OVERVIEW
+         ========================================== -->
+    <section class="slide slide-solution" id="solusi">
+        <div class="slide-number">04</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Solusi</span>
+                <h2>Apa itu ForgetIt?</h2>
+            </div>
+            
+            <div class="solution-definition">
+                <div class="definition-box">
+                    <p class="definition-text">
+                        <strong>ForgetIt</strong> adalah sistem AI yang <span class="hl">membaca, memahami, dan mengingat</span> 
+                        semua dokumen bisnis Anda — sehingga tim bisa <span class="hl">bertanya kapan saja</span> dan mendapat 
+                        <span class="hl">jawaban akurat + sumber dokumen</span>.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="solution-visual">
+                <div class="visual-before">
+                    <h4>❌ Sebelum</h4>
+                    <div class="chaos-cloud">
+                        <span>📁 Google Drive</span>
+                        <span>💬 WhatsApp</span>
+                        <span>📧 Email</span>
+                        <span>🧠 Kepala Orang</span>
+                        <span>📝 Notion</span>
+                        <span>📊 Excel</span>
+                    </div>
+                    <div class="visual-person">😵 "Dimana ya..."</div>
+                </div>
+                
+                <div class="visual-arrow">
+                    <span>→</span>
+                    <small>ForgetIt</small>
+                </div>
+                
+                <div class="visual-after">
+                    <h4>✅ Sesudah</h4>
+                    <div class="unified-ai">
+                        <span class="ai-icon">🧠</span>
+                        <span class="ai-label">AI Assistant</span>
+                    </div>
+                    <div class="visual-person happy">😊 "Tanya AI aja!"</div>
+                </div>
+            </div>
+            
+            <div class="solution-benefits">
+                <div class="benefit-card">
+                    <span class="benefit-icon">💬</span>
+                    <h4>Tanya Pakai Bahasa Sehari-hari</h4>
+                    <p>"Policy refund gimana?" → Langsung dijawab</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">📄</span>
+                    <h4>Selalu Ada Sumber</h4>
+                    <p>Setiap jawaban disertai dokumen asli yang bisa diverifikasi</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🔒</span>
+                    <h4>Data Aman</h4>
+                    <p>Tidak dipakai training AI lain. Option on-premise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 5: PROSES KERJA OVERVIEW
+         ========================================== -->
+    <section class="slide slide-process-overview" id="proses">
+        <div class="slide-number">05</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Proses</span>
+                <h2>Bagaimana kami membangun ForgetIt untuk Anda?</h2>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Discovery & Audit</h3>
+                        <p>Kami pelajari bisnis Anda, identifikasi dokumen penting, dan pahami kebutuhan tim</p>
+                        <span class="timeline-duration">Minggu 1</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Knowledge Curation</h3>
+                        <p>Dokumen Anda diproses AI: dibaca, dipahami, dikategorikan, dihubungkan</p>
+                        <span class="timeline-duration">Minggu 2-3</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>System Setup</h3>
+                        <p>AI Assistant dibangun dengan akses ke knowledge base Anda</p>
+                        <span class="timeline-duration">Minggu 3-4</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>Integration</h3>
+                        <p>Dihubungkan ke WhatsApp/Slack/Web sesuai kebutuhan</p>
+                        <span class="timeline-duration">Minggu 4-5</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <h3>Testing & Training</h3>
+                        <p>Tim Anda ditraining, sistem ditest, feedback diterapkan</p>
+                        <span class="timeline-duration">Minggu 5-6</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">✓</div>
+                    <div class="timeline-content">
+                        <h3>Go Live!</h3>
+                        <p>Sistem aktif, tim mulai pakai, Anda bebas dari pertanyaan repetitif</p>
+                        <span class="timeline-duration">Minggu 6-8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 6: DETAIL - DISCOVERY
+         ========================================== -->
+    <section class="slide slide-step" id="step-discovery">
+        <div class="slide-number">06</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Step 1</span>
+                <h2>Discovery & Audit</h2>
+            </div>
+            
+            <div class="step-content">
+                <div class="step-description">
+                    <h3>Apa yang kami lakukan:</h3>
+                    <ul class="step-list">
+                        <li>
+                            <span class="list-icon">📞</span>
+                            <div>
+                                <strong>Kick-off Call (1-2 jam)</strong>
+                                <p>Pahami bisnis, struktur tim, pain points utama</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="list-icon">📋</span>
+                            <div>
+                                <strong>Document Audit</strong>
+                                <p>Inventarisasi semua dokumen: SOP, panduan, FAQ, email penting, meeting notes</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="list-icon">👥</span>
+                            <div>
+                                <strong>User Interview</strong>
+                                <p>Tanya tim: pertanyaan apa yang paling sering? Dokumen apa yang paling dicari?</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="list-icon">🎯</span>
+                            <div>
+                                <strong>Priority Mapping</strong>
+                                <p>Tentukan dokumen mana yang paling urgent untuk dimasukkan duluan</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="step-deliverable">
+                    <h4>📦 Deliverable:</h4>
+                    <div class="deliverable-box">
+                        <ul>
+                            <li>✓ Document Inventory List</li>
+                            <li>✓ Priority Matrix</li>
+                            <li>✓ Project Plan</li>
+                            <li>✓ Access Requirements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 7: DETAIL - KNOWLEDGE CURATION
+         ========================================== -->
+    <section class="slide slide-step" id="step-curation">
+        <div class="slide-number">07</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Step 2</span>
+                <h2>Knowledge Curation</h2>
+                <p class="slide-subtitle">Ini adalah "rahasia dapur" ForgetIt — bagaimana AI bisa menjawab dengan akurat</p>
+            </div>
+            
+            <div class="curation-visual">
+                <div class="curation-before">
+                    <h4>📄 Input: Dokumen Mentah</h4>
+                    <div class="raw-doc">
+                        <p class="doc-line">[00:05:23] jadi gini ya, soal policy refund kita itu...</p>
+                        <p class="doc-line">[00:05:45] eh bentar, yang mana dulu? yang baru atau lama?</p>
+                        <p class="doc-line">[00:06:12] yang baru, jadi customer bisa refund 14 hari...</p>
+                        <p class="doc-line">[00:07:33] kalau produk digital gimana?</p>
+                        <p class="doc-line faded">... 2000+ kata tidak terstruktur ...</p>
+                    </div>
+                </div>
+                
+                <div class="curation-process">
+                    <div class="process-arrow">
+                        <span class="arrow-icon">⚡</span>
+                        <span class="arrow-label">AI Processing</span>
+                    </div>
+                    
+                    <div class="process-steps">
+                        <div class="mini-step">
+                            <span>1</span>
+                            <p>Baca & Pahami</p>
+                        </div>
+                        <div class="mini-step">
+                            <span>2</span>
+                            <p>Ekstrak Info Penting</p>
+                        </div>
+                        <div class="mini-step">
+                            <span>3</span>
+                            <p>Kategorikan</p>
+                        </div>
+                        <div class="mini-step">
+                            <span>4</span>
+                            <p>Hubungkan</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="curation-after">
+                    <h4>📦 Output: Knowledge Terstruktur</h4>
+                    <div class="structured-chunks">
+                        <div class="chunk">
+                            <span class="chunk-type policy">Policy</span>
+                            <strong>Refund - Produk Fisik</strong>
+                            <p>14 hari, produk belum dibuka</p>
+                            <span class="chunk-tags">🏷️ refund, fisik, 14-hari</span>
+                        </div>
+                        <div class="chunk">
+                            <span class="chunk-type policy">Policy</span>
+                            <strong>Refund - Produk Digital</strong>
+                            <p>7 hari, belum diakses</p>
+                            <span class="chunk-tags">🏷️ refund, digital, 7-hari</span>
+                        </div>
+                        <div class="chunk">
+                            <span class="chunk-type procedure">Prosedur</span>
+                            <strong>Cara Request Refund</strong>
+                            <p>Form website → CS → 3-5 hari</p>
+                            <span class="chunk-tags">🏷️ prosedur, form, CS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="curation-benefits">
+                <div class="benefit">
+                    <span class="benefit-check">✓</span>
+                    <span>Setiap info punya konteks</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-check">✓</span>
+                    <span>Mudah dicari AI</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-check">✓</span>
+                    <span>Bisa diverifikasi sumber</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-check">✓</span>
+                    <span>Update otomatis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 8: DETAIL - TEKNIS SIMPLE
+         ========================================== -->
+    <section class="slide slide-technical" id="teknis">
+        <div class="slide-number">08</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Teknis</span>
+                <h2>Bagaimana sistem ini bekerja?</h2>
+                <p class="slide-subtitle">Dijelaskan sederhana, tanpa jargon teknis</p>
+            </div>
+            
+            <div class="tech-flow">
+                <div class="tech-step">
+                    <div class="tech-icon">📄</div>
+                    <h4>1. Dokumen Anda</h4>
+                    <p>PDF, Word, Excel, Notion, transkrip — semua format</p>
+                </div>
+                
+                <div class="tech-arrow">→</div>
+                
+                <div class="tech-step">
+                    <div class="tech-icon">🧠</div>
+                    <h4>2. AI Membaca</h4>
+                    <p>AI membaca seperti manusia, memahami konteks dan hubungan antar informasi</p>
+                </div>
+                
+                <div class="tech-arrow">→</div>
+                
+                <div class="tech-step">
+                    <div class="tech-icon">📚</div>
+                    <h4>3. Knowledge Base</h4>
+                    <p>Informasi disimpan terstruktur di "perpustakaan digital" khusus bisnis Anda</p>
+                </div>
+                
+                <div class="tech-arrow">→</div>
+                
+                <div class="tech-step">
+                    <div class="tech-icon">💬</div>
+                    <h4>4. Tim Bertanya</h4>
+                    <p>Via WhatsApp, Slack, atau web — pakai bahasa sehari-hari</p>
+                </div>
+                
+                <div class="tech-arrow">→</div>
+                
+                <div class="tech-step">
+                    <div class="tech-icon">✅</div>
+                    <h4>5. Jawaban + Sumber</h4>
+                    <p>AI jawab akurat + tunjukkan dari dokumen mana info itu berasal</p>
+                </div>
+            </div>
+            
+            <div class="tech-note">
+                <div class="note-icon">💡</div>
+                <div class="note-content">
+                    <strong>Catatan untuk yang penasaran teknis:</strong>
+                    <p>
+                        Sistem ini menggunakan teknologi RAG (Retrieval-Augmented Generation) dengan 
+                        knowledge curation canggih. Tapi Anda tidak perlu paham ini — yang penting: 
+                        <strong>tim Anda tanya, AI jawab dengan benar.</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 9: INTEGRASI
+         ========================================== -->
+    <section class="slide slide-integration" id="integrasi">
+        <div class="slide-number">09</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Integrasi</span>
+                <h2>Dimana tim bisa akses?</h2>
+            </div>
+            
+            <div class="integration-grid">
+                <div class="integration-card">
+                    <div class="integration-icon">💬</div>
+                    <h3>WhatsApp</h3>
+                    <p>Tim tanya via chat seperti biasa. Tidak perlu buka app baru.</p>
+                    <span class="integration-status">✓ Included semua paket</span>
+                </div>
+                
+                <div class="integration-card">
+                    <div class="integration-icon">💼</div>
+                    <h3>Slack</h3>
+                    <p>Untuk tim yang sudah pakai Slack sebagai workspace utama.</p>
+                    <span class="integration-status">✓ Professional+</span>
+                </div>
+                
+                <div class="integration-card">
+                    <div class="integration-icon">🌐</div>
+                    <h3>Web Dashboard</h3>
+                    <p>Interface web untuk pencarian dan management dokumen.</p>
+                    <span class="integration-status">✓ Included semua paket</span>
+                </div>
+                
+                <div class="integration-card">
+                    <div class="integration-icon">🔗</div>
+                    <h3>Custom API</h3>
+                    <p>Integrasikan ke sistem internal Anda (CRM, ERP, dll).</p>
+                    <span class="integration-status">✓ Enterprise</span>
+                </div>
+            </div>
+            
+            <div class="integration-demo">
+                <h4>Contoh percakapan di WhatsApp:</h4>
+                <div class="wa-demo">
+                    <div class="wa-message user">
+                        <span class="wa-text">Apa policy refund kita untuk produk digital?</span>
+                    </div>
+                    <div class="wa-message bot">
+                        <span class="wa-text">
+                            <strong>Refund Produk Digital:</strong><br><br>
+                            • Periode: 7 hari setelah pembelian<br>
+                            • Syarat: Produk belum diakses/diunduh<br>
+                            • Cara: Isi form di website, diproses 3-5 hari<br><br>
+                            📄 <em>Sumber: Meeting-Refund-Policy-2024.txt</em>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 10: TIMELINE DETAIL
+         ========================================== -->
+    <section class="slide slide-timeline" id="timeline">
+        <div class="slide-number">10</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Timeline</span>
+                <h2>Berapa lama sampai bisa dipakai?</h2>
+            </div>
+            
+            <div class="timeline-visual">
+                <div class="timeline-row">
+                    <div class="timeline-week">
+                        <span class="week-number">W1</span>
+                        <span class="week-label">Minggu 1</span>
+                    </div>
+                    <div class="timeline-bar bar-discovery">
+                        <span>Discovery & Audit</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-row">
+                    <div class="timeline-week">
+                        <span class="week-number">W2-3</span>
+                        <span class="week-label">Minggu 2-3</span>
+                    </div>
+                    <div class="timeline-bar bar-curation">
+                        <span>Knowledge Curation</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-row">
+                    <div class="timeline-week">
+                        <span class="week-number">W3-4</span>
+                        <span class="week-label">Minggu 3-4</span>
+                    </div>
+                    <div class="timeline-bar bar-setup">
+                        <span>System Setup</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-row">
+                    <div class="timeline-week">
+                        <span class="week-number">W4-5</span>
+                        <span class="week-label">Minggu 4-5</span>
+                    </div>
+                    <div class="timeline-bar bar-integration">
+                        <span>Integration</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-row">
+                    <div class="timeline-week">
+                        <span class="week-number">W5-6</span>
+                        <span class="week-label">Minggu 5-6</span>
+                    </div>
+                    <div class="timeline-bar bar-testing">
+                        <span>Testing & Training</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-row milestone">
+                    <div class="timeline-week">
+                        <span class="week-number">🚀</span>
+                        <span class="week-label">Go Live</span>
+                    </div>
+                    <div class="timeline-bar bar-live">
+                        <span>Sistem Aktif!</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-notes">
+                <div class="timeline-note">
+                    <span class="note-badge">Starter</span>
+                    <span>~4 minggu (dokumen sedikit)</span>
+                </div>
+                <div class="timeline-note">
+                    <span class="note-badge">Professional</span>
+                    <span>~6 minggu (multiple departemen)</span>
+                </div>
+                <div class="timeline-note">
+                    <span class="note-badge">Enterprise</span>
+                    <span>~8 minggu (custom integrations)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 11: DELIVERABLES
+         ========================================== -->
+    <section class="slide slide-deliverables" id="deliverables">
+        <div class="slide-number">11</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Hasil</span>
+                <h2>Apa yang Anda dapatkan?</h2>
+            </div>
+            
+            <div class="deliverables-grid">
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">🧠</div>
+                    <h3>AI Knowledge Assistant</h3>
+                    <p>Sistem AI yang bisa menjawab pertanyaan tim 24/7 dengan akurat</p>
+                    <ul>
+                        <li>Akses via WhatsApp/Slack/Web</li>
+                        <li>Jawaban + sumber dokumen</li>
+                        <li>Bahasa Indonesia natural</li>
+                    </ul>
+                </div>
+                
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">📚</div>
+                    <h3>Knowledge Base Terstruktur</h3>
+                    <p>Semua dokumen Anda sudah dikurasi dan terorganisir</p>
+                    <ul>
+                        <li>Searchable & categorized</li>
+                        <li>Mudah di-update</li>
+                        <li>Tidak akan hilang</li>
+                    </ul>
+                </div>
+                
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">📊</div>
+                    <h3>Admin Dashboard</h3>
+                    <p>Interface untuk manage dan monitor sistem</p>
+                    <ul>
+                        <li>Upload dokumen baru</li>
+                        <li>Lihat pertanyaan populer</li>
+                        <li>Akses kontrol per tim</li>
+                    </ul>
+                </div>
+                
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">📖</div>
+                    <h3>Dokumentasi & Training</h3>
+                    <p>Tim Anda siap pakai dari hari pertama</p>
+                    <ul>
+                        <li>User guide lengkap</li>
+                        <li>Training session</li>
+                        <li>FAQ troubleshooting</li>
+                    </ul>
+                </div>
+                
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">🛠️</div>
+                    <h3>Support & Maintenance</h3>
+                    <p>Kami bantu setelah go-live</p>
+                    <ul>
+                        <li>Bug fixing</li>
+                        <li>Performance tuning</li>
+                        <li>Konsultasi ongoing</li>
+                    </ul>
+                </div>
+                
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">⏰</div>
+                    <h3>Waktu Anda Kembali</h3>
+                    <p>Hasil nyata yang Anda rasakan</p>
+                    <ul>
+                        <li>5+ jam/minggu tersimpan</li>
+                        <li>Onboarding lebih cepat</li>
+                        <li>Fokus ke strategi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 12: PRICING
+         ========================================== -->
+    <section class="slide slide-pricing" id="harga">
+        <div class="slide-number">12</div>
+        <div class="container">
+            <div class="slide-header">
+                <span class="slide-tag">Investasi</span>
+                <h2>Pilih paket yang sesuai</h2>
+            </div>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <div class="pricing-price">
+                            <span class="price-currency">Rp</span>
+                            <span class="price-amount">75</span>
+                            <span class="price-unit">Juta</span>
+                        </div>
+                        <span class="price-type">one-time setup</span>
+                    </div>
+                    
+                    <div class="pricing-for">
+                        <strong>Cocok untuk:</strong>
+                        <p>Tim kecil 5-15 orang, dokumen belum terlalu banyak, mau coba dulu</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li>✓ Up to 100 dokumen</li>
+                        <li>✓ WhatsApp + Web access</li>
+                        <li>✓ 1 bulan support</li>
+                        <li>✓ Training 5 users</li>
+                        <li>✓ Basic analytics</li>
+                    </ul>
+                    
+                    <a href="#kontak" class="btn btn-outline btn-full">Pilih Starter</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Paling Populer</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="pricing-price">
+                            <span class="price-currency">Rp</span>
+                            <span class="price-amount">150</span>
+                            <span class="price-unit">Juta</span>
+                        </div>
+                        <span class="price-type">one-time setup</span>
+                    </div>
+                    
+                    <div class="pricing-for">
+                        <strong>Cocok untuk:</strong>
+                        <p>Tim 15-50 orang, multiple departemen, butuh kontrol akses</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li>✓ Up to 500 dokumen</li>
+                        <li>✓ WhatsApp + Slack + Web</li>
+                        <li>✓ 3 bulan support</li>
+                        <li>✓ Training 20 users</li>
+                        <li>✓ Access control per tim</li>
+                        <li>✓ Advanced analytics</li>
+                        <li>✓ Priority support</li>
+                    </ul>
+                    
+                    <a href="#kontak" class="btn btn-primary btn-full">Pilih Professional</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="pricing-price">
+                            <span class="price-currency">Rp</span>
+                            <span class="price-amount">250</span>
+                            <span class="price-unit">Juta+</span>
+                        </div>
+                        <span class="price-type">custom solution</span>
+                    </div>
+                    
+                    <div class="pricing-for">
+                        <strong>Cocok untuk:</strong>
+                        <p>Tim 50+ orang, kebutuhan compliance, integrasi custom</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li>✓ Unlimited dokumen</li>
+                        <li>✓ Custom integrations</li>
+                        <li>✓ 12 bulan support</li>
+                        <li>✓ Unlimited users</li>
+                        <li>✓ On-premise option</li>
+                        <li>✓ SLA guarantee</li>
+                        <li>✓ Dedicated account manager</li>
+                    </ul>
+                    
+                    <a href="#kontak" class="btn btn-outline btn-full">Hubungi Kami</a>
+                </div>
+            </div>
+            
+            <div class="pricing-extras">
+                <div class="extra-item">
+                    <span class="extra-icon">💰</span>
+                    <div>
+                        <strong>Biaya Operasional</strong>
+                        <p>Rp 1-3 juta/bulan untuk hosting & AI API (jauh lebih murah dari hire admin)</p>
+                    </div>
+                </div>
+                <div class="extra-item">
+                    <span class="extra-icon">🛡️</span>
+                    <div>
+                        <strong>Garansi 30 Hari</strong>
+                        <p>Jika tidak puas dalam 30 hari setelah go-live, refund 100%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 13: CTA
+         ========================================== -->
+    <section class="slide slide-cta" id="kontak">
+        <div class="slide-number">13</div>
+        <div class="container">
+            <div class="cta-content">
+                <h2>Siap mulai?</h2>
+                <p>Konsultasi gratis 30 menit untuk bahas kebutuhan spesifik bisnis Anda.</p>
+                
+                <div class="cta-steps">
+                    <div class="cta-step">
+                        <span class="step-num">1</span>
+                        <span>Hubungi kami</span>
+                    </div>
+                    <div class="cta-step-arrow">→</div>
+                    <div class="cta-step">
+                        <span class="step-num">2</span>
+                        <span>Konsultasi gratis</span>
+                    </div>
+                    <div class="cta-step-arrow">→</div>
+                    <div class="cta-step">
+                        <span class="step-num">3</span>
+                        <span>Proposal custom</span>
+                    </div>
+                    <div class="cta-step-arrow">→</div>
+                    <div class="cta-step">
+                        <span class="step-num">4</span>
+                        <span>Mulai project</span>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20ForgetIt%20setelah%20melihat%20deck%20presentasi.%20Bisa%20jadwalkan%20konsultasi?" target="_blank" class="btn btn-whatsapp btn-large">
+                        <span>💬</span>
+                        <span>Chat via WhatsApp</span>
+                    </a>
+                    <a href="mailto:hello@flexeet.com?subject=Inquiry%20ForgetIt" class="btn btn-outline btn-large">
+                        <span>📧</span>
+                        <span>Email: hello@flexeet.com</span>
+                    </a>
+                </div>
+                
+                <p class="cta-note">No pressure, no commitment. Just a friendly chat to explore possibilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-bracket">[</span>
+                    <span class="logo-text">ForgetIt</span>
+                    <span class="logo-bracket">]</span>
+                </div>
+                <p>AI Knowledge Assistant for Growing Businesses</p>
+                <p class="footer-credit">A product by <a href="https://flexeet.com" target="_blank">Flexeet</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

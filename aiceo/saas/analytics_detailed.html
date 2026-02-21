@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AICEO Detailed Report - Analytics</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FBBF24",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0B0F19",
+                        "card-dark": "#161B22",
+                        "sidebar-dark": "#0D1117",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Inter', sans-serif; }
+        }
+        .glass-sidebar {
+            backdrop-filter: blur(12px);
+            background-color: rgba(13, 17, 23, 0.85);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        @media (max-width: 1024px) {
+            .mobile-stack {
+                flex-direction: column !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+            .sidebar-collapsed {
+                display: none !important;
+            }
+            .content-area {
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+        }
+        /* Drawer Mobile */
+        .sidebar-mobile-open {
+            display: flex !important;
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 75% !important;
+            max-width: 300px;
+            height: 100vh !important;
+            z-index: 100 !important;
+            background-color: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+    <!-- Mobile Header -->
+    <header
+        class="lg:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-sidebar-dark sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-slate-900 text-lg">psychology</span>
+            </div>
+            <span class="text-lg font-bold tracking-tight">AICEO</span>
+        </div>
+        <button class="p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()"
+        class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden backdrop-blur-sm transition-opacity"></div>
+
+    <div class="flex mobile-stack h-screen overflow-hidden">
+        <!-- Sidebar (Standardized) -->
+        <aside id="main-sidebar"
+            class="w-64 sidebar-collapsed hidden lg:flex glass-sidebar border-r border-slate-200 dark:border-slate-800 flex-col z-20 shrink-0 h-screen sticky top-0">
+            <!-- Scrollable Content Area -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 pb-2">
+                <!-- Brand -->
+                <div class="flex items-center gap-3 mb-8">
+                    <div
+                        class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-slate-900">psychology</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">AICEO</span>
+                </div>
+
+                <!-- Admin Status -->
+                <div class="bg-primary/10 border border-primary/20 rounded-lg p-3 mb-6">
+                    <div class="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-sm">verified_user</span>
+                        Admin Workspace
+                    </div>
+                </div>
+
+                <!-- Main Nav -->
+                <nav class="space-y-1">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-all"
+                        href="index.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="chat.html">
+                        <span class="material-symbols-outlined">chat_bubble</span>
+                        <span>Chat</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="credits.html">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                        <span>Credits</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="decision_units.html">
+                        <span class="material-symbols-outlined">shield</span>
+                        <span>Decision Units</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="bot_personas.html">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                        <span>Bots</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="news.html">
+                        <span class="material-symbols-outlined">newspaper</span>
+                        <span>News & Updates</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="faq.html">
+                        <span class="material-symbols-outlined">quiz</span>
+                        <span>FAQ</span>
+                    </a>
+                </nav>
+
+                <!-- Mentor Favorit -->
+                <div class="mt-8">
+                    <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3 px-3">
+                        Mentor Favorit</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 px-3 border-l-2 border-primary">
+                            <div class="w-8 h-8 rounded-full bg-slate-700 overflow-hidden ring-2 ring-primary/30">
+                                <img alt="Adrian" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8" />
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-semibold truncate leading-tight">Adrian Firnanda</p>
+                                <p class="text-[10px] text-slate-500">TikTok Expert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Footer (Fixed Bottom) -->
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800 space-y-4 bg-white/5 backdrop-blur-md">
+                <!-- Theme Toggles -->
+                <div class="flex p-1 bg-slate-200 dark:bg-white/5 rounded-lg items-center">
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400"
+                        onclick="setTheme('light')">
+                        <span class="material-symbols-outlined text-sm">light_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md bg-white dark:bg-white/10 shadow-sm text-xs flex justify-center items-center text-slate-900 dark:text-white"
+                        onclick="setTheme('dark')">
+                        <span class="material-symbols-outlined text-sm">dark_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">settings_brightness</span>
+                    </button>
+                </div>
+
+                <!-- SidebarUserCard -->
+                <div
+                    class="bg-[#0d0d0f] rounded-[16px] p-3 border border-white/5 flex items-center justify-between group cursor-pointer hover:bg-[#121214] transition-all mb-1">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-[40px] h-[40px] rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-lg shadow-lg shadow-amber-500/10">
+                            A
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <span class="text-white font-semibold text-[13px] leading-tight truncate">AICEO Admin</span>
+                            <span class="text-slate-500 text-[10px] truncate">admin@aiceo.id</span>
+                        </div>
+                    </div>
+                    <button
+                        class="text-slate-500 hover:text-primary transition-all group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.6)] shrink-0">
+                        <span class="material-symbols-outlined text-lg">logout</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content (Reports) -->
+        <main class="content-area flex-1 overflow-y-auto custom-scrollbar bg-background-light dark:bg-background-dark">
+
+            <!-- Sticky Sub-Header -->
+            <div
+                class="sticky top-0 z-40 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <a href="index.html" class="text-slate-500 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                            </a>
+                            <h1 class="text-2xl font-bold">Detailed Performance Report</h1>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Granular session logs and credit
+                            consumption analysis.</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="flex items-center gap-2 px-3 py-2 bg-slate-100 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="material-symbols-outlined text-sm text-slate-400">calendar_today</span>
+                            <span class="text-xs font-bold">Today: Jan 31, 2026</span>
+                        </div>
+                        <button
+                            class="px-4 py-2 bg-primary text-slate-900 rounded-xl font-bold text-sm hover:opacity-90 shadow-lg shadow-primary/10 transition-all">
+                            Refresh Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 lg:p-8 space-y-8">
+                <!-- Top Metrics & Chart Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Credit Burn Rate Chart -->
+                    <div
+                        class="lg:col-span-2 p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                        <div class="flex items-center justify-between mb-8">
+                            <h3 class="text-xs font-black uppercase tracking-widest text-slate-500">Credit Consumption
+                                (24h)</h3>
+                            <div class="flex gap-4">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-primary"></span>
+                                    <span class="text-[10px] font-bold text-slate-400">Normal</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                    <span class="text-[10px] font-bold text-slate-400">Peak</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mock Chart -->
+                        <div class="h-48 flex items-end justify-between gap-2">
+                            <div class="flex-1 bg-primary/20 h-[30%] rounded-t-lg relative group">
+                                <div
+                                    class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    12.5k</div>
+                            </div>
+                            <div class="flex-1 bg-primary/20 h-[45%] rounded-t-lg relative group"></div>
+                            <div class="flex-1 bg-primary/20 h-[35%] rounded-t-lg relative group"></div>
+                            <div class="flex-1 bg-primary/20 h-[60%] rounded-t-lg relative group"></div>
+                            <div class="flex-1 bg-red-500/40 h-[95%] rounded-t-lg relative group">
+                                <div
+                                    class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    Peak: 42.1k</div>
+                            </div>
+                            <div class="flex-1 bg-primary/20 h-[70%] rounded-t-lg relative group"></div>
+                            <div class="flex-1 bg-primary/20 h-[50%] rounded-t-lg relative group"></div>
+                            <div class="flex-1 bg-primary/20 h-[40%] rounded-t-lg relative group"></div>
+                            <div class="flex-1 bg-primary/20 h-[55%] rounded-t-lg relative group"></div>
+                            <div class="flex-1 bg-primary/20 h-[45%] rounded-t-lg relative group"></div>
+                        </div>
+                        <div
+                            class="flex justify-between mt-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                            <span>00:00</span>
+                            <span>06:00</span>
+                            <span>12:00</span>
+                            <span>18:00</span>
+                            <span>23:59</span>
+                        </div>
+                    </div>
+
+                    <!-- Side Stats -->
+                    <div class="space-y-4">
+                        <div class="p-5 rounded-2xl bg-primary shadow-lg shadow-primary/20 text-slate-900">
+                            <p class="text-[10px] font-black uppercase tracking-widest opacity-70 mb-1">Total Burn Today
+                            </p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black">1.28k</span>
+                                <span class="text-sm font-bold opacity-70">Credits</span>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-900/10 flex items-center justify-between">
+                                <span class="text-xs font-bold">Cost Estimate</span>
+                                <span class="font-mono font-bold">$12.40</span>
+                            </div>
+                        </div>
+                        <div
+                            class="p-5 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <p class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">Success Rate
+                            </p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-green-500">99.2%</span>
+                            </div>
+                            <div class="mt-4 w-full bg-slate-100 dark:bg-white/5 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-green-500 h-full w-[99.2%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Logs Table -->
+                <div
+                    class="rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                    <div
+                        class="p-6 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-50/50 dark:bg-white/[0.02]">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-slate-500">Granular Session Logs
+                        </h3>
+                        <div class="flex items-center gap-2">
+                            <!-- Search in logs -->
+                            <div class="relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+                                <input type="text" placeholder="Search sessions..."
+                                    class="pl-9 pr-4 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:ring-primary focus:border-primary">
+                            </div>
+                            <select
+                                class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-[10px] font-bold py-1.5 px-3 focus:ring-primary">
+                                <option>Status: All</option>
+                                <option>Success</option>
+                                <option>Failed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-white/5">
+                                    <th
+                                        class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                        Timestamp</th>
+                                    <th
+                                        class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                        User ID</th>
+                                    <th
+                                        class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                        Expert / Mentor</th>
+                                    <th
+                                        class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                        Battlefield / DU</th>
+                                    <th
+                                        class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 text-center">
+                                        Credits</th>
+                                    <th
+                                        class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                        Latency</th>
+                                    <th
+                                        class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 text-right">
+                                        Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+                                    <td class="px-6 py-4">
+                                        <p class="text-xs font-mono font-bold">14:42:01</p>
+                                        <p class="text-[9px] text-slate-500">31/01/2026</p>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-2">
+                                            <div
+                                                class="w-6 h-6 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center text-[10px] font-bold">
+                                                JD</div>
+                                            <p class="text-xs font-bold">USR_84931</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-2">
+                                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8"
+                                                class="w-6 h-6 rounded-full object-cover">
+                                            <p class="text-xs font-medium">Adrian Firnanda</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-500 text-[10px] font-bold border border-blue-500/20">Logistics
+                                            Strategy</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        <span class="text-xs font-black text-amber-500">1.2</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <p class="text-xs font-mono text-slate-500">1.4s</p>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span
+                                            class="inline-flex items-center gap-1 text-[10px] font-black text-green-500 uppercase tracking-widest bg-green-500/10 px-2 py-1 rounded">
+                                            <span class="material-symbols-outlined text-xs">check</span>
+                                            Success
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+                                    <td class="px-6 py-4">
+                                        <p class="text-xs font-mono font-bold">14:38:15</p>
+                                        <p class="text-[9px] text-slate-500">31/01/2026</p>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-2">
+                                            <div
+                                                class="w-6 h-6 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center text-[10px] font-bold">
+                                                AS</div>
+                                            <p class="text-xs font-bold">USR_22184</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-2">
+                                            <div
+                                                class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-slate-900 font-bold">
+                                                AW</div>
+                                            <p class="text-xs font-medium">Aji Wanda</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold border border-primary/20">Competitor
+                                            Research</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        <span class="text-xs font-black text-amber-500">2.5</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <p class="text-xs font-mono text-slate-500">2.1s</p>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span
+                                            class="inline-flex items-center gap-1 text-[10px] font-black text-green-500 uppercase tracking-widest bg-green-500/10 px-2 py-1 rounded">
+                                            <span class="material-symbols-outlined text-xs">check</span>
+                                            Success
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+                                    <td class="px-6 py-4">
+                                        <p class="text-xs font-mono font-bold">14:15:22</p>
+                                        <p class="text-[9px] text-slate-500">31/01/2026</p>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-2">
+                                            <div
+                                                class="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-[10px] text-white font-bold">
+                                                !!</div>
+                                            <p class="text-xs font-bold">USR_99012</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-2">
+                                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8"
+                                                class="w-6 h-6 rounded-full object-cover">
+                                            <p class="text-xs font-medium">Adrian Firnanda</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="px-2 py-0.5 rounded bg-slate-100 dark:bg-white/5 text-slate-500 text-[10px] font-bold border border-slate-200 dark:border-slate-800">Scaling
+                                            Analysis</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        <span class="text-xs font-black text-slate-400">0.0</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <p class="text-xs font-mono text-slate-500">0.2s</p>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span
+                                            class="inline-flex items-center gap-1 text-[10px] font-black text-red-500 uppercase tracking-widest bg-red-500/10 px-2 py-1 rounded">
+                                            <span class="material-symbols-outlined text-xs">close</span>
+                                            Timeout
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Footer Activity Feed -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Top Consumers -->
+                    <div
+                        class="p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6">Top Credit
+                            Consumers (User)</h3>
+                        <div class="space-y-4">
+                            <div
+                                class="flex items-center justify-between p-3 bg-slate-50 dark:bg-white/[0.03] rounded-xl border border-slate-200 dark:border-slate-800/50">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-primary font-bold text-slate-900 flex items-center justify-center text-xs shadow-md shadow-primary/10">
+                                        1</div>
+                                    <div>
+                                        <p class="text-xs font-bold">USR_84931</p>
+                                        <p class="text-[10px] text-slate-500">Januardi D.</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm font-black text-primary">425.8 <span
+                                        class="text-[10px] opacity-70">Cr</span></p>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 bg-slate-50 dark:bg-white/[0.03] rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-slate-200 dark:bg-white/10 font-bold flex items-center justify-center text-xs">
+                                        2</div>
+                                    <div>
+                                        <p class="text-xs font-bold">USR_22184</p>
+                                        <p class="text-[10px] text-slate-500">Aji Santoso</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm font-black text-slate-700 dark:text-slate-300">210.5 <span
+                                        class="text-[10px] opacity-70">Cr</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bot Load Distribution -->
+                    <div
+                        class="p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xs font-black uppercase tracking-widest text-slate-500 mb-6">Bot Load
+                            Distribution</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-2">
+                                    <span>Adrian Firnanda</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 dark:bg-white/5 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-primary h-full w-[65%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-2 text-slate-500">
+                                    <span>Aji Wanda</span>
+                                    <span>25%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 dark:bg-white/5 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-blue-500 h-full w-[25%] opacity-50"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-2 text-slate-500">
+                                    <span>Dewi Sartika</span>
+                                    <span>10%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 dark:bg-white/5 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-slate-300 dark:bg-white/20 h-full w-[10%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+    <!-- Mobile Nav -->
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-sidebar-dark border-t border-slate-200 dark:border-slate-800 flex justify-around items-center p-2 z-50">
+        <a href="index.html" class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-xs font-bold mt-1">Dash</span>
+        </a>
+        <a href="chat.html" class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="text-xs font-bold mt-1">Chat</span>
+        </a>
+        <a href="bot_personas.html"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <span class="text-xs font-bold mt-1">Bots</span>
+        </a>
+        <button onclick="toggleSidebar()"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+            <span class="text-xs font-bold mt-1">Menu</span>
+        </button>
+    </nav>
+
+    <script>
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('main-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            if (sidebar.classList.contains('sidebar-collapsed') || sidebar.classList.contains('hidden')) {
+                // Open
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.classList.remove('hidden');
+                sidebar.classList.add('sidebar-mobile-open');
+                overlay.classList.remove('hidden');
+            } else {
+                // Close
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('sidebar-mobile-open');
+                overlay.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>

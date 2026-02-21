@@ -1,0 +1,146 @@
+/* ===================================================================
+// STYLES FOR TELEGRAM NOTIFICATION DEMO
+// =================================================================== */
+
+.notiftele-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.notiftele-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: #fff;
+    padding: 2rem 0;
+}
+
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    max-width: 900px;
+    width: 100%;
+    align-items: stretch;
+    position: relative;
+}
+
+.panel {
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 360px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.cekat-list, .telegram-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    height: auto;
+}
+
+.demo-btn {
+    background: white;
+    color: #3b82f6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+    margin-bottom: 1.5rem;
+}
+.demo-btn:hover { transform: scale(1.05); }
+
+.info-box {
+    position: absolute;
+    bottom: 70px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white; padding: 12px 20px;
+    border-radius: 25px;
+    display: flex; align-items: center; gap: 10px;
+    z-index: 100; font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Cekat Panel (Light) */
+.cekat-panel { background: #ffffff; color: #1f2937; }
+.cekat-header { display: flex; align-items: center; padding: 10px 15px; background: #3b82f6; color: white; border-bottom: 1px solid #2563eb; }
+.cekat-logo { font-size: 24px; margin-right: 12px; }
+.cekat-info { flex-grow: 1; }
+.cekat-title { font-weight: 500; font-size: 14px; }
+.cekat-toolbar { display: flex; justify-content: space-around; padding: 8px; background: #f9fafb; border-bottom: 1px solid #e5e7eb; }
+.cekat-toolbar button { background: none; border: none; color: #6b7280; font-size: 18px; cursor: pointer; }
+.cekat-toolbar button.active { color: #3b82f6; }
+.cekat-tabs { display: flex; border-bottom: 1px solid #e5e7eb; }
+.tab { padding: 12px 15px; font-size: 14px; position: relative; cursor: pointer; color: #6b7280; }
+.tab.active { color: #111827; border-bottom: 2px solid #3b82f6; }
+.tab-badge { font-size: 10px; background: #e5e7eb; color: #4b5563; padding: 2px 5px; border-radius: 5px; margin-left: 5px; }
+.chat-item { padding: 10px 15px; border-bottom: 1px solid #e5e7eb; cursor: pointer; transition: background-color 0.2s; position: relative; overflow: hidden; }
+.chat-item:hover { background-color: #f3f4f6; }
+.chat-item.sending::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent); animation: sending-shine 1s infinite; }
+@keyframes sending-shine { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+.chat-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5px; }
+.chat-name { font-weight: 500; font-size: 15px; color: #111827; }
+.chat-desc { font-size: 13px; color: #6b7280; }
+.chat-time { font-size: 12px; color: #6b7280; }
+.chat-status { display: flex; gap: 5px; align-items: center; }
+.status-badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; }
+.status-badge.verified { background: rgba(52, 152, 219, 0.2); color: #3498db; }
+.status-badge.assigned { background: rgba(231, 76, 60, 0.2); color: #e74c60; }
+.unread-count { background: #3b82f6; color: white; font-size: 12px; width: 20px; height: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left: auto; }
+
+/* Telegram Panel (Dark) */
+.telegram-panel { background: #0e1621; color: white; }
+.telegram-header { padding: 10px; background: #17212b; }
+.telegram-header-top { display: flex; align-items: center; }
+.telegram-avatar { width: 50px; height: 50px; border-radius: 50%; background: #3498db; display: flex; justify-content: center; align-items: center; font-size: 18px; font-weight: bold; margin-right: 12px; position: relative; }
+.version-badge { position: absolute; bottom: 0; right: 0; background: #2ecc71; font-size: 9px; padding: 2px 4px; border-radius: 5px; border: 1px solid #0e1621; }
+.telegram-info { flex-grow: 1; }
+.telegram-title { font-weight: 500; font-size: 16px; }
+.telegram-subtitle { font-size: 13px; color: #9ca3af; }
+.telegram-icons { display: flex; gap: 20px; }
+.topic-item { display: grid; grid-template-columns: auto 1fr auto; grid-template-rows: auto auto; padding: 10px; cursor: pointer; border-bottom: 1px solid #17212b; transition: background-color 0.2s; }
+.topic-item:hover { background: #17212b; }
+.topic-item.highlight { background-color: rgba(59, 130, 246, 0.2); }
+.topic-header { grid-column: 1 / -1; display: contents; }
+.topic-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; grid-row: 1 / 3; margin-right: 12px; }
+.topic-title-area { grid-column: 2; align-self: end; }
+.topic-title { font-weight: 500; }
+.topic-time { grid-column: 3; align-self: end; font-size: 12px; color: #9ca3af; }
+.topic-badge { grid-column: 3; align-self: start; background: #4b5563; font-size: 11px; padding: 2px 6px; border-radius: 10px; justify-self: end; margin-top: 4px; transition: transform 0.3s; }
+.topic-badge.new { transform: scale(1.3); background-color: #3b82f6; }
+.topic-badge.active { background: #3b82f6; }
+.topic-preview { grid-column: 2; font-size: 13px; color: #9ca3af; margin-top: 2px; }
+.topic-sender { color: #3b82f6; font-weight: 500; }
+
+/* Scrollbar styles */
+.cekat-list::-webkit-scrollbar, .telegram-list::-webkit-scrollbar { width: 6px; }
+.cekat-list::-webkit-scrollbar-track, .telegram-list::-webkit-scrollbar-track { background: transparent; }
+.cekat-list::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+.telegram-list::-webkit-scrollbar-thumb { background: #2a3b4c; border-radius: 3px; }
+
+/* Responsive styles specific to the telegram demo */
+@media (max-width: 768px) {
+    .notiftele-container .container-wrapper {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    .notiftele-container .demo-btn {
+        margin-top: 1.5rem;
+    }
+    .notiftele-container .panel {
+        width: 100%;
+        max-width: 360px;
+    }
+}

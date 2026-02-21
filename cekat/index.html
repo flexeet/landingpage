@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flexeet: Maksimalkan Potensi Penuh Cekat.AI Anda</title>
+    <meta name="description" content="Ubah Cekat.AI dari sekedar penjawab chat menjadi sistem bisnis otomatis. Hemat hingga Rp 1.62M/tahun dari efisiensi operasional.">
+    
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav-style.css"> <!-- File CSS navigasi terpisah -->
+    
+    <!-- Demo Styles -->
+    <link rel="stylesheet" href="calculator.css">
+    <link rel="stylesheet" href="credit-comparison.css">
+    <link rel="stylesheet" href="notif-telegram.css">
+
+</head>
+    
+<body>
+    <!-- Progress Bar -->
+    <div id="scrollProgress" class="scroll-progress"></div>
+
+    <!-- Background Animation -->
+    <div id="particleBackground"></div>
+    
+    <!-- Main Content -->
+    <main id="page-content">
+
+        <!-- Loading Screen -->
+        <div id="loading-screen">
+            <div class="loader-content">
+                <div class="loader-logo">FLEXEET</div>
+                <div class="loader-bar"><div class="loader-progress"></div></div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <header id="mainNav" class="site-header">
+            <div class="nav-container">
+                <div class="nav-inner">
+                    <a href="#hero" class="nav-logo-wrapper">
+                        <span class="nav-logo-text">FLEXEET</span>
+                    </a>
+                    <nav class="desktop-menu">
+                        <ul class="nav-menu">
+                            <li><a href="#problem" class="nav-link">Masalah</a></li>
+                            <li><a href="#solution" class="nav-link">Solusi</a></li>
+                            <li><a href="#proof" class="nav-link">Bukti</a></li>
+                            <li><a href="#demo" class="nav-link">Demo</a></li>
+                            <li><a href="#offer" class="nav-link">Mulai</a></li>
+                        </ul>
+                        <a href="#offer" class="nav-cta">Konsultasi Gratis</a>
+                    </nav>
+                    <button id="hamburger-button" class="hamburger" aria-label="Toggle Menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu-overlay" class="mobile-menu">
+            <div class="mobile-menu-inner">
+                <a href="#problem" class="mobile-link">Masalah</a>
+                <a href="#solution" class="mobile-link">Solusi</a>
+                <a href="#proof" class="mobile-link">Bukti</a>
+                <a href="#demo" class="mobile-link">Demo</a>
+                <a href="#offer" class="mobile-link">Mulai</a>
+                <a href="#offer" class="mobile-link-cta">Konsultasi Gratis</a>
+            </div>
+        </div>
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <!-- Wrapper .container untuk memastikan konten tidak melebihi lebar layar -->
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-10">
+                        <!-- Trust Badge -->
+                        <div class="hero-badge" data-aos="fade-down">
+                            <i class="bi bi-shield-check"></i>
+                            <span><strong>The Official Architecture Partner for</strong></span>
+                            <span class="badge-separator">•</span>
+                            <span class="badge-users">CEKAT.AI ECOSYSTEM</span>
+                        </div>
+                        
+                        <!-- Main Headline -->
+                        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+                            Jangan Biarkan AI Anda<br>
+                            <span class="gradient-text">Bekerja Sendirian</span>
+                        </h1>
+                        
+                        <!-- Value Proposition -->
+                        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
+                            Pelajari bagaimana <strong>Hijacket</strong> membangun arsitektur 
+                            <span class="highlight-metric">Automated Enterprise</span> di atas Cekat.AI. <br>
+                            Dari 35.000 chat/bulan menjadi efisiensi miliaran rupiah.
+                        </p>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="hero-cta-group" data-aos="fade-up" data-aos-delay="600">
+                            <a href="#offer" class="btn btn-hero btn-primary-glow">
+                                <span>Lihat Blueprint & Sistem</span>
+                                <i class="bi bi-arrow-down-circle"></i>
+                            </a>
+                            <a href="#demo" class="btn btn-hero btn-secondary">
+                                <span>Simulasi Demo</span>
+                                <i class="bi bi-play-circle"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- Quick Stats -->
+                        <div class="hero-stats" data-aos="fade-up" data-aos-delay="800">
+                            <div class="stat-item">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">TRANSPARANSI DATA</span>
+                            </div>
+                            <div class="stat-divider">•</div>
+                            <div class="stat-item">
+                                <span class="stat-value">Zero</span>
+                                <span class="stat-label">KETERGANTUNGAN ADMIN</span>
+                            </div>
+                            <div class="stat-divider">•</div>
+                            <div class="stat-item">
+                                <span class="stat-value">24/7</span>
+                                <span class="stat-label">OPERASIONAL AKTIF</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <a href="#team-comparison">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <span class="scroll-text">Scroll untuk lihat detailnya</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- TEAM COMPARISON SECTION -->
+        <section id="team-comparison" class="section-black">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="section-label" data-aos="fade-up">The Real Impact</p>
+                    <h2 class="section-title text-white" data-aos="fade-up" data-aos-delay="100">
+                        Perbandingan Tim: <span class="gradient-text">Manual vs Digital</span>
+                    </h2>
+                    <p class="academy-subtitle" data-aos="fade-up" data-aos-delay="200">
+                        Lihat sendiri berapa banyak yang bisa Anda hemat dengan mengganti tim manual dengan workflow automation.
+                    </p>
+                </div>
+
+                <!-- Interactive Comparison -->
+                <div class="team-comparison-wrapper" data-aos="fade-up" data-aos-delay="300">
+                    <div class="row g-4">
+                        <!-- Before Column -->
+                        <div class="col-lg-6">
+                            <div class="team-card before">
+                                <h4>Tim Manual (Sebelum)</h4>
+                                <div class="team-total">
+                                    <span class="team-count">27</span>
+                                    <span class="team-label">Karyawan</span>
+                                </div>
+                                <div class="team-breakdown">
+                                    <div class="position-item"><div class="position-info"><i class="bi bi-person-badge"></i><span class="position-name">CS Supervisor</span><span class="position-count">×5</span></div><span class="position-cost">Rp 420 juta/tahun</span></div>
+                                    <div class="position-item"><div class="position-info"><i class="bi bi-headset"></i><span class="position-name">CS Agent</span><span class="position-count">×15</span></div><span class="position-cost">Rp 900 juta/tahun</span></div>
+                                    <div class="position-item"><div class="position-info"><i class="bi bi-pencil-square"></i><span class="position-name">Data Entry</span><span class="position-count">×3</span></div><span class="position-cost">Rp 144 juta/tahun</span></div>
+                                    <div class="position-item"><div class="position-info"><i class="bi bi-box-seam"></i><span class="position-name">Inventory Admin</span><span class="position-count">×2</span></div><span class="position-cost">Rp 120 juta/tahun</span></div>
+                                    <div class="position-item"><div class="position-info"><i class="bi bi-megaphone"></i><span class="position-name">Campaign Manager</span><span class="position-count">×1</span></div><span class="position-cost">Rp 96 juta/tahun</span></div>
+                                    <div class="position-item"><div class="position-info"><i class="bi bi-gear"></i><span class="position-name">IT Support</span><span class="position-count">×1</span></div><span class="position-cost">Rp 84 juta/tahun</span></div>
+                                </div>
+                                <div class="team-footer">
+                                    <span>Total per Tahun:</span>
+                                    <span class="total-cost">Rp 1,764,000,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- After Column -->
+                        <div class="col-lg-6">
+                            <div class="team-card after">
+                                <h4>Tim Digital (Dengan Flexeet)</h4>
+                                <div class="team-total">
+                                    <span class="team-count">7</span>
+                                    <span class="team-label">Karyawan + Workflows</span>
+                                </div>
+                                <div class="team-breakdown">
+                                    <div class="position-item"><div class="position-info"><i class="bi bi-person-badge"></i><span class="position-name">CS Lead</span><span class="position-count">×1</span></div><span class="position-cost">Rp 96 juta/tahun</span></div>
+                                    <div class="position-item"><div class="position-info"><i class="bi bi-headset"></i><span class="position-name">CS Agent</span><span class="position-count">×5</span></div><span class="position-cost">Rp 300 juta/tahun</span></div>
+                                    <div class="position-item"><div class="position-info"><i class="bi bi-gear"></i><span class="position-name">IT (Part-time)</span><span class="position-count">×1</span></div><span class="position-cost">Rp 42 juta/tahun</span></div>
+                                    <div class="position-item workflow-item"><div class="position-info"><i class="bi bi-diagram-3-fill"></i><span class="position-name">Flexeet Workflows</span><span class="position-count">50+</span></div><span class="position-cost">Rp 45.6 juta/tahun</span></div>
+                                    <div class="workflow-features">
+                                        <h5>Workflow menggantikan:</h5>
+                                        <ul>
+                                            <li>✓ Data Entry (otomatis)</li>
+                                            <li>✓ Inventory Admin (real-time sync)</li>
+                                            <li>✓ Campaign Manager (auto-aggregate)</li>
+                                            <li>✓ 10 CS Agent (smart routing)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="team-footer success">
+                                    <span>Total per Tahun:</span>
+                                    <span class="total-cost">Rp 483,600,000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Savings Highlight -->
+                    <div class="savings-highlight-box" data-aos="zoom-in" data-aos-delay="500">
+                        <!-- Glow Effect Background -->
+                        <div class="savings-glow"></div>
+                        
+                        <div class="savings-content">
+                            <div class="savings-header">
+                                <span class="savings-label">DANA PERTUMBUHAN YANG DIBEBASKAN / TAHUN</span>
+                            </div>
+                            
+                            <div class="savings-main-number">
+                                <h3 class="savings-amount">Rp 1.280.400.000</h3>
+                                <div class="savings-badge">
+                                    <i class="bi bi-graph-up-arrow"></i> 73% Budget Dialihkan ke Growth
+                                </div>
+                            </div>
+                            
+                            <!-- Grid Benefits -->
+                            <div class="savings-grid">
+                                <div class="savings-item">
+                                    <div class="icon-box"><i class="bi bi-person-check-fill"></i></div>
+                                    <div class="text-box">
+                                        <strong>Tugas Strategis</strong>
+                                        <span>Tim fokus ekspansi, bukan admin</span>
+                                    </div>
+                                </div>
+                                <div class="savings-item">
+                                    <div class="icon-box"><i class="bi bi-clock-history"></i></div>
+                                    <div class="text-box">
+                                        <strong>Efisiensi 24/7</strong>
+                                        <span>Tanpa shift, tanpa lembur</span>
+                                    </div>
+                                </div>
+                                <div class="savings-item">
+                                    <div class="icon-box"><i class="bi bi-wallet2"></i></div>
+                                    <div class="text-box">
+                                        <strong>ROI Kilat</strong>
+                                        <span>Modal kembali &lt; 2 bulan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- PROBLEM SECTION -->
+        <section id="problem" class="section-white">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="section-label" data-aos="fade-up">Kenapa Perlu Flexeet?</p>
+                    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">3 Masalah Operasional <span class="gradient-text-dark">Pengguna Cekat.AI</span></h2>
+                    <p class="content-text" data-aos="fade-up" data-aos-delay="200">Cekat.AI memang canggih, tapi tanpa sistem yang tepat, Anda masih perlu <strong>puluhan karyawan manual</strong>.</p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300"><div class="problem-card h-100"><div class="problem-icon"><i class="bi bi-database-slash"></i></div><h4>Data Tidak Sinkron</h4><p class="problem-text">AI tidak tahu stok terbaru, harga promo, atau status order. Butuh <strong>3 Data Entry + 2 Admin</strong> untuk update manual.</p><div class="problem-impact"><span class="impact-label">Biaya SDM:</span><span class="impact-value">~264 juta/tahun</span></div></div></div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400"><div class="problem-card h-100"><div class="problem-icon"><i class="bi bi-people-fill"></i></div><h4>Butuh Banyak CS</h4><p class="problem-text">Meski pakai AI, tetap perlu <strong>15 CS + 5 Supervisor</strong> karena AI tidak punya routing pintar.</p><div class="problem-impact"><span class="impact-label">Biaya SDM:</span><span class="impact-value">~1.32 Milyar/tahun</span></div></div></div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500"><div class="problem-card h-100"><div class="problem-icon"><i class="bi bi-arrow-repeat"></i></div><h4>Proses Manual</h4><p class="problem-text">Butuh <strong>Campaign Manager + IT Support</strong> full-time untuk maintenance dan update sistem.</p><div class="problem-impact"><span class="impact-label">Biaya Operasional:</span><span class="impact-value">~180 juta/tahun</span></div></div></div>
+                </div>
+                <div class="total-impact-box" data-aos="zoom-in" data-aos-delay="600">
+                    <p>Modal yang Terjebak di Operasional Manual per Tahun:</p>
+                    <h3 class="impact-total">Rp 1,764,000,000</h3>
+                    <small>*Dana ini seharusnya bisa menjadi bahan bakar pertumbuhan Anda.</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUTION PHILOSOPHY -->
+        <section id="solution-philosophy" class="section-black">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-9 text-center">
+                        <p class="section-label" data-aos="fade-up">Cara Kerja Flexeet</p>
+                        <h2 class="section-title text-white" data-aos="fade-up" data-aos-delay="100">Bukan Mengganti, <span class="gradient-text">Tapi Melengkapi</span></h2>
+                        <p class="academy-subtitle" data-aos="fade-up" data-aos-delay="200">Bayangkan Cekat.AI seperti mesin mobil yang sangat kuat. Flexeet adalah <strong>dashboard, sistem navigasi, dan autopilot</strong> yang membuatnya bisa jalan sendiri.</p>
+                        <div class="solution-visual" data-aos="fade-up" data-aos-delay="300">
+                            <div class="solution-flow">
+                                <div class="flow-item"><i class="bi bi-chat-dots-fill"></i><h5>Chat Masuk</h5><p>Customer tanya apapun</p></div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-item highlight"><i class="bi bi-cpu-fill"></i><h5>Flexeet Router</h5><p>Analisis & routing pintar</p></div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-item"><i class="bi bi-database-fill-check"></i><h5>Data Real-time</h5><p>Cek stok, harga, promo, customer</p></div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-item"><i class="bi bi-check-circle-fill"></i><h5>Jawaban Akurat</h5><p>Customer puas, deal closed</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUTION FEATURES -->
+        <section id="solution" class="section-white">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="section-label" data-aos="fade-up">Fitur Utama</p>
+                    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100"><span class="gradient-text-dark">3 Pilar Sistem</span> Flexeet</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300"><div class="feature-card h-100"><div class="feature-icon"><i class="bi bi-shield-lock"></i></div><h4>1. Guardian Protocol</h4><p>Sistem keamanan yang mengawasi setiap transaksi, cegah penipuan, dan kontrol budget AI otomatis.</p><ul class="feature-list"><li>Anti fraud detection</li><li>Budget limiter per agent</li><li>Activity monitoring 24/7</li></ul></div></div>
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400"><div class="feature-card h-100"><div class="feature-icon"><i class="bi bi-arrow-repeat"></i></div><h4>2. Data Sync Engine</h4><p>Hubungkan Cekat.AI dengan semua platform bisnis Anda secara real-time dan otomatis.</p><ul class="feature-list"><li>Sync dengan marketplace</li><li>Update stok otomatis</li><li>Integrasi payment gateway</li></ul></div></div>
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="500"><div class="feature-card h-100"><div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div><h4>3. Smart Analytics</h4><p>Laporan lengkap langsung ke HP Anda setiap hari. Pantau bisnis dari mana saja.</p><ul class="feature-list"><li>Daily report ke Telegram</li><li>Performa per agent</li><li>ROI tracking otomatis</li></ul></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROOF SECTION -->
+        <section id="proof" class="section-black">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="section-label" data-aos="fade-up">Studi Kasus</p>
+                    <h2 class="section-title text-white" data-aos="fade-up" data-aos-delay="100">Studi Kasus: Mengubah Biaya Operasional <span class="gradient-text">Jadi Mesin Pertumbuhan</span></h2>
+                    <p class="academy-subtitle" data-aos="fade-up" data-aos-delay="200">"Dulu 17 CS kewalahan handle 1000 chat/hari. Sekarang 5 CS santai, sisanya autopilot."</p>
+                </div>
+                <div class="row g-4 justify-content-center mb-5">
+                    <div class="col-lg-5" data-aos="fade-right"><div class="comparison-card before h-100"><h5>Sebelum Flexeet</h5><div class="comparison-stats"><div class="stat-row"><span>Tim CS:</span><strong>17 orang</strong></div><div class="stat-row"><span>Admin:</span><strong>3 orang</strong></div><div class="stat-row"><span>Supervisor:</span><strong>2 orang</strong></div><div class="stat-row highlight"><span>Biaya/tahun:</span><strong class="text-danger">Rp 1.8 Milyar</strong></div><div class="stat-row"><span>Response time:</span><strong>5-15 menit</strong></div><div class="stat-row"><span>Kredit/chat:</span><strong>30-50 kredit</strong></div></div></div></div>
+                    <div class="col-lg-5" data-aos="fade-left" data-aos-delay="100"><div class="comparison-card after h-100"><h5>Dengan Flexeet</h5><div class="comparison-stats"><div class="stat-row"><span>Tim CS:</span><strong>5 orang</strong></div><div class="stat-row"><span>Admin:</span><strong>0 (otomatis)</strong></div><div class="stat-row"><span>Supervisor:</span><strong>1 orang</strong></div><div class="stat-row highlight"><span>Biaya/tahun:</span><strong class="text-success">Rp 350 Juta</strong></div><div class="stat-row"><span>Response time:</span><strong>Instant</strong></div><div class="stat-row"><span>Kredit/chat:</span><strong>3-5 kredit</strong></div></div></div></div>
+                </div>
+                <div class="results-highlight" data-aos="zoom-in"><h3>Hasil dalam 3 Bulan:</h3><div class="results-grid"><div class="result-item"><span class="result-number">Rp 1.45M</span><span class="result-label">Modal Pertumbuhan Baru</span></div><div class="result-item"><span class="result-number">97%</span><span class="result-label">Optimasi Kredit AI</span></div><div class="result-item"><span class="result-number">73%</span><span class="result-label">Kurangi SDM</span></div><div class="result-item"><span class="result-number">24/7</span><span class="result-label">Full autopilot</span></div></div></div>
+            </div>
+        </section>
+        
+        <!-- DEMO SECTION -->
+        <section id="demo" class="section-white">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="section-label" data-aos="fade-up">Buktikan Sendiri</p>
+                    <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Simulasi Interaktif: <span class="gradient-text-dark">Lihat Perbedaannya</span></h2>
+                    <p class="content-text" data-aos="fade-up" data-aos-delay="200">Coba sendiri bagaimana Flexeet mengubah cara Cekat.AI bekerja untuk bisnis Anda.</p>
+                </div>
+                
+                <div class="d-flex justify-content-center">
+                    <ul class="nav nav-pills demo-tabs mb-4" id="demoTab" role="tablist" data-aos="fade-up" data-aos-delay="300">
+                        <li class="nav-item" role="presentation"><button class="nav-link active" id="calculator-tab" data-bs-toggle="tab" data-bs-target="#calculator" type="button" role="tab"><i class="bi bi-calculator"></i> Kalkulator ROI</button></li>
+                        <li class="nav-item" role="presentation"><button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab"><i class="bi bi-chat-dots"></i> Perbandingan Kredit</button></li>
+                        <li class="nav-item" role="presentation"><button class="nav-link" id="telegram-tab" data-bs-toggle="tab" data-bs-target="#telegram" type="button" role="tab"><i class="bi bi-telegram"></i> Command Center</button></li>
+                    </ul>
+                </div>
+                
+                <div class="interactive-demo-wrapper" data-aos="fade-up" data-aos-delay="400">
+                    <div class="tab-content" id="demoTabContent">
+                        
+                        <!-- Calculator Demo -->
+                        <div class="tab-pane fade show active" id="calculator" role="tabpanel">
+                            <div class="calculator-container">
+                                <div class="calc-hero">
+                                    <h3>💡 Pertanyaan Sederhana:</h3>
+                                    <p>Dengan budget yang sama, mau handle <strong>1,000</strong> customer atau <strong>10,000</strong> customer?</p>
+                                </div>
+                                <div class="simple-input-section">
+                                    <div class="simple-input-grid">
+                                        <div class="simple-input-box">
+                                            <label>🎯 Target Customer per Bulan</label>
+                                            <input type="text" id="target-customers" value="1000" placeholder="1000">
+                                            <span class="input-desc">Berapa banyak yang mau Anda jangkau?</span>
+                                        </div>
+                                        <div class="simple-input-box">
+                                            <label>💬 Rata-rata Chat hingga Closing</label>
+                                            <input type="text" id="chat-average" value="10" placeholder="10">
+                                            <span class="input-desc">Biasanya butuh berapa percakapan?</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comparison-visual">
+                                    <div class="comparison-row">
+                                        <div class="comparison-card standard">
+                                            <div class="card-label">❌ Tanpa Flexeet</div>
+                                            <div class="big-number" id="standard-reach">1,000</div>
+                                            <div class="card-subtitle">customer terjangkau</div>
+                                            <div class="card-details">
+                                                <div class="detail-item">
+                                                    <span>Budget bulanan:</span>
+                                                    <strong id="standard-budget">Rp 3.800.000</strong>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span>Closing potential:</span>
+                                                    <strong id="standard-closing">50</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vs-indicator">VS</div>
+                                        <div class="comparison-card flexeet">
+                                            <div class="card-label">✅ Dengan Flexeet</div>
+                                            <div class="big-number" id="flexeet-reach">10,000</div>
+                                            <div class="card-subtitle">customer terjangkau</div>
+                                            <div class="card-details">
+                                                <div class="detail-item">
+                                                    <span>Budget bulanan:</span>
+                                                    <strong id="flexeet-budget">Rp 3.800.000</strong>
+                                                </div>
+                                                <div class="detail-item success">
+                                                    <span>Closing potential:</span>
+                                                    <strong id="flexeet-closing">500</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="impact-message">
+                                    <div class="impact-box">
+                                        <h4>🚀 Artinya untuk Bisnis Anda:</h4>
+                                        <div class="impact-grid">
+                                            <div class="impact-item">
+                                                <span class="impact-number" id="growth-factor">10x</span>
+                                                <span class="impact-label">Lebih Banyak Customer</span>
+                                            </div>
+                                            <div class="impact-item">
+                                                <span class="impact-number" id="extra-revenue">+450</span>
+                                                <span class="impact-label">Extra Closing/Bulan</span>
+                                            </div>
+                                            <div class="impact-item">
+                                                <span class="impact-number" id="roi-time">2</span>
+                                                <span class="impact-label">Bulan Balik Modal</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Credit Comparison Demo -->
+                        <div class="tab-pane fade" id="comparison" role="tabpanel">
+                            <div class="credit-comp-container"><div class="comparison-wrapper"><div><div class="label before">Cekat.AI Standar</div><div class="chat-container before"><div class="chat-header"><div class="avatar">🤖</div><div class="info"><h3>AI Agent</h3><p>Online</p></div></div><div id="before-messages" class="chat-messages"><div id="before-typing" class="typing-indicator"><span></span><span></span><span></span></div></div></div></div><div><div class="label after">Cekat.AI + Flexeet</div><div class="chat-container after"><div class="chat-header"><div class="avatar">⚡</div><div class="info"><h3>AI Agent Teroptimasi</h3><p>Online</p></div></div><div id="after-messages" class="chat-messages"><div id="after-typing" class="typing-indicator"><span></span><span></span><span></span></div></div></div></div></div></div>
+                        </div>
+
+                        <!-- Telegram Notification Demo -->
+                        <div class="tab-pane fade" id="telegram" role="tabpanel">
+                            <div class="notiftele-container"><button id="demoBtn" class="demo-btn">▶️ Mulai Demo Otomatis</button><div class="container-wrapper"><div id="infoBox" class="info-box" style="display: none;"><span>✨</span><span id="infoText">Pesan masuk diproses...</span></div><div class="panel cekat-panel"><div class="cekat-header"><div class="cekat-logo">🤖</div><div class="cekat-info"><div class="cekat-title">Dashboard Cekat.AI</div></div><span style="font-size: 20px;">⋮</span></div><div class="cekat-tabs"><div class="tab active">Assigned<span class="tab-badge">12045</span></div><div class="tab">Unassigned</div></div><div class="cekat-list"><div class="chat-item" data-category="customer"><div class="chat-header"><div><div class="chat-name">Darsih</div><div class="chat-desc">Tertarik dengan produk...</div></div><div class="chat-time">15:53</div></div><div class="chat-status"><span class="status-badge verified">✓ Pelanggan</span><span class="status-badge assigned">Assigned</span><span class="unread-count">1</span></div></div><div class="chat-item" data-category="closing"><div class="chat-header"><div><div class="chat-name">Pahdilawaty</div><div class="chat-desc">Siap checkout...</div></div><div class="chat-time">15:53</div></div><div class="chat-status"><span class="status-badge verified">✓ Pelanggan</span><span class="status-badge assigned">Assigned</span></div></div><div class="chat-item" data-category="alert"><div class="chat-header"><div><div class="chat-name">System Alert</div><div class="chat-desc">Credit usage spike...</div></div><div class="chat-time">15:52</div></div><div class="chat-status"><span class="status-badge verified">⚠️ Alert</span></div></div><div class="chat-item" data-category="order"><div class="chat-header"><div><div class="chat-name">Siti Nurhaliza</div><div class="chat-desc">Order confirmed...</div></div><div class="chat-time">15:50</div></div><div class="chat-status"><span class="status-badge verified">✓ Pelanggan</span></div></div></div></div><div class="panel telegram-panel"><div class="telegram-header"><div class="telegram-header-top"><div class="telegram-avatar">F<span class="version-badge">OS</span></div><div class="telegram-info"><div class="telegram-title">Flexeet Command Center</div><div class="telegram-subtitle">Real-time Business Intelligence</div></div><div class="telegram-icons"><span>🔍</span><span>⋮</span></div></div></div><div class="telegram-list"><div class="topic-item" data-topic="closing"><div class="topic-header"><div class="topic-icon" style="background: #8e44ad;">💬</div><div class="topic-title-area"><div class="topic-title">Hot Leads</div></div><div class="topic-time">11:58</div><div class="topic-badge active" id="closingBadge">9,842</div></div><div class="topic-preview"><span class="topic-sender">System:</span> Ready to close...</div></div><div class="topic-item" data-topic="customer"><div class="topic-header"><div class="topic-icon" style="background: #e53935;">❤️</div><div class="topic-title-area"><div class="topic-title">VIP Customers</div></div><div class="topic-time">11:50</div><div class="topic-badge active" id="customerBadge">50</div></div><div class="topic-preview"><span class="topic-sender">System:</span> New VIP detected...</div></div><div class="topic-item" data-topic="order"><div class="topic-header"><div class="topic-icon" style="background: #1e88e5;">📦</div><div class="topic-title-area"><div class="topic-title">New Orders</div></div><div class="topic-time">Sat</div><div class="topic-badge" id="orderBadge">4</div></div><div class="topic-preview"><span class="topic-sender">System:</span> Order #12345...</div></div><div class="topic-item" data-topic="alert"><div class="topic-header"><div class="topic-icon" style="background: #ffa726;">⚠️</div><div class="topic-title-area"><div class="topic-title">Alert Center</div></div><div class="topic-time">11:22</div><div class="topic-badge" id="alertBadge">643</div></div><div class="topic-preview"><span class="topic-sender">System:</span> Credit spike detected...</div></div><div class="topic-item" data-topic="report"><div class="topic-header"><div class="topic-icon" style="background: #5e35b1;">📊</div><div class="topic-title-area"><div class="topic-title">Daily Report</div></div><div class="topic-time">23:59</div><div class="topic-badge" id="reportBadge">13</div></div><div class="topic-preview"><span class="topic-sender">Analytics:</span> Today's performance...</div></div></div></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STRATEGIC CHOICE SECTION -->
+        <section id="the-choice" class="section-black">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="section-label" data-aos="fade-up">Pilihan Strategis</p>
+                    <h2 class="section-title text-white" data-aos="fade-up" data-aos-delay="100">Ada 3 Cara Mencapai Otomasi Penuh. <br><span class="gradient-text">Hanya Satu yang Profitabel.</span></h2>
+                    <p class="academy-subtitle" data-aos="fade-up" data-aos-delay="200">Pertanyaannya bukan "apakah perlu?", tapi "bagaimana cara tercepat dan paling efisien untuk mengganti proses manual dengan sistem?".</p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300"><div class="choice-card"><div class="choice-icon"><i class="bi bi-tools"></i></div><h4>Jalur Spekulasi (DIY)</h4><p class="choice-desc">Mencoba membangun sendiri dari nol. Penuh trial-and-error yang membuang waktu dan uang.</p><ul class="choice-list"><li><i class="bi bi-x-circle-fill text-danger"></i><span>Butuh <strong>ribuan jam</strong> riset & development.</span></li><li><i class="bi bi-x-circle-fill text-danger"></i><span><strong>Risiko kegagalan tinggi</strong>, membuang investasi awal.</span></li><li><i class="bi bi-x-circle-fill text-danger"></i><span>Saat Cekat.AI update, arsitektur Anda <strong>usang & harus dirombak.</strong></span></li></ul><div class="choice-cost"><span class="cost-label">Biaya Tersembunyi:</span><strong class="cost-value">Waktu, Hilangnya Peluang, & Risiko Gagal Total</strong></div></div></div>
+                    <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400"><div class="choice-card"><div class="choice-icon"><i class="bi bi-people-fill"></i></div><h4>Jalur Konvensional (Rekrut Tim IT)</h4><p class="choice-desc">Merekrut developer internal untuk membangun dan merawat sistem dari awal.</p><ul class="choice-list"><li><i class="bi bi-x-circle-fill text-danger"></i><span><strong>Biaya Gaji Membengkak</strong>, tunjangan, & perangkat mahal.</span></li><li><i class="bi bi-x-circle-fill text-danger"></i><span>Butuh <strong>berbulan-bulan</strong> untuk onboarding & development.</span></li><li><i class="bi bi-x-circle-fill text-danger"></i><span><strong>Risiko ketergantungan</strong> pada 1-2 karyawan kunci.</span></li></ul><div class="choice-cost"><span class="cost-label">Biaya Tahunan:</span><strong class="cost-value">> Rp 120,000,000 per orang</strong></div></div></div>
+                    <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="500">
+                        <div class="choice-card featured">
+                            <div class="featured-badge">Pilihan Cerdas</div>
+                            <div class="choice-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                            <h4>Jalur Pertumbuhan (Partner Flexeet)</h4>
+                            <p class="choice-desc">Langsung adopsi arsitektur yang terbukti mampu mengubah biaya operasional menjadi modal pertumbuhan.</p>
+                            <ul class="choice-list">
+                                <li><i class="bi bi-check-circle-fill text-success"></i><span><strong>Implementasi Cepat, Hasil Instan</strong> dari sistem siap pakai.</span></li>
+                                <li><i class="bi bi-check-circle-fill text-success"></i><span><strong>Sistem Selalu Up-to-Date</strong>, kami yang tangani update Cekat.AI.</span></li>
+                                <li><i class="bi bi-check-circle-fill text-success"></i><span><strong>ROI Terjamin</strong> dalam 2-3 bulan, <strong>modal bebas untuk ekspansi di bulan ke-4.</strong></span></li>
+                            </ul>
+                            <div class="choice-cost">
+                                <span class="cost-label"><strong>Akselerator Pertumbuhan:</strong></span>
+                                <strong class="cost-value">Investasi lebih kecil dari gaji 1 staf,<br>potensi unlocked capital miliaran.</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OFFER SECTION (REVISED: PROFESSIONAL & SCOPE FOCUSED) -->
+        <section id="offer" class="section-black">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="section-label" data-aos="fade-up">EXECUTIVE DECISION</p>
+                    <h2 class="section-title text-white" data-aos="fade-up" data-aos-delay="100">
+                        Miliki Strateginya atau <br><span class="gradient-text">Implementasi Sistemnya?</span>
+                    </h2>
+                    <p class="academy-subtitle" data-aos="fade-up" data-aos-delay="200">
+                        Dua jalur akselerasi: Dokumen Strategis (untuk Owner) atau Eksekusi Teknis (untuk Bisnis).
+                    </p>
+                </div>
+                
+                <div class="row g-4 justify-content-center align-items-stretch">
+                    
+                    <!-- PILIHAN 1: COURSE (STRATEGIC PLAYBOOK) -->
+                    <div class="col-lg-5 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="package-card" style="border-color: #f59e0b;"> 
+                            <div class="package-badge" style="background: #f59e0b; color: #000; font-weight: 800;">
+                                ⚡ SPECIAL EVENT RELEASE
+                            </div>
+                            <div class="package-header">
+                                <p class="text-warning mb-2" style="font-size: 0.8rem; letter-spacing: 1px; font-weight: bold;">UNTUK OWNER & C-LEVEL</p>
+                                <h4 style="font-size: 1.5rem;">THE AUTONOMOUS BLUEPRINT</h4>
+                                <p style="font-size: 0.9rem; color: #ccc;">Edisi Spesial: Integrasi Hijacket x Cekat.AI</p>
+                            </div>
+                            
+                            <!-- Pricing Block -->
+                            <div class="package-price" style="padding: 1rem 0;">
+                                <div style="display: flex; justify-content: center; align-items: baseline; gap: 10px;">
+                                    <span style="text-decoration: line-through; color: #6e6e73; font-size: 1rem;">Rp 2.500.000</span>
+                                    <span class="price" style="color: #f59e0b; font-size: 2.2rem;">Rp 799rb</span>
+                                </div>
+                                <span class="period" style="display: block; font-size: 0.85rem; margin-top: 5px; color: #aaa;">Sekali Bayar (Lifetime Access)</span>
+                            </div>
+                            
+                            <div class="price-context" style="color: #fff; font-style: italic; margin-bottom: 25px; font-size: 0.9rem;">
+                                "Playbook Strategis Owner untuk memahami logika Cekat sebelum delegasi ke Tim Teknis."
+                            </div>
+                            
+                            <div class="package-modules">
+                                <h5 style="color: #f59e0b; font-size: 0.9rem;">SCOPE MATERI (STRATEGIC LAYER):</h5>
+                                <div class="module-list">
+                                    <div class="module-item">
+                                        <i class="bi bi-diagram-3-fill" style="color:#f59e0b;"></i>
+                                        <span><strong>Architecture Breakdown</strong> - Bedah alur data spesifik antara Hijacket & Cekat.AI.</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <i class="bi bi-chat-quote-fill" style="color:#f59e0b;"></i>
+                                        <span><strong>The Golden Prompts</strong> - Logika Prompt Engineering untuk CS & Sales Automation.</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <i class="bi bi-file-earmark-code-fill" style="color:#f59e0b;"></i>
+                                        <span><strong>Vendor Briefing Template</strong> - Dokumen acuan Owner untuk mengarahkan Tim IT/Developer.</span>
+                                    </div>
+                                    <div class="module-item">
+                                        <i class="bi bi-shield-check-fill" style="color:#f59e0b;"></i>
+                                        <span><strong>Risk Management</strong> - SOP mitigasi error saat Cekat mengambil alih peran admin.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Golden Ticket Highlight -->
+                            <div class="package-bonus" style="background: linear-gradient(45deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.2)); padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(245, 158, 11, 0.3);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <strong style="color: #f59e0b;">🎁 BONUS GOLDEN TICKET</strong>
+                                    <span style="background: #f59e0b; color: #000; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold;">VALUE Rp 5 JUTA</span>
+                                </div>
+                                <p style="font-size: 0.85rem; margin: 0; color: #ddd; line-height: 1.4;">Hak klaim <strong>Template Setup Gratis</strong> jika Anda memutuskan upgrade ke sistem Flexeet Hub di masa depan.</p>
+                            </div>
+                            
+                            <a href="https://pay.flexeet.com/cekat" class="btn btn-package" style="background: #f59e0b; color: #000; border: none; font-weight: 800;">AMANKAN AKSES & BONUS</a>
+                        </div>
+                    </div>
+                    
+                    <!-- PILIHAN 2: FLEXEET HUB (ENTERPRISE SYSTEM) -->
+                    <div class="col-lg-5 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="package-card featured" style="border: 2px solid #00d4ff; background: rgba(0, 212, 255, 0.02);">
+                            <div class="package-badge" style="background: linear-gradient(90deg, #00d4ff, #2251b9); font-weight: 800;">
+                                💎 FOUNDER'S CIRCLE
+                            </div>
+                            <div class="package-header">
+                                <p class="text-primary mb-2" style="font-size: 0.8rem; letter-spacing: 1px; font-weight: bold;">UNTUK PENGGUNA CEKAT AKTIF</p>
+                                <h4 style="font-size: 1.6rem;">FLEXEET HUB</h4>
+                                <p style="font-size: 0.95rem;">Sistem Saraf Otonom (Add-On)</p>
+                            </div>
+                            
+                            <!-- Pricing Block Optimized -->
+                            <div class="package-price" style="padding: 1rem 0;">
+                                <div style="display: flex; flex-direction: column; align-items: center;">
+                                    <span style="text-decoration: line-through; color: #6e6e73; font-size: 1rem;">Total Value Rp 7.600.000</span>
+                                    <span class="price" style="color: #00d4ff; font-size: 2.2rem;">Rp 3.800.000</span>
+                                </div>
+                                <span class="period" style="display: block; font-size: 0.9rem; margin-top: 5px; color: #fff; background: rgba(0, 212, 255, 0.1); padding: 5px 15px; border-radius: 20px; display: inline-block;">
+                                    🔥 Bayar 1 Bulan, Aktif <strong>2 BULAN</strong>
+                                </span>
+                            </div>
+                            
+                            <div class="price-context" style="color: #a0aec0; margin-bottom: 25px; font-size: 0.9rem;">
+                                (Penghematan 50% Khusus Hari Ini)
+                            </div>
+                            
+                            <div class="package-modules">
+                                <h5 style="color: #00d4ff; font-size: 0.9rem;">FITUR SYSTEM (DONE-FOR-YOU):</h5>
+                                <div class="module-list">
+                                    <div class="module-item"><i class="bi bi-lightning-charge-fill"></i><span><strong>Real-Time Sync</strong> - Integrasi Stok & Order Multi-Channel.</span></div>
+                                    <div class="module-item"><i class="bi bi-shield-lock-fill"></i><span><strong>Guardian Protocol</strong> - Proteksi Budget & Anti Fraud AI.</span></div>
+                                    <div class="module-item"><i class="bi bi-telegram"></i><span><strong>Executive Dashboard</strong> - Laporan Bisnis Live ke Telegram Owner.</span></div>
+                                    <div class="module-item"><i class="bi bi-people-fill"></i><span><strong>Efficiency Multiplier</strong> - Kapasitas setara 20 Admin manual.</span></div>
+                                </div>
+                            </div>
+                            
+                            <ul class="package-features" style="font-size: 0.9rem;">
+                                <li style="color: #ff4757;"><i class="bi bi-exclamation-circle-fill" style="color: #ff4757;"></i> <strong>Wajib Akun Cekat Paket Business/Ent</strong></li>
+                                <li><i class="bi bi-check-circle-fill"></i> Full Setup & Maintenance oleh Flexeet</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Priority Support Jalur Khusus</li>
+                            </ul>
+                            
+                            <a href="https://pay.flexeet.com/cekat" class="btn btn-package primary" style="font-weight: 800; box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);">AMBIL SLOT FOUNDER</a>                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Guarantee / Disclaimer Section -->
+                <div class="guarantee-section" data-aos="fade-up" data-aos-delay="500" style="margin-top: 3rem;">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-10 text-center">
+                            <p style="font-size: 0.8rem; color: #6e6e73; margin: 0; line-height: 1.6;">
+                                <i class="bi bi-info-circle" style="margin-right: 5px;"></i>
+                                <strong>Disclaimer Scope Materi:</strong> "The Autonomous Blueprint" secara spesifik membedah strategi integrasi dan workflow komunikasi antara <strong>Hijacket dan Cekat.AI</strong> (Sales, CS, Order Routing). Materi tidak mencakup operasional internal Hijacket di luar ekosistem Cekat (seperti Manufaktur, HRD, atau Gudang Fisik).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FINAL CTA SECTION -->
+        <section id="final-cta" class="section-white final-cta-section">
+            <div class="container">
+                <div class="final-cta-content" data-aos="fade-up">
+                    <h2 class="section-title">Siap Maksimalkan <span class="gradient-text-dark">Cekat.AI Anda?</span></h2>
+                    <p class="content-text mb-4">Jadwalkan konsultasi gratis 30 menit. Kami analisis sistem Anda dan tunjukkan <strong>berapa besar modal pertumbuhan yang bisa Anda bebaskan.</strong></p>
+                    <div class="contact-form-simple">
+                        <form id="consultForm">
+                            <div class="form-row">
+                                <input type="text" name="nama" placeholder="Nama Anda" required>
+                                <input type="text" name="perusahaan" placeholder="Nama Bisnis / Perusahaan" required>
+                                <button type="submit" class="btn btn-primary-glow">Jadwalkan Konsultasi</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="trust-indicators"><span><i class="bi bi-patch-check"></i> Partner Resmi Cekat.AI</span><span><i class="bi bi-lock"></i> Data Aman & Terenkripsi</span><span><i class="bi bi-headset"></i> Support 24/7</span></div>
+                </div>
+            </div>
+        </section>   
+        
+        <!-- FAQ SECTION -->
+        <section id="faq" class="section-black">
+            <div class="container">
+                <div class="faq-container" data-aos="fade-up">
+                    <div class="text-center mb-5"><p class="section-label">FAQ</p><h2 class="section-title text-white">Yang Sering Ditanyakan</h2></div>
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ 1: Bedanya Course vs Hub -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Apa bedanya "The Autonomous Blueprint" dengan "Flexeet Hub"?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <strong>The Autonomous Blueprint (Rp 799rb)</strong> adalah E-Course/Panduan Strategis. Isinya adalah video bedah strategi, template prompt AI, dan dokumen SOP. Cocok untuk Owner yang ingin paham logika sistemnya dulu atau belum siap langganan sistem.
+                                    <br><br>
+                                    <strong>Flexeet Hub (Rp 3,8jt)</strong> adalah Sistem/Software aktif (Add-On). Kami menghubungkan Cekat Anda dengan stok, order, dan laporan secara real-time. Ini adalah solusi "Terima Beres" untuk menggantikan kerja manual admin.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 2: Syarat Flexeet Hub -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Apakah saya perlu langganan Cekat.AI untuk menggunakan Flexeet Hub?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Ya, wajib. Flexeet Hub adalah "Sistem Saraf" yang bekerja di atas Cekat.AI (Otak). Anda memerlukan langganan Cekat.AI paket <strong>Business atau Enterprise</strong> agar fitur otomasi bisa berjalan. Jika belum punya, tim kami bisa membantu mendaftarkan Anda.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 3: Sharing Account Course -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Bolehkah saya beli 1 Course untuk dipakai ramai-ramai dengan teman?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Secara sistem, akun login dibatasi untuk 1 pengguna (Single User License). Selain itu, bonus <strong>"Golden Ticket" (Setup Template senilai 5 Juta)</strong> melekat pada email pembeli. Jika Anda share akun, Anda kehilangan kesempatan klaim bonus tersebut untuk bisnis Anda sendiri karena emailnya harus cocok saat pendaftaran sistem nanti.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 4: Garansi -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Jika saya beli Course sekarang, lalu bulan depan beli Flexeet Hub, apakah ada diskon?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Tentu! Alumni "The Autonomous Blueprint" akan mendapatkan prioritas dan penawaran khusus saat upgrade ke Flexeet Hub. Anggap pembelian Course ini sebagai investasi awal (DP) pengetahuan Anda sebelum masuk ke sistem penuh.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand"><h3>FLEXEET</h3><p>Official Workflow Partner for Cekat.AI</p></div>
+                    <div class="footer-links"><a href="#problem">Masalah</a><a href="#solution">Solusi</a><a href="#proof">Bukti</a><a href="#offer">Mulai</a></div>
+                </div>
+                <div class="footer-bottom"><p>&copy; 2025 FLEXEET. All rights reserved.</p></div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Scripts Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Main & Demo Scripts -->
+    <script src="script.js"></script>
+    <script src="calculator.js"></script>
+    <script src="credit-comparison.js"></script>
+    <script src="notif-telegram.js"></script>
+</body>
+</html>

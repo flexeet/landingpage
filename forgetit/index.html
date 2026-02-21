@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#050508">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="ForgetIt - Hemat 1 Milyar+ tanpa keringetan nambah omset. Transfer pengetahuan bisnis Anda ke AI.">
+    <title>ForgetIt — Hemat 1 Milyar+ Tanpa Keringetan Nambah Omset</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom Cursor (Desktop) -->
+    <div class="cursor-glow"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- FOMO: Live Activity Notifications -->
+    <div class="live-notifications" id="live-notif">
+        <div class="notif-content">
+            <span class="notif-icon">🔥</span>
+            <span class="notif-text">Founder dari <strong id="notif-city">Jakarta</strong> baru request konsultasi</span>
+            <span class="notif-time" id="notif-time">2 menit lalu</span>
+        </div>
+    </div>
+
+    <!-- FOMO: Sticky Bottom Bar (appears after scroll) -->
+    <div class="sticky-fomo" id="sticky-fomo">
+        <div class="fomo-left">
+            <span class="fomo-loss">💸 Rugi <strong id="loss-counter">Rp 0</strong> sejak buka</span>
+        </div>
+        <div class="fomo-right">
+            <span class="fomo-slots">🔥 Slot: <strong id="slots-left">3</strong>/5</span>
+            <a href="#cta" class="fomo-cta">Stop Kerugian →</a>
+        </div>
+    </div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <svg viewBox="0 0 100 100" class="brain-morph">
+                    <defs>
+                        <linearGradient id="preloader-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00ff88"/>
+                            <stop offset="50%" style="stop-color:#00d4ff"/>
+                            <stop offset="100%" style="stop-color:#7c3aed"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#preloader-grad)" stroke-width="2" class="preloader-circle"/>
+                    <path class="brain-path" d="M30 50 Q35 30 50 25 Q65 30 70 50 Q65 70 50 75 Q35 70 30 50" fill="none" stroke="url(#preloader-grad)" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="preloader-text">
+                <span class="word">Rp 1 Milyar+</span>
+                <span class="word serif">tersimpan.</span>
+            </div>
+            <div class="preloader-tagline">Menghitung penghematan Anda...</div>
+            <div class="preloader-progress">
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+                <span class="progress-percent">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Grid Background -->
+    <div class="grid-bg">
+        <div class="grid-lines-h"></div>
+        <div class="grid-lines-v"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40">
+                        <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M12 20 Q15 12 20 10 Q25 12 28 20 Q25 28 20 30 Q15 28 12 20" fill="currentColor" opacity="0.3"/>
+                        <circle cx="20" cy="20" r="3" fill="currentColor"/>
+                    </svg>
+                </div>
+                <span class="logo-text">ForgetIt</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#story" class="nav-link">Cerita Anda?</a>
+                <a href="#cuan" class="nav-link">Hitung Cuan</a>
+                <a href="#demo" class="nav-link">Demo</a>
+                <a href="#pricing" class="nav-link">Investasi</a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="#cta" class="nav-cta">
+                    <span class="cta-text">Mau Hemat 1M+</span>
+                    <span class="cta-arrow">→</span>
+                </a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="#story" class="mobile-link">Cerita Anda?</a>
+            <a href="#cuan" class="mobile-link">Hitung Cuan</a>
+            <a href="#demo" class="mobile-link">Demo</a>
+            <a href="#pricing" class="mobile-link">Investasi</a>
+            <a href="#cta" class="mobile-cta">Mau Hemat 1M+ →</a>
+        </div>
+    </div>
+
+    <!-- ========================================
+         HERO SECTION - THE HOOK
+         ======================================== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-orbs">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+            </div>
+            <canvas id="particles-canvas"></canvas>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span class="eyebrow-badge">
+                    <span class="pulse"></span>
+                    Knowledge AI + Automation untuk Founder
+                </span>
+            </div>
+
+            <h1 class="hero-headline">
+                <div class="headline-row">
+                    <span class="word-reveal">Hemat</span>
+                    <span class="word-reveal accent">Rp 1 Milyar+</span>
+                </div>
+                <div class="headline-row">
+                    <span class="word-reveal">Tanpa</span>
+                    <span class="word-reveal serif italic">Keringetan</span>
+                </div>
+                <div class="headline-row">
+                    <span class="word-reveal">Nambah Omset</span>
+                </div>
+            </h1>
+
+            <p class="hero-subheadline">
+                <span class="sub-reveal"><strong>Clone otak Anda</strong> ke AI. <strong>Automate</strong> workflow bisnis.</span>
+                <span class="sub-reveal">Bukan cuma upload dokumen — ini <em>sistem lengkap</em> yang jalan sendiri.</span>
+            </p>
+
+            <div class="hero-ctas">
+                <a href="#cuan" class="btn-primary magnetic">
+                    <span class="btn-bg"></span>
+                    <span class="btn-content">
+                        <span class="btn-text">Hitung Penghematan Saya</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+                <a href="#story" class="btn-secondary magnetic">
+                    <span class="btn-text">Ini Cerita Saya?</span>
+                </a>
+            </div>
+
+            <div class="hero-proof">
+                <div class="proof-item">
+                    <span class="proof-prefix">Rp</span>
+                    <span class="proof-number" data-count="1" data-suffix="M+">0</span>
+                    <span class="proof-label">Avg. Penghematan/Tahun</span>
+                </div>
+                <div class="proof-divider"></div>
+                <div class="proof-item">
+                    <span class="proof-number" data-count="50">0</span>
+                    <span class="proof-plus">+</span>
+                    <span class="proof-label">Founder Terbantu</span>
+                </div>
+                <div class="proof-divider"></div>
+                <div class="proof-item">
+                    <span class="proof-number" data-count="0">0</span>
+                    <span class="proof-label">Karyawan Tambahan</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Money Visualization -->
+        <div class="hero-floats">
+            <div class="float-card float-money float-1">
+                <div class="money-stack">
+                    <span class="money-bill">💵</span>
+                    <span class="money-bill">💵</span>
+                    <span class="money-bill">💵</span>
+                </div>
+                <div class="float-bubble money-bubble">
+                    <span class="bubble-amount">+Rp 83jt</span>
+                    <span class="bubble-text">/bulan tersimpan</span>
+                </div>
+            </div>
+            <div class="float-card float-2">
+                <div class="float-emoji">😰</div>
+                <div class="float-bubble">
+                    <span class="bubble-name">Anda Dulu</span>
+                    <span class="bubble-text">"Hire 3 orang lagi..."</span>
+                </div>
+            </div>
+            <div class="float-card float-3">
+                <div class="float-ai">
+                    <div class="ai-glow"></div>
+                    <span class="ai-icon">🤖</span>
+                </div>
+                <div class="float-bubble ai-bubble">
+                    <span class="bubble-name">ForgetIt AI</span>
+                    <span class="bubble-text">Kerja 24/7, gaji Rp 0</span>
+                    <span class="bubble-source">🧠 Otak Anda yang di-clone</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <span class="scroll-text">Scroll untuk lihat cerita Anda</span>
+            <div class="scroll-indicator">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         STORY SECTION - "APAKAH INI ANDA?"
+         ======================================== -->
+    <section class="story-section" id="story">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-number">01</span>
+                <span class="section-eyebrow">REALITY CHECK</span>
+                <h2 class="section-headline">
+                    Apakah ini <span class="serif italic">cerita Anda</span>?
+                </h2>
+                <p class="section-sub">Pilih yang paling relate. Kalau lebih dari satu, makin urgent.</p>
+            </div>
+
+            <!-- Interactive Story Cards -->
+            <div class="story-grid">
+                <!-- Story 1: The Human Google -->
+                <div class="story-card" data-story="1" data-cost="20000000">
+                    <div class="story-icon">
+                        <span class="story-emoji">🔍</span>
+                        <div class="story-ping"></div>
+                    </div>
+                    <div class="story-content">
+                        <h3 class="story-title">"The Human Google"</h3>
+                        <div class="story-scene">
+                            <div class="chat-simulation">
+                                <div class="sim-message incoming" style="--delay: 0.1s">
+                                    <span class="sim-name">Tim Sales</span>
+                                    <span class="sim-text">Pak, harga untuk 1000 pcs gimana?</span>
+                                </div>
+                                <div class="sim-message incoming" style="--delay: 0.3s">
+                                    <span class="sim-name">Tim CS</span>
+                                    <span class="sim-text">Pak, prosedur retur yang baru gimana?</span>
+                                </div>
+                                <div class="sim-message incoming" style="--delay: 0.5s">
+                                    <span class="sim-name">Tim Ops</span>
+                                    <span class="sim-text">Pak, vendor A atau B yang approve?</span>
+                                </div>
+                                <div class="sim-message incoming" style="--delay: 0.7s">
+                                    <span class="sim-name">New Hire</span>
+                                    <span class="sim-text">Pak, cara input PO gimana ya?</span>
+                                </div>
+                                <div class="sim-typing">
+                                    <span class="typing-dot"></span>
+                                    <span class="typing-dot"></span>
+                                    <span class="typing-dot"></span>
+                                    <span class="typing-label">Anda mengetik...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="story-pain">Setiap hari, <strong>20+ pertanyaan yang sama</strong>. Padahal jawabannya sudah ada di SOP yang tidak ada yang baca.</p>
+                        <div class="story-cost">
+                            <span class="cost-label">Kerugian tersembunyi:</span>
+                            <span class="cost-value">Rp 15-25jt/bulan</span>
+                        </div>
+                    </div>
+                    <div class="story-check">
+                        <input type="checkbox" id="story-check-1" class="story-checkbox">
+                        <label for="story-check-1">Ini saya banget 😫</label>
+                    </div>
+                </div>
+
+                <!-- Story 2: The Scaling Nightmare -->
+                <div class="story-card" data-story="2" data-cost="75000000">
+                    <div class="story-icon">
+                        <span class="story-emoji">📈</span>
+                        <div class="story-ping"></div>
+                    </div>
+                    <div class="story-content">
+                        <h3 class="story-title">"The Scaling Nightmare"</h3>
+                        <div class="story-scene">
+                            <div class="scaling-visual">
+                                <div class="scale-bar">
+                                    <div class="scale-label">Omset Naik</div>
+                                    <div class="scale-fill scale-revenue">
+                                        <span>+80%</span>
+                                    </div>
+                                </div>
+                                <div class="scale-bar">
+                                    <div class="scale-label">Karyawan Naik</div>
+                                    <div class="scale-fill scale-employee">
+                                        <span>+120%</span>
+                                    </div>
+                                </div>
+                                <div class="scale-bar danger">
+                                    <div class="scale-label">Profit Margin</div>
+                                    <div class="scale-fill scale-profit">
+                                        <span>-40%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="story-pain">Omset naik, tapi <strong>profit malah turun</strong>. Karena setiap scale = hire orang baru = training lagi = chaos lagi.</p>
+                        <div class="story-cost">
+                            <span class="cost-label">Kerugian tersembunyi:</span>
+                            <span class="cost-value">Rp 50-100jt/bulan</span>
+                        </div>
+                    </div>
+                    <div class="story-check">
+                        <input type="checkbox" id="story-check-2" class="story-checkbox">
+                        <label for="story-check-2">Ini saya banget 😫</label>
+                    </div>
+                </div>
+
+                <!-- Story 3: The Affiliate Army Problem -->
+                <div class="story-card featured" data-story="3" data-cost="37500000">
+                    <div class="story-badge">🔥 MOST RELATABLE</div>
+                    <div class="story-icon">
+                        <span class="story-emoji">👥</span>
+                        <div class="story-ping"></div>
+                    </div>
+                    <div class="story-content">
+                        <h3 class="story-title">"1000 Affiliator, 1 Admin"</h3>
+                        <div class="story-scene">
+                            <div class="affiliate-chaos">
+                                <div class="affiliate-messages">
+                                    <div class="aff-msg" style="--delay: 0.1s">Kak, link affiliate saya mana?</div>
+                                    <div class="aff-msg" style="--delay: 0.2s">Komisi bulan lalu belum masuk</div>
+                                    <div class="aff-msg" style="--delay: 0.3s">Cara daftar gimana kak?</div>
+                                    <div class="aff-msg" style="--delay: 0.4s">Banner produk baru ada?</div>
+                                    <div class="aff-msg" style="--delay: 0.5s">Minimal payout berapa?</div>
+                                    <div class="aff-msg" style="--delay: 0.6s">Kak, link saya error</div>
+                                    <div class="aff-counter">+994 pertanyaan lainnya...</div>
+                                </div>
+                                <div class="admin-burnout">
+                                    <span class="admin-emoji">🤯</span>
+                                    <span class="admin-label">1 Admin</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="story-pain"><strong>1000 affiliator</strong> = 1000 pertanyaan/hari. Hire 5 CS? Rp 25jt/bulan. <strong>Atau pakai AI yang jawab sesuai knowledge Anda?</strong></p>
+                        <div class="story-cost">
+                            <span class="cost-label">Kerugian tersembunyi:</span>
+                            <span class="cost-value">Rp 25-50jt/bulan</span>
+                        </div>
+                    </div>
+                    <div class="story-check">
+                        <input type="checkbox" id="story-check-3" class="story-checkbox">
+                        <label for="story-check-3">Ini saya banget 😫</label>
+                    </div>
+                </div>
+
+                <!-- Story 4: The Brain Drain -->
+                <div class="story-card" data-story="4" data-cost="150000000">
+                    <div class="story-icon">
+                        <span class="story-emoji">🚪</span>
+                        <div class="story-ping"></div>
+                    </div>
+                    <div class="story-content">
+                        <h3 class="story-title">"Orang Resign, Ilmu Hilang"</h3>
+                        <div class="story-scene">
+                            <div class="brain-drain-visual">
+                                <div class="employee-leaving">
+                                    <div class="emp-avatar">👨‍💼</div>
+                                    <div class="emp-knowledge">
+                                        <span class="knowledge-bit" style="--delay: 0.1s">Cara handle client besar</span>
+                                        <span class="knowledge-bit" style="--delay: 0.2s">Vendor terbaik</span>
+                                        <span class="knowledge-bit" style="--delay: 0.3s">Trik closing</span>
+                                        <span class="knowledge-bit" style="--delay: 0.4s">SOP unwritten</span>
+                                    </div>
+                                    <div class="emp-exit">
+                                        <span>Resign</span>
+                                        <span class="exit-arrow">→</span>
+                                    </div>
+                                </div>
+                                <div class="knowledge-lost">
+                                    <span class="lost-icon">💨</span>
+                                    <span class="lost-text">5 tahun experience = GONE</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="story-pain">Star player resign = <strong>3-6 bulan training penggantinya</strong>. Belum lagi ilmu yang tidak terdokumentasi, hilang selamanya.</p>
+                        <div class="story-cost">
+                            <span class="cost-label">Kerugian tersembunyi:</span>
+                            <span class="cost-value">Rp 100-200jt/orang</span>
+                        </div>
+                    </div>
+                    <div class="story-check">
+                        <input type="checkbox" id="story-check-4" class="story-checkbox">
+                        <label for="story-check-4">Ini saya banget 😫</label>
+                    </div>
+                </div>
+
+                <!-- Story 5: The Decision Bottleneck -->
+                <div class="story-card" data-story="5" data-cost="30000000">
+                    <div class="story-icon">
+                        <span class="story-emoji">⏳</span>
+                        <div class="story-ping"></div>
+                    </div>
+                    <div class="story-content">
+                        <h3 class="story-title">"Semua Nunggu Bos"</h3>
+                        <div class="story-scene">
+                            <div class="bottleneck-visual">
+                                <div class="waiting-queue">
+                                    <div class="queue-item" style="--delay: 0.1s">📋 Approval vendor</div>
+                                    <div class="queue-item" style="--delay: 0.2s">📋 Keputusan harga</div>
+                                    <div class="queue-item" style="--delay: 0.3s">📋 Review proposal</div>
+                                    <div class="queue-item" style="--delay: 0.4s">📋 Tanda tangan</div>
+                                    <div class="queue-item" style="--delay: 0.5s">📋 Konfirmasi budget</div>
+                                </div>
+                                <div class="boss-status">
+                                    <span class="boss-emoji">👔</span>
+                                    <div class="status-bar">
+                                        <span class="status-text">Meeting sampai jam 5...</span>
+                                        <div class="status-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="story-pain">Tim menunggu <strong>keputusan Anda</strong> yang sibuk meeting. Padahal 80% keputusan itu punya pola yang bisa di-automate.</p>
+                        <div class="story-cost">
+                            <span class="cost-label">Kerugian tersembunyi:</span>
+                            <span class="cost-value">Rp 20-40jt/bulan</span>
+                        </div>
+                    </div>
+                    <div class="story-check">
+                        <input type="checkbox" id="story-check-5" class="story-checkbox">
+                        <label for="story-check-5">Ini saya banget 😫</label>
+                    </div>
+                </div>
+
+                <!-- Story 6: The Training Loop -->
+                <div class="story-card" data-story="6" data-cost="45000000">
+                    <div class="story-icon">
+                        <span class="story-emoji">🔄</span>
+                        <div class="story-ping"></div>
+                    </div>
+                    <div class="story-content">
+                        <h3 class="story-title">"Onboarding Forever"</h3>
+                        <div class="story-scene">
+                            <div class="training-loop">
+                                <div class="loop-step" style="--delay: 0.1s">
+                                    <span class="step-num">1</span>
+                                    <span class="step-text">Hire karyawan baru</span>
+                                </div>
+                                <div class="loop-arrow">↓</div>
+                                <div class="loop-step" style="--delay: 0.2s">
+                                    <span class="step-num">2</span>
+                                    <span class="step-text">Training 1-3 bulan</span>
+                                </div>
+                                <div class="loop-arrow">↓</div>
+                                <div class="loop-step" style="--delay: 0.3s">
+                                    <span class="step-num">3</span>
+                                    <span class="step-text">Mulai produktif</span>
+                                </div>
+                                <div class="loop-arrow">↓</div>
+                                <div class="loop-step danger" style="--delay: 0.4s">
+                                    <span class="step-num">4</span>
+                                    <span class="step-text">Resign 😭</span>
+                                </div>
+                                <div class="loop-arrow loop-back">↺</div>
+                            </div>
+                        </div>
+                        <p class="story-pain">Siklus yang tidak pernah berhenti. <strong>Training karyawan = training ulang pengetahuan yang sama.</strong></p>
+                        <div class="story-cost">
+                            <span class="cost-label">Kerugian tersembunyi:</span>
+                            <span class="cost-value">Rp 30-60jt/karyawan</span>
+                        </div>
+                    </div>
+                    <div class="story-check">
+                        <input type="checkbox" id="story-check-6" class="story-checkbox">
+                        <label for="story-check-6">Ini saya banget 😫</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story Summary - Fixed at bottom when scrolling -->
+            <div class="story-summary" id="story-summary">
+                <div class="summary-content">
+                    <div class="summary-count">
+                        <span class="count-number" id="story-count">0</span>
+                        <span class="count-label">masalah dicentang</span>
+                    </div>
+                    <div class="summary-estimate">
+                        <span class="estimate-label">Estimasi kerugian:</span>
+                        <span class="estimate-value" id="story-estimate">Rp 0</span>
+                        <span class="estimate-period">/bulan</span>
+                    </div>
+                    <a href="#cuan" class="summary-cta">
+                        Hitung Detail →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CUAN 1 MILYAR CALCULATOR
+         ======================================== -->
+    <section class="cuan-section" id="cuan">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-number">02</span>
+                <span class="section-eyebrow">THE MATH</span>
+                <h2 class="section-headline">
+                    Mau <span class="accent">Laba 1 Milyar</span>?<br>
+                    <span class="serif italic">Pilih cara Anda.</span>
+                </h2>
+            </div>
+
+            <!-- The Choice Visual -->
+            <div class="choice-comparison">
+                <div class="choice-card choice-hard">
+                    <div class="choice-header">
+                        <span class="choice-icon">😰</span>
+                        <span class="choice-label">Cara Keras</span>
+                    </div>
+                    <div class="choice-body">
+                        <div class="choice-target">
+                            <span class="target-label">Target Laba Tambahan</span>
+                            <span class="target-value">Rp 1 Milyar</span>
+                        </div>
+                        <div class="choice-equation">
+                            <div class="eq-row">
+                                <span class="eq-label">Profit margin rata-rata</span>
+                                <span class="eq-value">~30%</span>
+                            </div>
+                            <div class="eq-divider"></div>
+                            <div class="eq-row result">
+                                <span class="eq-label">Omset tambahan dibutuhkan</span>
+                                <span class="eq-value big">Rp 3.3 Milyar</span>
+                            </div>
+                        </div>
+                        <div class="choice-effort">
+                            <div class="effort-item">📢 Marketing budget naik</div>
+                            <div class="effort-item">👥 Tim sales tambah</div>
+                            <div class="effort-item">📦 Inventory naik</div>
+                            <div class="effort-item">🏢 Ops complexity naik</div>
+                            <div class="effort-item">😵 Stress level: MAX</div>
+                        </div>
+                    </div>
+                    <div class="choice-verdict">
+                        <span class="verdict-text">Keringat 3.3M untuk dapat 1M</span>
+                    </div>
+                </div>
+
+                <div class="choice-vs">
+                    <span class="vs-text">VS</span>
+                    <div class="vs-glow"></div>
+                </div>
+
+                <div class="choice-card choice-smart">
+                    <div class="choice-header">
+                        <span class="choice-icon">🧠</span>
+                        <span class="choice-label">Cara Cerdas</span>
+                        <span class="choice-badge">RECOMMENDED</span>
+                    </div>
+                    <div class="choice-body">
+                        <div class="choice-target">
+                            <span class="target-label">Target Penghematan</span>
+                            <span class="target-value">Rp 1 Milyar</span>
+                        </div>
+                        <div class="choice-equation">
+                            <div class="eq-row">
+                                <span class="eq-label">Biaya yang dihemat</span>
+                                <span class="eq-value">= Laba langsung</span>
+                            </div>
+                            <div class="eq-divider"></div>
+                            <div class="eq-row result">
+                                <span class="eq-label">Yang perlu dilakukan</span>
+                                <span class="eq-value big accent">Hemat 1M</span>
+                            </div>
+                        </div>
+                        <div class="choice-savings">
+                            <div class="savings-item">
+                                <span class="savings-icon">✓</span>
+                                <span class="savings-text">Tidak hire 3-5 orang</span>
+                                <span class="savings-value">Rp 300-500jt/thn</span>
+                            </div>
+                            <div class="savings-item">
+                                <span class="savings-icon">✓</span>
+                                <span class="savings-text">Training instan via AI</span>
+                                <span class="savings-value">Rp 200-300jt/thn</span>
+                            </div>
+                            <div class="savings-item">
+                                <span class="savings-icon">✓</span>
+                                <span class="savings-text">Decision lebih cepat</span>
+                                <span class="savings-value">Rp 200-400jt/thn</span>
+                            </div>
+                            <div class="savings-item">
+                                <span class="savings-icon">✓</span>
+                                <span class="savings-text">Ilmu tidak hilang</span>
+                                <span class="savings-value">Priceless</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="choice-verdict smart">
+                        <span class="verdict-text">Hemat 1M = Laba 1M. Simple.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Calculator -->
+            <div class="cuan-calculator" id="cuan-calc">
+                <div class="calc-header">
+                    <h3 class="calc-title">
+                        <span class="calc-icon">🧮</span>
+                        Kalkulator CUAN 1 Milyar+
+                    </h3>
+                    <p class="calc-subtitle">Sesuaikan dengan kondisi bisnis Anda</p>
+                </div>
+
+                <div class="calc-grid">
+                    <!-- Input Column -->
+                    <div class="calc-inputs">
+                        <div class="input-group">
+                            <label class="input-label">
+                                <span class="label-icon">👥</span>
+                                Karyawan yang harusnya di-hire untuk scale?
+                            </label>
+                            <div class="slider-container">
+                                <input type="range" id="hire-slider" min="1" max="10" value="3" class="calc-slider">
+                                <div class="slider-values">
+                                    <span>1</span>
+                                    <span id="hire-value" class="slider-current">3 orang</span>
+                                    <span>10</span>
+                                </div>
+                            </div>
+                            <div class="input-note">Avg. gaji + benefit = Rp 10jt/orang/bulan</div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">
+                                <span class="label-icon">📚</span>
+                                Lama training sampai produktif?
+                            </label>
+                            <div class="slider-container">
+                                <input type="range" id="training-slider" min="1" max="6" value="3" class="calc-slider">
+                                <div class="slider-values">
+                                    <span>1 bln</span>
+                                    <span id="training-value" class="slider-current">3 bulan</span>
+                                    <span>6 bln</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">
+                                <span class="label-icon">⏰</span>
+                                Jam/minggu jawab pertanyaan tim?
+                            </label>
+                            <div class="slider-container">
+                                <input type="range" id="hours-slider" min="5" max="30" value="10" class="calc-slider">
+                                <div class="slider-values">
+                                    <span>5</span>
+                                    <span id="hours-value" class="slider-current">10 jam</span>
+                                    <span>30</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">
+                                <span class="label-icon">💰</span>
+                                Nilai waktu Anda per jam?
+                            </label>
+                            <div class="slider-container">
+                                <input type="range" id="rate-slider" min="500" max="5000" value="1000" step="100" class="calc-slider">
+                                <div class="slider-values">
+                                    <span>500rb</span>
+                                    <span id="rate-value" class="slider-current">Rp 1jt</span>
+                                    <span>5jt</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">
+                                <span class="label-icon">🤝</span>
+                                Jumlah affiliator/reseller?
+                            </label>
+                            <div class="slider-container">
+                                <input type="range" id="affiliate-slider" min="0" max="2000" value="500" step="50" class="calc-slider">
+                                <div class="slider-values">
+                                    <span>0</span>
+                                    <span id="affiliate-value" class="slider-current">500</span>
+                                    <span>2000+</span>
+                                </div>
+                            </div>
+                            <div class="input-note">Setiap 200 affiliator = 1 admin (Rp 5jt/bln)</div>
+                        </div>
+                    </div>
+
+                    <!-- Result Column -->
+                    <div class="calc-results">
+                        <div class="result-card main">
+                            <div class="result-header">
+                                <span class="result-icon">🎯</span>
+                                <span class="result-label">Total Penghematan/Tahun</span>
+                            </div>
+                            <div class="result-value">
+                                <span class="result-prefix">Rp</span>
+                                <span class="result-number" id="total-savings">0</span>
+                                <span class="result-suffix">juta</span>
+                            </div>
+                            <div class="result-insight" id="savings-insight">
+                                = Laba dari omset tambahan Rp 0 juta
+                            </div>
+                        </div>
+
+                        <div class="result-breakdown">
+                            <h4 class="breakdown-title">Breakdown:</h4>
+                            
+                            <div class="breakdown-item">
+                                <div class="breakdown-header">
+                                    <span class="breakdown-label">💼 Tidak hire karyawan</span>
+                                    <span class="breakdown-value" id="save-hire">Rp 0jt</span>
+                                </div>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill" id="bar-hire"></div>
+                                </div>
+                            </div>
+
+                            <div class="breakdown-item">
+                                <div class="breakdown-header">
+                                    <span class="breakdown-label">📚 Hemat biaya training</span>
+                                    <span class="breakdown-value" id="save-training">Rp 0jt</span>
+                                </div>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill" id="bar-training"></div>
+                                </div>
+                            </div>
+
+                            <div class="breakdown-item">
+                                <div class="breakdown-header">
+                                    <span class="breakdown-label">⏰ Waktu owner tersimpan</span>
+                                    <span class="breakdown-value" id="save-time">Rp 0jt</span>
+                                </div>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill" id="bar-time"></div>
+                                </div>
+                            </div>
+
+                            <div class="breakdown-item">
+                                <div class="breakdown-header">
+                                    <span class="breakdown-label">🤝 Hemat CS affiliator</span>
+                                    <span class="breakdown-value" id="save-affiliate">Rp 0jt</span>
+                                </div>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill" id="bar-affiliate"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-roi">
+                            <div class="roi-text">
+                                Investasi <strong>Rp 75-150jt</strong> → ROI:
+                            </div>
+                            <div class="roi-display">
+                                <span class="roi-number" id="roi-percent">0</span>
+                                <span class="roi-suffix">%</span>
+                            </div>
+                            <div class="roi-timeline">
+                                Balik modal: <span id="roi-months">0</span> bulan
+                            </div>
+                        </div>
+
+                        <a href="#cta" class="calc-cta">
+                            Klaim Penghematan Saya →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CLONE YOUR BRAIN SECTION
+         ======================================== -->
+    <section class="clone-section" id="clone">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-number">03</span>
+                <span class="section-eyebrow">THE REAL COST</span>
+                <h2 class="section-headline">
+                    Berapa <span class="serif italic">Gaji Clone</span> Anda?
+                </h2>
+                <p class="section-sub">ForgetIt = Clone otak Owner ke AI. Berapa biayanya kalau pakai manusia?</p>
+            </div>
+
+            <!-- Clone Comparison -->
+            <div class="clone-comparison">
+                <div class="clone-card human">
+                    <div class="clone-header">
+                        <div class="clone-avatar">
+                            <span class="avatar-icon">👨‍💼</span>
+                        </div>
+                        <span class="clone-label">Clone Manusia</span>
+                    </div>
+                    <div class="clone-body">
+                        <div class="clone-roles">
+                            <div class="role-item">
+                                <span class="role-title">GM / COO Level</span>
+                                <span class="role-desc">Bisa decide seperti Anda</span>
+                                <span class="role-cost">Rp 30-50jt/bln</span>
+                            </div>
+                            <div class="role-item">
+                                <span class="role-title">Knowledge Manager</span>
+                                <span class="role-desc">Dokumentasi SOP</span>
+                                <span class="role-cost">Rp 15-25jt/bln</span>
+                            </div>
+                            <div class="role-item">
+                                <span class="role-title">Training Manager</span>
+                                <span class="role-desc">Onboard tim</span>
+                                <span class="role-cost">Rp 15-20jt/bln</span>
+                            </div>
+                            <div class="role-item">
+                                <span class="role-title">Internal Support</span>
+                                <span class="role-desc">Jawab tim 24/7</span>
+                                <span class="role-cost">Rp 10-15jt/bln</span>
+                            </div>
+                        </div>
+                        <div class="clone-total">
+                            <span class="total-label">Total/bulan:</span>
+                            <span class="total-value">Rp 70-110jt</span>
+                        </div>
+                        <div class="clone-annual">
+                            <span class="annual-label">Per tahun:</span>
+                            <span class="annual-value">Rp 840jt - 1.3M</span>
+                        </div>
+                        <div class="clone-extras">
+                            <span class="extras-label">Belum termasuk:</span>
+                            <div class="extras-list">
+                                <span>THR & bonus</span>
+                                <span>BPJS</span>
+                                <span>Equipment</span>
+                                <span>Resign risk</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clone-footer danger">
+                        <span>⚠️ Dan tetap bisa resign</span>
+                    </div>
+                </div>
+
+                <div class="clone-vs">
+                    <div class="vs-circle">VS</div>
+                </div>
+
+                <div class="clone-card ai featured">
+                    <div class="clone-badge">💎 RECOMMENDED</div>
+                    <div class="clone-header">
+                        <div class="clone-avatar">
+                            <span class="avatar-icon">🤖</span>
+                        </div>
+                        <span class="clone-label">Clone AI (ForgetIt)</span>
+                    </div>
+                    <div class="clone-body">
+                        <div class="clone-features">
+                            <div class="feature-row">✓ Jawab tim 24/7</div>
+                            <div class="feature-row">✓ Simpan semua knowledge</div>
+                            <div class="feature-row">✓ Training otomatis</div>
+                            <div class="feature-row">✓ Decision support</div>
+                            <div class="feature-row">✓ Support affiliator</div>
+                            <div class="feature-row">✓ Tidak resign, tidak cuti</div>
+                        </div>
+                        <div class="clone-pricing">
+                            <span class="pricing-label">Investasi sekali:</span>
+                            <span class="pricing-value">Rp 75-150jt</span>
+                        </div>
+                    </div>
+                    <div class="clone-footer success">
+                        <span>🎯 Hemat Rp 700jt+/tahun</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Revelation -->
+            <div class="revelation-box">
+                <div class="revelation-content">
+                    <span class="revelation-icon">💡</span>
+                    <p class="revelation-text">
+                        Anda bayar gaji diri sendiri <strong>puluhan juta/bulan</strong>.<br>
+                        Tapi masih jadi <strong>customer service tim sendiri</strong>.<br><br>
+                        <em>Bukankah itu artinya Anda overpaid untuk jadi CS?</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         WHY NOT CHATGPT SECTION
+         ======================================== -->
+    <section class="objection-section" id="why-forgetit">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-number">04</span>
+                <span class="section-eyebrow">THE HONEST TRUTH</span>
+                <h2 class="section-headline">
+                    "Lah, Upload di <span class="serif italic">ChatGPT</span> Aja Bisa.<br>
+                    Ngapain Bayar <span class="accent">Mahal</span>?"
+                </h2>
+                <p class="section-sub">
+                    Fair question. Dan jawabannya mungkin bikin Anda mikir ulang.
+                </p>
+            </div>
+
+            <!-- Acknowledge -->
+            <div class="honest-box">
+                <div class="honest-header">
+                    <span class="honest-icon">✓</span>
+                    <span class="honest-title">Jujur? Iya, bisa.</span>
+                </div>
+                <p class="honest-text">
+                    Upload file ke ChatGPT, Claude, atau custom GPT memang <strong>bisa jalan</strong>. 
+                    Kalau Anda cuma mau tanya-jawab sederhana, itu cukup.
+                </p>
+            </div>
+
+            <!-- But... -->
+            <div class="but-box">
+                <div class="but-header">
+                    <span class="but-icon">⚠️</span>
+                    <span class="but-title">Tapi tanyakan ini ke diri sendiri:</span>
+                </div>
+                
+                <div class="question-grid">
+                    <div class="question-card">
+                        <span class="q-icon">🔓</span>
+                        <h4 class="q-title">Data siapa yang Anda upload?</h4>
+                        <p class="q-text">
+                            SOP, pricing, strategi, decision framework — itu <strong>ASET PALING BERHARGA</strong> bisnis Anda. 
+                            Mau simpan di server OpenAI/Anthropic yang diakses jutaan orang?
+                        </p>
+                        <div class="q-verdict danger">
+                            <span>💀</span> Data Anda jadi training data mereka
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <span class="q-icon">👥</span>
+                        <h4 class="q-title">Siapa yang akses "clone" Anda?</h4>
+                        <p class="q-text">
+                            Kalau tim Anda bisa akses ChatGPT dengan pengetahuan Anda di dalamnya — 
+                            <strong>mereka bisa bawa pergi saat resign</strong>.
+                        </p>
+                        <div class="q-verdict danger">
+                            <span>🚪</span> Clone otak Anda ikut kabur
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <span class="q-icon">🗂️</span>
+                        <h4 class="q-title">Bagaimana Anda manage 500+ dokumen?</h4>
+                        <p class="q-text">
+                            ChatGPT bukan document management system. 
+                            Tanpa <strong>vector store yang proper</strong>, AI akan hallucinate.
+                        </p>
+                        <div class="q-verdict danger">
+                            <span>🤯</span> Jawaban ngaco, context hilang
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <span class="q-icon">🧠</span>
+                        <h4 class="q-title">Pakai framework apa?</h4>
+                        <p class="q-text">
+                            Upload dokumen ≠ transfer knowledge. 
+                            Tanpa <strong>framework ekstraksi yang tepat</strong>, AI cuma baca — tidak paham.
+                        </p>
+                        <div class="q-verdict danger">
+                            <span>📖</span> AI baca tapi tidak mengerti
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Real Difference -->
+            <div class="difference-box">
+                <div class="diff-header">
+                    <span class="diff-badge">THE REAL DIFFERENCE</span>
+                    <h3 class="diff-title">Yang Anda Bayar di ForgetIt:</h3>
+                </div>
+
+                <div class="diff-comparison">
+                    <div class="diff-column chatgpt">
+                        <div class="diff-col-header">
+                            <span class="diff-logo">🤖</span>
+                            <span class="diff-name">DIY ChatGPT/Claude</span>
+                            <span class="diff-price">"Gratis"</span>
+                        </div>
+                        <div class="diff-items">
+                            <div class="diff-item bad">❌ Data di server mereka</div>
+                            <div class="diff-item bad">❌ Tim bisa akses & bawa pergi</div>
+                            <div class="diff-item bad">❌ Tidak ada vector management</div>
+                            <div class="diff-item bad">❌ Tidak ada framework ekstraksi</div>
+                            <div class="diff-item bad">❌ Self-service, trial & error</div>
+                            <div class="diff-item bad">❌ Hallucination tinggi</div>
+                        </div>
+                        <div class="diff-verdict bad">
+                            <span class="verdict-icon">💸</span>
+                            <span>"Gratis" tapi data Anda yang bayar</span>
+                        </div>
+                    </div>
+
+                    <div class="diff-vs">VS</div>
+
+                    <div class="diff-column forgetit">
+                        <div class="diff-col-header">
+                            <span class="diff-logo">🧠</span>
+                            <span class="diff-name">ForgetIt</span>
+                            <span class="diff-price">Rp 75-150jt</span>
+                        </div>
+                        <div class="diff-items">
+                            <div class="diff-item good">✓ Server ANDA sendiri</div>
+                            <div class="diff-item good">✓ Owner-only access</div>
+                            <div class="diff-item good">✓ Vector store professional</div>
+                            <div class="diff-item good">✓ 50+ Framework Premium</div>
+                            <div class="diff-item good">✓ Done-for-you setup</div>
+                            <div class="diff-item good">✓ Akurasi tinggi, context aware</div>
+                        </div>
+                        <div class="diff-verdict good">
+                            <span class="verdict-icon">🛡️</span>
+                            <span>Data aman, clone tetap milik Anda</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         TRUST & SECURITY SECTION
+         ======================================== -->
+    <section class="trust-section" id="trust">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-number">05</span>
+                <span class="section-eyebrow">DATA = ASET</span>
+                <h2 class="section-headline">
+                    Otak Anda = <span class="accent">Aset Paling Berharga</span>.<br>
+                    <span class="serif italic">Mau simpan di mana?</span>
+                </h2>
+            </div>
+
+            <!-- Warning Story -->
+            <div class="horror-story">
+                <div class="horror-header">
+                    <span class="horror-icon">⚠️</span>
+                    <span class="horror-label">NIGHTMARE SCENARIO</span>
+                </div>
+                <div class="horror-content">
+                    <p class="horror-text">
+                        <strong>Star employee</strong> Anda — yang sudah 5 tahun belajar cara Anda berpikir, 
+                        mengambil keputusan, handle klien — <strong>resign</strong>.
+                    </p>
+                    <p class="horror-text">
+                        Dia bawa semua ilmu di kepalanya. <em>Fair game.</em>
+                    </p>
+                    <p class="horror-text highlight">
+                        Tapi bagaimana kalau dia juga bawa <strong>CLONE DIGITAL</strong> Anda?<br>
+                        SOP lengkap. Decision framework. Pricing strategy. Customer handling.<br>
+                        Semua dalam 1 file yang bisa dia pakai untuk <strong>kompetitor</strong>?
+                    </p>
+                </div>
+                <div class="horror-verdict">
+                    <span>🔥</span> Ini bukan paranoid. Ini <strong>realita bisnis 2025</strong>.
+                </div>
+            </div>
+
+            <!-- Trust Pillars -->
+            <div class="trust-pillars">
+                <div class="pillar-card">
+                    <div class="pillar-icon">🏠</div>
+                    <h4 class="pillar-title">Server Anda Sendiri</h4>
+                    <p class="pillar-text">
+                        Data tidak masuk ke OpenAI, Google, atau siapapun. 
+                        <strong>Private cloud</strong> khusus untuk bisnis Anda.
+                    </p>
+                    <div class="pillar-tech">
+                        <span class="tech-tag">Private VPS</span>
+                        <span class="tech-tag">Encrypted</span>
+                        <span class="tech-tag">Indonesia-based</span>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">👤</div>
+                    <h4 class="pillar-title">Owner-Only Access</h4>
+                    <p class="pillar-text">
+                        Clone otak Anda <strong>HANYA untuk owner</strong>. 
+                        Tim akses versi terbatas — tidak bisa export atau bawa pergi.
+                    </p>
+                    <div class="pillar-tech">
+                        <span class="tech-tag">Role-based</span>
+                        <span class="tech-tag">Audit log</span>
+                        <span class="tech-tag">No export</span>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">🗄️</div>
+                    <h4 class="pillar-title">Data Anda, Kontrol Anda</h4>
+                    <p class="pillar-text">
+                        Anda bisa <strong>hapus kapan saja</strong>. 
+                        Tidak ada lock-in. Data tidak dipakai untuk training AI lain.
+                    </p>
+                    <div class="pillar-tech">
+                        <span class="tech-tag">Full ownership</span>
+                        <span class="tech-tag">Delete anytime</span>
+                        <span class="tech-tag">No training</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exclusivity -->
+            <div class="exclusive-box">
+                <div class="exclusive-badge">
+                    <span class="badge-icon">👑</span>
+                    <span class="badge-text">OWNER EXCLUSIVE</span>
+                </div>
+                <h3 class="exclusive-title">
+                    Kenapa ForgetIt Mahal?<br>
+                    <span class="serif italic">Karena bukan untuk semua orang.</span>
+                </h3>
+                <p class="exclusive-text">
+                    Ini bukan SaaS yang Anda sign up terus pakai sendiri.<br>
+                    Ini <strong>project cloning eksekutif</strong> — hanya untuk founder & C-level.
+                </p>
+                
+                <div class="exclusive-includes">
+                    <div class="include-item">
+                        <span class="include-icon">🔧</span>
+                        <div class="include-content">
+                            <strong>Setup Server Dedicated</strong>
+                            <span>Kami setup private infrastructure khusus untuk Anda</span>
+                        </div>
+                    </div>
+                    <div class="include-item">
+                        <span class="include-icon">🧠</span>
+                        <div class="include-content">
+                            <strong>50+ Framework Ekstraksi Premium</strong>
+                            <span>Ini yang paling mahal — methodology transfer knowledge yang sudah proven</span>
+                        </div>
+                    </div>
+                    <div class="include-item">
+                        <span class="include-icon">🎯</span>
+                        <div class="include-content">
+                            <strong>1-on-1 dengan Owner</strong>
+                            <span>Sesi eksklusif untuk ekstrak decision framework Anda</span>
+                        </div>
+                    </div>
+                    <div class="include-item">
+                        <span class="include-icon">🔒</span>
+                        <div class="include-content">
+                            <strong>NDA & Data Protection</strong>
+                            <span>Legal protection untuk intellectual property Anda</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exclusive-footer">
+                    <p class="footer-text">
+                        <strong>Harga mahal bukan karena setup server.</strong><br>
+                        Harga mahal karena <span class="accent">FRAMEWORK</span> yang sudah kami develop bertahun-tahun<br>
+                        untuk transfer pengetahuan owner ke AI dengan akurat.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Final Trust CTA -->
+            <div class="trust-cta">
+                <p class="trust-question">
+                    Pertanyaannya bukan <em>"Apakah AI bisa bantu bisnis saya?"</em><br>
+                    Pertanyaannya adalah: <strong>"Siapa yang boleh pegang clone otak saya?"</strong>
+                </p>
+                <a href="#cta" class="trust-button">
+                    <span class="btn-icon">🛡️</span>
+                    <span class="btn-text">Konsultasi Setup Private</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="demo-section" id="demo">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-number">06</span>
+                <span class="section-eyebrow">THE PROOF</span>
+                <h2 class="section-headline">
+                    Lihat <span class="serif italic">ForgetIt</span> Beraksi
+                </h2>
+            </div>
+
+            <!-- Before/After -->
+            <div class="demo-comparison">
+                <div class="demo-panel before">
+                    <div class="panel-header">
+                        <span class="panel-badge">BEFORE</span>
+                        <span class="panel-title">Dokumen Berantakan</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="doc-chaos">
+                            <div class="doc-item">📄 SOP_v3_final_FINAL.docx</div>
+                            <div class="doc-item">📊 pricing_2024_rev2.xlsx</div>
+                            <div class="doc-item">📝 meeting_notes.txt</div>
+                            <div class="doc-item">📄 cara_komplain.pdf</div>
+                            <div class="doc-item faded">+47 files lainnya...</div>
+                        </div>
+                        <div class="chaos-label">
+                            <span>😵 Tidak ada yang baca</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-arrow">
+                    <div class="arrow-circle">→</div>
+                    <span class="arrow-label">ForgetIt</span>
+                </div>
+
+                <div class="demo-panel after">
+                    <div class="panel-header">
+                        <span class="panel-badge">AFTER</span>
+                        <span class="panel-title">AI Jawab Seperti Anda</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="ai-chat-demo">
+                            <div class="demo-message user">
+                                <span class="msg-avatar">👤</span>
+                                <span class="msg-text">Harga 500 pcs gimana?</span>
+                            </div>
+                            <div class="demo-message ai">
+                                <span class="msg-avatar">🤖</span>
+                                <div class="msg-content">
+                                    <span class="msg-text">Untuk 500 pcs: Rp 85.000/pcs (diskon 15%). DP 50%, lead time 14 hari.</span>
+                                    <span class="msg-source">📄 pricing_2024.xlsx</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Query Demo -->
+            <div class="query-demo">
+                <h3 class="demo-subtitle">Coba Tanya:</h3>
+                <div class="query-buttons">
+                    <button class="query-btn active" data-query="1">💰 Harga grosir?</button>
+                    <button class="query-btn" data-query="2">📦 Cara retur?</button>
+                    <button class="query-btn" data-query="3">🤝 Jadi affiliator?</button>
+                </div>
+                <div class="query-result" id="query-result">
+                    <div class="result-answer" id="result-answer">
+                        Harga grosir: 100-499 pcs diskon 10%, 500-999 pcs diskon 15%, 1000+ pcs diskon 20%. Payment cash atau tempo 14 hari untuk partner.
+                    </div>
+                    <div class="result-source">
+                        📄 pricing_policy.xlsx, partner_terms.docx
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         HOW IT WORKS
+         ======================================== -->
+    <section class="how-section" id="how">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-number">07</span>
+                <span class="section-eyebrow">SIMPLE</span>
+                <h2 class="section-headline">
+                    <span class="serif italic">3 Langkah</span> Saja
+                </h2>
+            </div>
+
+            <div class="steps-visual">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">📤</div>
+                    <h3 class="step-title">Upload Dokumen</h3>
+                    <p class="step-desc">SOP, FAQ, training - apapun. Kami yang rapikan.</p>
+                    <div class="step-time">⏱ Minggu 1-2</div>
+                </div>
+
+                <div class="step-connector"></div>
+
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">🧠</div>
+                    <h3 class="step-title">AI Belajar</h3>
+                    <p class="step-desc">+ 50 framework bisnis terbukti. Bukan AI kosong.</p>
+                    <div class="step-time">⏱ Minggu 3-4</div>
+                </div>
+
+                <div class="step-connector"></div>
+
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">🚀</div>
+                    <h3 class="step-title">Go Live</h3>
+                    <p class="step-desc">Tim tanya via WA/Slack, AI jawab 24/7.</p>
+                    <div class="step-time">⏱ Minggu 5-8</div>
+                </div>
+            </div>
+
+            <div class="zero-tech">
+                <span class="tech-icon">🎯</span>
+                <span class="tech-text">Bisa pakai WA? Bisa pakai ForgetIt.</span>
+            </div>
+
+            <!-- Integration FAQ -->
+            <div class="integration-faq">
+                <div class="faq-item">
+                    <div class="faq-q">
+                        <span class="faq-icon">🔌</span>
+                        <span class="faq-question">"Kami sudah punya platform X, gimana?"</span>
+                    </div>
+                    <p class="faq-a">
+                        <strong>Bisa integrasi.</strong> Selama platform Anda bisa diakses atau Anda berikan akses API, 
+                        kita integrasikan — tidak harus ganti platform yang sudah jalan.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">
+                        <span class="faq-icon">💬</span>
+                        <span class="faq-question">"Bot-nya pakai apa?"</span>
+                    </div>
+                    <p class="faq-a">
+                        <strong>Telegram atau WhatsApp.</strong> Kami rekomendasikan Telegram untuk fitur lebih lengkap, 
+                        tapi WA juga bisa kalau tim Anda sudah terbiasa.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">
+                        <span class="faq-icon">⚙️</span>
+                        <span class="faq-question">"Automation-nya pakai apa?"</span>
+                    </div>
+                    <p class="faq-a">
+                        <strong>n8n + custom workflow.</strong> Bukan no-code abal-abal — ini production-grade automation 
+                        yang sudah proven di bisnis omset milyaran.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PRICING
+         ======================================== -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-number">08</span>
+                <span class="section-eyebrow">INVESTASI</span>
+                <h2 class="section-headline">
+                    Knowledge AI <span class="accent">+</span> Automation<br>
+                    <span class="serif italic">dalam 1 Paket</span>
+                </h2>
+                <p class="section-sub">
+                    Setup sekali, sistem jalan terus. Bukan cuma upload dokumen.
+                </p>
+            </div>
+
+            <!-- What's Included Banner -->
+            <div class="included-banner">
+                <div class="included-title">🎯 Semua paket sudah termasuk:</div>
+                <div class="included-items">
+                    <span class="included-item">✓ Knowledge Extraction</span>
+                    <span class="included-item">✓ Vector Store Pro</span>
+                    <span class="included-item">✓ Automation Workflow</span>
+                    <span class="included-item">✓ Bot Telegram/WA</span>
+                    <span class="included-item">✓ Server Dedicated</span>
+                    <span class="included-item">✓ Framework Premium</span>
+                </div>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- STARTER -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <span class="pricing-name">Starter</span>
+                        <span class="pricing-desc">Baru mulai scale</span>
+                    </div>
+                    
+                    <div class="pricing-dual">
+                        <div class="price-setup">
+                            <span class="price-label">Setup</span>
+                            <div class="price-value">
+                                <span class="price-currency">Rp</span>
+                                <span class="price-amount">35</span>
+                                <span class="price-unit">jt</span>
+                            </div>
+                            <span class="price-note">one-time</span>
+                        </div>
+                        <span class="price-plus">+</span>
+                        <div class="price-monthly">
+                            <span class="price-label">Bulanan</span>
+                            <div class="price-value">
+                                <span class="price-currency">Rp</span>
+                                <span class="price-amount">3.5</span>
+                                <span class="price-unit">jt</span>
+                            </div>
+                            <span class="price-note">/bulan</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-total">
+                        <span class="total-label">Year 1 Total:</span>
+                        <span class="total-value">Rp 77jt</span>
+                        <span class="total-comparison">= 6.4jt/bulan</span>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li>✓ 100 dokumen</li>
+                        <li>✓ 5 user</li>
+                        <li>✓ 1 Bot (Telegram/WA)</li>
+                        <li>✓ 1-2 Automation workflow</li>
+                        <li>✓ 20+ Framework</li>
+                        <li>✓ Support 48 jam response</li>
+                    </ul>
+
+                    <div class="pricing-commitment">
+                        <span>📋 Min. 6 bulan</span>
+                    </div>
+
+                    <a href="#cta" class="pricing-cta">Mulai →</a>
+                </div>
+
+                <!-- PROFESSIONAL -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">RECOMMENDED</div>
+                    <div class="pricing-header">
+                        <span class="pricing-name">Professional</span>
+                        <span class="pricing-desc">Omset 2-10M/bulan</span>
+                    </div>
+                    
+                    <div class="pricing-dual">
+                        <div class="price-setup">
+                            <span class="price-label">Setup</span>
+                            <div class="price-value">
+                                <span class="price-currency">Rp</span>
+                                <span class="price-amount">75</span>
+                                <span class="price-unit">jt</span>
+                            </div>
+                            <span class="price-note">one-time</span>
+                        </div>
+                        <span class="price-plus">+</span>
+                        <div class="price-monthly">
+                            <span class="price-label">Bulanan</span>
+                            <div class="price-value">
+                                <span class="price-currency">Rp</span>
+                                <span class="price-amount">5</span>
+                                <span class="price-unit">jt</span>
+                            </div>
+                            <span class="price-note">/bulan</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-total featured">
+                        <span class="total-label">Year 1 Total:</span>
+                        <span class="total-value">Rp 135jt</span>
+                        <span class="total-comparison">= 11.25jt/bulan < gaji 1 manager</span>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li>✓ 500 dokumen</li>
+                        <li>✓ 20 user</li>
+                        <li>✓ Multi-bot (Telegram + WA)</li>
+                        <li>✓ <strong>5+ Automation workflow</strong></li>
+                        <li>✓ <strong>50+ Framework Premium</strong></li>
+                        <li>✓ Affiliate/Reseller bot</li>
+                        <li>✓ Priority support 24 jam</li>
+                        <li>✓ Quarterly review call</li>
+                    </ul>
+
+                    <div class="pricing-commitment">
+                        <span>📋 Min. 12 bulan</span>
+                    </div>
+
+                    <a href="#cta" class="pricing-cta primary">Pilih Professional →</a>
+                </div>
+
+                <!-- ENTERPRISE -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <span class="pricing-name">Enterprise</span>
+                        <span class="pricing-desc">Multi-divisi, kompleks</span>
+                    </div>
+                    
+                    <div class="pricing-dual">
+                        <div class="price-setup">
+                            <span class="price-label">Setup</span>
+                            <div class="price-value">
+                                <span class="price-currency">Rp</span>
+                                <span class="price-amount">150</span>
+                                <span class="price-unit">jt+</span>
+                            </div>
+                            <span class="price-note">one-time</span>
+                        </div>
+                        <span class="price-plus">+</span>
+                        <div class="price-monthly">
+                            <span class="price-label">Bulanan</span>
+                            <div class="price-value">
+                                <span class="price-currency">Rp</span>
+                                <span class="price-amount">10</span>
+                                <span class="price-unit">jt+</span>
+                            </div>
+                            <span class="price-note">/bulan</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-total">
+                        <span class="total-label">Year 1 Total:</span>
+                        <span class="total-value">Rp 270jt+</span>
+                        <span class="total-comparison">Custom sesuai scope</span>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li>✓ Unlimited dokumen</li>
+                        <li>✓ Unlimited user</li>
+                        <li>✓ Custom integrations</li>
+                        <li>✓ Complex automation</li>
+                        <li>✓ Dedicated server</li>
+                        <li>✓ SLA guarantee</li>
+                        <li>✓ Monthly review</li>
+                        <li>✓ Dedicated account manager</li>
+                    </ul>
+
+                    <div class="pricing-commitment">
+                        <span>📋 Custom terms</span>
+                    </div>
+
+                    <a href="#cta" class="pricing-cta">Konsultasi →</a>
+                </div>
+            </div>
+
+            <!-- Monthly Fee Breakdown -->
+            <div class="monthly-breakdown">
+                <div class="breakdown-header">
+                    <span class="breakdown-icon">💡</span>
+                    <h4 class="breakdown-title">"Kenapa ada biaya bulanan?"</h4>
+                </div>
+                <div class="breakdown-content">
+                    <p class="breakdown-intro">Biaya bulanan mencakup operasional sistem Anda:</p>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="item-icon">☁️</span>
+                            <span class="item-text">API Credits (Gemini/Claude/OpenAI)</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="item-icon">🖥️</span>
+                            <span class="item-text">Server & Hosting dedicated</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="item-icon">🔄</span>
+                            <span class="item-text">Framework updates & improvements</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="item-icon">🛠️</span>
+                            <span class="item-text">Technical support & bug fixes</span>
+                        </div>
+                    </div>
+                    <div class="breakdown-comparison">
+                        <div class="compare-item bad">
+                            <span class="compare-label">Hire AI Specialist</span>
+                            <span class="compare-value">Rp 15-25jt/bulan</span>
+                        </div>
+                        <div class="compare-vs">vs</div>
+                        <div class="compare-item good">
+                            <span class="compare-label">ForgetIt Managed</span>
+                            <span class="compare-value">Rp 5jt/bulan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guarantee -->
+            <div class="guarantee-box">
+                <span class="guarantee-icon">🛡️</span>
+                <div class="guarantee-text">
+                    <strong>Garansi 30 Hari Uang Kembali</strong>
+                    <span>Setup tidak sesuai ekspektasi? Refund 100%.</span>
+                </div>
+            </div>
+
+            <!-- Year 2 Savings -->
+            <div class="year2-box">
+                <div class="year2-header">
+                    <span class="year2-icon">📈</span>
+                    <span class="year2-title">Tahun ke-2 dan seterusnya?</span>
+                </div>
+                <div class="year2-content">
+                    <p class="year2-text">
+                        <strong>Tidak ada setup fee lagi.</strong> Anda hanya bayar biaya bulanan.<br>
+                        Professional: <span class="accent">Rp 60jt/tahun</span> — sistem tetap jalan, knowledge tetap aman.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FOMO: Price Increase Warning -->
+            <div class="urgency-box">
+                <div class="urgency-timer">
+                    <span class="urgency-icon">⏰</span>
+                    <div class="urgency-content">
+                        <span class="urgency-label">Harga naik <strong>Rp 25 juta</strong> dalam:</span>
+                        <div class="countdown" id="countdown">
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="countdown-days">06</span>
+                                <span class="countdown-label">Hari</span>
+                            </div>
+                            <span class="countdown-sep">:</span>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="countdown-hours">23</span>
+                                <span class="countdown-label">Jam</span>
+                            </div>
+                            <span class="countdown-sep">:</span>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="countdown-mins">59</span>
+                                <span class="countdown-label">Menit</span>
+                            </div>
+                            <span class="countdown-sep">:</span>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="countdown-secs">59</span>
+                                <span class="countdown-label">Detik</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="urgency-reason">
+                    <span>📈</span> Permintaan meningkat 3x → Kami batasi kapasitas untuk jaga kualitas
+                </div>
+            </div>
+
+            <!-- FOMO: Who's NOT Right -->
+            <div class="not-for-box">
+                <div class="not-for-header">
+                    <span class="not-for-icon">🚫</span>
+                    <span class="not-for-title">ForgetIt BUKAN untuk Anda jika:</span>
+                </div>
+                <div class="not-for-list">
+                    <div class="not-for-item">❌ Omset masih di bawah Rp 500jt/bulan</div>
+                    <div class="not-for-item">❌ Belum punya tim (masih one-man-show)</div>
+                    <div class="not-for-item">❌ Tidak mau investasi untuk scale</div>
+                    <div class="not-for-item">❌ Expect "magic" tanpa mau isi knowledge</div>
+                </div>
+                <div class="not-for-footer">
+                    <span class="check-icon">✓</span> Masih di sini? Berarti Anda <strong>kandidat ideal</strong>.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CTA
+         ======================================== -->
+    <section class="cta-section" id="cta">
+        <div class="section-container">
+            <div class="cta-content">
+                <!-- FOMO: Competitor Warning -->
+                <div class="competitor-warning">
+                    <span class="warning-icon">⚠️</span>
+                    <span class="warning-text">3 kompetitor Anda di industri yang sama <strong>sudah mulai pakai AI</strong>. Tunggu sampai mereka 10x lebih efisien?</span>
+                </div>
+
+                <h2 class="cta-headline">
+                    Siap Hemat <span class="accent">Rp 1 Milyar+</span>?
+                </h2>
+                <p class="cta-subheadline">
+                    Konsultasi gratis 30 menit. Kami hitung detail penghematan Anda.
+                </p>
+
+                <!-- FOMO: Recent Activity -->
+                <div class="recent-activity">
+                    <div class="activity-avatars">
+                        <span class="avatar">👨‍💼</span>
+                        <span class="avatar">👩‍💼</span>
+                        <span class="avatar">👨‍💼</span>
+                        <span class="avatar-more">+12</span>
+                    </div>
+                    <span class="activity-text"><strong>15 founder</strong> request konsultasi minggu ini</span>
+                </div>
+
+                <div class="cta-form">
+                    <div class="form-row">
+                        <input type="text" id="form-name" placeholder="Nama Anda" required>
+                        <input type="tel" id="form-wa" placeholder="WhatsApp" required>
+                    </div>
+                    <button type="button" class="form-submit" onclick="submitForm()">
+                        🔥 Konsultasi Gratis Sekarang →
+                    </button>
+                    <div class="form-notes">
+                        <span>✓ Gratis, tanpa commitment</span>
+                        <span>✓ Response dalam 24 jam</span>
+                        <span>✓ Via Zoom 30 menit</span>
+                    </div>
+                </div>
+
+                <!-- FOMO: What Happens If You Wait -->
+                <div class="wait-warning">
+                    <span class="wait-calc">Setiap <strong>1 hari</strong> Anda tunda = <strong class="danger">Rp 2-3 juta</strong> terbuang sia-sia</span>
+                </div>
+
+                <div class="cta-alternative">
+                    <span>Atau langsung:</span>
+                    <a href="https://wa.me/6281234567890" class="alt-whatsapp" target="_blank">
+                        📱 WhatsApp Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="20" r="3" fill="currentColor"/></svg>
+                        <span>ForgetIt</span>
+                    </div>
+                    <p>AI yang ingat untuk Anda.</p>
+                    <p class="footer-credit">by <a href="https://flexeet.com">Flexeet</a></p>
+                </div>
+                <div class="footer-links">
+                    <a href="#story">Cerita</a>
+                    <a href="#cuan">Kalkulator</a>
+                    <a href="#demo">Demo</a>
+                    <a href="#pricing">Investasi</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 ForgetIt. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

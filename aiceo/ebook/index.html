@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-PROOF | 7 Framework Berpikir Biar Karirmu Nggak Tergantikan</title>
+    <meta name="description" content="Playbook praktis dengan 7 framework berpikir untuk Fresh Graduate & Karyawan agar punya bargaining power tinggi, gaji lebih besar, dan tak tergantikan di era AI.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI-PROOF | Karirmu Nggak Tergantikan di Era AI">
+    <meta property="og:description" content="78% pekerja Indonesia takut diganti AI. Ebook ini senjata lo.">
+    <meta property="og:type" content="product">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement" id="announcement">
+        <div class="announcement-inner">
+            <span>🔥 LAUNCH PRICE — Diskon 50% untuk <strong>100 pembeli pertama</strong>.</span>
+            <span class="countdown" id="countdown"></span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="container nav-container">
+            <a href="#" class="logo">AI-<span>PROOF</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="#problem">Realita</a>
+                <a href="#frameworks">Framework</a>
+                <a href="#author">Penulis</a>
+                <a href="#pricing" class="btn-nav">🔒 Beli Sekarang</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge" data-animate="fade-up">● EBOOK STRATEGI KARIR #1 DI ERA AI</div>
+                <h1 data-animate="fade-up" data-delay="100">
+                    78% Pekerja Indonesia<br>Takut Diganti AI.<br>
+                    <em>Lo Mau Jadi Korban?</em>
+                </h1>
+                <p class="hero-sub" data-animate="fade-up" data-delay="200">
+                    7 framework berpikir yang bikin Fresh Graduate & Karyawan punya <strong>bargaining power</strong> tinggi, gaji lebih besar, dan <strong>nggak tergantikan.</strong>
+                </p>
+                <div class="hero-btns" data-animate="fade-up" data-delay="300">
+                    <a href="#pricing" class="btn-primary">🛡️ Amankan Karir Lo Sekarang</a>
+                    <a href="#frameworks" class="btn-outline">Lihat 7 Framework →</a>
+                </div>
+                <div class="hero-stats" data-animate="fade-up" data-delay="400">
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">200+</span>
+                        <span class="hero-stat-label">Halaman</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">7</span>
+                        <span class="hero-stat-label">Framework</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">21</span>
+                        <span class="hero-stat-label">Bab + 4 Bonus</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crisis Stats Ticker -->
+    <section class="ticker">
+        <div class="ticker-track">
+            <div class="ticker-content">
+                <span class="ticker-item">⚠️ 70% PENGANGGURAN INDONESIA ADALAH GEN-Z</span>
+                <span class="ticker-item">📉 LOKER FORMAL TURUN DARI 15.6 JUTA → 2 JUTA</span>
+                <span class="ticker-item">🤖 92% PEKERJA PAKAI AI — CUMA 10% YANG STRATEGIS</span>
+                <span class="ticker-item">💀 1.01 JUTA SARJANA MENGANGGUR</span>
+                <span class="ticker-item">😰 78% PEKERJA TAKUT DIGESER AI (JOBSTREET 2026)</span>
+                <span class="ticker-item">🔥 88% KANDIDAT QUALIFIED TER-SCREEN OUT OLEH ATS</span>
+                <span class="ticker-item">⚠️ 70% PENGANGGURAN INDONESIA ADALAH GEN-Z</span>
+                <span class="ticker-item">📉 LOKER FORMAL TURUN DARI 15.6 JUTA → 2 JUTA</span>
+                <span class="ticker-item">🤖 92% PEKERJA PAKAI AI — CUMA 10% YANG STRATEGIS</span>
+                <span class="ticker-item">💀 1.01 JUTA SARJANA MENGANGGUR</span>
+                <span class="ticker-item">😰 78% PEKERJA TAKUT DIGESER AI (JOBSTREET 2026)</span>
+                <span class="ticker-item">🔥 88% KANDIDAT QUALIFIED TER-SCREEN OUT OLEH ATS</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <div class="section-label" data-animate="fade-up">● WAKE UP CALL</div>
+            <h2 class="section-title" data-animate="fade-up">
+                Dunia Kerja Nggak Ramah<br><em>Seperti Janji Pas Wisuda.</em>
+            </h2>
+            <div class="problem-grid">
+                <div class="problem-card" data-animate="fade-up" data-delay="0">
+                    <div class="problem-icon">💀</div>
+                    <h3>Skill Lo Kadaluarsa</h3>
+                    <p>Kampus ngajarin teori. Dunia nyata butuh orang yang bisa <strong>desain sistem pakai AI.</strong> Dan 76% karyawan cuma pakai AI buat hal-hal receh.</p>
+                    <div class="problem-data">
+                        <span>AI Literacy Indonesia:</span>
+                        <div class="data-bar"><div class="data-fill" style="width:49.96%"><span>49.96/100</span></div></div>
+                        <span class="data-verdict">Kategori: BURUK (APJII)</span>
+                    </div>
+                </div>
+                <div class="problem-card" data-animate="fade-up" data-delay="100">
+                    <div class="problem-icon">📉</div>
+                    <h3>Gaji Gitu-Gitu Aja</h3>
+                    <p>Rata-rata gaji fresh grad <strong>Rp 4.96 juta.</strong> Usia 20-24? Realistisnya <strong>Rp 2.28 juta.</strong> Kalau lo "easy to replace", gaji lo mentok di UMR selamanya.</p>
+                    <div class="problem-data">
+                        <span>Rata-rata Gaji Gen-Z (20-24):</span>
+                        <div class="data-bar"><div class="data-fill warn" style="width:23%"><span>Rp 2.28jt</span></div></div>
+                        <span class="data-verdict">62.7% masih dibantu keluarga (BPS)</span>
+                    </div>
+                </div>
+                <div class="problem-card" data-animate="fade-up" data-delay="200">
+                    <div class="problem-icon">⚔️</div>
+                    <h3>Kompetisi Gila-Gilaan</h3>
+                    <p>1.01 juta sarjana menganggur. Lulusan numpuk, loker dikit. <strong>1 dari 6 employer</strong> enggan hire Gen-Z. Dan AI dateng buat gantiin admin.</p>
+                    <div class="problem-data">
+                        <span>Penciptaan Loker Formal:</span>
+                        <div class="data-bar"><div class="data-fill danger" style="width:13%"><span>2 Juta</span></div></div>
+                        <span class="data-verdict">Turun dari 15.6 juta (2009-2014)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="problem-quote" data-animate="fade-up">
+                <blockquote>"Satu juta orang bisa ngerjain kerjaan lo. <em>Apa yang bikin lo spesial?</em>"</blockquote>
+                <cite>— Billboard di Silicon Valley, dikutip Reid Hoffman (Founder LinkedIn)</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution Bridge -->
+    <section class="bridge">
+        <div class="container">
+            <div class="bridge-content" data-animate="fade-up">
+                <div class="bridge-icon">💡</div>
+                <h2>Tapi Ada Kabar Bagus.</h2>
+                <p>Riset McKinsey: <strong>high performers itu 800% lebih produktif</strong> dari rata-rata. Bedanya bukan di jam kerja atau ijazah — tapi di <strong>cara berpikir.</strong></p>
+                <p>Studi Harvard & BCG terhadap 758 konsultan: <strong>junior yang pakai AI naik performanya 43%</strong> — jauh lebih tinggi dari senior yang cuma naik 17%. AI itu <em>great equalizer</em> — dan lo yang paling diuntungkan.</p>
+                <div class="bridge-highlight">
+                    <span>📊</span>
+                    <div>
+                        <strong>66% business leader bersedia bayar 10-15% premium</strong> buat karyawan yang data-literate dan mikir terstruktur. <em>(DataCamp 2024-2025)</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Framework Section -->
+    <section id="frameworks" class="frameworks">
+        <div class="container">
+            <div class="section-label" data-animate="fade-up">● 7 FRAMEWORK "CHEAT CODE"</div>
+            <h2 class="section-title" data-animate="fade-up">
+                Senjata yang Bikin Lo<br><em>Nggak Tergantikan.</em>
+            </h2>
+            <p class="section-sub" data-animate="fade-up">Framework yang sama dipakai top performers dan CEO — tapi nggak pernah diajarkan di kampus atau training kantor mana pun.</p>
+
+            <div class="framework-grid">
+                <div class="fw-card" data-animate="fade-up" data-delay="0">
+                    <span class="fw-num">01</span>
+                    <h3>Problem Definition Framework</h3>
+                    <p class="fw-tagline">"Masalahnya Apa Sih?"</p>
+                    <p>Skill yang bikin lo keliatan paling pinter di meeting — karena bisa define masalah secara sistemik sebelum semua orang panik.</p>
+                    <div class="fw-lock">🔒 Detail di Ebook</div>
+                </div>
+                <div class="fw-card" data-animate="fade-up" data-delay="50">
+                    <span class="fw-num">02</span>
+                    <h3>Weighted Scoring System</h3>
+                    <p class="fw-tagline">"Pilih yang Mana? Skor Aja."</p>
+                    <p>Cara menang argumen tanpa ribut. Ambil keputusan pakai angka dan parameter terukur, bukan perasaan.</p>
+                    <div class="fw-lock">🔒 Detail di Ebook</div>
+                </div>
+                <div class="fw-card" data-animate="fade-up" data-delay="100">
+                    <span class="fw-num">03</span>
+                    <h3>Kill Criteria / Red Line</h3>
+                    <p class="fw-tagline">"Lewat Batas? Stop."</p>
+                    <p>Anti burnout, anti overthinking. Framework buat tau kapan harus berhenti — sebelum lo collapse.</p>
+                    <div class="fw-lock">🔒 Detail di Ebook</div>
+                </div>
+                <div class="fw-card" data-animate="fade-up" data-delay="150">
+                    <span class="fw-num">04</span>
+                    <h3>Leak Diagnosis</h3>
+                    <p class="fw-tagline">"Kerjaan Gue Bocor di Mana?"</p>
+                    <p>Cara pulang ontime, kerjaan beres. Identifikasi kebocoran waktu, energi, dan kualitas kerja lo.</p>
+                    <div class="fw-lock">🔒 Detail di Ebook</div>
+                </div>
+                <div class="fw-card" data-animate="fade-up" data-delay="200">
+                    <span class="fw-num">05</span>
+                    <h3>Rapid Decision Matrix</h3>
+                    <p class="fw-tagline">"Putusin Sekarang!"</p>
+                    <p>Cheat code biar keliatan decisive. 3 parameter, 5 menit, keputusan beres — sementara yang lain masih debat.</p>
+                    <div class="fw-lock">🔒 Detail di Ebook</div>
+                </div>
+                <div class="fw-card" data-animate="fade-up" data-delay="250">
+                    <span class="fw-num">06</span>
+                    <h3>7-Block AI Prompting</h3>
+                    <p class="fw-tagline">"AI, Kerja Pakai Otak Gue"</p>
+                    <p>Bikin AI jadi asisten pribadi yang beneran paham instruksi lo — bukan cuma chat generik yang hasilnya sampah.</p>
+                    <div class="fw-lock">🔒 Detail di Ebook</div>
+                </div>
+                <div class="fw-card fw-card-highlight" data-animate="fade-up" data-delay="300">
+                    <span class="fw-num">07</span>
+                    <h3>BID Formula</h3>
+                    <p class="fw-tagline">"Bos, Ini Hasil Saya"</p>
+                    <p>Before → Innovation → Delta. "Make-Up" karir biar setiap kerjaan lo dihargai mahal oleh bos, HRD, atau rekruter.</p>
+                    <div class="fw-lock">🔒 Detail di Ebook</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="toc">
+        <div class="container">
+            <div class="section-label" data-animate="fade-up">● DAFTAR ISI LENGKAP</div>
+            <h2 class="section-title" data-animate="fade-up">
+                21 Bab + 4 Bonus.<br><em>Ini Bukan Ebook Tipis.</em>
+            </h2>
+            <div class="toc-grid" data-animate="fade-up">
+                <div class="toc-part">
+                    <div class="toc-part-header">PART 1 — WAKE UP CALL</div>
+                    <ul>
+                        <li>Bab 1: Lo Kerja Keras — Tapi Apa Lo Bernilai Tinggi?</li>
+                        <li>Bab 2: Cara Orang yang Gajinya 3x Lo Mikir</li>
+                        <li>Bab 3: Framework Thinking = Cheat Code Karir</li>
+                    </ul>
+                </div>
+                <div class="toc-part">
+                    <div class="toc-part-header">PART 2 — FONDASI</div>
+                    <ul>
+                        <li>Bab 4: Framework vs SOP vs Tools — Jangan Kebalik</li>
+                        <li>Bab 5: 2 Bahasa yang Bikin Lo AI-Ready</li>
+                        <li>Bab 6: Anatomi Framework: Bikin Sendiri dalam 30 Menit</li>
+                        <li>Bab 7: Berhenti Jadi "Tukang Kerjain" — Mulai Jadi "Tukang Desain"</li>
+                    </ul>
+                </div>
+                <div class="toc-part">
+                    <div class="toc-part-header">PART 3 — 7 FRAMEWORK</div>
+                    <ul>
+                        <li>Framework 1–7: Langsung Pakai Besok di Kantor</li>
+                    </ul>
+                </div>
+                <div class="toc-part">
+                    <div class="toc-part-header">PART 4 — AI LEVERAGE</div>
+                    <ul>
+                        <li>Bab 12: Jangan Takut Sama AI — Kenapa Lo Harusnya Excited</li>
+                        <li>Bab 13: AI Tanpa Framework = Sampah Canggih</li>
+                        <li>Bab 14: Template: Ubah Cara Kerja Lo Jadi Instruksi AI</li>
+                        <li>Bab 15: Belajar AI Tanpa Guru — dan Debug Kalau Hasilnya Jelek</li>
+                        <li>Bab 16: Dari Manual ke Auto — Roadmap Realistis</li>
+                    </ul>
+                </div>
+                <div class="toc-part">
+                    <div class="toc-part-header">PART 5 — LEVEL UP</div>
+                    <ul>
+                        <li>Bab 17: Bikin Bos Lo yang Butuh Lo — Bukan Sebaliknya</li>
+                        <li>Bab 18: Framework = Uang — Hitung Langsung ke Kantong Lo</li>
+                        <li>Bab 19: Career Moat — Makin Susah Digantiin</li>
+                        <li>Bab 20: Jebakan yang Bikin Lo Gagal (dan Cara Hindarin)</li>
+                        <li>Bab 21: Action Plan 30 Hari — Dari Baca Jadi Praktek</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section class="bonuses">
+        <div class="container">
+            <div class="bonus-wrapper" data-animate="fade-up">
+                <div class="section-label dark">● BONUS GRATIS</div>
+                <h2>Lo Juga Dapet Amunisi Ini:</h2>
+                <div class="bonus-grid">
+                    <div class="bonus-item">
+                        <div class="bonus-num">B1</div>
+                        <h4>Make-Up Your CV</h4>
+                        <p>Template CV ATS-Friendly yang lolos filter AI rekrutmen. Karena 88% kandidat qualified justru ter-screen out.</p>
+                    </div>
+                    <div class="bonus-item">
+                        <div class="bonus-num">B2</div>
+                        <h4>7 Template Framework</h4>
+                        <p>Tinggal copy-paste, modify, langsung pakai di kerjaan atau side hustle. Nggak perlu bikin dari nol.</p>
+                    </div>
+                    <div class="bonus-item">
+                        <div class="bonus-num">B3</div>
+                        <h4>Self-Assessment</h4>
+                        <p>Seberapa AI-Proof lo? 10 pertanyaan, skor 1-5. Tau posisi lo sekarang, tau apa yang harus di-improve.</p>
+                    </div>
+                    <div class="bonus-item">
+                        <div class="bonus-num">B4</div>
+                        <h4>Weekly Checklist</h4>
+                        <p>Print, tempel di meja. Rutinitas Senin-Jumat yang bikin framework lo jalan, bukan cuma teori.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section id="author" class="author">
+        <div class="container">
+            <div class="author-content" data-animate="fade-up">
+                <div class="author-info">
+                    <div class="section-label">● TENTANG PENULIS</div>
+                    <h2>Aji Wanda</h2>
+                    <p class="author-title">Founder Hijacket & Flexeet (AI Automation Agency)</p>
+                    <p class="author-bio">Bukan teorisi. Bukan motivator. <strong>Praktisi</strong> yang udah implementasi AI di bisnis real dan ngasilin hasil nyata.</p>
+                    <div class="author-creds">
+                        <div class="cred-item">
+                            <span class="cred-icon">🏛️</span>
+                            <div>
+                                <strong>Hijacket — 10+ Tahun</strong>
+                                <p>Brand jaket modest. Lolos kurasi Jakarta Muslim Fashion Week 2025.</p>
+                            </div>
+                        </div>
+                        <div class="cred-item">
+                            <span class="cred-icon">🤖</span>
+                            <div>
+                                <strong>Flexeet — AI Automation Agency</strong>
+                                <p>Partner Cekat.AI. CS cost turun 87%. Saving >Rp 1.2 miliar/tahun dari 1 implementasi AI.</p>
+                            </div>
+                        </div>
+                        <div class="cred-item">
+                            <span class="cred-icon">🎤</span>
+                            <div>
+                                <strong>Speaker Cekat Innovation 2025</strong>
+                                <p>Bareng Meta dan Microsoft. Background Manufacturing Engineering — Politeknik Astra.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="author-philosophy">
+                        <p>"<strong>90% Logic, 10% AI.</strong>"</p>
+                        <p>"<strong>Jam terbang adalah harga mati.</strong>"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Data -->
+    <section class="proof">
+        <div class="container">
+            <div class="proof-grid" data-animate="fade-up">
+                <div class="proof-item">
+                    <div class="proof-num">800%</div>
+                    <p>Lebih produktif — gap antara high performers vs rata-rata <span>(McKinsey)</span></p>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-num">43%</div>
+                    <p>Kenaikan performa junior yang pakai AI vs 17% untuk senior <span>(Harvard/BCG)</span></p>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-num">25%</div>
+                    <p>Lebih cepat + 40% lebih berkualitas — output konsultan yang pakai AI <span>(Harvard/BCG)</span></p>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-num">10-15%</div>
+                    <p>Premium gaji yang rela dibayar untuk karyawan data-literate <span>(DataCamp)</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Not For Section -->
+    <section class="notfor">
+        <div class="container">
+            <div class="notfor-grid" data-animate="fade-up">
+                <div class="notfor-col">
+                    <h3>❌ Buku Ini BUKAN Buat Lo Kalau:</h3>
+                    <ul>
+                        <li>Lo nyari buku motivasi "semangat ya!" yang lo tutup dan lupa besoknya</li>
+                        <li>Lo nggak mau praktek — cuma mau baca doang</li>
+                        <li>Lo udah level senior manager dan cari strategi organisasi</li>
+                        <li>Lo nyari tutorial coding atau prompt library</li>
+                    </ul>
+                </div>
+                <div class="notfor-col yes">
+                    <h3>✅ Buku Ini SENJATA Lo Kalau:</h3>
+                    <ul>
+                        <li>Fresh grad yang mikir "kampus ngajarin teori, gimana gue survive?"</li>
+                        <li>Karyawan 1-3 tahun yang ngerasa stuck — sibuk tiap hari, gaji segitu-gitu aja</li>
+                        <li>Sering pindah kerja & butuh skill yang portable — laku di mana pun</li>
+                        <li>Punya side hustle (atau mau mulai) dan butuh 3x lebih produktif</li>
+                        <li>Udah pakai ChatGPT tapi tau: "gue cuma pakai buat hal-hal receh"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-label" data-animate="fade-up">● INVESTASI MASA DEPAN</div>
+            <h2 class="section-title" data-animate="fade-up">
+                Lebih Murah dari 1x Makan<br><em>di Restoran.</em>
+            </h2>
+
+            <!-- Price Comparison -->
+            <div class="price-compare" data-animate="fade-up">
+                <div class="compare-item dead">
+                    <span class="compare-label">Bootcamp AI</span>
+                    <span class="compare-price">Rp 5-20 Juta</span>
+                </div>
+                <div class="compare-item dead">
+                    <span class="compare-label">Mini Course</span>
+                    <span class="compare-price">Rp 500rb-1 Juta</span>
+                </div>
+                <div class="compare-item active">
+                    <span class="compare-label">AI-PROOF Ebook</span>
+                    <span class="compare-price">Rp 249.000</span>
+                    <span class="compare-badge">BEST VALUE</span>
+                </div>
+                <div class="compare-item dead">
+                    <span class="compare-label">Ebook Marketplace</span>
+                    <span class="compare-price">Rp 15-50rb</span>
+                    <span class="compare-note">Generik, no framework</span>
+                </div>
+            </div>
+
+            <!-- Pricing Card -->
+            <div class="pricing-card" data-animate="fade-up">
+                <div class="pricing-badge">🔥 LAUNCH PRICE — HEMAT 50%</div>
+                <div class="pricing-price">
+                    <span class="old-price">Rp 499.000</span>
+                    <span class="new-price">Rp 249.000</span>
+                    <span class="price-note">Sekali bayar. Akses selamanya.</span>
+                </div>
+                <div class="pricing-includes">
+                    <div class="pricing-item">✓ Full Ebook AI-PROOF (200+ Halaman, 21 Bab)</div>
+                    <div class="pricing-item">✓ 7 Template Framework Siap Pakai</div>
+                    <div class="pricing-item">✓ Template CV ATS-Friendly</div>
+                    <div class="pricing-item">✓ Self-Assessment + Weekly Checklist</div>
+                    <div class="pricing-item">✓ Akses Update Materi Selamanya</div>
+                </div>
+                <a href="https://wa.me/628123456789?text=Gue%20Mau%20Beli%20Ebook%20AI-PROOF%20%F0%9F%9B%A1%EF%B8%8F" class="btn-cta" id="ctaMain">
+                    🛡️ Gue Mau Jadi AI-Proof Sekarang!
+                </a>
+                <div class="pricing-secure">🔒 Pembayaran Aman via QRIS, GoPay, Transfer Bank</div>
+
+                <div class="pricing-roi">
+                    <h4>⚡ Hitung ROI-nya:</h4>
+                    <p>Gaji lo Rp 5jt → premium 10-15% = <strong>Rp 500rb-750rb tambahan/bulan.</strong></p>
+                    <p>Ebook Rp 249rb. <strong>ROI balik di bulan pertama.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-label" data-animate="fade-up">● FAQ</div>
+            <h2 class="section-title" data-animate="fade-up">Paling Sering Ditanyain</h2>
+            <div class="faq-list" data-animate="fade-up">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Buku ini buat siapa?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Buat Fresh Grad, Karyawan Junior (1-3 tahun), atau siapa pun yang ngerasa stuck dan takut kerjanya digantiin AI. Kalau lo punya side hustle — framework di buku ini juga bisa langsung dipakai. 63% Gen-Z Indonesia punya side hustle, dan buku ini ditulis buat lo juga.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Gue gaptek, bisa paham nggak?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sangat bisa. Buku ini 90% ngebahas LOGIKA dan CARA MIKIR. AI cuma tools yang bakal lo pelajarin dengan bahasa simpel. Di Bab 5, lo cuma perlu belajar 6 simbol markdown — itu aja udah bikin lo AI-ready.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>"Ini cuma ebook, bisa dapat gratis di internet."</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Coba cari ebook berbahasa Indonesia yang kasih: 7 framework berpikir dengan template siap pakai, data riset dari 10+ tahun bisnis real, cara debug output AI yang jelek, dan CV template ATS-friendly. Nggak ada. Yang ada: ebook gratis tapi generik, atau course mahal Rp 500rb-20jt. AI-PROOF isi gap itu.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>"Gue masih staff, ini buat manager dong?"</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Justru sebaliknya. Studi Harvard/BCG menunjukkan junior yang pakai AI naik performanya 43% — jauh lebih tinggi dari senior (17%). Lo yang paling diuntungkan. Dan buku ini specifically ditulis supaya lo bisa naik dari "Tukang Kerjain" jadi "Tukang Desain" tanpa harus jadi manager dulu.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>"Percuma, atasan gue nggak appreciate."</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Bab 17 specifically bahas ini — gimana bikin bos lo yang butuh lo, bukan sebaliknya. Plus, framework yang lo bikin = aset portable. Kalau atasan lo nggak appreciate, lo bawa ke tempat yang appreciate. Itu namanya bargaining power.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>"Nanti aja, belum urgent."</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>78% pekerja Indonesia udah takut digeser AI (Jobstreet 2026). Amazon pangkas 16.000 posisi. Meta pecat 1.500 orang. 1.01 juta sarjana menganggur. 2.7 juta orang udah putus asa cari kerja. Lo masih mau nunggu?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-content" data-animate="fade-up">
+                <h2>92% Pekerja Indonesia Udah Pakai AI.<br><em>Cuma 10% yang Pakai Dengan Benar.</em></h2>
+                <p>Lo yang ngerti = lo yang masuk top 10%.<br>Dan buku ini yang bikin lo ngerti.</p>
+                <a href="#pricing" class="btn-primary large">🛡️ Jadi AI-Proof Sekarang — Rp 249.000</a>
+                <span class="final-note">"Yang bikin lo valuable bukan seberapa keras lo kerja — tapi seberapa susah lo digantiin."</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">AI-<span>PROOF</span></div>
+                <p>© 2026 Aji Wanda x AICEO. All Rights Reserved.</p>
+                <p class="footer-sub">Produk dari 🏛️ The AI CEO</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

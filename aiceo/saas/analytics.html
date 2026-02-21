@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AICEO Analytics Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FBBF24",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0B0F19",
+                        "card-dark": "#161B22",
+                        "sidebar-dark": "#0D1117",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Inter', sans-serif; }
+        }
+        .glass-sidebar {
+            backdrop-filter: blur(12px);
+            background-color: rgba(13, 17, 23, 0.85);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        @media (max-width: 1024px) {
+            .mobile-stack {
+                flex-direction: column !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+            .sidebar-collapsed {
+                display: none !important;
+            }
+            .content-area {
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+    <!-- Header Mobile -->
+    <header
+        class="lg:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-sidebar-dark sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-slate-900 text-lg">psychology</span>
+            </div>
+            <span class="text-lg font-bold tracking-tight">AICEO</span>
+        </div>
+        <button class="p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <div class="flex mobile-stack h-screen overflow-hidden">
+        <!-- Sidebar Kiri (Standardized) -->
+        <aside
+            class="w-64 sidebar-collapsed lg:flex glass-sidebar border-r border-slate-200 dark:border-slate-800 flex flex-col z-20 h-full">
+            <div class="p-6">
+                <!-- Brand -->
+                <div class="flex items-center gap-3 mb-8">
+                    <div
+                        class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-slate-900">psychology</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">AICEO</span>
+                </div>
+
+                <!-- Admin Status -->
+                <div class="bg-primary/10 border border-primary/20 rounded-lg p-3 mb-6">
+                    <div class="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-sm">verified_user</span>
+                        Admin Workspace
+                    </div>
+                </div>
+
+                <!-- Main Nav -->
+                <nav class="space-y-1">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="index.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="chat.html">
+                        <span class="material-symbols-outlined">chat_bubble</span>
+                        <span>Chat</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-all"
+                        href="analytics.html">
+                        <span class="material-symbols-outlined">analytics</span>
+                        <span>Analytics</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="decision_units.html">
+                        <span class="material-symbols-outlined">shield</span>
+                        <span>Decision Units</span>
+                    </a>
+                </nav>
+
+                <!-- Mentor Favorit -->
+                <div class="mt-8">
+                    <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3 px-3">
+                        Mentor Favorit</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 px-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-700 overflow-hidden ring-2 ring-primary/30">
+                                <img alt="Adrian" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8" />
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-semibold truncate">Adrian Firnanda</p>
+                                <p class="text-xs text-slate-500">TikTok Expert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toggles (Standardized Bottom) -->
+            <div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+                <div class="flex p-1 bg-slate-200 dark:bg-white/5 rounded-lg items-center">
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">light_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md bg-white dark:bg-white/10 shadow-sm text-xs flex justify-center items-center text-slate-900 dark:text-white">
+                        <span class="material-symbols-outlined text-sm">dark_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">settings_brightness</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content (Middle Area) -->
+        <main
+            class="content-area flex-1 overflow-y-auto custom-scrollbar p-4 lg:p-8 bg-background-light dark:bg-background-dark">
+            <div class="w-full">
+                <!-- Header & Filters -->
+                <div class="mb-10">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                        <div>
+                            <h1 class="text-2xl font-bold mb-1">Analytics Dashboard</h1>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">Insight penggunaan platform dan
+                                engagement
+                                pengguna terhadap bot.</p>
+                        </div>
+                        <button
+                            class="flex items-center gap-2 px-6 py-2.5 bg-primary text-slate-900 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+                            <span class="material-symbols-outlined text-lg">download</span>
+                            Export Report
+                        </button>
+                    </div>
+
+                    <!-- Sticky Filter Bar -->
+                    <div
+                        class="sticky top-0 z-30 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-y border-slate-200 dark:border-slate-800 -mx-4 px-4 lg:-mx-8 lg:px-8">
+                        <div class="flex flex-wrap items-center gap-4">
+                            <!-- Date Range -->
+                            <div
+                                class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-xl">
+                                <span class="material-symbols-outlined text-slate-400 text-sm">calendar_month</span>
+                                <select
+                                    class="bg-transparent border-none text-xs font-bold focus:ring-0 cursor-pointer">
+                                    <option>Last 7 Days</option>
+                                    <option>Last 30 Days</option>
+                                    <option>Custom Range</option>
+                                </select>
+                            </div>
+
+                            <!-- Expert Filter (Multi-select concept) -->
+                            <div
+                                class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-xl">
+                                <span class="material-symbols-outlined text-slate-400 text-sm">person</span>
+                                <select
+                                    class="bg-transparent border-none text-xs font-bold focus:ring-0 cursor-pointer">
+                                    <option>All Experts</option>
+                                    <option>Adrian Firnanda</option>
+                                    <option>Aji Wanda</option>
+                                    <option>Dewi Sartika</option>
+                                </select>
+                            </div>
+
+                            <!-- Domain Filter -->
+                            <div
+                                class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-xl">
+                                <span class="material-symbols-outlined text-slate-400 text-sm">category</span>
+                                <select
+                                    class="bg-transparent border-none text-xs font-bold focus:ring-0 cursor-pointer">
+                                    <option>All Domains</option>
+                                    <option>Finance</option>
+                                    <option>Marketing</option>
+                                    <option>Operations</option>
+                                    <option>General</option>
+                                </select>
+                            </div>
+
+                            <div class="ml-auto flex items-center gap-2">
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Live
+                                    Updates</span>
+                                <span class="block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI Summary Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div
+                        class="p-4 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Total Users</p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white">8</p>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Active Bots</p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white">12</p>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Decision Units</p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white">15</p>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Total Chats</p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white">58</p>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <!-- Bot Popularity Chart -->
+                    <div
+                        class="p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Bot Popularity</h3>
+                        <div class="h-48 relative">
+                            <canvas id="botPopularityChart"></canvas>
+                        </div>
+                    </div>
+                    <!-- Daily Activity Chart -->
+                    <div
+                        class="p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Daily Activity (Last
+                            7 Days)</h3>
+                        <div class="h-48 relative">
+                            <canvas id="dailyActivityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic Distribution & Top Users -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Topic Distribution Pie -->
+                    <div
+                        class="md:col-span-1 p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Topic Distribution
+                        </h3>
+                        <div class="h-48 relative">
+                            <canvas id="topicDistributionChart"></canvas>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-2 h-2 rounded-full bg-primary"></span>Finance</span>
+                                <span class="font-bold">40%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-2 h-2 rounded-full bg-slate-500"></span>Marketing</span>
+                                <span class="font-bold">20%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-2 h-2 rounded-full bg-slate-400"></span>Operations</span>
+                                <span class="font-bold">13%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Users Leaderboard -->
+                    <div
+                        class="md:col-span-2 p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Top Users
+                            Leaderboard
+                        </h3>
+                        <div class="space-y-4">
+                            <div
+                                class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center font-bold text-slate-900 text-xs">
+                                        1
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-bold">AICEO Admin</p>
+                                        <p class="text-xs text-slate-500">Superuser</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-bold">15 sessions</p>
+                                    <p class="text-xs text-primary font-bold">48 credits</p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center font-bold text-slate-400 text-xs">
+                                        2
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-bold">Demo User</p>
+                                        <p class="text-xs text-slate-500">Pro Member</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-bold">5 sessions</p>
+                                    <p class="text-xs text-primary font-bold">28 credits</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Knowledge Base & Decision Patterns (Expanded) -->
+                <div class="space-y-6 mb-20">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500">Knowledge Base & Decision
+                            Patterns</h3>
+                        <button class="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">add</span>
+                            Add New Pattern
+                        </button>
+                    </div>
+
+                    <!-- Logic Flow Visualization (Decision Tree) -->
+                    <div
+                        class="p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-bold flex items-center gap-2">
+                                <span class="material-symbols-outlined text-blue-500">hub</span>
+                                Active Decision Flow: "Margin-Based Strategy"
+                            </h4>
+                            <p class="text-sm text-slate-500">Current logic for handling user inquiries about pricing
+                                and HPP.</p>
+                        </div>
+
+                        <!-- Flow Diagram Container -->
+                        <div class="relative">
+                            <!-- Step 1: Trigger -->
+                            <div class="flex flex-col md:flex-row gap-4 items-center mb-8 relative z-10">
+                                <div
+                                    class="w-full md:w-1/4 p-4 rounded-xl bg-slate-50 dark:bg-white/5 border-2 border-slate-200 dark:border-slate-700 text-center">
+                                    <p class="text-xs font-bold text-slate-500 uppercase mb-1">Trigger Input</p>
+                                    <p class="font-bold text-slate-900 dark:text-white">"HPP / Margin"</p>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-slate-300 md:rotate-0 rotate-90">arrow_forward</span>
+                                <div
+                                    class="w-full md:w-1/4 p-4 rounded-xl bg-blue-50 dark:bg-blue-500/10 border-2 border-blue-500/30 text-center">
+                                    <p class="text-xs font-bold text-blue-500 uppercase mb-1">Check Condition</p>
+                                    <p class="font-bold text-slate-900 dark:text-white">Calculate Margin Multiplier</p>
+                                </div>
+                            </div>
+
+                            <!-- Branches -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                                <!-- Branch A: Low Margin -->
+                                <div
+                                    class="relative p-5 rounded-xl bg-red-50 dark:bg-red-500/5 border border-red-200 dark:border-red-500/20">
+                                    <div
+                                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white dark:bg-card-dark px-2 py-0.5 rounded-full border border-red-200 dark:border-red-500/20">
+                                        <span class="text-[10px] font-bold text-red-500">IF < 3x</span>
+                                    </div>
+                                    <div class="flex items-start gap-3 mb-3">
+                                        <span class="material-symbols-outlined text-red-500">store</span>
+                                        <div>
+                                            <p class="font-bold text-slate-900 dark:text-white">Official Store Strategy
+                                            </p>
+                                            <p class="text-xs text-slate-500">DU_TTS_001</p>
+                                        </div>
+                                    </div>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                                            Fokus pada branding premium
+                                        </li>
+                                        <li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                                            Hindari perang harga
+                                        </li>
+                                        <li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                                            Optimasi konten edukasi
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Branch B: High Margin -->
+                                <div
+                                    class="relative p-5 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                                    <div
+                                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white dark:bg-card-dark px-2 py-0.5 rounded-full border border-green-200 dark:border-green-500/20">
+                                        <span class="text-[10px] font-bold text-green-500">IF ≥ 4x</span>
+                                    </div>
+                                    <div class="flex items-start gap-3 mb-3">
+                                        <span class="material-symbols-outlined text-green-500">groups</span>
+                                        <div>
+                                            <p class="font-bold text-slate-900 dark:text-white">Affiliate Strategy</p>
+                                            <p class="text-xs text-slate-500">DU_TTS_002</p>
+                                        </div>
+                                    </div>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                                            Massive affiliate recruitment
+                                        </li>
+                                        <li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                                            High commission structure
+                                        </li>
+                                        <li class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                                            Sample product distribution
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Decision Unit Registry -->
+                    <div
+                        class="rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 overflow-hidden">
+                        <div
+                            class="p-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-white/[0.02]">
+                            <h3 class="text-sm font-bold text-slate-700 dark:text-slate-200">Decision Unit Registry</h3>
+                            <div class="flex items-center gap-2">
+                                <input type="text" placeholder="Search DU..."
+                                    class="bg-white dark:bg-black/20 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1 text-xs focus:ring-primary focus:border-primary">
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr
+                                        class="text-xs text-slate-400 uppercase tracking-widest border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-white/[0.01]">
+                                        <th class="py-3 px-4 font-bold">ID & Category</th>
+                                        <th class="py-3 px-4 font-bold">Concept / Trigger</th>
+                                        <th class="py-3 px-4 font-bold">Speaker</th>
+                                        <th class="py-3 px-4 font-bold">Logic / Behavior</th>
+                                        <th class="py-3 px-4 font-bold text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                    <!-- DU Item 1 -->
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                        <td class="py-3 px-4 align-top">
+                                            <span
+                                                class="font-mono text-[10px] font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">DU_TTS_001</span>
+                                            <div class="text-[10px] text-slate-500 mt-1 uppercase font-bold">TikTok Shop
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4 align-top">
+                                            <p class="text-sm font-bold text-slate-900 dark:text-white">Margin < 3x</p>
+                                                    <p class="text-xs text-slate-500 mt-0.5">Focus: Official Store</p>
+                                        </td>
+                                        <td class="py-3 px-4 align-top">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-5 h-5 rounded-full bg-slate-700 overflow-hidden">
+                                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8"
+                                                        class="w-full h-full object-cover">
+                                                </div>
+                                                <span class="text-xs font-semibold">Adrian F.</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4 align-top">
+                                            <p
+                                                class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                                                Directs user to build strong branding and official store presence.
+                                                Discourages heavy discounting.
+                                            </p>
+                                        </td>
+                                        <td class="py-3 px-4 align-top text-center">
+                                            <span
+                                                class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- DU Item 2 -->
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                        <td class="py-3 px-4 align-top">
+                                            <span
+                                                class="font-mono text-[10px] font-bold text-blue-500 bg-blue-500/10 px-1.5 py-0.5 rounded">DU_TTS_002</span>
+                                            <div class="text-[10px] text-slate-500 mt-1 uppercase font-bold">TikTok Shop
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4 align-top">
+                                            <p class="text-sm font-bold text-slate-900 dark:text-white">Margin ≥ 4x</p>
+                                            <p class="text-xs text-slate-500 mt-0.5">Focus: Affiliate</p>
+                                        </td>
+                                        <td class="py-3 px-4 align-top">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-5 h-5 rounded-full bg-slate-700 overflow-hidden">
+                                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8"
+                                                        class="w-full h-full object-cover">
+                                                </div>
+                                                <span class="text-xs font-semibold">Adrian F.</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4 align-top">
+                                            <p
+                                                class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                                                Shift strategy to massive affiliate recruitment and high commission
+                                                incentives.
+                                            </p>
+                                        </td>
+                                        <td class="py-3 px-4 align-top text-center">
+                                            <span
+                                                class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- DU Item 3 -->
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                        <td class="py-3 px-4 align-top">
+                                            <span
+                                                class="font-mono text-[10px] font-bold text-slate-500 bg-slate-500/10 px-1.5 py-0.5 rounded">DU_FB_001</span>
+                                            <div class="text-[10px] text-slate-500 mt-1 uppercase font-bold">FB Ads
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4 align-top">
+                                            <p class="text-sm font-bold text-slate-900 dark:text-white">Winning Creative
+                                            </p>
+                                            <p class="text-xs text-slate-500 mt-0.5">Scale Condition</p>
+                                        </td>
+                                        <td class="py-3 px-4 align-top">
+                                            <div class="flex items-center gap-2">
+                                                <div
+                                                    class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                                    AW
+                                                </div>
+                                                <span class="text-xs font-semibold">Aji Wanda</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4 align-top">
+                                            <p
+                                                class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                                                If CTR > 2% and ROAS > 3x, duplicate ad set and increase budget by 20%.
+                                            </p>
+                                        </td>
+                                        <td class="py-3 px-4 align-top text-center">
+                                            <span
+                                                class="material-symbols-outlined text-slate-400 text-sm">pending</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div
+                            class="p-3 bg-slate-50 dark:bg-white/[0.02] border-t border-slate-200 dark:border-slate-800 text-center">
+                            <button class="text-xs font-bold text-slate-500 hover:text-primary transition-colors">View
+                                All 15 Decision Units</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-sidebar-dark border-t border-slate-200 dark:border-slate-800 flex justify-around items-center p-2 z-50">
+        <a href="chat.html" class="flex flex-col items-center p-2 text-slate-500">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="text-xs font-bold mt-1">Chat</span>
+        </a>
+        <a href="index.html" class="flex flex-col items-center p-2 text-slate-500">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-xs font-bold mt-1">Dash</span>
+        </a>
+        <a href="analytics.html" class="flex flex-col items-center p-2 text-primary">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="text-xs font-bold mt-1">Stats</span>
+        </a>
+        <button class="flex flex-col items-center p-2 text-slate-500">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="text-xs font-bold mt-1">Config</span>
+            </div>
+    </nav>
+
+    <script>
+        // Charts Initialization
+        const ctxPopularity = document.getElementById('botPopularityChart').getContext('2d');
+        new Chart(ctxPopularity, {
+            type: 'bar',
+            data: {
+                labels: ['Adrian F.', 'Aji W.', 'Dewi S.', 'Raka P.'],
+                datasets: [{
+                    label: 'Sessions',
+                    data: [28, 19, 11, 8],
+                    backgroundColor: '#FBBF24',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        const ctxActivity = document.getElementById('dailyActivityChart').getContext('2d');
+        new Chart(ctxActivity, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Chats',
+                    data: [12, 19, 15, 22, 18, 10, 14],
+                    borderColor: '#FBBF24',
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(251, 191, 36, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        const ctxTopic = document.getElementById('topicDistributionChart').getContext('2d');
+        new Chart(ctxTopic, {
+            type: 'doughnut',
+            data: {
+                labels: ['Finance', 'Marketing', 'Operations', 'General'],
+                datasets: [{
+                    data: [40, 25, 20, 15],
+                    backgroundColor: ['#FBBF24', '#334155', '#475569', '#cbd5e1'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: { legend: { display: false } }
+            }
+        });
+    </script>
+</body>
+
+</html>

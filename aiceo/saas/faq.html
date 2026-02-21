@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AICEO - FAQ</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FBBF24",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0B0F19",
+                        "card-dark": "#161B22",
+                        "sidebar-dark": "#0D1117",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { @apply font-sans bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100; }
+        }
+        
+        .glass-sidebar {
+            backdrop-filter: blur(12px);
+            background-color: rgba(13, 17, 23, 0.85);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        
+        .faq-accordion .faq-item[open] .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-accordion .faq-item[open] summary {
+            @apply border-primary/50 bg-primary/5;
+        }
+        @media (max-width: 1024px) {
+            .mobile-stack {
+                flex-direction: column !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+            .sidebar-collapsed {
+                display: none !important;
+            }
+            /* Drawer Mobile */
+            .sidebar-mobile-open {
+                display: flex !important;
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 75% !important;
+                max-width: 300px;
+                height: 100vh !important;
+                z-index: 100 !important;
+                background-color: rgba(13, 17, 23, 0.95);
+                backdrop-filter: blur(12px);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .content-area {
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col lg:flex-row bg-background-light dark:bg-background-dark">
+
+    <!-- Mobile Header -->
+    <header
+        class="lg:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-sidebar-dark sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-slate-900 text-lg">psychology</span>
+            </div>
+            <span class="text-lg font-bold tracking-tight">AICEO</span>
+        </div>
+        <button class="p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()"
+        class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden backdrop-blur-sm transition-opacity"></div>
+
+    <!-- Sidebar (Standardized) -->
+    <aside id="main-sidebar"
+        class="w-64 sidebar-collapsed hidden lg:flex glass-sidebar border-r border-slate-200 dark:border-slate-800 flex-col z-20 shrink-0 h-screen sticky top-0">
+        <div class="flex-1 overflow-y-auto custom-scrollbar p-6 pb-2">
+            <div class="flex items-center gap-3 mb-8">
+                <div
+                    class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                    <span class="material-symbols-outlined text-slate-900">psychology</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight">AICEO</span>
+            </div>
+
+            <div class="bg-primary/10 border border-primary/20 rounded-lg p-3 mb-6">
+                <div class="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-sm">verified_user</span>
+                    Admin Workspace
+                </div>
+            </div>
+
+            <nav class="space-y-1">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                    href="index.html">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                    href="chat.html">
+                    <span class="material-symbols-outlined">chat_bubble</span>
+                    <span>Chat</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                    href="credits.html">
+                    <span class="material-symbols-outlined">account_balance_wallet</span>
+                    <span>Credits</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                    href="decision_units.html">
+                    <span class="material-symbols-outlined">shield</span>
+                    <span>Decision Units</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                    href="bot_personas.html">
+                    <span class="material-symbols-outlined">smart_toy</span>
+                    <span>Bots</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                    href="news.html">
+                    <span class="material-symbols-outlined">newspaper</span>
+                    <span>News & Updates</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-all"
+                    href="faq.html">
+                    <span class="material-symbols-outlined">quiz</span>
+                    <span>FAQ</span>
+                </a>
+            </nav>
+
+            <div class="mt-8">
+                <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3 px-3">
+                    Mentor Favorit</p>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 px-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-700 overflow-hidden ring-2 ring-primary/30">
+                            <img alt="Adrian" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8" />
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-xs font-semibold truncate">Adrian Firnanda</p>
+                            <p class="text-xs text-slate-500">TikTok Expert</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="p-4 border-t border-slate-200 dark:border-slate-800 space-y-4 bg-white/5 backdrop-blur-md">
+            <!-- Theme Toggles -->
+            <div class="flex p-1 bg-slate-200 dark:bg-white/5 rounded-lg items-center">
+                <button
+                    class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                    <span class="material-symbols-outlined text-sm">light_mode</span>
+                </button>
+                <button
+                    class="flex-1 py-1.5 rounded-md bg-white dark:bg-white/10 shadow-sm text-xs flex justify-center items-center text-slate-900 dark:text-white">
+                    <span class="material-symbols-outlined text-sm">dark_mode</span>
+                </button>
+                <button
+                    class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                    <span class="material-symbols-outlined text-sm">settings_brightness</span>
+                </button>
+            </div>
+
+            <!-- SidebarUserCard -->
+            <div onclick="window.location.href='settings.html'"
+                class="bg-[#0d0d0f] rounded-[16px] p-3 border border-white/5 flex items-center justify-between group cursor-pointer hover:bg-[#121214] transition-all mb-1">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-[40px] h-[40px] rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-lg shadow-lg shadow-amber-500/10">
+                        A
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="text-white font-semibold text-[13px] leading-tight truncate">AICEO Admin</span>
+                        <span class="text-slate-500 text-[10px] truncate">admin@aiceo.id</span>
+                    </div>
+                </div>
+                <button
+                    class="text-slate-500 hover:text-primary transition-all group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.6)] shrink-0">
+                    <span class="material-symbols-outlined text-lg">logout</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full p-4 lg:p-8 overflow-y-auto custom-scrollbar">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <!-- Header Section -->
+            <div class="text-center space-y-4">
+                <h1 class="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">Help Center
+                </h1>
+                <p class="text-slate-500 dark:text-slate-400 text-lg font-medium">Everything you need to know about the
+                    AICEO platform.</p>
+
+                <!-- Search Bar -->
+                <div class="max-w-2xl mx-auto mt-8 relative group">
+                    <span
+                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+                    <input type="text" placeholder="Search for answers..."
+                        class="w-full bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-2xl py-4 pl-12 pr-4 text-sm font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all shadow-sm">
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                        <kbd
+                            class="px-2 py-1 bg-slate-100 dark:bg-white/5 rounded-md text-[10px] font-bold text-slate-400 border border-slate-200 dark:border-slate-800">⌘</kbd>
+                        <kbd
+                            class="px-2 py-1 bg-slate-100 dark:bg-white/5 rounded-md text-[10px] font-bold text-slate-400 border border-slate-200 dark:border-slate-800">K</kbd>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div
+                    class="bg-white dark:bg-card-dark p-6 rounded-3xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all cursor-pointer group text-center">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-primary">rocket_launch</span>
+                    </div>
+                    <h3 class="font-black text-slate-900 dark:text-white">Getting Started</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Setup your first AI bot</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-card-dark p-6 rounded-3xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all cursor-pointer group text-center">
+                    <div
+                        class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-blue-500">account_balance_wallet</span>
+                    </div>
+                    <h3 class="font-black text-slate-900 dark:text-white">Billing & Credits</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Manage tokens & top-ups</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-card-dark p-6 rounded-3xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all cursor-pointer group text-center">
+                    <div
+                        class="w-12 h-12 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-green-500">security</span>
+                    </div>
+                    <h3 class="font-black text-slate-900 dark:text-white">Privacy & Safety</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Data security & guardrails</p>
+                </div>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="space-y-4 faq-accordion">
+                <h2 class="text-2xl font-black text-slate-900 dark:text-white px-2">Popular Questions</h2>
+
+                <details class="faq-item group" open>
+                    <summary
+                        class="list-none cursor-pointer p-6 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-3xl flex items-center justify-between transition-all hover:bg-slate-50 dark:hover:bg-white/5">
+                        <span class="font-black text-slate-900 dark:text-white pr-4">How does Grounded Logic V4.0
+                            work?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-300 text-slate-400">expand_more</span>
+                    </summary>
+                    <div
+                        class="p-6 text-slate-500 dark:text-slate-400 text-sm leading-relaxed border-x border-b border-slate-100 dark:border-slate-800/50 rounded-b-3xl -mt-4 pt-10">
+                        Grounded Logic V4.0 is our proprietary reasoning engine that connects real-time market data with
+                        specialized business personas. It doesn't just "chat"—it cross-references inventory levels, ad
+                        spending, and historical sales trends to provide actionable strategic bullet points.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary
+                        class="list-none cursor-pointer p-6 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-3xl flex items-center justify-between transition-all hover:bg-slate-50 dark:hover:bg-white/5">
+                        <span class="font-black text-slate-900 dark:text-white pr-4">Can I train bots with my own
+                            internal company documents?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-300 text-slate-400">expand_more</span>
+                    </summary>
+                    <div
+                        class="p-6 text-slate-500 dark:text-slate-400 text-sm leading-relaxed border-x border-b border-slate-100 dark:border-slate-800/50 rounded-b-3xl -mt-4 pt-10">
+                        Absolutely. You can upload PDFs, CSVs, or provide URLs in the Knowledge Base section (coming
+                        soon in AICEO War Room). The AI uses RAG (Retrieval-Augmented Generation) to ensure all answers
+                        stay within the context of your specific business rules.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary
+                        class="list-none cursor-pointer p-6 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-3xl flex items-center justify-between transition-all hover:bg-slate-50 dark:hover:bg-white/5">
+                        <span class="font-black text-slate-900 dark:text-white pr-4">How are tokens/credits
+                            calculated?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-300 text-slate-400">expand_more</span>
+                    </summary>
+                    <div
+                        class="p-6 text-slate-500 dark:text-slate-400 text-sm leading-relaxed border-x border-b border-slate-100 dark:border-slate-800/50 rounded-b-3xl -mt-4 pt-10">
+                        Credits are spent based on the complexity of the query and the bot's processing depth. Standard
+                        chats usually cost 0.5 - 1.2 credits, while deep strategic analyses involving large dataset
+                        crunching may cost more. You can track your "Credit Velocity" in the Credits dashboard.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary
+                        class="list-none cursor-pointer p-6 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-3xl flex items-center justify-between transition-all hover:bg-slate-50 dark:hover:bg-white/5">
+                        <span class="font-black text-slate-900 dark:text-white pr-4">Is my business data shared with
+                            other users?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-300 text-slate-400">expand_more</span>
+                    </summary>
+                    <div
+                        class="p-6 text-slate-500 dark:text-slate-400 text-sm leading-relaxed border-x border-b border-slate-100 dark:border-slate-800/50 rounded-b-3xl -mt-4 pt-10">
+                        Never. AICEO uses isolated "Decision Units" (DUs). Each DU is an encrypted sandbox. Your data is
+                        used exclusively to fine-tune your own bots and is not accessible to other AICEO users or used
+                        for training our global base models.
+                    </div>
+                </details>
+            </div>
+
+            <!-- Support Card -->
+            <div
+                class="bg-slate-900 dark:bg-primary rounded-[3rem] p-10 flex flex-col md:flex-row items-center gap-8 justify-between">
+                <div class="text-center md:text-left">
+                    <h3 class="text-2xl font-black text-white dark:text-slate-900">Still have questions?</h3>
+                    <p class="text-slate-400 dark:text-slate-800 font-medium mt-1">Our human support team is available
+                        24/7 for Enterprise users.</p>
+                </div>
+                <div class="flex gap-4">
+                    <button
+                        class="px-8 py-4 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black rounded-2xl hover:scale-105 transition-all shadow-xl">
+                        Contact Support
+                    </button>
+                    <button
+                        class="px-8 py-4 bg-white/10 text-white dark:text-slate-900 border border-white/20 dark:border-slate-900/20 font-black rounded-2xl hover:bg-white/20 transition-all">
+                        Live Chat
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Nav -->
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-sidebar-dark border-t border-slate-200 dark:border-slate-800 flex justify-around items-center p-2 z-50">
+        <a href="index.html" class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-xs font-bold mt-1">Dash</span>
+        </a>
+        <a href="chat.html" class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="text-xs font-bold mt-1">Chat</span>
+        </a>
+        <a href="bot_personas.html"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <span class="text-xs font-bold mt-1">Bots</span>
+        </a>
+        <button onclick="toggleSidebar()"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+            <span class="text-xs font-bold mt-1">Menu</span>
+        </button>
+    </nav>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('main-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            if (sidebar.classList.contains('sidebar-collapsed') || sidebar.classList.contains('hidden')) {
+                // Open
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.classList.remove('hidden');
+                sidebar.classList.add('sidebar-mobile-open');
+                overlay.classList.remove('hidden');
+            } else {
+                // Close
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('sidebar-mobile-open');
+                overlay.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>
+```

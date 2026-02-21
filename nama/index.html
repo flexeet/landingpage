@@ -1,0 +1,2553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAMA Marine | Smart Reservation Ecosystem</title>
+    <meta name="description" content="Transforming Sepa Island's reservation management with intelligent database architecture + AI automation.">
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Inline Style khusus untuk Demo Chat agar rapi tanpa ubah style.css -->
+    <style>
+        .chat-bubble { padding: 12px 16px; border-radius: 12px; margin-bottom: 10px; font-size: 0.9rem; max-width: 85%; }
+        .chat-user { background: #e2e8f0; color: var(--text-primary); border-bottom-left-radius: 2px; align-self: flex-start; }
+        .chat-bot { background: rgba(6, 182, 212, 0.15); color: var(--accent-dark); border-bottom-right-radius: 2px; align-self: flex-end; margin-left: auto; border: 1px solid rgba(6, 182, 212, 0.2); }
+        .feature-grid-dense { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .tech-stack-row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
+        .tech-item { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0.7; transition: 0.3s; }
+        .tech-item:hover { opacity: 1; transform: translateY(-5px); }
+    </style>
+</head>
+
+<body>
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+    
+    <!-- LOADER REMOVED - was causing blank page -->
+    <!-- Content loads directly now -->
+
+    <!-- 0. BACKGROUND LAYERS -->
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="ambient-glow" aria-hidden="true"></div>
+
+    <!-- 1. NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <span style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.2rem; color: var(--text-primary);">NAMA <span style="color: var(--accent);">MARINE</span></span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#problem">The Challenge</a>
+                <a href="#solution">Ecosystem</a>
+                <a href="#demo">Live Demo</a>
+                <a href="#database">Database</a>
+                <a href="#roi">ROI</a>
+            </div>
+            
+            <a href="#contact" class="nav-cta btn-glass">
+                <span>Contact Us</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="parallax-float f1"></div>
+        <div class="parallax-float f2"></div>
+        
+        <div class="container hero-container">
+            <div class="hero-grid">
+                <!-- LEFT COL: TEXT -->
+                <div class="hero-text-side fade-in-up">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span class="mono">AI-POWERED RESERVATION SYSTEM</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        <span class="reveal-wrap"><span class="reveal-text">From <span class="highlight-text">Chaos</span></span></span>
+                        <span class="reveal-wrap"><span class="reveal-text">To <span class="highlight-text">Clarity.</span></span></span>
+                    </h1>
+                    
+                    <p class="hero-desc">
+                        Transforming Sepa Island's reservation management with intelligent database architecture + AI automation.<br>
+                        <strong>95% Faster Booking. 100% Accuracy.</strong>
+                    </p>
+                    
+                    <div class="hero-actions">
+                        <a href="#solution" class="btn-primary btn-shine">
+                            <span>See How It Works</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="#demo" class="btn-text">Watch Demo</a>
+                    </div>
+                </div>
+
+                <!-- RIGHT COL: STATS VISUAL -->
+                <div class="hero-visual-side fade-in-up delay-1">
+                    <div class="hero-image-wrapper">
+                        <!-- Abstract Dashboard Representation -->
+                        <div class="glass-card" style="padding: 30px; width: 100%; position: relative; overflow: hidden;" data-tilt>
+                            <div class="mono" style="font-size: 0.8rem; margin-bottom: 20px; color: var(--accent);">LIVE SYSTEM METRICS</div>
+                            
+                            <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--text-primary);">95%</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">Faster Response</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--success);">24/7</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">AI Active Time</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Animated Line -->
+                            <div style="height: 4px; width: 100%; background: #f1f5f9; border-radius: 2px; overflow: hidden;">
+                                <div style="height: 100%; width: 60%; background: var(--accent); animation: loadingBar 2s infinite ease-in-out;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Tag -->
+                        <div class="founder-tag glass-card">
+                            <i class="bi bi-robot text-primary"></i>
+                            <div>
+                                <span class="d-block fw-700">AI Pilot</span>
+                                <span class="d-block text-xs mono">Processing Bookings...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PROBLEM SECTION (Original Content Restored) -->
+    <section id="problem" class="section-problem parallax-section">
+        <div class="parallax-bg" data-speed="0.3"></div>
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">CURRENT STATE</span>
+                <h2 class="section-title">The <span class="highlight-text">Challenge</span></h2>
+                <p class="section-sub">Operational friction that kills revenue.</p>
+            </div>
+            
+            <div class="problem-grid stagger-reveal">
+                <!-- Card 1: Excel Chaos -->
+                <article class="glass-card problem-card" data-tilt>
+                    <div class="card-visual">
+                        <div class="leak-container">
+                            <div class="leak-bar"></div>
+                            <div class="leak-drop d1"></div><div class="leak-drop d2"></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-num mono">01</span>
+                        <h3>Manual Excel Chaos</h3>
+                        <p>100+ rooms tracked manually. Prone to double-booking, pricing errors, and data loss.</p>
+                    </div>
+                </article>
+                
+                <!-- Card 2: WhatsApp Overload -->
+                <article class="glass-card problem-card" data-tilt>
+                    <div class="card-visual">
+                        <div class="gap-container">
+                            <div class="gap-line left"></div>
+                            <div class="gap-break">
+                                <span class="spark s1"></span>
+                                <span class="spark s2"></span>
+                            </div>
+                            <div class="gap-line right"></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-num mono">02</span>
+                        <h3>WhatsApp Overload</h3>
+                        <p>Multiple chat accounts. Messages get lost. No conversation history. Staff burnout.</p>
+                    </div>
+                </article>
+
+                <!-- Card 3: Pricing Complexity -->
+                <article class="glass-card problem-card" data-tilt>
+                    <div class="card-visual">
+                        <div class="burn-container">
+                            <div class="money-stack"></div>
+                            <div class="fire-flame"></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-num mono">03</span>
+                        <h3>Pricing Complexity</h3>
+                        <p>Weekday vs Weekend vs High Season + Room Premiums + Age Brackets = Human Error.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SOLUTION FLOW -->
+    <section id="solution" class="section-protocol">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">THE TRANSFORMATION</span>
+                <h2 class="section-title">Smart Reservation <span class="highlight-text">Ecosystem</span></h2>
+                <p class="section-sub">From a messy chat to a structured, automated workflow.</p>
+            </div>
+            
+            <div class="protocol-grid stagger-reveal">
+                <!-- Step 1 -->
+                <article class="protocol-card glass-card" data-tilt>
+                    <div class="protocol-number">01</div>
+                    <div class="protocol-icon-animated">
+                        <div class="whatsapp-ring-container">
+                            <div class="wa-ring r1"></div>
+                            <div class="wa-ring r2"></div>
+                            <i class="bi bi-whatsapp wa-icon"></i>
+                        </div>
+                    </div>
+                    <h3>WhatsApp Inquiry</h3>
+                    <p>Customer chats normally. No clunky apps to download.</p>
+                    <div class="protocol-output mono"><span>Input:</span> Natural Language</div>
+                </article>
+                
+                <!-- Step 2 -->
+                <article class="protocol-card glass-card" data-tilt>
+                    <div class="protocol-number">02</div>
+                    <div class="protocol-icon-animated">
+                        <div class="ai-brain-container">
+                            <div class="brain-pulse p1"></div>
+                            <div class="brain-pulse p2"></div>
+                            <div class="brain-pulse p3"></div>
+                            <i class="bi bi-robot ai-robot-icon"></i>
+                        </div>
+                    </div>
+                    <h3>AI Agent</h3>
+                    <p>Understands intent ("Book for 4 pax, Dec 25") and extracts structured data.</p>
+                    <div class="protocol-output mono"><span>Process:</span> Extraction</div>
+                </article>
+                
+                <!-- Step 3 -->
+                <article class="protocol-card glass-card" data-tilt>
+                    <div class="protocol-number">03</div>
+                    <div class="protocol-icon-animated">
+                        <div class="radar-container">
+                            <div class="radar-circle"></div>
+                            <div class="radar-center"><i class="bi bi-database"></i></div>
+                        </div>
+                    </div>
+                    <h3>Smart Database</h3>
+                    <p>Calculates dynamic price, checks availability, prevents double booking.</p>
+                    <div class="protocol-output mono"><span>Logic:</span> Validation</div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FEATURES & CAPABILITIES (Restored) -->
+    <section id="features" class="section-layer">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">KEY CAPABILITIES</span>
+                <h2 class="section-title">What This System <span class="highlight-text">Does</span></h2>
+            </div>
+            
+            <div class="feature-grid-dense stagger-reveal">
+                <!-- Feature 1 -->
+                <div class="glass-card" style="padding: 24px;" data-tilt>
+                    <i class="bi bi-calculator text-primary" style="font-size: 1.5rem; margin-bottom: 12px; display: block;"></i>
+                    <h4 style="margin-bottom: 8px;">Dynamic Pricing</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-body);">Auto-calculates weekday/weekend rates + room premiums + child discounts in milliseconds.</p>
+                    <div class="mono" style="font-size: 0.75rem; color: var(--accent); margin-top: 10px;">Ex: 2 adults + 1 child = Rp 3.9M</div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card" style="padding: 24px;" data-tilt>
+                    <i class="bi bi-calendar-check text-primary" style="font-size: 1.5rem; margin-bottom: 12px; display: block;"></i>
+                    <h4 style="margin-bottom: 8px;">Real-Time Availability</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-body);">Knows exact room status. Prevents double-booking. Suggests alternatives when full.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card" style="padding: 24px;" data-tilt>
+                    <i class="bi bi-boat text-primary" style="font-size: 1.5rem; margin-bottom: 12px; display: block;"></i>
+                    <h4 style="margin-bottom: 8px;">Boat Scheduling</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-body);">Matches passenger count to boat capacity. Optimizes charter vs regular routes automatically.</p>
+                    <div class="mono" style="font-size: 0.75rem; color: var(--accent); margin-top: 10px;">45 pax → Luwansa (40 cap) + Overflow</div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card" style="padding: 24px;" data-tilt>
+                    <i class="bi bi-file-earmark-person text-primary" style="font-size: 1.5rem; margin-bottom: 12px; display: block;"></i>
+                    <h4 style="margin-bottom: 8px;">Auto-Manifest</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-body);">Extracts passenger ID data from chat. Generates sailing permits (SIB) automatically.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-card" style="padding: 24px;" data-tilt>
+                    <i class="bi bi-shield-exclamation text-primary" style="font-size: 1.5rem; margin-bottom: 12px; display: block;"></i>
+                    <h4 style="margin-bottom: 8px;">Policy Engine</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-body);">AI answers baggage limits, corkage fees, and refund policies instantly based on T&C.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-card" style="padding: 24px;" data-tilt>
+                    <i class="bi bi-graph-up text-primary" style="font-size: 1.5rem; margin-bottom: 12px; display: block;"></i>
+                    <h4 style="margin-bottom: 8px;">Business Intel</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-body);">Revenue reports, occupancy rates, and customer segmentation—all queryable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5B. 24/7 AI CONCIERGE HIGHLIGHT -->
+    <section class="section-layer" style="background: linear-gradient(135deg, var(--bg-dark) 0%, #0c4a6e 100%); padding: 100px 0;">
+        <div class="container">
+            <div class="ai-concierge-grid scroll-reveal">
+                <div class="concierge-content">
+                    <span class="section-tag mono" style="color: var(--accent);">ALWAYS ON</span>
+                    <h2 style="font-size: 2.5rem; color: white; margin-bottom: 20px;">
+                        Your <span class="highlight-text">24/7</span> AI Concierge
+                    </h2>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 30px;">
+                        Tidak ada lagi chat yang terlewat. AI bekerja tanpa henti, bahkan saat tim Anda tidur.
+                    </p>
+                    
+                    <div class="concierge-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="bi bi-clock-history"></i></div>
+                            <div>
+                                <div class="stat-value">24/7</div>
+                                <div class="stat-label">Always Active</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="bi bi-lightning-charge"></i></div>
+                            <div>
+                                <div class="stat-value">&lt;3s</div>
+                                <div class="stat-label">Response Time</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="bi bi-infinity"></i></div>
+                            <div>
+                                <div class="stat-value">∞</div>
+                                <div class="stat-label">Concurrent Chats</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="bi bi-emoji-smile"></i></div>
+                            <div>
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Bad Mood Days</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concierge-comparison" style="margin-top: 40px;">
+                        <div class="compare-row">
+                            <span class="compare-label">Human CS (2 Staff)</span>
+                            <div class="compare-bar human">
+                                <div class="bar-fill" style="width: 33%;"></div>
+                                <span class="bar-text">8 jam/hari</span>
+                            </div>
+                        </div>
+                        <div class="compare-row">
+                            <span class="compare-label">AI Concierge</span>
+                            <div class="compare-bar ai">
+                                <div class="bar-fill" style="width: 100%;"></div>
+                                <span class="bar-text">24 jam/hari</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concierge-visual">
+                    <div class="clock-visual">
+                        <div class="clock-ring"></div>
+                        <div class="clock-center">
+                            <i class="bi bi-robot"></i>
+                            <span class="mono">ONLINE</span>
+                        </div>
+                        <div class="clock-pulse"></div>
+                    </div>
+                    <div class="time-zones">
+                        <div class="tz-item">🌅 06:00 - Pagi</div>
+                        <div class="tz-item">☀️ 12:00 - Siang</div>
+                        <div class="tz-item">🌆 18:00 - Sore</div>
+                        <div class="tz-item active">🌙 00:00 - Malam</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5C. AUTO-REMINDER FLOW -->
+    <section class="section-layer" style="background: var(--bg-pure); padding: 100px 0;">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">AUTOMATION</span>
+                <h2 class="section-title">Smart <span class="highlight-text">Reminder</span> System</h2>
+                <p class="section-sub">Automated follow-ups yang meningkatkan conversion dan mengurangi no-show.</p>
+            </div>
+
+            <!-- Reminder Timeline -->
+            <div class="reminder-timeline scroll-reveal">
+                <div class="timeline-line"></div>
+                
+                <!-- Booking Created -->
+                <div class="timeline-item">
+                    <div class="timeline-dot success"></div>
+                    <div class="timeline-card glass-card">
+                        <div class="timeline-time mono">T+0</div>
+                        <h4>📋 Booking Created</h4>
+                        <p>Invoice otomatis dikirim ke WhatsApp + Email</p>
+                        <div class="timeline-msg">
+                            <span class="msg-type outgoing">AI →</span>
+                            "Invoice INV-2026-0156 sudah dibuat. Total Rp 5.200.000. Silakan transfer ke BCA 123456789 a.n. PT NAMA."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Reminder -->
+                <div class="timeline-item">
+                    <div class="timeline-dot warning"></div>
+                    <div class="timeline-card glass-card">
+                        <div class="timeline-time mono">T+24h</div>
+                        <h4>⏰ Payment Reminder</h4>
+                        <p>Jika belum bayar dalam 24 jam</p>
+                        <div class="timeline-msg">
+                            <span class="msg-type outgoing">AI →</span>
+                            "Halo Kak Sarah! Reminder untuk booking Sepa Island 25-26 Des. Pembayaran belum kami terima. Mau dilanjutkan? 😊"
+                        </div>
+                    </div>
+                </div>
+
+                <!-- H-7 Reminder -->
+                <div class="timeline-item">
+                    <div class="timeline-dot accent"></div>
+                    <div class="timeline-card glass-card">
+                        <div class="timeline-time mono">H-7</div>
+                        <h4>📅 Pre-Trip Reminder</h4>
+                        <p>Minta data manifest untuk SIB</p>
+                        <div class="timeline-msg">
+                            <span class="msg-type outgoing">AI →</span>
+                            "Halo! Trip Anda tinggal 7 hari lagi 🏝️ Mohon kirimkan data KTP semua penumpang untuk pembuatan Surat Izin Berlayar."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- H-3 Reminder -->
+                <div class="timeline-item">
+                    <div class="timeline-dot accent"></div>
+                    <div class="timeline-card glass-card">
+                        <div class="timeline-time mono">H-3</div>
+                        <h4>📝 Final Check</h4>
+                        <p>Konfirmasi final + info penting</p>
+                        <div class="timeline-msg">
+                            <span class="msg-type outgoing">AI →</span>
+                            "3 hari lagi! ✅ SIB sudah diproses. Meeting point: Dermaga Marina Ancol, 07:00 WIB. Jangan lupa bawa sunscreen! 🧴"
+                        </div>
+                    </div>
+                </div>
+
+                <!-- H-1 Reminder -->
+                <div class="timeline-item">
+                    <div class="timeline-dot success"></div>
+                    <div class="timeline-card glass-card">
+                        <div class="timeline-time mono">H-1</div>
+                        <h4>🚀 Final Reminder</h4>
+                        <p>E-ticket + checklist lengkap</p>
+                        <div class="timeline-msg">
+                            <span class="msg-type outgoing">AI →</span>
+                            "Besok hari H! 🎉 E-ticket attached. Checklist: ✓ KTP ✓ Baju ganti ✓ Obat pribadi. See you at Sepa Island! 🏝️"
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-Trip -->
+                <div class="timeline-item">
+                    <div class="timeline-dot purple"></div>
+                    <div class="timeline-card glass-card">
+                        <div class="timeline-time mono">D+1</div>
+                        <h4>⭐ Post-Trip Follow-up</h4>
+                        <p>Review request + promo next trip</p>
+                        <div class="timeline-msg">
+                            <span class="msg-type outgoing">AI →</span>
+                            "Terima kasih sudah berkunjung! 🙏 Bagaimana pengalamannya? Kasih rating yuk! ⭐⭐⭐⭐⭐ Btw, special discount 15% untuk booking berikutnya!"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reminder Stats -->
+            <div class="reminder-stats-grid scroll-reveal" style="margin-top: 60px;">
+                <div class="glass-card stat-card">
+                    <div class="stat-icon-large"><i class="bi bi-cash-coin"></i></div>
+                    <div class="stat-number">+40%</div>
+                    <div class="stat-desc">Payment Conversion</div>
+                    <p>Dengan reminder otomatis</p>
+                </div>
+                <div class="glass-card stat-card">
+                    <div class="stat-icon-large"><i class="bi bi-person-x"></i></div>
+                    <div class="stat-number">-60%</div>
+                    <div class="stat-desc">No-Show Rate</div>
+                    <p>Berkat H-1 reminder</p>
+                </div>
+                <div class="glass-card stat-card">
+                    <div class="stat-icon-large"><i class="bi bi-arrow-repeat"></i></div>
+                    <div class="stat-number">+25%</div>
+                    <div class="stat-desc">Repeat Booking</div>
+                    <p>Dari post-trip follow-up</p>
+                </div>
+                <div class="glass-card stat-card">
+                    <div class="stat-icon-large"><i class="bi bi-hand-thumbs-up"></i></div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-desc">Manual Follow-up</div>
+                    <p>100% automated</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5D. ESCALATION TO HUMAN -->
+    <section class="section-layer" style="background: var(--bg-main); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">HYBRID INTELLIGENCE</span>
+                <h2 class="section-title">AI + Human <span class="highlight-text">Handoff</span></h2>
+                <p class="section-sub">AI menangani 90% pertanyaan. Sisanya eskalasi ke tim Anda dengan context lengkap.</p>
+            </div>
+
+            <div class="escalation-flow scroll-reveal">
+                <div class="escalation-grid">
+                    <!-- AI Handles -->
+                    <div class="glass-card escalation-card ai-zone">
+                        <div class="zone-header">
+                            <div class="zone-icon ai"><i class="bi bi-robot"></i></div>
+                            <h3>AI Handles (90%)</h3>
+                        </div>
+                        <ul class="zone-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Price inquiry & quotation</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Availability check</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Booking creation</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Payment confirmation</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Reschedule (standard)</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Policy questions (FAQ)</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Manifest collection</li>
+                            <li><i class="bi bi-check-circle-fill"></i> General inquiries</li>
+                        </ul>
+                        <div class="zone-metric">
+                            <span class="metric-big">~2s</span>
+                            <span>avg response</span>
+                        </div>
+                    </div>
+
+                    <!-- Escalation Arrow -->
+                    <div class="escalation-arrow">
+                        <div class="arrow-line"></div>
+                        <div class="arrow-label">
+                            <i class="bi bi-exclamation-triangle"></i>
+                            <span>Trigger Escalation</span>
+                        </div>
+                        <div class="arrow-triggers">
+                            <span>• Komplain</span>
+                            <span>• Refund request</span>
+                            <span>• Special negotiation</span>
+                            <span>• Unclear intent (3x)</span>
+                        </div>
+                    </div>
+
+                    <!-- Human Handles -->
+                    <div class="glass-card escalation-card human-zone">
+                        <div class="zone-header">
+                            <div class="zone-icon human"><i class="bi bi-person-badge"></i></div>
+                            <h3>Human Takes Over (10%)</h3>
+                        </div>
+                        <ul class="zone-list">
+                            <li><i class="bi bi-arrow-right-circle"></i> Customer complaints</li>
+                            <li><i class="bi bi-arrow-right-circle"></i> Refund processing</li>
+                            <li><i class="bi bi-arrow-right-circle"></i> Special rate negotiation</li>
+                            <li><i class="bi bi-arrow-right-circle"></i> VIP/corporate deals</li>
+                            <li><i class="bi bi-arrow-right-circle"></i> Emergency situations</li>
+                            <li><i class="bi bi-arrow-right-circle"></i> Complex disputes</li>
+                        </ul>
+                        <div class="zone-metric">
+                            <span class="metric-big">Full Context</span>
+                            <span>chat history passed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Escalation Demo -->
+                <div class="glass-card escalation-demo scroll-reveal" style="margin-top: 40px; padding: 30px;">
+                    <h4 style="margin-bottom: 20px;"><i class="bi bi-chat-left-text text-primary"></i> Escalation Example</h4>
+                    <div class="demo-chat-flow">
+                        <div class="chat-msg user">Saya mau refund dong, ada acara mendadak</div>
+                        <div class="chat-msg bot">
+                            Mohon maaf atas ketidaknyamanannya 🙏 Saya mengerti situasinya.<br><br>
+                            Untuk request refund, saya akan hubungkan Anda dengan tim Customer Service kami yang bisa membantu lebih lanjut.<br><br>
+                            <strong>📞 Menghubungkan ke CS...</strong>
+                        </div>
+                        <div class="chat-msg system">
+                            <i class="bi bi-bell"></i> <strong>Escalation Alert</strong><br>
+                            Notifikasi dikirim ke: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="422131022c232f232b312e232c266c212d2f">[email&#160;protected]</a> + WA Admin<br>
+                            Context: Refund request, Booking INV-2026-0156, Chat history attached
+                        </div>
+                        <div class="chat-msg human">
+                            Halo Kak Sarah, saya Dina dari tim NAMA 😊<br><br>
+                            Saya sudah baca chat sebelumnya. Untuk refund dengan alasan force majeure, kami bisa proses 75% refund. Apakah bisa dibantu bukti pendukungnya?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5E. ADDITIONAL FEATURES -->
+    <section class="section-layer" style="background: var(--bg-pure); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">MORE CAPABILITIES</span>
+                <h2 class="section-title">Advanced <span class="highlight-text">Features</span></h2>
+            </div>
+
+            <div class="advanced-features-grid stagger-reveal">
+                <!-- Cancellation Flow -->
+                <div class="glass-card feature-block" data-tilt>
+                    <div class="feature-icon-wrap danger">
+                        <i class="bi bi-x-circle"></i>
+                    </div>
+                    <h4>Cancellation & Refund</h4>
+                    <p>Automated cancellation flow dengan refund calculation berdasarkan policy.</p>
+                    <div class="feature-details">
+                        <div class="detail-item">
+                            <span class="label">H-14+</span>
+                            <span class="value success">100% Refund</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">H-7 to H-13</span>
+                            <span class="value warning">50% Refund</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">H-1 to H-6</span>
+                            <span class="value danger">No Refund</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Waitlist -->
+                <div class="glass-card feature-block" data-tilt>
+                    <div class="feature-icon-wrap accent">
+                        <i class="bi bi-hourglass-split"></i>
+                    </div>
+                    <h4>Smart Waitlist</h4>
+                    <p>Kalau tanggal penuh, customer bisa masuk waitlist dan dapat notif otomatis.</p>
+                    <div class="feature-details">
+                        <div class="detail-row">
+                            <i class="bi bi-check2"></i> Auto-notify saat slot available
+                        </div>
+                        <div class="detail-row">
+                            <i class="bi bi-check2"></i> Priority queue by request time
+                        </div>
+                        <div class="detail-row">
+                            <i class="bi bi-check2"></i> 24-hour hold period
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group Booking -->
+                <div class="glass-card feature-block" data-tilt>
+                    <div class="feature-icon-wrap success">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <h4>Group & Corporate</h4>
+                    <p>Handle rombongan besar dengan pricing tier dan dedicated PIC.</p>
+                    <div class="feature-details">
+                        <div class="detail-item">
+                            <span class="label">10-20 pax</span>
+                            <span class="value">5% discount</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">21-50 pax</span>
+                            <span class="value">10% discount</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">50+ pax</span>
+                            <span class="value">Custom quote</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-Staff Access -->
+                <div class="glass-card feature-block" data-tilt>
+                    <div class="feature-icon-wrap warning">
+                        <i class="bi bi-person-gear"></i>
+                    </div>
+                    <h4>Multi-Staff Access</h4>
+                    <p>Multiple CS bisa akses dashboard dengan role-based permissions.</p>
+                    <div class="feature-details">
+                        <div class="detail-row">
+                            <i class="bi bi-shield-check"></i> Admin - Full access
+                        </div>
+                        <div class="detail-row">
+                            <i class="bi bi-shield-check"></i> Manager - Reports + Edit
+                        </div>
+                        <div class="detail-row">
+                            <i class="bi bi-shield-check"></i> Staff - View + Respond
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-Language -->
+                <div class="glass-card feature-block" data-tilt>
+                    <div class="feature-icon-wrap purple">
+                        <i class="bi bi-translate"></i>
+                    </div>
+                    <h4>Multi-Language</h4>
+                    <p>AI responds dalam bahasa customer (ID/EN auto-detect).</p>
+                    <div class="feature-details">
+                        <div class="detail-row">
+                            <span class="flag">🇮🇩</span> Bahasa Indonesia
+                        </div>
+                        <div class="detail-row">
+                            <span class="flag">🇬🇧</span> English
+                        </div>
+                        <div class="detail-row">
+                            <span class="flag">🔄</span> Auto-detect
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics -->
+                <div class="glass-card feature-block" data-tilt>
+                    <div class="feature-icon-wrap accent">
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <h4>Business Analytics</h4>
+                    <p>Real-time insights untuk decision making.</p>
+                    <div class="feature-details">
+                        <div class="detail-row">
+                            <i class="bi bi-graph-up"></i> Revenue trends
+                        </div>
+                        <div class="detail-row">
+                            <i class="bi bi-pie-chart"></i> Occupancy rates
+                        </div>
+                        <div class="detail-row">
+                            <i class="bi bi-funnel"></i> Conversion funnel
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. LIVE DEMO SIMULATION (Expanded) -->
+    <section id="demo" class="section-protocol" style="background: var(--bg-main);">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">SEE IT IN ACTION</span>
+                <h2 class="section-title">Live <span class="highlight-text">Demo</span></h2>
+                <p class="section-sub">Real scenarios. Real AI responses.</p>
+            </div>
+
+            <!-- SCENARIO 1: Booking Inquiry -->
+            <div class="demo-scenario scroll-reveal" style="margin-bottom: 60px;">
+                <div class="scenario-header" style="margin-bottom: 20px;">
+                    <span class="scenario-badge mono">SCENARIO 1</span>
+                    <h3 style="font-size: 1.3rem; margin-top: 8px;">📅 Booking Inquiry</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                    <!-- Left: Chat UI -->
+                    <div class="glass-card chat-window" style="padding: 24px;">
+                        <div class="chat-header">
+                            <i class="bi bi-whatsapp" style="font-size: 1.2rem; color: var(--success);"></i>
+                            <span>WhatsApp Chat</span>
+                        </div>
+                        
+                        <div class="chat-body">
+                            <div class="chat-bubble chat-user">
+                                Halo, saya mau booking untuk 4 orang (2 dewasa, 2 anak) tanggal 25-26 Desember. Ada kamar yang view pantai?
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                <div class="bot-typing">
+                                    <span class="typing-indicator"><span></span><span></span><span></span></span>
+                                    AI Processing...
+                                </div>
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                Halo! Terima kasih sudah menghubungi NAMA Marine 🏝️<br><br>
+                                
+                                Saya cek untuk tanggal <strong>25-26 Desember</strong> (High Season):<br><br>
+                                
+                                ✅ <strong>Tersedia: Cottage Penyu Beach Front</strong><br><br>
+                                
+                                📋 <strong>Rincian Harga:</strong><br>
+                                • 2 Dewasa × Rp 1.200.000 = Rp 2.400.000<br>
+                                • 2 Anak × Rp 1.200.000 = Rp 2.400.000<br>
+                                • Beach Front Premium = Rp 400.000<br><br>
+                                
+                                💰 <strong>Total: Rp 5.200.000</strong><br>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Termasuk: Transport PP, 3× Meals, Snorkeling</span><br><br>
+                                
+                                Mau saya buatkan invoice-nya? 😊
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: What AI Did -->
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--accent);">
+                            <div class="process-step">1</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--accent);">EXTRACTION</div>
+                                <h4>AI Parses Intent</h4>
+                                <code class="code-block">
+{<br>
+&nbsp;&nbsp;"check_in": "2026-12-25",<br>
+&nbsp;&nbsp;"check_out": "2026-12-26",<br>
+&nbsp;&nbsp;"adults": 2,<br>
+&nbsp;&nbsp;"children": 2,<br>
+&nbsp;&nbsp;"preference": "beach_view"<br>
+}
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--warning);">
+                            <div class="process-step">2</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--warning);">DATABASE QUERY</div>
+                                <h4>System Checks</h4>
+                                <code class="code-block">
+SELECT * FROM rooms<br>
+WHERE type = 'beach_front'<br>
+AND date NOT IN (bookings)<br>
+→ Result: Penyu ✓
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--success);">
+                            <div class="process-step">3</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--success);">CALCULATION</div>
+                                <h4>Pricing Engine</h4>
+                                <code class="code-block">
+base_rate × season_multiplier<br>
++ room_premium + child_rate<br>
+= Rp 5.200.000 ✓
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENARIO 2: Policy Question -->
+            <div class="demo-scenario scroll-reveal" style="margin-bottom: 60px;">
+                <div class="scenario-header" style="margin-bottom: 20px;">
+                    <span class="scenario-badge mono">SCENARIO 2</span>
+                    <h3 style="font-size: 1.3rem; margin-top: 8px;">❓ Policy Question</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                    <div class="glass-card chat-window" style="padding: 24px;">
+                        <div class="chat-header">
+                            <i class="bi bi-whatsapp" style="font-size: 1.2rem; color: var(--success);"></i>
+                            <span>WhatsApp Chat</span>
+                        </div>
+                        
+                        <div class="chat-body">
+                            <div class="chat-bubble chat-user">
+                                Kalau bawa alkohol sendiri boleh ga? Terus cancel policy nya gimana?
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                Terima kasih sudah bertanya! 🙏<br><br>
+                                
+                                🍾 <strong>Corkage Policy:</strong><br>
+                                Boleh bawa alkohol sendiri dengan biaya corkage <strong>Rp 150.000/bottle</strong>. Maksimal 3 botol per kamar.<br><br>
+                                
+                                📋 <strong>Cancellation Policy:</strong><br>
+                                • H-14: Full refund (100%)<br>
+                                • H-7 s/d H-13: Refund 50%<br>
+                                • H-1 s/d H-6: No refund<br>
+                                • Reschedule: Free (subject to availability)<br><br>
+                                
+                                Ada pertanyaan lain? 😊
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--accent);">
+                            <div class="process-step">1</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--accent);">INTENT DETECTION</div>
+                                <h4>AI Identifies Topics</h4>
+                                <code class="code-block">
+intent: ["corkage_policy", "cancel_policy"]<br>
+confidence: 0.96
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--success);">
+                            <div class="process-step">2</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--success);">KNOWLEDGE BASE</div>
+                                <h4>Retrieves from Policy DB</h4>
+                                <code class="code-block">
+SELECT answer FROM policies<br>
+WHERE topic IN ('corkage', 'cancellation')<br>
+→ Returns structured T&C
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENARIO 3: Availability Check -->
+            <div class="demo-scenario scroll-reveal" style="margin-bottom: 60px;">
+                <div class="scenario-header" style="margin-bottom: 20px;">
+                    <span class="scenario-badge mono">SCENARIO 3</span>
+                    <h3 style="font-size: 1.3rem; margin-top: 8px;">🔍 Availability Check</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                    <div class="glass-card chat-window" style="padding: 24px;">
+                        <div class="chat-header">
+                            <i class="bi bi-whatsapp" style="font-size: 1.2rem; color: var(--success);"></i>
+                            <span>WhatsApp Chat</span>
+                        </div>
+                        
+                        <div class="chat-body">
+                            <div class="chat-bubble chat-user">
+                                Weekend depan masih ada kamar? Yang murah aja
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                Baik, saya cek untuk <strong>Sabtu-Minggu (25-26 Jan)</strong> 📅<br><br>
+                                
+                                🏠 <strong>Kamar Tersedia:</strong><br><br>
+                                
+                                1️⃣ <strong>Cottage Kura-Kura (Garden View)</strong><br>
+                                &nbsp;&nbsp;&nbsp;Rp 850.000/malam ✨ <em>Best Value!</em><br><br>
+                                
+                                2️⃣ <strong>Cottage Lumba-Lumba (Partial Sea)</strong><br>
+                                &nbsp;&nbsp;&nbsp;Rp 1.100.000/malam<br><br>
+                                
+                                ❌ <strong>Penyu Beach Front</strong> - Full<br><br>
+                                
+                                Mau yang mana? 🤔
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--accent);">
+                            <div class="process-step">1</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--accent);">DATE PARSING</div>
+                                <h4>Natural Language → Date</h4>
+                                <code class="code-block">
+"weekend depan" → 2026-01-25<br>
+"yang murah" → ORDER BY price ASC
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--warning);">
+                            <div class="process-step">2</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--warning);">REALTIME CHECK</div>
+                                <h4>Live Availability Matrix</h4>
+                                <code class="code-block">
+Kura-Kura: 3/5 available ✓<br>
+Lumba-Lumba: 2/4 available ✓<br>
+Penyu: 0/3 available ✗
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENARIO 4: Reschedule Request -->
+            <div class="demo-scenario scroll-reveal" style="margin-bottom: 60px;">
+                <div class="scenario-header" style="margin-bottom: 20px;">
+                    <span class="scenario-badge mono">SCENARIO 4</span>
+                    <h3 style="font-size: 1.3rem; margin-top: 8px;">🔄 Reschedule Booking</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                    <div class="glass-card chat-window" style="padding: 24px;">
+                        <div class="chat-header">
+                            <i class="bi bi-whatsapp" style="font-size: 1.2rem; color: var(--success);"></i>
+                            <span>WhatsApp Chat</span>
+                        </div>
+                        
+                        <div class="chat-body">
+                            <div class="chat-bubble chat-user">
+                                Halo, saya Budi. Booking saya tanggal 20 Jan mau diundur ke 27 Jan bisa?
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                Halo Kak Budi! 👋<br><br>
+                                
+                                Saya cek booking Anda:<br>
+                                📋 <strong>INV-2026-0142</strong><br>
+                                • Check-in: 20 Jan 2026<br>
+                                • Cottage Penyu (2 pax)<br>
+                                • Status: <span style="color: var(--success);">CONFIRMED</span><br><br>
+                                
+                                ✅ <strong>Tanggal 27 Jan tersedia!</strong><br><br>
+                                
+                                Karena reschedule H-7, <strong>GRATIS</strong> tanpa biaya tambahan.<br><br>
+                                
+                                Mau saya pindahkan ke 27 Jan? 🗓️
+                            </div>
+                            
+                            <div class="chat-bubble chat-user">
+                                Iya tolong pindahkan
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                Done! ✅<br><br>
+                                
+                                Booking sudah dipindahkan:<br>
+                                📅 <strong>Check-in: 27 Jan 2026</strong><br>
+                                📅 <strong>Check-out: 28 Jan 2026</strong><br><br>
+                                
+                                Invoice tetap sama: <strong>INV-2026-0142</strong><br><br>
+                                
+                                Sampai jumpa di Sepa Island! 🏝️
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--accent);">
+                            <div class="process-step">1</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--accent);">GUEST LOOKUP</div>
+                                <h4>Find by Name + Phone</h4>
+                                <code class="code-block">
+SELECT * FROM bookings b<br>
+JOIN guests g ON b.guest_id = g.id<br>
+WHERE g.name LIKE '%Budi%'<br>
+AND b.status = 'confirmed'
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--warning);">
+                            <div class="process-step">2</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--warning);">POLICY CHECK</div>
+                                <h4>Reschedule Rules</h4>
+                                <code class="code-block">
+days_before = 7 (H-7)<br>
+policy: FREE reschedule ✓<br>
+new_date available: TRUE ✓
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--success);">
+                            <div class="process-step">3</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--success);">UPDATE</div>
+                                <h4>Modify Booking</h4>
+                                <code class="code-block">
+UPDATE bookings<br>
+SET check_in = '2026-01-27',<br>
+    check_out = '2026-01-28'<br>
+WHERE id = 142
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENARIO 5: Payment Confirmation -->
+            <div class="demo-scenario scroll-reveal" style="margin-bottom: 60px;">
+                <div class="scenario-header" style="margin-bottom: 20px;">
+                    <span class="scenario-badge mono">SCENARIO 5</span>
+                    <h3 style="font-size: 1.3rem; margin-top: 8px;">💳 Payment Confirmation</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                    <div class="glass-card chat-window" style="padding: 24px;">
+                        <div class="chat-header">
+                            <i class="bi bi-whatsapp" style="font-size: 1.2rem; color: var(--success);"></i>
+                            <span>WhatsApp Chat</span>
+                        </div>
+                        
+                        <div class="chat-body">
+                            <div class="chat-bubble chat-user">
+                                Sudah transfer ya 5.2jt ke BCA. Ini buktinya
+                            </div>
+                            
+                            <div class="chat-bubble chat-user" style="background: #f8fafc; padding: 8px;">
+                                <div style="background: #e2e8f0; padding: 20px; border-radius: 8px; text-align: center;">
+                                    <i class="bi bi-image" style="font-size: 2rem; color: var(--text-muted);"></i>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">bukti_transfer.jpg</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                Terima kasih! 🙏<br><br>
+                                
+                                ✅ <strong>Pembayaran TERVERIFIKASI</strong><br><br>
+                                
+                                📋 <strong>Detail Booking:</strong><br>
+                                • Invoice: INV-2026-0156<br>
+                                • Nama: Sarah Wijaya<br>
+                                • Tanggal: 25-26 Des 2026<br>
+                                • Kamar: Penyu Beach Front<br>
+                                • Jumlah: Rp 5.200.000 ✓<br><br>
+                                
+                                📧 E-ticket sudah dikirim ke:<br>
+                                <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2d1c3d0c3ca8cd5e2c7cfc3cbce8cc1cdcf">[email&#160;protected]</a></strong><br><br>
+                                
+                                Mohon isi data penumpang untuk SIB ya! 📝
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--accent);">
+                            <div class="process-step">1</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--accent);">IMAGE OCR</div>
+                                <h4>Extract from Transfer Proof</h4>
+                                <code class="code-block">
+amount: 5,200,000<br>
+bank: BCA<br>
+date: 2026-01-15<br>
+ref: 0156/SARAH
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--warning);">
+                            <div class="process-step">2</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--warning);">MATCHING</div>
+                                <h4>Validate Payment</h4>
+                                <code class="code-block">
+invoice_amount = 5,200,000 ✓<br>
+payment_amount = 5,200,000 ✓<br>
+MATCH: 100%
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--success);">
+                            <div class="process-step">3</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--success);">UPDATE & NOTIFY</div>
+                                <h4>Confirm + Send E-Ticket</h4>
+                                <code class="code-block">
+UPDATE bookings<br>
+SET status = 'paid',<br>
+    payment_date = NOW()<br>
+→ TRIGGER: send_eticket()
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENARIO 6: Manifest Data Collection -->
+            <div class="demo-scenario scroll-reveal" style="margin-bottom: 60px;">
+                <div class="scenario-header" style="margin-bottom: 20px;">
+                    <span class="scenario-badge mono">SCENARIO 6</span>
+                    <h3 style="font-size: 1.3rem; margin-top: 8px;">📝 Passenger Manifest (SIB)</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                    <div class="glass-card chat-window" style="padding: 24px;">
+                        <div class="chat-header">
+                            <i class="bi bi-whatsapp" style="font-size: 1.2rem; color: var(--success);"></i>
+                            <span>WhatsApp Chat</span>
+                        </div>
+                        
+                        <div class="chat-body">
+                            <div class="chat-bubble chat-bot">
+                                Halo Kak Sarah! 👋<br><br>
+                                
+                                Untuk keperluan <strong>Surat Izin Berlayar (SIB)</strong>, mohon kirimkan data penumpang:<br><br>
+                                
+                                👤 <strong>Penumpang 1 (Dewasa):</strong><br>
+                                • Nama lengkap (sesuai KTP)<br>
+                                • No. KTP<br><br>
+                                
+                                👤 <strong>Penumpang 2 (Dewasa):</strong><br>
+                                • Nama lengkap (sesuai KTP)<br>
+                                • No. KTP<br><br>
+                                
+                                Bisa langsung dikirim dalam 1 chat ya 📱
+                            </div>
+                            
+                            <div class="chat-bubble chat-user">
+                                1. Sarah Wijaya - 3171234567890001<br>
+                                2. Andi Pratama - 3171234567890002
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                Data diterima! ✅<br><br>
+                                
+                                📋 <strong>Manifest Penumpang:</strong><br>
+                                1. Sarah Wijaya - ****0001<br>
+                                2. Andi Pratama - ****0002<br><br>
+                                
+                                ✅ SIB akan diproses H-1.<br>
+                                📧 Dikirim ke email Anda.<br><br>
+                                
+                                Ada yang lain? 😊
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--accent);">
+                            <div class="process-step">1</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--accent);">NLP EXTRACTION</div>
+                                <h4>Parse Passenger Data</h4>
+                                <code class="code-block">
+passengers: [<br>
+&nbsp;&nbsp;{name: "Sarah Wijaya",<br>
+&nbsp;&nbsp; id: "317...001"},<br>
+&nbsp;&nbsp;{name: "Andi Pratama",<br>
+&nbsp;&nbsp; id: "317...002"}<br>
+]
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--success);">
+                            <div class="process-step">2</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--success);">STORE & SCHEDULE</div>
+                                <h4>Save to Manifest Table</h4>
+                                <code class="code-block">
+INSERT INTO manifests<br>
+(booking_id, name, id_number)<br>
+VALUES (156, 'Sarah...', '317...')<br>
+→ SCHEDULE: generate_sib(H-1)
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENARIO 7: Special Request -->
+            <div class="demo-scenario scroll-reveal" style="margin-bottom: 60px;">
+                <div class="scenario-header" style="margin-bottom: 20px;">
+                    <span class="scenario-badge mono">SCENARIO 7</span>
+                    <h3 style="font-size: 1.3rem; margin-top: 8px;">🎂 Special Request</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                    <div class="glass-card chat-window" style="padding: 24px;">
+                        <div class="chat-header">
+                            <i class="bi bi-whatsapp" style="font-size: 1.2rem; color: var(--success);"></i>
+                            <span>WhatsApp Chat</span>
+                        </div>
+                        
+                        <div class="chat-body">
+                            <div class="chat-bubble chat-user">
+                                Btw ini honeymoon trip kami. Bisa arrange surprise dinner di pantai ga? Budget 2jt
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                Wah selamat ya! 💕🎉<br><br>
+                                
+                                Tentu bisa! Untuk <strong>Honeymoon Dinner</strong>:<br><br>
+                                
+                                🌅 <strong>Romantic Beach Dinner</strong><br>
+                                • Private table di pantai<br>
+                                • Candle light setup<br>
+                                • 4-course dinner (2 pax)<br>
+                                • Welcome drink + dessert<br>
+                                • <strong>Rp 1.800.000</strong> ✨<br><br>
+                                
+                                🎁 <strong>Bonus Honeymoon:</strong><br>
+                                • Room decoration (FREE)<br>
+                                • Flower bed setup (FREE)<br><br>
+                                
+                                Mau ditambahkan ke booking? Total jadi <strong>Rp 7.000.000</strong>
+                            </div>
+                            
+                            <div class="chat-bubble chat-user">
+                                Wah boleh! Tambahin ya
+                            </div>
+                            
+                            <div class="chat-bubble chat-bot">
+                                Perfect! 🥂<br><br>
+                                
+                                ✅ <strong>Updated Booking:</strong><br>
+                                • Cottage Penyu: Rp 5.200.000<br>
+                                • Honeymoon Dinner: Rp 1.800.000<br>
+                                • <strong>New Total: Rp 7.000.000</strong><br><br>
+                                
+                                📧 Invoice baru sudah dikirim!<br><br>
+                                
+                                Have a wonderful trip! 💑🏝️
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--accent);">
+                            <div class="process-step">1</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--accent);">INTENT + UPSELL</div>
+                                <h4>Detect Opportunity</h4>
+                                <code class="code-block">
+intent: "special_request"<br>
+keywords: ["honeymoon", "dinner"]<br>
+budget: 2,000,000<br>
+→ MATCH: honeymoon_package
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--warning);">
+                            <div class="process-step">2</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--warning);">PACKAGE LOOKUP</div>
+                                <h4>Find Best Match</h4>
+                                <code class="code-block">
+SELECT * FROM addons<br>
+WHERE category = 'honeymoon'<br>
+AND price <= 2000000<br>
+ORDER BY rating DESC
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="glass-card process-card" style="border-left: 4px solid var(--success);">
+                            <div class="process-step">3</div>
+                            <div>
+                                <div class="mono" style="font-size: 0.7rem; color: var(--success);">UPDATE INVOICE</div>
+                                <h4>Add to Booking</h4>
+                                <code class="code-block">
+INSERT INTO booking_addons<br>
+(booking_id, addon_id, price)<br>
+VALUES (156, 'HM-DINNER', 1800000)<br>
+→ regenerate_invoice()
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. DATABASE ARCHITECTURE -->
+    <section id="database" class="section-layer" style="background: var(--bg-dark); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono" style="color: var(--accent);">SYSTEM ARCHITECTURE</span>
+                <h2 class="section-title" style="color: white;">Database <span class="highlight-text">Structure</span></h2>
+                <p class="section-sub" style="color: rgba(255,255,255,0.7);">Relational schema powering the entire operation.</p>
+            </div>
+
+            <div class="db-tables-grid stagger-reveal">
+                <!-- Table: Rooms -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-house-door"></i>
+                        <span>rooms</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">📝</span> name <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">🏷️</span> type <span class="col-type">ENUM</span></div>
+                        <div class="db-column"><span class="col-icon">👥</span> capacity <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">💰</span> base_price <span class="col-type">DECIMAL</span></div>
+                        <div class="db-column"><span class="col-icon">⭐</span> premium <span class="col-type">DECIMAL</span></div>
+                    </div>
+                    <div class="db-table-footer mono">6 columns • 15 rooms</div>
+                </div>
+
+                <!-- Table: Bookings -->
+                <div class="db-table-card glass-card featured">
+                    <div class="db-table-header">
+                        <i class="bi bi-calendar-check"></i>
+                        <span>bookings</span>
+                        <span class="table-badge">CORE</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column fk"><span class="col-icon">🔗</span> room_id <span class="col-type">FK</span></div>
+                        <div class="db-column fk"><span class="col-icon">🔗</span> guest_id <span class="col-type">FK</span></div>
+                        <div class="db-column"><span class="col-icon">📅</span> check_in <span class="col-type">DATE</span></div>
+                        <div class="db-column"><span class="col-icon">📅</span> check_out <span class="col-type">DATE</span></div>
+                        <div class="db-column"><span class="col-icon">👨‍👩‍👧</span> adults <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">👶</span> children <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">💵</span> total_price <span class="col-type">DECIMAL</span></div>
+                        <div class="db-column"><span class="col-icon">📊</span> status <span class="col-type">ENUM</span></div>
+                    </div>
+                    <div class="db-table-footer mono">9 columns • Auto-managed</div>
+                </div>
+
+                <!-- Table: Guests -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-people"></i>
+                        <span>guests</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">📱</span> phone <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">👤</span> name <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">🪪</span> id_number <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">📧</span> email <span class="col-type">VARCHAR</span></div>
+                    </div>
+                    <div class="db-table-footer mono">5 columns • Auto-captured</div>
+                </div>
+
+                <!-- Table: Pricing Rules -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-calculator"></i>
+                        <span>pricing_rules</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">📆</span> season <span class="col-type">ENUM</span></div>
+                        <div class="db-column"><span class="col-icon">📅</span> day_type <span class="col-type">ENUM</span></div>
+                        <div class="db-column"><span class="col-icon">📈</span> multiplier <span class="col-type">DECIMAL</span></div>
+                        <div class="db-column"><span class="col-icon">👶</span> child_rate <span class="col-type">DECIMAL</span></div>
+                    </div>
+                    <div class="db-table-footer mono">5 columns • Dynamic pricing</div>
+                </div>
+
+                <!-- Table: Policies -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-file-text"></i>
+                        <span>policies</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">🏷️</span> topic <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">❓</span> question <span class="col-type">TEXT</span></div>
+                        <div class="db-column"><span class="col-icon">💬</span> answer <span class="col-type">TEXT</span></div>
+                    </div>
+                    <div class="db-table-footer mono">4 columns • AI Knowledge Base</div>
+                </div>
+
+                <!-- Table: Conversations -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-chat-dots"></i>
+                        <span>conversations</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column fk"><span class="col-icon">🔗</span> guest_id <span class="col-type">FK</span></div>
+                        <div class="db-column"><span class="col-icon">💬</span> message <span class="col-type">TEXT</span></div>
+                        <div class="db-column"><span class="col-icon">🤖</span> response <span class="col-type">TEXT</span></div>
+                        <div class="db-column"><span class="col-icon">🏷️</span> intent <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">⏰</span> timestamp <span class="col-type">DATETIME</span></div>
+                    </div>
+                    <div class="db-table-footer mono">6 columns • Full history</div>
+                </div>
+
+                <!-- Table: Payments -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-credit-card"></i>
+                        <span>payments</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column fk"><span class="col-icon">🔗</span> booking_id <span class="col-type">FK</span></div>
+                        <div class="db-column"><span class="col-icon">💰</span> amount <span class="col-type">DECIMAL</span></div>
+                        <div class="db-column"><span class="col-icon">🏦</span> method <span class="col-type">ENUM</span></div>
+                        <div class="db-column"><span class="col-icon">📊</span> status <span class="col-type">ENUM</span></div>
+                        <div class="db-column"><span class="col-icon">🖼️</span> proof_url <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">⏰</span> verified_at <span class="col-type">DATETIME</span></div>
+                    </div>
+                    <div class="db-table-footer mono">7 columns • Payment tracking</div>
+                </div>
+
+                <!-- Table: Manifests -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-person-vcard"></i>
+                        <span>manifests</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column fk"><span class="col-icon">🔗</span> booking_id <span class="col-type">FK</span></div>
+                        <div class="db-column"><span class="col-icon">👤</span> full_name <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">🪪</span> id_number <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">👶</span> is_child <span class="col-type">BOOLEAN</span></div>
+                        <div class="db-column"><span class="col-icon">📄</span> sib_generated <span class="col-type">BOOLEAN</span></div>
+                    </div>
+                    <div class="db-table-footer mono">6 columns • SIB generation</div>
+                </div>
+
+                <!-- Table: Addons -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-gift"></i>
+                        <span>addons</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">📝</span> name <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">🏷️</span> category <span class="col-type">ENUM</span></div>
+                        <div class="db-column"><span class="col-icon">💰</span> price <span class="col-type">DECIMAL</span></div>
+                        <div class="db-column"><span class="col-icon">📋</span> description <span class="col-type">TEXT</span></div>
+                    </div>
+                    <div class="db-table-footer mono">5 columns • Upsell items</div>
+                </div>
+
+                <!-- Table: Booking Addons -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-cart-plus"></i>
+                        <span>booking_addons</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column fk"><span class="col-icon">🔗</span> booking_id <span class="col-type">FK</span></div>
+                        <div class="db-column fk"><span class="col-icon">🔗</span> addon_id <span class="col-type">FK</span></div>
+                        <div class="db-column"><span class="col-icon">🔢</span> quantity <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">💰</span> subtotal <span class="col-type">DECIMAL</span></div>
+                    </div>
+                    <div class="db-table-footer mono">5 columns • Junction table</div>
+                </div>
+
+                <!-- Table: Seasons -->
+                <div class="db-table-card glass-card">
+                    <div class="db-table-header">
+                        <i class="bi bi-calendar-event"></i>
+                        <span>seasons</span>
+                    </div>
+                    <div class="db-table-body">
+                        <div class="db-column pk"><span class="col-icon">🔑</span> id <span class="col-type">INT</span></div>
+                        <div class="db-column"><span class="col-icon">📝</span> name <span class="col-type">VARCHAR</span></div>
+                        <div class="db-column"><span class="col-icon">📅</span> start_date <span class="col-type">DATE</span></div>
+                        <div class="db-column"><span class="col-icon">📅</span> end_date <span class="col-type">DATE</span></div>
+                        <div class="db-column"><span class="col-icon">📈</span> multiplier <span class="col-type">DECIMAL</span></div>
+                    </div>
+                    <div class="db-table-footer mono">5 columns • High/Low season</div>
+                </div>
+            </div>
+
+            <!-- Entity Relationship Summary -->
+            <div class="db-summary scroll-reveal" style="margin-top: 50px;">
+                <div class="glass-card" style="background: rgba(255,255,255,0.05); padding: 30px; border: 1px solid rgba(255,255,255,0.1);">
+                    <h3 style="color: white; margin-bottom: 20px; text-align: center;">📊 Database Summary</h3>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+                        <div>
+                            <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent);">12</div>
+                            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Tables</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent);">68</div>
+                            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Columns</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent);">9</div>
+                            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Relations</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; font-weight: 700; color: var(--success);">100%</div>
+                            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Automated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Flow Diagram -->
+            <div class="data-flow-section scroll-reveal" style="margin-top: 60px;">
+                <h3 class="center" style="color: white; margin-bottom: 30px;">How Data Flows</h3>
+                <div class="data-flow-diagram">
+                    <div class="flow-node">
+                        <div class="flow-icon"><i class="bi bi-whatsapp"></i></div>
+                        <span>WhatsApp</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-node">
+                        <div class="flow-icon"><i class="bi bi-robot"></i></div>
+                        <span>AI Agent</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-node featured">
+                        <div class="flow-icon"><i class="bi bi-database"></i></div>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-node">
+                        <div class="flow-icon"><i class="bi bi-gear"></i></div>
+                        <span>n8n</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-node">
+                        <div class="flow-icon"><i class="bi bi-reply"></i></div>
+                        <span>Response</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMIN DASHBOARD PREVIEW -->
+    <section class="section-layer" style="background: var(--bg-pure); padding: 100px 0;">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">ADMIN INTERFACE</span>
+                <h2 class="section-title">Your <span class="highlight-text">Dashboard</span></h2>
+                <p class="section-sub">Semua data dan kontrol dalam satu tempat.</p>
+            </div>
+
+            <!-- Dashboard Mockup -->
+            <div class="dashboard-mockup scroll-reveal">
+                <div class="mockup-browser">
+                    <div class="browser-header">
+                        <div class="browser-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="browser-url">
+                            <i class="bi bi-lock-fill"></i>
+                            <span>https://admin.namaisland.com/dashboard</span>
+                        </div>
+                    </div>
+                    <div class="browser-content">
+                        <!-- Dashboard Sidebar -->
+                        <div class="dash-sidebar">
+                            <div class="dash-logo">
+                                <i class="bi bi-tsunami"></i>
+                                <span>NAMA</span>
+                            </div>
+                            <nav class="dash-nav">
+                                <a href="#" class="nav-item active"><i class="bi bi-grid"></i> Dashboard</a>
+                                <a href="#" class="nav-item"><i class="bi bi-calendar-check"></i> Bookings</a>
+                                <a href="#" class="nav-item"><i class="bi bi-people"></i> Guests</a>
+                                <a href="#" class="nav-item"><i class="bi bi-chat-dots"></i> Chats</a>
+                                <a href="#" class="nav-item"><i class="bi bi-credit-card"></i> Payments</a>
+                                <a href="#" class="nav-item"><i class="bi bi-house"></i> Rooms</a>
+                                <a href="#" class="nav-item"><i class="bi bi-graph-up"></i> Analytics</a>
+                                <a href="#" class="nav-item"><i class="bi bi-gear"></i> Settings</a>
+                            </nav>
+                        </div>
+
+                        <!-- Dashboard Main -->
+                        <div class="dash-main">
+                            <!-- Top Stats -->
+                            <div class="dash-stats-row">
+                                <div class="dash-stat-card">
+                                    <div class="stat-info">
+                                        <span class="stat-label">Today's Bookings</span>
+                                        <span class="stat-value">12</span>
+                                        <span class="stat-change positive">+3 from yesterday</span>
+                                    </div>
+                                    <div class="stat-icon blue"><i class="bi bi-calendar-plus"></i></div>
+                                </div>
+                                <div class="dash-stat-card">
+                                    <div class="stat-info">
+                                        <span class="stat-label">Revenue (Jan)</span>
+                                        <span class="stat-value">Rp 142M</span>
+                                        <span class="stat-change positive">+18% vs Dec</span>
+                                    </div>
+                                    <div class="stat-icon green"><i class="bi bi-cash-stack"></i></div>
+                                </div>
+                                <div class="dash-stat-card">
+                                    <div class="stat-info">
+                                        <span class="stat-label">Occupancy Rate</span>
+                                        <span class="stat-value">87%</span>
+                                        <span class="stat-change positive">High season</span>
+                                    </div>
+                                    <div class="stat-icon orange"><i class="bi bi-house-check"></i></div>
+                                </div>
+                                <div class="dash-stat-card">
+                                    <div class="stat-info">
+                                        <span class="stat-label">Active Chats</span>
+                                        <span class="stat-value">8</span>
+                                        <span class="stat-change neutral">AI handling</span>
+                                    </div>
+                                    <div class="stat-icon purple"><i class="bi bi-chat-dots"></i></div>
+                                </div>
+                            </div>
+
+                            <!-- Main Content Grid -->
+                            <div class="dash-content-grid">
+                                <!-- Recent Bookings -->
+                                <div class="dash-panel bookings-panel">
+                                    <div class="panel-header">
+                                        <h4>Recent Bookings</h4>
+                                        <a href="#">View All →</a>
+                                    </div>
+                                    <div class="booking-list">
+                                        <div class="booking-item">
+                                            <div class="booking-info">
+                                                <span class="booking-id">#INV-2026-0162</span>
+                                                <span class="booking-guest">Sarah Wijaya</span>
+                                                <span class="booking-date">25-26 Jan</span>
+                                            </div>
+                                            <span class="booking-status paid">PAID</span>
+                                        </div>
+                                        <div class="booking-item">
+                                            <div class="booking-info">
+                                                <span class="booking-id">#INV-2026-0161</span>
+                                                <span class="booking-guest">Budi Santoso</span>
+                                                <span class="booking-date">27-28 Jan</span>
+                                            </div>
+                                            <span class="booking-status pending">PENDING</span>
+                                        </div>
+                                        <div class="booking-item">
+                                            <div class="booking-info">
+                                                <span class="booking-id">#INV-2026-0160</span>
+                                                <span class="booking-guest">Andi Pratama</span>
+                                                <span class="booking-date">1-2 Feb</span>
+                                            </div>
+                                            <span class="booking-status confirmed">CONFIRMED</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Room Availability -->
+                                <div class="dash-panel availability-panel">
+                                    <div class="panel-header">
+                                        <h4>Today's Availability</h4>
+                                        <span class="date-badge">25 Jan 2026</span>
+                                    </div>
+                                    <div class="room-grid">
+                                        <div class="room-status">
+                                            <span class="room-name">Penyu 1</span>
+                                            <span class="status-dot booked"></span>
+                                        </div>
+                                        <div class="room-status">
+                                            <span class="room-name">Penyu 2</span>
+                                            <span class="status-dot booked"></span>
+                                        </div>
+                                        <div class="room-status">
+                                            <span class="room-name">Penyu 3</span>
+                                            <span class="status-dot available"></span>
+                                        </div>
+                                        <div class="room-status">
+                                            <span class="room-name">Lumba 1</span>
+                                            <span class="status-dot booked"></span>
+                                        </div>
+                                        <div class="room-status">
+                                            <span class="room-name">Lumba 2</span>
+                                            <span class="status-dot available"></span>
+                                        </div>
+                                        <div class="room-status">
+                                            <span class="room-name">Kura 1</span>
+                                            <span class="status-dot available"></span>
+                                        </div>
+                                    </div>
+                                    <div class="availability-legend">
+                                        <span><span class="status-dot booked"></span> Booked</span>
+                                        <span><span class="status-dot available"></span> Available</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Features -->
+            <div class="dashboard-features scroll-reveal" style="margin-top: 50px;">
+                <div class="feature-pill"><i class="bi bi-check2"></i> Real-time sync</div>
+                <div class="feature-pill"><i class="bi bi-check2"></i> Mobile responsive</div>
+                <div class="feature-pill"><i class="bi bi-check2"></i> Export to Excel</div>
+                <div class="feature-pill"><i class="bi bi-check2"></i> Custom reports</div>
+                <div class="feature-pill"><i class="bi bi-check2"></i> Multi-user access</div>
+                <div class="feature-pill"><i class="bi bi-check2"></i> Activity logs</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section class="section-layer" style="background: linear-gradient(180deg, var(--bg-main) 0%, var(--accent-light) 100%); padding: 100px 0;">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">DELIVERABLES</span>
+                <h2 class="section-title">What You <span class="highlight-text">Get</span></h2>
+                <p class="section-sub">Complete package. No hidden costs.</p>
+            </div>
+
+            <div class="deliverables-grid stagger-reveal">
+                <!-- System -->
+                <div class="glass-card deliverable-card">
+                    <div class="deliverable-icon">
+                        <i class="bi bi-box-seam"></i>
+                    </div>
+                    <h3>Complete System</h3>
+                    <ul class="deliverable-list">
+                        <li><i class="bi bi-check-circle-fill"></i> AI WhatsApp Chatbot</li>
+                        <li><i class="bi bi-check-circle-fill"></i> MySQL Database (hosted)</li>
+                        <li><i class="bi bi-check-circle-fill"></i> n8n Automation Workflows</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Admin Dashboard</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Payment Integration</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Invoice Generator</li>
+                        <li><i class="bi bi-check-circle-fill"></i> E-ticket System</li>
+                        <li><i class="bi bi-check-circle-fill"></i> SIB Generator</li>
+                    </ul>
+                </div>
+
+                <!-- Training -->
+                <div class="glass-card deliverable-card featured">
+                    <div class="featured-badge">INCLUDED</div>
+                    <div class="deliverable-icon">
+                        <i class="bi bi-mortarboard"></i>
+                    </div>
+                    <h3>Training & Onboarding</h3>
+                    <ul class="deliverable-list">
+                        <li><i class="bi bi-check-circle-fill"></i> 2× Live training sessions</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Video tutorial library</li>
+                        <li><i class="bi bi-check-circle-fill"></i> User manual (PDF)</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Admin guide</li>
+                        <li><i class="bi bi-check-circle-fill"></i> FAQ knowledge base setup</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Test run period (2 weeks)</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Go-live support</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Staff onboarding</li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="glass-card deliverable-card">
+                    <div class="deliverable-icon">
+                        <i class="bi bi-headset"></i>
+                    </div>
+                    <h3>Ongoing Support</h3>
+                    <ul class="deliverable-list">
+                        <li><i class="bi bi-check-circle-fill"></i> 3 months free maintenance</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Bug fixes (free)</li>
+                        <li><i class="bi bi-check-circle-fill"></i> WhatsApp support channel</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Monthly check-in calls</li>
+                        <li><i class="bi bi-check-circle-fill"></i> System monitoring</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Backup & recovery</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Security updates</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Optional: extended support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- INVESTMENT OFFERING -->
+            <div class="investment-offering scroll-reveal" style="margin-top: 60px;">
+                <div class="glass-card" style="padding: 50px 40px; border: 3px solid var(--accent); position: relative; overflow: hidden;">
+                    
+                    <!-- Discount Badge -->
+                    <div style="position: absolute; top: 20px; right: -35px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; padding: 8px 50px; transform: rotate(45deg); font-weight: 700; font-size: 0.85rem; box-shadow: 0 4px 15px rgba(239,68,68,0.4);">
+                        HEMAT 67%
+                    </div>
+
+                    <!-- Header -->
+                    <div style="text-align: center; margin-bottom: 40px;">
+                        <span class="section-tag mono" style="background: rgba(6,182,212,0.1); padding: 8px 16px; border-radius: 20px;">SPECIAL LAUNCH OFFER</span>
+                        <h3 style="font-size: 1.8rem; margin-top: 20px; color: var(--text-primary);">Total Investment</h3>
+                    </div>
+
+                    <!-- Price Display -->
+                    <div style="text-align: center; margin-bottom: 35px;">
+                        <div style="margin-bottom: 10px;">
+                            <span style="font-size: 1.3rem; color: #94a3b8; text-decoration: line-through; font-weight: 500;">Rp 150.000.000</span>
+                            <span style="background: #fef2f2; color: #dc2626; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; margin-left: 10px;">-Rp 100jt</span>
+                        </div>
+                        <div style="font-size: 4rem; font-weight: 800; color: var(--accent-dark); line-height: 1;">
+                            Rp 50<span style="font-size: 2rem;">juta</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">One-time investment • 3 bulan development</p>
+                    </div>
+
+                    <!-- Why This Pricing - Complexity Framing -->
+                    <div style="background: linear-gradient(135deg, rgba(6,182,212,0.08), rgba(6,182,212,0.02)); border-radius: 16px; padding: 25px; margin-bottom: 35px; border-left: 4px solid var(--accent);">
+                        <div style="display: flex; gap: 15px; align-items: flex-start;">
+                            <div style="background: var(--accent); color: white; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="bi bi-diagram-3" style="font-size: 1.2rem;"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 8px 0; color: var(--text-primary); font-size: 1.1rem;">Kenapa Butuh 3 Bulan?</h4>
+                                <p style="margin: 0; color: var(--text-body); font-size: 0.95rem; line-height: 1.6;">
+                                    <strong>Dataflow NAMA Marine itu kompleks.</strong> Reservasi pulau bukan sekadar "input booking" — ada kamar, paket, harga dinamis, availability, manifest kapal, SIB, payment gateway, dan invoice yang saling terhubung. 
+                                </p>
+                                <p style="margin: 12px 0 0 0; color: var(--text-body); font-size: 0.95rem; line-height: 1.6;">
+                                    Kami <strong>tidak bisa langsung build AI & Automation</strong> tanpa fondasi data yang benar. Bulan pertama fokus 100% ke <em>database architecture & data mapping</em> — ini yang bikin sistem tahan lama dan bisa scale.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Options -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 35px;">
+                        <!-- Option 1: Full Payment -->
+                        <div style="background: white; border: 2px solid #e2e8f0; border-radius: 16px; padding: 25px; text-align: center; transition: all 0.3s ease;">
+                            <div style="background: #f1f5f9; color: var(--text-muted); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 15px;">BAYAR LUNAS</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--text-primary);">Rp 50<span style="font-size: 1rem;">juta</span></div>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;">Satu kali bayar di awal</p>
+                        </div>
+
+                        <!-- Option 2: Installment -->
+                        <div style="background: linear-gradient(135deg, rgba(6,182,212,0.1), rgba(6,182,212,0.05)); border: 2px solid var(--accent); border-radius: 16px; padding: 25px; text-align: center; position: relative;">
+                            <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">RECOMMENDED</div>
+                            <div style="background: rgba(6,182,212,0.2); color: var(--accent-dark); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 15px; margin-top: 5px;">CICILAN 3X</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-dark);">Rp 17<span style="font-size: 1rem;">juta</span><span style="font-size: 0.9rem; color: var(--text-muted);">/bulan</span></div>
+                            <p style="color: var(--text-body); font-size: 0.85rem; margin-top: 8px;">Bayar sesuai fase development</p>
+                            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed rgba(6,182,212,0.3);">
+                                <span style="font-size: 0.8rem; color: var(--accent-dark);"><i class="bi bi-check-circle-fill"></i> Bulan 1 → Discovery & Database</span><br>
+                                <span style="font-size: 0.8rem; color: var(--accent-dark);"><i class="bi bi-check-circle-fill"></i> Bulan 2 → AI & Automation</span><br>
+                                <span style="font-size: 0.8rem; color: var(--accent-dark);"><i class="bi bi-check-circle-fill"></i> Bulan 3 → Testing & Go-Live</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Value Breakdown -->
+                    <div style="background: #fafafa; border-radius: 12px; padding: 20px; margin-bottom: 30px;">
+                        <div class="mono" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;">NILAI YANG ANDA DAPAT:</div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                <span style="font-size: 0.9rem;">AI Chatbot (nilai ~Rp 40jt)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                <span style="font-size: 0.9rem;">Database System (nilai ~Rp 35jt)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                <span style="font-size: 0.9rem;">n8n Automation (nilai ~Rp 30jt)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                <span style="font-size: 0.9rem;">Admin Dashboard (nilai ~Rp 25jt)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                <span style="font-size: 0.9rem;">Training & Support (nilai ~Rp 15jt)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                <span style="font-size: 0.9rem;">3 Bulan Maintenance (nilai ~Rp 5jt)</span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e2e8f0; text-align: right;">
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">Total Nilai: </span>
+                            <span style="text-decoration: line-through; color: #94a3b8;">Rp 150jt</span>
+                            <span style="color: var(--accent-dark); font-weight: 700; font-size: 1.1rem; margin-left: 8px;">→ Rp 50jt</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div style="text-align: center;">
+                        <a href="#contact" class="btn-primary large btn-shine" style="padding: 18px 40px; font-size: 1.1rem;">
+                            <i class="bi bi-calendar-check"></i>
+                            <span>Diskusi Project Sekarang</span>
+                        </a>
+                        <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">
+                            <i class="bi bi-shield-check"></i> Garansi: Uang kembali jika tidak sesuai scope yang disepakati
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPLEMENTATION ROADMAP -->
+    <section class="section-layer" style="background: var(--bg-dark); padding: 100px 0;">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono" style="color: var(--accent);">TIMELINE</span>
+                <h2 class="section-title" style="color: white;">Implementation <span class="highlight-text">Roadmap</span></h2>
+                <p class="section-sub" style="color: rgba(255,255,255,0.7);">From kickoff to go-live in 90 days.</p>
+            </div>
+
+            <div class="roadmap-container scroll-reveal">
+                <!-- Phase 1 -->
+                <div class="roadmap-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">1</div>
+                        <div class="phase-info">
+                            <h3>Discovery & Setup</h3>
+                            <span class="phase-duration">Week 1-2</span>
+                        </div>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-tasks">
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Business requirements gathering</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Room & pricing data collection</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Policy & FAQ documentation</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Database schema design</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Infrastructure setup</span>
+                            </div>
+                        </div>
+                        <div class="phase-deliverable">
+                            <strong>Deliverable:</strong> Technical Spec Document
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="roadmap-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">2</div>
+                        <div class="phase-info">
+                            <h3>Core Development</h3>
+                            <span class="phase-duration">Week 3-6</span>
+                        </div>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-tasks">
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Database implementation</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>AI chatbot development</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>n8n workflow automation</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>WhatsApp API integration</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Admin dashboard build</span>
+                            </div>
+                        </div>
+                        <div class="phase-deliverable">
+                            <strong>Deliverable:</strong> Working System (Staging)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="roadmap-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">3</div>
+                        <div class="phase-info">
+                            <h3>Integration & Testing</h3>
+                            <span class="phase-duration">Week 7-10</span>
+                        </div>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-tasks">
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Payment gateway integration</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Invoice & e-ticket system</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>End-to-end testing</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>AI response fine-tuning</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>User acceptance testing (UAT)</span>
+                            </div>
+                        </div>
+                        <div class="phase-deliverable">
+                            <strong>Deliverable:</strong> UAT Sign-off
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="roadmap-phase final">
+                    <div class="phase-header">
+                        <div class="phase-number">4</div>
+                        <div class="phase-info">
+                            <h3>Training & Go-Live</h3>
+                            <span class="phase-duration">Week 11-12</span>
+                        </div>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-tasks">
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Staff training sessions</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Documentation handover</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Soft launch (limited)</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Full go-live</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Post-launch monitoring</span>
+                            </div>
+                        </div>
+                        <div class="phase-deliverable">
+                            <strong>Deliverable:</strong> 🚀 Live System!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Visual -->
+            <div class="timeline-visual scroll-reveal" style="margin-top: 50px;">
+                <div class="timeline-bar">
+                    <div class="timeline-progress" style="width: 100%;"></div>
+                    <div class="timeline-marker" style="left: 0%;">
+                        <span>Kickoff</span>
+                    </div>
+                    <div class="timeline-marker" style="left: 17%;">
+                        <span>Week 2</span>
+                    </div>
+                    <div class="timeline-marker" style="left: 50%;">
+                        <span>Week 6</span>
+                    </div>
+                    <div class="timeline-marker" style="left: 83%;">
+                        <span>Week 10</span>
+                    </div>
+                    <div class="timeline-marker" style="left: 100%;">
+                        <span>Go-Live 🎉</span>
+                    </div>
+                </div>
+                <div class="timeline-weeks">
+                    <span>90 Days Total</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. TECH STACK -->
+    <section class="section-layer">
+        <div class="container center">
+            <span class="section-tag mono">POWERED BY</span>
+            <div class="tech-stack-row scroll-reveal">
+                <div class="tech-item">
+                    <i class="bi bi-database" style="font-size: 2rem;"></i>
+                    <span class="mono" style="font-size: 0.8rem;">MySQL</span>
+                </div>
+                <div class="tech-item">
+                    <i class="bi bi-diagram-3" style="font-size: 2rem;"></i>
+                    <span class="mono" style="font-size: 0.8rem;">n8n</span>
+                </div>
+                <div class="tech-item">
+                    <i class="bi bi-robot" style="font-size: 2rem;"></i>
+                    <span class="mono" style="font-size: 0.8rem;">AI Engine</span>
+                </div>
+                <div class="tech-item">
+                    <i class="bi bi-whatsapp" style="font-size: 2rem;"></i>
+                    <span class="mono" style="font-size: 0.8rem;">WA API</span>
+                </div>
+                <div class="tech-item">
+                    <i class="bi bi-hdd-network" style="font-size: 2rem;"></i>
+                    <span class="mono" style="font-size: 0.8rem;">Pinecone</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. ROI SECTION - VALUE STACKING -->
+    <section id="roi" class="section-testimonials parallax-section">
+        <div class="parallax-bg dark" data-speed="0.2"></div>
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="section-tag mono">THE REAL VALUE</span>
+                <h2 class="section-title">Apa yang Anda <span class="highlight-text">Dapat</span></h2>
+                <p class="section-sub" style="color: rgba(255,255,255,0.7);">Kalau beli/hire sendiri? Siapkan Rp 300jt+</p>
+            </div>
+
+            <!-- SHOCKING MONTHLY COST -->
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 50px;">
+                <div style="display: inline-block; background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.05)); border: 2px solid #10b981; border-radius: 20px; padding: 30px 50px;">
+                    <div style="font-size: 0.9rem; color: #10b981; margin-bottom: 8px;">TOTAL BIAYA OPERASIONAL BULANAN</div>
+                    <div style="font-size: 4rem; font-weight: 800; color: white; line-height: 1;">~Rp 6<span style="font-size: 1.5rem;">jt</span><span style="font-size: 1.2rem; color: rgba(255,255,255,0.6);">/bulan</span></div>
+                    <div style="font-size: 1rem; color: #10b981; margin-top: 10px;">Server + AI + Maintenance (all-in) 🎯</div>
+                </div>
+            </div>
+
+            <!-- Value Comparison Cards -->
+            <div class="stagger-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 50px;">
+                
+                <!-- Card 1: SaaS System -->
+                <div class="glass-card" style="padding: 25px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                        <div style="background: rgba(6,182,212,0.2); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="bi bi-box-seam" style="font-size: 1.5rem; color: var(--accent);"></i>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: line-through;">Market Rate</div>
+                            <div style="font-size: 1.1rem; color: #ef4444; text-decoration: line-through;">Rp 80-150jt</div>
+                        </div>
+                    </div>
+                    <h4 style="color: white; margin-bottom: 8px;">Custom SaaS System</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Full reservation system, booking engine, payment integration — bukan template, tapi custom untuk NAMA Marine.</p>
+                </div>
+
+                <!-- Card 2: Automation -->
+                <div class="glass-card" style="padding: 25px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                        <div style="background: rgba(6,182,212,0.2); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="bi bi-gear-wide-connected" style="font-size: 1.5rem; color: var(--accent);"></i>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: line-through;">Hire Specialist</div>
+                            <div style="font-size: 1.1rem; color: #ef4444; text-decoration: line-through;">Rp 45-60jt</div>
+                        </div>
+                    </div>
+                    <h4 style="color: white; margin-bottom: 8px;">n8n Automation Flows</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Auto-invoice, auto-reminder, auto-manifest, payment verification — semua jalan sendiri 24/7.</p>
+                </div>
+
+                <!-- Card 3: AI Chatbot -->
+                <div class="glass-card" style="padding: 25px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                        <div style="background: rgba(6,182,212,0.2); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="bi bi-robot" style="font-size: 1.5rem; color: var(--accent);"></i>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: line-through;">Agency Rate</div>
+                            <div style="font-size: 1.1rem; color: #ef4444; text-decoration: line-through;">Rp 40-60jt</div>
+                        </div>
+                    </div>
+                    <h4 style="color: white; margin-bottom: 8px;">AI WhatsApp Chatbot</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Jawab inquiry, cek availability, kasih quotation — paham pricing kompleks NAMA Marine.</p>
+                </div>
+
+                <!-- Card 4: Dashboard -->
+                <div class="glass-card" style="padding: 25px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                        <div style="background: rgba(6,182,212,0.2); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="bi bi-graph-up-arrow" style="font-size: 1.5rem; color: var(--accent);"></i>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: line-through;">Data Analyst</div>
+                            <div style="font-size: 1.1rem; color: #ef4444; text-decoration: line-through;">Rp 30-45jt</div>
+                        </div>
+                    </div>
+                    <h4 style="color: white; margin-bottom: 8px;">Owner Dashboard + Visual</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Revenue, occupancy, booking trends — data real-time, bukan report Excel mingguan.</p>
+                </div>
+
+                <!-- Card 5: Wiki & SOP -->
+                <div class="glass-card" style="padding: 25px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                        <div style="background: rgba(6,182,212,0.2); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="bi bi-journal-text" style="font-size: 1.5rem; color: var(--accent);"></i>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: line-through;">Tech Writer</div>
+                            <div style="font-size: 1.1rem; color: #ef4444; text-decoration: line-through;">Rp 10-15jt</div>
+                        </div>
+                    </div>
+                    <h4 style="color: white; margin-bottom: 8px;">Wiki & Knowledge Base</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Panduan lengkap untuk tim — pricing logic, SOP booking, troubleshooting. Staff baru langsung paham.</p>
+                </div>
+
+                <!-- Card 6: Server Setup -->
+                <div class="glass-card" style="padding: 25px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                        <div style="background: rgba(6,182,212,0.2); width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="bi bi-hdd-rack" style="font-size: 1.5rem; color: var(--accent);"></i>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: line-through;">DevOps</div>
+                            <div style="font-size: 1.1rem; color: #ef4444; text-decoration: line-through;">Rp 15-25jt</div>
+                        </div>
+                    </div>
+                    <h4 style="color: white; margin-bottom: 8px;">Server & Infrastructure</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Setup, security, backup, monitoring — production-ready dari hari pertama.</p>
+                </div>
+            </div>
+
+            <!-- TOTAL VALUE vs PRICE -->
+            <div class="glass-card scroll-reveal" style="padding: 40px; background: rgba(255,255,255,0.95);">
+                
+                <!-- Value Summary -->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 5px;">Total Nilai Paket Jika Beli/Hire Sendiri</div>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #ef4444; text-decoration: line-through;">Rp 220 - 365 juta</div>
+                </div>
+
+                <!-- Arrow Down -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <i class="bi bi-arrow-down-circle-fill" style="font-size: 2.5rem; color: var(--accent);"></i>
+                </div>
+
+                <!-- Your Price -->
+                <div style="text-align: center; background: linear-gradient(135deg, rgba(6,182,212,0.1), rgba(6,182,212,0.02)); border-radius: 16px; padding: 30px; border: 2px solid var(--accent); margin-bottom: 30px;">
+                    <div style="font-size: 0.9rem; color: var(--accent-dark); margin-bottom: 5px;">Investasi Anda</div>
+                    <div style="font-size: 4rem; font-weight: 800; color: var(--accent-dark); line-height: 1;">Rp 50<span style="font-size: 1.5rem;">juta</span></div>
+                    <div style="font-size: 1rem; color: #64748b; margin-top: 8px;">One-time setup • Bisa cicil 3x</div>
+                </div>
+
+                <!-- Monthly Breakdown -->
+                <div style="background: #f0fdf4; border-radius: 16px; padding: 25px; margin-bottom: 30px; border: 1px solid #bbf7d0;">
+                    <div class="mono" style="font-size: 0.8rem; color: #059669; margin-bottom: 20px; text-align: center;">💰 BIAYA BULANAN SETELAH GO-LIVE</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;">
+                        <div style="text-align: center; padding: 15px; background: white; border-radius: 12px;">
+                            <i class="bi bi-hdd-network" style="font-size: 1.3rem; color: #059669;"></i>
+                            <div style="font-size: 1.2rem; font-weight: 700; color: #166534; margin-top: 8px;">Rp 500rb - 1jt</div>
+                            <div style="font-size: 0.75rem; color: #64748b;">Server Cloud</div>
+                        </div>
+                        <div style="text-align: center; padding: 15px; background: white; border-radius: 12px;">
+                            <i class="bi bi-cpu" style="font-size: 1.3rem; color: #059669;"></i>
+                            <div style="font-size: 1.2rem; font-weight: 700; color: #166534; margin-top: 8px;">Max Rp 1jt</div>
+                            <div style="font-size: 0.75rem; color: #64748b;">AI Token Usage</div>
+                        </div>
+                        <div style="text-align: center; padding: 15px; background: white; border-radius: 12px;">
+                            <i class="bi bi-wrench-adjustable" style="font-size: 1.3rem; color: #059669;"></i>
+                            <div style="font-size: 1.2rem; font-weight: 700; color: #166534; margin-top: 8px;">Rp 3.8jt</div>
+                            <div style="font-size: 0.75rem; color: #64748b;">Maintenance</div>
+                        </div>
+                        <div style="text-align: center; padding: 15px; background: #dcfce7; border-radius: 12px; border: 2px solid #10b981;">
+                            <i class="bi bi-piggy-bank" style="font-size: 1.3rem; color: #059669;"></i>
+                            <div style="font-size: 1.2rem; font-weight: 700; color: #059669; margin-top: 8px;">~Rp 6jt/bln</div>
+                            <div style="font-size: 0.75rem; color: #166534; font-weight: 600;">Total Operasional</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Maintenance Details -->
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(6,182,212,0.08); border-radius: 10px; border: 1px dashed var(--accent);">
+                        <div style="font-size: 0.8rem; color: var(--accent-dark); font-weight: 600; margin-bottom: 10px;">✨ Yang termasuk dalam Maintenance Rp 3.8jt:</div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #374151;">
+                                <i class="bi bi-check-circle-fill" style="color: #10b981;"></i>
+                                <span>CEKAT AI Automation</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #374151;">
+                                <i class="bi bi-check-circle-fill" style="color: #10b981;"></i>
+                                <span>Minor feature updates</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #374151;">
+                                <i class="bi bi-check-circle-fill" style="color: #10b981;"></i>
+                                <span>Bug fixes & patches</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #374151;">
+                                <i class="bi bi-check-circle-fill" style="color: #10b981;"></i>
+                                <span>Konsultasi IT & Teknis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px dashed #bbf7d0;">
+                        <span style="font-size: 0.95rem; color: #166534;">
+                            <strong>Rp 6jt/bulan</strong> = biaya 1 admin + dapat sistem 24/7 🤯<br>
+                            <span style="font-size: 0.85rem; color: #64748b;">Ga pernah cuti, ga pernah salah hitung, include support</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Comparison: Manual vs System -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <!-- Manual Way -->
+                    <div style="background: #fef2f2; border-radius: 16px; padding: 25px; border-left: 4px solid #ef4444;">
+                        <div class="mono" style="font-size: 0.8rem; color: #dc2626; margin-bottom: 15px;">❌ CARA LAMA (Excel + Staff)</div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #fecaca;">
+                                <span style="color: #374151;">2 Admin booking + WA</span>
+                                <span style="font-weight: 600; color: #991b1b;">Rp 10jt</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #fecaca;">
+                                <span style="color: #374151;">Owner urus ops issues</span>
+                                <span style="font-weight: 600; color: #991b1b;">Rp 5jt</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #fecaca;">
+                                <span style="color: #374151;">Error & double booking</span>
+                                <span style="font-weight: 600; color: #991b1b;">Rp 8jt</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 12px; background: #fee2e2; border-radius: 8px; padding: 12px;">
+                                <span style="font-weight: 700; color: #dc2626;">Total/bulan</span>
+                                <span style="font-weight: 700; color: #dc2626;">Rp 23jt</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- With System -->
+                    <div style="background: #f0fdf4; border-radius: 16px; padding: 25px; border-left: 4px solid #10b981;">
+                        <div class="mono" style="font-size: 0.8rem; color: #059669; margin-bottom: 15px;">✅ DENGAN SYSTEM</div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #bbf7d0;">
+                                <span style="color: #374151;">1 Admin supervise</span>
+                                <span style="font-weight: 600; color: #166534;">Rp 5jt</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #bbf7d0;">
+                                <span style="color: #374151;">Server + AI Token</span>
+                                <span style="font-weight: 600; color: #166534;">Rp 2jt</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #bbf7d0;">
+                                <span style="color: #374151;">Maintenance + Support</span>
+                                <span style="font-weight: 600; color: #166534;">Rp 3.8jt</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #bbf7d0;">
+                                <span style="color: #374151;">Error & double booking</span>
+                                <span style="font-weight: 600; color: #10b981;">Rp 0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 12px; background: #dcfce7; border-radius: 8px; padding: 12px;">
+                                <span style="font-weight: 700; color: #059669;">Total/bulan</span>
+                                <span style="font-weight: 700; color: #059669;">Rp 11jt</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Savings Highlight -->
+                <div style="background: linear-gradient(135deg, #fef3c7, #fef9c3); border-radius: 16px; padding: 20px; text-align: center; border: 1px solid #fcd34d; margin-bottom: 30px;">
+                    <span style="font-size: 1.1rem; color: #92400e;">
+                        💡 <strong>Hemat Rp 12jt/bulan</strong> = <strong>Rp 144jt/tahun</strong>
+                    </span>
+                </div>
+
+                <!-- BONUS: Future Capabilities -->
+                <div style="background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.02)); border-radius: 16px; padding: 25px; border: 1px solid rgba(139,92,246,0.3);">
+                    <div class="mono" style="font-size: 0.8rem; color: #7c3aed; margin-bottom: 15px;">🚀 BONUS: FUTURE-READY CAPABILITIES</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="bi bi-instagram" style="color: #7c3aed; font-size: 1.2rem;"></i>
+                            <span style="font-size: 0.9rem; color: #374151;">Auto-pull Instagram analytics</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="bi bi-tiktok" style="color: #7c3aed; font-size: 1.2rem;"></i>
+                            <span style="font-size: 0.9rem; color: #374151;">TikTok engagement report</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="bi bi-bar-chart-line" style="color: #7c3aed; font-size: 1.2rem;"></i>
+                            <span style="font-size: 0.9rem; color: #374151;">Views, likes, saves tracking</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="bi bi-file-earmark-pdf" style="color: #7c3aed; font-size: 1.2rem;"></i>
+                            <span style="font-size: 0.9rem; color: #374151;">Auto-generate monthly report</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.85rem; color: #64748b; text-align: center;">
+                        Sistem sudah siap untuk integrasi social media analytics — tinggal "nyalakan" ketika butuh.
+                    </p>
+                </div>
+
+                <!-- Final ROI -->
+                <div style="background: linear-gradient(135deg, var(--accent-dark), #0891b2); border-radius: 16px; padding: 30px; color: white; text-align: center; margin-top: 30px;">
+                    <div style="font-size: 1rem; opacity: 0.8; margin-bottom: 15px;">YEAR 1 ROI</div>
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+                        <div>
+                            <div style="font-size: 1.8rem; font-weight: 700;">Rp 144jt</div>
+                            <div style="font-size: 0.75rem; opacity: 0.7;">Savings/year</div>
+                        </div>
+                        <div style="font-size: 1.5rem; opacity: 0.5;">+</div>
+                        <div>
+                            <div style="font-size: 1.8rem; font-weight: 700;">Rp 150jt</div>
+                            <div style="font-size: 0.75rem; opacity: 0.7;">Revenue recovery</div>
+                        </div>
+                        <div style="font-size: 1.5rem; opacity: 0.5;">=</div>
+                        <div style="background: white; color: var(--accent-dark); padding: 15px 25px; border-radius: 12px;">
+                            <div style="font-size: 2.5rem; font-weight: 800;">6x</div>
+                            <div style="font-size: 0.75rem;">ROI</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                        <i class="bi bi-lightning-charge-fill"></i> Investment Rp 50jt → Impact Rp 294jt di tahun pertama
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. CTA -->
+    <section id="contact" class="section-cta">
+        <div class="container">
+            <div class="cta-box scroll-reveal">
+                <span class="section-tag mono">FINAL STEP</span>
+                <h2 class="cta-title">Ready to Transform Your <span class="highlight-text">Reservation?</span></h2>
+                <p class="cta-subtitle">Let's build this together. From chaos to clarity in 90 days.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary large btn-shine">
+                        <i class="bi bi-calendar-check"></i> Schedule Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.5rem;">NAMA MARINE</span>
+                    <p class="f-desc">
+                        Powered by Flexeet Technology<br>
+                        <strong>Intelligent Marine Operations.</strong>
+                    </p>
+                </div>
+                <nav class="footer-nav">
+                    <div class="f-col">
+                        <h4>Explore</h4>
+                        <a href="#problem">Challenges</a>
+                        <a href="#solution">Solution</a>
+                        <a href="#features">Features</a>
+                    </div>
+                    <div class="f-col">
+                        <h4>Contact</h4>
+                        <a href="#"><span class="__cf_email__" data-cfemail="cba3aea7a7a48ba5aaa6aaa6aab9a2a5aee5a8a4a6">[email&#160;protected]</span></a>
+                        <a href="#">+62 877-3006-0077</a>
+                    </div>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NAMA Marine. Powered by <strong>Flexeet</strong> Technology.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
+</body>
+</html>

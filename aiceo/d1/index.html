@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAY 1: BONGKAR — The AI CEO Workshop</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-left">
+            <span class="nav-logo">THE AI CEO</span>
+            <span class="nav-divider">|</span>
+            <span class="nav-day">DAY 1: BONGKAR</span>
+        </div>
+        <div class="nav-center">
+            <div class="session-dots">
+                <button class="session-dot active" data-session="0" title="Opening"></button>
+                <button class="session-dot" data-session="1" title="Sesi A"></button>
+                <button class="session-dot" data-session="2" title="Sesi B"></button>
+                <button class="session-dot" data-session="3" title="Sesi C"></button>
+                <button class="session-dot" data-session="4" title="Sesi D"></button>
+                <button class="session-dot" data-session="5" title="Sesi E"></button>
+                <button class="session-dot" data-session="6" title="Sesi F"></button>
+            </div>
+        </div>
+        <div class="nav-right">
+            <span class="current-time" id="currentTime">09:00</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Session 0: Opening Cover -->
+        <section class="session active" data-session="0">
+            <div class="session-bg">
+                <div class="bg-grid"></div>
+                <div class="bg-glow bg-glow-1"></div>
+                <div class="bg-glow bg-glow-2"></div>
+            </div>
+            <div class="session-content cover-slide">
+                <div class="cover-badge">
+                    <span class="badge-dot"></span>
+                    <span>Workshop Eksklusif • 2 Hari • 100 Peserta</span>
+                </div>
+                <h1 class="cover-title">
+                    <span class="title-small">THE AI CEO WORKSHOP</span>
+                    <span class="title-main">DAY 1</span>
+                    <span class="title-accent">BONGKAR</span>
+                </h1>
+                <p class="cover-subtitle">Kenapa Bisnis Lo Bocor (Dan Lo Gak Sadar)</p>
+                
+                <div class="cover-agenda">
+                    <div class="agenda-item">
+                        <span class="agenda-time">09:00</span>
+                        <span class="agenda-title">Opening: Yang Gak Pernah Gue Share</span>
+                    </div>
+                    <div class="agenda-item">
+                        <span class="agenda-time">09:30</span>
+                        <span class="agenda-title">Hitung Sendiri: Berapa Miliar Lo Buang</span>
+                    </div>
+                    <div class="agenda-item">
+                        <span class="agenda-time">10:45</span>
+                        <span class="agenda-title">ChatGPT, Claude, Gemini — Lo Salah Pakai</span>
+                    </div>
+                    <div class="agenda-item">
+                        <span class="agenda-time">13:00</span>
+                        <span class="agenda-title">100x Lebih Cepat: Cuma 1 Alat Ini</span>
+                    </div>
+                    <div class="agenda-item">
+                        <span class="agenda-time">14:45</span>
+                        <span class="agenda-title">Advisory Board Ratusan Juta — Gratis</span>
+                    </div>
+                    <div class="agenda-item">
+                        <span class="agenda-time">16:00</span>
+                        <span class="agenda-title">Yang Lo Lewatin Kalau Gak Dateng Besok</span>
+                    </div>
+                </div>
+                
+                <button class="btn-start" onclick="nextSession()">
+                    <span>Mulai Workshop</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Session 1: Opening Story -->
+        <section class="session" data-session="1">
+            <div class="session-header">
+                <span class="session-time">09:00 - 09:30</span>
+                <span class="session-tag">SESI A • OPENING</span>
+            </div>
+            <div class="session-content">
+                <h2 class="slide-title">"Yang Gak Pernah Gue Share<br><span class="text-gradient">di Podcast Manapun</span>"</h2>
+                
+                <div class="story-container">
+                    <div class="story-visual">
+                        <div class="story-icon">💔</div>
+                        <div class="story-number">
+                            <span class="number-value">1</span>
+                            <span class="number-label">Orang Resign</span>
+                        </div>
+                        <div class="story-arrow">→</div>
+                        <div class="story-number danger">
+                            <span class="number-value">800jt</span>
+                            <span class="number-label">Kerugian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="story-timeline">
+                        <div class="timeline-item" data-animate="1">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Manager Resign</h4>
+                                <p>"Mau fokus keluarga" — padahal pindah ke kompetitor</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-animate="2">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Minggu 1-2: Chaos</h4>
+                                <p>Tim bingung. Pertanyaan numpuk. Salah kirim ke 3 kota.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-animate="3">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Bulan 1: Revenue -40%</h4>
+                                <p>Customer komplain. Refund gede. Hampir burnout.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-animate="4">
+                            <div class="timeline-dot danger"></div>
+                            <div class="timeline-content">
+                                <h4>Realisasi</h4>
+                                <p><strong>Gue bukan kehilangan ORANG. Gue kehilangan KNOWLEDGE.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="story-quote">
+                        <blockquote>
+                            "5 tahun gue invest waktu, energi, ngajarin dia — dan semua itu PERGI dalam 1 surat resign."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="session-nav">
+                <button class="btn-nav" onclick="prevSession()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Sebelumnya</span>
+                </button>
+                <button class="btn-nav btn-nav-primary" onclick="nextSession()">
+                    <span>Lanjut</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Session 2: Calculator -->
+        <section class="session" data-session="2">
+            <div class="session-header">
+                <span class="session-time">09:30 - 10:30</span>
+                <span class="session-tag">SESI B • INTERACTIVE</span>
+            </div>
+            <div class="session-content">
+                <h2 class="slide-title">"Hitung Sendiri:<br><span class="text-gradient">Berapa Miliar Lo Buang Tahun Ini</span>"</h2>
+                
+                <div class="calculator-full">
+                    <div class="calc-intro">
+                        <p>Jawab jujur. Angka ini buat lo sendiri. 🔒</p>
+                    </div>
+                    
+                    <div class="calc-sections">
+                        <!-- Part 1 -->
+                        <div class="calc-section">
+                            <div class="calc-section-header">
+                                <span class="calc-number">01</span>
+                                <h3>Waktu Owner yang Terbuang</h3>
+                            </div>
+                            <div class="calc-fields">
+                                <div class="calc-field">
+                                    <label>Jam per minggu jawab pertanyaan SAMA dari tim?</label>
+                                    <div class="range-input">
+                                        <input type="range" id="calc1_hours" min="1" max="30" value="10">
+                                        <div class="range-value"><span id="calc1_hours_val">10</span> jam</div>
+                                    </div>
+                                </div>
+                                <div class="calc-field">
+                                    <label>Nilai waktu lo per jam? (Target income bulanan ÷ 160)</label>
+                                    <div class="currency-input">
+                                        <span>Rp</span>
+                                        <input type="text" id="calc1_rate" value="500.000">
+                                        <span>/jam</span>
+                                    </div>
+                                </div>
+                                <div class="calc-result">
+                                    <span>Kerugian per tahun:</span>
+                                    <span class="result-value" id="calc1_result">Rp 0</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Part 2 -->
+                        <div class="calc-section">
+                            <div class="calc-section-header">
+                                <span class="calc-number">02</span>
+                                <h3>Onboarding Cost</h3>
+                            </div>
+                            <div class="calc-fields">
+                                <div class="calc-field">
+                                    <label>Key person yang di-hire tahun ini?</label>
+                                    <div class="range-input">
+                                        <input type="range" id="calc2_hires" min="0" max="10" value="2">
+                                        <div class="range-value"><span id="calc2_hires_val">2</span> orang</div>
+                                    </div>
+                                </div>
+                                <div class="calc-field">
+                                    <label>Bulan sampai mereka produktif?</label>
+                                    <div class="range-input">
+                                        <input type="range" id="calc2_months" min="1" max="12" value="3">
+                                        <div class="range-value"><span id="calc2_months_val">3</span> bulan</div>
+                                    </div>
+                                </div>
+                                <div class="calc-field">
+                                    <label>Rata-rata gaji mereka?</label>
+                                    <div class="currency-input">
+                                        <span>Rp</span>
+                                        <input type="text" id="calc2_salary" value="15.000.000">
+                                        <span>/bulan</span>
+                                    </div>
+                                </div>
+                                <div class="calc-result">
+                                    <span>Onboarding cost:</span>
+                                    <span class="result-value" id="calc2_result">Rp 0</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Part 3 -->
+                        <div class="calc-section">
+                            <div class="calc-section-header">
+                                <span class="calc-number">03</span>
+                                <h3>Turnover Cost</h3>
+                            </div>
+                            <div class="calc-fields">
+                                <div class="calc-field">
+                                    <label>Key person yang RESIGN tahun ini?</label>
+                                    <div class="range-input">
+                                        <input type="range" id="calc3_resign" min="0" max="5" value="1">
+                                        <div class="range-value"><span id="calc3_resign_val">1</span> orang</div>
+                                    </div>
+                                </div>
+                                <div class="calc-field">
+                                    <label>Bulan untuk bisnis RECOVER?</label>
+                                    <div class="range-input">
+                                        <input type="range" id="calc3_recovery" min="1" max="12" value="3">
+                                        <div class="range-value"><span id="calc3_recovery_val">3</span> bulan</div>
+                                    </div>
+                                </div>
+                                <div class="calc-field">
+                                    <label>Revenue loss per bulan saat recovery?</label>
+                                    <div class="currency-input">
+                                        <span>Rp</span>
+                                        <input type="text" id="calc3_loss" value="100.000.000">
+                                        <span>/bulan</span>
+                                    </div>
+                                </div>
+                                <div class="calc-result">
+                                    <span>Turnover cost:</span>
+                                    <span class="result-value" id="calc3_result">Rp 0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Total -->
+                    <div class="calc-total-section">
+                        <div class="total-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                            <h3>TOTAL KNOWLEDGE LEAK</h3>
+                        </div>
+                        <div class="total-value">
+                            <span class="total-prefix">Rp</span>
+                            <span class="total-number" id="calcTotal">0</span>
+                            <span class="total-suffix">/tahun</span>
+                        </div>
+                        <div class="total-insight">
+                            <p>💡 Dengan AI Manager <strong>Rp 10jt/bulan</strong>, lo bisa STOP kerugian ini.</p>
+                            <p>ROI: <strong id="calcROI">0</strong>x lipat per tahun.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="session-nav">
+                <button class="btn-nav" onclick="prevSession()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Sebelumnya</span>
+                </button>
+                <button class="btn-nav btn-nav-primary" onclick="nextSession()">
+                    <span>Lanjut</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Session 3: AI Mistakes -->
+        <section class="session" data-session="3">
+            <div class="session-header">
+                <span class="session-time">10:45 - 12:00</span>
+                <span class="session-tag">SESI C • MYTH BUSTING</span>
+            </div>
+            <div class="session-content">
+                <h2 class="slide-title">"ChatGPT, Claude, Gemini —<br><span class="text-gradient">Lo Salah Pakai Semua</span>"</h2>
+                
+                <div class="mistakes-container">
+                    <p class="mistakes-intro">Berapa dari 5 kesalahan ini yang lo lakuin? 🎯</p>
+                    
+                    <div class="mistakes-quiz">
+                        <div class="mistake-card" data-mistake="1">
+                            <div class="mistake-number">01</div>
+                            <div class="mistake-content">
+                                <h4>Wrong Model for Wrong Task</h4>
+                                <p>Pake 1 model (ChatGPT) buat SEMUA task. Padahal tiap model punya kelebihan beda.</p>
+                                <div class="mistake-example">
+                                    <span class="example-bad">❌ Pake GPT-4 buat semua</span>
+                                    <span class="example-good">✅ Pilih model sesuai task</span>
+                                </div>
+                            </div>
+                            <button class="mistake-check" onclick="toggleMistake(this)">
+                                <span class="check-text">Gue lakuin ini</span>
+                                <span class="check-icon">☐</span>
+                            </button>
+                        </div>
+                        
+                        <div class="mistake-card" data-mistake="2">
+                            <div class="mistake-number">02</div>
+                            <div class="mistake-content">
+                                <h4>No Context, No Result</h4>
+                                <p>ChatGPT gak tau SOP lo, cara lo mikir, atau keputusan lo tahun lalu.</p>
+                                <div class="mistake-example">
+                                    <span class="example-bad">❌ "Gimana strategi marketing bagus?"</span>
+                                    <span class="example-good">✅ Kasih context bisnis lo dulu</span>
+                                </div>
+                            </div>
+                            <button class="mistake-check" onclick="toggleMistake(this)">
+                                <span class="check-text">Gue lakuin ini</span>
+                                <span class="check-icon">☐</span>
+                            </button>
+                        </div>
+                        
+                        <div class="mistake-card" data-mistake="3">
+                            <div class="mistake-number">03</div>
+                            <div class="mistake-content">
+                                <h4>Prompt Asal-Asalan</h4>
+                                <p>"Buatin caption IG" vs prompt detail dengan role, audience, tone, format.</p>
+                                <div class="mistake-example">
+                                    <span class="example-bad">❌ "Buatin caption baju"</span>
+                                    <span class="example-good">✅ Detail: role, audience, tone, USP</span>
+                                </div>
+                            </div>
+                            <button class="mistake-check" onclick="toggleMistake(this)">
+                                <span class="check-text">Gue lakuin ini</span>
+                                <span class="check-icon">☐</span>
+                            </button>
+                        </div>
+                        
+                        <div class="mistake-card" data-mistake="4">
+                            <div class="mistake-number">04</div>
+                            <div class="mistake-content">
+                                <h4>No Feedback Loop</h4>
+                                <p>Gak pernah feedback kalau salah. AI lo STATIS, sama aja bodohnya dari awal.</p>
+                                <div class="mistake-example">
+                                    <span class="example-bad">❌ Terima output, next prompt</span>
+                                    <span class="example-good">✅ Feedback, correct, improve</span>
+                                </div>
+                            </div>
+                            <button class="mistake-check" onclick="toggleMistake(this)">
+                                <span class="check-text">Gue lakuin ini</span>
+                                <span class="check-icon">☐</span>
+                            </button>
+                        </div>
+                        
+                        <div class="mistake-card" data-mistake="5">
+                            <div class="mistake-number">05</div>
+                            <div class="mistake-content">
+                                <h4>Expect Instant Magic</h4>
+                                <p>"Udah langganan 1 bulan kok bisnis gak berubah?" — AI butuh proses.</p>
+                                <div class="mistake-example">
+                                    <span class="example-bad">❌ Expect hasil instant</span>
+                                    <span class="example-good">✅ Invest time untuk train AI</span>
+                                </div>
+                            </div>
+                            <button class="mistake-check" onclick="toggleMistake(this)">
+                                <span class="check-text">Gue lakuin ini</span>
+                                <span class="check-icon">☐</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mistakes-result">
+                        <div class="result-score">
+                            <span class="score-number" id="mistakeScore">0</span>
+                            <span class="score-label">dari 5 kesalahan</span>
+                        </div>
+                        <p class="result-message" id="mistakeMessage">Klik kesalahan yang lo lakuin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="session-nav">
+                <button class="btn-nav" onclick="prevSession()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Sebelumnya</span>
+                </button>
+                <button class="btn-nav btn-nav-primary" onclick="nextSession()">
+                    <span>Lanjut</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Session 4: Plaud Reveal -->
+        <section class="session" data-session="4">
+            <div class="session-header">
+                <span class="session-time">13:00 - 14:30</span>
+                <span class="session-tag">SESI D • HARDWARE REVEAL</span>
+            </div>
+            <div class="session-content">
+                <h2 class="slide-title">"100x Lebih Cepat:<br><span class="text-gradient">Cuma Butuh 1 Alat Ini</span>"</h2>
+                
+                <div class="plaud-container">
+                    <div class="plaud-reveal">
+                        <div class="plaud-device">
+                            <div class="device-image">
+                                <div class="device-placeholder">
+                                    <span class="device-icon">🎙️</span>
+                                    <span class="device-name">PLAUD NOTE AI</span>
+                                </div>
+                            </div>
+                            <div class="device-specs">
+                                <div class="spec-item">
+                                    <span class="spec-icon">💰</span>
+                                    <span class="spec-value">~Rp 3 Juta</span>
+                                    <span class="spec-label">Hardware</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-icon">📅</span>
+                                    <span class="spec-value">Rp 4 Juta/tahun</span>
+                                    <span class="spec-label">Unlimited Transcription</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-icon">📶</span>
+                                    <span class="spec-value">Offline</span>
+                                    <span class="spec-label">Recording</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="plaud-demo">
+                        <h3>🎬 Demo: Dari Recording ke Insight</h3>
+                        
+                        <div class="demo-flow">
+                            <div class="demo-step active" data-step="1">
+                                <div class="step-icon">🎙️</div>
+                                <h4>1. Record</h4>
+                                <p>Pencet tombol, ngobrol seperti biasa</p>
+                            </div>
+                            <div class="demo-arrow">→</div>
+                            <div class="demo-step" data-step="2">
+                                <div class="step-icon">📝</div>
+                                <h4>2. Transcribe</h4>
+                                <p>Otomatis jadi text dalam menit</p>
+                            </div>
+                            <div class="demo-arrow">→</div>
+                            <div class="demo-step" data-step="3">
+                                <div class="step-icon">🧠</div>
+                                <h4>3. Extract</h4>
+                                <p>AI ambil key insights</p>
+                            </div>
+                            <div class="demo-arrow">→</div>
+                            <div class="demo-step" data-step="4">
+                                <div class="step-icon">✨</div>
+                                <h4>4. Knowledge</h4>
+                                <p>Siap dipake tim 24/7</p>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-simulation">
+                            <div class="sim-header">
+                                <span class="sim-label">LIVE SIMULATION</span>
+                                <button class="sim-button" id="startSimulation" onclick="startRecordingSimulation()">
+                                    <span class="sim-icon">▶</span>
+                                    <span>Mulai Demo</span>
+                                </button>
+                            </div>
+                            <div class="sim-content">
+                                <div class="sim-recording" id="simRecording">
+                                    <div class="recording-wave">
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <p class="recording-text">"Untuk handle komplain refund di atas 7 hari, pertama cek history customer. Kalau dia VIP, langsung tawarkan store credit 110%. Kalau bukan VIP, jelaskan policy dengan empati..."</p>
+                                </div>
+                                <div class="sim-transcript" id="simTranscript">
+                                    <div class="transcript-header">📝 Transcript</div>
+                                    <div class="transcript-text"></div>
+                                </div>
+                                <div class="sim-insight" id="simInsight">
+                                    <div class="insight-header">🧠 Extracted Knowledge</div>
+                                    <div class="insight-content">
+                                        <div class="insight-item">
+                                            <strong>Topic:</strong> SOP Refund > 7 Hari
+                                        </div>
+                                        <div class="insight-item">
+                                            <strong>Decision Tree:</strong>
+                                            <ol>
+                                                <li>Cek history customer</li>
+                                                <li>IF VIP → Store credit 110%</li>
+                                                <li>IF Non-VIP → Jelaskan policy</li>
+                                            </ol>
+                                        </div>
+                                        <div class="insight-item">
+                                            <strong>Tags:</strong> #refund #customer-service #sop
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="plaud-usecases">
+                        <h4>Use Cases:</h4>
+                        <div class="usecase-grid">
+                            <div class="usecase-item">
+                                <span class="usecase-icon">👥</span>
+                                <span class="usecase-text">Meeting Internal</span>
+                            </div>
+                            <div class="usecase-item">
+                                <span class="usecase-icon">🎓</span>
+                                <span class="usecase-text">Coaching Session</span>
+                            </div>
+                            <div class="usecase-item">
+                                <span class="usecase-icon">📚</span>
+                                <span class="usecase-text">Workshop/Seminar</span>
+                            </div>
+                            <div class="usecase-item">
+                                <span class="usecase-icon">🤝</span>
+                                <span class="usecase-text">Partner Meeting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="session-nav">
+                <button class="btn-nav" onclick="prevSession()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Sebelumnya</span>
+                </button>
+                <button class="btn-nav btn-nav-primary" onclick="nextSession()">
+                    <span>Lanjut</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Session 5: AI Advisors Demo -->
+        <section class="session" data-session="5">
+            <div class="session-header">
+                <span class="session-time">14:45 - 16:00</span>
+                <span class="session-tag">SESI E • WOW MOMENT</span>
+            </div>
+            <div class="session-content">
+                <h2 class="slide-title">"Advisory Board Ratusan Juta —<br><span class="text-gradient">Gue Dapet Gratis. Mau Liat?</span>"</h2>
+                
+                <div class="advisor-demo-container">
+                    <div class="advisor-intro">
+                        <p>Pilih AI Advisor, tanya apapun. 🤖</p>
+                    </div>
+                    
+                    <div class="advisor-selector">
+                        <button class="advisor-btn active" data-advisor="marketing" onclick="selectAdvisor('marketing')">
+                            <span class="advisor-icon">📈</span>
+                            <span class="advisor-name">Marketing Expert</span>
+                        </button>
+                        <button class="advisor-btn" data-advisor="sales" onclick="selectAdvisor('sales')">
+                            <span class="advisor-icon">💰</span>
+                            <span class="advisor-name">Sales Master</span>
+                        </button>
+                        <button class="advisor-btn" data-advisor="operations" onclick="selectAdvisor('operations')">
+                            <span class="advisor-icon">⚙️</span>
+                            <span class="advisor-name">Operations Pro</span>
+                        </button>
+                        <button class="advisor-btn" data-advisor="finance" onclick="selectAdvisor('finance')">
+                            <span class="advisor-icon">📊</span>
+                            <span class="advisor-name">Finance Advisor</span>
+                        </button>
+                        <button class="advisor-btn" data-advisor="leadership" onclick="selectAdvisor('leadership')">
+                            <span class="advisor-icon">🚀</span>
+                            <span class="advisor-name">Leadership Coach</span>
+                        </button>
+                    </div>
+                    
+                    <div class="advisor-chat">
+                        <div class="chat-window">
+                            <div class="chat-header">
+                                <div class="chat-avatar-header">
+                                    <span id="chatAdvisorIcon">📈</span>
+                                </div>
+                                <div class="chat-info">
+                                    <span class="chat-name" id="chatAdvisorName">Marketing Expert</span>
+                                    <span class="chat-status">● Online</span>
+                                </div>
+                            </div>
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="chat-message ai">
+                                    <div class="message-avatar">📈</div>
+                                    <div class="message-bubble">
+                                        <p>Hai! Gue AI Marketing Expert. Tanya apa aja soal marketing, ads, atau growth strategy. Gue siap bantu. 🚀</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-input-area">
+                                <div class="quick-questions">
+                                    <button class="quick-btn" onclick="askQuestion('Gimana cara scale FB Ads dengan budget terbatas?')">Scale FB Ads?</button>
+                                    <button class="quick-btn" onclick="askQuestion('Strategi content marketing untuk B2B?')">Content B2B?</button>
+                                    <button class="quick-btn" onclick="askQuestion('Tips meningkatkan conversion rate?')">Conversion rate?</button>
+                                </div>
+                                <div class="chat-input">
+                                    <input type="text" id="chatInput" placeholder="Ketik pertanyaan lo..." onkeypress="handleChatKeypress(event)">
+                                    <button class="send-btn" onclick="sendChatMessage()">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="advisor-note">
+                        <p>⚠️ <strong>Disclaimer:</strong> AI Advisors ini di-build dari cara pikir expert, berdasarkan content publik mereka. Bukan representasi resmi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="session-nav">
+                <button class="btn-nav" onclick="prevSession()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Sebelumnya</span>
+                </button>
+                <button class="btn-nav btn-nav-primary" onclick="nextSession()">
+                    <span>Lanjut</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Session 6: Closing -->
+        <section class="session" data-session="6">
+            <div class="session-header">
+                <span class="session-time">16:00 - 16:30</span>
+                <span class="session-tag">SESI F • CLOSING</span>
+            </div>
+            <div class="session-content closing-slide">
+                <h2 class="slide-title">"Yang Lo Lewatin<br><span class="text-gradient">Kalau Gak Dateng Besok</span>"</h2>
+                
+                <div class="closing-container">
+                    <div class="recap-section">
+                        <h3>📋 Hari Ini Lo Udah:</h3>
+                        <div class="recap-grid">
+                            <div class="recap-item done">
+                                <span class="recap-check">✓</span>
+                                <span class="recap-text">Hitung berapa MILIAR yang bocor</span>
+                            </div>
+                            <div class="recap-item done">
+                                <span class="recap-check">✓</span>
+                                <span class="recap-text">Tau 5 kesalahan pakai AI</span>
+                            </div>
+                            <div class="recap-item done">
+                                <span class="recap-check">✓</span>
+                                <span class="recap-text">Liat alat yang mempercepat 100x</span>
+                            </div>
+                            <div class="recap-item done">
+                                <span class="recap-check">✓</span>
+                                <span class="recap-text">Demo AI Advisory Board</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="teaser-section">
+                        <h3>🔥 Besok (Day 2):</h3>
+                        <div class="teaser-grid">
+                            <div class="teaser-item">
+                                <span class="teaser-icon">🧠</span>
+                                <span class="teaser-text">Framework extraction LENGKAP</span>
+                            </div>
+                            <div class="teaser-item">
+                                <span class="teaser-icon">✋</span>
+                                <span class="teaser-text">PRAKTEK extract sendiri</span>
+                            </div>
+                            <div class="teaser-item">
+                                <span class="teaser-icon">👥</span>
+                                <span class="teaser-text">Reveal 30 AI Advisors</span>
+                            </div>
+                            <div class="teaser-item">
+                                <span class="teaser-icon">💎</span>
+                                <span class="teaser-text">OFFER yang cuma ada besok</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fomo-section">
+                        <h3>❌ Kalau Lo Gak Dateng Besok:</h3>
+                        <div class="fomo-list">
+                            <div class="fomo-item">Lo gak tau framework extraction-nya</div>
+                            <div class="fomo-item">Lo gak praktek extract knowledge sendiri</div>
+                            <div class="fomo-item">Lo gak dapet akses ke 30 AI advisor</div>
+                            <div class="fomo-item">Lo gak dapet offer yang cuma ada besok</div>
+                        </div>
+                    </div>
+                    
+                    <div class="homework-section">
+                        <div class="homework-card">
+                            <h3>📝 HOMEWORK Malam Ini</h3>
+                            <p>Tulis <strong>5 pertanyaan</strong> yang PALING SERING tim lo tanya ke lo.</p>
+                            <p class="homework-note">Besok kita pake ini di sesi hands-on.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="closing-message">
+                        <p>Besok, jam 9 pagi. <strong>Jangan telat.</strong></p>
+                        <p class="closing-subtext">Karena yang telat... ketinggalan.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="session-nav">
+                <button class="btn-nav" onclick="prevSession()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Sebelumnya</span>
+                </button>
+                <button class="btn-nav btn-nav-accent" onclick="goToSession(0)">
+                    <span>Kembali ke Awal</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                        <path d="M3 3v5h5"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Keyboard shortcuts hint -->
+    <div class="keyboard-hint">
+        <span>← → untuk navigasi</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

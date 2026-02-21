@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICEO — Clone Your Decision Intelligence</title>
+    <meta name="description" content="AICEO: Extract, compile, and deploy your unique decision-making patterns into an AI assistant.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">AICEO</div>
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+            <div class="preloader-percent">0%</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-text">AICEO</span>
+                <span class="logo-dot"></span>
+            </a>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#process" class="nav-link">Process</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+            </div>
+            
+            <a href="#contact" class="nav-cta">
+                <span>Get Started</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#features" class="mobile-link">Features</a>
+            <a href="#process" class="mobile-link">Process</a>
+            <a href="#pricing" class="mobile-link">Pricing</a>
+            <a href="#contact" class="mobile-link cta">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-gradient"></div>
+        <div class="hero-noise"></div>
+        
+        <div class="hero-content">
+            <div class="hero-badge" data-aos="fade-down" data-aos-duration="600">
+                <span class="badge-glow"></span>
+                <span class="badge-icon">⚡</span>
+                <span class="badge-text">AI-Powered Decision Intelligence</span>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="title-line" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    Clone Your
+                </span>
+                <span class="title-line gold" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    Decision
+                </span>
+                <span class="title-line" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    Intelligence
+                </span>
+            </h1>
+            
+            <p class="hero-desc" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                Extract, compile, and deploy your unique decision-making patterns.<br class="d-none d-md-block">
+                Your team gets 24/7 access to your judgment framework.
+            </p>
+            
+            <div class="hero-cta" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                <a href="#contact" class="btn btn-gold">
+                    <span>Start Building Your AI</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#process" class="btn btn-ghost">
+                    <span>See How It Works</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="hero-visual" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+            <div class="brain-orbit">
+                <div class="orbit-ring ring-1"></div>
+                <div class="orbit-ring ring-2"></div>
+                <div class="orbit-ring ring-3"></div>
+                <div class="brain-core">
+                    <span>🧠</span>
+                </div>
+                <div class="orbit-nodes">
+                    <div class="orbit-node" style="--i:0"><span>📊</span></div>
+                    <div class="orbit-node" style="--i:1"><span>👑</span></div>
+                    <div class="orbit-node" style="--i:2"><span>💰</span></div>
+                    <div class="orbit-node" style="--i:3"><span>📢</span></div>
+                    <div class="orbit-node" style="--i:4"><span>⚙️</span></div>
+                    <div class="orbit-node" style="--i:5"><span>🚀</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Section -->
+    <section class="marquee">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span class="marquee-item">Decision Patterns</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Kill Criteria</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Failure Scars</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Override Conditions</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Value Filters</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Judgment Framework</span>
+                <span class="marquee-star">✦</span>
+            </div>
+            <div class="marquee-content">
+                <span class="marquee-item">Decision Patterns</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Kill Criteria</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Failure Scars</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Override Conditions</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Value Filters</span>
+                <span class="marquee-star">✦</span>
+                <span class="marquee-item">Judgment Framework</span>
+                <span class="marquee-star">✦</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-left">
+                    <span class="section-tag" data-aos="fade-right">What is AICEO?</span>
+                    <h2 class="section-title" data-aos="fade-right" data-aos-delay="100">
+                        Not a clone of you.<br>
+                        <span class="gold">A clone of how you think.</span>
+                    </h2>
+                </div>
+                <div class="about-right">
+                    <p class="about-text" data-aos="fade-left" data-aos-delay="200">
+                        AICEO extracts, compiles, and deploys your unique decision-making patterns 
+                        into an AI assistant. Your team gets 24/7 access to your judgment framework — 
+                        for branding, hiring, strategy, and beyond.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat" data-aos="fade-up" data-aos-delay="300">
+                            <span class="stat-number"><span class="counter" data-target="200">0</span>+</span>
+                            <span class="stat-label">Decision Units</span>
+                        </div>
+                        <div class="stat" data-aos="fade-up" data-aos-delay="400">
+                            <span class="stat-number"><span class="counter" data-target="8">0</span></span>
+                            <span class="stat-label">Domains Covered</span>
+                        </div>
+                        <div class="stat" data-aos="fade-up" data-aos-delay="500">
+                            <span class="stat-number"><span class="counter" data-target="24">0</span>/7</span>
+                            <span class="stat-label">AI Availability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section with Reveal Animation -->
+    <section class="comparison" id="comparison">
+        <canvas id="dots-canvas"></canvas>
+        <div class="container">
+            <div class="comparison-header">
+                <span class="section-tag" data-aos="fade-up">The Difference</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+                    What we <s>don't</s> clone
+                </h2>
+            </div>
+            
+            <div class="comparison-cards">
+                <div class="compare-card dont" data-aos="flip-left" data-aos-duration="800">
+                    <div class="card-glow red"></div>
+                    <div class="card-icon">✗</div>
+                    <h3>NOT This</h3>
+                    <ul>
+                        <li>Speaking style or personality</li>
+                        <li>Personal stories verbatim</li>
+                        <li>Subjective opinions</li>
+                        <li>Roleplay or impersonation</li>
+                    </ul>
+                </div>
+                
+                <div class="compare-vs" data-aos="zoom-in" data-aos-delay="400">
+                    <span>VS</span>
+                </div>
+                
+                <div class="compare-card do" data-aos="flip-right" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card-glow gold"></div>
+                    <div class="card-icon">✓</div>
+                    <h3>THIS</h3>
+                    <ul>
+                        <li><strong>Decision Patterns</strong><small>Consistent frameworks</small></li>
+                        <li><strong>Kill Criteria</strong><small>When to stop/reverse</small></li>
+                        <li><strong>Failure Scars</strong><small>Lessons that shaped you</small></li>
+                        <li><strong>Value Filters</strong><small>Guiding principles</small></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section with Stagger Animation -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-header">
+                <span class="section-tag" data-aos="fade-up">Capabilities</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+                    Your decision intelligence,<br>
+                    <span class="gold">deployed everywhere</span>
+                </h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card large" data-aos="fade-up" data-aos-delay="0">
+                    <div class="feature-shine"></div>
+                    <span class="feature-num">01</span>
+                    <div class="feature-icon">🎯</div>
+                    <h3>AI Mentor for Teams</h3>
+                    <p>Your team consults "AI you" for daily decisions, strategy validation, and onboarding.</p>
+                    <div class="feature-tags">
+                        <span>24/7 Access</span>
+                        <span>Unlimited Users</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-shine"></div>
+                    <span class="feature-num">02</span>
+                    <div class="feature-icon">⚡</div>
+                    <h3>Decision Support</h3>
+                    <p>Recommendations based on your defaults, overrides, and failure memories.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-shine"></div>
+                    <span class="feature-num">03</span>
+                    <div class="feature-icon">🔄</div>
+                    <h3>Cross-Domain Transfer</h3>
+                    <p>Same patterns applied to branding, hiring, pricing, and product.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-shine"></div>
+                    <span class="feature-num">04</span>
+                    <div class="feature-icon">📈</div>
+                    <h3>Scalable Knowledge</h3>
+                    <p>Extract once, deploy to unlimited team members and business units.</p>
+                </div>
+                
+                <div class="feature-card cta-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="cta-inner">
+                        <h3>Ready to clone your decision intelligence?</h3>
+                        <a href="#contact" class="btn btn-gold-sm">
+                            <span>Get Started</span>
+                            <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section with Timeline Animation -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="process-header">
+                <span class="section-tag" data-aos="fade-up">Process</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+                    From your brain<br>
+                    <span class="gold">to AI in 5 steps</span>
+                </h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-track">
+                    <div class="timeline-progress" id="timelineProgress"></div>
+                </div>
+                
+                <div class="timeline-steps">
+                    <div class="step" data-aos="fade-right" data-aos-delay="0">
+                        <div class="step-marker"><span>01</span></div>
+                        <div class="step-content">
+                            <h3>Collect</h3>
+                            <p>Deep interviews, podcasts, existing content, SOPs, and chat histories</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" data-aos="fade-left" data-aos-delay="100">
+                        <div class="step-marker"><span>02</span></div>
+                        <div class="step-content">
+                            <h3>Transcribe</h3>
+                            <p>Convert audio to text and split into digestible chunks</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" data-aos="fade-right" data-aos-delay="200">
+                        <div class="step-marker"><span>03</span></div>
+                        <div class="step-content">
+                            <h3>Extract</h3>
+                            <p>AI identifies decision patterns, kill criteria, and failure scars</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" data-aos="fade-left" data-aos-delay="300">
+                        <div class="step-marker"><span>04</span></div>
+                        <div class="step-content">
+                            <h3>Store</h3>
+                            <p>Decision units saved in vector database with full metadata</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" data-aos="fade-right" data-aos-delay="400">
+                        <div class="step-marker"><span>05</span></div>
+                        <div class="step-content">
+                            <h3>Deploy</h3>
+                            <p>Connect to Telegram, WhatsApp, or Web — team interacts immediately</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section with Typewriter Effect -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <div class="demo-window" data-aos="zoom-in-up" data-aos-duration="1000">
+                <div class="window-bar">
+                    <div class="window-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="window-title">AICEO Chat — Live Demo</span>
+                </div>
+                <div class="window-content">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message user">
+                            <div class="avatar">👤</div>
+                            <div class="bubble">
+                                <p>Ka, mau buat bisnis kue sehat harga 20-30k/box. Saran nama brand?</p>
+                            </div>
+                        </div>
+                        <div class="message ai" id="aiMessage">
+                            <div class="avatar">🤖</div>
+                            <div class="bubble">
+                                <div class="typing-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="message-content" style="display:none;">
+                                    <p>Wah, ide bisnis <strong>kue sehat</strong> dengan harga <strong>20-30k</strong> per box itu keren!</p>
+                                    <p>Prinsip saya: <strong>simpel, deskriptif, langsung kebayang</strong>. Dulu waktu bikin <strong>Hijacket</strong> = Hijaber + Jaket.</p>
+                                    <p>3 saran:</p>
+                                    <ul>
+                                        <li><strong>Sehat Bites</strong> — Langsung to the point</li>
+                                        <li><strong>NutriKue</strong> — Nutrisi + Kue</li>
+                                        <li><strong>Goodness Box</strong> — Premium feel</li>
+                                    </ul>
+                                    <div class="warning">⚠️ Brand <strong>Flowing</strong> saya gagal walau nama bagus. Eksekusi > nama!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section with Card Hover -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <span class="section-tag" data-aos="fade-up">Investment</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+                    Simple, transparent<br>
+                    <span class="gold">pricing</span>
+                </h2>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="0">
+                    <span class="pricing-tag">Starter</span>
+                    <h3>Essential</h3>
+                    <p class="pricing-desc">Perfect for solopreneurs</p>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> 3 hours interview</li>
+                        <li><span class="check">✓</span> 50+ decision units</li>
+                        <li><span class="check">✓</span> Telegram deployment</li>
+                        <li><span class="check">✓</span> Basic analytics</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline-gold">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="150">
+                    <div class="card-glow-effect"></div>
+                    <span class="pricing-tag gold">Most Popular</span>
+                    <h3>Professional</h3>
+                    <p class="pricing-desc">For growing teams</p>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> 6 hours + existing content</li>
+                        <li><span class="check">✓</span> 100+ decision units</li>
+                        <li><span class="check">✓</span> Multi-platform deploy</li>
+                        <li><span class="check">✓</span> Advanced analytics</li>
+                        <li><span class="check">✓</span> Monthly updates</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-gold">Get Started</a>
+                </div>
+                
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="pricing-tag">Enterprise</span>
+                    <h3>Scale</h3>
+                    <p class="pricing-desc">For organizations</p>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> 10+ hours + full archive</li>
+                        <li><span class="check">✓</span> 200+ decision units</li>
+                        <li><span class="check">✓</span> Custom integrations</li>
+                        <li><span class="check">✓</span> Multiple owners</li>
+                        <li><span class="check">✓</span> Dedicated support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline-gold">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section with Parallax -->
+    <section class="quote-section">
+        <div class="quote-bg"></div>
+        <div class="container">
+            <div class="quote-wrapper" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="quote-mark">"</div>
+                <blockquote>
+                    Clone pola pengambilan keputusan,<br>
+                    <span class="gold">bukan clone orangnya.</span>
+                </blockquote>
+                <cite>— AICEO Philosophy</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <canvas id="cta-canvas"></canvas>
+        <div class="cta-gradient"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title" data-aos="fade-up">
+                    Ready to build your<br>
+                    <span class="gold">decision intelligence?</span>
+                </h2>
+                <p class="cta-desc" data-aos="fade-up" data-aos-delay="100">
+                    Book a 30-minute discovery call to explore how AICEO can transform your team's decision-making.
+                </p>
+                <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+                    <a href="https://wa.me/6287777220117" class="btn btn-gold btn-large">
+                        <span>Schedule Discovery Call</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="cta-contact" data-aos="fade-up" data-aos-delay="300">
+                    <span>Or reach out:</span>
+                    <a href="mailto:hello@flexeet.com">hello@flexeet.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <span>AICEO</span>
+                        <span class="logo-dot"></span>
+                    </a>
+                    <p>AI-Powered Decision Intelligence</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#process">Process</a>
+                        <a href="#pricing">Pricing</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Flexeet. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#">𝕏</a>
+                    <a href="#">in</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6287777220117" class="wa-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

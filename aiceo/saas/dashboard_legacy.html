@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AICEO Mobile Friendly Circular Profile Hub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FBBF24",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0B0F19",
+                        "card-dark": "#161B22",
+                        "sidebar-dark": "#0D1117",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Inter', sans-serif; }
+        }
+        .glass-sidebar {
+            backdrop-filter: blur(12px);
+            background-color: rgba(13, 17, 23, 0.85);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        @media (max-width: 1024px) {
+            .mobile-stack {
+                flex-direction: column !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+            .sidebar-collapsed {
+                display: none !important;
+            }
+            /* Drawer Mobile */
+            .sidebar-mobile-open {
+                display: flex !important;
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 75% !important;
+                max-width: 300px;
+                height: 100vh !important;
+                z-index: 100 !important;
+                background-color: rgba(13, 17, 23, 0.95);
+                backdrop-filter: blur(12px);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .content-area {
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+    <!-- Mobile Header -->
+    <header
+        class="lg:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-sidebar-dark sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-slate-900 text-lg">psychology</span>
+            </div>
+            <span class="text-lg font-bold tracking-tight">AICEO</span>
+        </div>
+        <button class="p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()"
+        class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden backdrop-blur-sm transition-opacity"></div>
+
+    <div class="flex mobile-stack h-screen overflow-hidden">
+        <!-- Sidebar (Standardized) -->
+        <aside id="main-sidebar"
+            class="w-64 sidebar-collapsed hidden lg:flex glass-sidebar border-r border-slate-200 dark:border-slate-800 flex-col z-20 shrink-0 h-screen sticky top-0">
+            <!-- Scrollable Content Area -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 pb-2">
+                <!-- Brand -->
+                <div class="flex items-center gap-3 mb-8">
+                    <div
+                        class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-slate-900">psychology</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">AICEO</span>
+                </div>
+
+                <!-- Admin Status -->
+                <div class="bg-primary/10 border border-primary/20 rounded-lg p-3 mb-6">
+                    <div class="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-sm">verified_user</span>
+                        Admin Workspace
+                    </div>
+                </div>
+
+                <nav class="space-y-1">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-all"
+                        href="index.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="chat.html">
+                        <span class="material-symbols-outlined">chat_bubble</span>
+                        <span>Chat</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="credits.html">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                        <span>Credits</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="decision_units.html">
+                        <span class="material-symbols-outlined">shield</span>
+                        <span>Decision Units</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="bot_personas.html">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                        <span>Bots</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="news.html">
+                        <span class="material-symbols-outlined">newspaper</span>
+                        <span>News & Updates</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="faq.html">
+                        <span class="material-symbols-outlined">quiz</span>
+                        <span>FAQ</span>
+                    </a>
+                </nav>
+
+                <!-- Mentor Favorit -->
+                <div class="mt-8">
+                    <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3 px-3">
+                        Mentor Favorit</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 px-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-700 overflow-hidden ring-2 ring-primary/30">
+                                <img alt="Adrian" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8" />
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-semibold truncate">Adrian Firnanda</p>
+                                <p class="text-xs text-slate-500">TikTok Expert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Footer (Fixed Bottom) -->
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800 space-y-4 bg-white/5 backdrop-blur-md">
+                <!-- Theme Toggles -->
+                <div class="flex p-1 bg-slate-200 dark:bg-white/5 rounded-lg items-center">
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">light_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md bg-white dark:bg-white/10 shadow-sm text-xs flex justify-center items-center text-slate-900 dark:text-white">
+                        <span class="material-symbols-outlined text-sm">dark_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">settings_brightness</span>
+                    </button>
+                </div>
+
+                <!-- SidebarUserCard -->
+                <div onclick="window.location.href='settings.html'"
+                    class="bg-[#0d0d0f] rounded-[16px] p-3 border border-white/5 flex items-center justify-between group cursor-pointer hover:bg-[#121214] transition-all mb-1">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-[40px] h-[40px] rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-lg shadow-lg shadow-amber-500/10">
+                            A
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <span class="text-white font-semibold text-[13px] leading-tight truncate">AICEO Admin</span>
+                            <span class="text-slate-500 text-[10px] truncate">admin@aiceo.id</span>
+                        </div>
+                    </div>
+                    <button
+                        class="text-slate-500 hover:text-primary transition-all group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.6)] shrink-0">
+                        <span class="material-symbols-outlined text-lg">logout</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content (Dashboard 2.0) -->
+        <main
+            class="content-area flex-1 overflow-y-auto custom-scrollbar p-4 lg:p-8 bg-background-light dark:bg-background-dark">
+            <div class="w-full space-y-4">
+                <!-- Header & Status Bar -->
+                <div class="flex items-center justify-between mb-2">
+                    <div>
+                        <h1 class="text-xl font-bold flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">dashboard</span>
+                            Command Center
+                        </h1>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">AICEO Instance v2.4.1 • <span
+                                class="text-green-500 font-bold">System Normal</span></p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="hidden md:flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-card-dark rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                <span class="text-[10px] font-bold uppercase text-slate-500">API Latency</span>
+                            </div>
+                            <span class="text-xs font-mono font-bold text-slate-900 dark:text-white">42ms</span>
+                        </div>
+                        <button
+                            class="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg text-slate-500 transition-colors">
+                            <span class="material-symbols-outlined text-sm">refresh</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- KPI Grid (Dense) -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <!-- Total Users -->
+                    <div
+                        class="p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 relative overflow-hidden group hover:border-primary/30 transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Total
+                                Users</span>
+                            <span
+                                class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors text-lg">group</span>
+                        </div>
+                        <div class="flex items-end gap-2">
+                            <span class="text-2xl font-black text-slate-900 dark:text-white">8</span>
+                            <span class="text-[10px] font-bold text-green-500 mb-1">+2 today</span>
+                        </div>
+                    </div>
+
+                    <!-- Active Bots -->
+                    <div
+                        class="p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 relative overflow-hidden group hover:border-primary/30 transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Active
+                                Bots</span>
+                            <span
+                                class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors text-lg">smart_toy</span>
+                        </div>
+                        <div class="flex items-end gap-2">
+                            <span class="text-2xl font-black text-slate-900 dark:text-white">12</span>
+                            <span class="text-[10px] font-bold text-slate-400 mb-1">100% online</span>
+                        </div>
+                    </div>
+
+                    <!-- Topics / DUs -->
+                    <div
+                        class="p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 relative overflow-hidden group hover:border-blue-500/30 transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Topics
+                                (DU)</span>
+                            <span
+                                class="material-symbols-outlined text-slate-400 group-hover:text-blue-500 transition-colors text-lg">topic</span>
+                        </div>
+                        <div class="flex items-end gap-2">
+                            <span class="text-2xl font-black text-slate-900 dark:text-white">11</span>
+                            <span class="text-[10px] font-bold text-blue-500 mb-1">3 new</span>
+                        </div>
+                    </div>
+
+                    <!-- Total Chats -->
+                    <div
+                        class="p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 relative overflow-hidden group hover:border-green-500/30 transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Total
+                                Chats</span>
+                            <span
+                                class="material-symbols-outlined text-slate-400 group-hover:text-green-500 transition-colors text-lg">chat_bubble</span>
+                        </div>
+                        <div class="flex items-end gap-2">
+                            <span class="text-2xl font-black text-slate-900 dark:text-white">58</span>
+                            <span class="text-[10px] font-bold text-green-500 mb-1">↑ 12%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Grid Layout (3-Column) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[calc(100vh-220px)] min-h-[500px]">
+                    <!-- Left: Activity Log & Monitoring (2 Columns) -->
+                    <div class="lg:col-span-2 flex flex-col gap-4 h-full">
+                        <!-- Live Monitoring Chart Area -->
+                        <div
+                            class="h-48 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 p-4 shadow-sm flex flex-col">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500">Live Traffic</h3>
+                                <div class="flex gap-2">
+                                    <span
+                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary">Requests</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-white/5 text-slate-500">Latency</span>
+                                </div>
+                            </div>
+                            <!-- Mock Chart Container -->
+                            <div
+                                class="flex-1 w-full bg-slate-50 dark:bg-black/20 rounded-lg relative overflow-hidden flex items-end justify-between px-2 gap-1">
+                                <!-- Generated Bars for visual effect -->
+                                <div class="w-full h-full flex items-end justify-between gap-1 opacity-50">
+                                    <div class="w-1 bg-primary/20 h-[30%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/40 h-[50%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/60 h-[40%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/30 h-[70%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/80 h-[90%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/50 h-[60%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/20 h-[30%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/40 h-[50%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/60 h-[80%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/30 h-[45%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/20 h-[30%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/40 h-[50%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/60 h-[40%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/30 h-[70%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/80 h-[90%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/50 h-[60%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/20 h-[30%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/40 h-[50%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/60 h-[80%] rounded-t-sm"></div>
+                                    <div class="w-1 bg-primary/30 h-[45%] rounded-t-sm"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Activity Feed (Flexible Height) -->
+                        <div
+                            class="flex-1 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 flex flex-col overflow-hidden shadow-sm">
+                            <div
+                                class="p-3 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-white/[0.02]">
+                                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500">System Activity
+                                    Log</h3>
+                                <button class="text-[10px] font-bold text-primary hover:underline">View All</button>
+                            </div>
+                            <div class="flex-1 overflow-y-auto custom-scrollbar p-0">
+                                <!-- Log Items -->
+                                <div
+                                    class="p-3 border-b border-slate-100 dark:border-slate-800/50 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-start gap-3">
+                                    <span class="text-[10px] font-mono text-slate-400 mt-0.5 w-12">14:20:01</span>
+                                    <div class="w-2 h-2 rounded-full bg-red-500 mt-1.5 shrink-0 animate-pulse"></div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-xs font-bold text-red-500">CRITICAL: API Rate Limit Exceeded</p>
+                                        <p class="text-[10px] text-slate-500 truncate">Bot "TikTok Expert" exceeded
+                                            limits on vector search.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="p-3 border-b border-slate-100 dark:border-slate-800/50 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-start gap-3">
+                                    <span class="text-[10px] font-mono text-slate-400 mt-0.5 w-12">14:18:45</span>
+                                    <div class="w-2 h-2 rounded-full bg-yellow-500 mt-1.5 shrink-0"></div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-xs font-bold text-yellow-500">AI Warning: Low Confidence</p>
+                                        <p class="text-[10px] text-slate-500 truncate">Response confidence dropped below
+                                            70% for Topic "Scaling".</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="p-3 border-b border-slate-100 dark:border-slate-800/50 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-start gap-3">
+                                    <span class="text-[10px] font-mono text-slate-400 mt-0.5 w-12">14:15:22</span>
+                                    <div class="w-2 h-2 rounded-full bg-blue-500 mt-1.5 shrink-0"></div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300">New User Session
+                                        </p>
+                                        <p class="text-[10px] text-slate-500 truncate">User ID #84931 started a chat
+                                            with Adrian Firnanda.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="p-3 border-b border-slate-100 dark:border-slate-800/50 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-start gap-3">
+                                    <span class="text-[10px] font-mono text-slate-400 mt-0.5 w-12">14:10:05</span>
+                                    <div class="w-2 h-2 rounded-full bg-green-500 mt-1.5 shrink-0"></div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300">System Health
+                                            Check</p>
+                                        <p class="text-[10px] text-slate-500 truncate">Routine diagnostic passed. All
+                                            systems operational.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="p-3 border-b border-slate-100 dark:border-slate-800/50 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-start gap-3">
+                                    <span class="text-[10px] font-mono text-slate-400 mt-0.5 w-12">14:05:00</span>
+                                    <div class="w-2 h-2 rounded-full bg-purple-500 mt-1.5 shrink-0"></div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300">DU Knowledge
+                                            Updated</p>
+                                        <p class="text-[10px] text-slate-500 truncate">Added "Margin Low Strategy" to
+                                            Knowledge Base.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Quick Actions & Ingested DUs -->
+                    <div class="lg:col-span-1 flex flex-col gap-4 h-full">
+                        <!-- Quick Actions Grid -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <button
+                                class="p-3 rounded-xl bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all text-left group">
+                                <span
+                                    class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">add_circle</span>
+                                <p class="text-xs font-bold text-primary">New Expert</p>
+                            </button>
+                            <button
+                                class="p-3 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all text-left group">
+                                <span
+                                    class="material-symbols-outlined text-blue-500 mb-2 group-hover:scale-110 transition-transform">upload_file</span>
+                                <p class="text-xs font-bold text-slate-700 dark:text-slate-200">Ingest Data</p>
+                            </button>
+                            <button
+                                class="p-3 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all text-left group">
+                                <span
+                                    class="material-symbols-outlined text-orange-500 mb-2 group-hover:scale-110 transition-transform">settings</span>
+                                <p class="text-xs font-bold text-slate-700 dark:text-slate-200">Global Config</p>
+                            </button>
+                            <button
+                                class="p-3 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all text-left group">
+                                <span
+                                    class="material-symbols-outlined text-purple-500 mb-2 group-hover:scale-110 transition-transform">terminal</span>
+                                <p class="text-xs font-bold text-slate-700 dark:text-slate-200">Logs</p>
+                            </button>
+                        </div>
+
+                        <!-- Recent Ingestion (Dense List) -->
+                        <div
+                            class="flex-1 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 flex flex-col overflow-hidden shadow-sm">
+                            <div
+                                class="p-3 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-white/[0.02]">
+                                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500">Recent Ingestion
+                                </h3>
+                            </div>
+                            <div class="flex-1 overflow-y-auto custom-scrollbar">
+                                <div class="p-3 border-b border-slate-100 dark:border-slate-800/50">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span
+                                            class="material-symbols-outlined text-xs text-green-500">check_circle</span>
+                                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300">DU_TTS_001</p>
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 leading-tight">Margin Low (<3x) Official Store
+                                            Strategy</p>
+                                </div>
+                                <div class="p-3 border-b border-slate-100 dark:border-slate-800/50">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span
+                                            class="material-symbols-outlined text-xs text-green-500">check_circle</span>
+                                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300">DU_TTS_002</p>
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 leading-tight">Margin High (≥4x) Affiliate
+                                        Strategy</p>
+                                </div>
+                                <div class="p-3 border-b border-slate-100 dark:border-slate-800/50">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span
+                                            class="material-symbols-outlined text-xs text-green-500">check_circle</span>
+                                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300">DU_TTS_003</p>
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 leading-tight">Hybrid Strategy Framework</p>
+                                </div>
+                                <div class="p-3 border-b border-slate-100 dark:border-slate-800/50">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="material-symbols-outlined text-xs text-slate-300">pending</span>
+                                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300">DU_FB_ADS_01</p>
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 leading-tight">Facebook Ads Scaling Phase 1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    </main>
+    </div>
+    <!-- Mobile Nav -->
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-sidebar-dark border-t border-slate-200 dark:border-slate-800 flex justify-around items-center p-2 z-50">
+        <a href="index.html" class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-xs font-bold mt-1">Dash</span>
+        </a>
+        <a href="chat.html" class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="text-xs font-bold mt-1">Chat</span>
+        </a>
+        <a href="bot_personas.html"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <span class="text-xs font-bold mt-1">Bots</span>
+        </a>
+        <button onclick="toggleSidebar()"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+            <span class="text-xs font-bold mt-1">Menu</span>
+        </button>
+    </nav>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('main-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            if (sidebar.classList.contains('sidebar-collapsed') || sidebar.classList.contains('hidden')) {
+                // Open
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.classList.remove('hidden');
+                sidebar.classList.add('sidebar-mobile-open');
+                overlay.classList.remove('hidden');
+            } else {
+                // Close
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('sidebar-mobile-open');
+                overlay.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Jadi Google-nya Tim — Ebook Rp 99.000</title>
+    <meta name="description" content="Panduan lengkap bangun Knowledge Engine untuk bisnis lo. Framework + Template + 20 Prompt siap pakai. DIY version dari sistem Rp 5jt/bulan.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #111114;
+            --bg-elevated: #18181c;
+            --bg-card: #1a1a1f;
+            --text-primary: #fafafa;
+            --text-secondary: #a0a0a8;
+            --text-muted: #5a5a64;
+            --accent: #c9a962;
+            --accent-light: #e0c987;
+            --accent-dark: #a68b4b;
+            --accent-glow: rgba(201, 169, 98, 0.25);
+            --success: #4ade80;
+            --error: #f87171;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        ::selection { background: var(--accent); color: var(--bg-primary); }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .text-accent { color: var(--accent); }
+
+        /* Grain */
+        .grain-overlay {
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03; pointer-events: none; z-index: 1000;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 80px 0;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+        }
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.2;
+        }
+        .hero-orb-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            top: -100px; right: -50px;
+            animation: float 20s ease-in-out infinite;
+        }
+        .hero-orb-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #6366f1 0%, transparent 70%);
+            bottom: -100px; left: -50px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+        .hero-content {
+            position: relative; z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .hero-text { }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(201, 169, 98, 0.1);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 100px;
+            margin-bottom: 24px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        .hero-price {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .price-old {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+        .price-new {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--bg-primary);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px var(--accent-glow);
+        }
+        .hero-guarantee {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .hero-guarantee span { font-size: 1.2rem; }
+        
+        /* Mockup */
+        .hero-visual { position: relative; }
+        .ebook-mockup {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px;
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+            box-shadow: 30px 30px 80px rgba(0,0,0,0.4);
+        }
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .mockup-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+        }
+        .mockup-dot.red { background: #ff5f57; }
+        .mockup-dot.yellow { background: #febc2e; }
+        .mockup-dot.green { background: #28c840; }
+        .mockup-content { }
+        .mockup-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+        .mockup-toc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .mockup-toc-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
+        .mockup-toc-item:last-child { border-bottom: none; }
+        .mockup-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 12px 16px;
+            border-radius: 12px;
+            transform: rotate(12deg);
+        }
+
+        /* Section */
+        section { padding: 100px 0; }
+        .section-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 56px;
+        }
+        .section-header .section-subtitle { margin: 0 auto; }
+
+        /* Problem */
+        .problem { background: var(--bg-secondary); }
+        .problem-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+        .problem-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 24px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .problem-icon { font-size: 1.5rem; }
+        .problem-item p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        .problem-item strong { color: var(--text-primary); }
+
+        /* What's Inside */
+        .inside-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .inside-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .inside-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        .inside-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .inside-icon {
+            width: 48px; height: 48px;
+            background: rgba(201, 169, 98, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .inside-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+        }
+        .inside-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .inside-meta {
+            margin-top: 16px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Prompts Preview */
+        .prompts { background: var(--bg-secondary); }
+        .prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .prompt-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .prompt-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .prompt-card h4 span { font-size: 1.1rem; }
+        .prompt-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .prompts-note {
+            text-align: center;
+            margin-top: 32px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Bonus */
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .bonus-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .bonus-value {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--success);
+            background: rgba(74, 222, 128, 0.1);
+            padding: 4px 10px;
+            border-radius: 100px;
+        }
+        .bonus-icon { font-size: 2.5rem; margin-bottom: 16px; }
+        .bonus-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .bonus-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* For Who */
+        .forwho { background: var(--bg-secondary); }
+        .forwho-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .forwho-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+        }
+        .forwho-card.yes { border-color: rgba(74, 222, 128, 0.3); }
+        .forwho-card.no { border-color: rgba(248, 113, 113, 0.3); }
+        .forwho-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .forwho-card.yes h3 { color: var(--success); }
+        .forwho-card.no h3 { color: var(--error); }
+        .forwho-card ul {
+            list-style: none;
+        }
+        .forwho-card li {
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .forwho-card li:last-child { border-bottom: none; }
+        .forwho-card.yes li::before { content: '✓'; color: var(--success); }
+        .forwho-card.no li::before { content: '✗'; color: var(--error); }
+
+        /* Author */
+        .author-content {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+        }
+        .author-avatar {
+            width: 120px; height: 120px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .author-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+        .author-info .title {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .author-info p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-orb {
+            position: absolute;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .cta-price {
+            margin: 32px 0;
+        }
+        .cta-price-old {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-bottom: 8px;
+        }
+        .cta-price-new {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .cta-includes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 24px 0 32px;
+        }
+        .cta-include {
+            padding: 8px 16px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .cta-btn {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .cta-guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .cta-guarantee span { font-size: 1.3rem; }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+        .faq-q {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+        }
+        .faq-q h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .faq-q span {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-q span { transform: rotate(45deg); }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.active .faq-a { max-height: 200px; }
+        .faq-a p {
+            padding-bottom: 24px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        footer p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        footer a { color: var(--accent); }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s var(--ease-out);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-visual { order: -1; }
+            .ebook-mockup { transform: none; max-width: 350px; margin: 0 auto; }
+            .inside-grid { grid-template-columns: 1fr; }
+            .prompts-grid { grid-template-columns: 1fr; }
+            .bonus-grid { grid-template-columns: 1fr; }
+            .forwho-grid { grid-template-columns: 1fr; }
+            .author-content { grid-template-columns: 1fr; text-align: center; }
+            .author-avatar { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain-overlay"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">📖 Ebook + Template + Prompt Pack</div>
+                    <h1 class="hero-title">
+                        Stop Jadi<br>
+                        <span class="text-accent">"Google-nya Tim"</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Panduan lengkap bangun Knowledge Engine untuk bisnis lo. Framework yang sama dengan sistem Rp 5jt/bulan — dalam versi DIY yang bisa lo jalanin sendiri.
+                    </p>
+                    <div class="hero-price">
+                        <span class="price-old">Rp 299.000</span>
+                        <span class="price-new">Rp 99.000</span>
+                    </div>
+                    <p class="price-note">One-time payment. Akses selamanya.</p>
+                    <a href="#beli" class="btn btn-primary">
+                        <span>Beli Sekarang</span>
+                        <span>→</span>
+                    </a>
+                    <div class="hero-guarantee">
+                        <span>🛡️</span>
+                        <span>Garansi 7 hari uang kembali. No questions asked.</span>
+                    </div>
+                </div>
+                <div class="hero-visual fade-up">
+                    <div class="ebook-mockup">
+                        <div class="mockup-badge">60+ HAL</div>
+                        <div class="mockup-header">
+                            <div class="mockup-dot red"></div>
+                            <div class="mockup-dot yellow"></div>
+                            <div class="mockup-dot green"></div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-title">📖 Stop Jadi Google-nya Tim</div>
+                            <div class="mockup-toc">
+                                <div class="mockup-toc-item">
+                                    <span>Part 1: Wake Up Call</span>
+                                    <span>12 hal</span>
+                                </div>
+                                <div class="mockup-toc-item">
+                                    <span>Part 2: Framework ForgetIt</span>
+                                    <span>20 hal</span>
+                                </div>
+                                <div class="mockup-toc-item">
+                                    <span>Part 3: Prompt Library</span>
+                                    <span>15 hal</span>
+                                </div>
+                                <div class="mockup-toc-item">
+                                    <span>Part 4: 30 Hari Implementasi</span>
+                                    <span>8 hal</span>
+                                </div>
+                                <div class="mockup-toc-item">
+                                    <span>+ Bonus Templates</span>
+                                    <span>🎁</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem">
+        <div class="container">
+            <div class="problem-intro">
+                <span class="section-label">Familiar?</span>
+                <h2 class="section-title">Kalau ini lo banget, ebook ini untuk lo.</h2>
+            </div>
+            <div class="problem-list fade-up">
+                <div class="problem-item">
+                    <span class="problem-icon">📱</span>
+                    <p><strong>HP bunyi terus</strong> — Tim tanya ini itu, padahal udah pernah lo jelasin berkali-kali.</p>
+                </div>
+                <div class="problem-item">
+                    <span class="problem-icon">🔄</span>
+                    <p><strong>Jawab pertanyaan yang sama</strong> — "Kebijakan retur gimana?", "Proses order gimana?", lagi, lagi, dan lagi.</p>
+                </div>
+                <div class="problem-item">
+                    <span class="problem-icon">😫</span>
+                    <p><strong>Gak bisa lepas dari bisnis</strong> — Liburan tetap kerja. Weekend tetap on. Lo = bottleneck.</p>
+                </div>
+                <div class="problem-item">
+                    <span class="problem-icon">🎓</span>
+                    <p><strong>Training staff baru = ngulang dari awal</strong> — Capek jelasin hal yang sama ke orang baru.</p>
+                </div>
+                <div class="problem-item">
+                    <span class="problem-icon">💸</span>
+                    <p><strong>Pengen hire, tapi mahal</strong> — Manager 15-20jt/bulan? Belum affordable untuk skala lo sekarang.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Inside -->
+    <section class="inside">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Isi Ebook</span>
+                <h2 class="section-title">Apa yang Lo Dapet?</h2>
+                <p class="section-subtitle">60+ halaman panduan praktis, bukan teori kosong.</p>
+            </div>
+            <div class="inside-grid">
+                <div class="inside-card fade-up">
+                    <div class="inside-card-header">
+                        <div class="inside-icon">🧠</div>
+                        <h3>Part 1: Wake Up Call</h3>
+                    </div>
+                    <p>Hitung sendiri berapa "Knowledge Leak" di bisnis lo. Banyak yang shock pas tau angkanya bisa puluhan juta per tahun.</p>
+                    <div class="inside-meta">12 halaman • Worksheet included</div>
+                </div>
+                <div class="inside-card fade-up">
+                    <div class="inside-card-header">
+                        <div class="inside-icon">⚙️</div>
+                        <h3>Part 2: Framework ForgetIt</h3>
+                    </div>
+                    <p>Step-by-step capture knowledge lo, organize, dan activate pakai AI. DIY version dari sistem yang gue pakai di Hijacket.</p>
+                    <div class="inside-meta">20 halaman • Diagram & checklist</div>
+                </div>
+                <div class="inside-card fade-up">
+                    <div class="inside-card-header">
+                        <div class="inside-icon">📝</div>
+                        <h3>Part 3: Prompt Library</h3>
+                    </div>
+                    <p>20+ prompt siap copy-paste untuk ChatGPT/Claude. Onboarding, FAQ, SOP generator, decision helper, dan lainnya.</p>
+                    <div class="inside-meta">15 halaman • Copy-paste ready</div>
+                </div>
+                <div class="inside-card fade-up">
+                    <div class="inside-card-header">
+                        <div class="inside-icon">📅</div>
+                        <h3>Part 4: 30 Hari Implementasi</h3>
+                    </div>
+                    <p>Roadmap minggu per minggu. Minggu 1 capture, minggu 2 extract, minggu 3 activate, minggu 4 launch ke tim.</p>
+                    <div class="inside-meta">8 halaman • Daily checklist</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prompts -->
+    <section class="prompts">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Preview</span>
+                <h2 class="section-title">20+ Prompt Siap Pakai</h2>
+                <p class="section-subtitle">Copy, paste, sesuaikan. Langsung jalan.</p>
+            </div>
+            <div class="prompts-grid fade-up">
+                <div class="prompt-card">
+                    <h4><span>👋</span> Onboarding Staff Baru</h4>
+                    <p>Bikin jadwal & materi training otomatis</p>
+                </div>
+                <div class="prompt-card">
+                    <h4><span>💬</span> FAQ Auto-Responder</h4>
+                    <p>AI jawab pertanyaan customer</p>
+                </div>
+                <div class="prompt-card">
+                    <h4><span>📋</span> SOP Generator</h4>
+                    <p>Ubah penjelasan lo jadi SOP formal</p>
+                </div>
+                <div class="prompt-card">
+                    <h4><span>🎯</span> Decision Helper</h4>
+                    <p>Bantu analisis keputusan bisnis</p>
+                </div>
+                <div class="prompt-card">
+                    <h4><span>😤</span> Handling Komplain</h4>
+                    <p>Template respons profesional</p>
+                </div>
+                <div class="prompt-card">
+                    <h4><span>📊</span> Weekly Report</h4>
+                    <p>Generate report dari raw data</p>
+                </div>
+                <div class="prompt-card">
+                    <h4><span>✍️</span> Email/WA Drafter</h4>
+                    <p>Draft message profesional</p>
+                </div>
+                <div class="prompt-card">
+                    <h4><span>🥊</span> Competitive Response</h4>
+                    <p>Handle perbandingan kompetitor</p>
+                </div>
+            </div>
+            <p class="prompts-note">+ 12 prompt lainnya di dalam ebook</p>
+        </div>
+    </section>
+
+    <!-- Bonus -->
+    <section class="bonus">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Bonus</span>
+                <h2 class="section-title">Bukan Cuma Ebook</h2>
+                <p class="section-subtitle">Lo juga dapet tools & akses yang bikin implementasi lebih gampang.</p>
+            </div>
+            <div class="bonus-grid fade-up">
+                <div class="bonus-card">
+                    <div class="bonus-value">Worth 150rb</div>
+                    <div class="bonus-icon">📑</div>
+                    <h4>Template Notion</h4>
+                    <p>Knowledge Base starter. Tinggal duplicate ke akun lo.</p>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-value">Worth 200rb</div>
+                    <div class="bonus-icon">🎬</div>
+                    <h4>Video Tutorial</h4>
+                    <p>30 menit setup ChatGPT Custom Instructions.</p>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-value">Worth 100rb</div>
+                    <div class="bonus-icon">📝</div>
+                    <h4>Prompt Pack PDF</h4>
+                    <p>20+ prompt tambahan, industry-specific.</p>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-value">Worth 50rb</div>
+                    <div class="bonus-icon">✅</div>
+                    <h4>Checklist PDF</h4>
+                    <p>30 hari implementasi, print-ready.</p>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-value">Worth 100rb/bln</div>
+                    <div class="bonus-icon">💬</div>
+                    <h4>Komunitas Telegram</h4>
+                    <p>Networking + tanya jawab sesama pengusaha.</p>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-value">Worth 100rb</div>
+                    <div class="bonus-icon">📊</div>
+                    <h4>Spreadsheet Master</h4>
+                    <p>Knowledge log, FAQ database, SOP registry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Who -->
+    <section class="forwho">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Untuk Siapa</span>
+                <h2 class="section-title">Ebook Ini Cocok untuk Lo?</h2>
+            </div>
+            <div class="forwho-grid fade-up">
+                <div class="forwho-card yes">
+                    <h3>✓ Cocok Banget Kalau</h3>
+                    <ul>
+                        <li>Omset 50jt-500jt/bulan</li>
+                        <li>Punya tim 3-15 orang</li>
+                        <li>Sering jadi "tempat tanya" tim</li>
+                        <li>Mau belajar & implement sendiri</li>
+                        <li>Siap luangin 2-4 jam/minggu</li>
+                    </ul>
+                </div>
+                <div class="forwho-card no">
+                    <h3>✗ Belum Cocok Kalau</h3>
+                    <ul>
+                        <li>Belum punya bisnis / masih solo</li>
+                        <li>Cari solusi instant tanpa effort</li>
+                        <li>Gak mau belajar hal baru</li>
+                        <li>Omset udah 1M+ (mending full service)</li>
+                        <li>Ekspektasi hasil dalam 1 hari</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author -->
+    <section class="author">
+        <div class="container">
+            <div class="author-content fade-up">
+                <div class="author-avatar">👨‍💼</div>
+                <div class="author-info">
+                    <h3>Aji Wanda</h3>
+                    <p class="title">Founder Hijacket • 9 Tahun Pengalaman</p>
+                    <p>
+                        Gue mulai Hijacket dari saung pinggir sawah tahun 2016. Pernah hampir bangkrut karena key person resign bawa semua knowledge. Sekarang, AI kami (Teh Ija) handle 500+ affiliator dan 30+ staff 24/7. Ebook ini adalah versi DIY dari sistem yang udah gue pakai bertahun-tahun.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">Pertanyaan Umum</h2>
+            </div>
+            <div class="faq-list fade-up">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <h4>Ini beda apa sama tutorial YouTube gratis?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>YouTube ngajarin ChatGPT generik. Ini framework khusus untuk bisnis — gimana capture knowledge lo, organize, dan activate biar tim bisa akses 24/7. Plus prompt yang udah tested di bisnis nyata.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <h4>Butuh skill teknis gak?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Nope. Kalau lo bisa pakai WhatsApp dan Google Docs, lo bisa ikutin panduan ini. Semua step dijelasin detail dengan screenshot.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <h4>Perlu bayar ChatGPT Plus?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Gak wajib. Versi gratis ChatGPT udah bisa jalan. Tapi kalau mau upload file knowledge, ChatGPT Plus (Rp 300rb/bulan) recommended.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <h4>Industri gue beda, bisa?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Framework-nya universal. Fashion, F&B, jasa, manufaktur — semua bisa. Yang beda cuma contoh & context yang lo masukin.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <h4>Ada garansi?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>7 hari uang kembali. Kalau setelah baca lo ngerasa gak worth it, refund full. No questions asked.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final" id="beli">
+        <div class="cta-orb"></div>
+        <div class="container">
+            <div class="cta-content fade-up">
+                <span class="section-label">Order Sekarang</span>
+                <h2 class="section-title">Stop Jadi <span class="text-accent">Google-nya Tim</span></h2>
+                
+                <div class="cta-price">
+                    <div class="cta-price-old">Rp 299.000</div>
+                    <div class="cta-price-new">Rp 99.000</div>
+                </div>
+                
+                <div class="cta-includes">
+                    <span class="cta-include">📖 Ebook 60+ halaman</span>
+                    <span class="cta-include">📝 20+ Prompt</span>
+                    <span class="cta-include">📑 Template Notion</span>
+                    <span class="cta-include">🎬 Video Tutorial</span>
+                    <span class="cta-include">💬 Akses Komunitas</span>
+                </div>
+                
+                <div class="cta-btn">
+                    <a href="#" class="btn btn-primary">
+                        <span>Beli Sekarang — Rp 99.000</span>
+                    </a>
+                </div>
+                
+                <div class="cta-guarantee">
+                    <span>🛡️</span>
+                    <span>Garansi 7 hari uang kembali</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 The AI CEO — by <a href="#">Aji Wanda</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

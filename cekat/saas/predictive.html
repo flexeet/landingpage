@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Predictive Analytics | CekatPilot</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f46e5",
+                        "surface": "#FFFFFF",
+                        "background": "#F8FAFC",
+                        "border-slate": "#E2E8F0",
+                        "header-text": "#0F172A",
+                        "secondary-text": "#64748B",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "data": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "2xl": "1rem", "3xl": "1.5rem" },
+                    boxShadow: {
+                        "card": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+                        "soft": "0 10px 15px -3px rgb(0 0 0 / 0.05)"
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-rounded {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body text-header-text antialiased min-h-screen selections-none">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-[280px] bg-white border-r border-border-slate flex flex-col z-20 shrink-0">
+            <div class="h-20 flex items-center px-8 border-b border-transparent">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-9 h-9 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200">
+                        <span class="material-symbols-rounded text-white">rocket_launch</span>
+                    </div>
+                    <span class="font-display font-bold text-xl tracking-tight text-slate-900">CekatPilot</span>
+                </div>
+            </div>
+
+            <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto custom-scrollbar">
+                <a href="master_home.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">grid_view</span>
+                    <span class="font-medium text-sm">Master Home</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Analytics</p>
+                </div>
+                <a href="product_demand.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">inventory_2</span>
+                    <span class="font-medium text-sm">Product Demand</span>
+                </a>
+                <a href="conversion_funnel.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">filter_list</span>
+                    <span class="font-medium text-sm">Conversion Funnel</span>
+                </a>
+                <a href="roi_center.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">payments</span>
+                    <span class="font-medium text-sm">Financial ROI</span>
+                </a>
+                <a href="brand_leaderboard.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">leaderboard</span>
+                    <span class="font-medium text-sm">Leaderboard</span>
+                </a>
+                <a href="brand_growth.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">trending_up</span>
+                    <span class="font-medium text-sm">Growth Trends</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Intelligence</p>
+                </div>
+                <a href="ai_insight.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">psychology</span>
+                    <span class="font-medium text-sm">AI Insights</span>
+                </a>
+                <a href="predictive.html"
+                    class="flex items-center gap-3 px-4 py-3 active-nav rounded-full transition-all group">
+                    <span class="material-symbols-rounded">auto_graph</span>
+                    <span class="font-bold text-sm">Predictions</span>
+                </a>
+                <a href="peak_hour.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">schedule</span>
+                    <span class="font-medium text-sm">Peak Hour</span>
+                </a>
+                <a href="sla_management.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">timer</span>
+                    <span class="font-medium text-sm">SLA Center</span>
+                </a>
+                <a href="customer_loyalty.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">group</span>
+                    <span class="font-medium text-sm">Customers</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Connectivity</p>
+                </div>
+                <a href="integrations.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">hub</span>
+                    <span class="font-medium text-sm">Integrations</span>
+                </a>
+                <a href="notifications.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">notifications</span>
+                    <span class="font-medium text-sm">Notifications</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Management</p>
+                </div>
+                <a href="news_updates.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">newspaper</span>
+                    <span class="font-medium text-sm">News & Updates</span>
+                </a>
+                <a href="team_management.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">group_add</span>
+                    <span class="font-medium text-sm">Team Management</span>
+                </a>
+                <a href="user_settings.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">settings</span>
+                    <span class="font-medium text-sm">User Settings</span>
+                </a>
+                <a href="billing_plan.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">credit_card</span>
+                    <span class="font-medium text-sm">Billing & Plan</span>
+                </a>
+                <a href="help_faq.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">help</span>
+                    <span class="font-medium text-sm">Help & FAQ</span>
+                </a>
+            </nav>
+
+            <div class="p-6 border-t border-border-slate">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Hijacket+Owner&background=FCD34D&color=fff" alt="AC"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-header-text truncate">Hijacket</p>
+                        <p class="text-xs text-secondary-text truncate">Owner</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background">
+            <header
+                class="flex items-center justify-between px-8 py-4 bg-white/80 backdrop-blur-md border-b border-border-slate sticky top-0 z-30">
+                <div class="flex flex-col">
+                    <h2 class="text-xl font-bold text-slate-900">Predictive Analytics</h2>
+                    <p class="text-xs text-slate-500 font-medium">Jumat, 31 Januari 2025 • 05:44 WIB</p>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div
+                        class="flex items-center gap-2 px-3 py-1.5 bg-indigo-50 text-primary rounded-lg text-sm font-medium">
+                        <span class="material-symbols-rounded text-sm">waving_hand</span>
+                        Selamat pagi, Aji!
+                    </div>
+                    <div class="flex items-center gap-3 border-l border-slate-200 pl-6">
+                        <button
+                            class="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-primary transition-colors relative">
+                            <span class="material-symbols-rounded">notifications</span>
+                            <span
+                                class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex-1 overflow-y-auto p-8">
+                <div class="max-w-7xl mx-auto space-y-8">
+
+                    <!-- Prediction Hero -->
+                    <div
+                        class="bg-indigo-900 rounded-2xl p-8 text-white relative overflow-hidden shadow-xl shadow-indigo-900/40">
+                        <div
+                            class="absolute right-0 top-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3">
+                        </div>
+                        <div
+                            class="absolute left-0 bottom-0 w-64 h-64 bg-indigo-500 rounded-full blur-3xl opacity-20 translate-y-1/3 -translate-x-1/4">
+                        </div>
+
+                        <div class="relative z-10">
+                            <h2 class="text-3xl font-display font-bold mb-6">Forecast Next 30 Days</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10">
+                                    <p class="text-indigo-200 text-sm font-medium mb-1">Predicted Revenue</p>
+                                    <h3 class="text-3xl font-data font-bold">Rp 842jt</h3>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <span
+                                            class="bg-emerald-500/20 text-emerald-300 text-xs px-2 py-0.5 rounded-full font-bold">+12%
+                                            vs Last Month</span>
+                                    </div>
+                                </div>
+                                <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10">
+                                    <p class="text-indigo-200 text-sm font-medium mb-1">Predicted Volume</p>
+                                    <h3 class="text-3xl font-data font-bold">24,500 Chats</h3>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <span
+                                            class="bg-indigo-500/20 text-indigo-300 text-xs px-2 py-0.5 rounded-full font-bold">Prepare
+                                            Staffing</span>
+                                    </div>
+                                </div>
+                                <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10">
+                                    <p class="text-indigo-200 text-sm font-medium mb-1">Predicted Ad Cost</p>
+                                    <h3 class="text-3xl font-data font-bold">Rp 42.5jt</h3>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <span
+                                            class="bg-white/10 text-slate-300 text-xs px-2 py-0.5 rounded-full font-bold">Stable
+                                            Range</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stock Requirement -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-2xl border border-border-slate shadow-card">
+                            <h3 class="font-display font-bold text-slate-900 mb-6 flex items-center gap-2">
+                                <span class="material-symbols-rounded text-slate-400">inventory</span>
+                                Stock Requirement Forecast
+                            </h3>
+                            <div class="space-y-4">
+                                <!-- Item 1 -->
+                                <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                                            🧥</div>
+                                        <div>
+                                            <p class="font-bold text-slate-900">Bella Hoodie (Navy, M)</p>
+                                            <p class="text-xs text-slate-500">Current Stock: 45</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-xs font-bold text-slate-500 uppercase">Need</p>
+                                        <p class="text-xl font-bold text-indigo-600">120 pcs</p>
+                                        <p class="text-[10px] text-red-500 font-bold">Risk: Out of Stock in 5d</p>
+                                    </div>
+                                </div>
+                                <!-- Item 2 -->
+                                <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                                            🧶</div>
+                                        <div>
+                                            <p class="font-bold text-slate-900">Hijacket Montix (Maroon, L)</p>
+                                            <p class="text-xs text-slate-500">Current Stock: 200</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-xs font-bold text-slate-500 uppercase">Need</p>
+                                        <p class="text-xl font-bold text-slate-700">85 pcs</p>
+                                        <p class="text-[10px] text-emerald-500 font-bold">Safe</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                class="w-full mt-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-full hover:bg-slate-50 transition-colors">
+                                Download Procurement List
+                            </button>
+                        </div>
+
+                        <!-- Trend Analysis -->
+                        <div class="bg-white p-6 rounded-2xl border border-border-slate shadow-card">
+                            <h3 class="font-display font-bold text-slate-900 mb-6 flex items-center gap-2">
+                                <span class="material-symbols-rounded text-slate-400">trending_up</span>
+                                Emerging Trends
+                            </h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <p class="font-bold text-slate-900">"Warna Earth Tone"</p>
+                                        <span
+                                            class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">+240%
+                                            Search Volume</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 leading-relaxed">
+                                        User questions about "Brown", "Sage Green", and "Cream" have tripled in the last
+                                        week. Suggest launching an Earth Tone collection.
+                                    </p>
+                                </div>
+                                <div class="w-full h-px bg-slate-100"></div>
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <p class="font-bold text-slate-900">"COD Availability"</p>
+                                        <span
+                                            class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded">High
+                                            Drop-off</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 leading-relaxed">
+                                        15% of users drop off when they realize COD (Cash on Delivery) is not clearly
+                                        mentioned. Suggest adding "Bisa COD" badge.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

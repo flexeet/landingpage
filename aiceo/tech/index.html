@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICEO v2.3 — Internal Technical Deck</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0c;
+            --surface: #141419;
+            --surface-2: #1a1a22;
+            --border: #2a2a35;
+            --text: #f5f5f7;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.3);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --purple: #a855f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--surface);
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--purple));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Slide Counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--text-muted);
+            z-index: 100;
+        }
+
+        /* Navigation */
+        .nav-hint {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            font-size: 12px;
+            color: var(--text-muted);
+            z-index: 100;
+        }
+
+        .nav-hint kbd {
+            background: var(--surface);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Slides Container */
+        .slides-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Typography */
+        .slide-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding: 4px 12px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 4px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 32px;
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .text-success {
+            color: var(--success);
+        }
+
+        .text-warning {
+            color: var(--warning);
+        }
+
+        .text-error {
+            color: var(--error);
+        }
+
+        .text-purple {
+            color: var(--purple);
+        }
+
+        .center-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Cover Slide */
+        .cover-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 13px;
+            margin-bottom: 32px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Code Block */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            text-align: left;
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        .code-block .comment {
+            color: var(--text-muted);
+        }
+
+        .code-block .keyword {
+            color: var(--purple);
+        }
+
+        .code-block .string {
+            color: var(--success);
+        }
+
+        .code-block .property {
+            color: var(--accent);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .card.highlight {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        /* Flow Diagram */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .flow-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 24px;
+            text-align: center;
+        }
+
+        .flow-box.highlight {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        /* Table */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--surface);
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        tr:hover td {
+            background: var(--surface);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        .badge-error {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--error);
+        }
+
+        .badge-info {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent);
+        }
+
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .comparison-vs {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .comparison-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .comparison-box.bad {
+            border-color: var(--error);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .comparison-box.good {
+            border-color: var(--success);
+            background: rgba(34, 197, 94, 0.05);
+        }
+
+        /* Quote */
+        .quote-block {
+            background: var(--surface);
+            border-left: 4px solid var(--accent);
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+            font-size: 1.1rem;
+            font-style: italic;
+            margin: 24px 0;
+        }
+
+        /* Checklist */
+        .checklist {
+            text-align: left;
+            max-width: 600px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .checklist-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .checklist-icon.check {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+        }
+
+        .checklist-icon.x {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--error);
+        }
+
+        /* Stats */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+        }
+
+        .section-divider .section-number {
+            font-size: 6rem;
+            font-weight: 700;
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .section-divider .section-name {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        /* Architecture Diagram */
+        .arch-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .arch-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .arch-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 24px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .arch-box.primary {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .arch-arrow-down {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        /* Mode Cards */
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .mode-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .mode-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .mode-letter {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .mode-title {
+            font-weight: 600;
+        }
+
+        .mode-trigger {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Source Classification */
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .source-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .source-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .source-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .source-action {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Timeline */
+        .version-timeline {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin: 32px 0;
+        }
+
+        .version-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 32px;
+            position: relative;
+        }
+
+        .version-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 0;
+            width: 50%;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .version-item:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .version-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 1;
+        }
+
+        .version-item.current .version-dot {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .version-label {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .version-item.current .version-label {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 24px;
+            }
+
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .source-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mode-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Slide Counter -->
+    <div class="slide-counter">
+        <span id="currentSlide">01</span> / <span id="totalSlides">32</span>
+    </div>
+
+    <!-- Navigation Hint -->
+    <div class="nav-hint">
+        <kbd>←</kbd> <kbd>→</kbd> Navigate &nbsp;|&nbsp; <kbd>F</kbd> Fullscreen
+    </div>
+
+    <!-- Slides Container -->
+    <main class="slides-container" id="slidesContainer">
+
+        <!-- ==================== COVER ==================== -->
+        
+        <!-- 1. Cover -->
+        <section class="slide active" data-slide="1">
+            <div class="slide-content center-content">
+                <div class="cover-badge">
+                    <span class="badge-dot"></span>
+                    <span>Internal Documentation</span>
+                </div>
+                <h1 class="cover-title">
+                    <span class="text-accent">AICEO</span> v2.3
+                </h1>
+                <p class="cover-subtitle">Technical Deep Dive — How It Works</p>
+                <p style="color: var(--text-muted); margin-top: 32px;">December 2024</p>
+            </div>
+        </section>
+
+        <!-- 2. Table of Contents -->
+        <section class="slide" data-slide="2">
+            <div class="slide-content">
+                <span class="slide-label">Overview</span>
+                <h2 class="section-title">What We'll Cover</h2>
+                <div class="grid-2" style="max-width: 800px; margin: 0 auto;">
+                    <div class="card">
+                        <div class="card-icon">🏗️</div>
+                        <h3>1. System Architecture</h3>
+                        <p>Tech stack, flow diagram, components</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3>2. V15 Schema</h3>
+                        <p>Decision unit structure, fields</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🧠</div>
+                        <h3>3. flexeet_core Prompt</h3>
+                        <p>Response modes, rules, logic</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🛡️</div>
+                        <h3>4. Anti-Hallucination</h3>
+                        <p>Strict checks, source classification</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🎨</div>
+                        <h3>5. Creative Task Handling</h3>
+                        <p>Moodboard, proposal, disclaimer</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">✅</div>
+                        <h3>6. Quality Validation</h3>
+                        <p>Test cases, scoring, results</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 1: ARCHITECTURE ==================== -->
+
+        <!-- 3. Section Divider -->
+        <section class="slide section-divider" data-slide="3">
+            <div class="slide-content center-content">
+                <div class="section-number">01</div>
+                <div class="section-name">System Architecture</div>
+            </div>
+        </section>
+
+        <!-- 4. Core Philosophy -->
+        <section class="slide" data-slide="4">
+            <div class="slide-content center-content">
+                <span class="slide-label">Philosophy</span>
+                <h2 class="section-title">Decision Replay, Bukan Coaching</h2>
+                <div class="comparison" style="margin-top: 32px;">
+                    <div class="comparison-box bad">
+                        <h3 style="color: var(--error); margin-bottom: 16px;">❌ Generic AI</h3>
+                        <ul style="text-align: left; color: var(--text-secondary); line-height: 2;">
+                            <li>Source: Best practice umum</li>
+                            <li>Voice: "Menurut teori..."</li>
+                            <li>Output: Saran generik</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-vs">VS</div>
+                    <div class="comparison-box good">
+                        <h3 style="color: var(--success); margin-bottom: 16px;">✅ AICEO</h3>
+                        <ul style="text-align: left; color: var(--text-secondary); line-height: 2;">
+                            <li>Source: <strong>Owner's knowledge</strong></li>
+                            <li>Voice: "Saya selalu..."</li>
+                            <li>Output: <strong>Decision replay</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Storage vs Display -->
+        <section class="slide" data-slide="5">
+            <div class="slide-content center-content">
+                <span class="slide-label">Golden Rule</span>
+                <h2 class="section-title">Storage vs Display</h2>
+                <div class="comparison" style="margin-top: 32px;">
+                    <div class="comparison-box">
+                        <h3 style="margin-bottom: 16px;">🧠 Storage (Backend)</h3>
+                        <div class="code-block" style="font-size: 12px;">
+<span class="property">"default"</span>: <span class="string">"Always rejects knit"</span>
+<span class="property">"kill_criteria"</span>: <span class="string">"fleece → stop"</span>
+<span class="property">"avoids"</span>: [<span class="string">"crop"</span>, <span class="string">"short"</span>]
+                        </div>
+                        <p style="margin-top: 16px; color: var(--text-muted); font-size: 0.9rem;">Structured, searchable, machine-readable</p>
+                    </div>
+                    <div class="comparison-vs">→</div>
+                    <div class="comparison-box">
+                        <h3 style="margin-bottom: 16px;">💬 Display (Frontend)</h3>
+                        <div style="background: var(--bg); padding: 16px; border-radius: 8px; font-size: 14px; text-align: left;">
+                            "Di Hijacket, saya tidak pernah pakai bahan knit. Itu red flag saya. Kalau ada proposal pakai fleece, langsung saya tolak."
+                        </div>
+                        <p style="margin-top: 16px; color: var(--text-muted); font-size: 0.9rem;">Natural, conversational, human-readable</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Tech Stack -->
+        <section class="slide" data-slide="6">
+            <div class="slide-content">
+                <span class="slide-label">Tech Stack</span>
+                <h2 class="section-title">Components</h2>
+                <div class="grid-4">
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🌲</div>
+                        <h3>Pinecone</h3>
+                        <p>Vector DB untuk decision units</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">⚡</div>
+                        <h3>n8n</h3>
+                        <p>Workflow orchestration</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🤖</div>
+                        <h3>Claude/GPT</h3>
+                        <p>AI Agent</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">📱</div>
+                        <h3>Telegram</h3>
+                        <p>User interface</p>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 24px; text-align: center;">
+                    <div class="card-icon">✨</div>
+                    <h3>Gemini Flash</h3>
+                    <p>Extraction pipeline (Rp 205/podcast vs Rp 2,700 Opus)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Flow Diagram -->
+        <section class="slide" data-slide="7">
+            <div class="slide-content center-content">
+                <span class="slide-label">Architecture</span>
+                <h2 class="section-title">System Flow</h2>
+                <div class="arch-diagram">
+                    <div class="arch-row">
+                        <div class="arch-box">📱 User Question</div>
+                    </div>
+                    <div class="arch-arrow-down">↓</div>
+                    <div class="arch-row">
+                        <div class="arch-box">🤖 Telegram Bot</div>
+                    </div>
+                    <div class="arch-arrow-down">↓</div>
+                    <div class="arch-row">
+                        <div class="arch-box primary">⚡ n8n Workflow</div>
+                        <div class="arch-box">🌲 Pinecone Query</div>
+                    </div>
+                    <div class="arch-arrow-down">↓</div>
+                    <div class="arch-row">
+                        <div class="arch-box primary" style="min-width: 300px;">
+                            🧠 AI Agent<br>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">flexeet_core v2.3</span>
+                        </div>
+                    </div>
+                    <div class="arch-arrow-down">↓</div>
+                    <div class="arch-row">
+                        <div class="arch-box">💬 Telegram HTML Output</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: V15 SCHEMA ==================== -->
+
+        <!-- 8. Section Divider -->
+        <section class="slide section-divider" data-slide="8">
+            <div class="slide-content center-content">
+                <div class="section-number">02</div>
+                <div class="section-name">V15 Schema</div>
+            </div>
+        </section>
+
+        <!-- 9. Schema Overview -->
+        <section class="slide" data-slide="9">
+            <div class="slide-content">
+                <span class="slide-label">Schema</span>
+                <h2 class="section-title">Decision Unit Structure</h2>
+                <div class="code-block" style="max-width: 900px; margin: 0 auto;">
+{
+  <span class="property">"domain"</span>: <span class="string">"product | operations | hr | marketing"</span>,
+  <span class="property">"type"</span>: <span class="string">"principle | boundary | choice | trade_off | failure_scar"</span>,
+  
+  <span class="comment">// Core Decision Fields</span>
+  <span class="property">"default_behavior"</span>: <span class="string">"What owner USUALLY does"</span>,
+  <span class="property">"context_trigger"</span>: <span class="string">"WHEN this applies"</span>,
+  <span class="property">"kill_criteria"</span>: <span class="string">"STOP conditions"</span>,
+  <span class="property">"what_owner_avoids"</span>: [<span class="string">"list"</span>, <span class="string">"of"</span>, <span class="string">"things"</span>],
+  
+  <span class="comment">// Confidence Signals</span>
+  <span class="property">"confidence_source"</span>: <span class="string">"experience | pattern | intuition"</span>,
+  <span class="property">"risk_tolerance"</span>: <span class="string">"low | medium | high"</span>,
+  <span class="property">"signal_strength"</span>: <span class="string">"high | medium | low"</span>,
+  
+  <span class="comment">// Quote & Context</span>
+  <span class="property">"interpreted_quote"</span>: <span class="string">"Original quote Bahasa Indonesia"</span>,
+  <span class="property">"speaker"</span>: <span class="string">"Owner Name (Business)"</span>
+}
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Decision Types -->
+        <section class="slide" data-slide="10">
+            <div class="slide-content">
+                <span class="slide-label">Types</span>
+                <h2 class="section-title">5 Decision Types</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge badge-info">principle</span></td>
+                                <td>Core belief that guides behavior</td>
+                                <td>"Always prioritize function over aesthetics"</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-error">boundary</span></td>
+                                <td>Hard limits / red flags</td>
+                                <td>"Never use fleece, parasut, or knit"</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-success">choice</span></td>
+                                <td>Preference when options exist</td>
+                                <td>"Prefer Drop Shoulder for textured fabrics"</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-warning">trade_off</span></td>
+                                <td>How to balance competing priorities</td>
+                                <td>"Loose Fit 60% vs Regular Fit for weather"</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge" style="background: rgba(168,85,247,0.2); color: var(--purple);">failure_scar</span></td>
+                                <td>Lessons from past mistakes</td>
+                                <td>"Lost money when ignored market fit"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: FLEXEET_CORE ==================== -->
+
+        <!-- 11. Section Divider -->
+        <section class="slide section-divider" data-slide="11">
+            <div class="slide-content center-content">
+                <div class="section-number">03</div>
+                <div class="section-name">flexeet_core v2.3</div>
+            </div>
+        </section>
+
+        <!-- 12. Prompt Structure -->
+        <section class="slide" data-slide="12">
+            <div class="slide-content">
+                <span class="slide-label">Structure</span>
+                <h2 class="section-title">7 Core Sections</h2>
+                <div class="grid-3" style="max-width: 900px; margin: 0 auto;">
+                    <div class="card highlight">
+                        <h3>1. Strict Relevance Check</h3>
+                        <p>3 mandatory questions</p>
+                    </div>
+                    <div class="card highlight">
+                        <h3>2. Anti-Hallucination</h3>
+                        <p>Forbidden patterns</p>
+                    </div>
+                    <div class="card highlight">
+                        <h3>3. Creative Task Handling</h3>
+                        <p>Moodboard rules</p>
+                    </div>
+                    <div class="card">
+                        <h3>4. Source Classification</h3>
+                        <p>4 types of data</p>
+                    </div>
+                    <div class="card">
+                        <h3>5. Response Modes</h3>
+                        <p>A / B / C / D / Hybrid</p>
+                    </div>
+                    <div class="card">
+                        <h3>6. Output Formatting</h3>
+                        <p>Telegram HTML</p>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 24px; color: var(--text-muted);">
+                    <span class="badge badge-info">NEW in v2.3</span> = highlighted
+                </p>
+            </div>
+        </section>
+
+        <!-- 13. Response Modes -->
+        <section class="slide" data-slide="13">
+            <div class="slide-content">
+                <span class="slide-label">Modes</span>
+                <h2 class="section-title">5 Response Modes</h2>
+                <div class="mode-grid">
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-letter">A</div>
+                            <div>
+                                <div class="mode-title">DECISION</div>
+                                <div class="mode-trigger">"Pilih X atau Y?"</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">MAX 100 kata. Fokus: sikap tegas + stop condition.</p>
+                    </div>
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-letter">B</div>
+                            <div>
+                                <div class="mode-title">HOW-TO</div>
+                                <div class="mode-trigger">"Bagaimana caranya..."</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Step-by-step. Disclaimer jika data tidak ada.</p>
+                    </div>
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-letter">C</div>
+                            <div>
+                                <div class="mode-title">EXPLAIN</div>
+                                <div class="mode-trigger">"Ceritakan..."</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Storytelling. Hanya dari knowledge.</p>
+                    </div>
+                    <div class="mode-card" style="border-color: var(--accent);">
+                        <div class="mode-header">
+                            <div class="mode-letter" style="background: var(--purple);">D</div>
+                            <div>
+                                <div class="mode-title">CREATIVE <span class="badge badge-info" style="font-size: 10px;">NEW</span></div>
+                                <div class="mode-trigger">"Buatkan moodboard..."</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Core from knowledge + creative fills with disclaimer.</p>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 16px; text-align: center;">
+                    <div class="mode-header" style="justify-content: center;">
+                        <div class="mode-letter" style="background: var(--warning);">A+B</div>
+                        <div>
+                            <div class="mode-title">HYBRID</div>
+                            <div class="mode-trigger">"Minta tips..."</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Decision opener + How-to steps.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: ANTI-HALLUCINATION ==================== -->
+
+        <!-- 14. Section Divider -->
+        <section class="slide section-divider" data-slide="14">
+            <div class="slide-content center-content">
+                <div class="section-number">04</div>
+                <div class="section-name">Anti-Hallucination</div>
+            </div>
+        </section>
+
+        <!-- 15. The Problem -->
+        <section class="slide" data-slide="15">
+            <div class="slide-content center-content">
+                <span class="slide-label">Problem</span>
+                <h2 class="section-title">Kenapa Ini <span class="text-error">Critical</span>?</h2>
+                <div class="quote-block" style="max-width: 700px; background: rgba(239,68,68,0.1); border-color: var(--error);">
+                    "Di Hijacket, saya booking <strong>5-10 ton</strong> sekaligus dengan <strong>DP untuk 3-6 bulan</strong>. Saya negosiasi dari <strong>1.000 kg jadi 2.500 kg</strong> untuk diskon <strong>Rp 2.000/kg</strong>..."
+                </div>
+                <p style="color: var(--error); margin-top: 24px; font-size: 1.2rem; font-weight: 600;">
+                    ❌ SEMUA ANGKA INI FABRICATED!
+                </p>
+                <p style="color: var(--text-secondary); margin-top: 16px;">
+                    Knowledge tidak punya data negosiasi vendor.<br>
+                    AI "membantu" dengan generate jawaban yang plausible.
+                </p>
+            </div>
+        </section>
+
+        <!-- 16. Impact -->
+        <section class="slide" data-slide="16">
+            <div class="slide-content center-content">
+                <span class="slide-label">Impact</span>
+                <h2 class="section-title">Kenapa Ini Berbahaya?</h2>
+                <div class="grid-3" style="max-width: 900px; margin-top: 32px;">
+                    <div class="card" style="border-color: var(--error);">
+                        <div class="card-icon">🎭</div>
+                        <h3>Credibility Loss</h3>
+                        <p>Owner bisa "tertangkap" jika ditanya langsung dan tidak bisa jawab.</p>
+                    </div>
+                    <div class="card" style="border-color: var(--error);">
+                        <div class="card-icon">🔄</div>
+                        <h3>Inconsistency</h3>
+                        <p>Angka berbeda setiap kali ditanya = trust hilang.</p>
+                    </div>
+                    <div class="card" style="border-color: var(--error);">
+                        <div class="card-icon">💔</div>
+                        <h3>Promise Broken</h3>
+                        <p>AICEO janji "Decision Replay" — bukan "AI yang sok tau".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 17. Strict Relevance Check -->
+        <section class="slide" data-slide="17">
+            <div class="slide-content center-content">
+                <span class="slide-label">Solution</span>
+                <h2 class="section-title">Strict Relevance Check</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 32px;">3 mandatory questions BEFORE answering</p>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">1</div>
+                        <div>
+                            <strong>Keyword Match?</strong>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">User tanya "knit" → hasil HARUS contain "knit"</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">2</div>
+                        <div>
+                            <strong>Directly Answers?</strong>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Bukan hanya "related topic" — HARUS directly relevant</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">3</div>
+                        <div>
+                            <strong>Quote Exists?</strong>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Quote HARUS dari Owner_Base — DILARANG buat quote baru</p>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 24px; color: var(--warning);">
+                    ⚠️ Jika GAGAL salah satu → WAJIB disclaimer
+                </p>
+            </div>
+        </section>
+
+        <!-- 18. Source Classification -->
+        <section class="slide" data-slide="18">
+            <div class="slide-content">
+                <span class="slide-label">Classification</span>
+                <h2 class="section-title">4 Source Types</h2>
+                <div class="source-grid">
+                    <div class="source-card" style="border-color: var(--success);">
+                        <div class="source-icon">✅</div>
+                        <div class="source-name">FROM OWNER_BASE</div>
+                        <div class="source-action" style="color: var(--success);">"Saya selalu..."</div>
+                        <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">100% match, quote exact</p>
+                    </div>
+                    <div class="source-card" style="border-color: var(--warning);">
+                        <div class="source-icon">⚠️</div>
+                        <div class="source-name">PARTIAL MATCH</div>
+                        <div class="source-action" style="color: var(--warning);">Disclaimer + bridge</div>
+                        <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">Topik terkait, detail tidak ada</p>
+                    </div>
+                    <div class="source-card" style="border-color: var(--error);">
+                        <div class="source-icon">❌</div>
+                        <div class="source-name">NO MATCH</div>
+                        <div class="source-action" style="color: var(--error);">Reject sopan</div>
+                        <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">Keyword tidak ada sama sekali</p>
+                    </div>
+                    <div class="source-card" style="border-color: var(--purple);">
+                        <div class="source-icon">🎨</div>
+                        <div class="source-name">CREATIVE</div>
+                        <div class="source-action" style="color: var(--purple);">Core + disclaimer</div>
+                        <p style="font-size: 0.8rem; margin-top: 8px; color: var(--text-muted);">Moodboard, proposal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 19. Forbidden Patterns -->
+        <section class="slide" data-slide="19">
+            <div class="slide-content center-content">
+                <span class="slide-label">Rules</span>
+                <h2 class="section-title">Forbidden Patterns</h2>
+                <div class="checklist" style="max-width: 700px;">
+                    <div class="checklist-item">
+                        <div class="checklist-icon x">❌</div>
+                        <div>
+                            <strong>Angka Spesifik Fabricated</strong>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">"Saya booking 5-10 ton" (tidak ada di knowledge)</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon x">❌</div>
+                        <div>
+                            <strong>Quote Fabricated</strong>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Membuat quote yang tidak ada di Owner_Base</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon x">❌</div>
+                        <div>
+                            <strong>Istilah Teknis Fabricated</strong>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">"dry-fit knit", "celup (dyeing)" — tidak ada di knowledge</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon x">❌</div>
+                        <div>
+                            <strong>Creative Bridging dari Topik Tidak Related</strong>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Knowledge tentang "fashion show" ≠ relevant untuk "negosiasi vendor"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 20. Before After -->
+        <section class="slide" data-slide="20">
+            <div class="slide-content">
+                <span class="slide-label">Transformation</span>
+                <h2 class="section-title">Before vs After</h2>
+                <div class="comparison">
+                    <div class="comparison-box bad">
+                        <h3 style="color: var(--error); margin-bottom: 16px;">❌ Before (Hallucination)</h3>
+                        <div style="font-size: 0.85rem; line-height: 1.6;">
+                            "Di Hijacket, saya tidak pernah panik saat harga kapas naik. Saya selalu mengedepankan <strong>transparansi</strong>. Saya booking <strong>5-10 ton</strong> sekaligus dengan <strong>DP untuk 3-6 bulan</strong>..."
+                        </div>
+                    </div>
+                    <div class="comparison-vs">→</div>
+                    <div class="comparison-box good">
+                        <h3 style="color: var(--success); margin-bottom: 16px;">✅ After (Honest)</h3>
+                        <div style="font-size: 0.85rem; line-height: 1.6;">
+                            "<strong>Jujur, strategi negosiasi vendor ini belum pernah saya bahas.</strong> Tapi dari prinsip hubungan vendor yang saya pegang, saya coba kasih perspektif..."<br><br>
+                            <span style="color: var(--warning);">⚠️ Ini analisa umum, bukan pengalaman langsung.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 5: CREATIVE TASK ==================== -->
+
+        <!-- 21. Section Divider -->
+        <section class="slide section-divider" data-slide="21">
+            <div class="slide-content center-content">
+                <div class="section-number">05</div>
+                <div class="section-name">Creative Task Handling</div>
+            </div>
+        </section>
+
+        <!-- 22. Why Creative is Different -->
+        <section class="slide" data-slide="22">
+            <div class="slide-content center-content">
+                <span class="slide-label">Problem</span>
+                <h2 class="section-title">Creative Tasks Butuh Detail Visual</h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 24px auto;">
+                    User minta "buatkan moodboard" — tapi knowledge tidak punya warna spesifik, nama styling, atau detail aksesori.
+                </p>
+                <div class="comparison" style="margin-top: 32px;">
+                    <div class="comparison-box">
+                        <h3 style="margin-bottom: 16px;">🧠 Knowledge Has</h3>
+                        <ul style="text-align: left; color: var(--text-secondary); line-height: 2;">
+                            <li>Minimal 70cm</li>
+                            <li>Drop Shoulder, Batwing</li>
+                            <li>Modest DNA</li>
+                            <li>Kill criteria</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-vs">≠</div>
+                    <div class="comparison-box">
+                        <h3 style="margin-bottom: 16px;">🎨 User Needs</h3>
+                        <ul style="text-align: left; color: var(--text-secondary); line-height: 2;">
+                            <li>Warna spesifik</li>
+                            <li>Nama styling</li>
+                            <li>Detail aksesori</li>
+                            <li>Visual reference</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 23. Creative Rules -->
+        <section class="slide" data-slide="23">
+            <div class="slide-content">
+                <span class="slide-label">Solution</span>
+                <h2 class="section-title">Creative Task Rules</h2>
+                <div class="grid-2" style="max-width: 900px; margin: 0 auto;">
+                    <div class="card" style="border-color: var(--success);">
+                        <h3 style="color: var(--success);">✅ WAJIB dari Knowledge</h3>
+                        <ul style="color: var(--text-secondary); line-height: 2; margin-top: 16px;">
+                            <li>Ukuran/panjang (70cm)</li>
+                            <li>Kill criteria</li>
+                            <li>Siluet (Drop Shoulder, Batwing)</li>
+                            <li>Quote asli</li>
+                            <li>Prinsip modest/DNA</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-color: var(--purple);">
+                        <h3 style="color: var(--purple);">🎨 BOLEH Generate + Disclaimer</h3>
+                        <ul style="color: var(--text-secondary); line-height: 2; margin-top: 16px;">
+                            <li>Palet warna spesifik</li>
+                            <li>Nama styling</li>
+                            <li>Detail aksesori</li>
+                            <li>Referensi visual</li>
+                            <li>Material finish</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quote-block" style="max-width: 700px; margin: 32px auto 0; border-color: var(--purple);">
+                    <strong>Disclaimer Template:</strong><br>
+                    "Untuk detail visual seperti warna dan elemen utilitas, ini proposal kreatif saya — belum tentu sudah saya produksi."
+                </div>
+            </div>
+        </section>
+
+        <!-- 24. Creative Example -->
+        <section class="slide" data-slide="24">
+            <div class="slide-content">
+                <span class="slide-label">Example</span>
+                <h2 class="section-title">Creative Output Structure</h2>
+                <div class="code-block" style="max-width: 800px; margin: 0 auto; font-size: 13px;">
+<span class="comment">// FROM KNOWLEDGE (no disclaimer)</span>
+<span class="string">"Siluet: Drop Shoulder, panjang minimal 70cm..."</span>
+
+<span class="comment">// CREATIVE FILL (with disclaimer)</span>
+<span class="string">"Untuk warna, ini proposal kreatif saya:</span>
+<span class="string">- Base: Charcoal Grey atau Deep Olive</span>
+<span class="string">- Accent: Electric Blue atau Terracotta</span>
+<span class="string">(Ini belum tentu warna yang sudah saya produksi)"</span>
+
+<span class="comment">// QUOTE (from knowledge, exact)</span>
+<span class="string">"Bagi saya, dua hal fatal yang tidak boleh dilanggar..."</span>
+
+<span class="comment">// KILL CRITERIA (from knowledge)</span>
+<span class="string">"🛑 Kapan Saya Stop? Jika ada elemen crop atau nerawang..."</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 6: QUALITY VALIDATION ==================== -->
+
+        <!-- 25. Section Divider -->
+        <section class="slide section-divider" data-slide="25">
+            <div class="slide-content center-content">
+                <div class="section-number">06</div>
+                <div class="section-name">Quality Validation</div>
+            </div>
+        </section>
+
+        <!-- 26. Version Evolution -->
+        <section class="slide" data-slide="26">
+            <div class="slide-content center-content">
+                <span class="slide-label">Evolution</span>
+                <h2 class="section-title">Version History</h2>
+                <div class="version-timeline">
+                    <div class="version-item">
+                        <div class="version-dot">2.0</div>
+                        <div class="version-label">Basic</div>
+                    </div>
+                    <div class="version-item">
+                        <div class="version-dot">2.1</div>
+                        <div class="version-label">Anti-halluc intro</div>
+                    </div>
+                    <div class="version-item">
+                        <div class="version-dot">2.2</div>
+                        <div class="version-label">Strict Check</div>
+                    </div>
+                    <div class="version-item current">
+                        <div class="version-dot">2.3</div>
+                        <div class="version-label">Creative Task</div>
+                    </div>
+                </div>
+                <div class="table-container" style="margin-top: 48px; max-width: 800px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Version</th>
+                                <th>Key Addition</th>
+                                <th>Test Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>v2.0</td>
+                                <td>Basic prompt structure</td>
+                                <td><span class="badge badge-error">3-5/10</span></td>
+                            </tr>
+                            <tr>
+                                <td>v2.1</td>
+                                <td>Source classification</td>
+                                <td><span class="badge badge-warning">4-6/10</span></td>
+                            </tr>
+                            <tr>
+                                <td>v2.2</td>
+                                <td>Strict Relevance Check</td>
+                                <td><span class="badge badge-success">8-10/10</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>v2.3</strong></td>
+                                <td>Creative Task Handling</td>
+                                <td><span class="badge badge-success">8-10/10</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 27. Test Cases -->
+        <section class="slide" data-slide="27">
+            <div class="slide-content">
+                <span class="slide-label">Validation</span>
+                <h2 class="section-title">Test Cases & Results</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Test Case</th>
+                                <th>Type</th>
+                                <th>v2.2</th>
+                                <th>v2.3</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>"Tips knit untuk padel"</td>
+                                <td>Factual (no data)</td>
+                                <td><span class="badge badge-success">8/10</span></td>
+                                <td><span class="badge badge-success">8/10</span></td>
+                                <td>Proper disclaimer</td>
+                            </tr>
+                            <tr>
+                                <td>"Boleh panjang jaket 60cm?"</td>
+                                <td>Factual (data available)</td>
+                                <td><span class="badge badge-success">10/10</span></td>
+                                <td><span class="badge badge-success">10/10</span></td>
+                                <td>Real numbers, real quote</td>
+                            </tr>
+                            <tr>
+                                <td>"Desain Hijacket untuk jogging"</td>
+                                <td>Factual + Principle</td>
+                                <td><span class="badge badge-success">9/10</span></td>
+                                <td><span class="badge badge-success">9/10</span></td>
+                                <td>Sport Style positioning</td>
+                            </tr>
+                            <tr>
+                                <td>"Buatkan moodboard Gen Z"</td>
+                                <td>Creative</td>
+                                <td><span class="badge badge-warning">7.5/10</span></td>
+                                <td><span class="badge badge-success">9/10</span></td>
+                                <td>+Disclaimer for creative</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 28. Scoring Criteria -->
+        <section class="slide" data-slide="28">
+            <div class="slide-content center-content">
+                <span class="slide-label">Criteria</span>
+                <h2 class="section-title">Quality Scoring Rubric</h2>
+                <div class="grid-2" style="max-width: 800px; margin-top: 32px;">
+                    <div class="card" style="border-color: var(--success);">
+                        <h3 style="color: var(--success);">✅ PASS Criteria</h3>
+                        <ul style="color: var(--text-secondary); line-height: 2; margin-top: 16px; font-size: 0.9rem;">
+                            <li>Quote matches knowledge EXACTLY</li>
+                            <li>Numbers only from knowledge</li>
+                            <li>Disclaimer when extrapolating</li>
+                            <li>Kill criteria from knowledge</li>
+                            <li>No fabricated technical terms</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-color: var(--error);">
+                        <h3 style="color: var(--error);">❌ FAIL Criteria</h3>
+                        <ul style="color: var(--text-secondary); line-height: 2; margin-top: 16px; font-size: 0.9rem;">
+                            <li>Fabricated quotes</li>
+                            <li>Made-up numbers as experience</li>
+                            <li>No disclaimer when data missing</li>
+                            <li>Technical terms not in knowledge</li>
+                            <li>Claiming experience that doesn't exist</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 29. Final Checklist -->
+        <section class="slide" data-slide="29">
+            <div class="slide-content center-content">
+                <span class="slide-label">Checklist</span>
+                <h2 class="section-title">Final Response Checklist</h2>
+                <div class="checklist" style="max-width: 600px;">
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">□</div>
+                        <div>STRICT CHECK 1: Keyword user ada di Owner_Base?</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">□</div>
+                        <div>STRICT CHECK 2: Hasil directly menjawab?</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">□</div>
+                        <div>STRICT CHECK 3: Quote ada di Owner_Base?</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">□</div>
+                        <div>Semua angka/detail teknis verified?</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">□</div>
+                        <div>Disclaimer ditambahkan jika perlu?</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">□</div>
+                        <div>Jika CREATIVE: Core + creative disclaimer?</div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checklist-icon check">□</div>
+                        <div>Format HTML (bukan Markdown)?</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 30. Golden Rule -->
+        <section class="slide" data-slide="30">
+            <div class="slide-content center-content">
+                <span class="slide-label">Golden Rule</span>
+                <div class="quote-block" style="max-width: 700px; font-size: 1.3rem; font-style: normal; border-color: var(--accent);">
+                    "Lebih baik jujur <span class="text-accent">'belum ada di knowledge'</span> daripada hallucinate dan merusak kredibilitas owner."
+                </div>
+                <p style="color: var(--text-secondary); margin-top: 32px;">
+                    Kredibilitas owner > Terlihat "pintar menjawab semua"
+                </p>
+            </div>
+        </section>
+
+        <!-- 31. Summary -->
+        <section class="slide" data-slide="31">
+            <div class="slide-content center-content">
+                <span class="slide-label">Summary</span>
+                <h2 class="section-title">AICEO v2.3 Features</h2>
+                <div class="stat-grid" style="max-width: 800px; margin-top: 32px;">
+                    <div class="stat-card">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Strict Checks</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">Source Types</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Response Modes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">9+</div>
+                        <div class="stat-label">Avg Score</div>
+                    </div>
+                </div>
+                <div class="grid-3" style="margin-top: 32px; max-width: 900px;">
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🛡️</div>
+                        <h3>Anti-Hallucination</h3>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🎨</div>
+                        <h3>Creative Handling</h3>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">✅</div>
+                        <h3>Quality Validated</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 32. Closing -->
+        <section class="slide" data-slide="32">
+            <div class="slide-content center-content">
+                <h2 class="section-title" style="font-size: 3rem;">
+                    <span class="text-accent">AICEO</span> v2.3
+                </h2>
+                <p style="font-size: 1.5rem; color: var(--text-secondary); margin-top: 16px;">
+                    Production Ready
+                </p>
+                <p style="color: var(--text-muted); margin-top: 48px;">
+                    Internal Technical Documentation<br>
+                    December 2024
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Slide Navigation
+        const slides = document.querySelectorAll('.slide');
+        const progressFill = document.getElementById('progressFill');
+        const currentSlideEl = document.getElementById('currentSlide');
+        const totalSlidesEl = document.getElementById('totalSlides');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        
+        totalSlidesEl.textContent = totalSlides;
+        
+        function showSlide(index) {
+            if (index < 0) index = 0;
+            if (index >= totalSlides) index = totalSlides - 1;
+            
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) slide.classList.add('active');
+            });
+            
+            currentSlide = index;
+            currentSlideEl.textContent = String(index + 1).padStart(2, '0');
+            progressFill.style.width = ((index + 1) / totalSlides * 100) + '%';
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'f' || e.key === 'F') {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    document.documentElement.requestFullscreen();
+                }
+            }
+        });
+        
+        // Click Navigation
+        document.addEventListener('click', (e) => {
+            if (e.clientX > window.innerWidth / 2) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        });
+        
+        // Touch Navigation
+        let touchStartX = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+        
+        document.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+        });
+        
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>

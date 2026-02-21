@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Brand Leaderboard | CekatPilot</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;font-family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4F46E5",
+                        "primary-light": "#EEF2FF",
+                        "secondary": "#64748B",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                        "success": "#10B981",
+                        "warning": "#F59E0B",
+                        "danger": "#EF4444",
+                        "surface": "#FFFFFF",
+                        "border-slate": "#E5E7EB",
+                        "header-text": "#111827",
+                        "secondary-text": "#6B7280",
+                    },
+                    fontFamily: {
+                        "sans": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 0 0 1px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.04)',
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.25rem',
+                        '3xl': '1.5rem',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-rounded {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 antialiased min-h-screen">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Premium Sidebar -->
+        <aside
+            class="w-[280px] bg-white dark:bg-slate-900 border-r border-slate-100 dark:border-slate-800 flex flex-col z-20 shrink-0">
+            <!-- Brand -->
+            <div class="h-20 flex items-center px-8">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-9 h-9 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 dark:shadow-none">
+                        <span class="material-symbols-rounded text-white">rocket_launch</span>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">CekatPilot</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto custom-scrollbar">
+                <a href="master_home.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">grid_view</span>
+                    <span class="font-medium text-sm">Master Home</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Analytics</p>
+                </div>
+                <a href="product_demand.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">inventory_2</span>
+                    <span class="font-medium text-sm">Product Demand</span>
+                </a>
+                <a href="conversion_funnel.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">filter_list</span>
+                    <span class="font-medium text-sm">Conversion Funnel</span>
+                </a>
+                <a href="roi_center.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">payments</span>
+                    <span class="font-medium text-sm">Financial ROI</span>
+                </a>
+                <a href="brand_leaderboard.html"
+                    class="flex items-center gap-3 px-4 py-3 active-nav rounded-full transition-all group">
+                    <span class="material-symbols-rounded">leaderboard</span>
+                    <span class="font-bold text-sm">Leaderboard</span>
+                </a>
+                <a href="brand_growth.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">trending_up</span>
+                    <span class="font-medium text-sm">Growth Trends</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Intelligence</p>
+                </div>
+                <a href="ai_insight.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">psychology</span>
+                    <span class="font-medium text-sm">AI Insights</span>
+                </a>
+                <a href="predictive.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">auto_graph</span>
+                    <span class="font-medium text-sm">Predictions</span>
+                </a>
+                <a href="peak_hour.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">schedule</span>
+                    <span class="font-medium text-sm">Peak Hour</span>
+                </a>
+                <a href="sla_management.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">timer</span>
+                    <span class="font-medium text-sm">SLA Center</span>
+                </a>
+                <a href="customer_loyalty.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">group</span>
+                    <span class="font-medium text-sm">Customers</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Connectivity</p>
+                </div>
+                <a href="integrations.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">hub</span>
+                    <span class="font-medium text-sm">Integrations</span>
+                </a>
+                <a href="notifications.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">notifications</span>
+                    <span class="font-medium text-sm">Notifications</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Management</p>
+                </div>
+                <a href="news_updates.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">newspaper</span>
+                    <span class="font-medium text-sm">News & Updates</span>
+                </a>
+                <a href="team_management.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">group_add</span>
+                    <span class="font-medium text-sm">Team Management</span>
+                </a>
+                <a href="user_settings.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">settings</span>
+                    <span class="font-medium text-sm">User Settings</span>
+                </a>
+                <a href="billing_plan.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">credit_card</span>
+                    <span class="font-medium text-sm">Billing & Plan</span>
+                </a>
+                <a href="help_faq.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">help</span>
+                    <span class="font-medium text-sm">Help & FAQ</span>
+                </a>
+            </nav>
+
+            <div class="p-6 border-t border-slate-100 dark:border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Hijacket+Owner&background=FCD34D&color=fff" alt="AC"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-header-text dark:text-white truncate">Hijacket</p>
+                        <p class="text-xs text-secondary-text truncate">Owner</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background-light dark:bg-background-dark">
+            <!-- Top Header -->
+            <header
+                class="flex items-center justify-between px-8 py-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-border-slate dark:border-slate-800 sticky top-0 z-30">
+                <div class="flex flex-col">
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white">Brand Leaderboard</h2>
+                    <p class="text-xs text-slate-500 font-medium">Jumat, 31 Januari 2025 • 05:44 WIB</p>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div
+                        class="flex items-center gap-2 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-500/10 text-primary dark:text-indigo-400 rounded-lg text-sm font-medium">
+                        <span class="material-symbols-rounded text-sm">waving_hand</span>
+                        Selamat pagi, Aji!
+                    </div>
+                    <div class="flex items-center gap-3 border-l border-slate-200 dark:border-slate-800 pl-6">
+                        <button
+                            class="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:text-primary transition-colors relative">
+                            <span class="material-symbols-rounded">notifications</span>
+                            <span
+                                class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white dark:border-slate-800"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="flex-1 overflow-y-auto p-8 scroll-smooth custom-scrollbar">
+                <div class="max-w-[1600px] mx-auto space-y-8">
+
+                    <!-- Heading & Progress -->
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                        <div class="space-y-1">
+                            <h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Performance
+                                Rank</h2>
+                            <p class="text-slate-500 dark:text-slate-400 font-medium">Real-time competitive analysis
+                                across your portfolio brands.</p>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-card min-w-[320px]">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm font-bold text-slate-600 dark:text-slate-300">Brand Slots
+                                    Used</span>
+                                <span class="text-sm font-black text-primary">5/5</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full shadow-sm" style="width: 100%"></div>
+                            </div>
+                            <p class="mt-3 text-[11px] text-slate-500 font-bold uppercase tracking-wider">Plan: <span
+                                    class="text-primary">Enterprise Advisor</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Grid Layout -->
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                        <!-- Left Stats Column -->
+                        <div class="lg:col-span-1 flex flex-col gap-6">
+                            <!-- Portfolio Revenue -->
+                            <div
+                                class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-card border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span
+                                        class="text-slate-500 dark:text-slate-400 text-[10px] font-extrabold uppercase tracking-[0.2em]">Portfolio
+                                        Revenue</span>
+                                    <span
+                                        class="material-symbols-rounded text-primary bg-primary/10 p-2.5 rounded-xl">payments</span>
+                                </div>
+                                <div class="font-sans text-3xl font-black mb-2 text-slate-900 dark:text-white">Rp 1.25B
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/20 w-fit">
+                                    <span
+                                        class="material-symbols-rounded text-sm text-emerald-600 font-bold">trending_up</span>
+                                    <span
+                                        class="text-emerald-600 dark:text-emerald-400 text-xs font-black">+12.5%</span>
+                                </div>
+                            </div>
+
+                            <!-- Avg CPA -->
+                            <div
+                                class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-card border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span
+                                        class="text-slate-500 dark:text-slate-400 text-[10px] font-extrabold uppercase tracking-[0.2em]">Avg.
+                                        Portfolio CPA</span>
+                                    <span
+                                        class="material-symbols-rounded text-orange-500 bg-orange-500/10 p-2.5 rounded-xl">target</span>
+                                </div>
+                                <div class="font-sans text-3xl font-black mb-2 text-slate-900 dark:text-white">Rp 45k
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-rose-50 dark:bg-rose-900/20 w-fit">
+                                    <span
+                                        class="material-symbols-rounded text-sm text-rose-600 font-bold">trending_up</span>
+                                    <span class="text-rose-600 dark:text-rose-400 text-xs font-black">-2.1%
+                                        efficiency</span>
+                                </div>
+                            </div>
+
+                            <!-- Alert Card -->
+                            <div
+                                class="bg-rose-50 dark:bg-rose-950/30 p-6 rounded-2xl border border-rose-100 dark:border-rose-900/50 shadow-sm relative overflow-hidden group">
+                                <div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+                                    <span class="material-symbols-rounded text-8xl">warning</span>
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 text-rose-600 dark:text-rose-400 mb-3 relative z-10">
+                                    <span
+                                        class="material-symbols-rounded font-bold bg-white dark:bg-rose-900/50 p-1.5 rounded-lg shadow-sm">priority_high</span>
+                                    <span class="font-extrabold text-[10px] uppercase tracking-[0.15em]">Attention
+                                        Required</span>
+                                </div>
+                                <h3 class="font-black text-slate-900 dark:text-white mb-2 relative z-10 text-lg">
+                                    Accessories Underperforming</h3>
+                                <p
+                                    class="text-sm text-slate-600 dark:text-rose-200/70 leading-relaxed mb-6 relative z-10 font-medium">
+                                    CPA is <span class="font-black text-rose-700 dark:text-rose-400">2.5x higher</span>
+                                    than main brand benchmark.
+                                </p>
+                                <div class="space-y-3 relative z-10">
+                                    <button
+                                        class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-primary text-white rounded-full text-xs font-black shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 transition-all transform active:scale-95">
+                                        <span class="material-symbols-rounded text-lg">auto_fix_high</span>
+                                        Optimize AI Prompt
+                                    </button>
+                                    <button
+                                        class="w-full py-3 px-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-black hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+                                        Evaluate Strategy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Table Column -->
+                        <div class="lg:col-span-3">
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-2xl shadow-card overflow-hidden border border-slate-100 dark:border-slate-800">
+                                <div
+                                    class="p-6 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50/30 dark:bg-slate-900/30">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="p-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 rounded-xl shadow-sm">
+                                            <span class="material-symbols-rounded">equalizer</span>
+                                        </div>
+                                        <h3 class="text-xl font-black text-slate-900 dark:text-white">Performance
+                                            Comparison</h3>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <button
+                                            class="bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 px-5 py-2.5 rounded-full text-xs font-black transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2">
+                                            <span class="material-symbols-rounded text-sm">filter_list</span> Filter
+                                        </button>
+                                        <button
+                                            class="bg-primary hover:bg-indigo-700 text-white px-5 py-2.5 rounded-full text-xs font-black transition-all shadow-md shadow-indigo-100 dark:shadow-none flex items-center gap-2">
+                                            <span class="material-symbols-rounded text-sm">download</span> Export Report
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="overflow-x-auto custom-scrollbar">
+                                    <table class="w-full text-left border-collapse min-w-[800px]">
+                                        <thead class="bg-slate-50 dark:bg-slate-800/80">
+                                            <tr>
+                                                <th
+                                                    class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] w-24">
+                                                    Rank</th>
+                                                <th
+                                                    class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                                                    Brand Entity</th>
+                                                <th
+                                                    class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-right">
+                                                    Closings</th>
+                                                <th
+                                                    class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-right">
+                                                    Revenue</th>
+                                                <th
+                                                    class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-right">
+                                                    CPA Efficiency</th>
+                                                <th
+                                                    class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-right">
+                                                    Conv. Rate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+                                            <!-- Rank 1 -->
+                                            <tr
+                                                class="bg-indigo-50/20 dark:bg-primary/5 hover:bg-primary/10 transition-colors">
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-3">
+                                                        <span class="text-2xl drop-shadow-sm">🥇</span>
+                                                        <span
+                                                            class="font-black text-slate-900 dark:text-white text-lg">1</span>
+                                                    </div>
+                                                </td>
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-4">
+                                                        <div
+                                                            class="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-200 dark:shadow-none transition-transform group-hover:scale-105">
+                                                            H</div>
+                                                        <div>
+                                                            <div
+                                                                class="font-black text-slate-900 dark:text-white text-base">
+                                                                Hijacket</div>
+                                                            <div
+                                                                class="text-[10px] text-primary font-black uppercase tracking-[0.15em] bg-primary/10 w-fit px-2 py-0.5 rounded-full mt-1">
+                                                                Flagship</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-black text-slate-900 dark:text-white tabular-nums">
+                                                    1,240</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-black text-header-text dark:text-white tabular-nums">
+                                                    Rp 850M</td>
+                                                <td
+                                                    class="px-8 py-6 text-right text-emerald-600 dark:text-emerald-400 font-black tabular-nums">
+                                                    Rp 18.5k
+                                                </td>
+                                                <td class="px-8 py-6 text-right">
+                                                    <span
+                                                        class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-3 py-1.5 rounded-full font-black text-xs shadow-sm border border-emerald-200 dark:border-emerald-800">5.8%</span>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Rank 2 -->
+                                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-3 pl-2">
+                                                        <span class="font-black text-slate-400 text-lg">2</span>
+                                                    </div>
+                                                </td>
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-4">
+                                                        <div
+                                                            class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-black text-xl">
+                                                            K</div>
+                                                        <div
+                                                            class="font-black text-slate-900 dark:text-white text-base">
+                                                            Hijacket Kids</div>
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-bold text-slate-600 dark:text-slate-400 tabular-nums">
+                                                    645</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-black text-slate-900 dark:text-white tabular-nums">
+                                                    Rp 210M</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-bold text-slate-600 dark:text-slate-400 tabular-nums">
+                                                    Rp 32.4k</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-black text-slate-900 dark:text-white tabular-nums">
+                                                    4.2%</td>
+                                            </tr>
+
+                                            <!-- Rank 3 -->
+                                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-3 pl-2">
+                                                        <span class="font-black text-slate-400 text-lg">3</span>
+                                                    </div>
+                                                </td>
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-4">
+                                                        <div
+                                                            class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 font-black text-xl">
+                                                            M</div>
+                                                        <div
+                                                            class="font-black text-slate-900 dark:text-white text-base">
+                                                            Hijacket Men</div>
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-bold text-slate-600 dark:text-slate-400 tabular-nums">
+                                                    412</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-black text-slate-900 dark:text-white tabular-nums">
+                                                    Rp 145M</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-bold text-slate-600 dark:text-slate-400 tabular-nums">
+                                                    Rp 38.9k</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-black text-slate-900 dark:text-white tabular-nums">
+                                                    3.9%</td>
+                                            </tr>
+
+                                            <!-- Rank 4 -->
+                                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-3 pl-2">
+                                                        <span class="font-black text-slate-400 text-lg">4</span>
+                                                    </div>
+                                                </td>
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-4">
+                                                        <div
+                                                            class="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 font-black text-xl">
+                                                            U</div>
+                                                        <div
+                                                            class="font-black text-slate-900 dark:text-white text-base">
+                                                            Hijacket Urban</div>
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-bold text-slate-600 dark:text-slate-400 tabular-nums">
+                                                    188</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-black text-slate-900 dark:text-white tabular-nums">
+                                                    Rp 42M</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-bold text-slate-600 dark:text-slate-400 tabular-nums">
+                                                    Rp 48.2k</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-black text-slate-900 dark:text-white tabular-nums">
+                                                    2.8%</td>
+                                            </tr>
+
+                                            <!-- Rank 5 (Warning) -->
+                                            <tr
+                                                class="bg-rose-50/50 dark:bg-rose-900/10 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors">
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-3 pl-2">
+                                                        <span class="font-black text-rose-500 text-lg">5</span>
+                                                    </div>
+                                                </td>
+                                                <td class="px-8 py-6">
+                                                    <div class="flex items-center gap-4">
+                                                        <div
+                                                            class="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400 font-black text-xl">
+                                                            A</div>
+                                                        <div
+                                                            class="font-black text-slate-900 dark:text-white text-base">
+                                                            Accessories</div>
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-bold text-slate-600 dark:text-slate-400 tabular-nums">
+                                                    12</td>
+                                                <td
+                                                    class="px-8 py-6 text-right font-black text-slate-900 dark:text-white tabular-nums">
+                                                    Rp 3M</td>
+                                                <td class="px-8 py-6 text-right font-black text-rose-600 tabular-nums">
+                                                    Rp 112.5k</td>
+                                                <td class="px-8 py-6 text-right">
+                                                    <span
+                                                        class="bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 px-3 py-1.5 rounded-full font-black text-xs shadow-sm border border-rose-200 dark:border-rose-800">0.9%</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    class="px-8 py-5 bg-slate-50/50 dark:bg-slate-800/80 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                                    <span
+                                        class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Showing
+                                        5 of
+                                        5 brands used</span>
+                                    <div class="flex gap-3">
+                                        <button
+                                            class="p-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-400 disabled:opacity-30 transition-all shadow-sm"
+                                            disabled><span class="material-symbols-rounded">chevron_left</span></button>
+                                        <button
+                                            class="p-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-all shadow-sm"><span
+                                                class="material-symbols-rounded">chevron_right</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+    </script>
+</body>
+
+</html>

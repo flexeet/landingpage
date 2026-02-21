@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexeet × Cekat - Technical Deep Dive & Live Demo</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">F×C</div>
+                    <span>FLEXEET × CEKAT</span>
+                </a>
+                
+                <nav class="nav">
+                    <a href="#arsitektur" class="nav-link">Arsitektur</a>
+                    <a href="#demo" class="nav-link">Live Demo</a>
+                    <a href="#workflow" class="nav-link">Cara Kerja</a>
+                    <a href="#perbandingan" class="nav-link">Perbandingan</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="section" style="padding-top: 140px; padding-bottom: 60px;">
+        <div class="container">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <div style="display: inline-block; padding: 10px 20px; background: hsl(var(--accent) / 0.1); border-radius: 100px; margin-bottom: 24px;">
+                    <span style="color: hsl(var(--accent)); font-weight: 700; font-size: 14px;">🔬 Technical Deep Dive + Live Demo</span>
+                </div>
+                
+                <h1 style="font-size: clamp(32px, 6vw, 56px); font-weight: 800; margin-bottom: 24px; line-height: 1.1;">
+                    Kenapa AI Flexeet 10x Lebih Canggih?
+                    <div style="color: hsl(var(--accent)); margin-top: 12px;">Mari Kita Bedah Teknologinya</div>
+                </h1>
+                
+                <p style="font-size: 18px; color: hsl(var(--muted)); max-width: 700px; margin: 0 auto 40px;">
+                    Dari arsitektur multi-layer, real-time data sync, sampai Guardian Protocol - 
+                    pahami kenapa Flexeet bukan AI biasa
+                </p>
+
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#demo" class="btn btn-primary">
+                        Coba Live Demo
+                        <i data-lucide="play-circle" width="20" height="20"></i>
+                    </a>
+                    <a href="#arsitektur" class="btn" style="background: hsl(var(--secondary));">
+                        Lihat Arsitektur
+                        <i data-lucide="layers" width="20" height="20"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE SECTION -->
+    <section class="section" id="arsitektur" style="background: hsl(var(--secondary) / 0.2);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" style="background: hsl(var(--accent) / 0.1); color: hsl(var(--accent));">🏗️ System Architecture</span>
+                <h2 class="section-title">Arsitektur 3-Layer yang Membuat AI Pintar</h2>
+                <p class="section-subtitle">
+                    Tidak seperti AI biasa yang hanya "ngobrol", Flexeet punya 3 layer cerdas yang bekerja real-time
+                </p>
+            </div>
+
+            <div class="architecture-container">
+                <!-- Layer 1: Input Sources -->
+                <div class="architecture-layer" id="layer1">
+                    <div class="layer-header">
+                        <div class="layer-badge" style="background: hsl(15 50% 50%);">
+                            INPUT LAYER
+                        </div>
+                        <span class="layer-subtitle">Dari mana data masuk</span>
+                    </div>
+                    <div class="layer-boxes">
+                        <div class="layer-box" data-layer="1" data-box="1">
+                            <div class="layer-box-icon" style="background: hsl(15 50% 95%);">
+                                <i data-lucide="message-square" width="24" height="24" style="color: hsl(15 50% 50%);"></i>
+                            </div>
+                            <div class="layer-box-title">Customer Chat</div>
+                            <div class="layer-box-desc">WhatsApp, Telegram, Instagram DM</div>
+                        </div>
+                        <div class="layer-box" data-layer="1" data-box="2">
+                            <div class="layer-box-icon" style="background: hsl(15 50% 95%);">
+                                <i data-lucide="user" width="24" height="24" style="color: hsl(15 50% 50%);"></i>
+                            </div>
+                            <div class="layer-box-title">Manual Input</div>
+                            <div class="layer-box-desc">Admin update produk/stok</div>
+                        </div>
+                        <div class="layer-box" data-layer="1" data-box="3">
+                            <div class="layer-box-icon" style="background: hsl(15 50% 95%);">
+                                <i data-lucide="shopping-cart" width="24" height="24" style="color: hsl(15 50% 50%);"></i>
+                            </div>
+                            <div class="layer-box-title">Order System</div>
+                            <div class="layer-box-desc">Transaksi masuk otomatis</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arrow-down" id="arrow1">
+                    <i data-lucide="arrow-down" width="32" height="32" style="color: hsl(var(--muted));"></i>
+                </div>
+
+                <!-- Layer 2: Processing Engine -->
+                <div class="architecture-layer" id="layer2">
+                    <div class="layer-header">
+                        <div class="layer-badge" style="background: hsl(var(--deep-blue));">
+                            PROCESSING LAYER
+                        </div>
+                        <span class="layer-subtitle">Otak Flexeet bekerja di sini</span>
+                    </div>
+                    <div class="layer-boxes">
+                        <div class="layer-box" data-layer="2" data-box="1">
+                            <div class="layer-box-icon" style="background: hsl(215 60% 95%);">
+                                <i data-lucide="brain" width="24" height="24" style="color: hsl(var(--deep-blue));"></i>
+                            </div>
+                            <div class="layer-box-title">Axiom Engine</div>
+                            <div class="layer-box-desc">Business logic pre-trained</div>
+                        </div>
+                        <div class="layer-box" data-layer="2" data-box="2">
+                            <div class="layer-box-icon" style="background: hsl(215 60% 95%);">
+                                <i data-lucide="database" width="24" height="24" style="color: hsl(var(--deep-blue));"></i>
+                            </div>
+                            <div class="layer-box-title">Product Cortex</div>
+                            <div class="layer-box-desc">Knowledge base 55+ produk</div>
+                        </div>
+                        <div class="layer-box" data-layer="2" data-box="3">
+                            <div class="layer-box-icon" style="background: hsl(215 60% 95%);">
+                                <i data-lucide="shield-check" width="24" height="24" style="color: hsl(var(--deep-blue));"></i>
+                            </div>
+                            <div class="layer-box-title">Guardian Protocol</div>
+                            <div class="layer-box-desc">Budget monitoring real-time</div>
+                        </div>
+                        <div class="layer-box" data-layer="2" data-box="4">
+                            <div class="layer-box-icon" style="background: hsl(215 60% 95%);">
+                                <i data-lucide="activity" width="24" height="24" style="color: hsl(var(--deep-blue));"></i>
+                            </div>
+                            <div class="layer-box-title">StockFlow Sync</div>
+                            <div class="layer-box-desc">Update stok setiap 30 detik</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arrow-down" id="arrow2">
+                    <i data-lucide="arrow-down" width="32" height="32" style="color: hsl(var(--muted));"></i>
+                </div>
+
+                <!-- Layer 3: Output & Integration -->
+                <div class="architecture-layer" id="layer3">
+                    <div class="layer-header">
+                        <div class="layer-badge" style="background: hsl(var(--accent));">
+                            OUTPUT LAYER
+                        </div>
+                        <span class="layer-subtitle">Hasil yang diterima user & admin</span>
+                    </div>
+                    <div class="layer-boxes">
+                        <div class="layer-box" data-layer="3" data-box="1">
+                            <div class="layer-box-icon" style="background: hsl(190 100% 95%);">
+                                <i data-lucide="message-circle" width="24" height="24" style="color: hsl(var(--accent));"></i>
+                            </div>
+                            <div class="layer-box-title">Smart Reply</div>
+                            <div class="layer-box-desc">Jawaban akurat + data real-time</div>
+                        </div>
+                        <div class="layer-box" data-layer="3" data-box="2">
+                            <div class="layer-box-icon" style="background: hsl(190 100% 95%);">
+                                <i data-lucide="smartphone" width="24" height="24" style="color: hsl(var(--accent));"></i>
+                            </div>
+                            <div class="layer-box-title">Telegram Reports</div>
+                            <div class="layer-box-desc">Daily report + alert langsung ke HP</div>
+                        </div>
+                        <div class="layer-box" data-layer="3" data-box="3">
+                            <div class="layer-box-icon" style="background: hsl(190 100% 95%);">
+                                <i data-lucide="bar-chart-3" width="24" height="24" style="color: hsl(var(--accent));"></i>
+                            </div>
+                            <div class="layer-box-title">Analytics Dashboard</div>
+                            <div class="layer-box-desc">Insight performa CS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Summary -->
+            <div class="stats-grid">
+                <div class="stat-card fade-in-element">
+                    <div class="stat-icon" style="background: hsl(var(--accent) / 0.1);">
+                        <i data-lucide="zap" width="32" height="32" style="color: hsl(var(--accent));"></i>
+                    </div>
+                    <div class="stat-number">&lt; 2s</div>
+                    <div class="stat-label">Response Time</div>
+                </div>
+                <div class="stat-card fade-in-element">
+                    <div class="stat-icon" style="background: hsl(142 76% 95%);">
+                        <i data-lucide="check-circle" width="32" height="32" style="color: hsl(142 76% 36%);"></i>
+                    </div>
+                    <div class="stat-number">99.2%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+                <div class="stat-card fade-in-element">
+                    <div class="stat-icon" style="background: hsl(var(--deep-blue) / 0.1);">
+                        <i data-lucide="layers" width="32" height="32" style="color: hsl(var(--deep-blue));"></i>
+                    </div>
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">Tools Integrated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE DEMO SECTION -->
+    <section class="section" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" style="background: hsl(142 76% 95%); color: hsl(142 76% 36%);">🤖 Live Demo</span>
+                <h2 class="section-title">Lihat AI Bekerja Secara Real-Time</h2>
+                <p class="section-subtitle">
+                    Ketik pertanyaan dan lihat bagaimana AI mengakses database, cek stok, dan memberikan jawaban akurat
+                </p>
+            </div>
+
+            <div class="chat-demo-container">
+                <div class="chat-header">
+                    <div class="chat-header-left">
+                        <div class="chat-avatar">F</div>
+                        <div>
+                            <div style="font-weight: 700;">Flexeet AI Assistant</div>
+                            <div class="chat-status">
+                                <span class="status-dot"></span>
+                                <span>Online & Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <i data-lucide="info" width="20" height="20"></i>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message message-ai">
+                        <div class="message-ai-avatar">
+                            <i data-lucide="bot" width="16" height="16" style="color: white;"></i>
+                        </div>
+                        <div>
+                            <div class="message-bubble">
+                                Assalamualaikum! 👋<br><br>
+                                Saya Flexeet AI, CS pintar yang tahu semua produk Hijacket.<br>
+                                Silakan tanya tentang produk, cek stok, atau info promo!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <div class="chat-input-container">
+                        <input 
+                            type="text" 
+                            class="chat-input" 
+                            id="chatInput"
+                            placeholder="Ketik pertanyaan... (cth: Ada Elektra warna apa?)"
+                        >
+                        <button class="chat-send-btn" id="sendBtn">
+                            <i data-lucide="send" width="20" height="20" style="color: white;"></i>
+                        </button>
+                    </div>
+                    <div class="quick-questions">
+                        <div class="quick-question" data-question="Ada Elektra warna apa?">Ada Elektra warna apa?</div>
+                        <div class="quick-question" data-question="Belva size XL ready?">Belva size XL ready?</div>
+                        <div class="quick-question" data-question="Harga Aisya berapa?">Harga Aisya berapa?</div>
+                        <div class="quick-question" data-question="Ada promo apa hari ini?">Ada promo apa hari ini?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKFLOW SECTION -->
+    <section class="section" id="workflow" style="background: hsl(var(--secondary) / 0.2);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" style="background: hsl(38 92% 95%); color: hsl(38 92% 50%);">⚙️ Step-by-Step</span>
+                <h2 class="section-title">Bagaimana AI Memproses Setiap Chat</h2>
+                <p class="section-subtitle">
+                    Dari customer bertanya sampai mendapat jawaban akurat, ini yang terjadi di balik layar
+                </p>
+            </div>
+
+            <div class="workflow-container">
+                <!-- Step 1 -->
+                <div class="workflow-step" id="step1">
+                    <div class="workflow-number">1</div>
+                    <div class="workflow-content">
+                        <div class="workflow-title">Customer Bertanya</div>
+                        <div class="workflow-description">
+                            Chat masuk dari WhatsApp/Telegram → Langsung terdeteksi oleh Flexeet Agent Log. 
+                            System mencatat timestamp, contact_id, dan platform asal.
+                        </div>
+                        <div class="workflow-tech">
+                            <span class="tech-tag">
+                                <i data-lucide="message-square" width="14" height="14"></i>
+                                WhatsApp API
+                            </span>
+                            <span class="tech-tag">
+                                <i data-lucide="database" width="14" height="14"></i>
+                                Agent Log DB
+                            </span>
+                            <span class="tech-tag">
+                                <i data-lucide="clock" width="14" height="14"></i>
+                                Real-time
+                            </span>
+                        </div>
+                        <div class="workflow-visual">
+                            <div class="mono">
+USER: "Ada Elektra warna apa?"<br>
+↓<br>
+<span style="color: hsl(var(--success));">✓ Detected</span> | Platform: WhatsApp | Time: 14:23:45
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="workflow-step" id="step2">
+                    <div class="workflow-number">2</div>
+                    <div class="workflow-content">
+                        <div class="workflow-title">Intent Recognition</div>
+                        <div class="workflow-description">
+                            Axiom Engine menganalisis maksud pertanyaan. Apakah ini:
+                            <strong>Product Inquiry</strong>, <strong>Stock Check</strong>, <strong>Price Question</strong>, atau <strong>General Info</strong>?
+                        </div>
+                        <div class="workflow-tech">
+                            <span class="tech-tag">
+                                <i data-lucide="brain" width="14" height="14"></i>
+                                NLP Engine
+                            </span>
+                            <span class="tech-tag">
+                                <i data-lucide="search" width="14" height="14"></i>
+                                Intent Classifier
+                            </span>
+                        </div>
+                        <div class="workflow-visual">
+                            <div class="mono">
+Query Analysis:<br>
+- Keywords: ["Ada", "Elektra", "warna"]<br>
+- Intent: <span style="color: hsl(var(--accent));">PRODUCT_COLOR_INQUIRY</span><br>
+- Confidence: 98%<br>
+- Product Detected: "Elektra"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="workflow-step" id="step3">
+                    <div class="workflow-number">3</div>
+                    <div class="workflow-content">
+                        <div class="workflow-title">Tool Selection & Execution</div>
+                        <div class="workflow-description">
+                            AI memutuskan tool mana yang perlu dipanggil. Untuk pertanyaan ini:
+                            <strong>tool_flexeetproductcortex</strong> (cek knowledge base) + 
+                            <strong>tool_check_stock</strong> (cek stok real-time).
+                        </div>
+                        <div class="workflow-tech">
+                            <span class="tech-tag">
+                                <i data-lucide="tool" width="14" height="14"></i>
+                                8 Tools Available
+                            </span>
+                            <span class="tech-tag">
+                                <i data-lucide="zap" width="14" height="14"></i>
+                                Parallel Execution
+                            </span>
+                        </div>
+                        <div class="workflow-visual">
+                            <div class="mono">
+<span style="color: hsl(var(--accent));">→ Calling tool_flexeetproductcortex()</span><br>
+  Query: "Elektra"<br>
+  Result: Found in knowledge.csv<br>
+  - Kategori: Jacket<br>
+  - Warna: Black, Brown, Burgundy, Green, Grey, Teracotta<br>
+<br>
+<span style="color: hsl(var(--accent));">→ Calling tool_check_stock()</span><br>
+  Product: Elektra<br>
+  Available Colors with Stock > 0: 4 colors<br>
+  <span style="color: hsl(var(--success));">✓ Done in 847ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="workflow-step" id="step4">
+                    <div class="workflow-number">4</div>
+                    <div class="workflow-content">
+                        <div class="workflow-title">Response Generation</div>
+                        <div class="workflow-description">
+                            Cekat AI menerima data dari tools, lalu Axiom Engine membentuk response yang natural, 
+                            sopan, dan sesuai brand voice Hijacket. Hasilnya bukan copy-paste database, tapi jawaban manusiawi.
+                        </div>
+                        <div class="workflow-tech">
+                            <span class="tech-tag">
+                                <i data-lucide="sparkles" width="14" height="14"></i>
+                                Claude Sonnet 4
+                            </span>
+                            <span class="tech-tag">
+                                <i data-lucide="message-circle" width="14" height="14"></i>
+                                Natural Language
+                            </span>
+                        </div>
+                        <div class="workflow-visual">
+                            <div class="mono">
+AI Response:<br>
+"Halo Kak! Elektra ready dalam 6 warna:<br>
+✓ Black (ready)<br>
+✓ Brown (ready)<br>
+✓ Burgundy (ready)<br>
+✓ Green (ready)<br>
+• Grey (sold out)<br>
+• Teracotta (sold out)<br>
+<br>
+Untuk size L/XL/XXL semuanya ready ya 😊<br>
+Harga: Rp 279.000 (disc jadi Rp 223.200)"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="workflow-step" id="step5">
+                    <div class="workflow-number">5</div>
+                    <div class="workflow-content">
+                        <div class="workflow-title">Monitoring & Reporting</div>
+                        <div class="workflow-description">
+                            Setiap interaksi dicatat lengkap: berapa token terpakai, tool apa yang dipanggil, 
+                            apakah customer satisfied. Data ini dikirim ke Telegram untuk monitoring admin.
+                        </div>
+                        <div class="workflow-tech">
+                            <span class="tech-tag">
+                                <i data-lucide="shield-check" width="14" height="14"></i>
+                                Guardian Check
+                            </span>
+                            <span class="tech-tag">
+                                <i data-lucide="smartphone" width="14" height="14"></i>
+                                Telegram Alert
+                            </span>
+                            <span class="tech-tag">
+                                <i data-lucide="activity" width="14" height="14"></i>
+                                Analytics
+                            </span>
+                        </div>
+                        <div class="workflow-visual">
+                            <div class="mono">
+Chat Report:<br>
+- AI Credits Used: 45 tokens<br>
+- Budget Status: 2.1% of limit (SAFE)<br>
+- Tools Called: 2<br>
+- Response Time: 1.8s<br>
+- Customer Stage: <span style="color: hsl(var(--accent));">Product Interest</span><br>
+<br>
+<span style="color: hsl(var(--success));">✓ Sent to Telegram: Chat-Agent channel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON SECTION -->
+    <section class="section" id="perbandingan">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" style="background: hsl(var(--accent) / 0.1); color: hsl(var(--accent));">⚖️ Perbandingan</span>
+                <h2 class="section-title">Flexeet vs Langsung Cekat</h2>
+                <p class="section-subtitle">
+                    Lihat perbedaan mencolok antara pakai Flexeet dan langsung pakai Cekat tanpa setup
+                </p>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fitur</th>
+                            <th class="highlight">Flexeet + Cekat</th>
+                            <th>Langsung Cekat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tahu Stok Real-Time</strong></td>
+                            <td><i data-lucide="check" class="check-icon" width="20" height="20"></i> Update setiap 30 detik</td>
+                            <td><i data-lucide="x" class="x-icon" width="20" height="20"></i> Buta data</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Budget Protection</strong></td>
+                            <td><i data-lucide="check" class="check-icon" width="20" height="20"></i> Guardian Protocol aktif</td>
+                            <td><i data-lucide="x" class="x-icon" width="20" height="20"></i> Tidak ada pengaman</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monitoring via HP</strong></td>
+                            <td><i data-lucide="check" class="check-icon" width="20" height="20"></i> Telegram reports 24/7</td>
+                            <td><i data-lucide="x" class="x-icon" width="20" height="20"></i> Harus buka laptop</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Setup Time</strong></td>
+                            <td><i data-lucide="check" class="check-icon" width="20" height="20"></i> 1 hari (by Flexeet team)</td>
+                            <td><i data-lucide="x" class="x-icon" width="20" height="20"></i> 2-4 minggu (sendiri)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI Training</strong></td>
+                            <td><i data-lucide="check" class="check-icon" width="20" height="20"></i> Pre-trained Axiom Engine</td>
+                            <td><i data-lucide="x" class="x-icon" width="20" height="20"></i> Coding manual</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Product Knowledge</strong></td>
+                            <td><i data-lucide="check" class="check-icon" width="20" height="20"></i> 55+ produk ready</td>
+                            <td><i data-lucide="x" class="x-icon" width="20" height="20"></i> Input manual satu-satu</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tools Integration</strong></td>
+                            <td><i data-lucide="check" class="check-icon" width="20" height="20"></i> 8 tools siap pakai</td>
+                            <td><i data-lucide="x" class="x-icon" width="20" height="20"></i> Coding dari nol</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Closing Rate</strong></td>
+                            <td><i data-lucide="check" class="check-icon" width="20" height="20"></i> 3x lebih tinggi</td>
+                            <td><i data-lucide="x" class="x-icon" width="20" height="20"></i> Trial & error</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Support</strong></td>
+                            <td><i data-lucide="check" class="check-icon" width="20" height="20"></i> Dedicated Flexeet team</td>
+                            <td><i data-lucide="x" class="x-icon" width="20" height="20"></i> Forum/docs only</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monthly Cost</strong></td>
+                            <td>Rp 300rb all-in</td>
+                            <td>Rp 500rb - 2jt (bisa meledak)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="#" class="btn btn-primary" style="font-size: 18px; padding: 20px 40px;">
+                    Mulai Trial Gratis 14 Hari
+                    <i data-lucide="arrow-right" width="20" height="20"></i>
+                </a>
+                <p style="margin-top: 16px; color: hsl(var(--muted)); font-size: 14px;">
+                    ✓ No credit card • ✓ Setup by team • ✓ Cancel anytime
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

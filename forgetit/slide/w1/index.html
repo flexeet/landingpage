@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1: Discovery & Audit — ForgetIt Implementation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">ForgetIt</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <div class="nav-progress">
+                <div class="progress-step active">
+                    <span class="step-num">1</span>
+                    <span class="step-label">Discovery</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <span class="step-num">2</span>
+                    <span class="step-label">Curation</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <span class="step-num">3</span>
+                    <span class="step-label">Setup</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <span class="step-num">4</span>
+                    <span class="step-label">Integration</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <span class="step-num">5</span>
+                    <span class="step-label">Go Live</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="week-badge">
+                    <span class="week-number">Week 1</span>
+                    <span class="week-duration">5-7 hari kerja</span>
+                </div>
+                
+                <h1>Discovery & Audit</h1>
+                
+                <p class="hero-desc">
+                    Minggu pertama adalah fondasi. Kami akan memahami bisnis Anda, 
+                    mengidentifikasi dokumen penting, dan menyusun rencana implementasi yang tepat.
+                </p>
+                
+                <div class="hero-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-icon">📞</span>
+                        <span>2-3 sesi meeting</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">📋</span>
+                        <span>Document inventory</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🎯</span>
+                        <span>Priority mapping</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives -->
+    <section class="section" id="objectives">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Tujuan</span>
+                <h2>Apa yang ingin dicapai di Week 1?</h2>
+            </div>
+            
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-number">01</div>
+                    <h3>Memahami Bisnis Anda</h3>
+                    <p>Struktur tim, workflow, pain points, dan kebutuhan spesifik setiap departemen.</p>
+                </div>
+                
+                <div class="objective-card">
+                    <div class="objective-number">02</div>
+                    <h3>Inventarisasi Dokumen</h3>
+                    <p>Mapping semua dokumen yang ada: lokasi, format, relevansi, dan siapa yang butuh akses.</p>
+                </div>
+                
+                <div class="objective-card">
+                    <div class="objective-number">03</div>
+                    <h3>Identifikasi Quick Wins</h3>
+                    <p>Dokumen mana yang paling sering dicari? Pertanyaan apa yang paling repetitif?</p>
+                </div>
+                
+                <div class="objective-card">
+                    <div class="objective-number">04</div>
+                    <h3>Menyusun Roadmap</h3>
+                    <p>Rencana implementasi yang realistis dengan milestone dan timeline yang jelas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities -->
+    <section class="section section-alt" id="activities">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Aktivitas</span>
+                <h2>Apa yang akan terjadi?</h2>
+            </div>
+            
+            <div class="timeline">
+                <!-- Day 1-2 -->
+                <div class="timeline-block">
+                    <div class="timeline-marker">
+                        <span class="day-badge">Day 1-2</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>🎯 Kick-off Meeting</h3>
+                        <div class="activity-details">
+                            <div class="activity-meta">
+                                <span class="meta-item">⏱️ 1.5-2 jam</span>
+                                <span class="meta-item">👥 Founder + Key Team</span>
+                                <span class="meta-item">📍 Video call / Onsite</span>
+                            </div>
+                            
+                            <div class="activity-agenda">
+                                <h4>Agenda:</h4>
+                                <ul>
+                                    <li>
+                                        <span class="time">00:00 - 00:15</span>
+                                        <span class="topic">Perkenalan tim & project scope</span>
+                                    </li>
+                                    <li>
+                                        <span class="time">00:15 - 00:45</span>
+                                        <span class="topic">Deep dive: Struktur bisnis & tim</span>
+                                    </li>
+                                    <li>
+                                        <span class="time">00:45 - 01:15</span>
+                                        <span class="topic">Pain point mapping: Pertanyaan repetitif apa yang paling sering?</span>
+                                    </li>
+                                    <li>
+                                        <span class="time">01:15 - 01:30</span>
+                                        <span class="topic">Document landscape: Dimana semua dokumen saat ini?</span>
+                                    </li>
+                                    <li>
+                                        <span class="time">01:30 - 01:45</span>
+                                        <span class="topic">Success criteria: Seperti apa "berhasil" buat Anda?</span>
+                                    </li>
+                                    <li>
+                                        <span class="time">01:45 - 02:00</span>
+                                        <span class="topic">Next steps & action items</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 2-3 -->
+                <div class="timeline-block">
+                    <div class="timeline-marker">
+                        <span class="day-badge">Day 2-3</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>📋 Document Audit</h3>
+                        <div class="activity-details">
+                            <div class="activity-meta">
+                                <span class="meta-item">⏱️ Async + 1 jam sync</span>
+                                <span class="meta-item">👥 Kami + PIC Dokumen</span>
+                            </div>
+                            
+                            <div class="audit-process">
+                                <div class="audit-step">
+                                    <span class="audit-icon">🔍</span>
+                                    <div>
+                                        <strong>Scan Semua Sumber</strong>
+                                        <p>Google Drive, Notion, Email, WhatsApp, dll</p>
+                                    </div>
+                                </div>
+                                <div class="audit-step">
+                                    <span class="audit-icon">📊</span>
+                                    <div>
+                                        <strong>Kategorisasi</strong>
+                                        <p>SOP, Policy, Panduan, FAQ, Templates</p>
+                                    </div>
+                                </div>
+                                <div class="audit-step">
+                                    <span class="audit-icon">⭐</span>
+                                    <div>
+                                        <strong>Prioritas</strong>
+                                        <p>High / Medium / Low berdasarkan frekuensi akses</p>
+                                    </div>
+                                </div>
+                                <div class="audit-step">
+                                    <span class="audit-icon">🏷️</span>
+                                    <div>
+                                        <strong>Tagging</strong>
+                                        <p>Departemen, topik, freshness</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 3-4 -->
+                <div class="timeline-block">
+                    <div class="timeline-marker">
+                        <span class="day-badge">Day 3-4</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>👥 User Interviews</h3>
+                        <div class="activity-details">
+                            <div class="activity-meta">
+                                <span class="meta-item">⏱️ 30 menit per orang</span>
+                                <span class="meta-item">👥 3-5 key users</span>
+                            </div>
+                            
+                            <div class="interview-questions">
+                                <h4>Pertanyaan yang kami tanyakan:</h4>
+                                <div class="question-list">
+                                    <div class="question-item">
+                                        <span class="q-num">Q1</span>
+                                        <span class="q-text">"Pertanyaan apa yang paling sering kamu terima/tanyakan?"</span>
+                                    </div>
+                                    <div class="question-item">
+                                        <span class="q-num">Q2</span>
+                                        <span class="q-text">"Dokumen apa yang paling sering kamu cari?"</span>
+                                    </div>
+                                    <div class="question-item">
+                                        <span class="q-num">Q3</span>
+                                        <span class="q-text">"Berapa lama biasanya untuk menemukan info yang dibutuhkan?"</span>
+                                    </div>
+                                    <div class="question-item">
+                                        <span class="q-num">Q4</span>
+                                        <span class="q-text">"Siapa yang biasanya kamu tanya kalau stuck?"</span>
+                                    </div>
+                                    <div class="question-item">
+                                        <span class="q-num">Q5</span>
+                                        <span class="q-text">"Kalau ada AI yang bisa jawab, pertanyaan apa yang paling membantu?"</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 4-5 -->
+                <div class="timeline-block">
+                    <div class="timeline-marker">
+                        <span class="day-badge">Day 4-5</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>📊 Analysis & Planning</h3>
+                        <div class="activity-details">
+                            <div class="activity-meta">
+                                <span class="meta-item">⏱️ Internal work</span>
+                                <span class="meta-item">👥 Tim ForgetIt</span>
+                            </div>
+                            
+                            <div class="analysis-items">
+                                <div class="analysis-item">
+                                    <span class="analysis-icon">📈</span>
+                                    <div>
+                                        <strong>Gap Analysis</strong>
+                                        <p>Apa yang ada vs apa yang dibutuhkan</p>
+                                    </div>
+                                </div>
+                                <div class="analysis-item">
+                                    <span class="analysis-icon">🗺️</span>
+                                    <div>
+                                        <strong>Knowledge Map</strong>
+                                        <p>Visualisasi hubungan antar dokumen & topik</p>
+                                    </div>
+                                </div>
+                                <div class="analysis-item">
+                                    <span class="analysis-icon">📋</span>
+                                    <div>
+                                        <strong>Implementation Plan</strong>
+                                        <p>Roadmap detail untuk Week 2-6</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 5-7 -->
+                <div class="timeline-block">
+                    <div class="timeline-marker">
+                        <span class="day-badge">Day 5-7</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>🎤 Presentation & Alignment</h3>
+                        <div class="activity-details">
+                            <div class="activity-meta">
+                                <span class="meta-item">⏱️ 1 jam</span>
+                                <span class="meta-item">👥 Founder + Stakeholders</span>
+                            </div>
+                            
+                            <div class="presentation-content">
+                                <h4>Yang akan kami presentasikan:</h4>
+                                <ul class="presentation-list">
+                                    <li>✓ Findings dari audit & interviews</li>
+                                    <li>✓ Document inventory lengkap</li>
+                                    <li>✓ Priority matrix (apa yang dikerjakan duluan)</li>
+                                    <li>✓ Recommended approach & architecture</li>
+                                    <li>✓ Timeline & milestones untuk Week 2-6</li>
+                                    <li>✓ Success metrics yang akan diukur</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Your Preparation -->
+    <section class="section" id="preparation">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Persiapan Anda</span>
+                <h2>Apa yang perlu Anda siapkan?</h2>
+                <p class="section-desc">Agar Week 1 berjalan lancar, mohon siapkan hal-hal berikut sebelum kick-off meeting.</p>
+            </div>
+            
+            <div class="preparation-grid">
+                <div class="prep-card">
+                    <div class="prep-header">
+                        <span class="prep-icon">👥</span>
+                        <span class="prep-priority high">Wajib</span>
+                    </div>
+                    <h3>Peserta Meeting</h3>
+                    <p>Siapkan orang-orang yang akan hadir di kick-off:</p>
+                    <ul>
+                        <li>✓ Founder / Decision maker</li>
+                        <li>✓ 1-2 orang yang paling sering "ditanya-tanya"</li>
+                        <li>✓ PIC yang tahu lokasi semua dokumen</li>
+                    </ul>
+                </div>
+                
+                <div class="prep-card">
+                    <div class="prep-header">
+                        <span class="prep-icon">📁</span>
+                        <span class="prep-priority high">Wajib</span>
+                    </div>
+                    <h3>Akses Dokumen</h3>
+                    <p>Kami butuh akses (view) ke:</p>
+                    <ul>
+                        <li>✓ Google Drive / OneDrive folder utama</li>
+                        <li>✓ Notion workspace (jika ada)</li>
+                        <li>✓ Folder SOP & Panduan</li>
+                    </ul>
+                    <div class="prep-note">
+                        💡 Tidak perlu rapi dulu. Kami akan bantu kategorisasi.
+                    </div>
+                </div>
+                
+                <div class="prep-card">
+                    <div class="prep-header">
+                        <span class="prep-icon">📝</span>
+                        <span class="prep-priority medium">Sangat Membantu</span>
+                    </div>
+                    <h3>List Pertanyaan Repetitif</h3>
+                    <p>Coba ingat-ingat pertanyaan yang sering ditanya:</p>
+                    <ul>
+                        <li>"SOP X gimana?"</li>
+                        <li>"Policy Y apa?"</li>
+                        <li>"Cara Z bagaimana?"</li>
+                    </ul>
+                    <div class="prep-note">
+                        💡 Scroll chat WhatsApp 1 bulan terakhir untuk inspirasi.
+                    </div>
+                </div>
+                
+                <div class="prep-card">
+                    <div class="prep-header">
+                        <span class="prep-icon">🎯</span>
+                        <span class="prep-priority medium">Sangat Membantu</span>
+                    </div>
+                    <h3>Harapan & Goals</h3>
+                    <p>Pikirkan tentang:</p>
+                    <ul>
+                        <li>Apa hasil ideal dari project ini?</li>
+                        <li>Masalah #1 yang ingin diselesaikan?</li>
+                        <li>Siapa yang paling diuntungkan?</li>
+                    </ul>
+                </div>
+                
+                <div class="prep-card">
+                    <div class="prep-header">
+                        <span class="prep-icon">🗓️</span>
+                        <span class="prep-priority low">Nice to Have</span>
+                    </div>
+                    <h3>Waktu untuk Interview</h3>
+                    <p>Blok waktu 30 menit untuk 3-5 orang di tim yang akan kami interview.</p>
+                    <ul>
+                        <li>Tim Sales / CS</li>
+                        <li>Tim Operations</li>
+                        <li>Karyawan baru (< 6 bulan)</li>
+                    </ul>
+                </div>
+                
+                <div class="prep-card">
+                    <div class="prep-header">
+                        <span class="prep-icon">📊</span>
+                        <span class="prep-priority low">Nice to Have</span>
+                    </div>
+                    <h3>Struktur Organisasi</h3>
+                    <p>Jika ada, siapkan:</p>
+                    <ul>
+                        <li>Org chart / struktur tim</li>
+                        <li>List departemen & fungsinya</li>
+                        <li>Jumlah orang per tim</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deliverables -->
+    <section class="section section-alt" id="deliverables">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Deliverables</span>
+                <h2>Apa yang Anda terima di akhir Week 1?</h2>
+            </div>
+            
+            <div class="deliverables-showcase">
+                <div class="deliverable-item main">
+                    <div class="deliverable-preview">
+                        <div class="preview-header">
+                            <span class="preview-icon">📄</span>
+                            <span>Discovery Report</span>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-section">
+                                <span class="section-title">1. Executive Summary</span>
+                            </div>
+                            <div class="preview-section">
+                                <span class="section-title">2. Business Context</span>
+                            </div>
+                            <div class="preview-section">
+                                <span class="section-title">3. Document Inventory</span>
+                            </div>
+                            <div class="preview-section">
+                                <span class="section-title">4. Gap Analysis</span>
+                            </div>
+                            <div class="preview-section">
+                                <span class="section-title">5. Recommendations</span>
+                            </div>
+                            <div class="preview-section">
+                                <span class="section-title">6. Implementation Plan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deliverable-info">
+                        <h3>Discovery Report</h3>
+                        <p>Dokumen lengkap berisi semua findings, analisis, dan rekomendasi dari Week 1.</p>
+                        <ul>
+                            <li>✓ Format: PDF + editable (Notion/Docs)</li>
+                            <li>✓ ~15-20 halaman</li>
+                            <li>✓ Bisa di-share ke stakeholder</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="deliverables-grid">
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">📋</div>
+                        <h4>Document Inventory</h4>
+                        <p>Spreadsheet lengkap semua dokumen yang teridentifikasi beserta metadata.</p>
+                        <span class="format-tag">Excel/Sheets</span>
+                    </div>
+                    
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">🎯</div>
+                        <h4>Priority Matrix</h4>
+                        <p>Visual prioritas: mana yang dikerjakan Phase 1, 2, 3.</p>
+                        <span class="format-tag">Visual + Spreadsheet</span>
+                    </div>
+                    
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">🗺️</div>
+                        <h4>Knowledge Map</h4>
+                        <p>Diagram hubungan antar topik dan dokumen.</p>
+                        <span class="format-tag">Visual (Miro/FigJam)</span>
+                    </div>
+                    
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">📅</div>
+                        <h4>Project Timeline</h4>
+                        <p>Roadmap Week 2-6 dengan milestones yang jelas.</p>
+                        <span class="format-tag">Gantt Chart</span>
+                    </div>
+                    
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">✅</div>
+                        <h4>Access Checklist</h4>
+                        <p>List semua akses yang dibutuhkan untuk Week 2.</p>
+                        <span class="format-tag">Checklist</span>
+                    </div>
+                    
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">📊</div>
+                        <h4>Success Metrics</h4>
+                        <p>KPI yang akan diukur untuk menilai keberhasilan project.</p>
+                        <span class="format-tag">Document</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">FAQ</span>
+                <h2>Pertanyaan tentang Week 1</h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Berapa waktu yang saya perlu alokasikan di Week 1?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Total sekitar <strong>3-4 jam</strong> dari waktu Anda:</p>
+                        <ul>
+                            <li>Kick-off meeting: 1.5-2 jam</li>
+                            <li>Presentation meeting: 1 jam</li>
+                            <li>Async: ~30 menit untuk akses & review</li>
+                        </ul>
+                        <p>Sisanya kami kerjakan secara mandiri.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Apakah dokumen saya harus rapi dulu?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Tidak perlu!</strong> Justru itu tugas kami. Kami terbiasa dengan kondisi dokumen yang "berantakan" — itu hal yang normal di kebanyakan bisnis. Yang penting kami bisa akses untuk melihat apa yang ada.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Bagaimana dengan kerahasiaan data?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sebelum kick-off, kita akan sign <strong>NDA (Non-Disclosure Agreement)</strong>. Semua data Anda dijaga kerahasiaannya dan tidak akan dibagikan ke pihak lain. Jika ada dokumen yang sangat sensitif, bisa dikecualikan dari scope.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Siapa yang harus hadir di kick-off meeting?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Minimal:</p>
+                        <ul>
+                            <li><strong>Decision maker</strong> (Founder/CEO/Head of Ops)</li>
+                            <li><strong>1-2 orang yang paling sering jadi "Google internal"</strong></li>
+                        </ul>
+                        <p>Optional tapi helpful: HR, IT, atau siapapun yang sering handle onboarding.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Apa yang terjadi setelah Week 1?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Setelah presentation meeting dan Anda approve roadmap-nya, kami langsung mulai <strong>Week 2: Knowledge Curation</strong> — di mana dokumen Anda mulai diproses dan distrukturkan oleh AI.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Bisa reschedule meeting kalau bentrok?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Tentu! Kami fleksibel dengan jadwal. Yang penting komunikasi dari awal agar timeline keseluruhan tetap on track. Reschedule 1-2 hari biasanya tidak masalah.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Next -->
+    <section class="section section-alt" id="next">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Selanjutnya</span>
+                <h2>Setelah Week 1...</h2>
+            </div>
+            
+            <div class="next-preview">
+                <div class="next-card">
+                    <div class="next-week">Week 2-3</div>
+                    <h3>Knowledge Curation</h3>
+                    <p>Dokumen Anda diproses AI: dibaca, dipahami, diekstrak info pentingnya, dikategorikan, dan dihubungkan satu sama lain.</p>
+                    <a href="week-2-3.html" class="next-link">Lihat detail →</a>
+                </div>
+                
+                <div class="next-card">
+                    <div class="next-week">Week 3-4</div>
+                    <h3>System Setup</h3>
+                    <p>AI Knowledge Assistant dibangun dan di-connect ke knowledge base Anda.</p>
+                    <a href="week-3-4.html" class="next-link">Lihat detail →</a>
+                </div>
+                
+                <div class="next-card">
+                    <div class="next-week">Week 4-5</div>
+                    <h3>Integration</h3>
+                    <p>Sistem dihubungkan ke WhatsApp, Slack, atau platform lain sesuai kebutuhan.</p>
+                    <a href="week-4-5.html" class="next-link">Lihat detail →</a>
+                </div>
+                
+                <div class="next-card">
+                    <div class="next-week">Week 5-6</div>
+                    <h3>Testing & Go Live</h3>
+                    <p>Testing bersama tim, training, dan akhirnya... GO LIVE! 🚀</p>
+                    <a href="week-5-6.html" class="next-link">Lihat detail →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-cta" id="start">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Siap mulai Week 1?</h2>
+                <p>Jadwalkan kick-off meeting dan mari kita mulai perjalanan ini.</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20siap%20untuk%20memulai%20Week%201%20Discovery%20%26%20Audit.%20Kapan%20bisa%20jadwalkan%20kick-off%20meeting?" target="_blank" class="btn btn-primary btn-large">
+                        <span>📅</span>
+                        <span>Jadwalkan Kick-off Meeting</span>
+                    </a>
+                </div>
+                
+                <p class="cta-note">Atau balas email terakhir dari kami untuk konfirmasi jadwal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-bracket">[</span>
+                    <span class="logo-text">ForgetIt</span>
+                    <span class="logo-bracket">]</span>
+                </div>
+                <p>AI Knowledge Assistant for Growing Businesses</p>
+                <p class="footer-credit">A product by <a href="https://flexeet.com" target="_blank">Flexeet</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

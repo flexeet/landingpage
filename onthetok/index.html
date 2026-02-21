@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnTheTok - Sistem Otomatisasi untuk Kreator TikTok</title>
+    <meta name="description" content="Kelola ribuan kreator TikTok dengan presisi. Lacak sampel, follow-up otomatis, dan pantau performa kampanye Anda. Hemat 2.867 jam kerja/bulan. See you on the Tok.">
+    
+    <!-- FAVICON DITAMBAHKAN -->
+    <link rel="icon" href="https://flxr2.com/ott/logo.png">
+
+    <!-- FONTS & ICONS (DIUBAH ke Inter untuk konsistensi brand) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- CSS -->
+    <!-- AOS Animation Library (DITAMBAHKAN untuk konsistensi animasi) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav-style.css">
+</head>
+<body>
+    <!-- Animated Background & Particles (DIPERTAHANKAN) -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+    
+    <!-- UI KONSISTEN DARI FLEXEET -->
+    <div id="loading-screen">
+        <div class="loader-content">
+            <div class="loader-logo">OnTheTok</div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+        </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Header Navigation (Struktur Sama) -->
+    <header class="site-header" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-inner">
+                <a href="#" class="nav-logo-wrapper">
+                    <span class="nav-logo-text">OnTheTok</span>
+                    <span class="brand-dot"></span>
+                </a>
+                <div class="desktop-menu">
+                    <div class="nav-menu">
+                        <a href="#workflow" class="nav-link">Hasil Nyata</a>
+                        <a href="#comparison" class="nav-link">Battleground</a>
+                        <a href="#the-lie" class="nav-link">The Truth</a>
+                        <a href="#pricing" class="nav-link">Investasi</a>
+                        <a href="#faq" class="nav-link">FAQ</a>
+                    </div>
+                    <a href="#cta" class="nav-cta">Konsultasi Gratis</a>
+                </div>
+                <button class="hamburger" id="hamburger-button" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu-overlay">
+        <div class="mobile-menu-inner">
+            <a href="#workflow" class="mobile-link">Hasil Nyata</a>
+            <a href="#comparison" class="mobile-link">Battleground</a>
+            <a href="#the-lie" class="mobile-link">The Truth</a>
+            <a href="#pricing" class="mobile-link">Investasi</a>
+            <a href="#faq" class="mobile-link">FAQ</a>
+            <a href="#cta" class="mobile-link-cta">Konsultasi Gratis</a>
+        </div>
+    </div>
+
+    <main id="page-content">
+        <!-- Hero Section (Animasi DIUBAH ke AOS) -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title" data-aos="fade-up">
+                        <span class="word" data-word="Berhenti Ngedata Kreator & Follow-Up Manual.">Berhenti Ngedata Kreator & Follow-Up Manual.</span>
+                    </h1>
+                    <p class="subtitle" data-aos="fade-up" data-aos-delay="200">Lupakan kerumitan mengelola banyak tools yang tidak terintegrasi. Kami tidak memberi Anda tools terpisah; kami memberikan sebuah <strong>sistem operasi cerdas</strong> yang siap pakai. Ini adalah <strong>workflow otomasi</strong> end-to-end yang didukung <strong>AI</strong>, mencakup semua proses dari broadcast, monitoring semua konten dalam satu dashboard, hingga analisis performa. Terbukti di 100+ campaign, Anda bisa mengelola 10.000 kreator hanya dengan 1-2 orang tim. Didukung oleh <strong>Flexeet Workflow System</strong>.</p>
+                    
+                    <div class="hero-stat-wrapper" data-aos="fade-up" data-aos-delay="400">
+                        <div class="hero-stat-item">
+                            <span class="stat-number bad" data-count="2892">0</span>
+                            <span class="stat-label">Jam kerja manual/bulan</span>
+                        </div>
+                        <span class="vs-arrow pulse">→</span>
+                        <div class="hero-stat-item">
+                            <span class="stat-number good" data-count="25">0</span>
+                            <span class="stat-label">Jam dengan OnTheTok</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#pricing" class="btn btn-primary btn-large glow-on-hover" data-aos="fade-up" data-aos-delay="600">Lihat Harga & Paket</a>
+                    
+                    <div class="social-proof" data-aos="fade-up" data-aos-delay="700">
+                        <p>Anda Fokus Pada Strategi, Biar Teknis Kami Otomatisasi.</p>
+                    </div>
+                    
+                    <!-- GAMBAR DITAMBAHKAN DI SINI -->
+                    <img src="https://flxr2.com/ott/web_h1.png" alt="Dashboard OnTheTok" style="width: 100%; max-width: 800px; margin-top: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);" data-aos="fade-up" data-aos-delay="750">
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow Section (Animasi DIUBAH ke AOS) -->
+        <section id="workflow" class="section-workflow">
+            
+            
+            <!--ARCADE EMBED START-->
+            <div style="padding: 60px 30px;">
+                <div style="position: relative; padding-bottom: calc(51.7188% + 41px); height: 0; width: 100%;">
+                    <iframe
+                        src="https://demo.arcade.software/XuKeqdlyVMUr3CZriWZC?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+                        title="App Tour"
+                        frameborder="0"
+                        loading="lazy"
+                        webkitallowfullscreen
+                        mozallowfullscreen
+                        allowfullscreen
+                        allow="clipboard-write"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"
+                    ></iframe>
+                </div>
+            </div>
+            <!--ARCADE EMBED END-->
+            
+            
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Sistem Cerdas yang Bekerja untuk Anda 24/7</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Bukan daftar fitur. Ini adalah <strong>6 hasil terukur</strong> yang mengubah manajemen kreator Anda dari chaos manual menjadi mesin profit otomatis.</p>
+                <div class="workflow-grid">
+                    <div class="workflow-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="workflow-icon">🎯</div>
+                        <div class="outcome-badge">Outcome: Zero Database Chaos</div>
+                        <h3>Kelola 5.000 Kreator</h3>
+                        <p><strong>Cara Lama:</strong> 3 orang spend 2 hari untuk merge spreadsheet, bersihkan duplikat, dan kelompokkan manual.</p>
+                        <p><strong>Dengan OTT:</strong> Upload CSV sekali. Sistem otomatis deteksi duplikat, kelompokkan by tier (Nano/Micro/Macro), dan siap broadcast.</p>
+                        <p class="time-saved">⏱️ Hemat 48 jam/kampanye</p>
+                    </div>
+                    <div class="workflow-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="workflow-icon">🚀</div>
+                        <div class="outcome-badge">Outcome: Proteksi Nomor Cerdas</div>
+                        <h3>Broadcast Cerdas, Minimalkan Risiko Ban</h3>
+                        <p><strong>Cara Lama:</strong> Blast manual atau pakai tools murah → 80% nomor kena banned dalam 1 bulan → restart dari nol.</p>
+                        <p><strong>Dengan OTT:</strong> AI Message Variations + Dynamic Delays menciptakan 100+ variasi unik per pesan. Sistem dirancang agar WhatsApp mendeteksi pesan Anda sebagai chat personal, bukan aktivitas spam bot.</p>
+                        <p class="time-saved">🛡️ Kami bantu jaga aset digital terpenting Anda: Nomor Bisnis.</p>
+                    </div>
+                    <div class="workflow-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="workflow-icon">💬</div>
+                        <div class="outcome-badge">Outcome: Zero Missed Opportunity</div>
+                        <h3>Konversi 24/7 Tanpa Tim Standby</h3>
+                        <p><strong>Cara Lama:</strong> Admin standby WhatsApp 8 jam/hari. Prospek yang chat malam/weekend = hilang.</p>
+                        <p><strong>Dengan OTT:</strong> Sistem deteksi keyword "JOIN" → update database → kirim konfirmasi + Google Form dalam &lt;1 menit. Bekerja saat Anda tidur.</p>
+                        <p class="time-saved">💰 Capture 100% respons = maksimalkan ROI broadcast</p>
+                    </div>
+                    <div class="workflow-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="workflow-icon">📦</div>
+                        <div class="outcome-badge">Outcome: Zero Copy-Paste Logistik</div>
+                        <h3>Pelacakan 1.000 Sampel Otomatis</h3>
+                        <p><strong>Cara Lama:</strong> Buka order #1 di Seller Center → copy detail → paste ke Excel. Buka order #2 → copy → paste. <strong>(Diulang 1.000 kali)</strong> → Cek resi manual satu per satu.</p>
+                        <p><strong>Dengan OTT:</strong> Sistem Auto-Scrape Semua Data Sampel → Lacak Semua Resi 24/7 Otomatis → Kirim Notifikasi "Sampel Tiba!" saat Delivered.</p>
+                        <p class="time-saved">⏱️ Hemat 72 jam/kampanye dari logistik</p>
+                    </div>
+                    <div class="workflow-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="workflow-icon">🔔</div>
+                        <div class="outcome-badge">Outcome: 95% Submission Rate</div>
+                        <h3>Pengingat Cerdas 3-Level Tanpa Awkward</h3>
+                        <p><strong>Cara Lama:</strong> Admin mengandalkan alarm & catatan manual di Excel → pesan follow-up tidak konsisten & sering terlewat → kreator merasa terganggu atau justru tidak diingatkan sama sekali → investasi sampel hangus.</p>
+                        <p><strong>Dengan OTT:</strong> "Set & Forget" Reminder Workflow. Tentukan 3 tahap pengingat dengan jadwal <strong>sepenuhnya custom</strong> (misal: H-21, H-10, H-1) sekali di awal kampanye. Sistem kemudian mengambil alih, secara cerdas HANYA mengirim reminder ke kreator yang belum submit. Zero pesan ganda, zero awkward moments.</p>
+                        <p class="time-saved">📈 Tingkatkan ROI sampel dari 60% jadi 95%</p>
+                    </div>
+                    <div class="workflow-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="workflow-icon">📊</div>
+                        <div class="outcome-badge">Outcome: Real-Time ROI Visibility</div>
+                        <h3>Pusat Komando Kampanye via Telegram Bot</h3>
+                        <p><strong>Cara Lama:</strong> Manajemen terus-terusan bertanya: "Broadcast hari ini gimana?", "Ada berapa yang join?". Tim harus berhenti kerja untuk rekap data manual & menjawab satu per satu, mengganggu fokus.</p>
+                        <p><strong>Dengan OTT:</strong> Bot Cerdas kami menjadi 'asisten' di grup Telegram khusus Anda, memberikan ringkasan metrik operasional kunci secara otomatis (harian/mingguan). Manajemen tetap terinformasi tanpa mengganggu alur kerja tim. <strong>(Fitur Eksklusif Paket Scale)</strong></p>
+                        <p class="time-saved">👁️ Visibilitas 360° ke Performa Harian</p>
+                    </div>
+                </div>
+                <div class="workflow-summary" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Total Time Savings per Kampanye:</h3>
+                    <p class="total-time-saved">48 + 72 + 24 = <strong>144 Jam = 18 Hari Kerja</strong></p>
+                    <p>Waktu yang bisa Anda alokasikan untuk strategi, growth, dan revenue-generating activities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Battleground Section (Struktur Sama, animasi diubah) -->
+        <section id="comparison" class="section-comparison">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">The Great Divide: Chaos vs. Sistem</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Skenario nyata: <strong>10.000 Kreator & 50.000 Video per Bulan.</strong> Mari kita hitung matematika yang brutal.</p>
+
+                <div class="breakdown-container" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="breakdown-title">Breakdown Waktu Kerja Manual vs OnTheTok</h3>
+                    <div class="great-divide-grid">
+                        <div class="divide-column manual-side">
+                            <div class="divide-header">
+                                <div class="divide-icon">😰</div>
+                                <div>
+                                    <h4>PROSES MANUAL</h4>
+                                    <p style="margin: 0; font-size: 0.9rem; color: rgba(255,255,255,0.7);">Status Quo yang Membunuh Produktivitas</p>
+                                </div>
+                            </div>
+                            <div class="phase-card">
+                                <h5>📋 Fase 1: Persiapan & Broadcast</h5>
+                                <div class="time-grid">
+                                    <div class="time-item">
+                                        <span class="counter" data-count="167">0</span><p>Jam<br>Bersihkan Data</p>
+                                    </div>
+                                    <div class="time-item">
+                                        <span class="counter" data-count="333">0</span><p>Jam<br>Blast Manual</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="phase-card">
+                                <h5>💬 Fase 2: Respons & Konfirmasi</h5>
+                                <div class="time-grid">
+                                    <div class="time-item">
+                                        <span class="counter" data-count="500">0</span><p>Jam<br>Balas Chat</p>
+                                    </div>
+                                    <div class="time-item">
+                                        <span class="counter" data-count="167">0</span><p>Jam<br>Update DB</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="phase-card">
+                                <h5>📦 Fase 3: Logistik Sampel</h5>
+                                <div class="time-grid">
+                                    <div class="time-item">
+                                        <span class="counter" data-count="417">0</span><p>Jam<br>Copy Data TikTok</p>
+                                    </div>
+                                    <div class="time-item">
+                                        <span class="counter" data-count="208">0</span><p>Jam<br>Cek Resi Manual</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="phase-card">
+                                <h5>🔔 Fase 4: Pengumpulan Konten</h5>
+                                <div class="time-grid">
+                                    <div class="time-item">
+                                        <span class="counter" data-count="417">0</span><p>Jam<br>Follow-up Manual</p>
+                                    </div>
+                                    <div class="time-item">
+                                        <span class="counter" data-count="83">0</span><p>Jam<br>Input Link</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="phase-card">
+                                <h5>📊 Fase 5: Analisis & Laporan</h5>
+                                <div class="time-grid">
+                                    <div class="time-item">
+                                        <span class="counter" data-count="417">0</span><p>Jam<br>Scrape Metrik</p>
+                                    </div>
+                                    <div class="time-item">
+                                        <span class="counter" data-count="183">0</span><p>Jam<br>Buat Laporan</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="total-card">
+                                <p>TOTAL WAKTU DIBUTUHKAN</p>
+                                <div class="total-value"><span class="counter" data-count="2892">0</span> Jam</div>
+                                <span>= 18 Orang Full-Time Staff</span>
+                            </div>
+                        </div>
+
+                        <div class="divide-column aos-side">
+                            <div class="divide-header">
+                                <div class="divide-icon">⚡</div>
+                                <div>
+                                    <h4>ONTHETOK</h4>
+                                    <p style="margin: 0; font-size: 0.9rem; color: rgba(255,255,255,0.7);">Flexeet Workflow in Action</p>
+                                </div>
+                            </div>
+                             <div class="phase-card">
+                                <h5>📋 Fase 1: Persiapan & Broadcast</h5>
+                                <div class="time-grid">
+                                    <div class="time-item"><span>0.08</span><p>Jam<br>Auto-Clean</p></div>
+                                    <div class="time-item"><span>0.42</span><p>Jam<br>AI Broadcast</p></div>
+                                </div>
+                            </div>
+                            <div class="phase-card">
+                                <h5>💬 Fase 2: Respons & Konfirmasi</h5>
+                                <div class="time-grid">
+                                    <div class="time-item"><span>5</span><p>Jam<br>Review Penting</p></div>
+                                    <div class="time-item"><span>0</span><p>Jam<br>Auto-Update</p></div>
+                                </div>
+                            </div>
+                            <div class="phase-card">
+                                <h5>📦 Fase 3: Logistik Sampel</h5>
+                                <div class="time-grid">
+                                    <div class="time-item"><span>0.5</span><p>Jam<br>Auto-Scraper</p></div>
+                                    <div class="time-item"><span>0</span><p>Jam<br>Auto-Track</p></div>
+                                </div>
+                            </div>
+                            <div class="phase-card">
+                                <h5>🔔 Fase 4: Pengumpulan Konten</h5>
+                                <div class="time-grid">
+                                    <div class="time-item"><span>0</span><p>Jam<br>Auto-Reminder</p></div>
+                                    <div class="time-item"><span>0</span><p>Jam<br>Auto-Sync</p></div>
+                                </div>
+                            </div>
+                            <div class="phase-card">
+                                <h5>📊 Fase 5: Analisis & Laporan</h5>
+                                <div class="time-grid">
+                                    <div class="time-item"><span>0</span><p>Jam<br>Auto-Scrape</p></div>
+                                    <div class="time-item"><span>2</span><p>Jam<br>Review Report</p></div>
+                                </div>
+                            </div>
+                            <div class="total-card">
+                                <p>TOTAL WAKTU DIBUTUHKAN</p>
+                                <div class="total-value">~25 Jam</div>
+                                <span>= 1 Orang Strategis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== FINANCIAL BREAKDOWN ===== -->
+                    <div class="financial-breakdown" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="breakdown-title" style="font-size: 1.8rem; margin-top: 4rem;">Breakdown Biaya: Gaji Staf vs. Investasi Cerdas</h3>
+                        <p class="section-subtitle" style="margin-bottom: 2rem;">Dengan asumsi rata-rata gaji staf Rp 5 Juta/bulan.</p>
+                        <div class="financial-grid">
+                            <div class="financial-column manual-cost">
+                                <h4>BIAYA MANUAL</h4>
+                                <p class="cost-calculation">18 Staf × Rp 5.000.000 / bulan</p>
+                                <div class="final-cost">Rp 90.000.000</div>
+                                <p class="cost-label">Biaya Hangus untuk Pekerjaan Repetitif</p>
+                            </div>
+                            <div class="financial-column aos-cost">
+                                <h4>INVESTASI ONTHETOK</h4>
+                                <p class="cost-calculation">Gaji 1 Strategis + OnTheTok Scale</p>
+                                <div class="final-saving">Rp 7,75 Jt</div>
+                                <p class="cost-label">Alokasi Dana untuk Pertumbuhan Bisnis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Lie Section -->
+        <section id="the-lie" class="section-great-lie">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up" style="text-align: center;">Yang Anda Dapatkan dengan OnTheTok</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" style="text-align: center;">Sistem lengkap yang dirancang khusus untuk mengelola kampanye kreator TikTok Anda dari awal hingga akhir — tanpa coding, tanpa ribet.</p>
+                
+                <div class="lie-grid">
+                    <div class="lie-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="lie-header"><span class="lie-icon">🎯</span><h3>Aplikasi Siap Pakai, Langsung Produktif</h3></div>
+                        <div class="lie-content">
+                            <p class="lie-truth">Akses aplikasi lengkap yang bisa dibuka di <strong>browser, iOS, dan Android</strong>. Tidak perlu install software, tidak perlu coding, tidak perlu technical setup yang rumit. Login dan langsung pakai.</p>
+                            <p><strong>Benefit untuk Anda:</strong> Campaign pertama bisa running dalam 5 hari, bukan 5 minggu.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lie-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="lie-header"><span class="lie-icon">🛡️</span><h3>Perlindungan Maksimal untuk Nomor Anda</h3></div>
+                        <div class="lie-content">
+                            <p class="lie-truth"><strong>AI Message Variations</strong> menciptakan 100+ variasi unik dari setiap template broadcast Anda. <strong>Dynamic Smart Delays</strong> mengatur jeda waktu yang natural antara pesan.</p>
+                            <p style="padding: 0.75rem; background: rgba(255, 200, 0, 0.1); border-left: 3px solid #ffc800; border-radius: 5px; margin-top: 1rem;"><strong>⚠️ Disclaimer:</strong> Kami tidak bisa menjamin 100% zero banned karena banyak faktor di luar kendali teknis (kualitas nomor, konten pesan, kualitas database). Namun, sistem kami dirancang untuk <strong>meminimalkan risiko secara maksimal</strong> dengan teknologi terbaik yang tersedia.</p>
+                            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0, 242, 234, 0.05); border-left: 3px solid var(--secondary-color); border-radius: 8px;">
+                                <h4 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Rekomendasi Keamanan Broadcast:</h4>
+                                <p style="margin: 0; font-size: 0.9rem;">Untuk menjaga kesehatan nomor, kami merekomendasikan batas aman <strong>~1.000 pesan per hari per nomor.</strong> Ketahanan setiap nomor bersifat unik dan sangat tergantung pada reputasi akun masing-masing. Sebagai info, nomor WhatsApp biasa (non-API) yang sudah 'kuat' dan terpercaya bahkan berpotensi mengirim hingga 10.000 pesan harian tanpa biaya.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lie-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="lie-header"><span class="lie-icon">⚡</span><h3>Otomasi End-to-End Tanpa Gap</h3></div>
+                        <div class="lie-content">
+                            <p class="lie-truth">Dari broadcast pertama hingga laporan akhir, semuanya terhubung otomatis: <strong>Auto-capture respons → Auto-update database → Auto-track sampel → Auto-monitor konten → Auto-generate laporan.</strong></p>
+                            <p><strong>Benefit untuk Anda:</strong> Hemat 2.867 jam kerja manual per bulan. Tim Anda bisa fokus strategi, bukan administrasi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lie-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="lie-header"><span class="lie-icon">📊</span><h3>Ekstraksi Data Cerdas dari TikTok</h3></div>
+                        <div class="lie-content">
+                            <p class="lie-truth">Teknologi ekstraksi proprietary kami bekerja di belakang layar, secara otomatis mengambil data krusial dari <strong>TikTok Seller Center</strong> (pesanan sampel, resi) dan <strong>halaman video TikTok</strong> (views, likes, dll).</p>
+                            <p><strong>Benefit untuk Anda:</strong> Anda mendapatkan data real-time tanpa risiko dan tanpa copy-paste manual, seolah-olah memiliki integrasi langsung.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lie-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="lie-header"><span class="lie-icon">📈</span><h3>Analisis Siklus Hidup Konten</h3></div>
+                        <div class="lie-content">
+                            <p class="lie-truth">Sistem kami secara strategis <strong>memantau performa setiap konten pada titik-titik kunci: H+7, H+14, H+21, dan H+28.</strong> Ini memberi Anda gambaran lengkap tentang <strong>siklus hidup video</strong>, dari ledakan awal hingga performa jangka panjangnya.</p>
+                            <p><strong>Benefit untuk Anda:</strong> Pahami ROI sebenarnya dari setiap kreator dan identifikasi konten "juara" yang terus memberikan hasil, bahkan sebulan setelah di-posting.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lie-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="lie-header"><span class="lie-icon">💾</span><h3>Data Terpusat & Aman</h3></div>
+                        <div class="lie-content">
+                            <p class="lie-truth">Semua data campaign, kreator, dan performa tersimpan dalam <strong>sistem database cloud yang aman</strong>. Akses dari mana saja via aplikasi, dengan backup otomatis dan enkripsi data.</p>
+                            <p><strong>Benefit untuk Anda:</strong> Zero data loss risk. Export data kapanpun Anda butuh dalam format Excel/CSV untuk analisa lebih lanjut.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lie-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="lie-header"><span class="lie-icon">🚀</span><h3>Support & Video Tutorials + Dokumentasi</h3></div>
+                        <div class="lie-content">
+                            <p class="lie-truth">Kami tidak sekadar kasih akses aplikasi lalu hilang. Kami guide setup awal, bantu import database pertama, dan pastikan campaign pertama Anda berjalan sempurna.</p>
+                            <p><strong>Benefit untuk Anda:</strong> Time to value hanya 5 hari. Kami sukses kalau Anda sukses.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="truth-cta" data-aos="fade-up">
+                    <h3>Siap Mentransformasi Program Kreator Anda?</h3>
+                    <a href="#pricing" class="btn btn-primary btn-large glow-on-hover">Lihat Paket & Harga</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- ===== BAGIAN PRICING BARU (INTERAKTIF)                        ===== -->
+        <!-- =================================================================== -->
+        <section id="pricing" class="section-pricing">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Investasi Cerdas untuk Pertumbuhan Eksponensial</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Pilih durasi komitmen Anda dan lihat penghematan yang Anda dapatkan secara real-time.</p>
+
+                <!-- Duration Selector -->
+                <div class="duration-selector-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="duration-selector" id="duration-selector">
+                        <button class="duration-btn" data-duration="1">1 Bulan</button>
+                        <button class="duration-btn" data-duration="3">3 Bulan <span class="promo-badge">Diskon 15%</span></button>
+                        <button class="duration-btn" data-duration="6">6 Bulan <span class="promo-badge">Diskon 25%</span></button>
+                        <button class="duration-btn active" data-duration="12">1 Tahun <span class="promo-badge best-value">Hemat Besar!</span></button>
+                    </div>
+                </div>
+
+                <!-- ROI Calculator Placeholder -->
+                <div class="roi-calculator-container" data-aos="fade-up" data-aos-delay="250">
+                    <div class="roi-calculator">
+                        <h4>Bingung Pilih Paket? Hitung Dulu Kebutuhan Anda!</h4>
+                        <div class="roi-inputs">
+                            <div class="input-group">
+                                <label for="affiliatorCount">Jumlah Kreator Anda</label>
+                                <input type="number" id="affiliatorCount" placeholder="Contoh: 1000">
+                            </div>
+                            <div class="input-group">
+                                <label for="avgContent">Rata-rata Konten per Kreator</label>
+                                <select id="avgContent">
+                                    <option value="1">1 Konten</option>
+                                    <option value="2">2 Konten</option>
+                                    <option value="3" selected>3 Konten</option>
+                                    <option value="4">4 Konten</option>
+                                    <option value="5">5+ Konten</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="samplePercentage">Kreator yang Ambil Sampel</label>
+                                <select id="samplePercentage">
+                                    <option value="10">10%</option>
+                                    <option value="20" selected>20%</option>
+                                    <option value="30">30%</option>
+                                    <option value="50">50%</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="recommendation" class="recommendation neutral">
+                             💡 Masukkan angka untuk melihat rekomendasi paket
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Pricing Cards Grid -->
+                <div class="pricing-grid">
+                    <!-- STARTER CARD -->
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="300" data-package="starter">
+                        <div class="card-content">
+                            <h3 class="package-name">STARTER</h3>
+                            <p class="package-target">Pemula & Solo Creator</p>
+                            
+                            <div class="price-display">
+                                <span class="price-strikethrough"></span>
+                                <div class="price-wrapper">
+                                    <span class="price"></span>
+                                    <span class="price-period"></span>
+                                </div>
+                                <span class="price-effective"></span>
+                            </div>
+                            
+                            <div class="price-savings"></div>
+
+                            <a href="#" class="btn btn-secondary cta-button">Pilih Paket Starter</a>
+
+                            <div class="features-list">
+                                <div class="feature-category">KUOTA / BULAN</div>
+                                <ul>
+                                    <li><strong>10.000</strong> Broadcast Pesan</li>
+                                    <li><strong>350</strong> Tracking Order</li>
+                                    <li><strong>2.500</strong> Tracking Konten</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GROWTH CARD (Highlighted) -->
+                    <div class="pricing-card highlighted" data-aos="fade-up" data-aos-delay="400" data-package="growth">
+                        <div class="popular-badge pulse-glow">Paling Populer</div>
+                        <div class="card-content">
+                            <h3 class="package-name">GROWTH</h3>
+                            <p class="package-target">Tim Kecil & KOL Serius</p>
+                            
+                            <div class="price-display">
+                                <span class="price-strikethrough"></span>
+                                <div class="price-wrapper">
+                                    <span class="price"></span>
+                                    <span class="price-period"></span>
+                                </div>
+                                <span class="price-effective"></span>
+                            </div>
+
+                            <div class="price-savings"></div>
+
+                            <a href="#" class="btn btn-primary glow-on-hover cta-button">Pilih Paket Growth</a>
+                            
+                            <div class="features-list">
+                                <div class="feature-category">KUOTA / BULAN</div>
+                                <ul>
+                                    <li><strong>30.000</strong> Broadcast Pesan</li>
+                                    <li><strong>750</strong> Tracking Order</li>
+                                    <li><strong>5.000</strong> Tracking Konten</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SCALE CARD -->
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="500" data-package="scale">
+                         <div class="card-content">
+                            <h3 class="package-name">SCALE</h3>
+                            <p class="package-target">Agensi & Power User</p>
+                            
+                             <div class="price-display">
+                                <span class="price-strikethrough"></span>
+                                <div class="price-wrapper">
+                                    <span class="price"></span>
+                                    <span class="price-period"></span>
+                                </div>
+                                <span class="price-effective"></span>
+                            </div>
+
+                            <div class="price-savings"></div>
+
+                            <a href="#" class="btn btn-secondary cta-button">Pilih Paket Scale</a>
+                            
+                             <div class="features-list">
+                                <div class="feature-category">KUOTA / BULAN</div>
+                                <ul>
+                                    <li><strong>100.000</strong> Broadcast Pesan</li>
+                                    <li><strong>2.500</strong> Tracking Order</li>
+                                    <li><strong>15.000</strong> Tracking Konten</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Comparison Table -->
+                <div class="feature-comparison-container" data-aos="fade-up">
+                    <h3 class="comparison-title">Perbandingan Fitur Lengkap</h3>
+                    <p class="comparison-subtitle"><strong>Penting:</strong> Tracking order pada semua paket dikhususkan untuk memantau <strong>Order Sampel Kreator</strong>, bukan untuk melacak semua pesanan penjualan.</p>
+                    <table class="feature-comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Fitur</th>
+                                <th>Starter</th>
+                                <th>Growth</th>
+                                <th>Scale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dashboard Analitik</td>
+                                <td><span class="check-icon">✅</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                            </tr>
+                            <tr>
+                                <td>Laporan Performa Harian</td>
+                                <td><span class="check-icon">✅</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                            </tr>
+                            <tr>
+                                <td>Nomor WhatsApp Terhubung</td>
+                                <td>1 Nomor</td>
+                                <td>1 Nomor</td>
+                                <td>1 Nomor</td>
+                            </tr>
+                            <tr>
+                                <td>Grup Komunitas Eksklusif</td>
+                                <td><span class="check-icon">✅</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                            </tr>
+                            <tr>
+                                <td>Dukungan Prioritas</td>
+                                <td><span class="cross-icon">❌</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                            </tr>
+                            <!-- BARIS BARU DITAMBAHKAN DI SINI -->
+                            <tr>
+                                <td>Bot Intelijen Telegram</td>
+                                <td><span class="cross-icon">❌</span></td>
+                                <td><span class="cross-icon">❌</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                            </tr>
+                            <tr>
+                                <td>Dedicated Account Manager</td>
+                                <td><span class="cross-icon">❌</span></td>
+                                <td><span class="cross-icon">❌</span></td>
+                                <td><span class="check-icon">✅</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- FAQ Pricing -->
+                 <div class="pricing-faq-container" data-aos="fade-up">
+                    <h3 class="faq-title">Pertanyaan Umum Seputar Harga</h3>
+                    <div class="faq-grid">
+                        <div class="faq-item-pricing">
+                            <h4>Apa yang terjadi jika kuota saya habis?</h4>
+                            <p>Anda bisa upgrade paket atau membeli kuota tambahan (add-on) kapan saja.</p>
+                        </div>
+                        <div class="faq-item-pricing">
+                            <h4>Apakah saya bisa mengubah paket saya nanti?</h4>
+                            <p>Tentu! Upgrade bisa dilakukan kapan saja, dan downgrade akan berlaku di siklus tagihan berikutnya.</p>
+                        </div>
+                         <div class="faq-item-pricing">
+                            <h4>Bagaimana cara menghubungi tim support?</h4>
+                            <p>Kami siap membantu Anda. Silakan hubungi kami melalui <strong>Email</strong> di support@flexeet.id atau kirim pesan ke <strong>WhatsApp</strong> di +62-8777-7220-117. Semua support terpusat untuk memastikan respons cepat.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final CTA -->
+                <div class="final-cta-container" data-aos="fade-up">
+                    <h3>Masih Ragu Memilih Paket?</h3>
+                    <p>Tim ahli kami siap membantu menganalisis kebutuhan Anda tanpa biaya.</p>
+                    <a href="https://wa.me/6287777220117?text=Halo%20ka%20saya%20tertarik%20untuk%20konsultasi%20strategis" target="_blank" class="btn btn-primary glow-on-hover">Konsultasi Gratis via WhatsApp</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta" class="section-cta">
+            <div class="container">
+                <div class="cta-content" data-aos="fade-up">
+                    <h2>Anda Tidak Membeli Software. <br>Anda Membeli Kembali 2.867 Jam Hidup Anda.</h2>
+                    <div class="cta-promise">
+                        <h3>Jaminan Sesi Strategi 15 Menit:</h3>
+                        <ul class="promise-list">
+                            <li>✓ Kami hitung potensi ROI <strong>spesifik untuk bisnis Anda</strong></li>
+                            <li>✓ Kami tunjukkan <strong>workflow exact</strong> yang akan menghemat waktu Anda</li>
+                            <li>✓ <strong>Zero pressure.</strong> Ini konsultasi, bukan sales pitch agresif.</li>
+                            <li>✓ Bahkan jika Anda tidak jadi klien, Anda dapat <strong>insight gratis</strong> senilai jutaan rupiah</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6287777220117?text=Halo%20ka%20saya%20tertarik%20untuk%20konsultasi%20strategis" target="_blank" class="btn btn-primary btn-large glow-on-hover">
+                        Jadwalkan Sesi Strategi Gratis
+                        <span class="btn-subtext">15 menit. Zero commitment. 100% value.</span>
+                    </a>
+                    <p class="social-proof-mini pulse">
+                        🔥 <strong>23 brand</strong> sudah jadwal sesi minggu ini | ⭐ <strong>4.9/5</strong> rating dari 87 sesi
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OnTheTok. A <a href="https://flexeet.id" target="_blank" style="color: var(--secondary-color); text-decoration: none;">FLEXEET</a> Product. <strong>See you on the Tok.</strong></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+<!--<script src="nav-script.js"></script>-->
+    <!-- SCRIPT BARU UNTUK PRICING INTERAKTIF -->
+<!--<script src="pricing-script.js"></script>-->
+    <!-- SCRIPT BARU UNTUK KALKULATOR REKOMENDASI -->
+<!--<script src="pricing-calculator.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,91 @@
+/* ===================================================================
+// STYLES FOR CREDIT COMPARISON DEMO
+// =================================================================== */
+
+.credit-comp-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #fff;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.comparison-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.chat-container {
+    background: #17212b; 
+    border: 1px solid #2a3b4c;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    max-height: 600px; 
+    height: 70vh;
+    margin: 0 auto;
+}
+
+.chat-header {
+    padding: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.before .chat-header { background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); }
+.after .chat-header { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.chat-header .avatar { width: 40px; height: 40px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #333; }
+.chat-header .info h3 { font-size: 16px; font-weight: 600; margin: 0; }
+.chat-header .info p { font-size: 12px; opacity: 0.9; margin: 0; }
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #0e1621;
+    position: relative;
+}
+
+.message { display: flex; flex-direction: column; margin-bottom: 15px; animation: fadeIn 0.3s ease; }
+.message.customer { align-items: flex-end; }
+.message.ai { align-items: flex-start; }
+.bubble { max-width: 85%; padding: 12px 16px; word-wrap: break-word; position: relative; white-space: pre-wrap; }
+.message.customer .bubble { background: #3b82f6; color: white; border-radius: 18px 18px 4px 18px; }
+.message.ai .bubble { background: #2a3b4c; color: #e0e0e0; border-radius: 18px 18px 18px 4px; }
+
+.ai-credits { font-size: 11px; color: #333; margin-top: 8px; padding: 6px 10px; background: #fff3cd; border-radius: 10px; display: inline-block; font-weight: 600; }
+.ai-credits.highlight { animation: credit-pulse 1.5s; background: #ffd700; color: #000; }
+
+.typing-indicator { display: none; align-items: center; gap: 4px; padding: 12px 16px; background: #2a3b4c; border-radius: 18px; width: fit-content; margin-bottom: 15px; }
+.typing-indicator.active { display: flex; }
+.typing-indicator span { width: 8px; height: 8px; background: #999; border-radius: 50%; animation: typing 1.4s infinite; }
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+.label { text-align: center; padding: 10px 15px; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: white; border-radius: 20px 20px 0 0; }
+.before .label { background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); }
+.after .label { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.comparison-wrapper > div { display: flex; flex-direction: column; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes credit-pulse { 50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); } }
+@keyframes typing { 30% { transform: translateY(-10px); } }
+
+/* Responsive styles specific to the credit comparison demo */
+@media (max-width: 968px) {
+    .comparison-wrapper { 
+        grid-template-columns: 1fr; 
+    }
+    .chat-container { 
+        max-width: 100%; 
+        height: 65vh; 
+        max-height: 550px;
+    }
+}

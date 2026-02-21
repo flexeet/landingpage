@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICEO™ — Decision Integrity Infrastructure</title>
+    <meta name="description" content="Masalah terbesar bisnis bukan kompetensi, tapi Execution Drift. Kunci keputusan owner agar tidak terdegradasi saat sampai ke tim.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+    
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-icon">🏛️</div>
+            <div class="preloader-text">Initializing Governance...</div>
+        </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="custom-cursor">
+        <div class="cursor-dot" id="cursor-dot"></div>
+        <div class="cursor-outline" id="cursor-outline"></div>
+    </div>
+    <canvas id="neural-canvas"></canvas>
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="nav">
+        <div class="container">
+            <a href="#" class="nav-logo magnetic-btn">
+                🏛️ The AI <span>CEO</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#drift" class="nav-link magnetic-btn">The Drift</a>
+                <a href="#army" class="nav-link magnetic-btn">The Council</a>
+                <a href="#plans" class="nav-link magnetic-btn">Pricing</a>
+                <a href="#process" class="nav-link magnetic-btn">The Audit</a>
+                <a href="#cta" class="nav-cta magnetic-btn">Private Discussion</a>
+            </div>
+            <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="nav-mobile-menu" id="mobileMenu">
+            <a href="#drift" class="nav-mobile-link">The Drift</a>
+            <a href="#army" class="nav-mobile-link">The Council</a>
+            <a href="#plans" class="nav-mobile-link">Pricing</a>
+            <a href="#process" class="nav-mobile-link">The Audit</a>
+            <a href="#cta" class="nav-mobile-cta">Private Discussion</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="smooth-wrapper">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge reveal-up">
+                        <span class="badge-dot"></span>
+                        Decision Integrity System
+                    </div>
+                    <h1 class="hero-title">
+                        <div class="line-mask"><span class="reveal-text">Owner Mikir 10.</span></div>
+                        <div class="line-mask"><span class="reveal-text">Tim Nangkep 7.</span></div>
+                        <div class="line-mask"><span class="reveal-text accent">Eksekusi Cuma 3.</span></div>
+                    </h1>
+                    <p class="hero-subtitle reveal-up">
+                        Masalah paling mahal di perusahaan lo bukan salah orang, tapi <strong>salah nyampe</strong>. Kami membangun sistem untuk menjaga "niat owner" tetap utuh sampai ke ujung tombak.
+                    </p>
+                    <div class="hero-cta-group reveal-up">
+                        <a href="#plans" class="btn btn-primary magnetic-btn">
+                            <span>🛡️</span> Secure Your Decision
+                        </a>
+                        <a href="#drift" class="btn btn-secondary magnetic-btn">
+                            <span>📉</span> Kenapa Ini Terjadi?
+                        </a>
+                    </div>
+                    <div class="hero-stats reveal-up">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">100%</div>
+                            <div class="hero-stat-label">Decision Integrity</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">24/7</div>
+                            <div class="hero-stat-label">System Guard</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">0%</div>
+                            <div class="hero-stat-label">Execution Drift</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section (The Drift) -->
+        <section class="problem" id="drift">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label reveal-up">The Silent Killer</span>
+                    <h2 class="section-title reveal-up">Execution Drift.<br><span class="text-accent">Musuh Terbesar CEO.</span></h2>
+                    <p class="section-subtitle reveal-up">Kenapa strategi di kepala lo selalu lebih jenius daripada yang kejadian di lapangan? Karena setiap kali lo ngomong, <strong>informasinya terdegradasi.</strong></p>
+                </div>
+                
+                <!-- Variance Example -->
+                <div class="variance-showcase tilt-card reveal-up">
+                    <div class="variance-title">📉 The Degradation Cycle</div>
+                    <div class="variance-demo">
+                        <div class="variance-row">
+                            <span class="var-day">Level 1</span>
+                            <span class="var-action"><strong>Owner:</strong> "Kita harus kasih service yang bikin customer nangis terharu." (Visi 10)</span>
+                            <span class="var-status ok">🧠</span>
+                        </div>
+                        <div class="variance-row result">
+                            <span class="var-day">Level 2</span>
+                            <span class="var-action"><strong>Manager:</strong> "Pokoknya senyum dan sapa customer ya." (Turun jadi 7)</span>
+                            <span class="var-status confused">📉</span>
+                        </div>
+                        <div class="variance-row bad">
+                            <span class="var-day">Level 3</span>
+                            <span class="var-action"><strong>Staff CS:</strong> "Halo kak, ada yang bisa dibantu?" (Template kaku - Turun jadi 3)</span>
+                            <span class="var-status bad">💀</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="problem-grid">
+                    <div class="problem-card tilt-card reveal-up">
+                        <div class="problem-icon">📉</div>
+                        <h3>Pesan Terdegradasi</h3>
+                        <p>Semakin banyak layer manajemen, semakin jauh eksekusi dari niat awal lo.</p>
+                        <div class="problem-cost">Lost in Translation</div>
+                    </div>
+                    <div class="problem-card tilt-card reveal-up">
+                        <div class="problem-icon">🦜</div>
+                        <h3>Lo Jadi "Beo"</h3>
+                        <p>Lo harus ngulang instruksi yang sama 100x. Capek di mulut, capek di hati.</p>
+                        <div class="problem-cost">Mental Fatigue</div>
+                    </div>
+                    <div class="problem-card tilt-card reveal-up">
+                        <div class="problem-icon">🚪</div>
+                        <h3>Knowledge Resign</h3>
+                        <p>Staff senior keluar, SOP di kepalanya ikut keluar. Perusahaan mulai dari nol lagi.</p>
+                        <div class="problem-cost">Asset Loss</div>
+                    </div>
+                    <div class="problem-card tilt-card reveal-up">
+                        <div class="problem-icon">🎲</div>
+                        <h3>Inkonsistensi</h3>
+                        <p>Hari ini lo approve, besok lo reject karena mood. Tim jadi bingung dan takut gerak.</p>
+                        <div class="problem-cost">Slow Execution</div>
+                    </div>
+                </div>
+                
+                <div class="insight-box reveal-up">
+                    <div class="insight-header">
+                        <span class="insight-icon">💡</span>
+                        <h3>Insight: Organizational Memory</h3>
+                    </div>
+                    <p>Lo gak bisa ngarepin tim baca pikiran lo. Lo butuh <strong class="text-accent">Organizational Memory</strong> yang gak bisa lupa, gak punya mood, dan gak bisa resign.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Council Section (The Guard) -->
+        <section class="superceo" id="army">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label reveal-up">The Intelligence Source</span>
+                    <h2 class="section-title reveal-up">ChatGPT Baca Internet.<br><span class="text-accent">Kami Baca Otak Pakar.</span></h2>
+                    <p class="section-subtitle reveal-up">Kenapa bayar 5 Juta kalau Gemini cuma 500rb? Karena Gemini dilatih pakai Wikipedia & Reddit. AICEO dilatih pakai <strong>50.000+ jam strategi bisnis teruji</strong> dari top-tier Founders & Experts.</p>
+                </div>
+                
+                <!-- Comparison Box -->
+                <div class="insight-box reveal-up" style="margin-top: 0; margin-bottom: 48px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent); border-color: var(--accent);">
+                    <div class="insight-header">
+                        <span class="insight-icon">⚔️</span>
+                        <h3 style="color: var(--text-primary);">The Quality Gap</h3>
+                    </div>
+                    <div class="insight-comparison" style="margin-bottom: 0;">
+                        <div class="insight-option" style="background: rgba(0,0,0,0.3); border: 1px solid var(--border);">
+                            <span class="insight-label" style="color: var(--text-muted);">Generic AI (ChatGPT/Gemini):</span>
+                            <span class="insight-value" style="font-size: 0.9rem;">"Berikut adalah draft surat perjanjian kerjasama standar..." (Generic, Aman, Tumpul)</span>
+                        </div>
+                        <div class="insight-vs" style="background: var(--accent); color: var(--bg-primary); font-weight: bold;">VS</div>
+                        <div class="insight-option" style="background: rgba(212, 175, 55, 0.1); border: 1px solid var(--accent);">
+                            <span class="insight-label" style="color: var(--accent);">AICEO Infrastructure:</span>
+                            <span class="insight-value" style="font-size: 0.9rem;">"Hati-hati di <strong>Klausul Pembatalan</strong>. Ini celah yang biasa dipakai vendor buat kabur tanpa refund. Revisi kalimatnya jadi begini..." (Tajam, Experienced)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="superceo-grid">
+                    <div class="superceo-card tilt-card reveal-up">
+                        <div class="superceo-icon">⚖️</div>
+                        <div class="superceo-badge">Trained on Top Lawyers</div>
+                        <h3>The Ironclad Litigator</h3>
+                        <p class="text-muted">Bukan sekadar draft kontrak. Ini audit resiko hukum ala Lawyer korporat 20 tahun pengalaman. Menutup celah sebelum lo rugi.</p>
+                    </div>
+                    <div class="superceo-card tilt-card reveal-up">
+                        <div class="superceo-icon">💰</div>
+                        <div class="superceo-badge">Trained on Ruthless CFOs</div>
+                        <h3>The Margin Defender</h3>
+                        <p class="text-muted">Dilatih dengan mindset efisiensi brutal. Dia gak cuma lapor angka, tapi ngasih tau di mana duit lo bocor dan cara nambalnya.</p>
+                    </div>
+                    <div class="superceo-card tilt-card reveal-up">
+                        <div class="superceo-icon">📈</div>
+                        <div class="superceo-badge">Trained on Unicorn CMOs</div>
+                        <h3>The Blitzscaler</h3>
+                        <p class="text-muted">Strategi growth yang diambil dari playbook startup Tbk. Bukan tips marketing receh, tapi framework dominasi pasar.</p>
+                    </div>
+                    <div class="superceo-card tilt-card reveal-up">
+                        <div class="superceo-icon">🤝</div>
+                        <div class="superceo-badge">Trained on HR Directors</div>
+                        <h3>The Culture Architect</h3>
+                        <p class="text-muted">Menangani drama karyawan dengan objektivitas sistem. SP, KPI, dan Reward dihitung pakai logika, bukan perasaan.</p>
+                    </div>
+                    <div class="superceo-card tilt-card reveal-up">
+                        <div class="superceo-icon">🛍️</div>
+                        <div class="superceo-badge">Trained on Top Closers</div>
+                        <h3>The Sniper Sales</h3>
+                        <p class="text-muted">Script handling objection yang diambil dari ribuan chat closing yang berhasil. Mengubah "nanti dikabari" jadi "transfer sekarang".</p>
+                    </div>
+                    <div class="superceo-card tilt-card reveal-up">
+                        <div class="superceo-icon">🧠</div>
+                        <div class="superceo-badge">Trained on Industry Titans</div>
+                        <h3>The Strategy Core</h3>
+                        <p class="text-muted">Teman diskusi level tinggi. Lo stuck? Tanya dia. Jawabannya adalah kompilasi dari 50.000 jam wisdom para pakar.</p>
+                    </div>
+                </div>
+                
+                <div class="advisors-more reveal-up">
+                    <p style="width: 100%; text-align: center; margin-bottom: 16px; color: var(--text-muted); font-size: 0.9rem;">Knowledge Base Sources:</p>
+                    <div class="advisor-tag magnetic-btn">Official Partners</div>
+                    <div class="advisor-tag magnetic-btn">Curated Frameworks</div>
+                    <div class="advisor-tag magnetic-btn">Proven Case Studies</div>
+                    <div class="advisor-tag magnetic-btn">Zero "Internet Junk"</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Control System Section (Autopilot Analogy) -->
+        <section class="control-system" id="control">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label reveal-up">Mindset Shift</span>
+                    <h2 class="section-title reveal-up">Jangan Jadi Pilot.<br><span class="text-accent">Jadilah Arsitek Sistem.</span></h2>
+                    <p class="section-subtitle reveal-up">Pilot terhebat pun butuh Autopilot. Bukan karena dia bodoh, tapi karena manusia punya batas lelah. Sistem tidak.</p>
+                </div>
+                
+                <!-- Analogy -->
+                <div class="aerospace-section reveal-up">
+                    <div class="aerospace-grid">
+                        <div class="aerospace-item tilt-card">
+                            <span class="aerospace-icon">😴</span>
+                            <h4>Manusia Capek</h4>
+                            <p>Fokus turun setelah jam 2 siang</p>
+                        </div>
+                        <div class="aerospace-item tilt-card">
+                            <span class="aerospace-icon">🎲</span>
+                            <h4>Manusia Inkonsisten</h4>
+                            <p>Mood mempengaruhi keputusan</p>
+                        </div>
+                        <div class="aerospace-item tilt-card">
+                            <span class="aerospace-icon">🤖</span>
+                            <h4>Sistem Stabil</h4>
+                            <p>Performa sama jam 9 pagi & 9 malam</p>
+                        </div>
+                        <div class="aerospace-item tilt-card">
+                            <span class="aerospace-icon">🔒</span>
+                            <h4>Sistem Terkunci</h4>
+                            <p>Output sesuai aturan main lo</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Simple Comparison -->
+                <div class="boeing-airbus reveal-up">
+                    <h3>📊 Bedanya?</h3>
+                    <div class="ba-compare">
+                        <div class="ba-card boeing tilt-card">
+                            <span class="ba-flag">😰</span>
+                            <h4>Tanpa Sistem</h4>
+                            <p>Tim tanya → Nunggu lo jawab<br>Lo capek → Jawaban beda<br>Lo cuti → Tim stuck</p>
+                            <span class="ba-result bad">Bottleneck</span>
+                        </div>
+                        <div class="ba-vs">VS</div>
+                        <div class="ba-card airbus tilt-card">
+                            <span class="ba-flag">😌</span>
+                            <h4>Dengan AICEO</h4>
+                            <p>Tim tanya → AI jawab konsisten<br>Lo capek → Sistem tetap jalan<br>Lo cuti → Bisnis aman</p>
+                            <span class="ba-result good">Scalable</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section (EXPERT ACCESS vs DIGITAL TWIN) -->
+        <section class="pricing" id="plans">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label reveal-up">Investment</span>
+                    <h2 class="section-title reveal-up">Bukan Biaya Tool.<br><span class="text-accent">Ini Biaya Ketenangan.</span></h2>
+                    <p class="section-subtitle reveal-up">Berapa harga yang pantas supaya lo gak perlu ngulang instruksi yang sama 100x?</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <!-- PLAN 1: EXPERT ACCESS -->
+                    <div class="pricing-setup tilt-card reveal-up">
+                        <div class="pricing-setup-badge">GLOBAL STANDARD</div>
+                        <div class="pricing-setup-header">
+                            <h3>Expert Access</h3>
+                            <p>Sewa Otak 30 Pakar Bisnis (The Council)</p>
+                        </div>
+                        <div class="pricing-amount">
+                            <span class="pricing-currency">Rp</span>
+                            <span class="pricing-value">5<span>jt</span></span>
+                            <span class="pricing-period">/bulan</span>
+                        </div>
+                        <div class="pricing-includes">
+                            <h4>Yang Lo Dapat:</h4>
+                            <div class="pricing-includes-list">
+                                <div class="pricing-include"><strong>30-Agent Army</strong> Full Access</div>
+                                <div class="pricing-include">Dilatih dengan <strong>50.000+ Jam Data Pakar</strong></div>
+                                <div class="pricing-include">Standardisasi Legal, HR, & Finance Global</div>
+                                <div class="pricing-include">Solusi teruji, bukan eksperimen</div>
+                                <div class="pricing-include">No Setup Fee (Langsung Aktif)</div>
+                            </div>
+                        </div>
+                        <div class="pricing-note">
+                            "Saya pakai paket ini kalau mau merapikan bisnis pakai standar pakar, tanpa harus hire konsultan mahal."
+                        </div>
+                        <a href="#cta" class="btn btn-secondary magnetic-btn" style="width: 100%; justify-content: center; margin-top: 24px;">Pilih Expert Access</a>
+                    </div>
+                    
+                    <!-- PLAN 2: DIGITAL TWIN -->
+                    <div class="pricing-main tilt-card reveal-up">
+                        <div class="pricing-main-header">
+                            <h3>The Digital Twin</h3>
+                            <p>Kloning Cara Pikir Lo Sendiri (Bespoke)</p>
+                        </div>
+                        <div class="pricing-amount">
+                            <span class="pricing-currency">Rp</span>
+                            <span class="pricing-value">15<span>jt</span></span>
+                            <span class="pricing-period">Deep Dive Audit (One-time)</span>
+                        </div>
+                        <div class="pricing-amount" style="margin-top: -20px; margin-bottom: 24px;">
+                            <span class="pricing-period" style="font-size: 1rem;">+ Rp 5jt / bulan (subscription)</span>
+                        </div>
+
+                        <div class="pricing-includes">
+                            <h4>Kenapa ada Setup Fee 15jt?</h4>
+                            <div class="pricing-includes-grid">
+                                <div class="pricing-include highlight"><strong>Deep Dive Session</strong> (Audit Otak Lo)</div>
+                                <div class="pricing-include highlight">SOP Extraction & Codification</div>
+                                <div class="pricing-include highlight">Membangun "Rules" Spesifik Bisnis Lo</div>
+                                <div class="pricing-include highlight"><strong>5 User Seats</strong> Included</div>
+                                <div class="pricing-include highlight">Akses Prioritas (Respon Lebih Cepat)</div>
+                                <div class="pricing-include highlight">Penyimpanan Data Khusus Lo</div>
+                            </div>
+                        </div>
+                        <div class="pricing-comparison">
+                            <div class="pricing-vs-item highlight">
+                                <span class="vs-label">Bedanya apa?</span>
+                                <span class="vs-price new" style="font-size: 0.9rem; line-height: 1.4; display: block; margin-top: 8px;">
+                                    <strong>Expert Access</strong> = Pakai otak pakar lain (Best Practice).<br>
+                                    <strong>Digital Twin</strong> = Pakai otak lo sendiri (Custom DNA).<br>
+                                    Pilih sesuai fase bisnis lo sekarang.
+                                </span>
+                            </div>
+                        </div>
+                        <a href="#cta" class="btn btn-primary magnetic-btn" style="width: 100%; justify-content: center; margin-top: 24px;">Apply for Digital Twin</a>
+                    </div>
+                </div>
+                
+                <!-- Addons -->
+                <div class="pricing-addons reveal-up">
+                    <h4 class="addons-title">Revenue Expansion (Add-ons)</h4>
+                    <div class="addons-grid">
+                        <div class="addon-card tilt-card">
+                            <div class="addon-header">
+                                <span class="addon-tier">Scaling</span>
+                                <span class="addon-price">Rp 500rb</span>
+                            </div>
+                            <h4>Additional Seat</h4>
+                            <p>Per user / bulan. Saat tim lo bertambah.</p>
+                        </div>
+                        <div class="addon-card tilt-card">
+                            <div class="addon-header">
+                                <span class="addon-tier">Consulting</span>
+                                <span class="addon-price">Rp 1jt</span>
+                            </div>
+                            <h4>Executive Zoom</h4>
+                            <p>Per jam. Akses Human Expert Flexeet.</p>
+                        </div>
+                        <div class="addon-card tilt-card">
+                            <div class="addon-header">
+                                <span class="addon-tier">On-Site</span>
+                                <span class="addon-price">Rp 5jt</span>
+                            </div>
+                            <h4>Workshop Visit</h4>
+                            <p>Per hari + Akomodasi. Training langsung.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Framework Section (The Audit) -->
+        <section class="framework" id="process">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label reveal-up">Methodology</span>
+                    <h2 class="section-title reveal-up">Dari Intuisi ke <span class="text-accent">Institusi.</span></h2>
+                    <p class="section-subtitle reveal-up">Bagaimana cara kami memindahkan isi kepala lo ke dalam sistem tanpa bikin lo pusing.</p>
+                </div>
+                
+                <div class="framework-flow">
+                    <div class="framework-step tilt-card reveal-up">
+                        <div class="framework-step-num">01</div>
+                        <div class="framework-step-icon">🎙️</div>
+                        <h3>The Deep Dive</h3>
+                        <p>Sesi audit intensif. Lo curhat masalah, kami gali polanya. Lo cerita visi, kami catat strukturnya.</p>
+                    </div>
+                    <div class="framework-arrow reveal-up">→</div>
+                    <div class="framework-step tilt-card reveal-up">
+                        <div class="framework-step-num">02</div>
+                        <div class="framework-step-icon">🧬</div>
+                        <h3>Codification</h3>
+                        <p>Tim Flexeet menerjemahkan "perasaan" lo jadi logika sistem yang kaku dan konsisten.</p>
+                    </div>
+                    <div class="framework-arrow reveal-up">→</div>
+                    <div class="framework-step tilt-card reveal-up">
+                        <div class="framework-step-num">03</div>
+                        <div class="framework-step-icon">🔒</div>
+                        <h3>The Lock</h3>
+                        <p>Sistem dikunci. Tim bisa tanya apapun, tapi AI hanya akan menjawab sesuai "pagar" yang lo buat.</p>
+                    </div>
+                    <div class="framework-arrow reveal-up">→</div>
+                    <div class="framework-step tilt-card reveal-up">
+                        <div class="framework-step-num">04</div>
+                        <div class="framework-step-icon">🚀</div>
+                        <h3>Integrity</h3>
+                        <p>Lo tidur nyenyak. Keputusan di lapangan 100% sama dengan niat lo di ruang direksi.</p>
+                    </div>
+                </div>
+                
+                <!-- What Makes It Different -->
+                <div class="governance-section reveal-up">
+                    <div class="governance-header">
+                        <span class="governance-badge">✨ Yang Bikin Beda</span>
+                        <h3>Ini Bukan ChatGPT Wrapper</h3>
+                    </div>
+                    <div class="governance-grid">
+                        <div class="governance-card tilt-card">
+                            <h4>🤖 AI Biasa</h4>
+                            <ul>
+                                <li>Jawab dari data internet — generic</li>
+                                <li>Sering ngarang / halusinasi</li>
+                                <li>Gak paham konteks bisnis lo</li>
+                            </ul>
+                        </div>
+                        <div class="governance-card highlight tilt-card">
+                            <h4>🧠 AICEO (Decision Guard)</h4>
+                            <ul>
+                                <li>Jawab dari <strong>data & cara pikir lo</strong></li>
+                                <li>Dikunci biar <strong>gak ngelantur</strong></li>
+                                <li>Tau mana bos, mana staff, mana vendor</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label reveal-up">Social Proof</span>
+                    <h2 class="section-title reveal-up">Kata Mereka yang <span class="text-accent">Sudah Pakai</span></h2>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card tilt-card reveal-up">
+                        <div class="testimonial-content">
+                            "Dulu tiap mau bikin jaket baru, harus tanya Mas Aji dulu. Sekarang tinggal tanya AI, jawabannya persis kayak Mas Aji jawab. Gila sih."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">👩</div>
+                            <div class="testimonial-author-info">
+                                <h4>Tim Produk</h4>
+                                <span>Hijacket</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card tilt-card reveal-up">
+                        <div class="testimonial-content">
+                            "Onboarding yang biasanya 2 minggu, sekarang 3 hari udah bisa mandiri. Staff baru tinggal tanya ke Teh Ija, gak perlu nunggu briefing."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">👨</div>
+                            <div class="testimonial-author-info">
+                                <h4>HR Team</h4>
+                                <span>Hijacket</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card tilt-card reveal-up">
+                        <div class="testimonial-content">
+                            "Jam 11 malam mau cek kebijakan retur? Tinggal tanya. Gak perlu tunggu besok pagi. Beneran 24/7 available."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">👩</div>
+                            <div class="testimonial-author-info">
+                                <h4>Affiliator</h4>
+                                <span>Hijacket</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ (Updated with Filter Market Strategy) -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label reveal-up">FAQ</span>
+                    <h2 class="section-title reveal-up">Pertanyaan yang <span class="text-accent">Pasti Lo Tanya</span></h2>
+                </div>
+                
+                <div class="faq-grid">
+                    <!-- Price Objection (BOLD STRATEGY) -->
+                    <div class="faq-item reveal-up">
+                        <button class="faq-question">
+                            <h4>Rp 5 Juta/bulan itu mahal gak sih?</h4>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Tergantung skala masalah lo. Kami menginvestasikan <strong>R&D, Server High-End, dan Token AI Premium</strong> untuk menjamin akurasi. <br><br>Tapi realitanya: Rp 5 Juta itu setara <strong>UMR 1 Staff Junior</strong>. Di sini lo dapat 30 Expert + Sistem yang gak pernah tidur. Kalau investasi segini masih terasa berat untuk menopang Decision Making perusahaan, mungkin bisnis lo belum butuh sistem ini.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Bespoke Value -->
+                    <div class="faq-item reveal-up">
+                        <button class="faq-question">
+                            <h4>Kenapa Paket Bespoke ada Setup Fee 15jt?</h4>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Karena ini biaya <strong>Deep Audit</strong>. Kami melakukan interview manual, membongkar SOP lo, dan membangun struktur data khusus. Ini adalah investasi sekali seumur hidup untuk memindahkan "otak" lo ke dalam sistem aset perusahaan.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacy -->
+                    <div class="faq-item reveal-up">
+                        <button class="faq-question">
+                            <h4>Data rahasia gue aman gak?</h4>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>100% aman. Database terpisah per client — data lo gak campur sama siapapun. NDA available. Knowledge lo = <strong>aset perusahaan lo</strong>, bukan disimpan di cloud publik.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Hallucination Fear -->
+                    <div class="faq-item reveal-up">
+                        <button class="faq-question">
+                            <h4>AI jawab ngaco gimana?</h4>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ada sistem pengecekan berlapis (Decision Lock). Kalau AI gak tau, dia jujur bilang <em>"Gue belum pernah diajarin soal ini."</em> Gak ada jawaban ngarang.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2026 Warning Section -->
+        <section class="warning-2026" id="warning">
+            <div class="container">
+                <div class="warning-header">
+                    <span class="section-label reveal-up">🚨 2026 WARNING</span>
+                    <h2 class="section-title reveal-up">Indonesia 2026:<br><span class="text-accent">Era Efisiensi Brutal.</span></h2>
+                    <p class="section-subtitle reveal-up">Di masa depan yang dekat, profit gak datang dari omset yang dibakar iklan. Profit datang dari <strong>Zero Error</strong> dan efisiensi operasional.</p>
+                </div>
+                
+                <div class="warning-grid">
+                    <div class="warning-card old tilt-card reveal-up">
+                        <div class="warning-card-label">❌ ERA LAMA (2020-2024)</div>
+                        <ul class="warning-list">
+                            <li>Bakar duit iklan sebanyak-banyaknya</li>
+                            <li>Produk setengah mateng, launch aja dulu</li>
+                            <li>Reach = segalanya</li>
+                            <li>Yang penting viral, margin belakangan</li>
+                            <li>Adaptasi? Nanti aja kalau sempet</li>
+                        </ul>
+                    </div>
+                    <div class="warning-card new tilt-card reveal-up">
+                        <div class="warning-card-label">✅ ERA BARU (2026+)</div>
+                        <ul class="warning-list">
+                            <li>Iklan kecil tapi konsisten</li>
+                            <li>Produk kurasi ketat, no half-baked</li>
+                            <li>Cashflow = segalanya (gak bisa bohong)</li>
+                            <li>Margin & efisiensi adalah raja</li>
+                            <li>Lambat adaptasi = tersingkir pelan-pelan</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="warning-insight tilt-card reveal-up">
+                    <div class="insight-icon">💡</div>
+                    <div class="insight-content">
+                        <h3>Pilihan Lo Cuma Dua:</h3>
+                        <div class="insight-comparison">
+                            <div class="insight-option">
+                                <span class="insight-label">Cara Lama (Capek):</span>
+                                <span class="insight-value">Kejar omset gede, tapi bocor di operasional. Owner jadi pemadam kebakaran tiap hari.</span>
+                            </div>
+                            <div class="insight-vs">VS</div>
+                            <div class="insight-option">
+                                <span class="insight-label">Cara AICEO (Lega):</span>
+                                <span class="insight-value">Sistem yang rapi. Keputusan konsisten. Owner fokus strategi, bukan ngulang instruksi.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="warning-cta reveal-up">
+                    <p class="warning-question">Yang lambat adaptasi tersingkir. <strong class="text-accent">Lo mau jadi yang mana?</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="cta">
+            <div class="cta-bg-orb"></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="reveal-up">Jangan Biarkan Keputusan Lo <span class="text-accent">Terdegradasi.</span></h2>
+                    <p class="reveal-up">Diskusi ini tertutup. Khusus untuk Founder yang sadar bahwa "salah nyampe" adalah biaya termahal.</p>
+                    
+                    <div class="cta-box tilt-card reveal-up">
+                        <div class="cta-qr">
+                            <div class="qr-placeholder">
+                                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="100" height="100" fill="#0a0a0c"/>
+                                    <rect x="10" y="10" width="25" height="25" fill="#fafafa"/>
+                                    <rect x="15" y="15" width="15" height="15" fill="#0a0a0c"/>
+                                    <rect x="18" y="18" width="9" height="9" fill="#fafafa"/>
+                                    <rect x="65" y="10" width="25" height="25" fill="#fafafa"/>
+                                    <rect x="70" y="15" width="15" height="15" fill="#0a0a0c"/>
+                                    <rect x="73" y="18" width="9" height="9" fill="#fafafa"/>
+                                    <rect x="10" y="65" width="25" height="25" fill="#fafafa"/>
+                                    <rect x="15" y="70" width="15" height="15" fill="#0a0a0c"/>
+                                    <rect x="18" y="73" width="9" height="9" fill="#fafafa"/>
+                                    <rect x="40" y="10" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="50" y="10" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="40" y="20" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="45" y="25" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="40" y="40" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="50" y="45" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="45" y="50" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="65" y="40" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="75" y="50" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="85" y="45" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="40" y="65" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="50" y="70" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="45" y="80" width="5" height="5" fill="#fafafa"/>
+                                    <rect x="65" y="65" width="10" height="10" fill="#fafafa"/>
+                                    <rect x="80" y="70" width="10" height="10" fill="#fafafa"/>
+                                    <rect x="70" y="80" width="5" height="10" fill="#fafafa"/>
+                                </svg>
+                            </div>
+                            <p>Scan to Discuss</p>
+                        </div>
+                        <div class="cta-divider"></div>
+                        <div class="cta-contact">
+                            <div class="contact-label">Flexeet Principal</div>
+                            <!-- SHORT & DIRECT LINK -->
+                            <a href="https://wa.me/6287777220117?text=Halo%20Flexeet,%20saya%20mau%20AICEO." class="contact-number magnetic-btn">Chat WhatsApp</a>
+                            <div class="contact-note">Langsung terhubung ke Principal.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-guarantees reveal-up">
+                        <div class="cta-guarantee">
+                            <span class="cta-guarantee-icon">🛡️</span>
+                            <span>30-Day Guarantee</span>
+                        </div>
+                        <div class="cta-guarantee">
+                            <span class="cta-guarantee-icon">🔒</span>
+                            <span>Data Lo Aman & Terpisah</span>
+                        </div>
+                        <div class="cta-guarantee">
+                            <span class="cta-guarantee-icon">♾️</span>
+                            <span>Scale-Ready</span>
+                        </div>
+                    </div>
+                    
+                    <p class="cta-note reveal-up">Setup Rp 15jt = <strong>Deep Audit Otak Lo.</strong><br>Subscription Rp 5jt/bulan = <strong>Penjaga Standar Berpikir Lo.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section class="vision" id="vision">
+            <div class="container">
+                <div class="vision-content">
+                    <span class="section-label reveal-up">Vision</span>
+                    <h2 class="vision-title reveal-up">
+                        Every company deserves a<br>
+                        <span class="text-accent">consistent decision system</span><br>
+                        — not just more meetings.
+                    </h2>
+                    <p class="vision-subtitle reveal-up">
+                        AICEO's mission: Turn your judgment into a <strong>reliable system</strong>.<br>
+                        Because in 2026, <strong class="text-accent">consistency = scalability</strong>.
+                    </p>
+                    <div class="vision-quote tilt-card reveal-up">
+                        <p>"Bangun bisnis yang bisa jalan <strong class="text-accent">tanpa lo harus jawab setiap pertanyaan</strong>."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        🏛️ The AI <span>CEO</span>
+                    </div>
+                    <div class="footer-info">
+                        <p>Powered by Flexeet Intelligence.</p>
+                        <p>We don't sell chatbots. We sell Governance.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+    
+    <!-- MOBILE STICKY CTA -->
+    <a href="#cta" class="mobile-sticky-btn">
+        🛡️ Secure Decision
+    </a>
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>

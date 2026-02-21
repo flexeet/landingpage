@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flexeet — Business Logic Advisor untuk AI & Automation Indonesia. Pangkas biaya operasional hingga 10x lipat dengan jaminan ROI 6 bulan.">
+    <meta name="keywords" content="AI automation, business automation, ROI, Indonesia, Flexeet">
+    <title>Flexeet — Business Logic Advisor untuk AI & Automation Indonesia</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://flxr2.com/Flexeet/Icon%20Flexeet.png">
+    <link rel="shortcut icon" type="image/png" href="https://flxr2.com/Flexeet/Icon%20Flexeet.png">
+    <link rel="apple-touch-icon" href="https://flxr2.com/Flexeet/Icon%20Flexeet.png">
+
+    <link rel="stylesheet" href="style.css?v=20260206">
+</head>
+<body>
+    <!-- Placeholders for Sections -->
+    <div id="header-container"></div>
+    <div id="hero-container"></div>
+    <div id="problem-container"></div>
+    <div id="solution-container"></div>
+    <div id="why-container"></div>
+    <div id="products-container"></div>
+    <div id="proof-container"></div>
+    <div id="about-container"></div>
+    <div id="team-container"></div>
+    <div id="partners-container"></div>
+    <div id="faq-container"></div>
+    <div id="cta-container"></div>
+    <div id="footer-container"></div>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script src="main.js?v=20260206"></script>
+    <script>
+        // Function to load HTML components
+        async function loadSections() {
+            const sections = [
+                { id: 'header-container', file: 'sections/header.html' },
+                { id: 'hero-container', file: 'sections/hero.html' },
+                { id: 'problem-container', file: 'sections/problem.html' },
+                { id: 'solution-container', file: 'sections/solution.html' },
+                { id: 'why-container', file: 'sections/why.html' },
+                { id: 'products-container', file: 'sections/products.html' },
+                { id: 'proof-container', file: 'sections/proof.html' },
+                { id: 'about-container', file: 'sections/about.html' },
+                { id: 'team-container', file: 'sections/team.html' },
+                { id: 'partners-container', file: 'sections/partners.html' },
+                { id: 'faq-container', file: 'sections/faq.html' },
+                { id: 'cta-container', file: 'sections/cta.html' },
+                { id: 'footer-container', file: 'sections/footer.html' }
+            ];
+
+            try {
+                // Load all sections sequentially to maintain order
+                for (const section of sections) {
+                    const response = await fetch(section.file);
+                    if (!response.ok) throw new Error(`Failed to load ${section.file}`);
+                    const html = await response.text();
+                    document.getElementById(section.id).innerHTML = html;
+                }
+                
+                // Initialize JS logic after all HTML is injected
+                initApp();
+                
+            } catch (error) {
+                console.error('Error loading sections:', error);
+                document.body.innerHTML = '<div style="padding: 20px; text-align: center;"><h1>Error Loading Content</h1><p>Please run this project using a local server (e.g., Live Server in VS Code) to avoid CORS issues.</p></div>';
+            }
+        }
+
+        // Start loading
+        loadSections();
+    </script>
+</body>
+</html>

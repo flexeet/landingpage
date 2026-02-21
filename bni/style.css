@@ -1,0 +1,1496 @@
+/* ============================================
+   HIJACKET PRESENTATION - ZARA STYLE
+   Black & White • Elegant • Awwwards Quality
+   ============================================ */
+
+/* CSS Variables */
+:root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray-100: #f7f7f7;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+    
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Outfit', -apple-system, sans-serif;
+    
+    --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+/* Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--black);
+    overflow: hidden;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+    background: var(--black);
+    color: var(--white);
+}
+
+/* Progress Bar */
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gray-200);
+    z-index: 1000;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--black);
+    width: 0%;
+    transition: width 0.5s var(--ease-out-expo);
+}
+
+/* Navigation */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    z-index: 100;
+    mix-blend-mode: difference;
+}
+
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--white);
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.slide-counter {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--white);
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-arrow {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: var(--white);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-arrow:hover {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--white);
+}
+
+/* Keyboard Hint */
+.keyboard-hint {
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--gray-400);
+    z-index: 100;
+    text-transform: uppercase;
+}
+
+.keyboard-hint span {
+    background: var(--gray-100);
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.25rem;
+    border-radius: 2px;
+}
+
+.keyboard-hint .separator {
+    background: none;
+    color: var(--gray-300);
+}
+
+/* Slides Container */
+.slides-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Individual Slide */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s var(--ease-out-expo), visibility 0.8s;
+    padding: 6rem 5rem 4rem;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-content {
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.slide-content.centered {
+    justify-content: center;
+    text-align: center;
+}
+
+.slide-content.split {
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fade {
+    opacity: 0;
+}
+
+.animate-up {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.animate-slide {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+.animate-scale {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.animate-fade-delay {
+    opacity: 0;
+}
+
+.slide.active .animate-fade {
+    animation: fadeIn 1s var(--ease-out-expo) 0.2s forwards;
+}
+
+.slide.active .animate-up {
+    animation: slideUp 1s var(--ease-out-expo) 0.4s forwards;
+}
+
+.slide.active .animate-slide {
+    animation: slideIn 0.8s var(--ease-out-expo) forwards;
+}
+
+.slide.active .animate-scale {
+    animation: scaleIn 0.8s var(--ease-out-expo) 0.3s forwards;
+}
+
+.slide.active .animate-fade-delay {
+    animation: fadeIn 1s var(--ease-out-expo) 0.8s forwards;
+}
+
+/* Staggered delays for lists */
+.slide.active .animate-slide:nth-child(1) { animation-delay: 0.3s; }
+.slide.active .animate-slide:nth-child(2) { animation-delay: 0.45s; }
+.slide.active .animate-slide:nth-child(3) { animation-delay: 0.6s; }
+.slide.active .animate-slide:nth-child(4) { animation-delay: 0.75s; }
+
+/* ============================================
+   SLIDE 1: Opening
+   ============================================ */
+
+.slide-1 {
+    background: var(--black);
+    color: var(--white);
+}
+
+.slide-1 .slide-content {
+    justify-content: space-between;
+}
+
+.hero-text {
+    max-width: 800px;
+}
+
+.overline {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    color: var(--gray-400);
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.hero-title .line {
+    display: block;
+}
+
+.hero-title .italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gray-400);
+}
+
+.hero-meta {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--gray-400);
+}
+
+.hero-meta .divider {
+    margin: 0 1rem;
+}
+
+.hero-visual {
+    display: flex;
+    align-items: flex-end;
+}
+
+.brand-mark {
+    text-align: right;
+}
+
+.brand-mark .year {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gray-500);
+}
+
+.brand-mark .year-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 5rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--gray-700);
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    left: 5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gray-500);
+    text-transform: uppercase;
+}
+
+/* ============================================
+   SLIDE 2: Hook Question
+   ============================================ */
+
+.slide-2 {
+    background: var(--white);
+}
+
+.question-block {
+    max-width: 900px;
+}
+
+.question-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    color: var(--gray-400);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.question-text {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+.question-text .highlight {
+    color: var(--black);
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 2px;
+}
+
+.question-note {
+    margin-top: 3rem;
+    font-size: 1rem;
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.question-note .hand {
+    font-size: 2rem;
+    animation: wave 1.5s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(20deg); }
+    75% { transform: rotate(-20deg); }
+}
+
+/* ============================================
+   SLIDE 3: Brand Introduction
+   ============================================ */
+
+.slide-3 {
+    background: var(--gray-100);
+}
+
+.split-left {
+    flex: 1;
+    max-width: 500px;
+}
+
+.split-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--gray-500);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.split-title {
+    margin-bottom: 2rem;
+}
+
+.split-title .logo-text {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.split-title .tagline {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray-500);
+    margin-top: 0.5rem;
+}
+
+.split-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--gray-600);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item .stat-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.stat-item .stat-suffix {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.stat-item .stat-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: var(--gray-500);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+}
+
+/* ============================================
+   SLIDE 4: Founder Story
+   ============================================ */
+
+.slide-4 {
+    background: var(--white);
+}
+
+.story-layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: auto 1fr;
+    gap: 3rem 5rem;
+    align-items: start;
+}
+
+.story-header {
+    grid-column: 1;
+}
+
+.story-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+}
+
+.story-role {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--gray-500);
+}
+
+.story-timeline {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+}
+
+.timeline-year {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--gray-400);
+    min-width: 80px;
+}
+
+.timeline-text {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--gray-700);
+}
+
+.timeline-item.highlight-item {
+    background: var(--black);
+    color: var(--white);
+    margin: 1rem -2rem 0;
+    padding: 1.5rem 2rem;
+}
+
+.timeline-item.highlight-item .timeline-year {
+    color: var(--gray-400);
+}
+
+.timeline-item.highlight-item .timeline-text {
+    color: var(--white);
+    font-weight: 400;
+}
+
+.story-quote {
+    grid-column: 1;
+    align-self: end;
+}
+
+.story-quote blockquote {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--gray-600);
+    border-left: 2px solid var(--black);
+    padding-left: 1.5rem;
+}
+
+.story-quote .italic {
+    font-style: italic;
+}
+
+/* ============================================
+   SLIDE 5: Achievement
+   ============================================ */
+
+.slide-5 {
+    background: var(--black);
+    color: var(--white);
+}
+
+.achievement-block {
+    max-width: 600px;
+}
+
+.achievement-year {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    color: var(--gray-500);
+    margin-bottom: 2rem;
+}
+
+.achievement-badge {
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--gray-600);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+}
+
+.badge-text {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+}
+
+.achievement-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.achievement-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--gray-400);
+    margin-bottom: 3rem;
+}
+
+.achievement-desc strong {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.achievement-validation {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.validation-item {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--gray-400);
+}
+
+/* ============================================
+   SLIDE 6: Market Size
+   ============================================ */
+
+.slide-6 {
+    background: var(--white);
+}
+
+.market-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.market-header {
+    text-align: center;
+}
+
+.market-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.market-title .italic {
+    font-style: italic;
+    color: var(--gray-500);
+}
+
+.market-numbers {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.market-stat.primary {
+    flex: 1;
+    text-align: center;
+    padding: 3rem;
+    background: var(--black);
+    color: var(--white);
+}
+
+.stat-big-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 10vw, 8rem);
+    font-weight: 300;
+    line-height: 1;
+}
+
+.stat-big-suffix {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    font-weight: 200;
+    letter-spacing: 0.5em;
+    margin-top: 0.5rem;
+}
+
+.stat-big-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    margin-top: 1.5rem;
+    color: var(--gray-300);
+}
+
+.stat-source {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin-top: 0.5rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+}
+
+.market-breakdown {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.breakdown-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.breakdown-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.breakdown-unit {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--gray-500);
+    min-width: 50px;
+}
+
+.breakdown-label {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--gray-600);
+    margin-left: auto;
+}
+
+/* ============================================
+   SLIDE 7: Umroh/Haji Market
+   ============================================ */
+
+.slide-7 {
+    background: var(--gray-100);
+}
+
+.umroh-layout {
+    width: 100%;
+}
+
+.umroh-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.umroh-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.umroh-title .subtitle {
+    display: block;
+    font-style: italic;
+    color: var(--gray-500);
+    font-size: 0.6em;
+    margin-top: 0.5rem;
+}
+
+.umroh-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.umroh-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border: 1px solid var(--gray-200);
+    transition: all 0.4s var(--ease-smooth);
+}
+
+.umroh-card:hover {
+    border-color: var(--black);
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.card-unit {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--gray-500);
+    margin-top: 0.25rem;
+}
+
+.card-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--gray-600);
+    margin-top: 1rem;
+}
+
+.umroh-insight {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.umroh-insight p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--gray-600);
+}
+
+.umroh-insight strong {
+    color: var(--black);
+    font-weight: 500;
+}
+
+/* ============================================
+   SLIDE 8: Products
+   ============================================ */
+
+.slide-8 {
+    background: var(--white);
+}
+
+.product-layout {
+    width: 100%;
+}
+
+.product-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.product-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.product-card {
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--gray-200);
+    transition: all 0.4s var(--ease-smooth);
+    position: relative;
+}
+
+.product-card:hover {
+    border-color: var(--black);
+    background: var(--black);
+    color: var(--white);
+}
+
+.product-percent {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--gray-300);
+    transition: color 0.4s;
+}
+
+.product-card:hover .product-percent {
+    color: var(--gray-600);
+}
+
+.product-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.product-desc {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--gray-500);
+    margin-bottom: 1.5rem;
+    transition: color 0.4s;
+}
+
+.product-card:hover .product-desc {
+    color: var(--gray-400);
+}
+
+.product-price {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.product-target {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    transition: color 0.4s;
+}
+
+.product-card:hover .product-target {
+    color: var(--gray-400);
+}
+
+.product-features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.feature {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--gray-500);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gray-200);
+}
+
+/* ============================================
+   SLIDE 9: B2B Custom Order
+   ============================================ */
+
+.slide-9 {
+    background: var(--black);
+    color: var(--white);
+}
+
+.b2b-layout {
+    width: 100%;
+}
+
+.b2b-header {
+    margin-bottom: 3rem;
+}
+
+.b2b-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.b2b-title .italic {
+    font-style: italic;
+    color: var(--gray-500);
+}
+
+.b2b-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+}
+
+.b2b-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.info-item {
+    padding: 1.5rem;
+    border: 1px solid var(--gray-700);
+}
+
+.info-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--gray-500);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.info-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.info-note {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--gray-500);
+}
+
+.info-note.highlight {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.b2b-clients {
+    align-self: end;
+}
+
+.client-title {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--gray-500);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.client-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.client-list span {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--gray-300);
+}
+
+/* ============================================
+   SLIDE 10: Bread Cheese Meat
+   ============================================ */
+
+.slide-10 {
+    background: var(--white);
+}
+
+.referral-layout {
+    width: 100%;
+}
+
+.referral-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.referral-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+}
+
+.referral-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.referral-card {
+    padding: 2rem;
+    border: 1px solid var(--gray-200);
+    transition: all 0.4s var(--ease-smooth);
+}
+
+.referral-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.referral-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.card-emoji {
+    font-size: 1.5rem;
+}
+
+.card-type {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+}
+
+.referral-card .card-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.card-look {
+    font-size: 0.85rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.card-say {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.card-say strong {
+    display: block;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 0.25rem;
+}
+
+/* Card colors */
+.referral-card.bread { border-top: 3px solid #8B7355; }
+.referral-card.cheese { border-top: 3px solid #D4A84B; }
+.referral-card.meat { border-top: 3px solid #8B4513; }
+
+/* ============================================
+   SLIDE 11: What I'm Looking For
+   ============================================ */
+
+.slide-11 {
+    background: var(--gray-100);
+}
+
+.looking-block {
+    max-width: 700px;
+}
+
+.looking-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+}
+
+.looking-title .italic {
+    font-style: italic;
+    color: var(--gray-500);
+}
+
+.looking-list {
+    text-align: left;
+}
+
+.looking-item {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.looking-item:last-child {
+    border-bottom: none;
+}
+
+.looking-number {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--gray-400);
+    min-width: 60px;
+}
+
+.looking-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.looking-content p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--gray-600);
+}
+
+/* ============================================
+   SLIDE 12: Closing
+   ============================================ */
+
+.slide-12 {
+    background: var(--black);
+    color: var(--white);
+}
+
+.closing-block {
+    max-width: 600px;
+}
+
+.closing-logo {
+    margin-bottom: 3rem;
+}
+
+.logo-main {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+}
+
+.logo-tag {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray-500);
+    margin-top: 0.5rem;
+}
+
+.closing-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+.closing-cta .italic {
+    font-style: italic;
+    color: var(--gray-400);
+}
+
+.closing-desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--gray-400);
+    margin-bottom: 3rem;
+}
+
+.closing-contact {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+}
+
+.contact-item {
+    text-align: center;
+}
+
+.contact-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--gray-500);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.contact-value {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.closing-footer {
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--gray-500);
+}
+
+.closing-footer .divider {
+    margin: 0 1rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .slide {
+        padding: 5rem 3rem 3rem;
+    }
+    
+    .nav {
+        padding: 1.5rem 2rem;
+    }
+    
+    .story-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-timeline {
+        grid-column: 1;
+        grid-row: auto;
+    }
+    
+    .market-numbers {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .umroh-stats,
+    .product-grid,
+    .referral-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .b2b-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .b2b-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide {
+        padding: 4rem 1.5rem 2rem;
+    }
+    
+    .nav {
+        padding: 1rem 1.5rem;
+    }
+    
+    .slide-content.split {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .closing-contact {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .keyboard-hint {
+        display: none;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .slide {
+        page-break-after: always;
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .nav,
+    .progress-container,
+    .keyboard-hint,
+    .scroll-hint {
+        display: none;
+    }
+}

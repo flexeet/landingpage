@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Billing & Plans | CekatPilot</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;font-family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4F46E5",
+                        "primary-light": "#EEF2FF",
+                        "secondary": "#64748B",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                        "success": "#10B981",
+                        "warning": "#F59E0B",
+                        "danger": "#EF4444",
+                        "surface": "#FFFFFF",
+                        "border-slate": "#E5E7EB",
+                        "header-text": "#111827",
+                        "secondary-text": "#6B7280",
+                    },
+                    fontFamily: {
+                        "sans": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 0 0 1px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.04)',
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.25rem',
+                        '3xl': '1.5rem',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-rounded {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 antialiased min-h-screen">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Premium Sidebar -->
+        <aside
+            class="w-[280px] bg-white dark:bg-slate-900 border-r border-slate-100 dark:border-slate-800 flex flex-col z-20 shrink-0">
+            <!-- Brand -->
+            <div class="h-20 flex items-center px-8">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-9 h-9 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 dark:shadow-none">
+                        <span class="material-symbols-rounded text-white">rocket_launch</span>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">CekatPilot</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto custom-scrollbar">
+                <a href="master_home.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">grid_view</span>
+                    <span class="font-medium text-sm">Master Home</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Analytics</p>
+                </div>
+                <a href="product_demand.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">inventory_2</span>
+                    <span class="font-medium text-sm">Product Demand</span>
+                </a>
+                <a href="conversion_funnel.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">filter_list</span>
+                    <span class="font-medium text-sm">Conversion Funnel</span>
+                </a>
+                <a href="roi_center.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">payments</span>
+                    <span class="font-medium text-sm">Financial ROI</span>
+                </a>
+                <a href="brand_leaderboard.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">leaderboard</span>
+                    <span class="font-medium text-sm">Leaderboard</span>
+                </a>
+                <a href="brand_growth.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">trending_up</span>
+                    <span class="font-medium text-sm">Growth Trends</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Intelligence</p>
+                </div>
+                <a href="ai_insight.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">psychology</span>
+                    <span class="font-medium text-sm">AI Insights</span>
+                </a>
+                <a href="predictive.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">auto_graph</span>
+                    <span class="font-medium text-sm">Predictions</span>
+                </a>
+                <a href="peak_hour.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">schedule</span>
+                    <span class="font-medium text-sm">Peak Hour</span>
+                </a>
+                <a href="sla_management.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">timer</span>
+                    <span class="font-medium text-sm">SLA Center</span>
+                </a>
+                <a href="customer_loyalty.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">group</span>
+                    <span class="font-medium text-sm">Customers</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Connectivity</p>
+                </div>
+                <a href="integrations.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">hub</span>
+                    <span class="font-medium text-sm">Integrations</span>
+                </a>
+                <a href="notifications.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">notifications</span>
+                    <span class="font-medium text-sm">Notifications</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Management</p>
+                </div>
+                <a href="news_updates.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">newspaper</span>
+                    <span class="font-medium text-sm">News & Updates</span>
+                </a>
+                <a href="team_management.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">group_add</span>
+                    <span class="font-medium text-sm">Team Management</span>
+                </a>
+                <a href="user_settings.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">settings</span>
+                    <span class="font-medium text-sm">User Settings</span>
+                </a>
+                <a href="billing_plan.html"
+                    class="flex items-center gap-3 px-4 py-3 active-nav rounded-full transition-all group">
+                    <span class="material-symbols-rounded">credit_card</span>
+                    <span class="font-bold text-sm">Billing & Plan</span>
+                </a>
+                <a href="help_faq.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">help</span>
+                    <span class="font-medium text-sm">Help & FAQ</span>
+                </a>
+            </nav>
+
+            <div class="p-6 border-t border-slate-100 dark:border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Hijacket+Owner&background=FCD34D&color=fff" alt="AC"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-header-text dark:text-white truncate">Hijacket</p>
+                        <p class="text-xs text-secondary-text truncate">Owner</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background-light dark:bg-background-dark">
+            <header
+                class="flex items-center justify-between px-8 py-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-border-slate dark:border-slate-800 sticky top-0 z-30">
+                <div class="flex flex-col">
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white">Billing & Subscription</h2>
+                    <p class="text-xs text-slate-500 font-medium font-display">Jumat, 31 Januari 2025 • 05:44 WIB</p>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div
+                        class="flex items-center gap-2 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/20 text-primary dark:text-indigo-400 rounded-lg text-sm font-medium">
+                        <span class="material-symbols-rounded text-sm">waving_hand</span>
+                        Selamat pagi, Aji!
+                    </div>
+                    <div class="flex items-center gap-3 border-l border-slate-100 dark:border-slate-800 pl-6">
+                        <button
+                            class="px-5 py-2 bg-primary hover:bg-indigo-700 text-white rounded-full text-[10px] font-black shadow-lg shadow-indigo-100 dark:shadow-none transition-all flex items-center gap-2">
+                            <span class="material-symbols-rounded text-sm">add</span>
+                            Purchase Credits
+                        </button>
+                        <button id="themeToggle"
+                            class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                            <span class="material-symbols-rounded dark:hidden">dark_mode</span>
+                            <span class="material-symbols-rounded hidden dark:block">light_mode</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="flex-1 overflow-y-auto p-8 scroll-smooth custom-scrollbar">
+                <div class="max-w-[1200px] mx-auto space-y-8">
+
+                    <!-- Current Plan Hero -->
+                    <div
+                        class="bg-indigo-600 rounded-3xl p-8 text-white relative overflow-hidden shadow-xl shadow-indigo-200 dark:shadow-none">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                            <span class="material-symbols-rounded text-9xl">workspace_premium</span>
+                        </div>
+                        <div
+                            class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                            <div class="space-y-4">
+                                <div
+                                    class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest">
+                                    Current Plan
+                                </div>
+                                <h2 class="text-4xl font-black">Enterprise Advisor</h2>
+                                <p class="text-indigo-100 text-lg max-w-md">You're currently on our most powerful plan,
+                                    enabling advanced AI insights for up to 5 brands.</p>
+                                <div class="flex items-center gap-6 pt-2">
+                                    <div>
+                                        <p class="text-[10px] font-bold text-indigo-200 uppercase tracking-widest mb-1">
+                                            Renews On</p>
+                                        <p class="font-black text-white">Feb 15, 2026</p>
+                                    </div>
+                                    <div class="w-px h-10 bg-white/20"></div>
+                                    <div>
+                                        <p class="text-[10px] font-bold text-indigo-200 uppercase tracking-widest mb-1">
+                                            Billing Cycle</p>
+                                        <p class="font-black text-white">Monthly</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-3 w-full md:w-auto">
+                                <button
+                                    class="px-8 py-4 bg-white text-primary rounded-full font-black text-sm shadow-lg hover:bg-slate-50 transition-all active:scale-95">
+                                    Manage Subscription
+                                </button>
+                                <button
+                                    class="px-8 py-4 border border-white/30 text-white rounded-full font-black text-sm hover:bg-white/10 transition-all">
+                                    Change Billing Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing/Upgrade Grid -->
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-black text-slate-900 dark:text-white">Available Plans</h3>
+                            <div class="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-full">
+                                <button
+                                    class="px-5 py-2 bg-white dark:bg-slate-700 text-slate-900 dark:text-white rounded-full text-xs font-black shadow-sm">Monthly</button>
+                                <button class="px-5 py-2 text-slate-500 dark:text-slate-400 text-xs font-black">Yearly
+                                    <span class="text-emerald-500">-20%</span></button>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Professional -->
+                            <div
+                                class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-card flex flex-col">
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-black text-slate-900 dark:text-white mb-1">Professional</h4>
+                                    <p class="text-xs text-slate-500">For growing small businesses</p>
+                                </div>
+                                <div class="mb-8">
+                                    <span class="text-4xl font-black text-slate-900 dark:text-white">Rp 2.5jt</span>
+                                    <span class="text-sm text-slate-500">/mo</span>
+                                </div>
+                                <ul class="space-y-4 mb-8 flex-1">
+                                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                        <span
+                                            class="material-symbols-rounded text-emerald-500 text-lg">check_circle</span>
+                                        Up to 2 Brands
+                                    </li>
+                                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                        <span
+                                            class="material-symbols-rounded text-emerald-500 text-lg">check_circle</span>
+                                        Base AI Insights
+                                    </li>
+                                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                        <span
+                                            class="material-symbols-rounded text-emerald-500 text-lg">check_circle</span>
+                                        Standard SLA Center
+                                    </li>
+                                </ul>
+                                <button disabled
+                                    class="w-full py-3 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-black text-slate-400">Current
+                                    Plan Below</button>
+                            </div>
+
+                            <!-- Enterprise (Active) -->
+                            <div
+                                class="bg-white dark:bg-slate-900 p-8 rounded-2xl border-2 border-primary shadow-xl relative flex flex-col scale-105 z-10">
+                                <div
+                                    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
+                                    Current Plan
+                                </div>
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-black text-slate-900 dark:text-white mb-1">Enterprise</h4>
+                                    <p class="text-xs text-slate-500">For professional retailers</p>
+                                </div>
+                                <div class="mb-8">
+                                    <span class="text-4xl font-black text-slate-900 dark:text-white">Rp 7.5jt</span>
+                                    <span class="text-sm text-slate-500">/mo</span>
+                                </div>
+                                <ul class="space-y-4 mb-8 flex-1">
+                                    <li
+                                        class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300 font-bold">
+                                        <span class="material-symbols-rounded text-primary text-lg">check_circle</span>
+                                        Up to 5 Brands
+                                    </li>
+                                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                        <span class="material-symbols-rounded text-primary text-lg">check_circle</span>
+                                        Predictive Analytics
+                                    </li>
+                                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                        <span class="material-symbols-rounded text-primary text-lg">check_circle</span>
+                                        Custom Report Builder
+                                    </li>
+                                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                        <span class="material-symbols-rounded text-primary text-lg">check_circle</span>
+                                        Peak Hour Optimization
+                                    </li>
+                                </ul>
+                                <button
+                                    class="w-full py-3 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white rounded-full text-xs font-black cursor-default">Active
+                                    Subscription</button>
+                            </div>
+
+                            <!-- Ultimate -->
+                            <div
+                                class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-card flex flex-col">
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-black text-slate-900 dark:text-white mb-1">Ultimate</h4>
+                                    <p class="text-xs text-slate-500">Full portfolio mastery</p>
+                                </div>
+                                <div class="mb-8">
+                                    <span class="text-4xl font-black text-slate-900 dark:text-white">Rp 15jt</span>
+                                    <span class="text-sm text-slate-500">/mo</span>
+                                </div>
+                                <ul class="space-y-4 mb-8 flex-1">
+                                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                        <span
+                                            class="material-symbols-rounded text-indigo-400 text-lg">check_circle</span>
+                                        Unlimited Brands
+                                    </li>
+                                    <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                                        <span
+                                            class="material-symbols-rounded text-indigo-400 text-lg">check_circle</span>
+                                        Dedicated AI Model
+                                    </li>
+                                    <li
+                                        class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300 text-primary font-black">
+                                        <span class="material-symbols-rounded text-lg">stars</span>
+                                        Priority Support
+                                    </li>
+                                </ul>
+                                <button
+                                    class="w-full py-3 bg-primary hover:bg-indigo-700 text-white rounded-full text-xs font-black transition-all shadow-md active:scale-95">Upgrade
+                                    Plan</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Invoice History -->
+                    <div
+                        class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-card overflow-hidden">
+                        <div
+                            class="p-8 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-black text-slate-900 dark:text-white">Billing History</h3>
+                                <p class="text-sm text-slate-500">Download and manage your past invoices</p>
+                            </div>
+                            <button
+                                class="bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 px-5 py-2.5 rounded-full text-xs font-black transition-all">
+                                Download All
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-50 dark:bg-slate-800/80">
+                                    <tr>
+                                        <th
+                                            class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                            Invoice Date</th>
+                                        <th
+                                            class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                            Plan</th>
+                                        <th
+                                            class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                            Status</th>
+                                        <th
+                                            class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                            Amount</th>
+                                        <th
+                                            class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">
+                                            Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                        <td class="px-8 py-5 font-bold text-slate-900 dark:text-white text-sm">Jan 15,
+                                            2026</td>
+                                        <td class="px-8 py-5 text-sm text-slate-600 dark:text-slate-400">Enterprise
+                                            Advisor (Monthly)</td>
+                                        <td class="px-8 py-5">
+                                            <span
+                                                class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full text-[10px] font-black uppercase tracking-widest">Paid</span>
+                                        </td>
+                                        <td
+                                            class="px-8 py-5 font-black text-slate-900 dark:text-white text-sm tabular-nums">
+                                            Rp 7,500,000</td>
+                                        <td class="px-8 py-5 text-right">
+                                            <button
+                                                class="text-primary hover:text-indigo-700 font-black text-xs">Download
+                                                PDF</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                        <td class="px-8 py-5 font-bold text-slate-900 dark:text-white text-sm">Dec 15,
+                                            2025</td>
+                                        <td class="px-8 py-5 text-sm text-slate-600 dark:text-slate-400">Enterprise
+                                            Advisor (Monthly)</td>
+                                        <td class="px-8 py-5">
+                                            <span
+                                                class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full text-[10px] font-black uppercase tracking-widest">Paid</span>
+                                        </td>
+                                        <td
+                                            class="px-8 py-5 font-black text-slate-900 dark:text-white text-sm tabular-nums">
+                                            Rp 7,500,000</td>
+                                        <td class="px-8 py-5 text-right">
+                                            <button
+                                                class="text-primary hover:text-indigo-700 font-black text-xs">Download
+                                                PDF</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                        <td class="px-8 py-5 font-bold text-slate-900 dark:text-white text-sm">Nov 15,
+                                            2025</td>
+                                        <td class="px-8 py-5 text-sm text-slate-600 dark:text-slate-400">Professional
+                                            (Monthly)</td>
+                                        <td class="px-8 py-5">
+                                            <span
+                                                class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full text-[10px] font-black uppercase tracking-widest">Paid</span>
+                                        </td>
+                                        <td
+                                            class="px-8 py-5 font-black text-slate-900 dark:text-white text-sm tabular-nums">
+                                            Rp 2,500,000</td>
+                                        <td class="px-8 py-5 text-right">
+                                            <button
+                                                class="text-primary hover:text-indigo-700 font-black text-xs">Download
+                                                PDF</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+    </script>
+</body>
+
+</html>

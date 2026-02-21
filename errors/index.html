@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICEO Knowledge Partner Program - Monetize Your Wisdom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            /* Color Palette - Editorial Premium */
+            --color-primary: #D4A574;
+            --color-primary-dark: #B8895E;
+            --color-secondary: #1A2332;
+            --color-accent: #7A9A7E;
+            --color-background: #FAF8F5;
+            --color-surface: #FFFFFF;
+            --color-text: #2D3142;
+            --color-text-light: #6B7280;
+            --color-border: #E5E1DA;
+            
+            /* Extended Palette */
+            --color-amber-light: #F5E6D3;
+            --color-navy-light: #2A3B4F;
+            --color-sage-light: #C8D5C9;
+            --color-error: #DC2626;
+            --color-success: #059669;
+            --color-warning: #F59E0B;
+            
+            /* Typography */
+            --font-display: 'Sora', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-secondary);
+        }
+        
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        h4 { font-size: 1.25rem; }
+        
+        p {
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        .container-narrow {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 1rem 2rem;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            box-shadow: 0 4px 14px rgba(212, 165, 116, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--color-navy-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            padding: var(--spacing-md) 0;
+            transition: all var(--transition-base);
+        }
+        
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .nav {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+        
+        .nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+        
+        .nav a:hover {
+            color: var(--color-primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--spacing-xs);
+        }
+        
+        /* Mobile Menu */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-lg);
+            flex-direction: column;
+            gap: var(--spacing-md);
+            z-index: 999;
+        }
+        
+        .mobile-nav.active {
+            display: flex;
+        }
+        
+        .mobile-nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: var(--spacing-3xl) 0;
+        }
+        
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .hero-blob-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--color-primary);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        
+        .hero-blob-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--color-accent);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: -10s;
+        }
+        
+        .hero-blob-3 {
+            width: 400px;
+            height: 400px;
+            background: var(--color-primary-dark);
+            top: 50%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--color-primary);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-lg);
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .hero h1 {
+            margin-bottom: var(--spacing-md);
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-xl);
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--color-secondary);
+            color: white;
+            padding: var(--spacing-2xl) 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            text-align: center;
+        }
+        
+        .stat-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: var(--font-display);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Section */
+        .section {
+            padding: var(--spacing-3xl) 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--color-amber-light);
+            color: var(--color-primary-dark);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .section-title {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .section-description {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .card {
+            background: var(--color-surface);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .card-description {
+            font-size: 1rem;
+            color: var(--color-text-light);
+        }
+        
+        .card-list {
+            list-style: none;
+            margin-top: var(--spacing-md);
+        }
+        
+        .card-list li {
+            display: flex;
+            align-items: start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.95rem;
+        }
+        
+        .card-list li::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+        
+        /* Problem Cards (specific styling) */
+        .problem-card {
+            border-left: 4px solid var(--color-error);
+        }
+        
+        .problem-card .card-icon {
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--color-error);
+        }
+        
+        /* Value Cards */
+        .value-card .card-icon {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.2), rgba(212, 165, 116, 0.1));
+            color: var(--color-primary);
+        }
+        
+        /* Business Model Section */
+        .business-model {
+            background: linear-gradient(to bottom, var(--color-background), white);
+        }
+        
+        .flow-diagram {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .flow-layer {
+            margin-bottom: var(--spacing-xl);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .flow-layer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .flow-layer-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--color-amber-light);
+            border-radius: var(--radius-lg);
+        }
+        
+        .flow-layer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+        }
+        
+        .flow-layer-subtitle {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+        
+        .flow-arrow {
+            text-align: center;
+            color: var(--color-primary);
+            margin: var(--spacing-md) 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+            transform: translateX(30px);
+        }
+        
+        .timeline-item:nth-child(even).visible {
+            transform: translateX(0);
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+        
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            background: var(--color-primary);
+            border: 4px solid var(--color-background);
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline-week {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            background: white;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: var(--color-secondary);
+            color: white;
+        }
+        
+        th {
+            padding: var(--spacing-md);
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        th:first-child {
+            border-radius: var(--radius-lg) 0 0 0;
+        }
+        
+        th:last-child {
+            border-radius: 0 var(--radius-lg) 0 0;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        tbody tr:hover {
+            background: var(--color-amber-light);
+        }
+        
+        td {
+            padding: var(--spacing-md);
+        }
+        
+        .table-highlight {
+            background: rgba(212, 165, 116, 0.1);
+            font-weight: 600;
+            color: var(--color-primary-dark);
+        }
+        
+        .checkmark {
+            color: var(--color-success);
+        }
+        
+        .crossmark {
+            color: var(--color-error);
+        }
+        
+        /* FAQ Accordion */
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease-out;
+        }
+        
+        .faq-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: var(--spacing-lg);
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .faq-question:hover {
+            background: var(--color-amber-light);
+        }
+        
+        .faq-icon {
+            transition: transform var(--transition-base);
+            color: var(--color-primary);
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+        
+        .faq-answer-content {
+            padding: 0 var(--spacing-lg) var(--spacing-lg);
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+        
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-navy-light));
+            color: white;
+            padding: var(--spacing-3xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,165,116,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)" /></svg>');
+            opacity: 0.5;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-banner h2 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .cta-banner p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .cta-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            text-align: left;
+        }
+        
+        .cta-benefit {
+            display: flex;
+            align-items: start;
+            gap: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+        }
+        
+        .cta-benefit-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-secondary);
+            color: white;
+            padding: var(--spacing-2xl) 0 var(--spacing-lg);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+        
+        .footer-section h4 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.125rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--spacing-lg);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                min-height: auto;
+                padding: calc(var(--spacing-3xl) + 60px) 0 var(--spacing-2xl);
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .timeline-line {
+                left: 20px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+                padding-left: var(--spacing-xl);
+            }
+            
+            .timeline-content {
+                flex: 1;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-primary { color: var(--color-primary); }
+        .bg-white { background: white; }
+        .mt-lg { margin-top: var(--spacing-lg); }
+        .mb-lg { margin-bottom: var(--spacing-lg); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i data-lucide="brain-circuit"></i>
+                    </div>
+                    <span>AICEO</span>
+                </a>
+                <nav class="nav">
+                    <a href="#problem">Problem</a>
+                    <a href="#solution">Solution</a>
+                    <a href="#model">Business Model</a>
+                    <a href="#process">Process</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#problem">Problem</a>
+            <a href="#solution">Solution</a>
+            <a href="#model">Business Model</a>
+            <a href="#process">Process</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+            <div class="hero-blob hero-blob-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i data-lucide="sparkles"></i>
+                    <span>Knowledge Partner Program</span>
+                </div>
+                <h1>Monetize Your Wisdom.<br>Build Your Legacy.</h1>
+                <p class="hero-subtitle">Passive Income 24/7 Tanpa Tambahan Effort</p>
+                <p class="hero-description">
+                    Transform 20+ tahun pengalaman Anda menjadi Digital Twin yang membantu ribuan pebisnis sekaligus. Dapatkan royalti seumur hidup sambil memperkuat brand Anda.
+                </p>
+                <div class="hero-cta">
+                    <a href="#cta" class="btn btn-primary">
+                        Daftar Sekarang
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#model" class="btn btn-outline">
+                        Lihat Business Model
+                        <i data-lucide="play-circle"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-target="120" data-suffix="%" data-prefix="">
+                    <div class="stat-number">0%</div>
+                    <div class="stat-label">Peningkatan Workshop Attendance</div>
+                </div>
+                <div class="stat-item" data-static="24/7">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Digital Twin Bekerja Non-Stop</div>
+                </div>
+                <div class="stat-item" data-target="1" data-suffix=" Miliar" data-prefix="Rp ">
+                    <div class="stat-number">Rp 0</div>
+                    <div class="stat-label">Potensi Affiliate/Tahun*</div>
+                </div>
+                <div class="stat-item" data-target="48" data-suffix=" Juta" data-prefix="Rp ">
+                    <div class="stat-number">Rp 0 Juta</div>
+                    <div class="stat-label">Avg Partner Income (Month 24)</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: var(--spacing-md); font-size: 0.85rem; opacity: 0.7;">
+                *Untuk partner dengan 10.000+ audience, konversi 10%
+            </p>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section" id="problem">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">The Challenge</span>
+                <h2 class="section-title">3 Masalah yang Dihadapi Setiap Pakar</h2>
+                <p class="section-description">
+                    Pengalaman berharga Anda terbatas oleh kendala waktu dan skalabilitas
+                </p>
+            </div>
+            <div class="cards-grid">
+                <div class="card problem-card">
+                    <div class="card-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <h3 class="card-title">Scalability Wall</h3>
+                    <p class="card-description">
+                        Waktu terbatas 24 jam. Tidak bisa dampingi 1000+ orang sekaligus. Income terbatas oleh jam kerja fisik.
+                    </p>
+                </div>
+                <div class="card problem-card">
+                    <div class="card-icon">
+                        <i data-lucide="brain"></i>
+                    </div>
+                    <h3 class="card-title">Knowledge Decay</h3>
+                    <p class="card-description">
+                        Peserta lupa 80% materi setelah 1 minggu. Tidak ada pendampingan saat eksekusi. Wisdom hilang tanpa dokumentasi.
+                    </p>
+                </div>
+                <div class="card problem-card">
+                    <div class="card-icon">
+                        <i data-lucide="repeat"></i>
+                    </div>
+                    <h3 class="card-title">Repetisi Melelahkan</h3>
+                    <p class="card-description">
+                        Menjawab pertanyaan dasar yang sama berulang-ulang. Energi strategis terkuras untuk hal tactical.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section bg-white" id="solution">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">The Solution</span>
+                <h2 class="section-title">Digital Twin: Legacy Tool untuk Wisdom Anda</h2>
+                <p class="section-description">
+                    Bukan chatbot biasa. Ini adalah arsip cara berpikir Anda yang bekerja 24/7.
+                </p>
+            </div>
+            <div class="cards-grid">
+                <div class="card value-card">
+                    <div class="card-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3 class="card-title">Monetisasi Tanpa Effort</h3>
+                    <ul class="card-list">
+                        <li>Income = Passive royalty 24/7</li>
+                        <li>Digital Twin = unlimited users</li>
+                        <li>Knowledge bekerja sendiri</li>
+                        <li>Peserta akses kapan saja</li>
+                    </ul>
+                </div>
+                <div class="card value-card">
+                    <div class="card-icon">
+                        <i data-lucide="archive"></i>
+                    </div>
+                    <h3 class="card-title">Legacy Building</h3>
+                    <ul class="card-list">
+                        <li>Wisdom diabadikan permanen</li>
+                        <li>Scalable tanpa batas ruang & waktu</li>
+                        <li>Evolving dengan update terus</li>
+                        <li>Membantu ribuan pebisnis 10+ tahun</li>
+                    </ul>
+                </div>
+                <div class="card value-card">
+                    <div class="card-icon">
+                        <i data-lucide="magnet"></i>
+                    </div>
+                    <h3 class="card-title">Lead Magnet Premium</h3>
+                    <ul class="card-list">
+                        <li>User trial Digital Twin → trust naik</li>
+                        <li>3.5x lebih likely daftar workshop</li>
+                        <li>2.2x conversion ke high-ticket</li>
+                        <li><strong>68%</strong> user puas → inquire konsultasi live</li>
+                        <li><strong>34%</strong> convert dalam 3 bulan</li>
+                        <li>Workshop revenue naik 120%+</li>
+                    </ul>
+                </div>
+                <div class="card value-card">
+                    <div class="card-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3 class="card-title">Zero Marketing Effort</h3>
+                    <ul class="card-list">
+                        <li>Platform yang promosi</li>
+                        <li>Platform handle payment</li>
+                        <li>Platform punya 10,000+ users</li>
+                        <li>Pakar fokus ke keahlian</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Why Different</span>
+                <h2 class="section-title">Digital Twin vs AI Umum</h2>
+                <p class="section-description">
+                    Bukan AI generik. Ini adalah clone decision framework Anda.
+                </p>
+            </div>
+            <div class="comparison-table">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspek</th>
+                                <th class="table-highlight">AICEO Digital Twin ★</th>
+                                <th>ChatGPT/Claude</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Data Source</strong></td>
+                                <td class="table-highlight">Closed KB dari pakar terverifikasi</td>
+                                <td>Internet umum (5M+ website)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hallucination</strong></td>
+                                <td class="table-highlight">Diam kalau tidak tahu (honest)</td>
+                                <td>Bisa ngawur (confidence tinggi walau salah)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Decision Quality</strong></td>
+                                <td class="table-highlight">Spesifik dengan angka & threshold</td>
+                                <td>Generic advice</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Failure Learning</strong></td>
+                                <td class="table-highlight">Ada Failure Scar dari pengalaman nyata</td>
+                                <td>Tidak ada</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Accountability</strong></td>
+                                <td class="table-highlight">High (nama pakar tertera)</td>
+                                <td>Zero (AI anonim)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Example Section -->
+    <section class="section bg-white">
+        <div class="container-narrow">
+            <div class="section-header">
+                <span class="section-badge">Real Example</span>
+                <h2 class="section-title">Lihat Digital Twin Beraksi</h2>
+                <p class="section-description">
+                    Contoh nyata bagaimana Digital Twin memberikan advice dengan failure scar & decision threshold konkret
+                </p>
+            </div>
+            
+            <div style="background: var(--color-secondary); color: white; padding: var(--spacing-xl); border-radius: var(--radius-2xl); box-shadow: var(--shadow-xl);">
+                <!-- User Query -->
+                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: var(--radius-lg); margin-bottom: var(--spacing-lg); border-left: 4px solid var(--color-primary);">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                        <i data-lucide="user" style="width: 20px; height: 20px;"></i>
+                        <strong>User bertanya:</strong>
+                    </div>
+                    <p style="font-size: 1rem; opacity: 0.9;">
+                        "Pak, mau live TikTok tapi margin produk gue cuma 2x. Worth it gak?"
+                    </p>
+                </div>
+                
+                <!-- AI Response -->
+                <div style="background: rgba(212,165,116,0.15); padding: var(--spacing-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                        <i data-lucide="brain-circuit" style="width: 20px; height: 20px; color: var(--color-primary);"></i>
+                        <strong style="color: var(--color-primary);">Digital Twin [Pakar TikTok Shop]:</strong>
+                    </div>
+                    
+                    <div style="font-size: 0.95rem; line-height: 1.8;">
+                        <p style="margin-bottom: var(--spacing-md); font-weight: 600; color: var(--color-warning);">
+                            ⚠️ WARNING: Ini area fatal.
+                        </p>
+                        
+                        <p style="margin-bottom: var(--spacing-md);">
+                            Margin 2x di live TikTok itu zona merah. Gue di fashion <strong style="color: var(--color-primary);">7 tahun</strong>, dan pengalaman gue bilang: pertanyaan lo salah fokus. Yang bener itu bukan "worth it gak", tapi <strong>"bisa gak lo survive"</strong>.
+                        </p>
+                        
+                        <p style="margin-bottom: var(--spacing-sm);"><strong>Strategi Survival:</strong></p>
+                        <ul style="margin-bottom: var(--spacing-md); padding-left: var(--spacing-lg);">
+                            <li>🔥 Volume: Min <strong style="color: var(--color-primary);">500 pcs/live</strong> (cashflow buffer)</li>
+                            <li>🎯 Bundling: Paksa average cart naik min <strong style="color: var(--color-primary);">2x</strong></li>
+                            <li>⚡ Upsell: Ada produk margin <strong style="color: var(--color-primary);">4x+</strong> sebagai hero</li>
+                            <li>🚫 STOP: Jika break-even butuh <strong style="color: var(--color-primary);">>3.000 viewers</strong></li>
+                        </ul>
+                        
+                        <p style="margin-bottom: var(--spacing-md); color: var(--color-error); font-weight: 600;">
+                            ⛔ JANGAN: Live >5 hari tanpa evaluasi. Kalau hari ke-3 masih boncos, STOP dulu.
+                        </p>
+                        
+                        <div style="background: rgba(0,0,0,0.2); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-md); border-left: 3px solid var(--color-error);">
+                            <p style="font-style: italic; margin-bottom: var(--spacing-xs);"><strong>⚠️ PELAJARAN MAHAL:</strong></p>
+                            <p style="font-style: italic; opacity: 0.95;">
+                                "2019, gue maksa live 14 hari nonstop dengan margin tipis. Omzet naik, tapi cashflow mati. 
+                                Rugi <strong style="color: var(--color-error);">Rp 87 juta</strong> sebelum gue sadar."
+                            </p>
+                        </div>
+                        
+                        <p style="font-size: 0.9rem; opacity: 0.8; font-style: italic;">
+                            Coba jujur, lo selama ini live karena data solid, atau cuma ikut-ikutan trend?
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Highlight Box -->
+                <div style="margin-top: var(--spacing-lg); padding: var(--spacing-md); background: rgba(212,165,116,0.2); border-radius: var(--radius-lg);">
+                    <p style="font-size: 0.9rem; margin-bottom: var(--spacing-sm);"><strong style="color: var(--color-primary);">Perhatikan:</strong></p>
+                    <ul style="font-size: 0.85rem; line-height: 1.6; padding-left: var(--spacing-lg);">
+                        <li>✓ Ada angka konkret (500 pcs, 4x margin, >3000 viewers)</li>
+                        <li>✓ Ada STOP criteria yang jelas</li>
+                        <li>✓ Ada failure scar nyata (Rugi Rp 87 juta di 2019)</li>
+                        <li>✓ Ada pertanyaan metacognitive di akhir</li>
+                    </ul>
+                    <p style="font-size: 0.85rem; margin-top: var(--spacing-sm); color: var(--color-primary); font-weight: 600;">
+                        💡 Ini yang AI umum (ChatGPT/Claude) TIDAK BISA kasih!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model Section -->
+    <section class="section business-model" id="model">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Revenue Model</span>
+                <h2 class="section-title">Pool Sharing System</h2>
+                <p class="section-description">
+                    The Spotify for Business Wisdom - fair, scalable, merit-based
+                </p>
+            </div>
+            <div class="flow-diagram">
+                <div class="flow-layer">
+                    <div class="flow-layer-header">
+                        <i data-lucide="dollar-sign" style="color: var(--color-primary);"></i>
+                        <div>
+                            <div class="flow-layer-title">GROSS REVENUE (100%)</div>
+                            <div class="flow-layer-subtitle">Total dari semua user subscription</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-arrow">
+                    <i data-lucide="arrow-down" size="32"></i>
+                    <p><small>Minus Direct Cost (Server, AI API, Payment) ~15-20%</small></p>
+                </div>
+                
+                <div class="flow-layer">
+                    <div class="flow-layer-header">
+                        <i data-lucide="trending-up" style="color: var(--color-accent);"></i>
+                        <div>
+                            <div class="flow-layer-title">NET REVENUE (80-85%)</div>
+                            <div class="flow-layer-subtitle">Revenue setelah operational cost</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-arrow">
+                    <i data-lucide="arrow-down" size="32"></i>
+                    <p><small>Dibagi ke 2 Pool</small></p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg);">
+                    <div class="flow-layer">
+                        <div class="flow-layer-header" style="background: rgba(212, 165, 116, 0.2);">
+                            <i data-lucide="users" style="color: var(--color-primary);"></i>
+                            <div>
+                                <div class="flow-layer-title">SPEAKER POOL (30%)</div>
+                                <div class="flow-layer-subtitle">Untuk semua Knowledge Partner</div>
+                            </div>
+                        </div>
+                        <div style="padding: var(--spacing-md);">
+                            <p style="font-size: 0.95rem; color: var(--color-text-light);">
+                                Dibagi berdasarkan Contribution Share: Usage Score (40%) + Impact Score (40%) + Satisfaction Score (20%)
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-layer">
+                        <div class="flow-layer-header" style="background: rgba(26, 35, 50, 0.1);">
+                            <i data-lucide="settings" style="color: var(--color-secondary);"></i>
+                            <div>
+                                <div class="flow-layer-title">PLATFORM POOL (70%)</div>
+                                <div class="flow-layer-subtitle">Operasional, tech, marketing, growth</div>
+                            </div>
+                        </div>
+                        <div style="padding: var(--spacing-md);">
+                            <p style="font-size: 0.95rem; color: var(--color-text-light);">
+                                Untuk maintain server, improve AI, marketing, customer support, continuous development
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-lg" style="text-align: center; background: white; padding: var(--spacing-xl); border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
+                <h3 style="margin-bottom: var(--spacing-md);">Revenue Projection (Pool Sharing Only)</h3>
+                <div class="stats-grid" style="color: var(--color-text);">
+                    <div>
+                        <div class="stat-number" style="color: var(--color-primary); font-size: 2rem;">Rp 4.8 Juta</div>
+                        <div class="stat-label" style="color: var(--color-text-light);">Month 6 (Avg Partner)</div>
+                    </div>
+                    <div>
+                        <div class="stat-number" style="color: var(--color-primary); font-size: 2rem;">Rp 12 Juta</div>
+                        <div class="stat-label" style="color: var(--color-text-light);">Month 12 (Avg Partner)</div>
+                    </div>
+                    <div>
+                        <div class="stat-number" style="color: var(--color-primary); font-size: 2rem;">Rp 24 Juta</div>
+                        <div class="stat-label" style="color: var(--color-text-light);">Month 18 (Avg Partner)</div>
+                    </div>
+                    <div>
+                        <div class="stat-number" style="color: var(--color-primary); font-size: 2rem;">Rp 48 Juta</div>
+                        <div class="stat-label" style="color: var(--color-text-light);">Month 24 (Avg Partner)</div>
+                    </div>
+                </div>
+                <p style="margin-top: var(--spacing-md); color: var(--color-text-light); font-size: 0.95rem;">
+                    <strong>Plus:</strong> Workshop revenue naik 120%+ (data from beta testers)
+                </p>
+            </div>
+            
+            <!-- Affiliate Program Section -->
+            <div class="mt-lg" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-navy-light)); padding: var(--spacing-xl); border-radius: var(--radius-2xl); color: white; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: var(--color-primary); opacity: 0.1; border-radius: 50%;"></div>
+                <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: var(--color-accent); opacity: 0.1; border-radius: 50%;"></div>
+                
+                <div style="position: relative; z-index: 1;">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                        <div style="background: var(--color-primary); padding: 0.5rem; border-radius: var(--radius-md);">
+                            <i data-lucide="gift" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <span style="background: var(--color-primary); color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">BONUS REVENUE STREAM</span>
+                    </div>
+                    
+                    <h3 style="color: white; font-size: 1.75rem; margin-bottom: var(--spacing-sm);">Partner Affiliate Program</h3>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: var(--spacing-lg);">
+                        Ajak network Anda → Dapat komisi recurring selama 12 bulan!
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg);">
+                        <!-- Phase 1 -->
+                        <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: var(--radius-xl); border: 1px solid rgba(255,255,255,0.2);">
+                            <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                                <div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800;">1</div>
+                                <div>
+                                    <div style="font-weight: 700; font-size: 1.125rem;">Bulan 1-12</div>
+                                    <div style="font-size: 0.85rem; opacity: 0.8;">Direct Commission</div>
+                                </div>
+                            </div>
+                            <div style="font-size: 3rem; font-weight: 800; color: var(--color-primary); margin-bottom: var(--spacing-sm);">20%</div>
+                            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-bottom: var(--spacing-md);">
+                                Dari <strong>setiap pembayaran</strong> user yang Anda referensikan, selama 12 bulan pertama mereka berlangganan.
+                            </p>
+                            <ul style="font-size: 0.875rem; color: rgba(255,255,255,0.8); list-style: none;">
+                                <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--color-success);"></i>
+                                    Recurring 12 bulan (bukan one-time)
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--color-success);"></i>
+                                    User upgrade? Komisi ikut naik!
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--color-success);"></i>
+                                    No cap - unlimited referrals
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Phase 2 -->
+                        <div style="background: rgba(255,255,255,0.05); padding: var(--spacing-lg); border-radius: var(--radius-xl); border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                                <div style="background: var(--color-accent); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800;">2</div>
+                                <div>
+                                    <div style="font-weight: 700; font-size: 1.125rem;">Bulan 13+</div>
+                                    <div style="font-size: 0.85rem; opacity: 0.8;">Pool Integration</div>
+                                </div>
+                            </div>
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--color-accent); margin-bottom: var(--spacing-sm);">→ Pool 30%</div>
+                            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-bottom: var(--spacing-md);">
+                                Setelah 12 bulan, referral Anda masuk ke sistem Pool Sharing bersama semua partner lain.
+                            </p>
+                            <ul style="font-size: 0.875rem; color: rgba(255,255,255,0.8); list-style: none;">
+                                <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--color-accent);"></i>
+                                    User tetap contribute ke pool Anda
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--color-accent);"></i>
+                                    Passive income terus berjalan
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--color-accent);"></i>
+                                    Fair distribution system
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Example Calculation -->
+                    <div style="margin-top: var(--spacing-xl); background: rgba(212,165,116,0.2); padding: var(--spacing-lg); border-radius: var(--radius-xl); border-left: 4px solid var(--color-primary);">
+                        <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                            <i data-lucide="calculator" style="width: 20px; height: 20px; color: var(--color-primary);"></i>
+                            <strong style="color: var(--color-primary);">Simulasi Affiliate Income (Konservatif)</strong>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); font-size: 0.95rem;">
+                            <div>
+                                <div style="opacity: 0.7; margin-bottom: 0.25rem;">Anda referensikan:</div>
+                                <div style="font-weight: 700; font-size: 1.25rem;">50 users</div>
+                            </div>
+                            <div>
+                                <div style="opacity: 0.7; margin-bottom: 0.25rem;">Avg subscription:</div>
+                                <div style="font-weight: 700; font-size: 1.25rem;">Rp 500.000/bulan</div>
+                            </div>
+                            <div>
+                                <div style="opacity: 0.7; margin-bottom: 0.25rem;">Komisi 20%/bulan:</div>
+                                <div style="font-weight: 700; font-size: 1.25rem; color: var(--color-primary);">Rp 5.000.000</div>
+                            </div>
+                            <div>
+                                <div style="opacity: 0.7; margin-bottom: 0.25rem;">Total 12 bulan:</div>
+                                <div style="font-weight: 700; font-size: 1.25rem; color: var(--color-primary);">Rp 60.000.000</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: var(--spacing-md); font-size: 0.875rem; opacity: 0.8; font-style: italic;">
+                            💡 Ini BONUS di atas Pool Sharing income Anda. Total income = Pool Share + Affiliate Commission
+                        </p>
+                    </div>
+                    
+                    <!-- MEGA SIMULATION for Big Speakers -->
+                    <div style="margin-top: var(--spacing-lg); background: linear-gradient(135deg, rgba(212,165,116,0.3), rgba(122,154,126,0.2)); padding: var(--spacing-xl); border-radius: var(--radius-xl); border: 2px solid var(--color-primary); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; right: 0; background: var(--color-primary); color: white; padding: 0.5rem 1.5rem; font-size: 0.75rem; font-weight: 700; border-radius: 0 0 0 var(--radius-lg);">🔥 BIG PICTURE</div>
+                        
+                        <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md); margin-top: var(--spacing-sm);">
+                            <i data-lucide="rocket" style="width: 24px; height: 24px; color: var(--color-primary);"></i>
+                            <strong style="color: white; font-size: 1.25rem;">Simulasi: Speaker dengan 10.000 Audience</strong>
+                        </div>
+                        
+                        <p style="color: rgba(255,255,255,0.85); margin-bottom: var(--spacing-lg); font-size: 0.95rem;">
+                            Anda punya komunitas/followers/alumni workshop 10.000 orang? Ini potensi Anda:
+                        </p>
+                        
+                        <!-- Conversion Funnel -->
+                        <div style="background: rgba(0,0,0,0.2); padding: var(--spacing-lg); border-radius: var(--radius-lg); margin-bottom: var(--spacing-lg);">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--spacing-md); text-align: center;">
+                                <div>
+                                    <div style="font-size: 2rem; font-weight: 800; color: white;">10.000</div>
+                                    <div style="font-size: 0.8rem; opacity: 0.7;">Total Audience</div>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: center;">
+                                    <i data-lucide="arrow-right" style="width: 24px; height: 24px; opacity: 0.5;"></i>
+                                </div>
+                                <div>
+                                    <div style="font-size: 2rem; font-weight: 800; color: var(--color-primary);">10%</div>
+                                    <div style="font-size: 0.8rem; opacity: 0.7;">Konversi (Konservatif)</div>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: center;">
+                                    <i data-lucide="arrow-right" style="width: 24px; height: 24px; opacity: 0.5;"></i>
+                                </div>
+                                <div>
+                                    <div style="font-size: 2rem; font-weight: 800; color: var(--color-success);">1.000</div>
+                                    <div style="font-size: 0.8rem; opacity: 0.7;">Paying Users</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tier Breakdown -->
+                        <div style="margin-bottom: var(--spacing-lg);">
+                            <div style="font-weight: 600; margin-bottom: var(--spacing-sm); color: rgba(255,255,255,0.9);">📊 Distribusi Tier Subscription:</div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--spacing-sm);">
+                                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                    <div style="font-size: 0.8rem; opacity: 0.7;">Basic (50%)</div>
+                                    <div style="font-weight: 700;">500 users × Rp 199K</div>
+                                    <div style="color: var(--color-primary); font-weight: 600;">= Rp 99.5 Jt/bln</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                    <div style="font-size: 0.8rem; opacity: 0.7;">Pro (35%)</div>
+                                    <div style="font-weight: 700;">350 users × Rp 499K</div>
+                                    <div style="color: var(--color-primary); font-weight: 600;">= Rp 174.6 Jt/bln</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: var(--radius-md);">
+                                    <div style="font-size: 0.8rem; opacity: 0.7;">Premium (15%)</div>
+                                    <div style="font-weight: 700;">150 users × Rp 999K</div>
+                                    <div style="color: var(--color-primary); font-weight: 600;">= Rp 149.8 Jt/bln</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Final Numbers -->
+                        <div style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); padding: var(--spacing-lg); border-radius: var(--radius-xl); text-align: center;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg);">
+                                <div>
+                                    <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.25rem;">Total Revenue/Bulan</div>
+                                    <div style="font-size: 1.5rem; font-weight: 800;">Rp 423.9 Juta</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.25rem;">Komisi 20%/Bulan</div>
+                                    <div style="font-size: 1.75rem; font-weight: 800;">Rp 84.8 Juta</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: var(--spacing-md); border-radius: var(--radius-lg);">
+                                    <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.25rem;">🎯 TOTAL 12 BULAN</div>
+                                    <div style="font-size: 2.5rem; font-weight: 800; line-height: 1;">Rp 1.01 M</div>
+                                    <div style="font-size: 0.8rem; margin-top: 0.25rem; opacity: 0.9;">( Satu Miliar Rupiah! )</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reality Check -->
+                        <div style="margin-top: var(--spacing-md); display: flex; align-items: start; gap: var(--spacing-sm); font-size: 0.85rem; color: rgba(255,255,255,0.8);">
+                            <i data-lucide="info" style="width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;"></i>
+                            <span><strong>Reality check:</strong> Konversi 10% itu konservatif untuk audience yang sudah trust Anda. Speaker dengan engagement tinggi bisa achieve 15-20% konversi. <strong style="color: var(--color-primary);">Plus ini belum termasuk Pool Sharing income dari Digital Twin Anda sendiri!</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section bg-white" id="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">How It Works</span>
+                <h2 class="section-title">Proses Onboarding Partner</h2>
+                <p class="section-description">
+                    Total 2-3 minggu. Anda cukup ngobrol, kami yang handle technical.
+                </p>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-week">Week 1</span>
+                        <h3>Deep Extraction</h3>
+                        <p>2-3 sesi interview @ 2 jam. Format santai via Zoom. Kami gali:</p>
+                        <ul class="card-list">
+                            <li>Failure Scars - kesalahan mahal yang bikin wisdom</li>
+                            <li>Decision Rules - jawaban satu kalimat untuk situasi kritis</li>
+                            <li>Numeric Thresholds - angka konkret batas aman/bahaya</li>
+                            <li>Kill Criteria - kapan harus STOP</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-week">Week 2</span>
+                        <h3>Knowledge Structuring</h3>
+                        <p>Tim AICEO yang mengerjakan:</p>
+                        <ul class="card-list">
+                            <li>Transcript jadi Decision Units</li>
+                            <li>Topic tagging & categorization</li>
+                            <li>AI Agent training dengan tone Anda</li>
+                            <li>Database setup & integration</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-week">Week 3</span>
+                        <h3>Validation & Launch</h3>
+                        <p>Anda review & approve:</p>
+                        <ul class="card-list">
+                            <li>Test Digital Twin langsung</li>
+                            <li>Review accuracy & tone</li>
+                            <li>Revisi jika perlu</li>
+                            <li>Launch to 10,000+ users</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Questions</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">
+                    Jawaban untuk skeptisisme dan concern umum
+                </p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Saya punya 10.000+ followers/alumni. Apa benefit spesial?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Anda di posisi sangat powerful.</strong> Dengan Affiliate Program 20% recurring 12 bulan:</p>
+                            <div style="background: var(--color-amber-light); padding: var(--spacing-md); border-radius: var(--radius-lg); margin: var(--spacing-md) 0;">
+                                <p style="margin-bottom: var(--spacing-sm);"><strong>🎯 Quick Math (Konservatif):</strong></p>
+                                <p style="margin-bottom: 0.5rem;">10.000 audience × 10% konversi = <strong>1.000 paying users</strong></p>
+                                <p style="margin-bottom: 0.5rem;">Avg subscription Rp 400K/bulan × 1.000 = Rp 400 Juta revenue/bulan</p>
+                                <p style="margin-bottom: 0.5rem;">Komisi 20% = <strong style="color: var(--color-primary);">Rp 80 Juta/bulan</strong></p>
+                                <p style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin-top: var(--spacing-sm);">
+                                    💰 Total 12 bulan = Rp 960 Juta ~ Rp 1 MILIAR
+                                </p>
+                            </div>
+                            <p><strong>Spesial untuk Big Speakers (1000+ potential users):</strong></p>
+                            <ul class="card-list">
+                                <li>Dedicated Account Manager</li>
+                                <li>Custom onboarding & marketing support</li>
+                                <li>Co-branding opportunities</li>
+                                <li>Priority feature requests untuk Digital Twin Anda</li>
+                            </ul>
+                            <p style="margin-top: var(--spacing-md); font-style: italic; color: var(--color-primary);">
+                                Ingat: Ini HANYA dari affiliate. Belum termasuk Pool Sharing dari Digital Twin Anda sendiri + workshop revenue yang naik 120%!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Bagaimana cara kerja Affiliate Program?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>2 Fase Komisi:</strong></p>
+                            <ul class="card-list">
+                                <li><strong>Bulan 1-12:</strong> Dapat 20% dari setiap pembayaran user yang Anda referensikan. Ini recurring bulanan, bukan one-time!</li>
+                                <li><strong>Bulan 13+:</strong> User referral Anda masuk ke Pool 30% bersama partner lain</li>
+                            </ul>
+                            <p><strong>Kenapa 12 bulan recurring?</strong></p>
+                            <p>Kalau user awalnya coba paket murah lalu upgrade ke premium, Anda tetap dapat 20% dari paket premium mereka. Ini memotivasi Anda untuk ajak user yang serius, bukan cuma trial.</p>
+                            <div style="background: var(--color-amber-light); padding: var(--spacing-md); border-radius: var(--radius-lg); margin: var(--spacing-md) 0;">
+                                <p style="margin-bottom: var(--spacing-sm);"><strong>Contoh:</strong></p>
+                                <p>User A subscribe Rp 300K/bulan → Anda dapat Rp 60K/bulan<br>
+                                Bulan ke-3, User A upgrade ke Rp 1 Juta/bulan → Anda dapat Rp 200K/bulan<br>
+                                <strong style="color: var(--color-primary);">Total 12 bulan: Rp 2.1 Juta dari 1 user!</strong></p>
+                            </div>
+                            <p>Affiliate income ini BONUS di atas Pool Sharing income Anda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Apakah ini akan mematikan bisnis workshop saya?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Justru sebaliknya. Data beta tester menunjukkan:</p>
+                            <ul class="card-list">
+                                <li>Workshop registrations naik 120%</li>
+                                <li>High-ticket consulting deals naik 120%</li>
+                                <li>Brand awareness naik dari regional ke national</li>
+                            </ul>
+                            <p><strong>Mengapa?</strong> Digital Twin = Lead Magnet Premium. User trial gratis/murah → puas → trust naik → upgrade ke workshop offline yang high-ticket.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Bagaimana jika AI memberikan saran yang salah?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Kami punya 3 safety nets:</p>
+                            <ul class="card-list">
+                                <li><strong>Kill Criteria</strong> - AI tahu kapan harus STOP dan escalate ke Anda</li>
+                                <li><strong>Epistemic Honesty</strong> - AI jujur kalau tidak tahu, tidak akan halusinasi</li>
+                                <li><strong>User Feedback Loop</strong> - Report langsung ke dashboard Anda untuk review</li>
+                            </ul>
+                            <p>Plus setiap response ada disclaimer: "Advice berdasarkan framework [Nama Anda]. Untuk case kompleks, konsultasi langsung direkomendasikan."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Bisakah saya menarik data saya kembali?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Ya, 100%.</strong> Kontrak mencakup Termination Clause:</p>
+                            <ul class="card-list">
+                                <li>Request takedown kapan saja</li>
+                                <li>Data dihapus dari sistem dalam 30 hari</li>
+                                <li>Full export dalam format JSON/CSV/PDF</li>
+                                <li>No lock-in policy</li>
+                            </ul>
+                            <p>Knowledge Anda = Aset Anda. AICEO hanya platform, seperti Spotify tidak "memiliki" lagu penyanyi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Berapa lama baru bisa dapat income?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Early Partners (10 pertama):</strong> Month 1 langsung dapat income.</p>
+                            <ul class="card-list">
+                                <li>Guaranteed minimum 5% contribution share (6 bulan pertama)</li>
+                                <li>Bonus onboarding Rp 5.000.000 setelah launch</li>
+                                <li>Priority listing di Expert Directory</li>
+                            </ul>
+                            <p><strong>Simulasi konservatif:</strong> Month 1: ~Rp 3-5 juta → Month 6: ~Rp 10-12 juta → Month 12: ~Rp 18-25 juta (passive income)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Bagaimana IP protection & data security?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>3 Jaminan Kami:</strong></p>
+                            <ul class="card-list">
+                                <li><strong>Ownership:</strong> Knowledge 100% milik Anda. AICEO hanya platform.</li>
+                                <li><strong>No-Training Guarantee:</strong> Data TIDAK digunakan untuk training model publik (GPT-5, dll)</li>
+                                <li><strong>Takedown Rights:</strong> Bisa minta hapus kapan saja (execute dalam 30 hari)</li>
+                            </ul>
+                            <p>Semua tertulis dalam kontrak legal. Plus kami pakai Closed Loop System - AI dikunci hanya akses database Anda, tidak bisa ambil data dari internet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Apa bedanya dengan course online saya?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>AICEO ≠ Course Platform. Comparison:</p>
+                            <ul class="card-list">
+                                <li><strong>Format:</strong> Course = video pre-recorded | AICEO = real-time Q&A</li>
+                                <li><strong>Interactivity:</strong> Course = one-way | AICEO = two-way personalized</li>
+                                <li><strong>Completion Rate:</strong> Course = 3-10% | AICEO = 80%+</li>
+                                <li><strong>Use Case:</strong> Course = belajar konsep | AICEO = guided decision saat eksekusi</li>
+                            </ul>
+                            <p><strong>Strategy terbaik:</strong> Pakai keduanya! Course untuk edukasi massal, Digital Twin untuk pendampingan eksekusi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Bagaimana kalau ada pakar lain yang lebih terkenal join?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Bukan Zero-Sum Game.</strong> Sistem Pool Sharing melindungi Anda:</p>
+                            <ul class="card-list">
+                                <li>Pakar baru join → Platform marketing spend naik → user base naik</li>
+                                <li>Pool membesar → semua partner dapat lebih banyak</li>
+                                <li>Quality-based system → knowledge berkualitas tetap defend share</li>
+                            </ul>
+                            <p><strong>Real Math Example:</strong></p>
+                            <div style="background: var(--color-amber-light); padding: var(--spacing-md); border-radius: var(--radius-lg); margin: var(--spacing-md) 0;">
+                                <p style="margin-bottom: var(--spacing-sm);"><strong>Scenario A:</strong> 5 partners, 5.000 users, Pool Rp 120 juta<br>
+                                → Your 10% share = <strong>Rp 12 juta</strong></p>
+                                
+                                <p><strong>Scenario B:</strong> 20 partners, 15.000 users, Pool Rp 360 juta<br>
+                                → Your 8% share (turun) = <strong>Rp 28.8 juta</strong></p>
+                                
+                                <p style="color: var(--color-primary); font-weight: 600; margin-top: var(--spacing-sm);">
+                                    💡 You earn <strong>MORE</strong> walaupun share % turun karena pool membesar!
+                                </p>
+                            </div>
+                            <p><strong>Plus:</strong> Quality-based system → Jika knowledge Anda berkualitas tinggi, contribution share akan tetap defend.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner" id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Siap Monetize Wisdom Anda?</h2>
+                <p>Bergabung sebagai Early Partner dan dapatkan benefit eksklusif</p>
+                
+                <div class="cta-benefits">
+                    <div class="cta-benefit">
+                        <div class="cta-benefit-icon">
+                            <i data-lucide="check"></i>
+                        </div>
+                        <div>
+                            <strong>Guaranteed 5% Share</strong><br>
+                            <small>Untuk 6 bulan pertama</small>
+                        </div>
+                    </div>
+                    <div class="cta-benefit">
+                        <div class="cta-benefit-icon">
+                            <i data-lucide="check"></i>
+                        </div>
+                        <div>
+                            <strong>Bonus Rp 5 Juta</strong><br>
+                            <small>Setelah Digital Twin launch</small>
+                        </div>
+                    </div>
+                    <div class="cta-benefit">
+                        <div class="cta-benefit-icon">
+                            <i data-lucide="check"></i>
+                        </div>
+                        <div>
+                            <strong>20% Affiliate 12 Bulan</strong><br>
+                            <small>Recurring dari setiap referral</small>
+                        </div>
+                    </div>
+                    <div class="cta-benefit">
+                        <div class="cta-benefit-icon">
+                            <i data-lucide="check"></i>
+                        </div>
+                        <div>
+                            <strong>Priority Listing</strong><br>
+                            <small>Top Expert Directory</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: var(--spacing-xl);">
+                    <a href="https://wa.me/6285155009888?text=Halo%20AICEO%2C%20saya%20tertarik%20dengan%20Knowledge%20Partner%20Program.%20Bisa%20diskusi%20lebih%20lanjut%3F" class="btn btn-primary" style="font-size: 1.125rem; padding: 1.25rem 2.5rem;" target="_blank" rel="noopener">
+                        <i data-lucide="message-circle"></i>
+                        Hubungi Kami via WhatsApp
+                    </a>
+                </div>
+                
+                <p style="margin-top: var(--spacing-md); font-size: 0.95rem; opacity: 0.8;">
+                    Limited: 10 Early Partners Only
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo" style="color: white;">
+                        <div class="logo-icon">
+                            <i data-lucide="brain-circuit"></i>
+                        </div>
+                        <span>AICEO</span>
+                    </a>
+                    <p class="footer-description">
+                        Platform Decision Support untuk CEO/Owner bisnis Indonesia. Mengarsipkan wisdom pakar menjadi Digital Twin yang bekerja 24/7.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Program</h4>
+                    <ul class="footer-links">
+                        <li><a href="#problem">Problem & Solution</a></li>
+                        <li><a href="#model">Business Model</a></li>
+                        <li><a href="#process">Onboarding Process</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Partner Benefits</h4>
+                    <ul class="footer-links">
+                        <li><a href="#solution">Legacy Building</a></li>
+                        <li><a href="#solution">Passive Income</a></li>
+                        <li><a href="#solution">Lead Magnet</a></li>
+                        <li><a href="#solution">Zero Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About AICEO</a></li>
+                        <li><a href="#">Flexeet Partnership</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 AICEO. All rights reserved. | Built with ❤️ by Flexeet</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            // Header scroll effect
+            const header = document.getElementById('header');
+            let lastScrollY = window.scrollY;
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                lastScrollY = window.scrollY;
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileNav.classList.toggle('active');
+                });
+                
+                // Close mobile menu when clicking a link
+                mobileNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileNav.classList.remove('active');
+                    });
+                });
+            }
+            
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add staggered delay for multiple items
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all animated elements
+            document.querySelectorAll('.card, .flow-layer, .timeline-item, .faq-item').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Stats counter animation - FIXED VERSION
+            function animateCounter(element, target, prefix, suffix, duration = 2000) {
+                const start = 0;
+                const startTime = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Easing function for smooth animation
+                    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                    const current = Math.floor(easeOutQuart * target);
+                    
+                    // Format number with locale
+                    let formattedNumber = current.toLocaleString('id-ID');
+                    element.textContent = prefix + formattedNumber + suffix;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+                
+                requestAnimationFrame(update);
+            }
+            
+            // Stats Observer
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Check if already animated
+                        if (entry.target.dataset.animated === 'true') return;
+                        entry.target.dataset.animated = 'true';
+                        
+                        const numberEl = entry.target.querySelector('.stat-number');
+                        
+                        // Handle static values (like 24/7)
+                        if (entry.target.dataset.static) {
+                            numberEl.textContent = entry.target.dataset.static;
+                            return;
+                        }
+                        
+                        // Handle animated counters
+                        const target = parseInt(entry.target.dataset.target) || 0;
+                        const prefix = entry.target.dataset.prefix || '';
+                        const suffix = entry.target.dataset.suffix || '';
+                        
+                        if (target > 0) {
+                            animateCounter(numberEl, target, prefix, suffix);
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            document.querySelectorAll('.stat-item').forEach(el => {
+                statsObserver.observe(el);
+            });
+            
+            // FAQ Accordion
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const faqItem = button.parentElement;
+                    const isActive = faqItem.classList.contains('active');
+                    
+                    // Close all FAQ items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const headerHeight = header.offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

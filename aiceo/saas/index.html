@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AICEO Analytics Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FBBF24",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0B0F19",
+                        "card-dark": "#161B22",
+                        "sidebar-dark": "#0D1117",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Inter', sans-serif; }
+        }
+        .glass-sidebar {
+            backdrop-filter: blur(12px);
+            background-color: rgba(13, 17, 23, 0.85);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        @media (max-width: 1024px) {
+            .mobile-stack {
+                flex-direction: column !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+            .sidebar-collapsed {
+                display: none !important;
+            }
+            /* Drawer Mobile */
+            .sidebar-mobile-open {
+                display: flex !important;
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 75% !important;
+                max-width: 300px;
+                height: 100vh !important;
+                z-index: 100 !important;
+                background-color: rgba(13, 17, 23, 0.95);
+                backdrop-filter: blur(12px);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .content-area {
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+    <!-- Header Mobile -->
+    <header
+        class="lg:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-sidebar-dark sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-slate-900 text-lg">psychology</span>
+            </div>
+            <span class="text-lg font-bold tracking-tight">AICEO</span>
+        </div>
+        <button class="p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()"
+        class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden backdrop-blur-sm transition-opacity"></div>
+
+    <div class="flex mobile-stack h-screen overflow-hidden">
+        <!-- Sidebar Kiri (Standardized) -->
+        <aside id="main-sidebar"
+            class="w-64 sidebar-collapsed lg:flex glass-sidebar border-r border-slate-200 dark:border-slate-800 flex flex-col z-20 h-screen sticky top-0">
+            <!-- Scrollable Content Area -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 pb-2">
+                <!-- Brand -->
+                <div class="flex items-center gap-3 mb-8">
+                    <div
+                        class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-slate-900">psychology</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">AICEO</span>
+                </div>
+
+                <!-- Admin Status -->
+                <div class="bg-primary/10 border border-primary/20 rounded-lg p-3 mb-6">
+                    <div class="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-sm">verified_user</span>
+                        Admin Workspace
+                    </div>
+                </div>
+
+                <!-- Main Nav -->
+                <nav class="space-y-1">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-all"
+                        href="index.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="chat.html">
+                        <span class="material-symbols-outlined">chat_bubble</span>
+                        <span>Chat</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="credits.html">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                        <span>Credits</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="decision_units.html">
+                        <span class="material-symbols-outlined">shield</span>
+                        <span>Decision Units</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="bot_personas.html">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                        <span>Bots</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="news.html">
+                        <span class="material-symbols-outlined">newspaper</span>
+                        <span>News & Updates</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="faq.html">
+                        <span class="material-symbols-outlined">quiz</span>
+                        <span>FAQ</span>
+                    </a>
+                </nav>
+
+                <!-- Mentor Favorit -->
+                <div class="mt-8">
+                    <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3 px-3">
+                        Mentor Favorit</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 px-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-700 overflow-hidden ring-2 ring-primary/30">
+                                <img alt="Adrian" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8" />
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-semibold truncate">Adrian Firnanda</p>
+                                <p class="text-xs text-slate-500">TikTok Expert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Footer (Fixed Bottom) -->
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800 space-y-4 bg-white/5 backdrop-blur-md">
+                <!-- Theme Toggles -->
+                <div class="flex p-1 bg-slate-200 dark:bg-white/5 rounded-lg items-center">
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">light_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md bg-white dark:bg-white/10 shadow-sm text-xs flex justify-center items-center text-slate-900 dark:text-white">
+                        <span class="material-symbols-outlined text-sm">dark_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">settings_brightness</span>
+                    </button>
+                </div>
+
+                <!-- SidebarUserCard -->
+                <div onclick="window.location.href='settings.html'"
+                    class="bg-[#0d0d0f] rounded-[16px] p-3 border border-white/5 flex items-center justify-between group cursor-pointer hover:bg-[#121214] transition-all mb-1">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-[40px] h-[40px] rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-lg shadow-lg shadow-amber-500/10">
+                            A
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <span class="text-white font-semibold text-[13px] leading-tight truncate">AICEO Admin</span>
+                            <span class="text-slate-500 text-[10px] truncate">admin@aiceo.id</span>
+                        </div>
+                    </div>
+                    <button
+                        class="text-slate-500 hover:text-primary transition-all group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.6)] shrink-0">
+                        <span class="material-symbols-outlined text-lg">logout</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content (Middle Area) -->
+        <main
+            class="content-area flex-1 overflow-y-auto custom-scrollbar p-4 lg:p-8 bg-background-light dark:bg-background-dark">
+            <div class="w-full">
+                <!-- Header & Filters -->
+                <div class="mb-10">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                        <div>
+                            <h1 class="text-2xl font-bold mb-1 flex items-center gap-2">
+                                Analytics Dashboard
+                                <div
+                                    class="hidden md:flex items-center gap-2 px-3 py-1 bg-white dark:bg-card-dark rounded-full border border-slate-200 dark:border-slate-800 shadow-sm ml-4">
+                                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                    <span class="text-[10px] font-bold uppercase text-slate-500">API: 42ms</span>
+                                </div>
+                            </h1>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">
+                                AICEO Instance v2.4.1 • <span class="text-green-500 font-bold">System Normal</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="analytics_detailed.html"
+                                class="flex items-center gap-2 px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg shadow-black/5">
+                                <span class="material-symbols-outlined text-lg">description</span>
+                                Detailed Report
+                            </a>
+                            <button
+                                class="flex items-center gap-2 px-6 py-2.5 bg-primary text-slate-900 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+                                <span class="material-symbols-outlined text-lg">download</span>
+                                Export CSV
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sticky Filter Bar -->
+                    <div
+                        class="sticky top-0 z-30 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-y border-slate-200 dark:border-slate-800 -mx-4 px-4 lg:-mx-8 lg:px-8">
+                        <div class="flex flex-wrap items-center gap-4">
+                            <!-- Date Range -->
+                            <div
+                                class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-xl">
+                                <span class="material-symbols-outlined text-slate-400 text-sm">calendar_month</span>
+                                <select
+                                    class="bg-transparent border-none text-xs font-bold focus:ring-0 cursor-pointer">
+                                    <option>Last 7 Days</option>
+                                    <option>Last 30 Days</option>
+                                    <option>Custom Range</option>
+                                </select>
+                            </div>
+
+                            <!-- Expert Filter (Multi-select concept) -->
+                            <div
+                                class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-xl">
+                                <span class="material-symbols-outlined text-slate-400 text-sm">person</span>
+                                <select
+                                    class="bg-transparent border-none text-xs font-bold focus:ring-0 cursor-pointer">
+                                    <option>All Experts</option>
+                                    <option>Adrian Firnanda</option>
+                                    <option>Aji Wanda</option>
+                                    <option>Dewi Sartika</option>
+                                </select>
+                            </div>
+
+                            <!-- Domain Filter -->
+                            <div
+                                class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-xl">
+                                <span class="material-symbols-outlined text-slate-400 text-sm">category</span>
+                                <select
+                                    class="bg-transparent border-none text-xs font-bold focus:ring-0 cursor-pointer">
+                                    <option>All Domains</option>
+                                    <option>Finance</option>
+                                    <option>Marketing</option>
+                                    <option>Operations</option>
+                                    <option>General</option>
+                                </select>
+                            </div>
+
+                            <div class="ml-auto flex items-center gap-2">
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Live
+                                    Updates</span>
+                                <span class="block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI Summary Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div
+                        class="p-4 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Total Users</p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white">124</p>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Total Sessions</p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white">1.2k</p>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Avg. Retention</p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white">82%</p>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Total Decision Units
+                        </p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white">42</p>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <!-- Bot Popularity Chart -->
+                    <div
+                        class="p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Bot Popularity</h3>
+                        <div class="h-48 relative">
+                            <canvas id="botPopularityChart"></canvas>
+                        </div>
+                    </div>
+                    <!-- Daily Activity Chart -->
+                    <div
+                        class="p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Daily Activity (Last
+                            7 Days)</h3>
+                        <div class="h-48 relative">
+                            <canvas id="dailyActivityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic Distribution & Top Users -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Topic Distribution Pie -->
+                    <div
+                        class="md:col-span-1 p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Topic Distribution
+                        </h3>
+                        <div class="h-48 relative">
+                            <canvas id="topicDistributionChart"></canvas>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-2 h-2 rounded-full bg-primary"></span>Finance</span>
+                                <span class="font-bold">40%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-2 h-2 rounded-full bg-slate-500"></span>Marketing</span>
+                                <span class="font-bold">20%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="flex items-center gap-2"><span
+                                        class="w-2 h-2 rounded-full bg-slate-400"></span>Operations</span>
+                                <span class="font-bold">13%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Users Leaderboard -->
+                    <div
+                        class="md:col-span-2 p-6 rounded-2xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Top Users
+                            Leaderboard
+                        </h3>
+                        <div class="space-y-4">
+                            <div
+                                class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center font-bold text-slate-900 text-xs">
+                                        1
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-bold">AICEO Admin</p>
+                                        <p class="text-xs text-slate-500">Superuser</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-bold">15 sessions</p>
+                                    <p class="text-xs text-primary font-bold">48 credits</p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center font-bold text-slate-400 text-xs">
+                                        2
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-bold">Demo User</p>
+                                        <p class="text-xs text-slate-500">Pro Member</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-bold">5 sessions</p>
+                                    <p class="text-xs text-primary font-bold">28 credits</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bot Performance & Speaker Analytics -->
+                <div class="space-y-6 mb-20">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500">Bot Performance & Speaker
+                            Analytics</h3>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sort by:</span>
+                            <select
+                                class="bg-transparent border-none text-xs font-bold text-primary focus:ring-0 cursor-pointer">
+                                <option>Top Sessions</option>
+                                <option>Avg. Retention</option>
+                                <option>User Depth</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Speaker Analytics Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Speaker Card 1: Adrian Firnanda -->
+                        <div
+                            class="bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden group hover:border-primary/30 transition-all shadow-sm">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center ring-1 ring-amber-500/20">
+                                            <div class="w-10 h-10 rounded-xl overflow-hidden">
+                                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8"
+                                                    alt="Adrian" class="w-full h-full object-cover">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-base font-bold text-slate-900 dark:text-white">Adrian
+                                                Firnanda</h4>
+                                            <p class="text-[10px] font-bold text-primary uppercase tracking-widest">
+                                                TikTok Specialist</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="flex items-center gap-1 justify-end text-green-500">
+                                            <span class="material-symbols-outlined text-xs">trending_up</span>
+                                            <span class="text-[10px] font-bold">12%</span>
+                                        </div>
+                                        <p class="text-[10px] text-slate-500 uppercase font-black">Growth</p>
+                                    </div>
+                                </div>
+
+                                <!-- Stats Breakdown -->
+                                <div class="grid grid-cols-3 gap-2 mb-6">
+                                    <div
+                                        class="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 text-center">
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Sessions</p>
+                                        <p class="text-lg font-black">482</p>
+                                    </div>
+                                    <div
+                                        class="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 text-center">
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Users</p>
+                                        <p class="text-lg font-black">124</p>
+                                    </div>
+                                    <div
+                                        class="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 text-center">
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Avg/User</p>
+                                        <p class="text-lg font-black">3.8</p>
+                                    </div>
+                                </div>
+
+                                <!-- Detailed Insights List -->
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-500">Peak Activity</span>
+                                        <span class="font-bold">19:00 - 22:00</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-500">Confidence Score</span>
+                                        <div class="flex items-center gap-1">
+                                            <span class="font-bold">98%</span>
+                                            <div
+                                                class="w-12 h-1.5 bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+                                                <div class="h-full bg-primary w-[98%]"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-500">Main Topic</span>
+                                        <span
+                                            class="px-2 py-0.5 bg-blue-500/10 text-blue-500 rounded-md font-bold">Logistics</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card Footer: Pattern Preview -->
+                            <div
+                                class="px-6 py-4 bg-slate-50/50 dark:bg-white/[0.02] border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                                <div class="flex -space-x-2">
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] font-bold text-slate-900 ring-2 ring-white dark:ring-card-dark">
+                                        DU</div>
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-[10px] font-bold text-white ring-2 ring-white dark:ring-card-dark">
+                                        KB</div>
+                                </div>
+                                <button
+                                    class="text-xs font-bold text-primary group-hover:underline flex items-center gap-1">
+                                    Detailed Report <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Speaker Card 2: Strategic Bulletin (System) -->
+                        <div
+                            class="bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden group hover:border-blue-500/30 transition-all shadow-sm">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center ring-1 ring-blue-500/20 text-blue-500">
+                                            <span class="material-symbols-outlined text-2xl">auto_awesome</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-base font-bold text-slate-900 dark:text-white">Strategic
+                                                Bulletin</h4>
+                                            <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">
+                                                Logic Engine V4</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="flex items-center gap-1 justify-end text-blue-500">
+                                            <span class="material-symbols-outlined text-xs">sync</span>
+                                            <span class="text-[10px] font-bold">Stable</span>
+                                        </div>
+                                        <p class="text-[10px] text-slate-500 uppercase font-black">Status</p>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-3 gap-2 mb-6">
+                                    <div
+                                        class="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 text-center">
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Sessions</p>
+                                        <p class="text-lg font-black">312</p>
+                                    </div>
+                                    <div
+                                        class="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 text-center">
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Users</p>
+                                        <p class="text-lg font-black">68</p>
+                                    </div>
+                                    <div
+                                        class="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 text-center">
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Avg/User</p>
+                                        <p class="text-lg font-black">4.5</p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-500">Peak Activity</span>
+                                        <span class="font-bold">13:00 - 15:00</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-500">Logic Accuracy</span>
+                                        <div class="flex items-center gap-1">
+                                            <span class="font-bold">95%</span>
+                                            <div
+                                                class="w-12 h-1.5 bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+                                                <div class="h-full bg-blue-500 w-[95%]"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-500">Main Topic</span>
+                                        <span
+                                            class="px-2 py-0.5 bg-indigo-500/10 text-indigo-500 rounded-md font-bold">Execution</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="px-6 py-4 bg-slate-50/50 dark:bg-white/[0.02] border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                                <div class="flex -space-x-2">
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-blue-400 flex items-center justify-center text-[10px] font-bold text-white ring-2 ring-white dark:ring-card-dark">
+                                        AI</div>
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-slate-400 flex items-center justify-center text-[10px] font-bold text-white ring-2 ring-white dark:ring-card-dark">
+                                        SYS</div>
+                                </div>
+                                <button
+                                    class="text-xs font-bold text-blue-500 group-hover:underline flex items-center gap-1">
+                                    Detailed Report <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Speaker Card 3: Dewi Sartika -->
+                        <div
+                            class="bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden group hover:border-pink-500/30 transition-all shadow-sm">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-pink-500/10 flex items-center justify-center ring-1 ring-pink-500/20">
+                                            <div
+                                                class="w-10 h-10 rounded-xl overflow-hidden bg-slate-800 flex items-center justify-center text-pink-500 font-bold">
+                                                DS</div>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-base font-bold text-slate-900 dark:text-white">Dewi Sartika
+                                            </h4>
+                                            <p class="text-[10px] font-bold text-pink-500 uppercase tracking-widest">
+                                                Finance Expert</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="flex items-center gap-1 justify-end text-red-500">
+                                            <span class="material-symbols-outlined text-xs">trending_down</span>
+                                            <span class="text-[10px] font-bold">3%</span>
+                                        </div>
+                                        <p class="text-[10px] text-slate-500 uppercase font-black">Growth</p>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-3 gap-2 mb-6">
+                                    <div
+                                        class="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 text-center">
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Sessions</p>
+                                        <p class="text-lg font-black">186</p>
+                                    </div>
+                                    <div
+                                        class="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 text-center">
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Users</p>
+                                        <p class="text-lg font-black">92</p>
+                                    </div>
+                                    <div
+                                        class="p-3 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 text-center">
+                                        <p class="text-[10px] font-bold text-slate-500 uppercase mb-1">Avg/User</p>
+                                        <p class="text-lg font-black">2.0</p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-500">Peak Activity</span>
+                                        <span class="font-bold">08:00 - 11:00</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-500">Confidence Score</span>
+                                        <div class="flex items-center gap-1">
+                                            <span class="font-bold">88%</span>
+                                            <div
+                                                class="w-12 h-1.5 bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+                                                <div class="h-full bg-pink-500 w-[88%]"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-500">Main Topic</span>
+                                        <span
+                                            class="px-2 py-0.5 bg-emerald-500/10 text-emerald-500 rounded-md font-bold">Finance</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="px-6 py-4 bg-slate-50/50 dark:bg-white/[0.02] border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                                <div class="flex -space-x-2">
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-emerald-400 flex items-center justify-center text-[10px] font-bold text-white ring-2 ring-white dark:ring-card-dark">
+                                        FIN</div>
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-slate-400 flex items-center justify-center text-[10px] font-bold text-white ring-2 ring-white dark:ring-card-dark">
+                                        TAX</div>
+                                </div>
+                                <button
+                                    class="text-xs font-bold text-pink-500 group-hover:underline flex items-center gap-1">
+                                    Detailed Report <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Engagement Heatmap & Trends Row -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+                        <!-- Heatmap Concept -->
+                        <div
+                            class="bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-3xl p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500">Hourly Engagement
+                                    Heatmap</h4>
+                                <span class="text-[10px] font-bold text-green-500 flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                    LIVE FEED
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-12 gap-1 mb-2">
+                                <!-- Simulated Heatmap Blocks (24 hours concept) -->
+                                <div class="h-12 bg-slate-100 dark:bg-white/5 rounded"></div>
+                                <div class="h-12 bg-slate-100 dark:bg-white/5 rounded"></div>
+                                <div class="h-12 bg-slate-100 dark:bg-white/10 rounded"></div>
+                                <div class="h-12 bg-slate-200 dark:bg-white/20 rounded"></div>
+                                <div class="h-12 bg-primary/40 rounded"></div>
+                                <div class="h-12 bg-primary/60 rounded"></div>
+                                <div class="h-12 bg-primary/80 rounded"></div>
+                                <div class="h-12 bg-primary rounded"></div>
+                                <div class="h-12 bg-primary/70 rounded"></div>
+                                <div class="h-12 bg-primary/40 rounded"></div>
+                                <div class="h-12 bg-slate-200 dark:bg-white/20 rounded"></div>
+                                <div class="h-12 bg-slate-100 dark:bg-white/10 rounded"></div>
+                            </div>
+                            <div
+                                class="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">
+                                <span>00:00</span>
+                                <span>12:00</span>
+                                <span>23:59</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-4 leading-relaxed italic">
+                                *Peak traffic detected during evening shifts (19:00 - 22:00 WIB). Optimalkan
+                                ketersediaan server pada jam-jam tersebut.
+                            </p>
+                        </div>
+
+                        <!-- Retention & Conversion Stats -->
+                        <div
+                            class="bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-3xl p-6 flex flex-col justify-between">
+                            <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Clarity
+                                Analytics: Conversion & Funnel</h4>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-xs font-bold">Query Resolution Rate</span>
+                                        <span class="text-xs font-bold text-primary">94%</span>
+                                    </div>
+                                    <div class="h-2 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary" style="width: 94%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-xs font-bold">Decision Unit Activation</span>
+                                        <span class="text-xs font-bold text-blue-500">72%</span>
+                                    </div>
+                                    <div class="h-2 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
+                                        <div class="h-full bg-blue-500" style="width: 72%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-xs font-bold">User Loyalty (Return Rate)</span>
+                                        <span class="text-xs font-bold text-emerald-500">68%</span>
+                                    </div>
+                                    <div class="h-2 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
+                                        <div class="h-full bg-emerald-500" style="width: 68%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 p-3 bg-primary/5 border border-primary/20 rounded-xl">
+                                <p class="text-[10px] font-bold text-primary uppercase mb-1">Key Insight</p>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">Adrian Firnanda memiliki tingkat
+                                    **Decision Activation** tertinggi (+85%) dibandingkan bot lainnya.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Sidebar Overlay for mobile -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"
+        onclick="toggleSidebar()"></div>
+
+    <!-- Mobile Nav -->
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-sidebar-dark border-t border-slate-200 dark:border-slate-800 flex justify-around items-center p-2 z-50">
+        <a href="index.html" class="flex flex-col items-center p-2 text-primary">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-xs font-bold mt-1">Dash</span>
+        </a>
+        <a href="chat.html" class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="text-xs font-bold mt-1">Chat</span>
+        </a>
+        <a href="bot_personas.html"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <span class="text-xs font-bold mt-1">Bots</span>
+        </a>
+        <button onclick="toggleSidebar()"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+            <span class="text-xs font-bold mt-1">Menu</span>
+        </button>
+    </nav>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('main-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            if (sidebar.classList.contains('sidebar-collapsed')) {
+                // Open
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.classList.add('sidebar-mobile-open');
+                overlay.classList.remove('hidden');
+            } else {
+                // Close
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.classList.remove('sidebar-mobile-open');
+                overlay.classList.add('hidden');
+            }
+        }
+    </script>
+
+    <script>
+        // Charts Initialization
+        const ctxPopularity = document.getElementById('botPopularityChart').getContext('2d');
+        new Chart(ctxPopularity, {
+            type: 'bar',
+            data: {
+                labels: ['Adrian F.', 'Aji W.', 'Dewi S.', 'Raka P.'],
+                datasets: [{
+                    label: 'Sessions',
+                    data: [28, 19, 11, 8],
+                    backgroundColor: '#FBBF24',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        const ctxActivity = document.getElementById('dailyActivityChart').getContext('2d');
+        new Chart(ctxActivity, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Chats',
+                    data: [12, 19, 15, 22, 18, 10, 14],
+                    borderColor: '#FBBF24',
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(251, 191, 36, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        const ctxTopic = document.getElementById('topicDistributionChart').getContext('2d');
+        new Chart(ctxTopic, {
+            type: 'doughnut',
+            data: {
+                labels: ['Finance', 'Marketing', 'Operations', 'General'],
+                datasets: [{
+                    data: [40, 25, 20, 15],
+                    backgroundColor: ['#FBBF24', '#334155', '#475569', '#cbd5e1'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: { legend: { display: false } }
+            }
+        });
+    </script>
+</body>
+
+</html>

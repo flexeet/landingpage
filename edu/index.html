@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADAB PEKERJA | Keseimbangan Dunia & Akhirat</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-controls">
+        <button class="nav-btn" id="prevBtn" aria-label="Previous slide">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="slide-counter">
+            <span id="currentSlide">1</span>
+            <span id="totalSlides">/26</span>
+        </div>
+        <button class="nav-btn" id="nextBtn" aria-label="Next slide">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </nav>
+
+    <!-- Menu Button -->
+    <button class="menu-btn" id="menuBtn" aria-label="Open slide menu">
+        <i class="fas fa-th"></i>
+    </button>
+
+    <!-- Slide Menu -->
+    <div class="slide-menu" id="slideMenu">
+        <div class="menu-content">
+            <h3>📑 Daftar Materi</h3>
+            <div class="menu-items" id="menuItems"></div>
+            <button class="menu-close" id="menuClose">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Main Presentation Container -->
+    <div class="presentation" id="presentation">
+        
+        <!-- SLIDE 1: Opening -->
+        <section class="slide slide-cover active" data-title="Opening">
+            <div class="cover-content">
+                <div class="badge animate-float">📿 Kajian Karir Islami</div>
+                <h1 class="glitch" data-text="ADAB PEKERJA">ADAB PEKERJA</h1>
+                <p class="tagline">Keseimbangan Dunia & Akhirat dalam Berkarir</p>
+                <div class="cover-cta">
+                    <span class="scroll-hint">Swipe atau tekan <kbd>→</kbd> untuk mulai</span>
+                </div>
+                <div class="floating-icons">
+                    <i class="fas fa-briefcase"></i>
+                    <i class="fas fa-mosque"></i>
+                    <i class="fas fa-balance-scale"></i>
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: Hook Question -->
+        <section class="slide slide-question" data-title="Pertanyaan Pembuka">
+            <div class="question-container">
+                <div class="question-icon">🤔</div>
+                <h2 class="reveal-text">Pernah ngerasa...</h2>
+                <div class="question-cards">
+                    <div class="q-card" data-delay="0.2">
+                        <span class="emoji">😤</span>
+                        <p>"Gaji gue kok segini doang?"</p>
+                    </div>
+                    <div class="q-card" data-delay="0.4">
+                        <span class="emoji">😩</span>
+                        <p>"Kerja cape, ga dihargain"</p>
+                    </div>
+                    <div class="q-card" data-delay="0.6">
+                        <span class="emoji">🙄</span>
+                        <p>"Bos gue ga adil!"</p>
+                    </div>
+                    <div class="q-card" data-delay="0.8">
+                        <span class="emoji">😒</span>
+                        <p>"Temen kerja pada toxic"</p>
+                    </div>
+                </div>
+                <p class="question-footer reveal-up">Tenang. Kita bahas dari sudut yang <span class="highlight">BERBEDA</span>.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: Positioning Statement -->
+        <section class="slide slide-positioning" data-title="Positioning">
+            <div class="positioning-container">
+                <h2 class="positioning-headline">Kajian ini tentang apa?</h2>
+                
+                <div class="positioning-battle">
+                    <!-- LEFT: BUKAN -->
+                    <div class="battle-side left-side">
+                        <div class="battle-x-container">
+                            <div class="battle-x">✕</div>
+                            <div class="x-ring"></div>
+                        </div>
+                        <h3>BUKAN</h3>
+                        <div class="battle-items">
+                            <div class="battle-item wrong" data-index="1">
+                                <div class="item-icon"><i class="fas fa-building"></i></div>
+                                <span>Pro Perusahaan</span>
+                                <div class="item-strike"></div>
+                            </div>
+                            <div class="battle-item wrong" data-index="2">
+                                <div class="item-icon"><i class="fas fa-user-tie"></i></div>
+                                <span>Pro Karyawan</span>
+                                <div class="item-strike"></div>
+                            </div>
+                            <div class="battle-item wrong" data-index="3">
+                                <div class="item-icon"><i class="fas fa-money-bill-wave"></i></div>
+                                <span>Pro yang Punya Duit</span>
+                                <div class="item-strike"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CENTER DIVIDER -->
+                    <div class="battle-divider">
+                        <div class="divider-line"></div>
+                        <div class="divider-vs">VS</div>
+                        <div class="divider-line"></div>
+                    </div>
+
+                    <!-- RIGHT: ADALAH -->
+                    <div class="battle-side right-side">
+                        <div class="battle-check-container">
+                            <div class="battle-check">✓</div>
+                            <div class="check-ring"></div>
+                            <div class="check-glow"></div>
+                        </div>
+                        <h3>ADALAH</h3>
+                        <div class="battle-items">
+                            <div class="battle-item correct" data-index="1">
+                                <div class="item-icon"><i class="fas fa-balance-scale"></i></div>
+                                <span>Pro Kebenaran Islam</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="battle-item correct" data-index="2">
+                                <div class="item-icon"><i class="fas fa-hands-helping"></i></div>
+                                <span>Pro Keadilan</span>
+                                <div class="item-glow"></div>
+                            </div>
+                            <div class="battle-item correct" data-index="3">
+                                <div class="item-icon"><i class="fas fa-compass"></i></div>
+                                <span>Pro yang BENAR</span>
+                                <div class="item-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="positioning-punchline">
+                    <p>Yang penting bukan <span class="strike-text">siapa yang menang</span>, tapi <span class="gold-text">mana yang BENAR</span>.</p>
+                </div>
+            </div>
+
+            <!-- Background Effects -->
+            <div class="positioning-bg-effects">
+                <div class="bg-gradient-left"></div>
+                <div class="bg-gradient-right"></div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: Big Statement -->
+        <section class="slide slide-statement" data-title="Statement Utama">
+            <div class="statement-content">
+                <div class="statement-bg">PRINSIP</div>
+                <blockquote class="big-quote">
+                    <span class="quote-mark">"</span>
+                    Kebenaran itu <span class="highlight-gold">tidak berubah</span> meskipun <span class="highlight-white">mayoritas meninggalkannya</span>.
+                    <span class="quote-mark">"</span>
+                </blockquote>
+                <p class="quote-source">— Refleksi QS. Al-An'am: 116</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: Scenario Interactive -->
+        <section class="slide slide-scenario" data-title="Reality Check">
+            <h2>🎯 Reality Check</h2>
+            <div class="scenario-box">
+                <p class="scenario-setup">Di kantor ada 30 orang.<br><strong>28 orang</strong> kerja asal-asalan, telat, toxic.<br><strong>2 orang</strong> (termasuk kamu) kerja bener.</p>
+                <div class="scenario-question">
+                    <p>Kamu pilih yang mana?</p>
+                    <div class="choice-buttons">
+                        <button class="choice-btn wrong" data-answer="wrong">
+                            <span class="choice-icon">👥</span>
+                            <span>Ikut yang 28, biar ga dikucilin</span>
+                        </button>
+                        <button class="choice-btn correct" data-answer="correct">
+                            <span class="choice-icon">💪</span>
+                            <span>Tetap yang 2, pegang prinsip</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="answer-reveal" id="answerReveal">
+                    <div class="answer-wrong hidden">
+                        <span class="answer-icon">❌</span>
+                        <p>Mayoritas bukan jaminan kebenaran. Jangan ikut sesat cuma karena rame.</p>
+                    </div>
+                    <div class="answer-correct hidden">
+                        <span class="answer-icon">✅</span>
+                        <p><strong>CORRECT!</strong> "Tetaplah istiqamah sebagaimana diperintahkan" — QS. Hud: 112</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: Philosophy - Work as Ibadah -->
+        <section class="slide slide-cards-flip" data-title="Kerja = Ibadah">
+            <h2>💡 Mindset Shift</h2>
+            <p class="subtitle">Tap kartu untuk reveal</p>
+            <div class="flip-cards-container">
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="card-emoji">💰</span>
+                            <p>Kerja = Cari Duit?</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Kalau gitu apa bedanya sama korupsi? Sama-sama dapat duit kan? 🤷</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="card-emoji">🕌</span>
+                            <p>Kerja = Ibadah!</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>"Bekerjalah, maka Allah dan Rasul-Nya akan melihat pekerjaanmu" — QS. At-Taubah: 105</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="card-emoji">⚖️</span>
+                            <p>Apa yang Dinilai?</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Bukan "dapat gaji berapa" tapi "amanahnya dijalankan atau tidak" di akhirat nanti.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: Balance Concept -->
+        <section class="slide slide-balance" data-title="Keseimbangan">
+            <h2>⚖️ The Balance</h2>
+            <div class="balance-visual">
+                <div class="balance-scale">
+                    <div class="scale-item left">
+                        <div class="scale-icon">🌍</div>
+                        <h4>DUNIA</h4>
+                        <p>Kerja, karir, gaji, skill</p>
+                    </div>
+                    <div class="scale-center">
+                        <div class="fulcrum"></div>
+                    </div>
+                    <div class="scale-item right">
+                        <div class="scale-icon">🌙</div>
+                        <h4>AKHIRAT</h4>
+                        <p>Ibadah, amanah, niat, adab</p>
+                    </div>
+                </div>
+                <div class="balance-quote">
+                    <p>"Carilah kebahagiaan akhirat, dan jangan lupakan bagianmu dari dunia"</p>
+                    <span>— QS. Al-Qashash: 77</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: Doa Sapu Jagat -->
+        <section class="slide slide-counter-visual" data-title="Insight Doa">
+            <h2>🤲 Insight dari Doa Sapu Jagat</h2>
+            <div class="counter-boxes">
+                <div class="counter-box dunia">
+                    <div class="counter-number" data-target="1">0</div>
+                    <p>Permintaan DUNIA</p>
+                    <span class="detail">"Kebaikan di dunia"</span>
+                </div>
+                <div class="counter-box akhirat">
+                    <div class="counter-number" data-target="2">0</div>
+                    <p>Permintaan AKHIRAT</p>
+                    <span class="detail">"Kebaikan di akhirat" + "Lindungi dari neraka"</span>
+                </div>
+            </div>
+            <p class="insight-text">
+                <i class="fas fa-lightbulb"></i>
+                Proporsi 1:2 — Akhirat lebih diprioritaskan, tapi dunia tidak diabaikan.
+            </p>
+        </section>
+
+        <!-- SLIDE 9: Siap Kerja Definition -->
+        <section class="slide slide-definition" data-title="Definisi Siap Kerja">
+            <div class="def-header">
+                <span class="def-emoji">🎯</span>
+                <h2>Orang "SIAP KERJA" itu...</h2>
+            </div>
+            <div class="def-comparison">
+                <div class="def-wrong">
+                    <h4>❌ BUKAN yang punya:</h4>
+                    <div class="def-items">
+                        <span class="def-tag">Ijazah keren</span>
+                        <span class="def-tag">Skill banyak</span>
+                        <span class="def-tag">Pengalaman panjang</span>
+                    </div>
+                </div>
+                <div class="def-right">
+                    <h4>✅ TAPI yang punya:</h4>
+                    <div class="def-items gold">
+                        <span class="def-tag"><i class="fas fa-brain"></i> Mikir sebelum ngomong</span>
+                        <span class="def-tag"><i class="fas fa-lightbulb"></i> Datang bawa solusi</span>
+                        <span class="def-tag"><i class="fas fa-hands-helping"></i> Bikin kerjaan orang lain lebih ringan</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: Bad Example Chat -->
+        <section class="slide slide-chat" data-title="Contoh Buruk">
+            <h2>💬 Contoh: Tim PR ke Tim Sales</h2>
+            <p class="chat-label bad-label">❌ Yang SALAH</p>
+            <div class="chat-container bad">
+                <div class="chat-bubble sent"><span class="sender">PR</span><p>Teh, nanti siapin produk ya buat event</p></div>
+                <div class="chat-bubble received"><span class="sender">Sales</span><p>Event apa?</p></div>
+                <div class="chat-bubble sent"><span class="sender">PR</span><p>Belum tau 🤷</p></div>
+                <div class="chat-bubble received"><span class="sender">Sales</span><p>Audiensnya siapa?</p></div>
+                <div class="chat-bubble sent"><span class="sender">PR</span><p>Belum tau juga 😅</p></div>
+                <div class="chat-bubble received"><span class="sender">Sales</span><p>Target berapa orang?</p></div>
+                <div class="chat-bubble sent"><span class="sender">PR</span><p>Gatau sih...</p></div>
+            </div>
+            <div class="verdict bad">
+                <i class="fas fa-times-circle"></i>
+                <p>Ini bukan kerja. Ini <strong>LEMPAR TANGGUNG JAWAB</strong>.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 11: Good Example Chat -->
+        <section class="slide slide-chat" data-title="Contoh Benar">
+            <h2>💬 Seharusnya Gimana?</h2>
+            <p class="chat-label good-label">✅ Yang BENAR</p>
+            <div class="chat-container good">
+                <div class="chat-bubble sent long">
+                    <span class="sender">PR</span>
+                    <p>Teh, kita ada event kerjasama kajian Ustazah X di Hotel Y.<br><br>
+                    📍 Audiens: 1.000-3.000 orang<br>
+                    👥 Segmen: Umur 20-25, ibu muda/pekerja awal<br>
+                    💡 Analisa: Suka produk stylish<br><br>
+                    Menurut data ini, produk apa yang cocok kita bawa?</p>
+                </div>
+                <div class="chat-bubble received"><span class="sender">Sales</span><p>Noted! Gue analisa dulu, nanti gue kasih rekomendasinya 👍</p></div>
+            </div>
+            <div class="verdict good">
+                <i class="fas fa-check-circle"></i>
+                <p>Bawa data lengkap = Kerjaan orang lain <strong>LEBIH RINGAN</strong></p>
+            </div>
+        </section>
+
+        <!-- SLIDE 12: Punchline -->
+        <section class="slide slide-punchline" data-title="Punchline">
+            <div class="punchline-content">
+                <div class="punchline-icon">💥</div>
+                <h2 class="typewriter-container"><span id="punchlineText"></span><span class="cursor">|</span></h2>
+                <p class="punchline-sub">Yang bikin orang kesel itu bukan <span class="strike">salah</span>,<br>tapi <span class="highlight-gold">GA MIKIR SAMA SEKALI</span>.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: Hadis Itqan -->
+        <section class="slide slide-hadis" data-title="Hadis Itqan">
+            <div class="hadis-container">
+                <div class="hadis-icon">📜</div>
+                <div class="hadis-content">
+                    <p class="hadis-text">"Sesungguhnya Allah <span class="highlight-gold">mencintai</span> seseorang yang apabila bekerja, mengerjakannya secara <span class="highlight-gold">ITQAN</span> (profesional/sempurna)."</p>
+                    <p class="hadis-source">— HR. Thabrani</p>
+                </div>
+                <div class="hadis-meaning">
+                    <h4>Apa itu ITQAN?</h4>
+                    <div class="meaning-pills">
+                        <span>Tuntas</span>
+                        <span>Detail</span>
+                        <span>Berkualitas</span>
+                        <span>Tidak asal-asalan</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 14: Kriteria Pekerja -->
+        <section class="slide slide-criteria" data-title="2 Kriteria">
+            <h2>👤 Kriteria Pekerja Ideal</h2>
+            <p class="criteria-source">QS. Al-Qashash: 26</p>
+            <div class="criteria-cards">
+                <div class="criteria-card">
+                    <div class="criteria-icon">💪</div>
+                    <h3>AL-QAWIY</h3>
+                    <p class="arabic-meaning">Kuat</p>
+                    <ul>
+                        <li>Kompeten</li>
+                        <li>Capable</li>
+                        <li>Mampu selesaikan tugas</li>
+                    </ul>
+                </div>
+                <div class="criteria-plus">+</div>
+                <div class="criteria-card">
+                    <div class="criteria-icon">🤝</div>
+                    <h3>AL-AMIN</h3>
+                    <p class="arabic-meaning">Dapat Dipercaya</p>
+                    <ul>
+                        <li>Amanah</li>
+                        <li>Bertanggung jawab</li>
+                        <li>Tidak khianati kepercayaan</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="criteria-note"><i class="fas fa-info-circle"></i> Skill tanpa amanah = berbahaya. Amanah tanpa skill = tidak efektif.</p>
+        </section>
+
+        <!-- SLIDE 15: Ciri Munafik -->
+        <section class="slide slide-warning" data-title="Red Flags">
+            <h2>🚨 RED FLAGS: Ciri Munafik dalam Kerja</h2>
+            <p class="warning-source">HR. Bukhari & Muslim</p>
+            <div class="warning-grid">
+                <div class="warning-item">
+                    <div class="warning-icon">🗣️</div>
+                    <h4>Berbicara = Dusta</h4>
+                    <p>Manipulasi laporan, bohong soal progress</p>
+                </div>
+                <div class="warning-item">
+                    <div class="warning-icon">🤞</div>
+                    <h4>Berjanji = Ingkar</h4>
+                    <p>Ga nepatin deadline, inkonsisten</p>
+                </div>
+                <div class="warning-item">
+                    <div class="warning-icon">🗡️</div>
+                    <h4>Dipercaya = Khianat</h4>
+                    <p>Korupsi waktu, salahgunakan kepercayaan</p>
+                </div>
+            </div>
+            <div class="warning-footer">
+                <p>Cek diri: Ada yang relate? <span class="highlight-gold">Saatnya berubah.</span></p>
+            </div>
+        </section>
+
+        <!-- SLIDE 16: Mengakui Kesalahan -->
+        <section class="slide slide-confession" data-title="Mengakui Kesalahan">
+            <div class="confession-content">
+                <div class="confession-icon">🙇</div>
+                <h2>Berani Mengakui Salah</h2>
+                <div class="confession-comparison">
+                    <div class="confession-card bad">
+                        <div class="confession-emoji">😇</div>
+                        <h4>Orang "Alim" yang Denial</h4>
+                        <ul>
+                            <li>Merasa selalu benar</li>
+                            <li>Tidak pernah minta maaf</li>
+                            <li>Salahkan orang lain</li>
+                            <li>Buta dengan kesalahannya</li>
+                        </ul>
+                        <div class="confession-verdict bad">❌ Allah tidak suka</div>
+                    </div>
+                    <div class="confession-vs">VS</div>
+                    <div class="confession-card good">
+                        <div class="confession-emoji">😔</div>
+                        <h4>Pendosa yang Mengakui</h4>
+                        <ul>
+                            <li>Sadar ketika berbuat salah</li>
+                            <li>Berani minta maaf</li>
+                            <li>Introspeksi diri</li>
+                            <li>Mau berubah jadi lebih baik</li>
+                        </ul>
+                        <div class="confession-verdict good">✅ Allah lebih suka</div>
+                    </div>
+                </div>
+                <div class="confession-quote">
+                    <p>"Pendosa yang <span class="highlight-gold">mengakui dosanya</span> jauh lebih baik daripada orang 'alim' yang <span class="highlight-red">tidak sadar dosanya</span>."</p>
+                </div>
+                <div class="confession-aplikasi">
+                    <h4>💼 Di Dunia Kerja:</h4>
+                    <div class="aplikasi-grid">
+                        <div class="aplikasi-item">
+                            <span class="aplikasi-who">Bos/Atasan:</span>
+                            <span>Akui kalau salah ambil keputusan. Minta maaf ke tim.</span>
+                        </div>
+                        <div class="aplikasi-item">
+                            <span class="aplikasi-who">Karyawan:</span>
+                            <span>Jujur kalau bikin kesalahan. Jangan cover up.</span>
+                        </div>
+                    </div>
+                    <p class="aplikasi-note"><i class="fas fa-lightbulb"></i> Tuhan saja mendukung orang yang mengakui kesalahan. Masa kita lebih tinggi dari Tuhan?</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 17: Hak vs Kewajiban -->
+        <section class="slide slide-versus" data-title="Hak vs Kewajiban">
+            <h2>⚔️ Realita yang Sering Terjadi</h2>
+            <div class="versus-container">
+                <div class="versus-side hak">
+                    <h3>HAK dari Perusahaan</h3>
+                    <div class="versus-meter full"><span>100% HARUS SEMPURNA!</span></div>
+                    <p>"Gaji telat sehari aja marah!"</p>
+                </div>
+                <div class="versus-divider">VS</div>
+                <div class="versus-side kewajiban">
+                    <h3>KEWAJIBAN ke Perusahaan</h3>
+                    <div class="versus-meter low"><span>Nego terus~</span></div>
+                    <p>"Telat 30 menit mah biasa..."</p>
+                </div>
+            </div>
+            <div class="versus-verdict">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Ini <strong>TIDAK ADIL</strong>. Islam mengajarkan keseimbangan.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 17: Risk vs Reward -->
+        <section class="slide slide-pyramid" data-title="Risk & Reward">
+            <h2>📊 Perspektif Risk & Reward</h2>
+            <div class="pyramid-question">
+                <p>"Kenapa gaji gue segini doang? Owner bisa dapat miliaran!"</p>
+            </div>
+            <div class="comparison-table">
+                <div class="table-col owner">
+                    <h4>👔 OWNER</h4>
+                    <ul>
+                        <li>Modal miliaran (bisa rugi total)</li>
+                        <li>Tanggung jawab gaji semua orang</li>
+                        <li>Bisnis gagal = bangkrut</li>
+                        <li>Tidur ga tenang mikirin cashflow</li>
+                    </ul>
+                    <div class="risk-badge high">RISIKO TINGGI</div>
+                </div>
+                <div class="table-col employee">
+                    <h4>👤 KARYAWAN</h4>
+                    <ul>
+                        <li>Kerja, dapat gaji (untung/rugi perusahaan)</li>
+                        <li>Tidak ada risiko kehilangan modal</li>
+                        <li>Perusahaan bangkrut? Cari kerja lain</li>
+                        <li>Bisa tidur tenang tiap malam</li>
+                    </ul>
+                    <div class="risk-badge low">RISIKO RENDAH</div>
+                </div>
+            </div>
+            <div class="pyramid-conclusion">
+                <p><strong>Besar risiko = Besar potensi hasil.</strong> Ini KEADILAN.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 18: Pahlawan Kesiangan -->
+        <section class="slide slide-story" data-title="Pahlawan Kesiangan">
+            <h2>🦸 Fenomena "Pahlawan Kesiangan"</h2>
+            <div class="story-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">Tahun 1-10</div>
+                    <div class="timeline-content">
+                        <p>Bisnis dibangun dari nol. Brand, sistem, tim—semua dibangun susah payah.</p>
+                    </div>
+                </div>
+                <div class="timeline-item highlight">
+                    <div class="timeline-year">Tahun 11</div>
+                    <div class="timeline-content">
+                        <p>Karyawan baru masuk pas bisnis udah jaya. 3 bulan kerja, penjualan naik.</p>
+                    </div>
+                </div>
+                <div class="timeline-item problem">
+                    <div class="timeline-year">Klaim</div>
+                    <div class="timeline-content">
+                        <p>"Ini karena GUE! Minta bonus 50%!" 🙄</p>
+                    </div>
+                </div>
+            </div>
+            <div class="story-moral">
+                <p><strong>Reality:</strong> Kesuksesan bisnis itu <span class="highlight-gold">GOTONG ROYONG</span> dan akumulasi bertahun-tahun. Satu orang tidak bisa klaim semua.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 19: Nama Baik -->
+        <section class="slide slide-testimonial" data-title="Kekuatan Nama Baik">
+            <h2>⭐ Kekuatan Nama Baik</h2>
+            <div class="testimonial-box">
+                <div class="testimonial-avatar">👤</div>
+                <div class="testimonial-content">
+                    <p>"Investor masuk ke bisnis gue karena udah kenal track record gue.</p>
+                    <p>Pas bangun bisnis baru, network 15 tahun promosikan ke 500 relasi—<strong>tanpa diminta</strong>.</p>
+                    <p>Bisnis baru belum ada Instagram, tapi udah diundang ngomong di depan <strong>3.000 orang</strong>.</p>
+                    <p>Kenapa? Karena <span class="highlight-gold">nama baik sudah terbangun</span>."</p>
+                </div>
+                <div class="testimonial-author">— Pengalaman Nyata</div>
+            </div>
+            <div class="testimonial-takeaway">
+                <i class="fas fa-key"></i>
+                <p>Nama baik = Investasi jangka panjang yang tidak bisa dibeli.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 20: Hadis Nama Baik -->
+        <section class="slide slide-hadis dark" data-title="Hadis Kehormatan">
+            <div class="hadis-container">
+                <div class="hadis-icon">📜</div>
+                <div class="hadis-content">
+                    <p class="hadis-text">"Barangsiapa yang berusaha <span class="highlight-gold">menjaga kehormatannya</span>, maka Allah akan menjaga kehormatannya."</p>
+                    <p class="hadis-source">— HR. Bukhari</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 21: Era AI -->
+        <section class="slide slide-future" data-title="Era AI">
+            <h2>🤖 Di Era AI...</h2>
+            <div class="future-comparison">
+                <div class="future-item cheap">
+                    <div class="price-tag">MURAH</div>
+                    <h4>Pengetahuan & Skill Teknis</h4>
+                    <p>AI bisa jawab hampir semua. Informasi ada di mana-mana.</p>
+                </div>
+                <div class="future-item expensive">
+                    <div class="price-tag gold">MAHAL</div>
+                    <h4>Adab & Pola Pikir</h4>
+                    <ul>
+                        <li>Inisiatif & kepekaan</li>
+                        <li>Kemampuan berempati</li>
+                        <li>Tanggung jawab moral</li>
+                        <li>Berpikir sistematis</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="future-conclusion">
+                <p>AI bisa menggantikan <span class="strike">skill</span>, tapi tidak bisa menggantikan <span class="highlight-gold">ADAB</span>.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 22: Checklist -->
+        <section class="slide slide-checklist" data-title="Self Assessment">
+            <h2>✅ Self-Assessment: Siap Kerja?</h2>
+            <p class="checklist-instruction">Tap untuk cek!</p>
+            <div class="checklist-grid">
+                <div class="check-category">
+                    <h4>🧠 Mental</h4>
+                    <label class="check-item"><input type="checkbox"><span>Datang bawa solusi</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Mikir sebelum bertanya</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Tidak nunggu disuruh</span></label>
+                </div>
+                <div class="check-category">
+                    <h4>💼 Profesional</h4>
+                    <label class="check-item"><input type="checkbox"><span>Paham job desc</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Tepat waktu</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Transparan</span></label>
+                </div>
+                <div class="check-category">
+                    <h4>🤝 Adab</h4>
+                    <label class="check-item"><input type="checkbox"><span>Menjaga amanah</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Menepati janji</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Tidak sombong</span></label>
+                </div>
+                <div class="check-category">
+                    <h4>🕌 Spiritual</h4>
+                    <label class="check-item"><input type="checkbox"><span>Kerja = ibadah</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Balance dunia-akhirat</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Rutin muhasabah</span></label>
+                </div>
+            </div>
+            <div class="checklist-result">
+                <p>Checked: <span id="checkCount">0</span>/12</p>
+                <div class="result-bar"><div class="result-fill" id="resultFill"></div></div>
+            </div>
+        </section>
+
+        <!-- SLIDE 23: Closing Quote -->
+        <section class="slide slide-closing-quote" data-title="Pesan Penutup">
+            <div class="closing-content">
+                <div class="closing-icon">🎯</div>
+                <h2>Pesan Terakhir</h2>
+                <div class="closing-points">
+                    <p class="point">Fokusnya bukan pada apa yang <span class="strike">orang lain</span> lakukan...</p>
+                    <p class="point highlight">...tapi pada apa yang <span class="highlight-gold">KITA</span> lakukan.</p>
+                </div>
+                <div class="closing-question">
+                    <p>Pertanyaan untuk dibawa pulang:</p>
+                    <blockquote>"10 tahun lagi, apa yang akan orang bicarakan tentang KAMU?"</blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 24: Vision -->
+        <section class="slide slide-vision" data-title="Visi">
+            <div class="vision-content">
+                <h2>🌟 Visi Kajian Ini</h2>
+                <div class="vision-statement">
+                    <p>Mencetak pekerja Muslim yang</p>
+                    <div class="vision-keywords">
+                        <span class="keyword">BERPRINSIP</span>
+                        <span class="keyword">BERADAB</span>
+                        <span class="keyword">DICARI</span>
+                    </div>
+                    <p>oleh perusahaan-perusahaan baik—</p>
+                    <p class="vision-emphasis">bukan karena skill semata,<br>tapi karena <strong>INTEGRITASNYA</strong>.</p>
+                </div>
+                <div class="vision-tagline">
+                    <p>Jadilah pekerja yang <strong>DICARI</strong>,<br>bukan sekadar <span class="strike">mencari kerja</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 25: Closing -->
+        <section class="slide slide-end" data-title="Penutup">
+            <div class="end-content">
+                <div class="end-badge">🤲</div>
+                <h2>Doa Penutup</h2>
+                <div class="doa-container">
+                    <p class="doa-text">"Ya Allah, aku memohon kepada-Mu ilmu yang bermanfaat, rezeki yang baik, dan amal yang diterima."</p>
+                    <p class="doa-source">— HR. Ibn Majah</p>
+                </div>
+                <div class="end-positioning">
+                    <p class="positioning-line"><span class="x">✕</span> Tidak pro perusahaan</p>
+                    <p class="positioning-line"><span class="x">✕</span> Tidak pro karyawan</p>
+                    <p class="positioning-line highlight"><span class="check">✓</span> Pro kebenaran Islam</p>
+                </div>
+                <div class="end-footer">
+                    <p class="wallahu">Wallahu a'lam bishawab</p>
+                    <p class="hashtag">#AdabPekerja #KarirIslami #SiapKerja</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Keyboard Hints -->
+    <div class="keyboard-hints">
+        <span><kbd>←</kbd> <kbd>→</kbd> Navigate</span>
+        <span><kbd>M</kbd> Menu</span>
+        <span><kbd>F</kbd> Fullscreen</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

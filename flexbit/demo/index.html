@@ -1,0 +1,2284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBit Pro - Interactive Simulation V3.5 Narrative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e0e0e0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 61px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .search-box {
+            background: #f5f5f5;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            width: 300px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .search-box:focus {
+            box-shadow: 0 0 0 2px #6366f1;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .last-update {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .avatar {
+            width: 36px;
+            height: 36px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* Layout */
+        .layout {
+            display: flex;
+            margin-top: 61px;
+            min-height: calc(100vh - 61px);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: white;
+            border-right: 1px solid #e0e0e0;
+            padding: 16px 0;
+            position: fixed;
+            left: 0;
+            top: 61px;
+            bottom: 0;
+            overflow-y: auto;
+            transition: transform 0.3s;
+            z-index: 90;
+        }
+        
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            color: #666;
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: #f5f5f5;
+        }
+        
+        .nav-item.active {
+            background: #f0fdf4;
+            color: #16a34a;
+            border-left-color: #16a34a;
+        }
+        
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .nav-section {
+            padding: 8px 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 16px;
+        }
+        
+        .nav-badge {
+            background: #e5e7eb;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            margin-left: auto;
+        }
+        
+        .nav-badge.green { background: #dcfce7; color: #16a34a; }
+        .nav-badge.red { background: #fee2e2; color: #dc2626; }
+        .nav-badge.yellow { background: #fef3c7; color: #d97706; }
+        .nav-badge.blue { background: #dbeafe; color: #2563eb; }
+        
+        /* Main Content */
+        .main {
+            flex: 1;
+            margin-left: 240px;
+            padding: 24px;
+            transition: margin-left 0.3s;
+        }
+        
+        .main.expanded {
+            margin-left: 0;
+        }
+        
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .page-subtitle {
+            font-size: 14px;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        /* Filter Chips */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-label {
+            font-size: 13px;
+            color: #666;
+            margin-right: 8px;
+        }
+        
+        .filter-chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e0e0e0;
+            background: white;
+            user-select: none;
+        }
+        
+        .filter-chip:hover {
+            border-color: #6366f1;
+            transform: translateY(-1px);
+        }
+        
+        .filter-chip.active {
+            background: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+        
+        .filter-chip .count {
+            margin-left: 6px;
+            opacity: 0.7;
+        }
+        
+        /* Sort Dropdown */
+        .sort-dropdown {
+            position: relative;
+            margin-left: auto;
+        }
+        
+        .sort-btn {
+            padding: 8px 16px;
+            border: 1px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sort-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-width: 200px;
+            z-index: 50;
+            display: none;
+        }
+        
+        .sort-menu.show {
+            display: block;
+        }
+        
+        .sort-option {
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sort-option:hover {
+            background: #f5f5f5;
+        }
+        
+        .sort-option.active {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+        
+        /* Table */
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .table-scroll {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 1400px;
+        }
+        
+        th {
+            background: #f9fafb;
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 1px solid #e0e0e0;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        th:hover {
+            background: #f0f0f0;
+        }
+        
+        th.center { text-align: center; }
+        th.right { text-align: right; }
+        
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            white-space: nowrap;
+        }
+        
+        tr {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        tr:hover {
+            background: #f9fafb;
+        }
+        
+        tr.selected {
+            background: #eff6ff;
+        }
+        
+        /* Stock Cell */
+        .stock-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .stock-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .stock-logo.red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .stock-logo.green { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .stock-logo.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .stock-logo.yellow { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .stock-logo.purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .stock-logo.cyan { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        
+        .stock-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stock-ticker {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .stock-name {
+            font-size: 11px;
+            color: #999;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Profile Emoji */
+        .profile-emoji {
+            font-size: 20px;
+            width: 32px;
+            text-align: center;
+            cursor: help;
+        }
+        
+        /* Price Cell */
+        .price-cell {
+            text-align: right;
+        }
+        
+        .price-main {
+            font-weight: 600;
+        }
+        
+        .price-change {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            justify-content: flex-end;
+        }
+        
+        .price-change.up { color: #16a34a; }
+        .price-change.down { color: #dc2626; }
+        .price-change.neutral { color: #666; }
+        
+        /* ═══════════════════════════════════════════════════════════
+           NARRATIVE SYSTEM STYLES (NEW V3.5)
+        ═══════════════════════════════════════════════════════════ */
+        
+        /* 2 Dimension Card */
+        .narrative-card {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 160px;
+        }
+        
+        .narrative-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+        }
+        
+        .narrative-emoji {
+            font-size: 14px;
+        }
+        
+        .narrative-label {
+            font-weight: 500;
+        }
+        
+        .narrative-label.quality-sangat-solid { color: #16a34a; }
+        .narrative-label.quality-cukup-sehat { color: #2563eb; }
+        .narrative-label.quality-perlu-perhatian { color: #d97706; }
+        .narrative-label.quality-bermasalah { color: #dc2626; }
+        
+        .narrative-label.timing-momentum-bagus { color: #16a34a; }
+        .narrative-label.timing-zona-akumulasi { color: #2563eb; }
+        .narrative-label.timing-konsolidasi { color: #6b7280; }
+        .narrative-label.timing-momentum-positif { color: #16a34a; }
+        .narrative-label.timing-tunggu-stabilisasi { color: #d97706; }
+        .narrative-label.timing-hati-hati { color: #dc2626; }
+        .narrative-label.timing-hindari-dulu { color: #dc2626; }
+        
+        /* Conflict Badge */
+        .conflict-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
+        
+        .conflict-badge.no-conflict {
+            background: #dcfce7;
+            color: #16a34a;
+            border-color: #86efac;
+        }
+        
+        /* Investor Match */
+        .investor-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+        
+        .investor-badge.value { background: #dbeafe; color: #1d4ed8; }
+        .investor-badge.growth { background: #dcfce7; color: #16a34a; }
+        .investor-badge.income { background: #fef3c7; color: #92400e; }
+        .investor-badge.balanced { background: #e0e7ff; color: #4f46e5; }
+        .investor-badge.trader { background: #fee2e2; color: #dc2626; }
+        .investor-badge.not-recommended { background: #fecaca; color: #b91c1c; }
+        
+        /* Timing Score Bar */
+        .timing-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .timing-bar {
+            width: 60px;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .timing-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease-out;
+        }
+        
+        .timing-fill.high { background: linear-gradient(90deg, #22c55e, #16a34a); }
+        .timing-fill.medium { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+        .timing-fill.low { background: linear-gradient(90deg, #f87171, #dc2626); }
+        
+        .timing-value {
+            font-weight: 600;
+            font-size: 12px;
+            min-width: 28px;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        
+        /* Score Cell */
+        .score-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .score-bar {
+            width: 60px;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .score-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease-out;
+        }
+        
+        .score-fill.high { background: linear-gradient(90deg, #22c55e, #16a34a); }
+        .score-fill.medium { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+        .score-fill.low { background: linear-gradient(90deg, #f87171, #dc2626); }
+        
+        .score-value {
+            font-weight: 600;
+            min-width: 28px;
+        }
+        
+        .score-value.high { color: #16a34a; }
+        .score-value.medium { color: #d97706; }
+        .score-value.low { color: #dc2626; }
+        
+        /* VQSG Mini Bars */
+        .vqsg-mini {
+            display: flex;
+            gap: 3px;
+            align-items: flex-end;
+            height: 28px;
+            padding-bottom: 2px;
+        }
+        
+        .vqsg-bar {
+            width: 14px;
+            border-radius: 2px;
+            transition: height 0.3s;
+            position: relative;
+        }
+        
+        .vqsg-bar.v { background: #6366f1; }
+        .vqsg-bar.q { background: #8b5cf6; }
+        .vqsg-bar.s { background: #06b6d4; }
+        .vqsg-bar.g { background: #10b981; }
+        
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .badge.premium { background: #fef3c7; color: #b45309; }
+        .badge.good { background: #dcfce7; color: #16a34a; }
+        .badge.balanced { background: #e0e7ff; color: #4f46e5; }
+        .badge.consider { background: #fef3c7; color: #d97706; }
+        .badge.below { background: #fee2e2; color: #dc2626; }
+        .badge.avoid { background: #fecaca; color: #b91c1c; }
+        
+        .synthesis-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .synthesis-badge.golden { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; border: 1px solid #fcd34d; }
+        .synthesis-badge.solid { background: #dcfce7; color: #16a34a; }
+        .synthesis-badge.wait { background: #e0e7ff; color: #4f46e5; }
+        .synthesis-badge.watchlist { background: #dbeafe; color: #1d4ed8; }
+        .synthesis-badge.speculative { background: #fef3c7; color: #d97706; }
+        .synthesis-badge.avoid { background: #fee2e2; color: #dc2626; }
+        
+        .confidence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+        
+        .confidence-badge.high { background: #dcfce7; color: #16a34a; }
+        .confidence-badge.medium { background: #fef3c7; color: #d97706; }
+        .confidence-badge.low { background: #fee2e2; color: #dc2626; }
+        
+        .confidence-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        
+        .confidence-badge.high .confidence-dot { background: #16a34a; }
+        .confidence-badge.medium .confidence-dot { background: #d97706; }
+        .confidence-badge.low .confidence-dot { background: #dc2626; }
+        
+        .sector-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+        
+        .sector-badge.financial { background: #dbeafe; color: #1d4ed8; }
+        .sector-badge.energy { background: #fef3c7; color: #d97706; }
+        .sector-badge.consumer { background: #dcfce7; color: #16a34a; }
+        .sector-badge.industrial { background: #e5e7eb; color: #4b5563; }
+        .sector-badge.tech { background: #ede9fe; color: #7c3aed; }
+        .sector-badge.materials { background: #ffedd5; color: #c2410c; }
+        
+        /* Detail Panel */
+        .detail-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 150;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .detail-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .detail-panel {
+            position: fixed;
+            right: -480px;
+            top: 0;
+            width: 480px;
+            height: 100vh;
+            background: white;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            z-index: 200;
+            transition: right 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .detail-panel.show {
+            right: 0;
+        }
+        
+        .detail-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #f9fafb;
+        }
+        
+        .detail-stock {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .detail-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .detail-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .detail-subtitle {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .close-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: none;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-btn:hover {
+            background: #e5e5e5;
+        }
+        
+        .detail-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+        
+        .detail-tabs {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0 24px;
+            background: white;
+        }
+        
+        .detail-tab {
+            padding: 12px 16px;
+            font-size: 13px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            color: #666;
+        }
+        
+        .detail-tab:hover {
+            color: #333;
+        }
+        
+        .detail-tab.active {
+            color: #6366f1;
+            border-bottom-color: #6366f1;
+        }
+        
+        .detail-section {
+            margin-bottom: 24px;
+        }
+        
+        .detail-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .new-badge {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 600;
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .detail-item {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+        }
+        
+        .detail-item.full {
+            grid-column: span 2;
+        }
+        
+        .detail-item.warning {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+        }
+        
+        .detail-item.success {
+            background: #dcfce7;
+            border: 1px solid #86efac;
+        }
+        
+        .detail-label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        
+        .detail-value {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .detail-value.large {
+            font-size: 28px;
+        }
+        
+        .detail-value.small {
+            font-size: 13px;
+            font-weight: 400;
+        }
+        
+        /* Narrative Box in Detail */
+        .narrative-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .narrative-box.conflict {
+            border-color: #fcd34d;
+            background: #fffbeb;
+        }
+        
+        .narrative-box.aligned {
+            border-color: #86efac;
+            background: #f0fdf4;
+        }
+        
+        .narrative-header {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .narrative-dimension {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .narrative-dimension.quality {
+            border-left: 4px solid #16a34a;
+        }
+        
+        .narrative-dimension.timing {
+            border-left: 4px solid #6366f1;
+        }
+        
+        .narrative-dim-label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        
+        .narrative-dim-value {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .narrative-dim-emoji {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+        
+        .narrative-conflict-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        
+        .narrative-investor-section {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .narrative-investor-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+        
+        .narrative-investor-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* Score Breakdown */
+        .score-breakdown {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .score-item {
+            flex: 1;
+            text-align: center;
+            padding: 12px 8px;
+            background: #f9fafb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .score-item:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .score-item-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .score-item-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        /* Technical Levels */
+        .level-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .level-row:last-child {
+            border-bottom: none;
+        }
+        
+        .level-label {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .level-value {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .level-value.green { color: #16a34a; }
+        .level-value.red { color: #dc2626; }
+        .level-value.blue { color: #2563eb; }
+        
+        /* Chart Placeholder */
+        .chart-placeholder {
+            background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+            border-radius: 12px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        
+        .chart-placeholder svg {
+            width: 120px;
+            height: 60px;
+            stroke: #22c55e;
+            fill: none;
+        }
+        
+        .chart-label {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1e293b;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 300;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* View Sections */
+        .view-section {
+            display: none;
+        }
+        
+        .view-section.active {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main {
+                margin-left: 0;
+            }
+            
+            .search-box {
+                width: 200px;
+            }
+            
+            .last-update {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 16px;
+            }
+            
+            .search-box {
+                display: none;
+            }
+            
+            .main {
+                padding: 16px;
+            }
+            
+            .detail-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .filter-bar {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 8px;
+            }
+            
+            .filter-chip {
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+            <div class="logo">
+                <div class="logo-icon">📊</div>
+                FlexBit Pro <span style="font-size: 12px; color: #6366f1; margin-left: 4px;">V3.5</span>
+            </div>
+            <input type="text" class="search-box" placeholder="🔍 Search stocks..." id="searchInput" oninput="filterStocks()">
+        </div>
+        <div class="header-right">
+            <span class="last-update">Last update: 13 Dec 2025, 10:00 WIB</span>
+            <div class="avatar" onclick="showToast('👋 Halo, Aji!')">A</div>
+        </div>
+    </header>
+    
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="nav-section">Main Views</div>
+            <div class="nav-item active" data-view="dashboard" onclick="switchView('dashboard')">
+                <span class="nav-icon">🏠</span>
+                Dashboard
+            </div>
+            <div class="nav-item" data-view="narrative" onclick="switchView('narrative')">
+                <span class="nav-icon">🎯</span>
+                Narrative View
+                <span class="new-badge" style="margin-left: auto;">NEW</span>
+            </div>
+            <div class="nav-item" data-view="vqsg" onclick="switchView('vqsg')">
+                <span class="nav-icon">📊</span>
+                VQSG Analysis
+            </div>
+            <div class="nav-item" data-view="technical" onclick="switchView('technical')">
+                <span class="nav-icon">📈</span>
+                FlexTech Signal
+            </div>
+            
+            <div class="nav-section">By Timing</div>
+            <div class="nav-item" onclick="filterByTiming('momentum')">
+                <span class="nav-icon">⬆️</span>
+                Momentum Bagus
+                <span class="nav-badge green" id="count-momentum">3</span>
+            </div>
+            <div class="nav-item" onclick="filterByTiming('akumulasi')">
+                <span class="nav-icon">↔️</span>
+                Zona Akumulasi
+                <span class="nav-badge blue" id="count-akumulasi">2</span>
+            </div>
+            <div class="nav-item" onclick="filterByTiming('tunggu')">
+                <span class="nav-icon">⏳</span>
+                Tunggu Stabilisasi
+                <span class="nav-badge yellow" id="count-tunggu">4</span>
+            </div>
+            <div class="nav-item" onclick="filterByTiming('hindari')">
+                <span class="nav-icon">🚫</span>
+                Hindari Dulu
+                <span class="nav-badge red" id="count-hindari">2</span>
+            </div>
+            
+            <div class="nav-section">By Conflict</div>
+            <div class="nav-item" onclick="filterByConflict(true)">
+                <span class="nav-icon">⚠️</span>
+                Ada Konflik
+                <span class="nav-badge yellow" id="count-conflict">3</span>
+            </div>
+            <div class="nav-item" onclick="filterByConflict(false)">
+                <span class="nav-icon">✅</span>
+                Selaras
+                <span class="nav-badge green" id="count-aligned">5</span>
+            </div>
+            
+            <div class="nav-section">More</div>
+            <div class="nav-item" onclick="showToast('📚 FAQ coming soon!')">
+                <span class="nav-icon">❓</span>
+                FAQ
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main" id="main">
+            <!-- Dashboard View -->
+            <div class="view-section active" id="view-dashboard">
+                <div class="page-header">
+                    <div>
+                        <div class="page-title">
+                            🏠 Dashboard
+                        </div>
+                        <div class="page-subtitle">Overview semua saham dengan Narrative System V3.5</div>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Saham</div>
+                        <div class="stat-value" id="total-stocks">8</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">🟢 Bisnis Sangat Solid</div>
+                        <div class="stat-value" style="color: #16a34a;" id="stat-solid">3</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">⬆️ Momentum Bagus</div>
+                        <div class="stat-value" style="color: #2563eb;" id="stat-momentum">2</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">⚠️ Ada Konflik</div>
+                        <div class="stat-value" style="color: #d97706;" id="stat-conflict">3</div>
+                    </div>
+                </div>
+                
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <span class="filter-label">Filter:</span>
+                    <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">All <span class="count" id="filter-all">8</span></div>
+                    <div class="filter-chip" data-filter="sangat-solid" onclick="setFilter('sangat-solid')">🟢 Sangat Solid</div>
+                    <div class="filter-chip" data-filter="cukup-sehat" onclick="setFilter('cukup-sehat')">🔵 Cukup Sehat</div>
+                    <div class="filter-chip" data-filter="perlu-perhatian" onclick="setFilter('perlu-perhatian')">🟡 Perlu Perhatian</div>
+                    <div class="filter-chip" data-filter="bermasalah" onclick="setFilter('bermasalah')">🔴 Bermasalah</div>
+                    
+                    <div class="sort-dropdown">
+                        <button class="sort-btn" onclick="toggleSortMenu()">
+                            Sort: <span id="current-sort">Score ↓</span> ▾
+                        </button>
+                        <div class="sort-menu" id="sortMenu">
+                            <div class="sort-option active" onclick="sortBy('score-desc')">Score (Highest)</div>
+                            <div class="sort-option" onclick="sortBy('score-asc')">Score (Lowest)</div>
+                            <div class="sort-option" onclick="sortBy('timing-desc')">Timing Score ↓</div>
+                            <div class="sort-option" onclick="sortBy('ticker')">Ticker (A-Z)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Table -->
+                <div class="table-container">
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 50px;">Profile</th>
+                                    <th>Stock</th>
+                                    <th class="center">FlexBit</th>
+                                    <th>Kualitas Bisnis</th>
+                                    <th>Timing Harga</th>
+                                    <th class="center">Timing Score</th>
+                                    <th class="center">Konflik?</th>
+                                    <th>Cocok Untuk</th>
+                                    <th class="center">Trend</th>
+                                </tr>
+                            </thead>
+                            <tbody id="stockTableBody">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Narrative View -->
+            <div class="view-section" id="view-narrative">
+                <div class="page-header">
+                    <div>
+                        <div class="page-title">🎯 Narrative View <span class="new-badge">NEW V3.5</span></div>
+                        <div class="page-subtitle">2 Dimensi: Kualitas Bisnis vs Timing Harga</div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Stock</th>
+                                    <th class="center">FlexBit</th>
+                                    <th>🟢 Kualitas Bisnis</th>
+                                    <th>⏱️ Timing Harga</th>
+                                    <th class="center">Timing Score</th>
+                                    <th class="center">Konflik</th>
+                                    <th>✅ Cocok Untuk</th>
+                                    <th>❌ Tidak Cocok</th>
+                                </tr>
+                            </thead>
+                            <tbody id="narrativeTableBody">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- VQSG View -->
+            <div class="view-section" id="view-vqsg">
+                <div class="page-header">
+                    <div>
+                        <div class="page-title">📊 VQSG Analysis</div>
+                        <div class="page-subtitle">Breakdown skor Valuation, Quality, Safety, Growth</div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Stock</th>
+                                    <th class="center">V-Score</th>
+                                    <th class="center">Q-Score</th>
+                                    <th class="center">S-Score</th>
+                                    <th class="center">G-Score</th>
+                                    <th class="center">FlexBit</th>
+                                    <th>Strongest</th>
+                                    <th>Weakest</th>
+                                    <th class="center">Confidence</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vqsgTableBody">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technical View -->
+            <div class="view-section" id="view-technical">
+                <div class="page-header">
+                    <div>
+                        <div class="page-title">📈 FlexTech Signal</div>
+                        <div class="page-subtitle">Trading signals, entry points, targets & stop loss</div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Stock</th>
+                                    <th class="right">Price</th>
+                                    <th class="center">Signal</th>
+                                    <th class="center">Trend</th>
+                                    <th class="right">Entry</th>
+                                    <th class="right">TP1</th>
+                                    <th class="right">Stop Loss</th>
+                                    <th class="center">R/R</th>
+                                    <th class="center">RSI</th>
+                                </tr>
+                            </thead>
+                            <tbody id="technicalTableBody">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Detail Panel Overlay -->
+    <div class="detail-overlay" id="detailOverlay" onclick="closeDetail()"></div>
+    
+    <!-- Detail Panel -->
+    <div class="detail-panel" id="detailPanel">
+        <div class="detail-header">
+            <div class="detail-stock">
+                <div class="detail-logo" id="detail-logo">BBCA</div>
+                <div>
+                    <div class="detail-title" id="detail-ticker">BBCA</div>
+                    <div class="detail-subtitle" id="detail-name">Bank Central Asia</div>
+                </div>
+            </div>
+            <button class="close-btn" onclick="closeDetail()">×</button>
+        </div>
+        
+        <div class="detail-tabs">
+            <div class="detail-tab active" data-tab="narrative" onclick="switchTab('narrative')">Narrative</div>
+            <div class="detail-tab" data-tab="scores" onclick="switchTab('scores')">Scores</div>
+            <div class="detail-tab" data-tab="technical" onclick="switchTab('technical')">Technical</div>
+        </div>
+        
+        <div class="detail-content" id="detailContent">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+    
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✅</span>
+        <span class="toast-message" id="toastMessage">Action completed</span>
+    </div>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════
+        // SAMPLE DATA WITH NARRATIVE SYSTEM (V3.5)
+        // ═══════════════════════════════════════════════════════════
+        const stocksData = [
+            {
+                ticker: 'ACES', name: 'Ace Hardware Indonesia', sector: 'Consumer Cyclical',
+                price: 720, change: 2.86, profile: '🌟', profileName: 'The Superstar', profileRisk: 'Medium',
+                flexbitScore: 82, vScore: 72, qScore: 88, sScore: 80, gScore: 78,
+                // NARRATIVE (NEW)
+                businessQualityLabel: 'Sangat Solid',
+                timingLabel: 'Momentum Bagus',
+                timingScore: 90,
+                hasConflict: false,
+                conflictType: null,
+                investorMatch: 'Long-term Value Investor',
+                investorAvoid: null,
+                trendStrength: 'Kuat',
+                // Technical
+                techSignal: '1. Strong Buy', techTrend: '1. Uptrend', entry: 700, tp1: 780, sl: 665, rr: 2.4, rsi: 58,
+                confidence: 'high', strongest: 'Quality (88)', weakest: 'Valuation (72)'
+            },
+            {
+                ticker: 'ASII', name: 'Astra International', sector: 'Industrials',
+                price: 6325, change: 1.58, profile: '💎', profileName: 'Classic Value', profileRisk: 'Low',
+                flexbitScore: 74, vScore: 82, qScore: 68, sScore: 75, gScore: 65,
+                businessQualityLabel: 'Cukup Sehat',
+                timingLabel: 'Zona Akumulasi',
+                timingScore: 65,
+                hasConflict: false,
+                conflictType: null,
+                investorMatch: 'Income & Value Investor',
+                investorAvoid: null,
+                trendStrength: 'Moderat',
+                techSignal: '2. Buy', techTrend: '2. Uptrend', entry: 6200, tp1: 6800, sl: 5950, rr: 2.4, rsi: 52,
+                confidence: 'high', strongest: 'Valuation (82)', weakest: 'Growth (65)'
+            },
+            {
+                ticker: 'BBCA', name: 'Bank Central Asia', sector: 'Financial Services',
+                price: 8000, change: -0.31, profile: '⚖️', profileName: 'Balanced', profileRisk: 'Medium',
+                flexbitScore: 64, vScore: 41, qScore: 92, sScore: 50, gScore: 74,
+                businessQualityLabel: 'Cukup Sehat',
+                timingLabel: 'Konsolidasi',
+                timingScore: 50,
+                hasConflict: false,
+                conflictType: null,
+                investorMatch: 'Balanced Investor',
+                investorAvoid: 'Investor tanpa manajemen risiko',
+                trendStrength: 'Lemah',
+                techSignal: '3. Weak Buy', techTrend: '3. Sideways', entry: 8000, tp1: 8458, sl: 7600, rr: 1.1, rsi: 37.4,
+                confidence: 'medium', strongest: 'Quality (92)', weakest: 'Valuation (41)',
+                isFinancial: true
+            },
+            {
+                ticker: 'LSIP', name: 'PP London Sumatra', sector: 'Consumer Defensive',
+                price: 850, change: -2.30, profile: '💎', profileName: 'Classic Value', profileRisk: 'Low',
+                flexbitScore: 89, vScore: 92, qScore: 87, sScore: 100, gScore: 76,
+                businessQualityLabel: 'Sangat Solid',
+                timingLabel: 'Tunggu Stabilisasi',
+                timingScore: 25,
+                hasConflict: true,
+                conflictType: 'fund_kuat_tech_lemah',
+                investorMatch: 'Long-term Value Investor',
+                investorAvoid: 'Trader jangka pendek, Yang butuh profit cepat',
+                trendStrength: 'Kuat',
+                techSignal: '5. Weak Sell', techTrend: '4. Downtrend', entry: 800, tp1: 950, sl: 750, rr: 3.0, rsi: 28,
+                confidence: 'high', strongest: 'Safety (100)', weakest: 'Growth (76)'
+            },
+            {
+                ticker: 'BMRI', name: 'Bank Mandiri', sector: 'Financial Services',
+                price: 5275, change: 0.96, profile: '🌟', profileName: 'The Superstar', profileRisk: 'Medium',
+                flexbitScore: 76, vScore: 68, qScore: 82, sScore: 72, gScore: 78,
+                businessQualityLabel: 'Cukup Sehat',
+                timingLabel: 'Momentum Positif',
+                timingScore: 75,
+                hasConflict: false,
+                conflictType: null,
+                investorMatch: 'Growth Investor',
+                investorAvoid: null,
+                trendStrength: 'Moderat',
+                techSignal: '2. Buy', techTrend: '2. Uptrend', entry: 5200, tp1: 5700, sl: 4950, rr: 2.0, rsi: 55,
+                confidence: 'high', strongest: 'Quality (82)', weakest: 'Valuation (68)',
+                isFinancial: true
+            },
+            {
+                ticker: 'UNVR', name: 'Unilever Indonesia', sector: 'Consumer Defensive',
+                price: 1850, change: -1.07, profile: '🚑', profileName: 'Turnaround', profileRisk: 'High',
+                flexbitScore: 45, vScore: 35, qScore: 62, sScore: 55, gScore: 28,
+                businessQualityLabel: 'Perlu Perhatian',
+                timingLabel: 'Tunggu Stabilisasi',
+                timingScore: 25,
+                hasConflict: false,
+                conflictType: null,
+                investorMatch: 'Trader Berpengalaman',
+                investorAvoid: 'Investor konservatif, Income investor',
+                trendStrength: 'Kuat',
+                techSignal: '5. Weak Sell', techTrend: '4. Downtrend', entry: 1780, tp1: 2000, sl: 1700, rr: 2.8, rsi: 32,
+                confidence: 'high', strongest: 'Quality (62)', weakest: 'Growth (28)'
+            },
+            {
+                ticker: 'GOTO', name: 'GoTo Gojek Tokopedia', sector: 'Technology',
+                price: 71, change: -2.74, profile: '🎈', profileName: 'The Hype', profileRisk: 'Very High',
+                flexbitScore: 28, vScore: 15, qScore: 18, sScore: 42, gScore: 35,
+                businessQualityLabel: 'Bermasalah',
+                timingLabel: 'Hindari Dulu',
+                timingScore: 10,
+                hasConflict: false,
+                conflictType: null,
+                investorMatch: 'Tidak Direkomendasikan',
+                investorAvoid: 'Semua profil investor',
+                trendStrength: 'Kuat',
+                techSignal: '6. Sell', techTrend: '5. Strong Downtrend', entry: null, tp1: null, sl: null, rr: null, rsi: 28,
+                confidence: 'low', strongest: 'Safety (42)', weakest: 'Valuation (15)'
+            },
+            {
+                ticker: 'PTBA', name: 'Bukit Asam', sector: 'Energy',
+                price: 2440, change: -1.21, profile: '🚑', profileName: 'Turnaround', profileRisk: 'High',
+                flexbitScore: 72, vScore: 85, qScore: 65, sScore: 70, gScore: 25,
+                businessQualityLabel: 'Cukup Sehat',
+                timingLabel: 'Tunggu Stabilisasi',
+                timingScore: 30,
+                hasConflict: true,
+                conflictType: 'fund_kuat_tech_lemah',
+                investorMatch: 'Long-term Value Investor',
+                investorAvoid: 'Trader jangka pendek, Yang butuh profit cepat',
+                trendStrength: 'Moderat',
+                techSignal: '4. Wait', techTrend: '4. Downtrend', entry: 2400, tp1: 2700, sl: 2280, rr: 2.5, rsi: 38,
+                confidence: 'high', strongest: 'Valuation (85)', weakest: 'Growth (25)'
+            }
+        ];
+        
+        let currentFilter = 'all';
+        let currentSort = 'score-desc';
+        let selectedStock = null;
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDashboardTable();
+            renderNarrativeTable();
+            renderVQSGTable();
+            renderTechnicalTable();
+            updateStats();
+            updateCounts();
+        });
+        
+        // ═══════════════════════════════════════════════════════════
+        // RENDER FUNCTIONS
+        // ═══════════════════════════════════════════════════════════
+        
+        function renderDashboardTable() {
+            const tbody = document.getElementById('stockTableBody');
+            const filtered = filterStockData();
+            const sorted = sortStockData(filtered);
+            
+            tbody.innerHTML = sorted.map(stock => `
+                <tr onclick="showDetail('${stock.ticker}')" class="${selectedStock === stock.ticker ? 'selected' : ''}">
+                    <td><span class="profile-emoji" title="${stock.profileName}">${stock.profile}</span></td>
+                    <td>
+                        <div class="stock-cell">
+                            <div class="stock-logo ${getLogoClass(stock.ticker)}">${stock.ticker.substring(0,4)}</div>
+                            <div class="stock-info">
+                                <div class="stock-ticker">${stock.ticker}</div>
+                                <div class="stock-name">${stock.name}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="center">
+                        <span class="score-value ${getScoreClass(stock.flexbitScore)}">${stock.flexbitScore}</span>
+                    </td>
+                    <td>
+                        <span class="narrative-label ${getQualityClass(stock.businessQualityLabel)}">
+                            ${getQualityEmoji(stock.businessQualityLabel)} ${stock.businessQualityLabel}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="narrative-label ${getTimingClass(stock.timingLabel)}">
+                            ${getTimingEmoji(stock.timingLabel)} ${stock.timingLabel}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="timing-bar-container">
+                            <div class="timing-bar">
+                                <div class="timing-fill ${getTimingScoreClass(stock.timingScore)}" style="width: ${stock.timingScore}%"></div>
+                            </div>
+                            <span class="timing-value">${stock.timingScore}</span>
+                        </div>
+                    </td>
+                    <td class="center">
+                        ${stock.hasConflict 
+                            ? '<span class="conflict-badge">⚠️ Ya</span>' 
+                            : '<span class="conflict-badge no-conflict">✅ Tidak</span>'}
+                    </td>
+                    <td>
+                        <span class="investor-badge ${getInvestorClass(stock.investorMatch)}">${stock.investorMatch}</span>
+                    </td>
+                    <td class="center">
+                        <span class="${stock.trendStrength === 'Kuat' ? 'level-value green' : stock.trendStrength === 'Lemah' ? 'level-value red' : ''}">${stock.trendStrength}</span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function renderNarrativeTable() {
+            const tbody = document.getElementById('narrativeTableBody');
+            const sorted = sortStockData([...stocksData], 'score-desc');
+            
+            tbody.innerHTML = sorted.map(stock => `
+                <tr onclick="showDetail('${stock.ticker}')">
+                    <td>
+                        <div class="stock-cell">
+                            <div class="stock-logo ${getLogoClass(stock.ticker)}">${stock.ticker.substring(0,4)}</div>
+                            <div class="stock-info">
+                                <div class="stock-ticker">${stock.ticker}</div>
+                                <div class="stock-name">${stock.name}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="center">
+                        <span class="score-value ${getScoreClass(stock.flexbitScore)}">${stock.flexbitScore}</span>
+                    </td>
+                    <td>
+                        <span class="narrative-label ${getQualityClass(stock.businessQualityLabel)}">
+                            ${getQualityEmoji(stock.businessQualityLabel)} ${stock.businessQualityLabel}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="narrative-label ${getTimingClass(stock.timingLabel)}">
+                            ${getTimingEmoji(stock.timingLabel)} ${stock.timingLabel}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="timing-bar-container">
+                            <div class="timing-bar">
+                                <div class="timing-fill ${getTimingScoreClass(stock.timingScore)}" style="width: ${stock.timingScore}%"></div>
+                            </div>
+                            <span class="timing-value">${stock.timingScore}</span>
+                        </div>
+                    </td>
+                    <td class="center">
+                        ${stock.hasConflict 
+                            ? `<span class="conflict-badge">⚠️ ${getConflictText(stock.conflictType)}</span>`
+                            : '<span class="conflict-badge no-conflict">✅ Selaras</span>'}
+                    </td>
+                    <td>
+                        <span class="investor-badge ${getInvestorClass(stock.investorMatch)}">${stock.investorMatch}</span>
+                    </td>
+                    <td>
+                        <span style="font-size: 12px; color: #dc2626;">${stock.investorAvoid || '-'}</span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function renderVQSGTable() {
+            const tbody = document.getElementById('vqsgTableBody');
+            const sorted = sortStockData([...stocksData], 'score-desc');
+            
+            tbody.innerHTML = sorted.map(stock => `
+                <tr onclick="showDetail('${stock.ticker}')">
+                    <td>
+                        <div class="stock-cell">
+                            <div class="stock-logo ${getLogoClass(stock.ticker)}">${stock.ticker.substring(0,4)}</div>
+                            <div class="stock-info">
+                                <div class="stock-ticker">${stock.ticker}</div>
+                                <div class="stock-name">${stock.name}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="center"><span class="score-value ${getScoreClass(stock.vScore)}">${stock.vScore}</span></td>
+                    <td class="center"><span class="score-value ${getScoreClass(stock.qScore)}">${stock.qScore}</span></td>
+                    <td class="center"><span class="score-value ${getScoreClass(stock.sScore)}">${stock.sScore}</span></td>
+                    <td class="center"><span class="score-value ${getScoreClass(stock.gScore)}">${stock.gScore}</span></td>
+                    <td class="center"><strong class="score-value ${getScoreClass(stock.flexbitScore)}">${stock.flexbitScore}</strong></td>
+                    <td><span style="color: #16a34a;">${stock.strongest}</span></td>
+                    <td><span style="color: #dc2626;">${stock.weakest}</span></td>
+                    <td class="center"><span class="confidence-badge ${stock.confidence}"><span class="confidence-dot"></span>${stock.confidence}</span></td>
+                </tr>
+            `).join('');
+        }
+        
+        function renderTechnicalTable() {
+            const tbody = document.getElementById('technicalTableBody');
+            const sorted = sortStockData([...stocksData], 'score-desc');
+            
+            tbody.innerHTML = sorted.map(stock => `
+                <tr onclick="showDetail('${stock.ticker}')">
+                    <td>
+                        <div class="stock-cell">
+                            <div class="stock-logo ${getLogoClass(stock.ticker)}">${stock.ticker.substring(0,4)}</div>
+                            <div class="stock-info">
+                                <div class="stock-ticker">${stock.ticker}</div>
+                                <div class="stock-name">${stock.name}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="price-cell">
+                        <div class="price-main">Rp ${formatNumber(stock.price)}</div>
+                    </td>
+                    <td class="center"><span class="badge ${getSignalClass(stock.techSignal)}">${stock.techSignal}</span></td>
+                    <td class="center">${stock.techTrend}</td>
+                    <td class="right level-value blue">${stock.entry ? 'Rp ' + formatNumber(stock.entry) : '-'}</td>
+                    <td class="right level-value green">${stock.tp1 ? 'Rp ' + formatNumber(stock.tp1) : '-'}</td>
+                    <td class="right level-value red">${stock.sl ? 'Rp ' + formatNumber(stock.sl) : '-'}</td>
+                    <td class="center"><strong>${stock.rr ? stock.rr.toFixed(1) : '-'}</strong></td>
+                    <td class="center"><span class="${stock.rsi < 30 ? 'level-value green' : stock.rsi > 70 ? 'level-value red' : ''}">${stock.rsi}</span></td>
+                </tr>
+            `).join('');
+        }
+        
+        // ═══════════════════════════════════════════════════════════
+        // DETAIL PANEL
+        // ═══════════════════════════════════════════════════════════
+        
+        function showDetail(ticker) {
+            selectedStock = ticker;
+            const stock = stocksData.find(s => s.ticker === ticker);
+            if (!stock) return;
+            
+            document.getElementById('detail-logo').textContent = stock.ticker.substring(0, 4);
+            document.getElementById('detail-ticker').textContent = stock.ticker;
+            document.getElementById('detail-name').textContent = stock.name;
+            
+            renderDetailContent(stock, 'narrative');
+            
+            document.getElementById('detailOverlay').classList.add('show');
+            document.getElementById('detailPanel').classList.add('show');
+            
+            renderDashboardTable();
+        }
+        
+        function closeDetail() {
+            selectedStock = null;
+            document.getElementById('detailOverlay').classList.remove('show');
+            document.getElementById('detailPanel').classList.remove('show');
+            renderDashboardTable();
+        }
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.detail-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.detail-tab[data-tab="${tab}"]`).classList.add('active');
+            
+            const stock = stocksData.find(s => s.ticker === selectedStock);
+            if (stock) renderDetailContent(stock, tab);
+        }
+        
+        function renderDetailContent(stock, tab) {
+            const content = document.getElementById('detailContent');
+            
+            if (tab === 'narrative') {
+                content.innerHTML = `
+                    <div class="detail-section">
+                        <div class="detail-section-title">🎯 Narrative Analysis <span class="new-badge">V3.5</span></div>
+                        
+                        <div class="narrative-box ${stock.hasConflict ? 'conflict' : 'aligned'}">
+                            <div class="narrative-header">
+                                <div class="narrative-dimension quality">
+                                    <div class="narrative-dim-emoji">${getQualityEmoji(stock.businessQualityLabel)}</div>
+                                    <div class="narrative-dim-label">Kualitas Bisnis</div>
+                                    <div class="narrative-dim-value" style="color: ${getQualityColor(stock.businessQualityLabel)};">${stock.businessQualityLabel}</div>
+                                </div>
+                                <div class="narrative-dimension timing">
+                                    <div class="narrative-dim-emoji">${getTimingEmoji(stock.timingLabel)}</div>
+                                    <div class="narrative-dim-label">Timing Harga</div>
+                                    <div class="narrative-dim-value" style="color: ${getTimingColor(stock.timingLabel)};">${stock.timingLabel}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="narrative-conflict-row">
+                                ${stock.hasConflict 
+                                    ? `<span class="conflict-badge">⚠️ KONFLIK: ${getConflictDescription(stock.conflictType)}</span>`
+                                    : '<span class="conflict-badge no-conflict">✅ Fundamental & Teknikal Selaras</span>'}
+                            </div>
+                            
+                            <div class="narrative-investor-section">
+                                <div class="narrative-investor-row">
+                                    <span class="narrative-investor-label">✅ Cocok untuk:</span>
+                                    <span class="investor-badge ${getInvestorClass(stock.investorMatch)}">${stock.investorMatch}</span>
+                                </div>
+                                ${stock.investorAvoid ? `
+                                <div class="narrative-investor-row">
+                                    <span class="narrative-investor-label">❌ Tidak cocok untuk:</span>
+                                    <span style="font-size: 12px; color: #dc2626;">${stock.investorAvoid}</span>
+                                </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <div class="detail-section-title">📊 Timing Score</div>
+                        <div class="detail-item full" style="text-align: center;">
+                            <div class="detail-value large" style="color: ${getTimingScoreColor(stock.timingScore)};">${stock.timingScore}</div>
+                            <div style="margin-top: 8px;">
+                                <div class="timing-bar" style="width: 100%; height: 12px;">
+                                    <div class="timing-fill ${getTimingScoreClass(stock.timingScore)}" style="width: ${stock.timingScore}%"></div>
+                                </div>
+                            </div>
+                            <div style="font-size: 12px; color: #666; margin-top: 8px;">
+                                ${getTimingScoreDescription(stock.timingScore)}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <div class="detail-section-title">🏷️ Stock Profile</div>
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <div class="detail-label">Profile</div>
+                                <div class="detail-value">${stock.profile} ${stock.profileName}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Risk Level</div>
+                                <div class="detail-value">${stock.profileRisk}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Trend Strength</div>
+                                <div class="detail-value">${stock.trendStrength}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Confidence</div>
+                                <div class="detail-value"><span class="confidence-badge ${stock.confidence}"><span class="confidence-dot"></span>${stock.confidence}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ${stock.hasConflict ? `
+                    <div class="detail-section">
+                        <div class="detail-item full warning">
+                            <div class="detail-label">💡 CATATAN PENTING</div>
+                            <div class="detail-value small" style="color: #92400e;">
+                                Skor FlexBit tinggi menunjukkan KUALITAS BISNIS, bukan TIMING yang tepat. 
+                                ${stock.timingLabel.includes('Tunggu') ? 'Saham ini sedang dalam tren turun. Pertimbangkan strategi akumulasi bertahap jika horizon investasi Anda panjang.' : ''}
+                            </div>
+                        </div>
+                    </div>
+                    ` : ''}
+                `;
+            } else if (tab === 'scores') {
+                content.innerHTML = `
+                    <div class="detail-section">
+                        <div class="detail-section-title">📊 FlexBit Score</div>
+                        <div class="detail-item full" style="text-align: center; margin-bottom: 16px;">
+                            <div class="detail-value large" style="color: ${getScoreColor(stock.flexbitScore)};">${stock.flexbitScore}</div>
+                        </div>
+                        <div class="score-breakdown">
+                            <div class="score-item">
+                                <div class="score-item-label">V</div>
+                                <div class="score-item-value" style="color: ${getScoreColor(stock.vScore)};">${stock.vScore}</div>
+                            </div>
+                            <div class="score-item">
+                                <div class="score-item-label">Q</div>
+                                <div class="score-item-value" style="color: ${getScoreColor(stock.qScore)};">${stock.qScore}</div>
+                            </div>
+                            <div class="score-item">
+                                <div class="score-item-label">S</div>
+                                <div class="score-item-value" style="color: ${getScoreColor(stock.sScore)};">${stock.sScore}</div>
+                            </div>
+                            <div class="score-item">
+                                <div class="score-item-label">G</div>
+                                <div class="score-item-value" style="color: ${getScoreColor(stock.gScore)};">${stock.gScore}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <div class="detail-section-title">📈 Analysis</div>
+                        <div class="detail-grid">
+                            <div class="detail-item success">
+                                <div class="detail-label">Strongest</div>
+                                <div class="detail-value small" style="color: #16a34a;">${stock.strongest}</div>
+                            </div>
+                            <div class="detail-item warning">
+                                <div class="detail-label">Weakest</div>
+                                <div class="detail-value small" style="color: #dc2626;">${stock.weakest}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (tab === 'technical') {
+                content.innerHTML = `
+                    <div class="chart-placeholder">
+                        <svg viewBox="0 0 120 60">
+                            <polyline points="0,50 20,45 40,30 60,35 80,20 100,25 120,10" stroke-width="2"/>
+                        </svg>
+                        <div class="chart-label">Price Chart (Coming Soon)</div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <div class="detail-section-title">📈 Technical Signal</div>
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <div class="detail-label">Signal</div>
+                                <div class="detail-value"><span class="badge ${getSignalClass(stock.techSignal)}">${stock.techSignal}</span></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Trend</div>
+                                <div class="detail-value small">${stock.techTrend}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <div class="detail-section-title">🎯 Trading Levels</div>
+                        <div class="level-row">
+                            <span class="level-label">Current Price</span>
+                            <span class="level-value">Rp ${formatNumber(stock.price)}</span>
+                        </div>
+                        <div class="level-row">
+                            <span class="level-label">Entry</span>
+                            <span class="level-value blue">${stock.entry ? 'Rp ' + formatNumber(stock.entry) : '-'}</span>
+                        </div>
+                        <div class="level-row">
+                            <span class="level-label">Target Profit 1</span>
+                            <span class="level-value green">${stock.tp1 ? 'Rp ' + formatNumber(stock.tp1) : '-'}</span>
+                        </div>
+                        <div class="level-row">
+                            <span class="level-label">Stop Loss</span>
+                            <span class="level-value red">${stock.sl ? 'Rp ' + formatNumber(stock.sl) : '-'}</span>
+                        </div>
+                        <div class="level-row">
+                            <span class="level-label">Risk/Reward</span>
+                            <span class="level-value">${stock.rr ? stock.rr.toFixed(1) + 'x' : '-'}</span>
+                        </div>
+                        <div class="level-row">
+                            <span class="level-label">RSI</span>
+                            <span class="level-value ${stock.rsi < 30 ? 'green' : stock.rsi > 70 ? 'red' : ''}">${stock.rsi}</span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // ═══════════════════════════════════════════════════════════
+        // FILTER & SORT
+        // ═══════════════════════════════════════════════════════════
+        
+        function setFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.classList.toggle('active', chip.dataset.filter === filter);
+            });
+            renderDashboardTable();
+        }
+        
+        function filterByTiming(timing) {
+            // Map timing to filter
+            const timingMap = {
+                'momentum': 'Momentum',
+                'akumulasi': 'Zona Akumulasi',
+                'tunggu': 'Tunggu Stabilisasi',
+                'hindari': 'Hindari Dulu'
+            };
+            showToast(`🎯 Filter: ${timingMap[timing] || timing}`);
+        }
+        
+        function filterByConflict(hasConflict) {
+            showToast(`⚠️ Filter: ${hasConflict ? 'Ada Konflik' : 'Selaras'}`);
+        }
+        
+        function filterStockData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            return stocksData.filter(stock => {
+                const matchesSearch = stock.ticker.toLowerCase().includes(searchTerm) || 
+                                      stock.name.toLowerCase().includes(searchTerm);
+                
+                let matchesFilter = true;
+                if (currentFilter === 'sangat-solid') matchesFilter = stock.businessQualityLabel === 'Sangat Solid';
+                else if (currentFilter === 'cukup-sehat') matchesFilter = stock.businessQualityLabel === 'Cukup Sehat';
+                else if (currentFilter === 'perlu-perhatian') matchesFilter = stock.businessQualityLabel === 'Perlu Perhatian';
+                else if (currentFilter === 'bermasalah') matchesFilter = stock.businessQualityLabel === 'Bermasalah';
+                
+                return matchesSearch && matchesFilter;
+            });
+        }
+        
+        function sortStockData(data, sort = currentSort) {
+            const sorted = [...data];
+            switch (sort) {
+                case 'score-desc':
+                    return sorted.sort((a, b) => b.flexbitScore - a.flexbitScore);
+                case 'score-asc':
+                    return sorted.sort((a, b) => a.flexbitScore - b.flexbitScore);
+                case 'timing-desc':
+                    return sorted.sort((a, b) => b.timingScore - a.timingScore);
+                case 'ticker':
+                    return sorted.sort((a, b) => a.ticker.localeCompare(b.ticker));
+                default:
+                    return sorted;
+            }
+        }
+        
+        function sortBy(sort) {
+            currentSort = sort;
+            const sortLabels = {
+                'score-desc': 'Score ↓',
+                'score-asc': 'Score ↑',
+                'timing-desc': 'Timing ↓',
+                'ticker': 'Ticker A-Z'
+            };
+            document.getElementById('current-sort').textContent = sortLabels[sort];
+            
+            document.querySelectorAll('.sort-option').forEach(opt => opt.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            toggleSortMenu();
+            renderDashboardTable();
+        }
+        
+        function toggleSortMenu() {
+            document.getElementById('sortMenu').classList.toggle('show');
+        }
+        
+        function filterStocks() {
+            renderDashboardTable();
+        }
+        
+        // View Switching
+        function switchView(view) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.toggle('active', item.dataset.view === view);
+            });
+            
+            document.querySelectorAll('.view-section').forEach(section => {
+                section.classList.toggle('active', section.id === `view-${view}`);
+            });
+        }
+        
+        // Sidebar Toggle
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('show');
+        }
+        
+        // Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+        
+        // ═══════════════════════════════════════════════════════════
+        // STATS & COUNTS
+        // ═══════════════════════════════════════════════════════════
+        
+        function updateStats() {
+            const solid = stocksData.filter(s => s.businessQualityLabel === 'Sangat Solid').length;
+            const momentum = stocksData.filter(s => s.timingLabel.includes('Momentum')).length;
+            const conflict = stocksData.filter(s => s.hasConflict).length;
+            
+            document.getElementById('total-stocks').textContent = stocksData.length;
+            document.getElementById('stat-solid').textContent = solid;
+            document.getElementById('stat-momentum').textContent = momentum;
+            document.getElementById('stat-conflict').textContent = conflict;
+            document.getElementById('filter-all').textContent = stocksData.length;
+        }
+        
+        function updateCounts() {
+            const counts = {
+                momentum: stocksData.filter(s => s.timingLabel.includes('Momentum')).length,
+                akumulasi: stocksData.filter(s => s.timingLabel === 'Zona Akumulasi').length,
+                tunggu: stocksData.filter(s => s.timingLabel.includes('Tunggu')).length,
+                hindari: stocksData.filter(s => s.timingLabel === 'Hindari Dulu').length,
+                conflict: stocksData.filter(s => s.hasConflict).length,
+                aligned: stocksData.filter(s => !s.hasConflict).length
+            };
+            
+            Object.keys(counts).forEach(key => {
+                const el = document.getElementById(`count-${key}`);
+                if (el) el.textContent = counts[key];
+            });
+        }
+        
+        // ═══════════════════════════════════════════════════════════
+        // HELPER FUNCTIONS
+        // ═══════════════════════════════════════════════════════════
+        
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        function getScoreClass(score) {
+            if (score >= 70) return 'high';
+            if (score >= 50) return 'medium';
+            return 'low';
+        }
+        
+        function getScoreColor(score) {
+            if (score >= 70) return '#16a34a';
+            if (score >= 50) return '#d97706';
+            return '#dc2626';
+        }
+        
+        function getLogoClass(ticker) {
+            const classes = ['', 'red', 'green', 'blue', 'yellow', 'purple', 'cyan'];
+            return classes[ticker.charCodeAt(0) % classes.length];
+        }
+        
+        function getSignalClass(signal) {
+            if (signal.includes('Strong Buy') || signal.includes('1.')) return 'good';
+            if (signal.includes('Buy') || signal.includes('2.')) return 'good';
+            if (signal.includes('Weak Buy') || signal.includes('3.')) return 'balanced';
+            if (signal.includes('Wait') || signal.includes('4.')) return 'consider';
+            if (signal.includes('Weak Sell') || signal.includes('5.')) return 'below';
+            return 'avoid';
+        }
+        
+        // NARRATIVE HELPERS
+        function getQualityEmoji(label) {
+            const map = {
+                'Sangat Solid': '🟢',
+                'Cukup Sehat': '🔵',
+                'Perlu Perhatian': '🟡',
+                'Bermasalah': '🔴'
+            };
+            return map[label] || '⚪';
+        }
+        
+        function getQualityClass(label) {
+            const map = {
+                'Sangat Solid': 'quality-sangat-solid',
+                'Cukup Sehat': 'quality-cukup-sehat',
+                'Perlu Perhatian': 'quality-perlu-perhatian',
+                'Bermasalah': 'quality-bermasalah'
+            };
+            return map[label] || '';
+        }
+        
+        function getQualityColor(label) {
+            const map = {
+                'Sangat Solid': '#16a34a',
+                'Cukup Sehat': '#2563eb',
+                'Perlu Perhatian': '#d97706',
+                'Bermasalah': '#dc2626'
+            };
+            return map[label] || '#666';
+        }
+        
+        function getTimingEmoji(label) {
+            if (label.includes('Momentum Bagus')) return '⬆️';
+            if (label.includes('Momentum Positif')) return '📈';
+            if (label.includes('Zona Akumulasi')) return '↔️';
+            if (label.includes('Konsolidasi')) return '➖';
+            if (label.includes('Tunggu')) return '⏳';
+            if (label.includes('Hati-hati')) return '⚠️';
+            if (label.includes('Hindari')) return '🚫';
+            return '❓';
+        }
+        
+        function getTimingClass(label) {
+            if (label.includes('Momentum')) return 'timing-momentum-bagus';
+            if (label.includes('Akumulasi')) return 'timing-zona-akumulasi';
+            if (label.includes('Konsolidasi')) return 'timing-konsolidasi';
+            if (label.includes('Tunggu')) return 'timing-tunggu-stabilisasi';
+            if (label.includes('Hati-hati')) return 'timing-hati-hati';
+            if (label.includes('Hindari')) return 'timing-hindari-dulu';
+            return '';
+        }
+        
+        function getTimingColor(label) {
+            if (label.includes('Momentum')) return '#16a34a';
+            if (label.includes('Akumulasi')) return '#2563eb';
+            if (label.includes('Konsolidasi')) return '#6b7280';
+            if (label.includes('Tunggu')) return '#d97706';
+            if (label.includes('Hati-hati') || label.includes('Hindari')) return '#dc2626';
+            return '#666';
+        }
+        
+        function getTimingScoreClass(score) {
+            if (score >= 70) return 'high';
+            if (score >= 40) return 'medium';
+            return 'low';
+        }
+        
+        function getTimingScoreColor(score) {
+            if (score >= 70) return '#16a34a';
+            if (score >= 40) return '#d97706';
+            return '#dc2626';
+        }
+        
+        function getTimingScoreDescription(score) {
+            if (score >= 80) return 'Timing sangat ideal untuk entry';
+            if (score >= 60) return 'Timing cukup baik';
+            if (score >= 40) return 'Timing netral, perlu pertimbangan';
+            if (score >= 20) return 'Timing belum ideal, tunggu konfirmasi';
+            return 'Timing buruk, hindari entry';
+        }
+        
+        function getConflictText(type) {
+            if (type === 'fund_kuat_tech_lemah') return 'Fund↑ Tech↓';
+            if (type === 'fund_lemah_tech_kuat') return 'Fund↓ Tech↑';
+            return 'Mixed';
+        }
+        
+        function getConflictDescription(type) {
+            if (type === 'fund_kuat_tech_lemah') return 'Fundamental kuat, tapi tren harga turun';
+            if (type === 'fund_lemah_tech_kuat') return 'Fundamental lemah, tapi harga naik';
+            return 'Sinyal mixed';
+        }
+        
+        function getInvestorClass(match) {
+            if (match.includes('Value')) return 'value';
+            if (match.includes('Growth')) return 'growth';
+            if (match.includes('Income')) return 'income';
+            if (match.includes('Balanced')) return 'balanced';
+            if (match.includes('Trader')) return 'trader';
+            if (match.includes('Tidak')) return 'not-recommended';
+            return '';
+        }
+        
+        // Close sort menu on click outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.sort-dropdown')) {
+                document.getElementById('sortMenu').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

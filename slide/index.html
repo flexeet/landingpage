@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLEXEET | Mirror Deck (Stage Ready)</title>
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        /* =========================================
+           1. ORIGINAL LANDING PAGE VARIABLES
+           ========================================= */
+        :root {
+            --accent: #395ac6; 
+            --accent-dark: #2a4199;
+            --accent-light: #eff4ff;
+            --bg-main: #f8fafc;
+            --bg-pure: #ffffff;
+            --text-primary: #0f172a;
+            --text-body: #475569;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-blur: blur(20px);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+            --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 25px -5px rgba(57, 90, 198, 0.1);
+            
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            overflow: hidden;
+            width: 100vw; height: 100vh;
+        }
+
+        /* Background */
+        .grid-bg {
+            position: absolute; inset: 0; z-index: -2;
+            background-image: linear-gradient(rgba(57, 90, 198, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(57, 90, 198, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* =========================================
+           2. SLIDE ARCHITECTURE
+           ========================================= */
+        .deck { width: 100vw; height: 100vh; position: relative; }
+        
+        .slide {
+            position: absolute; inset: 0;
+            padding: 40px 60px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden;
+            transform: scale(0.95);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .slide.active {
+            opacity: 1; visibility: visible;
+            transform: scale(1);
+            z-index: 10;
+        }
+
+        /* =========================================
+           3. TYPOGRAPHY & UTILS (SCALED UP FOR STAGE)
+           ========================================= */
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--text-primary); font-weight: 700; }
+        .mono { font-family: var(--font-mono); }
+        .center { text-align: center; }
+        
+        .section-tag { 
+            display: block; font-family: var(--font-mono); color: var(--accent); 
+            letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; 
+            font-weight: 700; margin-bottom: 15px; 
+        }
+        
+        .section-title { 
+            font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; 
+            color: var(--text-primary); 
+        }
+
+        .section-sub {
+            font-size: 1.4rem; color: var(--text-body); max-width: 800px; margin: 0 auto 40px;
+        }
+
+        .highlight-text { 
+            color: var(--accent); 
+            background: linear-gradient(90deg, var(--accent) 0%, #60a5fa 50%, var(--accent) 100%);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            background-size: 200% 100%; animation: highlightShimmer 4s infinite linear;
+        }
+        @keyframes highlightShimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: var(--glass-blur);
+            border: var(--glass-border); border-radius: 20px;
+            box-shadow: var(--shadow-card); padding: 30px;
+        }
+
+        /* =========================================
+           4. ORIGINAL CSS ANIMATIONS (COPIED EXACTLY)
+           ========================================= */
+        
+        /* 4.1 PROBLEM: Leak */
+        .leak-container { width: 40px; height: 60px; position: relative; margin: 0 auto; }
+        .leak-bar { width: 100%; height: 4px; background: #cbd5e1; border-radius: 2px; }
+        .leak-drop { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; position: absolute; top: 4px; left: 50%; transform: translateX(-50%); opacity: 0; }
+        .d1 { animation: dfall 2s infinite; } .d2 { animation: dfall 2s infinite 0.7s; }
+        @keyframes dfall { 90% { opacity: 1; } 100% { top: 55px; opacity: 0; transform: translateX(-50%) scale(0.5); } }
+
+        /* 4.2 PROBLEM: Fatigue */
+        .fatigue-container { width: 40px; height: 40px; position: relative; margin: 0 auto; }
+        .spinner-ring { width: 100%; height: 100%; border: 3px solid #cbd5e1; border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+        .spinner-core { width: 8px; height: 8px; background: var(--danger); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); border-radius: 50%; animation: pulseR 1s infinite alternate; }
+        @keyframes spin { 100% { transform: rotate(360deg); } } @keyframes pulseR { from { transform: translate(-50%,-50%) scale(1); } to { transform: translate(-50%,-50%) scale(1.3); opacity: 0.7; } }
+
+        /* 4.3 PROBLEM: Gap */
+        .gap-container { width: 100px; height: 40px; display: flex; align-items: center; gap: 20px; margin: 0 auto; justify-content: center; }
+        .gap-line { width: 30px; height: 3px; background: #cbd5e1; border-radius: 2px; }
+        .gap-break { position: relative; width: 10px; height: 10px; }
+        .gap-line.left { animation: pL 1.5s infinite alternate; } .gap-line.right { animation: pR 1.5s infinite alternate; }
+        .spark { width: 4px; height: 4px; background: var(--danger); border-radius: 50%; position: absolute; opacity: 0; }
+        .s1 { top: -8px; animation: spF 1.5s infinite 0.3s; } .s2 { bottom: -8px; animation: spF 1.5s infinite 0.5s; }
+        @keyframes pL { 100% { transform: translateX(5px); } } @keyframes pR { 100% { transform: translateX(-5px); } } @keyframes spF { 50% { opacity: 1; transform: scale(1.5); } }
+
+        /* 4.4 PROTOCOL: Radar */
+        .protocol-icon-animated { width: 100px; height: 100px; margin: 0 auto 20px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .radar-container { width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .radar-circle { position: absolute; border: 1px solid rgba(57, 90, 198, 0.2); border-radius: 50%; animation: radarPulse 3s ease-out infinite; }
+        .radar-circle:nth-child(1) { width: 40px; height: 40px; } .radar-circle:nth-child(2) { width: 65px; height: 65px; animation-delay: 0.5s; } .radar-circle:nth-child(3) { width: 90px; height: 90px; animation-delay: 1s; }
+        .radar-center { width: 50px; height: 50px; background: var(--accent-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 0 20px rgba(57, 90, 198, 0.2); }
+        .radar-center i { font-size: 1.5rem; color: var(--accent); }
+        .radar-ping { position: absolute; width: 8px; height: 8px; background: var(--danger); border-radius: 50%; opacity: 0; animation: pingBlink 2s infinite; }
+        .radar-ping.p1 { top: 15px; right: 20px; animation-delay: 0.3s; }
+        @keyframes radarPulse { 0% { transform: scale(0.8); opacity: 0; border-color: var(--accent); } 50% { opacity: 0.6; } 100% { transform: scale(1.2); opacity: 0; } } @keyframes pingBlink { 0%, 100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 1; transform: scale(1); } }
+
+        /* 4.5 PROTOCOL: Blueprint */
+        .blueprint-container { width: 80px; height: 80px; background: var(--accent-light); border-radius: 12px; position: relative; overflow: hidden; border: 2px solid rgba(57, 90, 198, 0.2); }
+        .bp-line { position: absolute; background: var(--accent); opacity: 0; }
+        .bp-line.horizontal { height: 2px; left: 12px; right: 12px; } .bp-line.vertical { width: 2px; top: 12px; bottom: 12px; }
+        .bp-line.l1 { top: 20px; animation: drawLineH 2s ease-out infinite; } .bp-line.l4 { left: 25px; animation: drawLineV 2s ease-out infinite 0.9s; }
+        @keyframes drawLineH { 0% { width: 0; opacity: 0; } 50% { width: calc(100% - 24px); opacity: 0.6; } 100% { width: calc(100% - 24px); opacity: 0; } } @keyframes drawLineV { 0% { height: 0; opacity: 0; } 50% { height: calc(100% - 24px); opacity: 0.6; } 100% { height: calc(100% - 24px); opacity: 0; } }
+
+        /* 4.6 PROTOCOL: Rocket */
+        .rocket-container { width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .rocket-body { width: 60px; height: 60px; background: var(--accent-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; animation: rocketFloat 2s ease-in-out infinite; }
+        .rocket-body i { font-size: 1.8rem; color: var(--accent); }
+        .rocket-flame { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 3px; z-index: 1; }
+        .flame { width: 6px; height: 20px; background: var(--danger); border-radius: 50%; animation: flameFlicker 0.3s ease-in-out infinite alternate; }
+        @keyframes rocketFloat { 0%, 100% { transform: translateY(0) rotate(-45deg); } 50% { transform: translateY(-8px) rotate(-45deg); } } @keyframes flameFlicker { 0% { transform: scaleY(1); opacity: 0.8; } 100% { transform: scaleY(1.2); opacity: 1; } }
+
+        /* =========================================
+           5. LAYOUT GRIDS (SCALED)
+           ========================================= */
+        .grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; width: 100%; max-width: 1400px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; width: 100%; max-width: 1400px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; width: 100%; max-width: 1300px; }
+
+        /* Specific Card Styles from Original */
+        .problem-card { padding: 40px 30px; height: 100%; text-align: left; }
+        .card-visual { height: 80px; display: flex; align-items: center; border-bottom: 1px solid #e2e8f0; margin-bottom: 20px; }
+        .card-num { font-size: 1.2rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; display: block; }
+        .problem-card h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        .problem-card p { font-size: 1.1rem; line-height: 1.6; }
+
+        .protocol-card { padding: 40px 30px; text-align: center; position: relative; height: 100%; }
+        .protocol-number { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .protocol-output { background: #f1f5f9; padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; font-family: var(--font-mono); margin-top: auto; display: inline-block; }
+        .protocol-output span { color: var(--accent); font-weight: 700; }
+
+        /* Nav */
+        .slide-nav { position: fixed; bottom: 30px; right: 40px; display: flex; gap: 15px; align-items: center; z-index: 100; }
+        .nav-btn { width: 60px; height: 60px; border-radius: 50%; border: none; background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); cursor: pointer; color: var(--text-primary); font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .nav-btn:hover { background: var(--accent); color: white; }
+        .counter { font-family: var(--font-mono); font-weight: 800; font-size: 1.2rem; background: white; padding: 15px 25px; border-radius: 50px; }
+        .progress { position: fixed; bottom: 0; left: 0; height: 8px; background: var(--accent); width: 0%; transition: width 0.5s; z-index: 100; }
+
+        /* Animation Entry */
+        .stagger-in > * { opacity: 0; transform: translateY(30px); transition: 0.6s ease; }
+        .slide.active .stagger-in > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+        .slide.active .stagger-in > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+        .slide.active .stagger-in > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+        .slide.active .stagger-in > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+
+    </style>
+</head>
+<body>
+    
+    <div class="grid-bg"></div>
+    <div class="progress" id="progressBar"></div>
+
+    <main class="deck">
+
+        <!-- SLIDE 1: HERO -->
+        <div class="slide active">
+            <div class="grid-2">
+                <div>
+                    <div style="margin-bottom:20px;">
+                        <span class="mono" style="font-size:0.8rem; background:white; padding:8px 16px; border-radius:50px; border:1px solid #e2e8f0; font-weight:700;">ASTRA ENGINEERING DNA • 10-YEAR RETAIL WARFARE</span>
+                    </div>
+                    
+                    <h1 style="font-size: 4.5rem; letter-spacing: -2px; margin-bottom: 24px;">
+                        We Hunt <span class="highlight-text">Profit Leaks.</span><br>
+                        Not Hype.
+                    </h1>
+                    
+                    <p style="font-size: 1.4rem; color: var(--text-body); margin-bottom: 40px;">
+                        Everyone's building AI Agents. We build the logic that controls them.<br>
+                        <strong>Standardize first. Automate second. Profit always.</strong>
+                    </p>
+                    
+                    <!-- F1 EQUATION (Exact Copy) -->
+                    <div class="glass-card" style="display:inline-flex; align-items:center; gap:25px; padding:20px 40px; width:auto;">
+                        <div style="text-align:center">
+                            <span class="mono text-muted" style="font-size:0.7rem; display:block;">THE ENGINE</span>
+                            <span style="font-family:var(--font-heading); font-size:1.3rem; font-weight:700;">AI Platform</span><br>
+                            <span style="font-size:0.8rem; font-style:italic; color:var(--text-muted);">(Cekat / LLM)</span>
+                        </div>
+                        <div style="font-size:1.5rem; color:var(--text-muted);">+</div>
+                        <div style="text-align:center">
+                            <span class="mono" style="font-size:0.7rem; display:block; color:var(--accent);">THE PILOT</span>
+                            <span style="font-family:var(--font-heading); font-size:1.3rem; font-weight:700; color:var(--accent);">FLEXEET</span><br>
+                            <span style="font-size:0.8rem; font-style:italic; color:var(--accent);">(Logic & Strategy)</span>
+                        </div>
+                        <div style="font-size:1.5rem; color:var(--text-muted);">=</div>
+                        <div style="text-align:center">
+                            <span class="mono" style="font-size:0.7rem; display:block; color:var(--success);">THE OUTPUT</span>
+                            <span style="font-family:var(--font-heading); font-size:1.3rem; font-weight:700; color:var(--success);">PREDICTABLE PROFIT</span><br>
+                            <span style="font-size:0.8rem; font-style:italic; color:var(--success);">(ROI < 6 Months)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position:relative; display:flex; justify-content:center; align-items:flex-end; height:85vh;">
+                    <img src="https://innov.cekat.ai/assets/images/final_luvian.png" alt="Founder" style="height:100%; object-fit:contain;">
+                    <div class="glass-card" style="position:absolute; bottom:50px; right:0; padding:15px 25px; display:flex; align-items:center; gap:15px;">
+                        <i class="bi bi-patch-check-fill" style="color:var(--accent); font-size:1.5rem;"></i>
+                        <div>
+                            <span style="display:block; font-weight:700;">The Architect</span>
+                            <span style="display:block; font-size:0.8rem;" class="mono text-muted">Top n8n Creator • Cekat Innov '25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: SOCIAL PROOF (Exact Items) -->
+        <div class="slide">
+            <div class="grid-3 stagger-in" style="width:100%;">
+                <div class="glass-card" style="align-items:center; text-align:center;">
+                    <i class="bi bi-cpu-fill" style="font-size:2.5rem; color:var(--accent); margin-bottom:15px;"></i>
+                    <span style="font-size:1.4rem;">Architecting <strong>Top Cekat Deployments</strong></span>
+                </div>
+                <div class="glass-card" style="align-items:center; text-align:center;">
+                    <i class="bi bi-mic-fill" style="font-size:2.5rem; color:var(--accent); margin-bottom:15px;"></i>
+                    <span style="font-size:1.4rem;">Speaker at <strong>Cekat Innov '25</strong></span>
+                </div>
+                <div class="glass-card" style="align-items:center; text-align:center;">
+                    <i class="bi bi-broadcast" style="font-size:2.5rem; color:var(--accent); margin-bottom:15px;"></i>
+                    <span style="font-size:1.4rem;"><strong>3,800+</strong> Business Leaders Reached</span>
+                </div>
+            </div>
+
+            <!-- Marquee -->
+            <div class="glass-card" style="width:100%; margin-top:50px; padding:20px; display:flex; justify-content:space-between; opacity:0.7; font-weight:700; font-family:var(--font-heading); font-size:1.5rem;">
+                <span>SHOPEE</span> <span>TOKOPEDIA</span> <span style="color:var(--accent)">CEKAT.AI</span> <span>JUBELIO</span> <span>TIKTOK</span> <span>WHATSAPP</span> <span>ACCURATE</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: PROBLEM (Original HTML Cards) -->
+        <div class="slide">
+            <div class="center" style="margin-bottom:50px;">
+                <span class="section-tag">THE REAL ENEMY</span>
+                <h2 class="section-title">Business Dies from <span class="highlight-text">Internal Friction.</span></h2>
+            </div>
+            
+            <div class="grid-3 stagger-in">
+                <!-- Card 1 -->
+                <article class="glass-card problem-card">
+                    <div class="card-visual">
+                        <div class="leak-container"><div class="leak-bar"></div><div class="leak-drop d1"></div><div class="leak-drop d2"></div></div>
+                    </div>
+                    <div>
+                        <span class="card-num mono">01</span>
+                        <h3>Knowledge Leak</h3>
+                        <p>Key employees resign, taking SOPs and trade secrets with them. You restart from zero. Every. Single. Time.</p>
+                    </div>
+                </article>
+                
+                <!-- Card 2 -->
+                <article class="glass-card problem-card">
+                    <div class="card-visual">
+                        <div class="fatigue-container"><div class="spinner-ring"></div><div class="spinner-core"></div></div>
+                    </div>
+                    <div>
+                        <span class="card-num mono">02</span>
+                        <h3>Admin Fatigue</h3>
+                        <p>20+ hours/week answering repetitive questions. Your strategy dies because you're stuck in operations.</p>
+                    </div>
+                </article>
+                
+                <!-- Card 3 -->
+                <article class="glass-card problem-card">
+                    <div class="card-visual">
+                        <div class="gap-container"><div class="gap-line left"></div><div class="gap-break"><span class="spark s1"></span><span class="spark s2"></span></div><div class="gap-line right"></div></div>
+                    </div>
+                    <div>
+                        <span class="card-num mono">03</span>
+                        <h3>Execution Gap</h3>
+                        <p>Expensive AI Agents, but no "Pilot" to operate them. Agentic AI without logic is just faster chaos.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: PROTOCOL (Exact Original HTML & Copy) -->
+        <div class="slide">
+            <div class="center" style="margin-bottom:50px;">
+                <span class="section-tag">OUR METHODOLOGY</span>
+                <h2 class="section-title">The Profit Leak <span class="highlight-text">Protocol™</span></h2>
+            </div>
+            
+            <div class="grid-3 stagger-in" style="height: auto;">
+                <!-- Step 1 -->
+                <article class="protocol-card glass-card">
+                    <div class="protocol-number">01</div>
+                    <div class="protocol-icon-animated">
+                        <div class="radar-container"><div class="radar-circle"></div><div class="radar-circle"></div><div class="radar-center"><i class="bi bi-search"></i></div><div class="radar-ping p1"></div></div>
+                    </div>
+                    <h3>Diagnose</h3>
+                    <p>Identify profit bleeding points with surgical precision. We find where your money leaks before writing any code.</p>
+                    <div class="protocol-output mono"><span>Output:</span> Leak Audit Report</div>
+                </article>
+                
+                <!-- Step 2 -->
+                <article class="protocol-card glass-card">
+                    <div class="protocol-number">02</div>
+                    <div class="protocol-icon-animated">
+                        <div class="blueprint-container"><div class="bp-line horizontal l1"></div><div class="bp-line vertical l4"></div></div>
+                    </div>
+                    <h3>Design</h3>
+                    <p>Architect a fail-safe system. Standardize the process first, then design the automation layer.</p>
+                    <div class="protocol-output mono"><span>Output:</span> System Blueprint</div>
+                </article>
+                
+                <!-- Step 3 -->
+                <article class="protocol-card glass-card">
+                    <div class="protocol-number">03</div>
+                    <div class="protocol-icon-animated">
+                        <div class="rocket-container"><div class="rocket-body"><i class="bi bi-rocket-takeoff"></i></div><div class="rocket-flame"><span class="flame"></span></div></div>
+                    </div>
+                    <h3>Execute</h3>
+                    <p>Deploy with zero manual errors. We pilot the system, you focus on vision and strategy.</p>
+                    <div class="protocol-output mono"><span>Output:</span> Live Profit Engine</div>
+                </article>
+            </div>
+            
+            <div class="glass-card" style="margin-top:40px; border:2px solid var(--success); display:flex; flex-direction:row; align-items:center; gap:20px; padding:20px 40px;">
+                <i class="bi bi-shield-check" style="font-size:2rem; color:var(--success);"></i>
+                <div>
+                    <strong style="font-size:1.2rem;">The 6-Month ROI Commitment</strong>
+                    <p style="font-size:1rem; margin:0;">If our system doesn't deliver measurable financial impact within 6 months, we consider ourselves failed.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: ARCHITECTURE -->
+        <div class="slide">
+            <div class="grid-2">
+                <div>
+                    <span class="section-tag">PRODUCT ARCHITECTURE</span>
+                    <h2 class="section-title">Logic Over Magic.<br>The 90/10 Rule.</h2>
+                    <p class="section-sub" style="margin-bottom:30px;">
+                        AI Agents are powerful but unpredictable. We don't let them run wild — we architect the logic layer that controls them.
+                    </p>
+                    
+                    <div style="display:flex; gap:20px; margin-bottom:20px;">
+                        <div style="width:60px; height:60px; background:white; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <i class="bi bi-shield-check" style="font-size:2rem; color:var(--accent);"></i>
+                        </div>
+                        <div>
+                            <h4>Hardcode Layer (90%)</h4>
+                            <p style="font-size:1.2rem;">Prices, Stock, Decisions — all deterministic. Zero hallucination.</p>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:20px;">
+                        <div style="width:60px; height:60px; background:white; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <i class="bi bi-chat-quote-fill" style="font-size:2rem; color:var(--accent);"></i>
+                        </div>
+                        <div>
+                            <h4>AI Interface Layer (10%)</h4>
+                            <p style="font-size:1.2rem;">AI only speaks. Logic thinks. Natural conversation powered by bulletproof data.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stagger-in" style="display:flex; flex-direction:column; gap:20px;">
+                    <!-- Tech 1 -->
+                    <div class="glass-card" style="flex-direction:row; align-items:center; gap:20px; height:auto;">
+                        <i class="bi bi-database-lock" style="font-size:2.5rem; color:var(--accent);"></i>
+                        <div>
+                            <h4>Private Vector DB</h4>
+                            <p class="text-muted" style="font-size:1rem !important;">Enterprise-grade security. Isolated data.</p>
+                        </div>
+                    </div>
+                    <!-- Tech 2 -->
+                    <div class="glass-card" style="flex-direction:row; align-items:center; gap:20px; height:auto;">
+                        <i class="bi bi-diagram-2" style="font-size:2.5rem; color:var(--accent);"></i>
+                        <div>
+                            <h4>Seamless Integration</h4>
+                            <p class="text-muted" style="font-size:1rem !important;">OMS, Marketplaces, CRM bridge.</p>
+                        </div>
+                    </div>
+                    <!-- Tech 3 -->
+                    <div class="glass-card" style="flex-direction:row; align-items:center; gap:20px; height:auto;">
+                        <i class="bi bi-exclamation-triangle" style="font-size:2.5rem; color:var(--danger);"></i>
+                        <div>
+                            <h4>Budget Sentinel</h4>
+                            <p class="text-muted" style="font-size:1rem !important;">Fail-safe blocks AI financial hallucinations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: COMPETITORS (Original Text) -->
+        <div class="slide">
+            <div class="center" style="margin-bottom:40px;">
+                <span class="section-tag">COMPETITIVE EDGE</span>
+                <h2 class="section-title">Why Flexeet, Not Them?</h2>
+            </div>
+            
+            <div class="grid-4 stagger-in">
+                <!-- VS DIY -->
+                <div class="glass-card">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                        <strong class="mono text-muted">VS DIY / CHATGPT</strong>
+                        <i class="bi bi-x-circle-fill" style="color:var(--danger); font-size:1.5rem;"></i>
+                    </div>
+                    <p style="font-size:1rem;">"Free dan flexible, tim internal bisa setup sendiri."</p>
+                    <p style="margin-top:10px; font-weight:700;">REALITY: Siapa tanggung jawab kalau jam 3 pagi bot kasih diskon 90%?</p>
+                </div>
+
+                <!-- VS Agency -->
+                <div class="glass-card">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                        <strong class="mono text-muted">VS AGENCY MURAH</strong>
+                        <i class="bi bi-x-circle-fill" style="color:var(--danger); font-size:1.5rem;"></i>
+                    </div>
+                    <p style="font-size:1rem;">"Chatbot cuma 1.5 juta sekali bayar putus."</p>
+                    <p style="margin-top:10px; font-weight:700;">REALITY: Mereka orang IT, gak ngerti Retail. Breakdown saat high traffic.</p>
+                </div>
+
+                <!-- VS Platform -->
+                <div class="glass-card">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                        <strong class="mono text-muted">VS CEKAT LANGSUNG</strong>
+                        <i class="bi bi-exclamation-circle-fill" style="color:var(--warning); font-size:1.5rem;"></i>
+                    </div>
+                    <p style="font-size:1rem;">"Platform powerful, setup sendiri."</p>
+                    <p style="margin-top:10px; font-weight:700;">REALITY: Itu Mesin F1. Setup mudah, optimize sulit. Butuh Pilot.</p>
+                </div>
+
+                <!-- Killer Quote -->
+                <div class="glass-card" style="background:var(--accent); color:white; border:none; justify-content:center;">
+                    <p style="font-size:1.6rem; line-height:1.4; font-weight:600;">"ChatGPT itu <span style="color:#93c5fd">Menebak</span>. Sistem kami <span style="color:#93c5fd">Memastikan</span>. Mau bisnis dijalankan tebakan atau kepastian?"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: INTELLIGENCE LAYER -->
+        <div class="slide">
+            <div class="grid-2">
+                <div>
+                    <span class="section-tag">2026 POSITIONING</span>
+                    <h2 class="section-title">The <span class="highlight-text">Intelligence Layer</span></h2>
+                    <p class="section-sub">Where we sit in the AI Agentic landscape — and why it matters.</p>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:20px; width:100%;">
+                     <!-- Layer 1 -->
+                     <div class="glass-card" style="flex-direction:row; justify-content:space-between; align-items:center; height:auto; opacity:0.6;">
+                        <div>
+                            <span class="mono text-muted" style="font-size:0.9rem;">AI AGENT LAYER</span><br>
+                            <strong>Cekat, ChatGPT, Claude</strong>
+                        </div>
+                        <i class="bi bi-robot" style="font-size:1.5rem;"></i>
+                    </div>
+                    
+                    <div style="text-align:center"><i class="bi bi-arrow-down" style="color:var(--accent); font-size:2rem;"></i></div>
+                    
+                    <!-- Layer 2 (Featured) -->
+                    <div class="glass-card" style="flex-direction:row; justify-content:space-between; align-items:center; height:auto; border:3px solid var(--accent); transform:scale(1.05); z-index:2; background:white;">
+                        <div>
+                            <span class="mono text-muted" style="font-size:0.9rem;">THE INTELLIGENCE LAYER</span><br>
+                            <strong style="color:var(--accent); font-size:1.6rem;">FLEXEET (Logic & Rules)</strong>
+                        </div>
+                        <div>
+                             <i class="bi bi-check2" style="margin-right:10px;"></i> Sentinel
+                             <i class="bi bi-check2" style="margin-left:10px;"></i> StockFlow
+                        </div>
+                    </div>
+                    
+                    <div style="text-align:center"><i class="bi bi-arrow-down" style="color:var(--accent); font-size:2rem;"></i></div>
+                    
+                    <!-- Layer 3 -->
+                    <div class="glass-card" style="flex-direction:row; justify-content:space-between; align-items:center; height:auto; opacity:0.6;">
+                        <div>
+                            <span class="mono text-muted" style="font-size:0.9rem;">BUSINESS OPS</span><br>
+                            <strong>Inventory, Pricing, SOPs</strong>
+                        </div>
+                        <i class="bi bi-building" style="font-size:1.5rem;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="mono center" style="margin-top:40px; color:var(--text-muted);">
+                2025: "Everyone builds Chatbots" &nbsp;→&nbsp; <strong>2027: "Everyone needs someone to CONTROL the Agents"</strong>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: FOUNDER -->
+        <div class="slide">
+            <div class="grid-2">
+                <div style="height:90vh; display:flex; align-items:flex-end; justify-content:center;">
+                    <img src="https://innov.cekat.ai/assets/images/final_luvian.png" alt="Aji" style="height:100%; object-fit:contain;">
+                </div>
+                <div>
+                    <span class="section-tag">THE ARCHITECT</span>
+                    <h2 class="section-title">Built from <span class="highlight-text">Battle Scars.</span></h2>
+                    
+                    <div class="stagger-in" style="margin-top:40px; display:flex; flex-direction:column; gap:30px;">
+                        <div style="display:flex; gap:25px; align-items:start;">
+                            <i class="bi bi-mortarboard-fill" style="font-size:2.5rem; color:var(--accent)"></i>
+                            <div><h4>Astra Engineering DNA</h4><p class="text-muted">Politeknik Manufaktur Astra — Precision engineering mindset.</p></div>
+                        </div>
+                        <div style="display:flex; gap:25px; align-items:start;">
+                            <i class="bi bi-shop" style="font-size:2.5rem; color:var(--accent)"></i>
+                            <div><h4>10+ Years Retail Warfare</h4><p class="text-muted">Built Hijacket from zero. We know retail ops inside-out.</p></div>
+                        </div>
+                        <div style="display:flex; gap:25px; align-items:start;">
+                            <i class="bi bi-code-square" style="font-size:2.5rem; color:var(--accent)"></i>
+                            <div><h4>Top n8n Creator</h4><p class="text-muted">Highest-performing workflow architect in Cekat ecosystem.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: PRODUCTS -->
+        <div class="slide">
+            <div class="center" style="margin-bottom:40px;">
+                <span class="section-tag">PRODUCT SUITE</span>
+                <h2 class="section-title">Choose Your Weapon.</h2>
+            </div>
+            
+            <div class="grid-2 stagger-in">
+                <!-- Managed -->
+                <div class="glass-card" style="border:3px solid var(--accent);">
+                    <span class="mono" style="background:var(--accent); color:white; padding:5px 15px; font-size:0.9rem; border-radius:4px; align-self:start; margin-bottom:20px;">FLAGSHIP</span>
+                    <h3 style="font-size:3rem; margin-bottom:15px;">Cekat Pilot</h3>
+                    <p class="mono" style="color:var(--accent);">Managed AI Customer Service</p>
+                    <p class="text-muted" style="font-size:1.1rem; margin-top:10px;">We pilot your AI so you don't have to — with logic that won't break at 3AM.</p>
+                    <ul style="margin-top:20px; list-style:none;">
+                        <li><i class="bi bi-check2 text-success"></i> Genesis Sync™ Setup</li>
+                        <li><i class="bi bi-check2 text-success"></i> StockFlow Logic</li>
+                    </ul>
+                    <div class="mono" style="margin-top:auto; font-weight:700; font-size:1.5rem; color:var(--accent);">From Rp 10jt/mo</div>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="glass-card" style="background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border:none;">
+                    <span class="mono" style="background:#334155; color:white; padding:5px 15px; font-size:0.9rem; border-radius:4px; align-self:start; margin-bottom:20px;">ENTERPRISE</span>
+                    <h3 style="font-size:3rem; margin-bottom:15px; color:white;">AICEO System</h3>
+                    <p class="mono" style="color:#60a5fa;">Digital Cloning Protocol</p>
+                    <p style="color:#cbd5e1; font-size:1.1rem; margin-top:10px;">Clone your decision-making into AI. 30 AI advisors trained on YOUR business logic.</p>
+                    <ul style="margin-top:20px; list-style:none; color:#cbd5e1;">
+                        <li><i class="bi bi-check2"></i> Private Vector DB</li>
+                        <li><i class="bi bi-check2"></i> Decision Lock™</li>
+                    </ul>
+                    <div class="mono" style="margin-top:auto; font-weight:700; font-size:1.5rem; color:white;">From Rp 100jt+</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: TESTIMONIALS -->
+        <div class="slide">
+            <div class="center" style="margin-bottom:40px;">
+                <span class="section-tag">PROOF OF CONCEPT</span>
+                <h2 class="section-title">From Chaos to Clarity.</h2>
+            </div>
+            
+            <div class="grid-3 stagger-in">
+                <div class="glass-card">
+                    <i class="bi bi-quote" style="font-size:3rem; color:var(--accent); opacity:0.2;"></i>
+                    <p style="font-style:italic; margin:20px 0;">"Flexeet doesn't just automate — they re-engineer how we operate. <strong>ROI dalam 4 bulan</strong>."</p>
+                    <div>
+                        <strong>Fashion Brand CEO</strong><br>
+                        <span class="mono text-muted" style="font-size:0.9rem !important;">Hijacket</span>
+                    </div>
+                </div>
+                <div class="glass-card" style="border:2px solid var(--accent);">
+                    <i class="bi bi-quote" style="font-size:3rem; color:var(--accent); opacity:0.2;"></i>
+                    <p style="font-style:italic; margin:20px 0;">"Dulu CS kami 5 orang. Sekarang <strong>2 orang + AI</strong> handle 3x volume chat."</p>
+                    <div>
+                        <strong>Operations Director</strong><br>
+                        <span class="mono text-muted" style="font-size:0.9rem !important;">Ecommerce 50+ SKU</span>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <i class="bi bi-quote" style="font-size:3rem; color:var(--accent); opacity:0.2;"></i>
+                    <p style="font-style:italic; margin:20px 0;">"Logic layer mereka prevent AI dari kasih harga ngaco ke customer. <strong>Zero error.</strong>"</p>
+                    <div>
+                        <strong>F&B Founder</strong><br>
+                        <span class="mono text-muted" style="font-size:0.9rem !important;">8 Outlets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: FAQ -->
+        <div class="slide">
+            <div class="center" style="margin-bottom:40px;">
+                <span class="section-tag">COMMON OBJECTIONS</span>
+                <h2 class="section-title">Questions We Hear.</h2>
+            </div>
+            
+            <div class="grid-4 stagger-in">
+                <div class="glass-card">
+                    <h4 style="color:var(--accent);"><i class="bi bi-currency-dollar"></i> Mahal ya, 5 Juta?</h4>
+                    <p class="text-muted">Ini asuransi. Berapa kerugian kalau Admin salah harga pas promo? Kami ukur ROI. < 6 Bulan Payback.</p>
+                </div>
+                <div class="glass-card">
+                    <h4 style="color:var(--accent);"><i class="bi bi-robot"></i> Tim bisa ChatGPT?</h4>
+                    <p class="text-muted">ChatGPT itu <strong>Menebak</strong>. Sistem kami <strong>Memastikan</strong>. Mau bisnis tebakan atau kepastian?</p>
+                </div>
+                <div class="glass-card">
+                    <h4 style="color:var(--accent);"><i class="bi bi-shop"></i> Agency Lain Murah?</h4>
+                    <p class="text-muted">Benar. Mereka orang IT, <strong>gak ngerti Ritel</strong>. Saya jual pengalaman supaya gak boncos.</p>
+                </div>
+                <div class="glass-card">
+                    <h4 style="color:var(--accent);"><i class="bi bi-person-x"></i> CS Resign?</h4>
+                    <p class="text-muted">Sistem kami immortal. Knowledge terkunci di sistem, bukan di kepala orang. Standar tetap 100%.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: CTA -->
+        <div class="slide">
+            <div class="center" style="max-width:1000px; margin:0 auto;">
+                <span class="section-tag">FINAL STEP</span>
+                <h2 class="section-title" style="font-size:5rem;">Ready to Stop the <br><span class="highlight-text">Profit Leak?</span></h2>
+                
+                <p style="font-size:1.8rem; margin-bottom:60px; color:var(--text-body);">
+                    Book a free 30-minute diagnosis. We'll identify your top 3 profit leaks — no strings attached.
+                </p>
+
+                <div class="glass-card" style="display:inline-block; background:var(--accent); color:white; padding:30px 80px; border-radius:100px; font-weight:700; font-size:1.8rem; cursor:pointer; border:none; height:auto;">
+                    <i class="bi bi-whatsapp" style="margin-right:15px;"></i> Book Free Diagnosis
+                </div>
+                
+                <p class="mono text-muted" style="margin-top:50px; font-size:1rem !important;">
+                    <span style="color:var(--danger)">●</span> Limited slots — We only take clients we can deliver ROI for.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- NAVIGATION -->
+    <div class="slide-nav">
+        <div class="counter" id="counter">01 / 12</div>
+        <button class="nav-btn" onclick="changeSlide(-1)"><i class="bi bi-arrow-left"></i></button>
+        <button class="nav-btn" onclick="changeSlide(1)"><i class="bi bi-arrow-right"></i></button>
+    </div>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        const counter = document.getElementById('counter');
+        const total = slides.length;
+
+        function update() {
+            slides.forEach((s, i) => s.classList.toggle('active', i === current));
+            progressBar.style.width = `${((current + 1) / total) * 100}%`;
+            counter.innerText = `${String(current + 1).padStart(2, '0')} / ${total}`;
+        }
+
+        function changeSlide(dir) {
+            const next = current + dir;
+            if (next >= 0 && next < total) {
+                current = next;
+                update();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') changeSlide(1);
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+        });
+
+        update();
+    </script>
+</body>
+</html>

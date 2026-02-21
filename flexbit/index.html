@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FlexBit — Analisis Saham 2 Dimensi: Kualitas Bisnis + Timing Harga</title>
+    <meta name="description" content="FlexBit V3.5 dengan Narrative System - pisahkan Kualitas Bisnis dari Timing Harga. Tidak perlu bingung lagi saat skor tinggi tapi sinyal lemah.">
+    
+    <link rel="icon" type="image/png" href="https://flxr2.com/flexbit/logo.png">
+    <link rel="apple-touch-icon" href="https://flxr2.com/flexbit/logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="mainNav">
+        <div class="container">
+            <div class="nav-pill">
+                <a href="#" class="logo">
+                    <img src="https://flxr2.com/flexbit/logo.png" alt="FlexBit" class="logo-img">
+                    FlexBit <span class="version-badge">V3.5</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#narrative">Narrative System</a></li>
+                    <li><a href="#cara-kerja">Cara Kerja</a></li>
+                    <li><a href="#preview">Preview</a></li>
+                    <li><a href="#harga">Harga</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <a href="#harga" class="btn btn-primary btn-nav">Dapatkan Akses</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <canvas id="candlestick-canvas" class="desktop-only"></canvas>
+        <canvas id="particles-canvas" class="desktop-only"></canvas>
+        
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="hero-badge">
+                    <span class="badge-icon">🆕</span>
+                    <span class="badge-text">V3.5 Narrative System — Founding Member Lifetime</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Akhirnya, Analisis Saham yang<br>
+                    <span class="gradient-text">Gak Bikin Bingung.</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    FlexBit V3.5 memisahkan <strong>Kualitas Bisnis</strong> dari <strong>Timing Harga</strong>.<br>
+                    Tidak perlu bingung lagi saat skor tinggi tapi sinyal lemah — sekarang jelas alasannya!
+                </p>
+                
+                <!-- INSTANT DEMO V3.5 -->
+                <div class="hero-demo">
+                    <div class="demo-card v35">
+                        <div class="demo-header">
+                            <span class="demo-ticker">🏦 BBCA</span>
+                            <span class="demo-score">FlexBit 85</span>
+                        </div>
+                        
+                        <div class="demo-2d">
+                            <div class="dimension business">
+                                <span class="dim-label">Kualitas Bisnis</span>
+                                <span class="dim-value solid">🟢 Sangat Solid</span>
+                            </div>
+                            <div class="dimension timing">
+                                <span class="dim-label">Timing Harga</span>
+                                <span class="dim-value momentum">⬆️ Momentum Bagus</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timing-bar-wrapper">
+                            <span class="timing-label">Timing Score</span>
+                            <div class="timing-bar">
+                                <div class="timing-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="timing-value">85</span>
+                        </div>
+                        
+                        <div class="demo-meta">
+                            <span class="no-conflict">✅ Tidak ada konflik</span>
+                            <span class="investor-match">👤 Long-term Value Investor</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-cta-box">
+                    <div class="hero-urgency">
+                        <span class="urgency-dot"></span>
+                        <span>Pioneer Access — <strong id="pioneer-remaining-hero">47</strong> slot tersisa dari 50</span>
+                    </div>
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20daftar%20FlexBit%20Pioneer%20Access" class="btn btn-primary btn-lg" target="_blank">
+                        <span>🚀 Claim Pioneer — Rp 199.000 Lifetime</span>
+                    </a>
+                    <p class="cta-note">✅ Beli sekali, pakai selamanya (V3.x) · 🔄 Update harian · ⚡ Harga naik 3x setelah habis</p>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">900+</span>
+                        <span class="stat-label">Saham Dianalisis</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Dimensi Analisis</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Timing Labels</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOBAT STORY SECTION -->
+    <section class="story-section" id="cerita">
+        <div class="container">
+            <div class="story-card" data-aos="fade-up">
+                <div class="story-icon">🪞</div>
+                <div class="story-content">
+                    <h2>Familiar dengan cerita ini?</h2>
+                    <div class="story-timeline">
+                        <div class="story-phase past">
+                            <span class="phase-label">Dulu</span>
+                            <p>"Beli saham karena <em>kata temen bagus</em>. Chase pump yang lagi rame. Ujungnya? <strong>Nyangkut.</strong> Cut loss. Repeat."</p>
+                        </div>
+                        <div class="story-arrow">→</div>
+                        <div class="story-phase present">
+                            <span class="phase-label">Sekarang</span>
+                            <p>"Mau lebih sistematis. Belajar value investing. Tapi screening <strong>900+ saham manual?</strong> Buka 10 tab, hitung sendiri... <em>capek.</em>"</p>
+                        </div>
+                        <div class="story-arrow">→</div>
+                        <div class="story-phase future">
+                            <span class="phase-label">FlexBit</span>
+                            <p>"<strong>5 menit</strong> dapat shortlist saham berkualitas. Sisanya? Riset mendalam saham yang sudah terfilter."</p>
+                        </div>
+                    </div>
+                    <div class="story-note">
+                        <span class="note-icon">💡</span>
+                        <span>FlexBit bukan pengganti analisis Anda — tapi <strong>mempercepat proses screening</strong> supaya waktu Anda fokus ke riset yang benar-benar penting.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section class="problem-section" id="masalah">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag warning">⚠️ Masalah Umum</div>
+                <h2 class="section-title">Pernah Mengalami <span class="gradient-text">Kebingungan Ini?</span></h2>
+            </div>
+            
+            <div class="problem-grid">
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="problem-visual">
+                        <div class="confusion-example">
+                            <div class="conf-item">
+                                <span class="conf-label">FlexBit Score</span>
+                                <span class="conf-value high">89</span>
+                            </div>
+                            <div class="conf-vs">tapi</div>
+                            <div class="conf-item">
+                                <span class="conf-label">Signal</span>
+                                <span class="conf-value low">Weak Buy</span>
+                            </div>
+                        </div>
+                        <div class="confusion-reaction">😵 Hah? Jadi beli atau tidak?</div>
+                    </div>
+                    <h3>Skor Tinggi, Signal Lemah</h3>
+                    <p>"Kok FlexBit Score 89 tapi signal cuma Weak Buy? Bagus atau jelek sih sebenarnya?"</p>
+                </div>
+                
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="problem-visual">
+                        <div class="confusion-example">
+                            <div class="conf-item">
+                                <span class="conf-label">Kategori</span>
+                                <span class="conf-value high">Premium 🌟</span>
+                            </div>
+                            <div class="conf-vs">tapi</div>
+                            <div class="conf-item">
+                                <span class="conf-label">Trend</span>
+                                <span class="conf-value low">Downtrend ↘</span>
+                            </div>
+                        </div>
+                        <div class="confusion-reaction">🤔 Premium kok turun terus?</div>
+                    </div>
+                    <h3>Premium tapi Downtrend</h3>
+                    <p>"Katanya saham premium, tapi harganya turun terus. Ini bagus atau bahaya?"</p>
+                </div>
+                
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="problem-visual">
+                        <div class="confusion-example">
+                            <div class="conf-item">
+                                <span class="conf-label">Fundamental</span>
+                                <span class="conf-value low">Lemah 📉</span>
+                            </div>
+                            <div class="conf-vs">tapi</div>
+                            <div class="conf-item">
+                                <span class="conf-label">Harga</span>
+                                <span class="conf-value high">Naik ↗</span>
+                            </div>
+                        </div>
+                        <div class="confusion-reaction">🎰 FOMO atau opportunity?</div>
+                    </div>
+                    <h3>Fundamental Jelek, Harga Naik</h3>
+                    <p>"Skor rendah tapi harga lagi naik. Ini pump &amp; dump atau beneran bagus?"</p>
+                </div>
+            </div>
+            
+            <div class="problem-solution" data-aos="fade-up">
+                <div class="solution-arrow">↓</div>
+                <h3>FlexBit V3.5 Memecahkan Semua Ini dengan</h3>
+                <div class="solution-badge">🎯 Narrative System — Analisis 2 Dimensi</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NARRATIVE SYSTEM -->
+    <section class="narrative-section" id="narrative">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag new">🆕 Fitur Baru V3.5</div>
+                <h2 class="section-title">Narrative System: <span class="gradient-text">2 Dimensi Analisis</span></h2>
+                <p>Sekarang Anda bisa memahami MENGAPA skor dan signal bisa berbeda — dan APA artinya untuk Anda.</p>
+            </div>
+            
+            <div class="narrative-explainer" data-aos="fade-up">
+                <div class="dimension-box business-box">
+                    <div class="dim-header">
+                        <span class="dim-icon">🏢</span>
+                        <h3>Dimensi 1: Kualitas Bisnis</h3>
+                    </div>
+                    <p class="dim-question">Seberapa bagus perusahaannya?</p>
+                    <div class="dim-labels">
+                        <span class="label-item solid">🟢 Sangat Solid (≥80)</span>
+                        <span class="label-item healthy">🔵 Cukup Sehat (60-79)</span>
+                        <span class="label-item attention">🟡 Perlu Perhatian (40-59)</span>
+                        <span class="label-item problematic">🔴 Bermasalah (&lt;40)</span>
+                    </div>
+                    <p class="dim-source">Derived from: FlexBit Score (VQSG)</p>
+                </div>
+                
+                <div class="dimension-connector">
+                    <span class="connector-icon">+</span>
+                </div>
+                
+                <div class="dimension-box timing-box">
+                    <div class="dim-header">
+                        <span class="dim-icon">⏱️</span>
+                        <h3>Dimensi 2: Timing Harga</h3>
+                    </div>
+                    <p class="dim-question">Apakah ini waktu yang tepat untuk beli?</p>
+                    <div class="dim-labels">
+                        <span class="label-item momentum-bagus">⬆️ Momentum Bagus</span>
+                        <span class="label-item momentum-positif">📈 Momentum Positif</span>
+                        <span class="label-item akumulasi">↔️ Zona Akumulasi</span>
+                        <span class="label-item konsolidasi">➖ Konsolidasi</span>
+                        <span class="label-item tunggu">⏳ Tunggu Stabilisasi</span>
+                        <span class="label-item mahal">⚠️ Hati-hati Mahal</span>
+                        <span class="label-item hindari">🚫 Hindari Dulu</span>
+                    </div>
+                    <p class="dim-source">Derived from: Tech Trend + V-Score</p>
+                </div>
+            </div>
+            
+            <div class="narrative-benefit" data-aos="fade-up">
+                <div class="benefit-card">
+                    <span class="benefit-icon">💡</span>
+                    <div class="benefit-content">
+                        <h4>Sekarang Jelas!</h4>
+                        <p>Skor 89 + Downtrend = <strong>"Bisnis bagus, tapi timing belum tepat"</strong>. Bukan berarti jelek — cuma perlu sabar!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFLICT DETECTION -->
+    <section class="conflict-section" id="konflik">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag">⚡ Deteksi Otomatis</div>
+                <h2 class="section-title">Deteksi Konflik <span class="gradient-text">Fundamental vs Teknikal</span></h2>
+                <p>FlexBit otomatis memberitahu saat fundamental dan teknikal tidak selaras</p>
+            </div>
+            
+            <div class="conflict-grid">
+                <div class="conflict-card type1" data-aos="fade-up" data-aos-delay="50">
+                    <div class="conflict-header">
+                        <span class="conflict-icon">💎📉</span>
+                        <span class="conflict-badge">fund_kuat_tech_lemah</span>
+                    </div>
+                    <h3>Bisnis Bagus, Timing Belum Tepat</h3>
+                    <div class="conflict-condition">
+                        <span>Kondisi:</span>
+                        <code>FlexBit Score ≥70 + Downtrend</code>
+                    </div>
+                    <div class="conflict-meaning">
+                        <p><strong>Artinya:</strong> Perusahaan fundamentalnya bagus, tapi harga sedang turun.</p>
+                        <p><strong>Untuk Anda:</strong> Bisa jadi VALUE OPPORTUNITY untuk investor sabar. Pertimbangkan akumulasi bertahap.</p>
+                    </div>
+                    <div class="conflict-example">
+                        <span class="example-label">Contoh:</span>
+                        <span class="example-stock">BUKA.JK (Score 80, Strong Downtrend)</span>
+                    </div>
+                </div>
+                
+                <div class="conflict-card type2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="conflict-header">
+                        <span class="conflict-icon">📉📈</span>
+                        <span class="conflict-badge warning">fund_lemah_tech_kuat</span>
+                    </div>
+                    <h3>Fundamental Lemah, Harga Naik</h3>
+                    <div class="conflict-condition">
+                        <span>Kondisi:</span>
+                        <code>FlexBit Score &lt;50 + Uptrend</code>
+                    </div>
+                    <div class="conflict-meaning">
+                        <p><strong>Artinya:</strong> Harga naik tapi fundamental perusahaan lemah.</p>
+                        <p><strong>Warning:</strong> Hati-hati! Bisa jadi pump &amp; dump atau speculative play. Hanya untuk trader berpengalaman!</p>
+                    </div>
+                    <div class="conflict-example">
+                        <span class="example-label">Contoh:</span>
+                        <span class="example-stock">ADCP.JK (Score 27, Uptrend)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="no-conflict-box" data-aos="fade-up">
+                <span class="check-icon">✅</span>
+                <div class="no-conflict-content">
+                    <h4>Tidak Ada Konflik = Sinyal Kuat</h4>
+                    <p>Saat tidak ada konflik terdeteksi, fundamental dan teknikal selaras. Ini adalah kondisi ideal untuk mengambil keputusan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTOR MATCHING -->
+    <section class="investor-section" id="investor">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag">👤 Personalisasi</div>
+                <h2 class="section-title">Tahu Saham Ini <span class="gradient-text">Cocok untuk Siapa</span></h2>
+                <p>FlexBit memberitahu profil investor yang cocok untuk setiap saham</p>
+            </div>
+            
+            <div class="investor-grid">
+                <div class="investor-card recommended" data-aos="fade-up" data-aos-delay="50">
+                    <div class="investor-icon">💎</div>
+                    <h3>Long-term Value Investor</h3>
+                    <p>Score ≥75 + V-Score ≥70</p>
+                    <span class="investor-tag">Saham undervalued, cocok hold lama</span>
+                </div>
+                
+                <div class="investor-card recommended" data-aos="fade-up" data-aos-delay="100">
+                    <div class="investor-icon">💰</div>
+                    <h3>Income &amp; Value Investor</h3>
+                    <p>Score ≥75 + S-Score ≥70 + Dividend &gt;4%</p>
+                    <span class="investor-tag">Passive income + capital gain</span>
+                </div>
+                
+                <div class="investor-card recommended" data-aos="fade-up" data-aos-delay="150">
+                    <div class="investor-icon">🌱</div>
+                    <h3>Growth Investor</h3>
+                    <p>G-Score ≥75 + Score ≥60</p>
+                    <span class="investor-tag">Perusahaan high growth</span>
+                </div>
+                
+                <div class="investor-card neutral" data-aos="fade-up" data-aos-delay="200">
+                    <div class="investor-icon">⚖️</div>
+                    <h3>Balanced Investor</h3>
+                    <p>Score 55-74</p>
+                    <span class="investor-tag">Diversifikasi portfolio</span>
+                </div>
+                
+                <div class="investor-card caution" data-aos="fade-up" data-aos-delay="250">
+                    <div class="investor-icon">⚡</div>
+                    <h3>Trader Berpengalaman</h3>
+                    <p>Score &lt;50 + Uptrend (speculative)</p>
+                    <span class="investor-tag warning">High risk, butuh skill trading</span>
+                </div>
+                
+                <div class="investor-card danger" data-aos="fade-up" data-aos-delay="300">
+                    <div class="investor-icon">🚫</div>
+                    <h3>Tidak Direkomendasikan</h3>
+                    <p>Score &lt;40</p>
+                    <span class="investor-tag danger">Hindari untuk semua profil</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="cara-kerja">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag">Cara Kerja</div>
+                <h2 class="section-title">3 Langkah <span class="gradient-text">Screening Cerdas</span></h2>
+                <p>Workflow baru dengan Narrative System</p>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="step-number">1</div>
+                    <div class="step-visual">
+                        <div class="filter-mockup">
+                            <div class="filter-title">Filter by Kualitas</div>
+                            <div class="filter-options">
+                                <label class="filter-opt active"><input type="checkbox" checked> 🟢 Sangat Solid</label>
+                                <label class="filter-opt active"><input type="checkbox" checked> 🔵 Cukup Sehat</label>
+                                <label class="filter-opt"><input type="checkbox"> 🟡 Perlu Perhatian</label>
+                                <label class="filter-opt"><input type="checkbox"> 🔴 Bermasalah</label>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Filter Kualitas Bisnis</h3>
+                    <p>Pilih "Sangat Solid" atau "Cukup Sehat" untuk saham dengan fundamental bagus.</p>
+                </div>
+                
+                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">2</div>
+                    <div class="step-visual">
+                        <div class="filter-mockup">
+                            <div class="filter-title">Filter by Timing</div>
+                            <div class="filter-options">
+                                <label class="filter-opt active"><input type="checkbox" checked> ⬆️ Momentum Bagus</label>
+                                <label class="filter-opt active"><input type="checkbox" checked> ↔️ Zona Akumulasi</label>
+                                <label class="filter-opt"><input type="checkbox"> ⏳ Tunggu Stabilisasi</label>
+                                <label class="filter-opt"><input type="checkbox"> 🚫 Hindari Dulu</label>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Pilih Timing yang Tepat</h3>
+                    <p>Filter "Momentum Bagus" untuk entry langsung, atau "Zona Akumulasi" untuk cicil.</p>
+                </div>
+                
+                <div class="step-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="step-number">3</div>
+                    <div class="step-visual">
+                        <div class="result-mockup">
+                            <div class="result-header">
+                                <span>Hasil Filter</span>
+                                <span class="result-count">24 saham</span>
+                            </div>
+                            <div class="result-list">
+                                <div class="result-item">
+                                    <span class="r-ticker">IPCM</span>
+                                    <span class="r-quality solid">Sangat Solid</span>
+                                    <span class="r-timing good">Momentum Bagus</span>
+                                    <span class="r-conflict ok">✅</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="r-ticker">ADES</span>
+                                    <span class="r-quality healthy">Cukup Sehat</span>
+                                    <span class="r-timing good">Momentum Positif</span>
+                                    <span class="r-conflict ok">✅</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Dapat Daftar Saham Terbaik</h3>
+                    <p>Lihat saham yang lolos filter dengan <strong>tanpa konflik</strong> — siap untuk riset lebih dalam!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APP PREVIEW V3.5 -->
+    <section class="app-preview" id="preview">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag">Preview V3.5</div>
+                <h2 class="section-title">Lihat <span class="gradient-text">Narrative System</span> Beraksi</h2>
+                <p>Tampilan baru dengan 2 dimensi analisis</p>
+            </div>
+            
+            <div class="table-wrapper" data-aos="fade-up">
+                <div class="table-header">
+                    <div class="table-title">
+                        <i class="bi bi-table"></i>
+                        <span>FlexBit V3.5 — Narrative View</span>
+                    </div>
+                    <div class="table-badge">
+                        <span class="live-dot"></span>
+                        Update Harian
+                    </div>
+                </div>
+                <div class="stock-table-container">
+                    <table class="stock-table v35">
+                        <thead>
+                            <tr>
+                                <th class="sticky-col">Saham</th>
+                                <th>Score</th>
+                                <th>Kualitas Bisnis</th>
+                                <th>Timing Harga</th>
+                                <th>Timing Score</th>
+                                <th>Konflik?</th>
+                                <th>Cocok Untuk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="sticky-col"><div class="stock-code"><span class="stock-icon">🏢</span><span>IPCM</span></div></td>
+                                <td><span class="vqsg-score high">75</span></td>
+                                <td><span class="quality-badge solid">🟢 Sangat Solid</span></td>
+                                <td><span class="timing-badge momentum">⬆️ Momentum Bagus</span></td>
+                                <td>
+                                    <div class="timing-mini-bar">
+                                        <div class="timing-mini-fill" style="width: 85%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="conflict-status ok">✅ Tidak</span></td>
+                                <td><span class="investor-mini value">💎 Long-term Value</span></td>
+                            </tr>
+                            <tr>
+                                <td class="sticky-col"><div class="stock-code"><span class="stock-icon">🧴</span><span>ADES</span></div></td>
+                                <td><span class="vqsg-score high">74</span></td>
+                                <td><span class="quality-badge healthy">🔵 Cukup Sehat</span></td>
+                                <td><span class="timing-badge positive">📈 Momentum Positif</span></td>
+                                <td>
+                                    <div class="timing-mini-bar">
+                                        <div class="timing-mini-fill" style="width: 75%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="conflict-status ok">✅ Tidak</span></td>
+                                <td><span class="investor-mini growth">🌱 Growth</span></td>
+                            </tr>
+                            <tr>
+                                <td class="sticky-col"><div class="stock-code"><span class="stock-icon">🛒</span><span>BUKA</span></div></td>
+                                <td><span class="vqsg-score high">80</span></td>
+                                <td><span class="quality-badge solid">🟢 Sangat Solid</span></td>
+                                <td><span class="timing-badge tunggu">⏳ Tunggu Stabilisasi</span></td>
+                                <td>
+                                    <div class="timing-mini-bar">
+                                        <div class="timing-mini-fill warning" style="width: 35%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="conflict-status has">⚠️ fund_kuat_tech_lemah</span></td>
+                                <td><span class="investor-mini patient">⏳ Value (Sabar)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="sticky-col"><div class="stock-code"><span class="stock-icon">⚡</span><span>ALII</span></div></td>
+                                <td><span class="vqsg-score low">49</span></td>
+                                <td><span class="quality-badge attention">🟡 Perlu Perhatian</span></td>
+                                <td><span class="timing-badge mahal">⚠️ Hati-hati Mahal</span></td>
+                                <td>
+                                    <div class="timing-mini-bar">
+                                        <div class="timing-mini-fill" style="width: 55%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="conflict-status has warning">⚠️ fund_lemah_tech_kuat</span></td>
+                                <td><span class="investor-mini trader">⚡ Trader Pro</span></td>
+                            </tr>
+                            <tr>
+                                <td class="sticky-col"><div class="stock-code"><span class="stock-icon">📱</span><span>GOTO</span></div></td>
+                                <td><span class="vqsg-score low">28</span></td>
+                                <td><span class="quality-badge problematic">🔴 Bermasalah</span></td>
+                                <td><span class="timing-badge hindari">🚫 Hindari Dulu</span></td>
+                                <td>
+                                    <div class="timing-mini-bar">
+                                        <div class="timing-mini-fill danger" style="width: 15%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="conflict-status ok">✅ Tidak</span></td>
+                                <td><span class="investor-mini avoid">🚫 Tidak Direkomendasikan</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-footer">
+                    <span><i class="bi bi-hand-index"></i> Geser untuk lihat lebih →</span>
+                    <span>900+ saham dianalisis</span>
+                </div>
+            </div>
+            
+            <div class="preview-insight" data-aos="fade-up">
+                <div class="insight-card">
+                    <span class="insight-icon">💡</span>
+                    <div class="insight-content">
+                        <h4>Perhatikan BUKA:</h4>
+                        <p>Score 80 (Sangat Solid) tapi Timing "Tunggu Stabilisasi" — FlexBit mendeteksi konflik <code>fund_kuat_tech_lemah</code>. Artinya: <strong>Bisnis bagus, tapi timing belum tepat. Cocok untuk value investor yang sabar.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMING LABELS -->
+    <section class="timing-section" id="timing">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag">⏱️ Timing Labels</div>
+                <h2 class="section-title">7 Label Timing yang <span class="gradient-text">Harus Anda Pahami</span></h2>
+                <p>Setiap label punya makna dan action yang berbeda</p>
+            </div>
+            
+            <div class="timing-grid">
+                <div class="timing-card good" data-aos="fade-up" data-aos-delay="50">
+                    <div class="timing-emoji">⬆️</div>
+                    <h3>Momentum Bagus</h3>
+                    <p class="timing-condition">Uptrend + Undervalued</p>
+                    <p class="timing-meaning">Timing ideal! Harga naik dan masih murah.</p>
+                    <div class="timing-action">
+                        <span class="action-label">Action:</span>
+                        <span class="action-value">Entry dengan confidence tinggi</span>
+                    </div>
+                </div>
+                
+                <div class="timing-card good" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timing-emoji">📈</div>
+                    <h3>Momentum Positif</h3>
+                    <p class="timing-condition">Uptrend + Fair Value</p>
+                    <p class="timing-meaning">Trend positif, valuasi wajar.</p>
+                    <div class="timing-action">
+                        <span class="action-label">Action:</span>
+                        <span class="action-value">Entry dengan risk management</span>
+                    </div>
+                </div>
+                
+                <div class="timing-card neutral" data-aos="fade-up" data-aos-delay="150">
+                    <div class="timing-emoji">↔️</div>
+                    <h3>Zona Akumulasi</h3>
+                    <p class="timing-condition">Sideways + Undervalued</p>
+                    <p class="timing-meaning">Harga murah, belum ada arah jelas.</p>
+                    <div class="timing-action">
+                        <span class="action-label">Action:</span>
+                        <span class="action-value">Akumulasi bertahap (cicil)</span>
+                    </div>
+                </div>
+                
+                <div class="timing-card neutral" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timing-emoji">➖</div>
+                    <h3>Konsolidasi</h3>
+                    <p class="timing-condition">Sideways + Fair Value</p>
+                    <p class="timing-meaning">Menunggu arah selanjutnya.</p>
+                    <div class="timing-action">
+                        <span class="action-label">Action:</span>
+                        <span class="action-value">Wait &amp; See, pantau terus</span>
+                    </div>
+                </div>
+                
+                <div class="timing-card caution" data-aos="fade-up" data-aos-delay="250">
+                    <div class="timing-emoji">⏳</div>
+                    <h3>Tunggu Stabilisasi</h3>
+                    <p class="timing-condition">Downtrend + Undervalued</p>
+                    <p class="timing-meaning">Murah tapi masih turun.</p>
+                    <div class="timing-action">
+                        <span class="action-label">Action:</span>
+                        <span class="action-value">Sabar, tunggu reversal</span>
+                    </div>
+                </div>
+                
+                <div class="timing-card warning" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timing-emoji">⚠️</div>
+                    <h3>Hati-hati, Sudah Mahal</h3>
+                    <p class="timing-condition">Uptrend + Overvalued</p>
+                    <p class="timing-meaning">Naik tapi valuasi stretched.</p>
+                    <div class="timing-action">
+                        <span class="action-label">Action:</span>
+                        <span class="action-value">Waspada FOMO, jangan chase</span>
+                    </div>
+                </div>
+                
+                <div class="timing-card danger" data-aos="fade-up" data-aos-delay="350">
+                    <div class="timing-emoji">🚫</div>
+                    <h3>Hindari Dulu</h3>
+                    <p class="timing-condition">Downtrend + Overvalued</p>
+                    <p class="timing-meaning">Mahal DAN masih turun.</p>
+                    <div class="timing-action">
+                        <span class="action-label">Action:</span>
+                        <span class="action-value">JANGAN BELI, double negative</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="fitur">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag">Fitur Lengkap</div>
+                <h2 class="section-title">Semua yang Anda Butuhkan <span class="gradient-text">dalam Satu App</span></h2>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card highlight" data-aos="fade-up" data-aos-delay="50">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Narrative System</h3>
+                    <p><strong>BARU!</strong> 2 dimensi analisis — Kualitas Bisnis + Timing Harga. Tidak perlu bingung lagi!</p>
+                </div>
+                
+                <div class="feature-card highlight" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Conflict Detection</h3>
+                    <p><strong>BARU!</strong> Otomatis deteksi ketika fundamental dan teknikal tidak selaras.</p>
+                </div>
+                
+                <div class="feature-card highlight" data-aos="fade-up" data-aos-delay="150">
+                    <div class="feature-icon">👤</div>
+                    <h3>Investor Matching</h3>
+                    <p><strong>BARU!</strong> Tahu saham ini cocok untuk profil investor seperti apa.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">📊</div>
+                    <h3>VQSG Scoring</h3>
+                    <p>Sistem scoring fundamental dengan 4 komponen: Valuasi, Kualitas, Keamanan, Pertumbuhan.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="feature-icon">📍</div>
+                    <h3>FlexTech Signal</h3>
+                    <p>Sinyal teknikal dengan Entry, Target Profit, Stop Loss, dan R/R Ratio otomatis.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Update Harian</h3>
+                    <p>Data baru setiap hari setelah market tutup. Selalu siap untuk esok.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSPARENCY SECTION -->
+    <section class="transparency-section" id="transparansi">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag">🔍 Transparansi</div>
+                <h2 class="section-title">Dari Mana <span class="gradient-text">Datanya?</span></h2>
+                <p>Tidak ada black box. Anda berhak tahu metodologi di balik setiap angka.</p>
+            </div>
+            
+            <div class="transparency-grid">
+                <div class="trans-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="trans-icon">📁</div>
+                    <h3>Sumber Data</h3>
+                    <p>Laporan keuangan publik dari <strong>IDX</strong> dan <strong>RTI Business</strong>. Data yang sama yang diakses oleh analis profesional.</p>
+                    <div class="trans-badge">Data Publik & Terverifikasi</div>
+                </div>
+                
+                <div class="trans-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="trans-icon">📐</div>
+                    <h3>Metodologi</h3>
+                    <p>Kombinasi metrik <strong>value investing klasik</strong>: PER, PBV, ROE, DER, Revenue Growth, Dividend Yield — bukan indikator misterius.</p>
+                    <div class="trans-badge">Metrik yang Sudah Terbukti</div>
+                </div>
+                
+                <div class="trans-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="trans-icon">🔄</div>
+                    <h3>Update Schedule</h3>
+                    <p>Data diperbarui <strong>setiap hari</strong> setelah market tutup (setelah 16:00 WIB). Fundamental update setiap kuartal sesuai rilis LK.</p>
+                    <div class="trans-badge">Harian & Real-time</div>
+                </div>
+            </div>
+            
+            <div class="transparency-comparison" data-aos="fade-up">
+                <h3>⏱️ FlexBit Menghemat Waktu Anda</h3>
+                <div class="comparison-table">
+                    <div class="comp-row header">
+                        <span class="comp-item">Aktivitas</span>
+                        <span class="comp-manual">Manual</span>
+                        <span class="comp-flexbit">FlexBit</span>
+                    </div>
+                    <div class="comp-row">
+                        <span class="comp-item">Screening 900+ saham</span>
+                        <span class="comp-manual">3-5 jam</span>
+                        <span class="comp-flexbit">5 menit</span>
+                    </div>
+                    <div class="comp-row">
+                        <span class="comp-item">Cek fundamental 1 saham</span>
+                        <span class="comp-manual">15-30 menit</span>
+                        <span class="comp-flexbit">10 detik</span>
+                    </div>
+                    <div class="comp-row">
+                        <span class="comp-item">Bandingkan 10 saham</span>
+                        <span class="comp-manual">1-2 jam</span>
+                        <span class="comp-flexbit">1 menit</span>
+                    </div>
+                    <div class="comp-row">
+                        <span class="comp-item">Tools yang dibutuhkan</span>
+                        <span class="comp-manual">10+ tab browser</span>
+                        <span class="comp-flexbit">1 dashboard</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="transparency-disclaimer" data-aos="fade-up">
+                <div class="disclaimer-icon">⚖️</div>
+                <div class="disclaimer-content">
+                    <h4>FlexBit adalah Tool, Bukan Penasihat Keuangan</h4>
+                    <p>FlexBit <strong>mempercepat proses screening</strong>, bukan menggantikan keputusan investasi Anda. Data dan skor yang ditampilkan adalah hasil kalkulasi berdasarkan laporan keuangan publik — interpretasi dan keputusan akhir tetap di tangan Anda.</p>
+                    <div class="disclaimer-points">
+                        <span>✅ Tetap DYOR (Do Your Own Research)</span>
+                        <span>✅ Selalu gunakan stop loss</span>
+                        <span>✅ Diversifikasi portfolio</span>
+                        <span>✅ Investasi sesuai profil risiko</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="harga">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag urgent">🔥 Limited Slots</div>
+                <h2 class="section-title">Harga Naik <span class="gradient-text">Setiap Level Habis</span></h2>
+                <p>Semakin awal join, semakin murah. Lifetime access hanya untuk 200 orang pertama.</p>
+            </div>
+            
+            <!-- PRICING LADDER -->
+            <div class="pricing-ladder" data-aos="fade-up">
+                
+                <!-- PIONEER - ACTIVE -->
+                <div class="pricing-tier active" id="tier-pioneer">
+                    <div class="tier-status">
+                        <span class="status-badge live">🔴 LIVE</span>
+                        <span class="status-text">Sedang Dibuka</span>
+                    </div>
+                    <div class="tier-header">
+                        <span class="tier-icon">🚀</span>
+                        <h3>Pioneer Access</h3>
+                        <span class="tier-type lifetime">LIFETIME</span>
+                    </div>
+                    <div class="tier-price">
+                        <span class="currency">Rp</span>
+                        <span class="amount">199</span>
+                        <span class="decimal">.000</span>
+                    </div>
+                    <div class="tier-slots">
+                        <div class="slots-bar">
+                            <div class="slots-fill" style="width: 6%;"></div>
+                        </div>
+                        <div class="slots-info">
+                            <span class="slots-remaining"><strong id="pioneer-remaining">47</strong> slot tersisa</span>
+                            <span class="slots-total">dari 50</span>
+                        </div>
+                    </div>
+                    <div class="tier-urgency">
+                        ⚡ Harga naik 3x setelah slot habis
+                    </div>
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20daftar%20FlexBit%20Pioneer%20Access" class="btn btn-primary btn-tier" target="_blank">
+                        Claim Pioneer Access
+                    </a>
+                </div>
+                
+                <!-- EARLY ADOPTER - NEXT -->
+                <div class="pricing-tier next" id="tier-early">
+                    <div class="tier-status">
+                        <span class="status-badge upcoming">⏳ NEXT</span>
+                        <span class="status-text">Setelah Pioneer Habis</span>
+                    </div>
+                    <div class="tier-header">
+                        <span class="tier-icon">⚡</span>
+                        <h3>Early Adopter</h3>
+                        <span class="tier-type lifetime">LIFETIME</span>
+                    </div>
+                    <div class="tier-price">
+                        <span class="currency">Rp</span>
+                        <span class="amount">599</span>
+                        <span class="decimal">.000</span>
+                    </div>
+                    <div class="tier-slots">
+                        <div class="slots-bar">
+                            <div class="slots-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="slots-info">
+                            <span class="slots-remaining"><strong>150</strong> slot</span>
+                            <span class="slots-total">lifetime terakhir</span>
+                        </div>
+                    </div>
+                    <div class="tier-note">
+                        Kesempatan terakhir lifetime access
+                    </div>
+                    <button class="btn btn-secondary btn-tier" disabled>
+                        Belum Dibuka
+                    </button>
+                </div>
+                
+                <!-- GROWTH - FUTURE -->
+                <div class="pricing-tier future" id="tier-growth">
+                    <div class="tier-status">
+                        <span class="status-badge locked">🔒 LOCKED</span>
+                        <span class="status-text">Annual Model</span>
+                    </div>
+                    <div class="tier-header">
+                        <span class="tier-icon">📈</span>
+                        <h3>Growth Member</h3>
+                        <span class="tier-type annual">ANNUAL</span>
+                    </div>
+                    <div class="tier-price">
+                        <span class="currency">Rp</span>
+                        <span class="amount">999</span>
+                        <span class="decimal">.000</span>
+                        <span class="period">/tahun</span>
+                    </div>
+                    <div class="tier-slots">
+                        <div class="slots-info">
+                            <span class="slots-remaining"><strong>300</strong> slot</span>
+                            <span class="slots-total">+ fitur premium</span>
+                        </div>
+                    </div>
+                    <div class="tier-note">
+                        Setelah lifetime DITUTUP PERMANEN
+                    </div>
+                    <button class="btn btn-secondary btn-tier" disabled>
+                        Coming Soon
+                    </button>
+                </div>
+                
+                <!-- REGULAR - FINAL -->
+                <div class="pricing-tier final" id="tier-regular">
+                    <div class="tier-status">
+                        <span class="status-badge locked">🔒 LOCKED</span>
+                        <span class="status-text">Harga Normal</span>
+                    </div>
+                    <div class="tier-header">
+                        <span class="tier-icon">💎</span>
+                        <h3>FlexBit Pro</h3>
+                        <span class="tier-type annual">ANNUAL</span>
+                    </div>
+                    <div class="tier-price">
+                        <span class="currency">Rp</span>
+                        <span class="amount">1.999</span>
+                        <span class="decimal">.000</span>
+                        <span class="period">/tahun</span>
+                    </div>
+                    <div class="tier-slots">
+                        <div class="slots-info">
+                            <span class="slots-remaining">Unlimited</span>
+                            <span class="slots-total">full access</span>
+                        </div>
+                    </div>
+                    <div class="tier-note">
+                        Priority support + all features
+                    </div>
+                    <button class="btn btn-secondary btn-tier" disabled>
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+            
+            <!-- FEATURE COMPARISON -->
+            <div class="feature-comparison" data-aos="fade-up">
+                <h3>📊 Perbandingan Fitur per Level</h3>
+                <div class="comparison-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Fitur</th>
+                                <th class="highlight">Pioneer<br><small>Rp 199K</small></th>
+                                <th>Early Adopter<br><small>Rp 599K</small></th>
+                                <th>Growth<br><small>Rp 999K/thn</small></th>
+                                <th>Pro<br><small>Rp 1.999K/thn</small></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>VQSG Score + Narrative System</td>
+                                <td class="highlight">✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>900+ Stock Screener</td>
+                                <td class="highlight">✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Daily Data Updates</td>
+                                <td class="highlight">✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Community Access</td>
+                                <td class="highlight">✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Akses Model</td>
+                                <td class="highlight">Lifetime V3.x</td>
+                                <td>Lifetime V3.x</td>
+                                <td>Annual</td>
+                                <td>Annual</td>
+                            </tr>
+                            <tr>
+                                <td>Priority Support</td>
+                                <td class="highlight">❌</td>
+                                <td>6 bulan</td>
+                                <td>1 tahun</td>
+                                <td>Always</td>
+                            </tr>
+                            <tr>
+                                <td>Diskon V4+ (Major Update)</td>
+                                <td class="highlight">Harga Khusus</td>
+                                <td>50% OFF</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Watchlist Alerts</td>
+                                <td class="highlight">❌</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Export Data (CSV/Excel)</td>
+                                <td class="highlight">❌</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- PIONEER HIGHLIGHT BOX -->
+            <div class="pioneer-highlight" data-aos="fade-up">
+                <div class="highlight-badge">🚀 PIONEER ACCESS</div>
+                <div class="highlight-content">
+                    <div class="highlight-main">
+                        <h3>Kenapa Harus Ambil Pioneer Sekarang?</h3>
+                        <ul class="highlight-reasons">
+                            <li><strong>Hemat Rp 1.8 juta</strong> dibanding harga normal annual</li>
+                            <li><strong>Lifetime access</strong> — bayar sekali, pakai selamanya untuk V3.x</li>
+                            <li><strong>Harga khusus</strong> untuk V4+ (major updates)</li>
+                            <li><strong>Founding member badge</strong> — diakui sebagai pioneer</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-cta">
+                        <div class="highlight-price">
+                            <span class="strike">Rp 1.999.000/thn</span>
+                            <span class="now">Rp 199.000 <small>lifetime</small></span>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20daftar%20FlexBit%20Pioneer%20Access" class="btn btn-primary btn-lg" target="_blank">
+                            🔥 Claim Sebelum Habis
+                        </a>
+                        <p class="slots-warning">⚠️ Hanya <span id="pioneer-remaining-2">47</span> slot tersisa dari 50</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PROTECTION CLAUSES -->
+            <div class="protection-clauses" data-aos="fade-up">
+                <h4>📜 Ketentuan Penting</h4>
+                <div class="clauses-grid">
+                    <div class="clause-item">
+                        <span class="clause-icon">📌</span>
+                        <div class="clause-content">
+                            <strong>Lifetime = V3.x</strong>
+                            <p>Lifetime access berlaku untuk FlexBit V3.x. Major version (V4+) tersedia dengan harga khusus untuk Pioneer.</p>
+                        </div>
+                    </div>
+                    <div class="clause-item">
+                        <span class="clause-icon">👤</span>
+                        <div class="clause-content">
+                            <strong>1 Akun = 1 User</strong>
+                            <p>Tidak boleh share login atau redistribusi data. Pelanggaran = akun ditutup tanpa refund.</p>
+                        </div>
+                    </div>
+                    <div class="clause-item">
+                        <span class="clause-icon">💬</span>
+                        <div class="clause-content">
+                            <strong>Support via Community</strong>
+                            <p>Pioneer & Early Adopter: Self-service (Knowledge Base + Community). Priority support untuk Growth & Pro.</p>
+                        </div>
+                    </div>
+                    <div class="clause-item">
+                        <span class="clause-icon">🔒</span>
+                        <div class="clause-content">
+                            <strong>Fitur Premium Terkunci</strong>
+                            <p>Alerts & Export eksklusif untuk Growth Member ke atas. Pioneer dapat core features saja.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-guarantee" data-aos="fade-up">
+                <i class="bi bi-shield-check"></i>
+                <span>Garansi 7 hari uang kembali jika tidak sesuai ekspektasi</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-tag">FAQ</div>
+                <h2 class="section-title">Pertanyaan <span class="gradient-text">yang Sering Ditanyakan</span></h2>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-question">
+                        <h3>Apa bedanya Narrative System dengan sistem lama?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sistem lama hanya memberikan skor dan signal tanpa penjelasan mengapa keduanya bisa berbeda. <strong>Narrative System memisahkan 2 dimensi</strong>: Kualitas Bisnis (seberapa bagus perusahaan) dan Timing Harga (apakah ini waktu yang tepat). Jadi sekarang Anda tahu MENGAPA skor tinggi tapi signal lemah — dan apa artinya untuk keputusan investasi Anda.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="50">
+                    <button class="faq-question">
+                        <h3>Apa itu "Conflict Detection"?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>FlexBit otomatis mendeteksi ketika fundamental dan teknikal tidak selaras. Ada 2 tipe: <strong>fund_kuat_tech_lemah</strong> (bisnis bagus tapi harga turun — value opportunity) dan <strong>fund_lemah_tech_kuat</strong> (fundamental lemah tapi harga naik — hati-hati speculative). Ini membantu Anda memahami risiko dengan lebih jelas.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <button class="faq-question">
+                        <h3>Kok FlexBit Score tinggi tapi Timing Score rendah?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Ini normal!</strong> FlexBit Score mengukur KUALITAS BISNIS (fundamental), sementara Timing Score mengukur KAPAN waktu yang tepat (teknikal + valuasi). Saham bagus bisa saja sedang dalam trend turun. Lihat label "Conflict Type" untuk penjelasan lengkap — biasanya ini menunjukkan <code>fund_kuat_tech_lemah</code>.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+                    <button class="faq-question">
+                        <h3>Apa bedanya "Tunggu Stabilisasi" vs "Hindari Dulu"?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Tunggu Stabilisasi:</strong> Saham undervalued tapi sedang downtrend. Murah, tapi belum ada tanda reversal — bisa jadi opportunity untuk value investor yang sabar.<br><strong>Hindari Dulu:</strong> Saham overvalued DAN sedang downtrend. Double negative — jangan beli.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <button class="faq-question">
+                        <h3>Apakah "Trader Berpengalaman" berarti boleh beli?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>HATI-HATI!</strong> Kategori ini muncul untuk saham dengan <code>fund_lemah_tech_kuat</code> (fundamental jelek tapi lagi naik). Ini BUKAN rekomendasi — ini WARNING bahwa saham sangat spekulatif. Hanya cocok untuk trader dengan risk management ketat dan skill teknikal yang mumpuni.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+                    <button class="faq-question">
+                        <h3>Apakah ini pasti untung?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Tidak ada jaminan keuntungan di pasar saham.</strong> FlexBit adalah alat bantu untuk membuat keputusan yang lebih baik berdasarkan data — bukan rekomendasi beli/jual. Narrative System membantu Anda MEMAHAMI kondisi saham dengan lebih jelas, tapi keputusan akhir tetap di tangan Anda. Selalu lakukan riset tambahan dan gunakan stop loss!</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <button class="faq-question">
+                        <h3>Apa maksudnya "Lifetime = V3.x"?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lifetime access berlaku untuk <strong>FlexBit versi 3.x</strong> (V3.0, V3.5, V3.9, dst). Jika suatu hari ada major update ke V4.0 dengan perombakan besar, Pioneer akan mendapat <strong>harga khusus</strong> (bukan gratis, tapi jauh lebih murah dari harga normal). Minor updates dalam V3.x tetap gratis selamanya.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="350">
+                    <button class="faq-question">
+                        <h3>Kenapa Pioneer tidak dapat fitur Alerts & Export?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Pioneer adalah harga super early bird dengan <strong>core features lengkap</strong> (VQSG, Narrative System, 900+ stocks, daily updates). Fitur premium seperti Watchlist Alerts dan Export Data butuh infrastruktur tambahan yang costly — jadi kami reserved untuk tier yang lebih tinggi. Pioneer tetap dapat <strong>value terbaik</strong> untuk harga Rp 199K lifetime.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <button class="faq-question">
+                        <h3>Bagaimana cara bayar & dapat aksesnya?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>1.</strong> Klik tombol "Claim Pioneer Access" → diarahkan ke WhatsApp<br><strong>2.</strong> Konfirmasi dan transfer ke rekening yang diberikan<br><strong>3.</strong> Kirim bukti transfer via WA<br><strong>4.</strong> Dalam 1x24 jam, Anda akan mendapat link akses + panduan setup<br><br>Jika dalam 7 hari tidak sesuai ekspektasi, <strong>uang kembali 100%</strong> tanpa drama.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="450">
+                    <button class="faq-question">
+                        <h3>Kapan Pioneer slot habis?</h3>
+                        <div class="faq-icon"><i class="bi bi-plus-lg"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Kami tidak tahu pasti — tergantung seberapa cepat 50 slot terisi. Bisa 3 hari, bisa 2 minggu. Yang pasti: <strong>setelah habis, harga naik 3x ke Rp 599K</strong> (Early Adopter). Tidak ada perpanjangan atau penambahan slot Pioneer. First come, first served.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-box" data-aos="fade-up">
+                <div class="cta-urgency">🔥 Pioneer Access — Hanya <span id="pioneer-remaining-3">47</span> slot tersisa</div>
+                <h2>Stop Bingung. Mulai Investasi dengan Kejelasan.</h2>
+                <p>FlexBit V3.5 dengan Narrative System — analisis saham 2 dimensi yang akhirnya masuk akal.</p>
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20daftar%20FlexBit%20Pioneer%20Access" class="btn btn-primary btn-lg" target="_blank">
+                    <span>🚀 Claim Pioneer — Rp 199.000 Lifetime</span>
+                </a>
+                <div class="cta-features">
+                    <span>✅ Lifetime V3.x</span>
+                    <span>✅ Narrative System</span>
+                    <span>✅ 900+ Stocks</span>
+                    <span>✅ Garansi 7 hari</span>
+                </div>
+                <p class="cta-warning">⚠️ Setelah 50 slot habis, harga naik ke Rp 599.000</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="https://flxr2.com/flexbit/logo.png" alt="FlexBit" class="logo-img">
+                        FlexBit
+                    </a>
+                    <p>Analisis Saham 2 Dimensi untuk Investor Indonesia.</p>
+                </div>
+                <div>
+                    <h6 class="footer-heading">Fitur V3.5</h6>
+                    <ul class="footer-links">
+                        <li><a href="#narrative">Narrative System</a></li>
+                        <li><a href="#konflik">Conflict Detection</a></li>
+                        <li><a href="#investor">Investor Matching</a></li>
+                        <li><a href="#timing">Timing Labels</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="footer-heading">Company</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Syarat &amp; Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="footer-heading">Kontak</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">Email</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-disclaimer">
+                <p><strong>⚠️ Disclaimer:</strong> FlexBit adalah tools penyajian data dan analisis, BUKAN rekomendasi investasi atau penasihat keuangan. Semua keputusan investasi adalah tanggung jawab pengguna. Tidak ada jaminan keuntungan di pasar saham. DYOR (Do Your Own Research) dan selalu gunakan stop loss.</p>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 FlexBit V3.5. Karya developer lokal 🇮🇩</div>
+                <div class="footer-socials">
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-telegram"></i></a>
+                    <a href="#"><i class="bi bi-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE STICKY CTA -->
+    <div class="mobile-sticky-cta">
+        <div class="sticky-content">
+            <div class="sticky-info">
+                <span class="sticky-label">🚀 Pioneer (<span id="pioneer-remaining-mobile">47</span> left)</span>
+                <span class="sticky-value">Rp 199.000</span>
+            </div>
+            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20daftar%20FlexBit%20Pioneer%20Access" class="btn btn-primary btn-sticky" target="_blank">Claim Sekarang</a>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takut Diganti AI atau Belum Siap Jadi Manusia?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b6b7b;
+            --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-alt: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-cool: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-glow: 0 8px 32px 0 rgba(102, 126, 234, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--bg-secondary);
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            width: 4.35%;
+            transition: width 0.4s ease;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            letter-spacing: 2px;
+        }
+
+        .separator {
+            color: var(--text-muted);
+            margin: 0 8px;
+        }
+
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 8px 12px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 90%;
+            padding: 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* SLIDE 1: MATRIX DIGITAL RAIN */
+        .slide-1-bg {
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 100%);
+        }
+
+        .slide-1-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(90deg, transparent 0%, rgba(102, 126, 234, 0.03) 50%, transparent 100%),
+                linear-gradient(0deg, transparent 0%, rgba(118, 75, 162, 0.03) 50%, transparent 100%);
+            background-size: 100px 100px;
+            animation: matrixFlow 20s linear infinite;
+        }
+
+        @keyframes matrixFlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100px, -100px); }
+        }
+
+        .slide-1-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        /* SLIDE 2: IMAN SEBAGAI PONDASI */
+        .slide-2-bg {
+            background: radial-gradient(ellipse at center, #2a2a1a 0%, #0a0a0f 100%);
+        }
+
+        .slide-2-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 193, 7, 0.1) 20%, transparent 60%);
+            animation: imanGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes imanGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .slide-2-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255, 215, 0, 0.03) 20deg, transparent 40deg);
+            animation: foundationRotate 40s linear infinite;
+        }
+
+        @keyframes foundationRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* SLIDE 3: FUTURISTIC OFFICE TECH */
+        .slide-3-bg {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+        }
+
+        .slide-3-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(79, 172, 254, 0.03) 2px, rgba(79, 172, 254, 0.03) 4px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(79, 172, 254, 0.03) 2px, rgba(79, 172, 254, 0.03) 4px);
+            background-size: 50px 50px;
+            animation: gridMove 15s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        .slide-3-bg::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.15) 0%, transparent 70%);
+            animation: floatTech 10s ease-in-out infinite;
+            top: 20%;
+            left: 10%;
+        }
+
+        @keyframes floatTech {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(100px, 50px); }
+        }
+
+        /* SLIDE 4: MENAKUTKAN - FIRE & SHADOWS */
+        .slide-4-bg {
+            background: radial-gradient(ellipse at bottom, #2d0a0f 0%, #0a0a0f 70%);
+        }
+
+        .slide-4-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 80%, rgba(245, 87, 108, 0.3) 0%, transparent 30%),
+                radial-gradient(circle at 70% 70%, rgba(240, 147, 251, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(255, 100, 50, 0.25) 0%, transparent 35%);
+            animation: fireFlicker 3s ease-in-out infinite;
+        }
+
+        @keyframes fireFlicker {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .slide-4-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255, 50, 50, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: emberRise 8s linear infinite;
+        }
+
+        @keyframes emberRise {
+            0% { background-position: 0 0; opacity: 0.3; }
+            100% { background-position: 0 -400px; opacity: 0; }
+        }
+
+        /* SLIDE 5: ISLAMIC GEOMETRIC PATTERNS */
+        .slide-5-bg {
+            background: radial-gradient(ellipse at center, #1a2a3a 0%, #0a0a0f 100%);
+        }
+
+        .slide-5-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(102, 126, 234, 0.03) 35px, rgba(102, 126, 234, 0.03) 70px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(118, 75, 162, 0.03) 35px, rgba(118, 75, 162, 0.03) 70px);
+            animation: patternRotate 30s linear infinite;
+        }
+
+        @keyframes patternRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .slide-5-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.15) 0%, transparent 50%);
+            animation: glowPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* SLIDE 6: BREAKING CHAINS */
+        .slide-6-bg {
+            background: linear-gradient(135deg, #0f0a1a 0%, #0a0a0f 100%);
+        }
+
+        .slide-6-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(90deg, transparent 48%, rgba(102, 126, 234, 0.2) 50%, transparent 52%),
+                linear-gradient(0deg, transparent 48%, rgba(102, 126, 234, 0.2) 50%, transparent 52%);
+            background-size: 100px 100px;
+            animation: chainBreak 8s ease-in-out infinite;
+        }
+
+        @keyframes chainBreak {
+            0%, 100% { opacity: 0.3; transform: translate(0, 0); }
+            50% { opacity: 0.1; transform: translate(20px, 20px); }
+        }
+
+        .slide-6-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.1) 0%, transparent 60%);
+            animation: liberation 10s ease-in-out infinite;
+        }
+
+        @keyframes liberation {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(0.8); opacity: 0.5; }
+        }
+
+        /* SLIDE 7: HISTORICAL PATTERN TIMELINE */
+        .slide-7-bg {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+        }
+
+        .slide-7-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(102, 126, 234, 0.1) 100px, rgba(102, 126, 234, 0.1) 102px);
+            animation: timelineFlow 30s linear infinite;
+        }
+
+        @keyframes timelineFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 500px 0; }
+        }
+
+        .slide-7-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 193, 7, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(102, 126, 234, 0.05) 0%, transparent 30%);
+            animation: historyGlow 12s ease-in-out infinite;
+        }
+
+        @keyframes historyGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        /* SLIDE 8: IQRA - PERINTAH MEMBACA */
+        .slide-8-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0f 50%, #1a2a1a 100%);
+        }
+
+        .slide-8-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255, 215, 0, 0.03) 80px, rgba(255, 215, 0, 0.03) 82px),
+                repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(79, 172, 254, 0.03) 80px, rgba(79, 172, 254, 0.03) 82px);
+            animation: bookPages 15s linear infinite;
+        }
+
+        @keyframes bookPages {
+            0% { background-position: 0 0; }
+            100% { background-position: 80px 80px; }
+        }
+
+        .slide-8-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 70% 50%, rgba(79, 172, 254, 0.08) 0%, transparent 40%);
+            animation: readingLight 10s ease-in-out infinite;
+        }
+
+        @keyframes readingLight {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
+        }
+
+        /* SLIDE 9: CHAOS VS CALM SPLIT */
+        .slide-9-bg {
+            background: linear-gradient(90deg, #1a0a0f 0%, #0a0a0f 50%, #0a1a2a 100%);
+        }
+
+        .slide-9-bg::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(245, 87, 108, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: chaosMove 2s linear infinite;
+        }
+
+        @keyframes chaosMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 20px; }
+        }
+
+        .slide-9-bg::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 50%, rgba(79, 172, 254, 0.1) 0%, transparent 50%);
+            animation: calmWave 8s ease-in-out infinite;
+        }
+
+        @keyframes calmWave {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* SLIDE 10-23: Continue similar pattern */
+        .slide-10-bg {
+            background: radial-gradient(ellipse at top, #1a1a2e 0%, #0a0a0f 100%);
+        }
+
+        .slide-10-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle, rgba(79, 172, 254, 0.3) 1px, transparent 1px),
+                radial-gradient(circle, rgba(102, 126, 234, 0.2) 1px, transparent 1px);
+            background-size: 30px 30px, 50px 50px;
+            background-position: 0 0, 25px 25px;
+            animation: particleFlow 5s linear infinite;
+        }
+
+        @keyframes particleFlow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50px); }
+        }
+
+        .slide-10-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(79, 172, 254, 0.05) 50%, transparent 100%);
+            animation: dataStream 3s linear infinite;
+        }
+
+        @keyframes dataStream {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .slide-11-bg {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0f1a 100%);
+        }
+
+        .slide-11-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(245, 87, 108, 0.1) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(245, 87, 108, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: circuitGlitch 4s steps(4) infinite;
+        }
+
+        @keyframes circuitGlitch {
+            0%, 100% { opacity: 0.3; transform: translate(0, 0); }
+            25% { opacity: 0.5; transform: translate(-2px, 2px); }
+            50% { opacity: 0.2; transform: translate(2px, -2px); }
+            75% { opacity: 0.4; transform: translate(-1px, 1px); }
+        }
+
+        .slide-12-bg {
+            background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0f 100%);
+        }
+
+        .slide-12-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 30% 40%, rgba(102, 126, 234, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 70% 60%, rgba(118, 75, 162, 0.05) 0%, transparent 30%);
+            animation: gearRotate 20s linear infinite;
+        }
+
+        @keyframes gearRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .slide-13-bg {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+        }
+
+        .slide-13-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(45deg, transparent 40%, rgba(79, 172, 254, 0.1) 50%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, rgba(245, 87, 108, 0.1) 50%, transparent 60%);
+            background-size: 200% 200%;
+            animation: pathDiverge 10s ease-in-out infinite;
+        }
+
+        @keyframes pathDiverge {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+        }
+
+        .slide-14-bg {
+            background: radial-gradient(ellipse at center, #1a2a3a 0%, #0a0a0f 100%);
+        }
+
+        .slide-14-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(102, 126, 234, 0.05) 15deg, transparent 30deg),
+                repeating-conic-gradient(from 45deg at 50% 50%, transparent 0deg, rgba(79, 172, 254, 0.03) 15deg, transparent 30deg);
+            animation: geometryPulse 12s ease-in-out infinite;
+        }
+
+        @keyframes geometryPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+            50% { transform: scale(1.1) rotate(30deg); opacity: 0.8; }
+        }
+
+        .slide-15-bg {
+            background: linear-gradient(90deg, #0a0a0f 0%, #1a2a3a 50%, #0a0a0f 100%);
+        }
+
+        .slide-15-bg::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.2) 0%, transparent 60%);
+            animation: spiritualGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes spiritualGlow {
+            0%, 100% { opacity: 0.3; transform: scale(0.9); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        .slide-16-bg {
+            background: radial-gradient(ellipse at center, #2a2a1a 0%, #0a0a0f 100%);
+        }
+
+        .slide-16-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 50% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 193, 7, 0.05) 0%, transparent 60%);
+            animation: goldenPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes goldenPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .slide-16-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: goldenSparkle 10s linear infinite;
+        }
+
+        @keyframes goldenSparkle {
+            0% { background-position: 0 0; opacity: 0.3; }
+            50% { background-position: 15px 15px; opacity: 0.5; }
+            100% { background-position: 0 0; opacity: 0.3; }
+        }
+
+        .slide-17-bg {
+            background: linear-gradient(135deg, #1a0a0f 0%, #0a0a0f 100%);
+        }
+
+        .slide-17-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(245, 87, 108, 0.05) 10px, rgba(245, 87, 108, 0.05) 12px);
+            animation: speedLines 2s linear infinite;
+        }
+
+        @keyframes speedLines {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100px); }
+        }
+
+        .slide-18-bg {
+            background: linear-gradient(to top, #0a0a0f 0%, #1a1a2e 100%);
+        }
+
+        .slide-18-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(79, 172, 254, 0.05) 50px, rgba(79, 172, 254, 0.05) 52px);
+            animation: stairClimb 15s linear infinite;
+        }
+
+        @keyframes stairClimb {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .slide-19-bg {
+            background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+        }
+
+        .slide-19-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            animation: mirrorPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes mirrorPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 0.6; transform: scaleY(0.95); }
+        }
+
+        .slide-20-bg {
+            background: radial-gradient(ellipse at center, #1a2a1a 0%, #0a0a0f 100%);
+        }
+
+        .slide-20-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            animation: amalFocus 8s ease-in-out infinite;
+        }
+
+        @keyframes amalFocus {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        .slide-20-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255, 215, 0, 0.02) 30deg, transparent 60deg);
+            animation: prayerCircle 30s linear infinite;
+        }
+
+        @keyframes prayerCircle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .slide-21-bg {
+            background: radial-gradient(ellipse at center, #2a1a2a 0%, #0a0a0f 100%);
+        }
+
+        .slide-21-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(240, 147, 251, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.15) 20%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.1) 40%, transparent 70%);
+            animation: explosiveWave 4s ease-out infinite;
+        }
+
+        @keyframes explosiveWave {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .slide-22-bg {
+            background: linear-gradient(to top, #0a0a0f 0%, #1a2a3a 100%);
+        }
+
+        .slide-22-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(79, 172, 254, 0.05) 30px, rgba(79, 172, 254, 0.05) 35px);
+            animation: levelUp 8s linear infinite;
+        }
+
+        @keyframes levelUp {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, -30px); }
+        }
+
+        .slide-23-bg {
+            background: linear-gradient(to top, #0a0a0f 0%, #1a2a3a 50%, #2a3a4a 100%);
+        }
+
+        .slide-23-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 50% 70%, rgba(79, 172, 254, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 60%);
+            animation: dawnRise 12s ease-in-out infinite;
+        }
+
+        @keyframes dawnRise {
+            0%, 100% { opacity: 0.5; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: -2px;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            letter-spacing: -1px;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .highlight {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .highlight-alt {
+            background: var(--accent-alt);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cover {
+            text-align: center;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+        }
+
+        .cover-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .content-grid.three-column {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .content-grid.two-column {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .content-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .content-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            text-align: center;
+        }
+
+        .question-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.3;
+        }
+
+        .reflection-note {
+            margin-top: 60px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .ayat {
+            text-align: center;
+        }
+
+        .ayat-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 60px;
+            margin-top: 60px;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .arabic {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 2;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            font-weight: 500;
+            direction: rtl;
+        }
+
+        .translation {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .reference {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .list-items {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .list-items.two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .list-item:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateX(10px);
+        }
+
+        .bullet {
+            font-size: 2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            flex-shrink: 0;
+        }
+
+        .split-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .split-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .icon-large {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .split-divider {
+            font-size: 2rem;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+        }
+
+        .capability-grid.two-column {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .capability-item {
+            padding: 35px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capability-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .capability-item:hover {
+            transform: translateX(10px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+        }
+
+        .capability-item:hover::before {
+            opacity: 1;
+        }
+
+        .analogy-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin: 60px 0;
+        }
+
+        .analogy-item {
+            text-align: center;
+        }
+
+        .icon-xl {
+            font-size: 6rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .analogy-note {
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .insight-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .insight-box {
+            padding: 40px;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .pillars.two-column {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .pillar {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .pillar:hover {
+            transform: translateY(-15px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .pillar-icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .compare-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .highlight-box {
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .compare-divider {
+            font-size: 2.5rem;
+            color: var(--text-muted);
+        }
+
+        .note {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.2rem;
+        }
+
+        .hadits {
+            text-align: center;
+        }
+
+        .hadits-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 60px;
+            margin: 60px 0;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hadits-text {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .insight {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .framework-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+        }
+
+        .framework-boxes.two-column {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .framework-box {
+            padding: 35px;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .warning {
+            border-color: rgba(245, 87, 108, 0.4);
+        }
+
+        .comparison.two-column {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .comparison.two-column .compare-divider {
+            display: none;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 60px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .step:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateX(15px);
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            flex-shrink: 0;
+        }
+
+        .reflection {
+            text-align: center;
+        }
+
+        .reflection-title {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            margin-bottom: 80px;
+        }
+
+        .reflection-box {
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 60px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .reflection-box p {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+        }
+
+        .statement {
+            text-align: center;
+        }
+
+        .statement-text {
+            font-size: clamp(3rem, 7vw, 6rem);
+            margin-bottom: 40px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .statement-subtext {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--text-secondary);
+        }
+
+        .closing-points {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .closing-points.two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .closing-points.three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .closing-point {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 35px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+        }
+
+        .closing-point:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateX(15px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .finale {
+            text-align: center;
+        }
+
+        .finale-title {
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            margin-bottom: 80px;
+            background: var(--accent-cool);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .finale-quote {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 60px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .finale-quote p {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+        }
+
+        /* SLIDE 11: BATAS AI - BROKEN CIRCUITS */
+        .slide-11-bg {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0f1a 100%);
+        }
+
+        .slide-11-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(245, 87, 108, 0.1) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(245, 87, 108, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: circuitGlitch 4s steps(4) infinite;
+        }
+
+        @keyframes circuitGlitch {
+            0%, 100% { opacity: 0.3; transform: translate(0, 0); }
+            25% { opacity: 0.5; transform: translate(-2px, 2px); }
+            50% { opacity: 0.2; transform: translate(2px, -2px); }
+            75% { opacity: 0.4; transform: translate(-1px, 1px); }
+        }
+
+        /* SLIDE 12: ANALOGI - MECHANICAL GEARS */
+        .slide-12-bg {
+            background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0f 100%);
+        }
+
+        .slide-12-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 30% 40%, rgba(102, 126, 234, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 70% 60%, rgba(118, 75, 162, 0.05) 0%, transparent 30%);
+            animation: gearRotate 20s linear infinite;
+        }
+
+        @keyframes gearRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .slide-12-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(79, 172, 254, 0.02) 30deg, transparent 60deg);
+            animation: gearRotate2 15s linear infinite reverse;
+        }
+
+        @keyframes gearRotate2 {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
+        }
+
+        /* SLIDE 13: CROSSROADS PATHS */
+        .slide-13-bg {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+        }
+
+        .slide-13-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(45deg, transparent 40%, rgba(79, 172, 254, 0.1) 50%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, rgba(245, 87, 108, 0.1) 50%, transparent 60%);
+            background-size: 200% 200%;
+            animation: pathDiverge 10s ease-in-out infinite;
+        }
+
+        @keyframes pathDiverge {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+        }
+
+        /* SLIDE 14: SACRED GEOMETRY */
+        .slide-14-bg {
+            background: radial-gradient(ellipse at center, #1a2a3a 0%, #0a0a0f 100%);
+        }
+
+        .slide-14-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(102, 126, 234, 0.05) 15deg, transparent 30deg),
+                repeating-conic-gradient(from 45deg at 50% 50%, transparent 0deg, rgba(79, 172, 254, 0.03) 15deg, transparent 30deg);
+            animation: geometryPulse 12s ease-in-out infinite;
+        }
+
+        @keyframes geometryPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+            50% { transform: scale(1.1) rotate(30deg); opacity: 0.8; }
+        }
+
+        /* SLIDE 15: SPIRITUAL LIGHT */
+        .slide-15-bg {
+            background: linear-gradient(90deg, #0a0a0f 0%, #1a2a3a 50%, #0a0a0f 100%);
+        }
+
+        .slide-15-bg::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.2) 0%, transparent 60%);
+            animation: spiritualGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes spiritualGlow {
+            0%, 100% { opacity: 0.3; transform: scale(0.9); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        /* SLIDE 16: GOLDEN LIGHT PERFECTION */
+        .slide-16-bg {
+            background: radial-gradient(ellipse at center, #2a2a1a 0%, #0a0a0f 100%);
+        }
+
+        .slide-16-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 50% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 193, 7, 0.05) 0%, transparent 60%);
+            animation: goldenPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes goldenPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .slide-16-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: goldenSparkle 10s linear infinite;
+        }
+
+        @keyframes goldenSparkle {
+            0% { background-position: 0 0; opacity: 0.3; }
+            50% { background-position: 15px 15px; opacity: 0.5; }
+            100% { background-position: 0 0; opacity: 0.3; }
+        }
+
+        /* SLIDE 17: SPEED LINES VS WISDOM */
+        .slide-17-bg {
+            background: linear-gradient(135deg, #1a0a0f 0%, #0a0a0f 100%);
+        }
+
+        .slide-17-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(245, 87, 108, 0.05) 10px, rgba(245, 87, 108, 0.05) 12px);
+            animation: speedLines 2s linear infinite;
+        }
+
+        @keyframes speedLines {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100px); }
+        }
+
+        .slide-17-bg::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            animation: wisdomGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes wisdomGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        /* SLIDE 18: ASCENDING STAIRS */
+        .slide-18-bg {
+            background: linear-gradient(to top, #0a0a0f 0%, #1a1a2e 100%);
+        }
+
+        .slide-18-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(79, 172, 254, 0.05) 50px, rgba(79, 172, 254, 0.05) 52px);
+            animation: stairClimb 15s linear infinite;
+        }
+
+        @keyframes stairClimb {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .slide-18-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, transparent 0%, rgba(79, 172, 254, 0.05) 100%);
+        }
+
+        /* SLIDE 19: MIRROR REFLECTION */
+        .slide-19-bg {
+            background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+        }
+
+        .slide-19-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            animation: mirrorPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes mirrorPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 0.6; transform: scaleY(0.95); }
+        }
+
+        .slide-19-bg::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(102, 126, 234, 0.3) 50%, transparent 100%);
+            animation: mirrorLine 8s ease-in-out infinite;
+        }
+
+        @keyframes mirrorLine {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* SLIDE 20: FOKUS AMAL - PRAYER CIRCLE */
+        .slide-20-bg {
+            background: radial-gradient(ellipse at center, #1a2a1a 0%, #0a0a0f 100%);
+        }
+
+        .slide-20-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            animation: amalFocus 8s ease-in-out infinite;
+        }
+
+        @keyframes amalFocus {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        .slide-20-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255, 215, 0, 0.02) 30deg, transparent 60deg);
+            animation: prayerCircle 30s linear infinite;
+        }
+
+        @keyframes prayerCircle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* SLIDE 21: EXPLOSIVE ENERGY */
+        .slide-21-bg {
+            background: radial-gradient(ellipse at center, #2a1a2a 0%, #0a0a0f 100%);
+        }
+
+        .slide-21-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(240, 147, 251, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.15) 20%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.1) 40%, transparent 70%);
+            animation: explosiveWave 4s ease-out infinite;
+        }
+
+        @keyframes explosiveWave {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* SLIDE 22: LEVEL UP - ASCENDING ARROWS */
+        .slide-22-bg {
+            background: linear-gradient(to top, #0a0a0f 0%, #1a2a3a 100%);
+        }
+
+        .slide-22-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(79, 172, 254, 0.05) 30px, rgba(79, 172, 254, 0.05) 35px);
+            animation: levelUp 8s linear infinite;
+        }
+
+        @keyframes levelUp {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, -30px); }
+        }
+
+        .slide-22-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 80%, rgba(79, 172, 254, 0.15) 0%, transparent 50%);
+            animation: powerUp 6s ease-in-out infinite;
+        }
+
+        @keyframes powerUp {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        /* SLIDE 23: DAWN BREAKING */
+        .slide-23-bg {
+            background: linear-gradient(to top, #0a0a0f 0%, #1a2a3a 50%, #2a3a4a 100%);
+        }
+
+        .slide-23-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 50% 70%, rgba(79, 172, 254, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 60%);
+            animation: dawnRise 12s ease-in-out infinite;
+        }
+
+        @keyframes dawnRise {
+            0%, 100% { opacity: 0.5; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-20px); }
+        }
+
+        .slide-23-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: starsRotate 60s linear infinite;
+        }
+
+        @keyframes starsRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 40px 30px;
+            }
+
+            .slide-counter,
+            .nav-controls {
+                bottom: 20px;
+            }
+
+            .content-grid,
+            .content-grid.two-column,
+            .content-grid.three-column,
+            .capability-grid,
+            .capability-grid.two-column,
+            .pillars,
+            .pillars.two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .list-items.two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .framework-boxes.two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .closing-points.two-column,
+            .closing-points.three-column {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison.two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .split-container,
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .split-divider,
+            .compare-divider {
+                display: none;
+            }
+
+            .analogy-visual {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span>
+        <span class="separator">/</span>
+        <span id="totalSlides">23</span>
+    </div>
+
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="prevSlide()" id="prevBtn">← Prev</button>
+        <button class="nav-btn" onclick="goToSlide(0)">Home</button>
+        <button class="nav-btn" onclick="nextSlide()" id="nextBtn">Next →</button>
+    </div>
+
+    <div class="slides-container">
+        
+        <!-- SLIDE 1: COVER -->
+        <section class="slide active">
+            <div class="slide-bg slide-1-bg"></div>
+            <div class="slide-content cover">
+                <div class="cover-badge">QS. Al-Jatsiyah: 13</div>
+                <h1 class="cover-title">
+                    Takut Diganti AI<br>
+                    <span class="highlight">atau</span><br>
+                    Belum Siap Jadi Manusia?
+                </h1>
+                <div class="cover-subtitle">Teknologi Ditundukkan, Akal Ditantang</div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: IMAN SEBAGAI PONDASI -->
+        <section class="slide">
+            <div class="slide-bg slide-2-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">02</div>
+                <h2>Sebelum Semua,<br>Iman Dulu</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 40px; line-height: 1.8; text-align: center;">
+                    <strong>Analogi Anak & Ayah:</strong><br>
+                    Mana yang lebih penting?
+                </p>
+                <div class="comparison">
+                    <div class="compare-item">
+                        <h3>Anak yang YAKIN</h3>
+                        <p>"Ini Ayah saya"<br>meski pelayanan biasa</p>
+                    </div>
+                    <div class="compare-divider">vs</div>
+                    <div class="compare-item">
+                        <h3>Anak yang RAGU</h3>
+                        <p>Melayani baik tapi<br>"Benarkah ini Ayah saya?"</p>
+                    </div>
+                </div>
+                <p class="note" style="margin-top: 50px; font-size: 1.3rem;">
+                    <strong>Iman</strong> (keyakinan) adalah syarat sah diterima amal.<br>
+                    Kebaikan tanpa Iman = tidak bernilai di akhirat.
+                </p>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: AI SUDAH ADA DI MEJA KERJA -->
+        <section class="slide">
+            <div class="slide-bg slide-3-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">03</div>
+                <h2>AI Sudah Ada di<br>Meja Kerja Kita</h2>
+                <div class="content-grid three-column">
+                    <div class="content-item">
+                        <span class="icon">🤖</span>
+                        <p>ChatGPT, Gemini, Claude<br>bukan sci-fi lagi</p>
+                    </div>
+                    <div class="content-item">
+                        <span class="icon">📧</span>
+                        <p>Email otomatis<br>laporan auto-generate</p>
+                    </div>
+                    <div class="content-item">
+                        <span class="icon">🎨</span>
+                        <p>Desain, coding<br>analisa data</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: PERTANYAAN PEMBUKA -->
+        <section class="slide">
+            <div class="slide-bg slide-4-bg"></div>
+            <div class="slide-content question">
+                <div class="slide-number">04</div>
+                <h2 class="question-title">
+                    Yang Kita Takuti Itu AI...<br>
+                    <span class="highlight-alt">atau Masa Depan<br>Kita Sendiri?</span>
+                </h2>
+                <div class="reflection-note">⏸️ pause & reflect</div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: AYAT KUNCI -->
+        <section class="slide">
+            <div class="slide-bg slide-5-bg"></div>
+            <div class="slide-content ayat">
+                <div class="slide-number">05</div>
+                <h2>"Teknologi Itu Ditundukkan"</h2>
+                <div class="ayat-box">
+                    <p class="arabic">وَسَخَّرَ لَكُمْ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ جَمِيعًا</p>
+                    <p class="translation">"Dan Dia menundukkan untukmu apa yang ada di langit dan di bumi seluruhnya..."</p>
+                    <p class="reference">QS. Al-Jatsiyah: 13</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: MAKNA DITUNDUKKAN -->
+        <section class="slide">
+            <div class="slide-bg slide-6-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">06</div>
+                <h2>Teknologi Bukan Lawan,<br>Tapi Amanah</h2>
+                <div class="list-items">
+                    <div class="list-item">
+                        <span class="bullet">→</span>
+                        <p><strong>Sakhkhara</strong> = dipaksa patuh, dikuasai</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">→</span>
+                        <p>Teknologi (termasuk AI) = alat yang <strong>ditundukkan</strong></p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">→</span>
+                        <p>Yang bertanggung jawab = <strong>manusia</strong> yang pakai</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: POLA BERULANG SEPANJANG SEJARAH -->
+        <section class="slide">
+            <div class="slide-bg slide-7-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">07</div>
+                <h2>Pola Ini Berulang<br>Sepanjang Sejarah</h2>
+                <div class="list-items two-column">
+                    <div class="list-item">
+                        <span class="bullet">📜</span>
+                        <p><strong>Jaman Nabi (600M):</strong> Tulisan & Kitab — takut hafalan diganti teks tertulis</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">🌙</span>
+                        <p><strong>Keemasan Islam (800-1200M):</strong> Aljabar, Astrolabe, Hospital — takut sains gantikan tradisi</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">⚙️</span>
+                        <p><strong>Revolusi Industri 1.0 (1760):</strong> Mesin uap — takut mesin gantikan tenaga manusia</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">💡</span>
+                        <p><strong>Revolusi 2.0-3.0 (1870-1969):</strong> Listrik, assembly line, komputer — selalu ada resistensi</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">🤖</span>
+                        <p><strong>Sekarang (2020+):</strong> AI — <strong>polanya sama, yang menang tetap yang adapt</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: IQRA - PERINTAH MEMBACA -->
+        <section class="slide">
+            <div class="slide-bg slide-8-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">08</div>
+                <h2>"اقْرَأْ" — IQRA<br>Perintah Pertama Allah</h2>
+                <div class="list-items two-column">
+                    <div class="list-item">
+                        <span class="bullet">📚</span>
+                        <p><strong>Dulu:</strong> Beli 1 buku = 50-200rb. Belajar mahal, akses terbatas.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">🤖</span>
+                        <p><strong>Sekarang (AI):</strong> 300rb/bulan = akses RIBUAN buku! Ilmu jadi murah.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">😔</span>
+                        <p><strong>Ironi Gen-Z:</strong> Punya akses unlimited, tapi males baca. Padahal IQRA = perintah Allah!</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">⚠️</span>
+                        <p><strong>Bahaya:</strong> Asal copy tanpa baca = dzalim. Kemampuan BACA = dasar dari akal.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">🌌</span>
+                        <p><strong>Membaca langit:</strong> Siang-malam, bintang, gunung — semua ayat untuk dibaca & dipahami.</p>
+                    </div>
+                </div>
+                <p class="note" style="margin-top: 40px;">
+                    <strong>MasyaAllah:</strong> Kita umat yang diperintahkan MEMBACA.<br>
+                    AI bukan untuk shortcut, tapi untuk <strong>memperdalam bacaan</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: TAFAKKUR VS PANIK -->
+        <section class="slide">
+            <div class="slide-bg slide-9-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">09</div>
+                <h2>Takut AI atau<br>Lupa Berpikir?</h2>
+                <div class="split-container">
+                    <div class="split-item">
+                        <span class="icon-large">😱</span>
+                        <h3>Panik</h3>
+                        <p>Reaksi emosi<br>tanpa logika</p>
+                    </div>
+                    <div class="split-divider">vs</div>
+                    <div class="split-item" style="border-color: rgba(102, 126, 234, 0.5);">
+                        <span class="icon-large">🧠</span>
+                        <h3>Tafakkur</h3>
+                        <p>Berpikir, memilah<br>menyimpulkan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: APA YANG AI BISA LAKUKAN -->
+        <section class="slide">
+            <div class="slide-bg slide-10-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">10</div>
+                <h2>Apa yang AI<br>Bisa Lakukan</h2>
+                <div class="capability-grid two-column">
+                    <div class="capability-item">✅ Nulis cepat (email, laporan, konten)</div>
+                    <div class="capability-item">✅ Analisa data besar dalam detik</div>
+                    <div class="capability-item">✅ Coding & debugging</div>
+                    <div class="capability-item">✅ Design variasi tanpa batas</div>
+                    <div class="capability-item">✅ Jawab pertanyaan teknis</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 11: BATAS AI -->
+        <section class="slide">
+            <div class="slide-bg slide-11-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">11</div>
+                <h2>Apa yang Tidak Bisa<br>Dilakukan AI</h2>
+                <div class="capability-grid two-column">
+                    <div class="capability-item">❌ Niat (kerja bernilai ibadah atau tidak?)</div>
+                    <div class="capability-item">❌ Tanggung jawab moral</div>
+                    <div class="capability-item">❌ Nilai benar-salah (etika kontekstual)</div>
+                    <div class="capability-item">❌ Empati sejati</div>
+                    <div class="capability-item">❌ Amanah</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 12: ANALOGI KALKULATOR -->
+        <section class="slide">
+            <div class="slide-bg slide-12-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">12</div>
+                <h2>AI Itu Kalkulator,<br>Bukan Penentu Arah</h2>
+                <div class="analogy-visual">
+                    <div class="analogy-item">
+                        <span class="icon-xl">🧮</span>
+                        <p style="font-size: 1.5rem;">Kalkulator<br><span style="color: var(--text-muted);">(cepat hitung)</span></p>
+                    </div>
+                    <div style="font-size: 3rem; color: var(--text-muted);">≠</div>
+                    <div class="analogy-item">
+                        <span class="icon-xl">🧭</span>
+                        <p style="font-size: 1.5rem;">Kompas<br><span style="color: var(--text-muted);">(tahu arah)</span></p>
+                    </div>
+                </div>
+                <p class="analogy-note">Yang menentukan mau menghitung apa = <strong>manusia</strong></p>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: SKILL VS SIKAP -->
+        <section class="slide">
+            <div class="slide-bg slide-13-bg"></div>
+            <div class="slide-content question">
+                <div class="slide-number">13</div>
+                <h2 class="question-title">
+                    Yang Digantikan Itu<br>
+                    <span class="highlight-alt">Skill... atau Sikap?</span>
+                </h2>
+                <div class="insight-boxes">
+                    <div class="insight-box" style="border-color: rgba(79, 172, 254, 0.5);">
+                        <p><strong>Skill</strong> bisa dipelajari</p>
+                    </div>
+                    <div class="insight-box" style="border-color: rgba(245, 87, 108, 0.5);">
+                        <p><strong>Sikap</strong> = pilihan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 14: JADI MANUSIA ITU... -->
+        <section class="slide">
+            <div class="slide-bg slide-14-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">14</div>
+                <h2>Jadi Manusia Itu...</h2>
+                <div class="pillars two-column">
+                    <div class="pillar">
+                        <span class="pillar-icon">🧠</span>
+                        <h3>Akal</h3>
+                        <p>Berpikir, memilah<br>menyimpulkan</p>
+                    </div>
+                    <div class="pillar">
+                        <span class="pillar-icon">💡</span>
+                        <h3>Niat</h3>
+                        <p>Kerja bernilai<br>ibadah atau tidak</p>
+                    </div>
+                    <div class="pillar">
+                        <span class="pillar-icon">🤝</span>
+                        <h3>Amanah</h3>
+                        <p>Jujur, bertanggung<br>jawab</p>
+                    </div>
+                    <div class="pillar">
+                        <span class="pillar-icon">🌟</span>
+                        <h3>Adab</h3>
+                        <p>Cara pakai<br>teknologi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 15: PRODUKTIF VS BERNILAI -->
+        <section class="slide">
+            <div class="slide-bg slide-15-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">15</div>
+                <h2>Kerja Bukan Cuma Produktif,<br>Tapi Bernilai</h2>
+                <div class="comparison two-column">
+                    <div class="compare-item">
+                        <h3>Produktif</h3>
+                        <p>Output banyak<br>Kerja cepat<br>Target tercapai</p>
+                    </div>
+                    <div class="compare-divider">→</div>
+                    <div class="compare-item highlight-box">
+                        <h3>Bernilai</h3>
+                        <p>Ada niat<br>Ada manfaat<br>Ada berkah</p>
+                    </div>
+                </div>
+                <p class="note">AI bisa produktif, tapi tidak bisa <strong>niat</strong></p>
+            </div>
+        </section>
+
+        <!-- SLIDE 16: HADITS IHSAN -->
+        <section class="slide">
+            <div class="slide-bg slide-16-bg"></div>
+            <div class="slide-content hadits">
+                <div class="slide-number">16</div>
+                <h2>Bekerja dengan Ihsan</h2>
+                <div class="hadits-box">
+                    <p class="hadits-text">"Sesungguhnya Allah mencintai jika salah seorang dari kalian bekerja, ia menyempurnakannya."</p>
+                    <p class="reference">HR. Al-Baihaqi — Hasan</p>
+                </div>
+                <p class="insight">AI bisa bikin kerja <strong>cepat</strong>.<br>Manusia yang <strong>menyempurnakannya</strong>.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 17: CEPAT ≠ BENAR -->
+        <section class="slide">
+            <div class="slide-bg slide-17-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">17</div>
+                <h2>Cepat ≠ Benar<br>Canggih ≠ Bertanggung Jawab</h2>
+                <div class="framework-boxes two-column">
+                    <div class="framework-box">
+                        <p><strong>AI</strong> = alat percepatan</p>
+                    </div>
+                    <div class="framework-box">
+                        <p><strong>Manusia</strong> = penentu arah</p>
+                    </div>
+                    <div class="framework-box warning">
+                        <p>Speed tanpa wisdom = <strong>bahaya</strong></p>
+                    </div>
+                    <div class="framework-box warning">
+                        <p>Efficiency tanpa etika = <strong>masalah</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 18: FRAMEWORK 4 LANGKAH -->
+        <section class="slide">
+            <div class="slide-bg slide-18-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">18</div>
+                <h2>Pakai AI Tanpa<br>Kehilangan Nilai</h2>
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <p><strong>Niatkan</strong> dulu (untuk apa?)</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <p>Pakai AI untuk <strong>percepat</strong>, bukan ganti otak</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <p><strong>Review</strong> dengan akal (jangan auto-trust)</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <p><strong>Bertanggung jawab</strong> atas output</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 19: REFLEKSI PRIBADI -->
+        <section class="slide">
+            <div class="slide-bg slide-19-bg"></div>
+            <div class="slide-content reflection">
+                <div class="slide-number">19</div>
+                <h2 class="reflection-title">Kenapa Gue<br>Takut AI?</h2>
+                <div class="reflection-box">
+                    <p>Takut karena skill kurang?</p>
+                    <p>Takut karena mental nggak siap?</p>
+                    <p>Takut karena nggak mau belajar?</p>
+                </div>
+                <div class="reflection-note">🤔 30 detik — silent reflection</div>
+            </div>
+        </section>
+
+        <!-- SLIDE 20: FOKUS AMAL IBADAH SENDIRI -->
+        <section class="slide">
+            <div class="slide-bg slide-20-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">20</div>
+                <h2>Jangan Fokus ke Alat,<br>Fokus ke Amal Sendiri</h2>
+                <div class="ayat-box">
+                    <p style="font-size: 1.4rem; line-height: 1.8; margin-bottom: 30px;">
+                        <strong>"Hancurnya Ka'bah, batu demi batu,</strong><br>
+                        itu lebih ringan di sisi Allah<br>
+                        daripada tertumpahnya darah seorang Muslim."
+                    </p>
+                    <p class="reference">Hadits Shahih</p>
+                </div>
+                <div class="list-items two-column" style="margin-top: 60px;">
+                    <div class="list-item">
+                        <span class="bullet">🎯</span>
+                        <p>Teknologi ditundukkan — <strong>fokus bukan ke alat, tapi ke niat & amal kita</strong></p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">⛰️</span>
+                        <p>Gunung pun tunduk — bisa digali sampai berlubang. Tapi kalau dzalim? Dosa.</p>
+                    </div>
+                    <div class="list-item">
+                        <span class="bullet">🤲</span>
+                        <p>AI, teknologi, dunia — <strong>sisanya Allah yang atur</strong>. Kita urus ibadah sendiri.</p>
+                    </div>
+                </div>
+                <p class="note" style="margin-top: 50px; font-size: 1.3rem;">
+                    Jangan sibuk debat teknologi.<br>
+                    <strong>Perbaiki shalat, perbaiki akhlak, perbaiki amal.</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- SLIDE 21: STATEMENT UTAMA -->
+        <section class="slide">
+            <div class="slide-bg slide-21-bg"></div>
+            <div class="slide-content statement">
+                <div class="slide-number">21</div>
+                <h1 class="statement-text">
+                    AI Tidak<br>Menggantikan Manusia
+                </h1>
+                <h2 class="statement-subtext">
+                    Manusia Menggantikan<br>Dirinya Sendiri
+                </h2>
+            </div>
+        </section>
+
+        <!-- SLIDE 22: NAIK LEVEL -->
+        <section class="slide">
+            <div class="slide-bg slide-22-bg"></div>
+            <div class="slide-content">
+                <div class="slide-number">22</div>
+                <h2>Kalau Teknologi Ditundukkan,<br>Manusianya Harus Naik Level</h2>
+                <div class="closing-points three-column">
+                    <div class="closing-point">
+                        <span class="icon">⚡</span>
+                        <p>AI = ujian kesiapan manusia</p>
+                    </div>
+                    <div class="closing-point">
+                        <span class="icon">🎯</span>
+                        <p>Bukan tentang takut, tapi siap</p>
+                    </div>
+                    <div class="closing-point">
+                        <span class="icon">🚀</span>
+                        <p>Naik level = akal, niat, amanah, adab</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 23: FINALE -->
+        <section class="slide">
+            <div class="slide-bg slide-23-bg"></div>
+            <div class="slide-content finale">
+                <h1 class="finale-title">Siap Jadi Manusia<br>di Era AI</h1>
+                <div class="finale-quote">
+                    <p>Teknologi ditundukkan.<br>Manusia ditantang.</p>
+                    <p class="reference">QS. Al-Jatsiyah: 13</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function updateUI() {
+            document.getElementById('currentSlide').textContent = currentSlideIndex + 1;
+            document.getElementById('totalSlides').textContent = totalSlides;
+            
+            const progress = ((currentSlideIndex + 1) / totalSlides) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
+            document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides - 1;
+            
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            if (index >= 0 && index < totalSlides) {
+                currentSlideIndex = index;
+                updateUI();
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides - 1) {
+                goToSlide(currentSlideIndex + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                goToSlide(currentSlideIndex - 1);
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowRight':
+                case ' ':
+                case 'Enter':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    prevSlide();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    goToSlide(0);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    goToSlide(totalSlides - 1);
+                    break;
+            }
+        });
+
+        updateUI();
+        console.log('✅ Presentation loaded: 23 slides with 3 NEW Islamic foundations!');
+        console.log('🎨 NEW SLIDES: Iman Foundation, Iqra Command, Focus on Amal');
+        console.log('📊 Total slides:', totalSlides);
+    </script>
+</body>
+</html>

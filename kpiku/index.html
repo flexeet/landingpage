@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPIKU — Konsultan AI yang Bikin Sistemmu Jalan Sendiri</title>
+    <meta name="description" content="Bukan chatbot biasa. KPIKU adalah 3 otak AI yang mengubah curhatan bisnis jadi Blueprint Sistem dalam 10 menit. Hemat ratusan juta biaya System Analyst.">
+    
+    <!-- Fonts: Distinctive choices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cursor Follower -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    
+    <!-- Progress Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <span class="logo-mark">K</span>
+                <span class="logo-text">KPIKU</span>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#masalah" class="nav-link">Masalah</a>
+                <a href="#solusi" class="nav-link">Solusi</a>
+                <a href="#cara-kerja" class="nav-link">Cara Kerja</a>
+                <a href="#harga" class="nav-link">Harga</a>
+            </div>
+            
+            <a href="https://t.me/kpikubot" class="nav-cta" target="_blank" rel="noopener">
+                <span>Mulai Chat</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#masalah" class="mobile-link">Masalah</a>
+            <a href="#solusi" class="mobile-link">Solusi</a>
+            <a href="#cara-kerja" class="mobile-link">Cara Kerja</a>
+            <a href="#harga" class="mobile-link">Harga</a>
+            <a href="https://t.me/kpikubot" class="mobile-cta" target="_blank" rel="noopener">
+                Mulai Chat Sekarang
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-grid"></div>
+            <div class="hero-noise"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-pulse"></span>
+                <span class="badge-text">AI Business Consultant</span>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="title-line">KPI Kamu</span>
+                <span class="title-line title-dynamic">
+                    <span class="dynamic-word" id="dynamicWord">Subjektif?</span>
+                </span>
+            </h1>
+            
+            <p class="hero-desc">
+                Konsultan AI di Telegram yang <em>audit</em> KPI subjektif, 
+                ubah workflow manual jadi autopilot, dan kasih kamu 
+                <strong>Blueprint Sistem</strong> dalam <span class="highlight">10 menit</span>.
+            </p>
+            
+            <div class="hero-actions">
+                <a href="https://t.me/kpikubot" class="btn-primary" target="_blank" rel="noopener">
+                    <span>Chat Gratis Sekarang</span>
+                    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#cara-kerja" class="btn-ghost">
+                    <span>Lihat Cara Kerja</span>
+                </a>
+            </div>
+            
+            <div class="hero-proof">
+                <div class="proof-avatars">
+                    <div class="avatar" style="--i:0">👨‍💼</div>
+                    <div class="avatar" style="--i:1">👩‍💻</div>
+                    <div class="avatar" style="--i:2">🧑‍💼</div>
+                    <div class="avatar" style="--i:3">👨‍🔧</div>
+                </div>
+                <p class="proof-text">
+                    <strong>50+ owner</strong> sudah pakai
+                </p>
+            </div>
+        </div>
+        
+        <!-- Hero Visual: Chat Simulation -->
+        <div class="hero-visual">
+            <div class="chat-window">
+                <div class="chat-header">
+                    <div class="chat-status">
+                        <span class="status-dot"></span>
+                        <span>KPIKU Bot</span>
+                    </div>
+                    <span class="chat-label">Live Demo</span>
+                </div>
+                <div class="chat-body" id="chatBody">
+                    <div class="chat-message bot">
+                        <div class="message-content">
+                            <p>Halo Ka! 👋</p>
+                            <p>Ceritain masalah bisnismu, nanti aku audit KPI-nya.</p>
+                        </div>
+                    </div>
+                    <div class="chat-message user" style="--delay: 0.5s">
+                        <div class="message-content">
+                            <p>Admin saya kerja manual banget, ngetik ulang data dari buku ke Excel.</p>
+                        </div>
+                    </div>
+                    <div class="chat-message bot" style="--delay: 1s">
+                        <div class="message-content">
+                            <p>Itu <span class="msg-highlight">16 jam/bulan</span> yang harusnya bisa <span class="msg-highlight">0 detik</span>.</p>
+                            <p>Mau aku buatkan sistem otomatisnya?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <span class="input-placeholder">Ketik masalahmu...</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section section-dark" id="masalah">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">
+                    <span class="title-small">Kenapa bisnis stagnan?</span>
+                    <span class="title-big">4 Dosa Besar</span>
+                </h2>
+            </header>
+            
+            <div class="problems-grid">
+                <article class="problem-card" data-index="01">
+                    <div class="problem-visual">
+                        <span class="problem-emoji">😤</span>
+                    </div>
+                    <div class="problem-content">
+                        <h3>KPI Subjektif</h3>
+                        <p>Karyawan dinilai pakai "perasaan". Yang jilat atasan naik gaji.</p>
+                        <div class="problem-stat">
+                            <span class="stat-number">40%</span>
+                            <span class="stat-label">turnover/tahun</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="problem-card" data-index="02">
+                    <div class="problem-visual">
+                        <span class="problem-emoji">📝</span>
+                    </div>
+                    <div class="problem-content">
+                        <h3>Input Manual</h3>
+                        <p>Admin ngetik ulang data. 100 order = 16 jam yang seharusnya 0 detik.</p>
+                        <div class="problem-stat">
+                            <span class="stat-number">Rp50jt</span>
+                            <span class="stat-label">terbuang/tahun</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="problem-card" data-index="03">
+                    <div class="problem-visual">
+                        <span class="problem-emoji">💸</span>
+                    </div>
+                    <div class="problem-content">
+                        <h3>Profit Bocor</h3>
+                        <p>Omzet naik, profit stagnan. Ada "kehilangan" yang gak ketrack.</p>
+                        <div class="problem-stat">
+                            <span class="stat-number">15-20%</span>
+                            <span class="stat-label">omzet menguap</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="problem-card" data-index="04">
+                    <div class="problem-visual">
+                        <span class="problem-emoji">🤷</span>
+                    </div>
+                    <div class="problem-content">
+                        <h3>Owner Jadi Karyawan</h3>
+                        <p>Kamu mikir strategi, tapi malah bolak-balik WA tanya orderan.</p>
+                        <div class="problem-stat">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">waktu terbuang</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="section-cta">
+                <p class="cta-text">
+                    Kena <strong>minimal 2</strong> dari 4 poin di atas?<br>
+                    Kamu butuh <span class="highlight">SISTEM</span>, bukan motivasi.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section: The 3 Brains -->
+    <section class="section section-light" id="solusi">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">
+                    <span class="title-small">Cara kerja di balik layar</span>
+                    <span class="title-big">3 Otak Jenius</span>
+                </h2>
+                <p class="section-desc">
+                    Saat kamu chat, ada 3 AI Specialist yang berdiskusi di belakang layar.
+                </p>
+            </header>
+            
+            <div class="brains-showcase">
+                <div class="brain-card" data-brain="1">
+                    <div class="brain-header">
+                        <span class="brain-icon">🔍</span>
+                        <div class="brain-meta">
+                            <span class="brain-role">The Interrogator</span>
+                            <h3 class="brain-name">Si Penggali</h3>
+                        </div>
+                    </div>
+                    <p class="brain-desc">
+                        Mencecar pertanyaan detail kayak detective. Gak ada info yang kelewat, gak ada yang bisa bohong.
+                    </p>
+                    <ul class="brain-abilities">
+                        <li>Deteksi KPI subjektif</li>
+                        <li>Tolak workflow manual</li>
+                        <li>Gali detail teknis</li>
+                    </ul>
+                </div>
+                
+                <div class="brain-card brain-card-featured" data-brain="2">
+                    <div class="brain-badge">Bosnya!</div>
+                    <div class="brain-header">
+                        <span class="brain-icon">🧠</span>
+                        <div class="brain-meta">
+                            <span class="brain-role">The Architect</span>
+                            <h3 class="brain-name">Si Arsitek</h3>
+                        </div>
+                    </div>
+                    <p class="brain-desc">
+                        Otak strategis yang mikir cara paling efisien. Bakal <strong>nolak ide kamu</strong> kalau gak masuk akal.
+                    </p>
+                    <ul class="brain-abilities">
+                        <li>Validasi KPI dengan standar</li>
+                        <li>Desain Strategic Initiatives</li>
+                        <li>Tawarkan solusi otomasi</li>
+                    </ul>
+                </div>
+                
+                <div class="brain-card" data-brain="3">
+                    <div class="brain-header">
+                        <span class="brain-icon">📝</span>
+                        <div class="brain-meta">
+                            <span class="brain-role">The Scribe</span>
+                            <h3 class="brain-name">Si Penulis</h3>
+                        </div>
+                    </div>
+                    <p class="brain-desc">
+                        Ahli dokumentasi yang terjemahkan strategi jadi gambar teknik siap develop.
+                    </p>
+                    <ul class="brain-abilities">
+                        <li>Generate Flowchart</li>
+                        <li>Buat ERD Database</li>
+                        <li>Tulis Technical Spec</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="process-flow">
+                <div class="flow-step">
+                    <span class="flow-num">1</span>
+                    <span class="flow-label">Kamu curhat</span>
+                </div>
+                <div class="flow-connector"></div>
+                <div class="flow-step">
+                    <span class="flow-num">2</span>
+                    <span class="flow-label">3 Otak diskusi</span>
+                </div>
+                <div class="flow-connector"></div>
+                <div class="flow-step">
+                    <span class="flow-num">3</span>
+                    <span class="flow-label">Blueprint jadi!</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section section-dark" id="cara-kerja">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">
+                    <span class="title-small">Dari curhat jadi blueprint</span>
+                    <span class="title-big">3 Langkah Simpel</span>
+                </h2>
+            </header>
+            
+            <div class="steps-timeline">
+                <div class="step-item">
+                    <div class="step-marker">
+                        <span class="step-num">01</span>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-emoji">💬</span>
+                        <h3>Curhat Masalah</h3>
+                        <p>Gak perlu bahasa teknis. Cukup cerita kayak ngobrol sama temen.</p>
+                        <div class="step-example">
+                            <code>"Saya owner distributor. Stok fisik sering beda sama catatan. Admin gudang sering lupa catat retur."</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-marker">
+                        <span class="step-num">02</span>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-emoji">🤖</span>
+                        <h3>AI Interogasi & Validasi</h3>
+                        <p>KPIKU bakal tanya detail, validasi ide kamu, dan kasih alternatif lebih baik.</p>
+                        <div class="step-example">
+                            <code>"Kalau di-track realtime, kamu bisa hemat 2 jam/hari untuk rekonsiliasi. Mau sistem webhook atau cron job?"</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-marker">
+                        <span class="step-num">03</span>
+                    </div>
+                    <div class="step-content">
+                        <span class="step-emoji">📋</span>
+                        <h3>Terima Blueprint</h3>
+                        <p>Dapat file .md lengkap dengan Flowchart, ERD, dan Technical Spec. Tinggal eksekusi.</p>
+                        <div class="step-output">
+                            <div class="output-preview">
+                                <span class="output-icon">📄</span>
+                                <span class="output-name">Blueprint_StokGudang_v1.md</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section section-gradient" id="harga">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">
+                    <span class="title-small">Investasi yang masuk akal</span>
+                    <span class="title-big">Pilih Akses</span>
+                </h2>
+            </header>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Coba Dulu</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount">Gratis</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Akses terbatas saat sepi</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Bisa rasain chat KPIKU</span>
+                        </li>
+                        <li class="feature-muted">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            <span>Tanpa Blueprint output</span>
+                        </li>
+                    </ul>
+                    <a href="https://t.me/kpikubot" class="pricing-cta btn-ghost" target="_blank" rel="noopener">
+                        Coba Sekarang
+                    </a>
+                </div>
+                
+                <div class="pricing-card pricing-featured">
+                    <div class="pricing-badge">Recommended</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Member</h3>
+                        <div class="pricing-price">
+                            <span class="price-currency">Rp</span>
+                            <span class="price-amount">299K</span>
+                            <span class="price-period">/bulan</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong>Akses 24/7</strong> priority</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong>Unlimited</strong> chat & blueprint</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Output: Flowchart, ERD, Spec</span>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Support via admin</span>
+                        </li>
+                    </ul>
+                    <a href="https://t.me/flexeet" class="pricing-cta btn-primary" target="_blank" rel="noopener">
+                        <span>Aktivasi Sekarang</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="pricing-comparison">
+                <h4>Bandingkan dengan alternatif:</h4>
+                <div class="comparison-table">
+                    <div class="comparison-row comparison-header">
+                        <span></span>
+                        <span>System Analyst</span>
+                        <span>KPIKU</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Biaya</span>
+                        <span class="text-danger">Rp 15-30jt/bulan</span>
+                        <span class="text-success">Rp 299K/bulan</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Waktu output</span>
+                        <span class="text-danger">2-4 minggu</span>
+                        <span class="text-success">10 menit</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Availability</span>
+                        <span class="text-danger">Jam kerja</span>
+                        <span class="text-success">24/7</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guarantee-box">
+                <span class="guarantee-icon">🛡️</span>
+                <div class="guarantee-content">
+                    <h4>Garansi 7 Hari Uang Kembali</h4>
+                    <p>Kalau dalam 7 hari pertama kamu merasa KPIKU gak membantu, refund 100%. No drama.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-dark" id="faq">
+        <div class="container container-narrow">
+            <header class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">
+                    <span class="title-small">Pertanyaan umum</span>
+                    <span class="title-big">FAQ</span>
+                </h2>
+            </header>
+            
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>Apa bedanya KPIKU dengan ChatGPT biasa?</span>
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>ChatGPT = AI general yang jawab seadanya. KPIKU = 3 AI Specialist (Interrogator, Architect, Scribe) yang punya knowledge base khusus KPI/SOP/OKR dan framework metodologi bisnis. Output-nya bukan cuma jawaban, tapi Blueprint siap develop.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>Data bisnis saya aman gak?</span>
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Aman. Session chat di-reset setiap 24 jam. Kami tidak menyimpan data bisnis kamu secara permanen. Kalau mau hapus lebih cepat, ketik /clear.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>Blueprint output-nya format apa?</span>
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>File Markdown (.md) yang isinya: Executive Summary, Flowchart (Mermaid), ERD Database, Formula Excel, dan Technical Specification. Bisa dibuka di Notion, Obsidian, VS Code, atau GitHub.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>Siapa yang cocok pakai KPIKU?</span>
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Perfect untuk:</strong> Owner UMKM/SME yang mau scale up, HR Manager yang pusing bikin KPI objektif, Ops Manager yang masih pakai Excel manual, Startup yang butuh blueprint sistem cepat.</p>
+                        <p><strong>Tidak cocok untuk:</strong> Enterprise butuh custom ERP, regulasi ketat (Banking/Healthcare), yang cuma mau motivasi (bukan solusi teknis).</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>Bagaimana cara aktivasi member?</span>
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>1. Hubungi admin: <a href="https://t.me/flexeet" target="_blank">@flexeet</a><br>
+                        2. Transfer Rp 299K via QRIS/Bank<br>
+                        3. Admin aktivasi akun Telegram kamu dalam 5 menit<br>
+                        4. Langsung bisa chat dengan <a href="https://t.me/kpikubot" target="_blank">@kpikubot</a></p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section section-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">
+                    Bisnis yang besar bukan karena Owner-nya sibuk,<br>
+                    <span class="highlight">tapi karena Sistemnya jalan.</span>
+                </h2>
+                <p class="cta-desc">
+                    Saatnya kamu fokus strategi, biarkan sistem yang kerja.
+                </p>
+                <div class="cta-actions">
+                    <a href="https://t.me/kpikubot" class="btn-primary btn-large" target="_blank" rel="noopener">
+                        <span>Chat Gratis dengan KPIKU</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <p class="cta-note">
+                    💡 Coba gratis dulu tanpa daftar. Kalau cocok, baru aktivasi member.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-mark">K</span>
+                        <span class="logo-text">KPIKU</span>
+                    </a>
+                    <p class="footer-tagline">KPI Kamu, UrusanKu. Beres!</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Produk</h4>
+                        <a href="#solusi">Cara Kerja</a>
+                        <a href="#harga">Harga</a>
+                        <a href="https://t.me/kpikubot" target="_blank">Coba Gratis</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Support</h4>
+                        <a href="#faq">FAQ</a>
+                        <a href="https://t.me/flexeet" target="_blank">Hubungi Admin</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Kontak</h4>
+                        <a href="https://t.me/kpikubot" target="_blank">Telegram Bot</a>
+                        <a href="https://t.me/flexeet" target="_blank">Admin @flexeet</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 KPIKU by Flexeet. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Tutorial OnTheTok</title>
+    <meta name="description" content="Panduan lengkap dan video tutorial untuk membantu Anda menguasai platform OnTheTok. Mulai dari dasar hingga fitur lanjutan.">
+    
+    <!-- FAVICON DITAMBAHKAN -->
+    <link rel="icon" href="https://flxr2.com/ott/logo.png">
+
+    
+    <!-- FONTS & ICONS (DIUBAH ke Inter untuk konsistensi brand) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- CSS -->
+    <!-- AOS Animation Library (DITAMBAHKAN untuk konsistensi animasi) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav-style.css">
+</head>
+<body>
+    <!-- Animated Background & Particles (DIPERTAHANKAN) -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+    
+    <!-- UI KONSISTEN DARI FLEXEET -->
+    <div id="loading-screen">
+        <div class="loader-content">
+            <div class="loader-logo">OnTheTok</div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+        </div>
+    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Header Navigation (Struktur Sama) -->
+    <header class="site-header" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-inner">
+                <a href="#" class="nav-logo-wrapper">
+                    <span class="nav-logo-text">OnTheTok</span>
+                    <span class="brand-dot"></span>
+                </a>
+                <div class="desktop-menu">
+                    <div class="nav-menu">
+                        <a href="#tutorials" class="nav-link">TUTORIAL HUB</a>
+                        <a href="#faq" class="nav-link">FAQ</a>
+                    </div>
+                </div>
+                <button class="hamburger" id="hamburger-button" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu-overlay">
+        <div class="mobile-menu-inner">
+            <a href="#tutorials" class="mobile-link">TUTORIAL HUB</a>
+            <a href="#faq" class="mobile-link">FAQ</a>
+        </div>
+    </div>
+
+    <main id="page-content">
+        <!-- Hero Section (Animasi DIUBAH ke AOS) -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content" style="text-align: center;">
+                    <h1 class="hero-title" data-aos="fade-up">
+                        <span class="word" data-word="Pelajari Cara Menggunakan OnTheTok.">Pelajari Cara Menggunakan OnTheTok.</span>
+                    </h1>
+                    <p class="subtitle" data-aos="fade-up" data-aos-delay="200">Selamat datang di pusat tutorial OnTheTok! Mulai dengan tur interaktif di bawah ini untuk memahami alur kerja dasar dalam platform kami.</p>
+                    <!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(51.7188% + 41px); height: 0px; width: 100%; margin-top: 2rem;" data-aos="fade-up" data-aos-delay="400"><iframe src="https://demo.arcade.software/XuKeqdlyVMUr3CZriWZC?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="App Tour " frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorial Grid Section -->
+        <section id="tutorials" class="section-tutorials">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Video Tutorial Lengkap</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Tonton video di bawah ini untuk mempelajari setiap fitur OnTheTok secara mendalam, langkah demi langkah.</p>
+                
+                <div class="tutorial-video-list">
+
+                    <!-- Video Tutorial 1 -->
+                    <div class="tutorial-video-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tutorial-video-header">
+                            <span class="tutorial-category">Integrasi WhatsApp</span>
+                            <h3>1. Cara Connect dan Disconnect Akun WhatsApp</h3>
+                            <p>Pelajari langkah-langkah mudah untuk menghubungkan dan memutuskan akun WhatsApp Anda dengan platform OnTheTok.</p>
+                        </div>
+                        <!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(51.7188% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/1xwZFKxRnUBwjNXFQMCY?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Connect Or Disconnect Whatsapp " frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
+                    </div>
+
+                    <!-- Video Tutorial 2 -->
+                    <div class="tutorial-video-item" data-aos="fade-up" data-aos-delay="250">
+                        <div class="tutorial-video-header">
+                            <span class="tutorial-category">Manajemen Kampanye</span>
+                            <h3>2. Cara Membuat Campaign Baru</h3>
+                            <p>Panduan langkah demi langkah untuk membuat, mengatur, dan meluncurkan campaign WhatsApp Anda.</p>
+                        </div>
+                        <!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(51.7188% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/xTzTUwWFEG3UNLTQjMRj?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Create Campaign" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
+                    </div>
+
+                    <!-- Video Tutorial 3 -->
+                    <div class="tutorial-video-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="tutorial-video-header">
+                            <span class="tutorial-category">Manajemen Kreator Database</span>
+                            <h3>3. Buat Group Dan Menambah Database Kreator</h3>
+                            <p>Pelajari cara mengelola data kreator Anda, mengimpor, mengedit, dan meluncurkan kampanye broadcast yang efektif.</p>
+                        </div>
+                        <!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(51.7188% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/doDFxtj3Wit27S4QKSA4?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Import, Edit, and Send Broadcast Campaigns Using Affiliate Data" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
+                    </div>
+
+                    <!-- Video Tutorial 4 -->
+                    <div class="tutorial-video-item" data-aos="fade-up" data-aos-delay="350">
+                        <div class="tutorial-video-header">
+                            <span class="tutorial-category">Eksekusi Kampanye</span>
+                            <h3>4. Mengirim Pesan Broadcast</h3>
+                            <p>Panduan akhir tentang cara mengirimkan kampanye broadcast Anda ke daftar kreator yang telah dipilih.</p>
+                        </div>
+                        <!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(51.7188% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/L4r76m0YlR447knaMRjg?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Send Broadcast" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
+                    </div>
+
+                    <!-- Video Tutorial 5 -->
+                    <div class="tutorial-video-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="tutorial-video-header">
+                            <span class="tutorial-category">Scraper Free Sample</span>
+                            <h3>5. Cara Mendapatkan Data Free Sample</h3>
+                            <p>Pelajari cara menghubungkan ekstensi dengan database OnTheTok free sample</p>
+                        </div>
+                        <!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(56.1257% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/njY3vYhxVe2RRe1e18EH?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Arcade Flow (Tue Nov 11 2025)" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section-faq">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Pertanyaan Umum</h2>
+                <div class="faq-accordion">
+                    <!-- Contoh FAQ Item 1 -->
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                        <button class="faq-question">
+                            <span>Di mana saya bisa menemukan video untuk pemula?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Kami merekomendasikan untuk memulai dengan video "Cara Setup Akun Pertama Kali" dan "Import Database Kreator". Keduanya ada di bagian "Dasar-dasar" pada daftar tutorial di atas.</p>
+                        </div>
+                    </div>
+                    <!-- Contoh FAQ Item 2 -->
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+                        <button class="faq-question">
+                            <span>Saya mengalami masalah, bagaimana cara mendapatkan bantuan?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Jika Anda tidak menemukan solusi di video tutorial, silakan hubungi tim support kami melalui email di support@flexeet.id atau WhatsApp di +62-8777-7220-117. Kami siap membantu!</p>
+                        </div>
+                    </div>
+                    <!-- Contoh FAQ Item 3 -->
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                        <button class="faq-question">
+                            <span>Apakah ada dokumentasi tertulis selain video?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ya, kami juga menyediakan dokumentasi lengkap dalam format teks. Anda dapat mengaksesnya melalui [Link ke Dokumentasi Anda]. Namun, video tutorial ini dirancang untuk memberikan panduan visual yang lebih mudah diikuti.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OnTheTok. A <a href="https://flexeet.com" target="_blank" style="color: #3e5afa; text-decoration: none;">FLEXEET</a> Product.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script src="nav-script.js"></script>
+    
+    <script>
+        // Script sederhana untuk Accordion FAQ
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const answer = item.querySelector('.faq-answer');
+                    const icon = item.querySelector('.faq-icon');
+
+                    // Toggle active class
+                    const isActive = item.classList.toggle('active');
+                    
+                    // Animate height and change icon
+                    if (isActive) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.textContent = '-';
+                    } else {
+                        answer.style.maxHeight = '0px';
+                        icon.textContent = '+';
+                    }
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>

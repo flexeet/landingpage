@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AICEO Chat - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FBBF24",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0B0F19",
+                        "card-dark": "#161B22",
+                        "sidebar-dark": "#0D1117",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Inter', sans-serif; }
+        }
+        .glass-sidebar {
+            backdrop-filter: blur(12px);
+            background-color: rgba(13, 17, 23, 0.85);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        @media (max-width: 1024px) {
+            .mobile-stack {
+                flex-direction: column !important;
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+            .sidebar-collapsed {
+                display: none !important;
+            }
+            /* Drawer Mobile */
+            .sidebar-mobile-open {
+                display: flex !important;
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 75% !important;
+                max-width: 300px;
+                height: 100vh !important;
+                z-index: 100 !important;
+                background-color: rgba(13, 17, 23, 0.95);
+                backdrop-filter: blur(12px);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .content-area {
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col lg:flex-row lg:overflow-hidden">
+    <!-- Mobile Header -->
+    <header
+        class="lg:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-sidebar-dark sticky top-0 z-50 shrink-0">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-slate-900 text-lg">psychology</span>
+            </div>
+            <span class="text-lg font-bold tracking-tight">AICEO</span>
+        </div>
+        <button class="p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()"
+        class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden backdrop-blur-sm transition-opacity"></div>
+
+    <div class="flex flex-1 w-full h-full overflow-hidden mobile-stack">
+        <!-- Sidebar -->
+        <aside id="main-sidebar"
+            class="w-64 sidebar-collapsed lg:flex glass-sidebar border-r border-slate-200 dark:border-slate-800 flex flex-col z-20 shrink-0 h-screen sticky top-0">
+            <!-- Scrollable Content Area -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 pb-2">
+                <!-- Brand -->
+                <div class="flex items-center gap-3 mb-8">
+                    <div
+                        class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-slate-900">psychology</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">AICEO</span>
+                </div>
+
+                <!-- Admin Status -->
+                <div class="bg-primary/10 border border-primary/20 rounded-lg p-3 mb-6">
+                    <div class="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-sm">verified_user</span>
+                        Admin Workspace
+                    </div>
+                </div>
+
+                <nav class="space-y-1">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="index.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-all"
+                        href="chat.html">
+                        <span class="material-symbols-outlined">chat_bubble</span>
+                        <span>Chat</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="credits.html">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                        <span>Credits</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="decision_units.html">
+                        <span class="material-symbols-outlined">shield</span>
+                        <span>Decision Units</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="bot_personas.html">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                        <span>Bots</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="news.html">
+                        <span class="material-symbols-outlined">newspaper</span>
+                        <span>News & Updates</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                        href="faq.html">
+                        <span class="material-symbols-outlined">quiz</span>
+                        <span>FAQ</span>
+                    </a>
+                </nav>
+
+                <!-- Mentor Favorit -->
+                <div class="mt-8">
+                    <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3 px-3">
+                        Mentor Favorit</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 px-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-700 overflow-hidden ring-2 ring-primary/30">
+                                <img alt="Adrian" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFu0If0BbYrk9x5fx7EmXIzU2tkuz3dUpti0zoBykbdsdghl1ZeTA2Qt_61fvPzXM4ZgQjJe5ZVmMS_lEahoUl-v3TWHJHfq3vD8GMgngoWtJO6FothJyzrXQjD1Nyvmz1U1da3ckaOi-sFhmfDSQBOANWCEYn2pKRp2SF9wyKQ8M58nlNOjsoVwMl6IL47o9Vgi0X_zDYVpUc06bJAKbUUCajTQnNUS-lvWQdLRtFp2sNAlShfc1LKqHeVdgMP-R3l8szGVFsSY8" />
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-semibold truncate">Adrian Firnanda</p>
+                                <p class="text-xs text-slate-500">TikTok Expert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Footer (Fixed Bottom) -->
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800 space-y-4 bg-white/5 backdrop-blur-md">
+                <!-- Theme Toggles -->
+                <div class="flex p-1 bg-slate-200 dark:bg-white/5 rounded-lg items-center">
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">light_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md bg-white dark:bg-white/10 shadow-sm text-xs flex justify-center items-center text-slate-900 dark:text-white">
+                        <span class="material-symbols-outlined text-sm">dark_mode</span>
+                    </button>
+                    <button
+                        class="flex-1 py-1.5 rounded-md text-xs flex justify-center items-center text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined text-sm">settings_brightness</span>
+                    </button>
+                </div>
+
+                <!-- SidebarUserCard -->
+                <div onclick="window.location.href='settings.html'"
+                    class="bg-[#0d0d0f] rounded-[16px] p-3 border border-white/5 flex items-center justify-between group cursor-pointer hover:bg-[#121214] transition-all mb-1">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-[40px] h-[40px] rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-lg shadow-lg shadow-amber-500/10">
+                            A
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <span class="text-white font-semibold text-[13px] leading-tight truncate">AICEO Admin</span>
+                            <span class="text-slate-500 text-[10px] truncate">admin@aiceo.id</span>
+                        </div>
+                    </div>
+                    <button
+                        class="text-slate-500 hover:text-primary transition-all group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.6)] shrink-0">
+                        <span class="material-symbols-outlined text-lg">logout</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Selection Area (Hub) -->
+        <main class="flex-1 flex flex-col h-full bg-background-light dark:bg-background-dark relative overflow-hidden">
+            <!-- Header -->
+            <div class="p-6 lg:p-10 border-b border-slate-200 dark:border-slate-800">
+                <h1 class="text-2xl font-bold mb-2">Pilih Expert</h1>
+                <p class="text-slate-500 dark:text-slate-400">Pilih mentor AI untuk mulai konsultasi spesifik sesuai
+                    kebutuhan bisnis Anda.</p>
+            </div>
+
+            <!-- Selection Grid -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-10 pb-32">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Expert 1 (Active) -->
+                    <a href="chat_logistics.html" class="group relative">
+                        <div
+                            class="absolute -inset-0.5 bg-gradient-to-r from-primary to-orange-500 rounded-2xl opacity-75 blur opacity-100 transition duration-200">
+                        </div>
+                        <div
+                            class="relative h-full p-6 bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-14 h-14 rounded-full bg-slate-800 overflow-hidden ring-2 ring-primary">
+                                    <img alt="Adrian" class="w-full h-full object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRvoIlIfuwCIoTolhlE_SdDZ6SlYMYalu4JwjrI8XY2sa0wj_d6jg_kCkOU7nmdBpRctQpmihGN3u6M7n9us7n4K7IIDyzUMEr2t9qHT1p2sZ1Rf1JSCPJqPQKL0bawAjiN_RWo4GgDRg_nUGLrtMW6fOnFAk-W4iiP7dY5LSaJsPaEyPQjaRqzKRCG_Z1funClBy--DSVjHn2X_uT7lUEKhcb_1qDE5pdZnn8hn0DnNYf0IbQnwka5xfCVfwj1ADAs1BWPA1UrW0" />
+                                </div>
+                                <div class="px-2 py-1 bg-primary/10 rounded-md">
+                                    <span
+                                        class="text-[10px] font-bold text-primary uppercase tracking-wider">Selected</span>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Adrian Firnanda</h3>
+                            <p class="text-xs font-bold text-primary uppercase tracking-wide mb-3">TikTok Expert</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 flex-1">
+                                Spesialis scaling brand di TikTok Shop. Paham algoritma, affiliate management, dan live
+                                commerce.
+                            </p>
+                            <div
+                                class="w-full py-2 bg-primary text-slate-900 rounded-xl font-bold flex items-center justify-center gap-2 group-hover:scale-[1.02] transition-transform">
+                                <span class="material-symbols-outlined text-sm">chat</span>
+                                Mulai Chat
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Expert 2 -->
+                    <a href="chat.html" class="group relative block h-full">
+                        <div
+                            class="h-full p-6 bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-slate-800 overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+                                    <img alt="Aji" class="w-full h-full object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6Zn3vEdql9zu1XNgGsCtTsQ7BEsotemUQrxrPVg0mH9CLu0X4ra0hz1LSLwPAGCqaSTVvyjyktlkvuM6urUdM0DGhTljLP6wXcv3f420R2eIYSAgl0bvSs_g7YvLV_YgzW_mBjp4jOleEpazQKRdJIBzkHJjW6qOn_0_5QPXPxJB7VkK-wynPHKIJWO2N9RP_mDi5ghYRHfJqWxNFPIUdnhAeuVMqn4Jvs6PSng2ySHVbev-Y02M-W3DUVxHrkuAmeWfojGcjRnc" />
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Aji Wanda</h3>
+                            <p
+                                class="text-xs font-bold text-slate-400 group-hover:text-primary uppercase tracking-wide mb-3 transition-colors">
+                                Fashion & AI</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 flex-1">
+                                Founder Hijacket. Ekspertis di bidang fashion production, branding, dan otomatisasi
+                                bisnis dengan AI.
+                            </p>
+                            <div
+                                class="w-full py-2 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 rounded-xl font-bold flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-slate-900 transition-all">
+                                <span class="material-symbols-outlined text-sm">chat</span>
+                                Pilih
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Expert 3 -->
+                    <a href="chat.html" class="group relative block h-full">
+                        <div
+                            class="h-full p-6 bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-slate-800 overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+                                    <img alt="Dewi" class="w-full h-full object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtcTyh9q-hdMgzD7vUfn17dkXoJ-Q3yGeGlt80Ksp8E5I_9EcaHfoDILB8URdzKmG3XYENmoyQ2FB4fsZWtSCNIkfeKSxs0taKuYVzuqQ066iMtqv4LjiE0a137iKKEqD_Sks1wZtCP66FjqJtsl5FVo6dcBSH4zEUgw6ZZWiXr-dWBJrtD6uumaFhHPb9-hpuRzmuimVj2sN6m-JpwzSpW_zJy8JzhnMKVywTLylH3RpP_ZhTSayqEEj-7lez7vtnzAeP3JLEKSc" />
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Dewi Sartika</h3>
+                            <p
+                                class="text-xs font-bold text-slate-400 group-hover:text-primary uppercase tracking-wide mb-3 transition-colors">
+                                F&B Specialist</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 flex-1">
+                                CEO Warung Digital. Ahli strategi Cloud Kitchen, efisiensi HPP, dan manajemen franchise
+                                kuliner.
+                            </p>
+                            <div
+                                class="w-full py-2 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 rounded-xl font-bold flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-slate-900 transition-all">
+                                <span class="material-symbols-outlined text-sm">chat</span>
+                                Pilih
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Expert 4 -->
+                    <a href="chat.html" class="group relative block h-full">
+                        <div
+                            class="h-full p-6 bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-slate-800 overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+                                    <img alt="Raka" class="w-full h-full object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCujUTaWnzMCqhf-RY-4IGSLSdrw84W_FhwECSC8yUzLpnwQkvjUVp50yrUPWfvSnpzeoS5WipCa8zGhCCVN4lOvEH6dzYkLxnneUDd8LJyNWwK5EQn6FrXwQqYT27-ZeKOc3k2KhpoidpiNXxxcoo0OgqHqsMdh__yT-8VaMxM08l9sQzhJc1zsvkKoDZiocgCzxXGqGTLR1rcPt_jzr_jkpqE3H0wWPoy903wwNMk2qkz_JCRz4E3eieO7nueQc1sRnZWbNps5tw" />
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Raka Pratama</h3>
+                            <p
+                                class="text-xs font-bold text-slate-400 group-hover:text-primary uppercase tracking-wide mb-3 transition-colors">
+                                Brand Strategist</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 flex-1">
+                                Fokus pada brand identity, storytelling, dan positioning untuk menembus pasar premium.
+                            </p>
+                            <div
+                                class="w-full py-2 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 rounded-xl font-bold flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-slate-900 transition-all">
+                                <span class="material-symbols-outlined text-sm">chat</span>
+                                Pilih
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Expert 5: Finance (New placeholder) -->
+                    <a href="chat.html" class="group relative block h-full">
+                        <div
+                            class="h-full p-6 bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-slate-800 overflow-hidden grayscale group-hover:grayscale-0 transition-all flex items-center justify-center">
+                                    <span
+                                        class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-colors">account_balance</span>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Budi Santoso</h3>
+                            <p
+                                class="text-xs font-bold text-slate-400 group-hover:text-primary uppercase tracking-wide mb-3 transition-colors">
+                                Financial Advisor</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 flex-1">
+                                Mantan CFO Startup Series B. Spesialis cashflow planning, fundraising, dan cost
+                                efficiency.
+                            </p>
+                            <div
+                                class="w-full py-2 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 rounded-xl font-bold flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-slate-900 transition-all">
+                                <span class="material-symbols-outlined text-sm">chat</span>
+                                Pilih
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Add New Expert -->
+                    <button class="group relative block h-full w-full text-left">
+                        <div
+                            class="h-full p-6 bg-slate-50 dark:bg-white/[0.02] rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-primary/50 hover:bg-primary/5 transition-all flex flex-col items-center justify-center text-center">
+                            <div
+                                class="w-14 h-14 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-2xl text-slate-400 group-hover:text-primary transition-colors">add</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">New Persona</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Custom expert instructions</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Right Sidebar (Bot Info) -->
+        <aside
+            class="content-area w-full lg:w-80 border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-sidebar-dark overflow-y-auto custom-scrollbar flex flex-col shrink-0">
+            <div class="p-6 lg:p-8 flex flex-col items-center">
+                <!-- Profile Pic -->
+                <div class="relative mb-6">
+                    <div class="w-24 h-24 rounded-full bg-slate-800 overflow-hidden ring-4 ring-primary/20">
+                        <img alt="Adrian" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRvoIlIfuwCIoTolhlE_SdDZ6SlYMYalu4JwjrI8XY2sa0wj_d6jg_kCkOU7nmdBpRctQpmihGN3u6M7n9us7n4K7IIDyzUMEr2t9qHT1p2sZ1Rf1JSCPJqPQKL0bawAjiN_RWo4GgDRg_nUGLrtMW6fOnFAk-W4iiP7dY5LSaJsPaEyPQjaRqzKRCG_Z1funClBy--DSVjHn2X_uT7lUEKhcb_1qDE5pdZnn8hn0DnNYf0IbQnwka5xfCVfwj1ADAs1BWPA1UrW0" />
+                    </div>
+                    <div
+                        class="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-white dark:border-sidebar-dark">
+                    </div>
+                </div>
+
+                <h2 class="text-xl font-bold text-center">Adrian Firnanda</h2>
+                <p class="text-xs text-primary font-bold uppercase tracking-wide mt-1 text-center">Founder Alastar
+                    Global Sinergi</p>
+
+                <!-- Refined Stats Grid -->
+                <div class="grid grid-cols-3 gap-3 w-full mt-6">
+                    <div
+                        class="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center text-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase mb-1">EXP</span>
+                        <span class="text-lg font-bold">12Y</span>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center text-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase mb-1">CASES</span>
+                        <span class="text-lg font-bold">842</span>
+                    </div>
+                    <div
+                        class="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center text-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase mb-1">SCARS</span>
+                        <span class="text-lg font-bold text-red-500">42</span>
+                    </div>
+                </div>
+
+                <!-- Skill Radar -->
+                <div
+                    class="w-full mt-8 p-6 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/10">
+                    <div class="flex justify-between items-center mb-6">
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Skill Radar</p>
+                        <span class="material-symbols-outlined text-slate-400 text-sm">help</span>
+                    </div>
+                    <div class="h-40 flex items-center justify-center">
+                        <div class="relative w-32 h-32 flex items-center justify-center">
+                            <div class="absolute inset-0 border border-slate-300 dark:border-white/10 rounded-full">
+                            </div>
+                            <div class="absolute inset-2 border border-slate-300 dark:border-white/10 rounded-full">
+                            </div>
+                            <div class="absolute inset-4 border border-slate-300 dark:border-white/10 rounded-full">
+                            </div>
+                            <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+                                <polygon fill="rgba(251, 191, 36, 0.4)" points="50,10 85,35 75,85 25,85 15,35"
+                                    stroke="#FBBF24" stroke-width="2"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-4">
+                        <div class="text-center">
+                            <p class="text-xs text-slate-500 font-bold">MKT</p>
+                            <p class="text-sm font-bold">92%</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xs text-slate-500 font-bold">OPS</p>
+                            <p class="text-sm font-bold">85%</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xs text-slate-500 font-bold">FIN</p>
+                            <p class="text-sm font-bold">78%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unit Decisions (Placeholder context) -->
+                <div class="w-full mt-8 mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-sm font-bold uppercase tracking-tight text-slate-400">Riwayat Chat</h3>
+                        <a href="index.html"
+                            class="text-primary text-[10px] font-bold flex items-center gap-1 hover:underline">
+                            <span class="material-symbols-outlined text-sm">dashboard</span> DASHBOARD
+                        </a>
+                    </div>
+                    <div class="space-y-3">
+                        <a href="chat_logistics.html"
+                            class="block p-3 bg-slate-100 dark:bg-white/5 rounded-xl border-l-2 border-primary hover:bg-slate-200 dark:hover:bg-white/10 cursor-pointer transition-colors group">
+                            <div class="flex justify-between items-start">
+                                <p class="text-xs font-bold mb-1">Multi-Warehouse Strategy</p>
+                                <span
+                                    class="material-symbols-outlined text-xs text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Logistics • 28 JAN</p>
+                        </a>
+                        <a href="chat_algorithm.html"
+                            class="block p-3 bg-transparent rounded-xl border-l-2 border-transparent hover:bg-slate-100 dark:hover:bg-white/5 cursor-pointer transition-colors group">
+                            <div class="flex justify-between items-start">
+                                <p class="text-xs font-bold mb-1 border-none bg-transparent">TikTok Algorithm Phase</p>
+                                <span
+                                    class="material-symbols-outlined text-xs text-slate-500 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Marketing • 26 JAN</p>
+                        </a>
+                        <a href="chat_commission.html"
+                            class="block p-3 bg-transparent rounded-xl border-l-2 border-transparent hover:bg-slate-100 dark:hover:bg-white/5 cursor-pointer transition-colors group">
+                            <div class="flex justify-between items-start">
+                                <p class="text-xs font-bold mb-1">Competitor Commission SOP</p>
+                                <span
+                                    class="material-symbols-outlined text-xs text-slate-500 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Execution • 25 JAN</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-sidebar-dark border-t border-slate-200 dark:border-slate-800 flex justify-around items-center p-2 z-50">
+        <a href="index.html" class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-xs font-bold mt-1">Dash</span>
+        </a>
+        <a href="chat.html" class="flex flex-col items-center p-2 text-primary">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="text-xs font-bold mt-1">Chat</span>
+        </a>
+        <a href="bot_personas.html"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <span class="text-xs font-bold mt-1">Bots</span>
+        </a>
+        <button onclick="toggleSidebar()"
+            class="flex flex-col items-center p-2 text-slate-500 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+            <span class="text-xs font-bold mt-1">Menu</span>
+        </button>
+    </nav>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('main-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            if (sidebar.classList.contains('sidebar-collapsed')) {
+                // Open
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.classList.add('sidebar-mobile-open');
+                overlay.classList.remove('hidden');
+            } else {
+                // Close
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.classList.remove('sidebar-mobile-open');
+                overlay.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>

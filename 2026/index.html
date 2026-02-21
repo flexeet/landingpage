@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AICEO — Decision Firewall for Growing Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --background: hsl(35, 30%, 97%);
+      --foreground: hsl(25, 20%, 15%);
+      --card: hsl(35, 25%, 95%);
+      --primary: hsl(25, 45%, 30%);
+      --primary-light: hsl(25, 35%, 45%);
+      --secondary: hsl(35, 20%, 90%);
+      --muted: hsl(25, 10%, 45%);
+      --accent: hsl(35, 70%, 50%);
+      --accent-dark: hsl(25, 60%, 40%);
+      --border: hsl(30, 15%, 85%);
+      --terracotta: hsl(15, 50%, 50%);
+      --olive: hsl(75, 25%, 35%);
+      --sage: hsl(90, 15%, 55%);
+      --coffee: hsl(25, 35%, 30%);
+      --cream: hsl(40, 35%, 92%);
+      --amber: hsl(35, 70%, 50%);
+      --danger: hsl(0, 65%, 50%);
+      --success: hsl(142, 50%, 40%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.7s ease-out forwards;
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .animate-bounce {
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+
+    .delay-100 { animation-delay: 100ms; }
+    .delay-200 { animation-delay: 200ms; }
+    .delay-300 { animation-delay: 300ms; }
+    .delay-400 { animation-delay: 400ms; }
+    .delay-500 { animation-delay: 500ms; }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px -10px rgba(87, 65, 47, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--foreground);
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .icon-sm {
+      width: 16px;
+      height: 16px;
+    }
+
+    .icon-lg {
+      width: 28px;
+      height: 28px;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav { display: none !important; }
+      .mobile-menu-btn { display: block !important; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .flow-desktop { display: none !important; }
+      .flow-mobile { display: block !important; }
+      .layer-grid { grid-template-columns: 1fr !important; }
+      .pricing-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .enterprise-header, .enterprise-row { 
+        grid-template-columns: 1fr !important;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .pricing-grid { grid-template-columns: 1fr !important; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // ============================================
+    // ICON COMPONENT
+    // ============================================
+    const Icon = ({ name, size = 24, color = 'currentColor', className = '' }) => {
+      const ref = useRef(null);
+      
+      useEffect(() => {
+        if (ref.current && lucide && lucide[name]) {
+          ref.current.innerHTML = '';
+          const svg = lucide.createElement(lucide[name]);
+          svg.setAttribute('width', size);
+          svg.setAttribute('height', size);
+          svg.setAttribute('stroke', color);
+          ref.current.appendChild(svg);
+        }
+      }, [name, size, color]);
+      
+      return <span ref={ref} className={className} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }} />;
+    };
+
+    // ============================================
+    // HOOKS
+    // ============================================
+    const useScrollReveal = (threshold = 0.2) => {
+      const [isVisible, setIsVisible] = useState(false);
+      const ref = useRef(null);
+
+      useEffect(() => {
+        const observer = new IntersectionObserver(
+          ([entry]) => entry.isIntersecting && setIsVisible(true),
+          { threshold }
+        );
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+      }, [threshold]);
+
+      return [ref, isVisible];
+    };
+
+    const useStaggerReveal = (itemCount, baseDelay = 100) => {
+      const [visibleItems, setVisibleItems] = useState([]);
+      const ref = useRef(null);
+
+      useEffect(() => {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              for (let i = 0; i < itemCount; i++) {
+                setTimeout(() => {
+                  setVisibleItems(prev => [...new Set([...prev, i])]);
+                }, i * baseDelay);
+              }
+            }
+          },
+          { threshold: 0.2 }
+        );
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+      }, [itemCount, baseDelay]);
+
+      return [ref, visibleItems];
+    };
+
+    const useAutoCycle = (itemCount, interval = 2000, enabled = true) => {
+      const [activeIndex, setActiveIndex] = useState(0);
+
+      useEffect(() => {
+        if (!enabled || itemCount <= 1) return;
+        const timer = setInterval(() => {
+          setActiveIndex(prev => (prev + 1) % itemCount);
+        }, interval);
+        return () => clearInterval(timer);
+      }, [itemCount, interval, enabled]);
+
+      return [activeIndex, setActiveIndex];
+    };
+
+    const useCountUp = (target, duration = 2000, enabled = true) => {
+      const [count, setCount] = useState(0);
+
+      useEffect(() => {
+        if (!enabled || !target) return;
+        
+        const numericTarget = parseInt(String(target).replace(/[^0-9]/g, '')) || 0;
+        const steps = 60;
+        const increment = numericTarget / steps;
+        const stepDuration = duration / steps;
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= numericTarget) {
+            setCount(numericTarget);
+            clearInterval(timer);
+          } else {
+            setCount(Math.floor(current));
+          }
+        }, stepDuration);
+
+        return () => clearInterval(timer);
+      }, [target, duration, enabled]);
+
+      return count;
+    };
+
+    // ============================================
+    // HEADER
+    // ============================================
+    const Header = () => {
+      const [isScrolled, setIsScrolled] = useState(false);
+      const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+      useEffect(() => {
+        const handleScroll = () => setIsScrolled(window.scrollY > 50);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
+      const scrollTo = (id) => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        setIsMobileOpen(false);
+      };
+
+      const navItems = [
+        { id: 'pain-points', label: 'Masalah' },
+        { id: 'solution', label: 'Solusi' },
+        { id: 'differentiators', label: 'Keunggulan' },
+        { id: 'pricing', label: 'Harga' },
+        { id: 'faq', label: 'FAQ' },
+      ];
+
+      return (
+        <header style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          padding: isScrolled ? '12px 0' : '20px 0',
+          transition: 'all 0.3s ease',
+          background: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+          boxShadow: isScrolled ? '0 4px 30px rgba(0,0,0,0.05)' : 'none',
+        }}>
+          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, hsl(25, 45%, 30%), hsl(35, 70%, 50%))',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <Icon name="Shield" size={24} color="white" />
+              </div>
+              <span style={{ fontWeight: 800, fontSize: '22px', color: 'hsl(25, 20%, 15%)' }}>AICEO</span>
+            </div>
+
+            <nav style={{ display: 'flex', alignItems: 'center', gap: '4px' }} className="desktop-nav">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  style={{
+                    padding: '10px 18px',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    color: 'hsl(25, 10%, 45%)',
+                    background: 'transparent',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = 'hsl(35, 20%, 90%)';
+                    e.target.style.color = 'hsl(25, 20%, 15%)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'transparent';
+                    e.target.style.color = 'hsl(25, 10%, 45%)';
+                  }}
+                >
+                  {item.label}
+                </button>
+              ))}
+              <button className="btn-primary" style={{ padding: '10px 20px', marginLeft: '8px' }}>
+                Mulai Sekarang
+              </button>
+            </nav>
+
+            <button 
+              className="mobile-menu-btn"
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
+              style={{
+                display: 'none',
+                padding: '8px',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+              }}
+            >
+              <Icon name={isMobileOpen ? 'X' : 'Menu'} size={24} />
+            </button>
+          </div>
+
+          {isMobileOpen && (
+            <div style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              right: 0,
+              background: 'white',
+              boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+              padding: '16px',
+            }}>
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    padding: '14px 16px',
+                    fontSize: '15px',
+                    fontWeight: 500,
+                    textAlign: 'left',
+                    background: 'transparent',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {item.label}
+                </button>
+              ))}
+              <button className="btn-primary" style={{ width: '100%', marginTop: '12px', justifyContent: 'center' }}>
+                Mulai Sekarang
+              </button>
+            </div>
+          )}
+        </header>
+      );
+    };
+
+    // ============================================
+    // HERO
+    // ============================================
+    const Hero = () => {
+      const [ref, isVisible] = useScrollReveal();
+
+      return (
+        <section ref={ref} style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+          padding: '120px 24px 80px',
+        }}>
+          {/* Background Elements */}
+          <div style={{
+            position: 'absolute',
+            top: '10%',
+            left: '5%',
+            width: '400px',
+            height: '400px',
+            background: 'radial-gradient(circle, hsla(35, 70%, 50%, 0.15) 0%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(60px)',
+          }} className="animate-float" />
+          <div style={{
+            position: 'absolute',
+            bottom: '10%',
+            right: '5%',
+            width: '500px',
+            height: '500px',
+            background: 'radial-gradient(circle, hsla(25, 45%, 30%, 0.1) 0%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(80px)',
+          }} className="animate-float delay-300" />
+
+          {/* Grid Pattern */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            opacity: 0.03,
+            backgroundImage: `linear-gradient(hsl(25, 20%, 15%) 1px, transparent 1px),
+                             linear-gradient(90deg, hsl(25, 20%, 15%) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px',
+          }} />
+
+          <div style={{ position: 'relative', zIndex: 10, maxWidth: '900px', textAlign: 'center' }}>
+            {/* Badge */}
+            <div 
+              className={isVisible ? 'animate-fade-in-up' : ''}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 20px',
+                borderRadius: '100px',
+                background: 'hsl(35, 25%, 92%)',
+                border: '1px solid hsl(30, 15%, 85%)',
+                marginBottom: '32px',
+              }}
+            >
+              <Icon name="Shield" size={16} color="hsl(25, 45%, 30%)" />
+              <span style={{ fontSize: '14px', fontWeight: 600, color: 'hsl(25, 45%, 30%)' }}>
+                Decision Firewall for Growing Business
+              </span>
+            </div>
+
+            {/* Headline */}
+            <h1 
+              className={isVisible ? 'animate-fade-in-up delay-100' : ''}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                fontSize: 'clamp(36px, 6vw, 64px)',
+                fontWeight: 800,
+                lineHeight: 1.1,
+                marginBottom: '24px',
+                color: 'hsl(25, 20%, 15%)',
+              }}
+            >
+              Belajar dari{' '}
+              <span style={{
+                background: 'linear-gradient(135deg, hsl(15, 50%, 50%), hsl(35, 70%, 50%))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                Kesalahan Mahal
+              </span>
+              <br />
+              Orang Lain
+            </h1>
+
+            {/* Subheadline */}
+            <p 
+              className={isVisible ? 'animate-fade-in-up delay-200' : ''}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                fontSize: 'clamp(18px, 2.5vw, 22px)',
+                color: 'hsl(25, 10%, 45%)',
+                maxWidth: '700px',
+                margin: '0 auto 48px',
+                lineHeight: 1.7,
+              }}
+            >
+              Kami mengarsipkan cara gagal yang mahal — agar Anda tidak perlu bayar mahal untuk pelajaran yang sama.
+            </p>
+
+            {/* Stats Preview */}
+            <div 
+              className={isVisible ? 'animate-fade-in-up delay-300' : ''}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '48px',
+                marginBottom: '48px',
+                flexWrap: 'wrap',
+              }}
+            >
+              {[
+                { value: 'Rp 10 Juta', label: 'Per workshop dibayar peserta' },
+                { value: '100+', label: 'Peserta workshop' },
+                { value: '600-2000%', label: 'Typical ROI' },
+              ].map((stat, i) => (
+                <div key={i} style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '28px', fontWeight: 800, color: 'hsl(25, 45%, 30%)' }}>{stat.value}</div>
+                  <div style={{ fontSize: '13px', color: 'hsl(25, 10%, 55%)', marginTop: '4px' }}>{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div 
+              className={isVisible ? 'animate-fade-in-up delay-400' : ''}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '16px',
+                flexWrap: 'wrap',
+              }}
+            >
+              <button className="btn-primary" style={{ fontSize: '16px', padding: '18px 36px' }}>
+                Mulai Trial Gratis
+                <Icon name="ArrowRight" size={20} color="white" />
+              </button>
+              <button className="btn-secondary" style={{ fontSize: '16px', padding: '18px 36px' }}>
+                Lihat Demo
+                <Icon name="Play" size={18} />
+              </button>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div 
+              className={isVisible ? 'animate-fade-in-up delay-500' : ''}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                marginTop: '64px',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <div style={{
+                width: '24px',
+                height: '40px',
+                border: '2px solid hsl(25, 10%, 70%)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                paddingTop: '8px',
+              }}>
+                <div className="animate-bounce" style={{
+                  width: '4px',
+                  height: '8px',
+                  background: 'hsl(25, 10%, 60%)',
+                  borderRadius: '4px',
+                }} />
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ============================================
+    // STATS ROW
+    // ============================================
+    const StatsRow = () => {
+      const [ref, isVisible] = useScrollReveal();
+
+      const stats = [
+        { value: 100, suffix: '+', label: 'Peserta Workshop', icon: 'Users' },
+        { value: 500, suffix: 'jt - 10M', label: 'Range Omzet Target', icon: 'TrendingUp' },
+        { value: 98, suffix: '%', label: 'Konsistensi Keputusan', icon: 'Target' },
+        { value: 3, suffix: ' detik', label: 'Response Time', icon: 'Zap' },
+      ];
+
+      return (
+        <section ref={ref} style={{
+          padding: '60px 24px',
+          background: 'linear-gradient(135deg, hsl(25, 45%, 30%), hsl(25, 35%, 25%))',
+        }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '32px',
+            }} className="stats-grid">
+              {stats.map((stat, index) => {
+                const count = useCountUp(stat.value, 2000, isVisible);
+                
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      textAlign: 'center',
+                      opacity: isVisible ? 1 : 0,
+                      transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                      transition: `all 0.5s ease ${index * 100}ms`,
+                    }}
+                  >
+                    <Icon name={stat.icon} size={28} color="hsl(35, 70%, 70%)" />
+                    <div style={{ fontSize: '36px', fontWeight: 800, color: 'white', marginTop: '12px' }}>
+                      {count.toLocaleString()}{stat.suffix}
+                    </div>
+                    <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', marginTop: '4px' }}>
+                      {stat.label}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ============================================
+    // PAIN POINTS
+    // ============================================
+    const PainPoints = () => {
+      const [ref, visibleItems] = useStaggerReveal(5, 150);
+
+      const pains = [
+        {
+          icon: 'Clock',
+          title: 'CEO Jadi Bottleneck',
+          subtitle: '"Semua nunggu gue."',
+          points: ['Tim tidak berani ambil keputusan sendiri', 'Semua orang tanya hal yang sama berulang', 'Decision fatigue 3-6 jam/hari'],
+          impact: 'Impact: 3-6 jam/hari habis jadi "Google internal"',
+          color: 'hsl(15, 50%, 50%)',
+          bgColor: 'hsl(15, 50%, 97%)',
+        },
+        {
+          icon: 'RefreshCw',
+          title: 'Keputusan Tidak Konsisten',
+          subtitle: '"Kalau gue gak ada, bisnis jadi beda arah."',
+          points: ['Manager beda-beda standar', 'SOP ada tapi tidak hidup', 'Bisnis tidak punya "insting" yang sama'],
+          impact: 'Impact: Quality variance 30-40%',
+          color: 'hsl(35, 70%, 45%)',
+          bgColor: 'hsl(35, 70%, 97%)',
+        },
+        {
+          icon: 'Users',
+          title: 'Knowledge Hilang Saat Orang Pergi',
+          subtitle: '"Begitu orang keluar, chaos."',
+          points: ['Key person resign → keputusan ikut pergi', 'Training ulang dari nol', 'Kesalahan lama terulang lagi'],
+          impact: 'Impact: Rp 75-265 juta per key person loss',
+          color: 'hsl(75, 25%, 35%)',
+          bgColor: 'hsl(75, 25%, 95%)',
+        },
+        {
+          icon: 'AlertTriangle',
+          title: 'Salah Langkah Itu MAHAL',
+          subtitle: '"Salah promo, salah rekrut = boncos."',
+          points: ['Diskon salah → margin hancur', 'Rekrut salah → 6 bulan wasted', 'Ekspansi salah → cashflow mati'],
+          impact: 'Impact: Rp 50-500 juta per kesalahan',
+          color: 'hsl(0, 65%, 50%)',
+          bgColor: 'hsl(0, 65%, 97%)',
+        },
+        {
+          icon: 'XCircle',
+          title: 'CEO Tidak Bisa Pergi dengan Tenang',
+          subtitle: '"Gue cuti, bisnis melambat."',
+          points: ['Harus standby HP 24/7', 'Keputusan penting ditunda', 'Bisnis belum mandiri'],
+          impact: 'Impact: Zero real vacation sejak bisnis dimulai',
+          color: 'hsl(270, 30%, 45%)',
+          bgColor: 'hsl(270, 30%, 97%)',
+        },
+      ];
+
+      return (
+        <section id="pain-points" style={{ padding: '100px 24px', background: 'hsl(35, 30%, 97%)' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+              <div className="section-badge" style={{ background: 'hsl(0, 65%, 95%)', color: 'hsl(0, 65%, 45%)' }}>
+                <Icon name="AlertTriangle" size={16} color="hsl(0, 65%, 45%)" />
+                <span>Masalah yang Dihadapi</span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 800, marginBottom: '16px', color: 'hsl(25, 20%, 15%)' }}>
+                Apakah Ini Terasa Familiar?
+              </h2>
+              <p style={{ fontSize: '18px', color: 'hsl(25, 10%, 45%)', maxWidth: '600px', margin: '0 auto' }}>
+                5 pain points utama yang dialami CEO dengan omzet Rp 500jt - 10M/bulan
+              </p>
+            </div>
+
+            <div ref={ref} style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '24px',
+            }}>
+              {pains.map((pain, index) => (
+                <div
+                  key={index}
+                  className="card-hover"
+                  style={{
+                    background: 'white',
+                    borderRadius: '20px',
+                    padding: '32px',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                    border: '2px solid transparent',
+                    opacity: visibleItems.includes(index) ? 1 : 0,
+                    transform: visibleItems.includes(index) ? 'translateY(0)' : 'translateY(30px)',
+                    transition: 'all 0.5s ease',
+                  }}
+                >
+                  <div style={{
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '16px',
+                    background: pain.bgColor,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '20px',
+                  }}>
+                    <Icon name={pain.icon} size={28} color={pain.color} />
+                  </div>
+                  <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '8px', color: 'hsl(25, 20%, 15%)' }}>
+                    {pain.title}
+                  </h3>
+                  <p style={{ fontSize: '15px', color: pain.color, fontStyle: 'italic', marginBottom: '16px' }}>
+                    {pain.subtitle}
+                  </p>
+                  <ul style={{ listStyle: 'none', marginBottom: '20px' }}>
+                    {pain.points.map((point, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px', fontSize: '14px', color: 'hsl(25, 10%, 45%)' }}>
+                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: pain.color, marginTop: '7px', flexShrink: 0 }} />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <div style={{
+                    padding: '12px 16px',
+                    borderRadius: '10px',
+                    background: pain.bgColor,
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    color: pain.color,
+                  }}>
+                    {pain.impact}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ============================================
+    // SOLUTION FLOW
+    // ============================================
+    const SolutionFlow = () => {
+      const [ref, isVisible] = useScrollReveal();
+      const [activeStep, setActiveStep] = useAutoCycle(5, 2000, isVisible);
+
+      const steps = [
+        { icon: 'Brain', title: 'Ekstraksi Knowledge', desc: 'CEO sharing pengalaman & kesalahan', status: 'start' },
+        { icon: 'Database', title: 'Arsipkan ke Sistem', desc: 'Knowledge tersimpan permanen', status: 'process' },
+        { icon: 'Target', title: 'Buat Decision Rules', desc: 'Threshold & kill criteria jelas', status: 'process' },
+        { icon: 'MessageSquare', title: 'Tim Tanya AI', desc: 'Jawaban konsisten 24/7', status: 'decision' },
+        { icon: 'Shield', title: 'Keputusan Aman', desc: 'Sesuai standar owner', status: 'end' },
+      ];
+
+      const statusColors = {
+        start: { bg: 'hsl(15, 50%, 95%)', text: 'hsl(15, 50%, 45%)' },
+        process: { bg: 'hsl(35, 70%, 95%)', text: 'hsl(35, 70%, 40%)' },
+        decision: { bg: 'hsl(75, 25%, 93%)', text: 'hsl(75, 25%, 35%)' },
+        end: { bg: 'hsl(25, 45%, 93%)', text: 'hsl(25, 45%, 30%)' },
+      };
+
+      return (
+        <section id="solution" ref={ref} style={{ padding: '100px 24px' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+              <div className="section-badge" style={{ background: 'hsl(142, 50%, 93%)', color: 'hsl(142, 50%, 35%)' }}>
+                <Icon name="CheckCircle" size={16} color="hsl(142, 50%, 35%)" />
+                <span>Cara Kerja AICEO</span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 800, marginBottom: '16px', color: 'hsl(25, 20%, 15%)' }}>
+                Dari Pengalaman Mahal ke Decision Firewall
+              </h2>
+              <p style={{ fontSize: '18px', color: 'hsl(25, 10%, 45%)', maxWidth: '600px', margin: '0 auto' }}>
+                5 langkah transformasi knowledge CEO menjadi sistem yang bekerja 24/7
+              </p>
+            </div>
+
+            {/* Desktop Flow */}
+            <div className="flow-desktop" style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '12px',
+            }}>
+              {steps.map((step, index) => {
+                const isActive = index <= activeStep;
+                const isCurrent = index === activeStep;
+                const colors = statusColors[step.status];
+
+                return (
+                  <React.Fragment key={index}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                        flex: 1,
+                        opacity: isVisible ? 1 : 0,
+                        transform: isVisible ? (isCurrent ? 'scale(1.1)' : 'scale(1)') : 'translateY(20px)',
+                        transition: `all 0.5s ease ${index * 100}ms`,
+                      }}
+                    >
+                      <div style={{
+                        position: 'relative',
+                        width: '72px',
+                        height: '72px',
+                        borderRadius: '20px',
+                        background: isActive ? colors.bg : 'hsl(35, 20%, 92%)',
+                        border: `2px solid ${isActive ? colors.text : 'hsl(30, 15%, 85%)'}`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '16px',
+                        boxShadow: isCurrent ? `0 10px 30px ${colors.text}30` : 'none',
+                        transition: 'all 0.3s ease',
+                      }}>
+                        <Icon name={step.icon} size={28} color={isActive ? colors.text : 'hsl(25, 10%, 60%)'} />
+                        {isActive && index < activeStep && (
+                          <div style={{
+                            position: 'absolute',
+                            top: '-6px',
+                            right: '-6px',
+                            width: '22px',
+                            height: '22px',
+                            borderRadius: '50%',
+                            background: 'hsl(142, 50%, 45%)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}>
+                            <Icon name="Check" size={14} color="white" />
+                          </div>
+                        )}
+                      </div>
+                      <h4 style={{ fontSize: '14px', fontWeight: 700, marginBottom: '4px', color: isActive ? 'hsl(25, 20%, 15%)' : 'hsl(25, 10%, 55%)' }}>
+                        {step.title}
+                      </h4>
+                      <p style={{ fontSize: '12px', color: 'hsl(25, 10%, 55%)', maxWidth: '120px' }}>
+                        {step.desc}
+                      </p>
+                    </div>
+
+                    {index < steps.length - 1 && (
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexShrink: 0,
+                      }}>
+                        <div style={{
+                          width: '40px',
+                          height: '3px',
+                          borderRadius: '2px',
+                          background: index < activeStep ? 'hsl(142, 50%, 45%)' : 'hsl(30, 15%, 85%)',
+                          transition: 'all 0.3s ease',
+                        }} />
+                        <Icon name="ChevronRight" size={20} color={index < activeStep ? 'hsl(142, 50%, 45%)' : 'hsl(30, 15%, 85%)'} />
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </div>
+
+            {/* Mobile Flow */}
+            <div className="flow-mobile" style={{ display: 'none' }}>
+              {steps.map((step, index) => {
+                const isActive = index <= activeStep;
+                const colors = statusColors[step.status];
+
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '16px',
+                      padding: '20px',
+                      borderRadius: '16px',
+                      background: isActive ? colors.bg : 'hsl(35, 20%, 95%)',
+                      marginBottom: '12px',
+                      opacity: isVisible ? 1 : 0,
+                      transform: isVisible ? 'translateX(0)' : 'translateX(-20px)',
+                      transition: `all 0.5s ease ${index * 100}ms`,
+                    }}
+                  >
+                    <div style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '12px',
+                      background: 'white',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                    }}>
+                      <Icon name={step.icon} size={24} color={colors.text} />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <h4 style={{ fontSize: '15px', fontWeight: 700, color: 'hsl(25, 20%, 15%)', marginBottom: '2px' }}>
+                        Step {index + 1}: {step.title}
+                      </h4>
+                      <p style={{ fontSize: '13px', color: 'hsl(25, 10%, 50%)' }}>{step.desc}</p>
+                    </div>
+                    {isActive && index < activeStep && (
+                      <div style={{
+                        width: '28px',
+                        height: '28px',
+                        borderRadius: '50%',
+                        background: 'hsl(142, 50%, 45%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}>
+                        <Icon name="Check" size={16} color="white" />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ============================================
+    // DIFFERENTIATORS
+    // ============================================
+    const Differentiators = () => {
+      const [ref, visibleItems] = useStaggerReveal(7, 100);
+
+      const features = [
+        {
+          icon: 'XCircle',
+          title: 'LLM Negative Test',
+          desc: 'Hanya knowledge yang AI umum TIDAK bisa jawab. Kalau Google bisa, kita tolak.',
+          color: 'hsl(0, 65%, 50%)',
+          bgColor: 'hsl(0, 65%, 97%)',
+        },
+        {
+          icon: 'Target',
+          title: 'Threshold-Driven',
+          desc: 'Semua keputusan punya angka konkret. Bukan "tergantung" atau "mungkin".',
+          color: 'hsl(35, 70%, 45%)',
+          bgColor: 'hsl(35, 70%, 97%)',
+        },
+        {
+          icon: 'AlertOctagon',
+          title: 'Kill Criteria Aware',
+          desc: 'AI tahu kapan harus bilang STOP. Mencegah sebelum fatal.',
+          color: 'hsl(15, 50%, 50%)',
+          bgColor: 'hsl(15, 50%, 97%)',
+        },
+        {
+          icon: 'BookOpen',
+          title: 'Failure Scar Memory',
+          desc: 'Belajar dari kesalahan mahal yang sudah dibayar orang lain.',
+          color: 'hsl(270, 30%, 45%)',
+          bgColor: 'hsl(270, 30%, 97%)',
+        },
+        {
+          icon: 'CheckCircle',
+          title: 'Epistemic Honesty',
+          desc: 'Jujur soal sumber dan batasan. Tidak pernah mengarang.',
+          color: 'hsl(142, 50%, 35%)',
+          bgColor: 'hsl(142, 50%, 95%)',
+        },
+        {
+          icon: 'Brain',
+          title: 'Neuro-Cognitive Output',
+          desc: 'Response yang mendidik, bukan sekadar informatif. Reframing + scaffolding.',
+          color: 'hsl(199, 70%, 45%)',
+          bgColor: 'hsl(199, 70%, 95%)',
+        },
+        {
+          icon: 'Lightbulb',
+          title: 'Metacognitive Closing',
+          desc: 'Pertanyaan yang memaksa refleksi, bukan sekadar recall data.',
+          color: 'hsl(45, 80%, 45%)',
+          bgColor: 'hsl(45, 80%, 95%)',
+        },
+      ];
+
+      return (
+        <section id="differentiators" style={{ padding: '100px 24px' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+              <div className="section-badge" style={{ background: 'hsl(25, 45%, 92%)', color: 'hsl(25, 45%, 35%)' }}>
+                <Icon name="Star" size={16} color="hsl(25, 45%, 35%)" />
+                <span>Kenapa AICEO Berbeda</span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 800, marginBottom: '16px', color: 'hsl(25, 20%, 15%)' }}>
+                7 Key Differentiators
+              </h2>
+              <p style={{ fontSize: '18px', color: 'hsl(25, 10%, 45%)', maxWidth: '700px', margin: '0 auto' }}>
+                AICEO bukan ChatGPT wrapper. Bukan AI pintar yang bisa jawab apa saja. AICEO adalah Decision Firewall.
+              </p>
+            </div>
+
+            <div ref={ref} style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '20px',
+            }}>
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="card-hover"
+                  style={{
+                    background: 'white',
+                    borderRadius: '20px',
+                    padding: '28px',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                    borderLeft: `4px solid ${feature.color}`,
+                    opacity: visibleItems.includes(index) ? 1 : 0,
+                    transform: visibleItems.includes(index) ? 'translateY(0)' : 'translateY(20px)',
+                    transition: 'all 0.5s ease',
+                  }}
+                >
+                  <div style={{
+                    width: '52px',
+                    height: '52px',
+                    borderRadius: '14px',
+                    background: feature.bgColor,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '18px',
+                  }}>
+                    <Icon name={feature.icon} size={26} color={feature.color} />
+                  </div>
+                  <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '10px', color: 'hsl(25, 20%, 15%)' }}>
+                    {feature.title}
+                  </h3>
+                  <p style={{ fontSize: '14px', color: 'hsl(25, 10%, 45%)', lineHeight: 1.6 }}>
+                    {feature.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ============================================
+    // PRICING
+    // ============================================
+    const Pricing = () => {
+      const [ref, isVisible] = useScrollReveal();
+
+      const publicPlans = [
+        { name: 'Starter', price: 'Rp 49.000', credits: 40, perCredit: 'Rp 1.225', featured: false },
+        { name: 'Builder', price: 'Rp 99.000', credits: 90, perCredit: 'Rp 1.100', featured: true, badge: 'Best Seller' },
+        { name: 'Pro', price: 'Rp 199.000', credits: 200, perCredit: 'Rp 995', featured: false },
+        { name: 'Power', price: 'Rp 499.000', credits: 550, perCredit: 'Rp 907', featured: false },
+      ];
+
+      const enterpriseTiers = [
+        { tier: 'Standard', price: 'Rp 15-25 Juta', profile: 'Owner UMKM, 1-3 tahun experience' },
+        { tier: 'Professional', price: 'Rp 25-50 Juta', profile: 'Founder established, 5+ tahun, multi-unit' },
+        { tier: 'Executive', price: 'Rp 50-75 Juta', profile: 'CEO scale-up, complex operations' },
+        { tier: 'Legacy', price: 'Rp 75-100 Juta', profile: 'Serial entrepreneur, holding structure' },
+      ];
+
+      return (
+        <section id="pricing" style={{ padding: '100px 24px', background: 'hsl(35, 30%, 97%)' }}>
+          <div ref={ref} style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+              <div className="section-badge" style={{ background: 'hsl(35, 70%, 93%)', color: 'hsl(35, 70%, 40%)' }}>
+                <Icon name="DollarSign" size={16} color="hsl(35, 70%, 40%)" />
+                <span>Simple Pricing</span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 800, marginBottom: '16px', color: 'hsl(25, 20%, 15%)' }}>
+                Pilih Sesuai Kebutuhan
+              </h2>
+              <p style={{ fontSize: '18px', color: 'hsl(25, 10%, 45%)', maxWidth: '600px', margin: '0 auto' }}>
+                1 Credit = 1 Advice = 1 Keputusan yang tepat
+              </p>
+            </div>
+
+            {/* AICEO PUBLIC */}
+            <div style={{ marginBottom: '64px' }}>
+              <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '24px', textAlign: 'center', color: 'hsl(25, 20%, 15%)' }}>
+                🌐 AICEO PUBLIC — Credit-Based
+              </h3>
+              <p style={{ textAlign: 'center', color: 'hsl(25, 10%, 50%)', marginBottom: '32px' }}>
+                Akses ke 30+ Avatar pakar bisnis Indonesia
+              </p>
+
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                gap: '20px',
+              }} className="pricing-grid">
+                {publicPlans.map((plan, index) => (
+                  <div
+                    key={index}
+                    className="card-hover"
+                    style={{
+                      background: 'white',
+                      borderRadius: '20px',
+                      padding: '32px 24px',
+                      textAlign: 'center',
+                      border: plan.featured ? '2px solid hsl(25, 45%, 35%)' : '2px solid hsl(30, 15%, 90%)',
+                      boxShadow: plan.featured ? '0 20px 40px rgba(0,0,0,0.1)' : '0 4px 20px rgba(0,0,0,0.05)',
+                      transform: plan.featured ? 'scale(1.05)' : 'scale(1)',
+                      position: 'relative',
+                      opacity: isVisible ? 1 : 0,
+                      transition: `all 0.5s ease ${index * 100}ms`,
+                    }}
+                  >
+                    {plan.badge && (
+                      <div style={{
+                        position: 'absolute',
+                        top: '-12px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        padding: '6px 16px',
+                        borderRadius: '100px',
+                        background: 'hsl(25, 45%, 35%)',
+                        color: 'white',
+                        fontSize: '12px',
+                        fontWeight: 700,
+                      }}>
+                        {plan.badge}
+                      </div>
+                    )}
+                    <h4 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '8px', color: 'hsl(25, 20%, 15%)' }}>
+                      {plan.name}
+                    </h4>
+                    <div style={{ fontSize: '32px', fontWeight: 800, color: 'hsl(25, 45%, 35%)', marginBottom: '4px' }}>
+                      {plan.price}
+                    </div>
+                    <div style={{ fontSize: '14px', color: 'hsl(25, 10%, 50%)', marginBottom: '20px' }}>
+                      {plan.credits} credits
+                    </div>
+                    <div style={{
+                      padding: '12px',
+                      borderRadius: '10px',
+                      background: 'hsl(35, 30%, 95%)',
+                      fontSize: '13px',
+                      color: 'hsl(25, 10%, 45%)',
+                      marginBottom: '20px',
+                    }}>
+                      {plan.perCredit} per credit
+                    </div>
+                    <button
+                      className={plan.featured ? 'btn-primary' : 'btn-secondary'}
+                      style={{ width: '100%', justifyContent: 'center' }}
+                    >
+                      Pilih Paket
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* AICEO ENTERPRISE */}
+            <div>
+              <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '24px', textAlign: 'center', color: 'hsl(25, 20%, 15%)' }}>
+                🏢 AICEO ENTERPRISE — Custom Digital Twin
+              </h3>
+              <p style={{ textAlign: 'center', color: 'hsl(25, 10%, 50%)', marginBottom: '32px' }}>
+                Arsipkan cara berpikir Anda sendiri untuk tim
+              </p>
+
+              <div style={{
+                background: 'white',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 0.6s ease 400ms',
+              }}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr 2fr',
+                  background: 'hsl(25, 45%, 30%)',
+                  padding: '16px 24px',
+                  color: 'white',
+                  fontWeight: 600,
+                  fontSize: '14px',
+                }} className="enterprise-header">
+                  <div>Tier</div>
+                  <div>Investment</div>
+                  <div>CEO Profile</div>
+                </div>
+                {enterpriseTiers.map((tier, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '1fr 1fr 2fr',
+                      padding: '20px 24px',
+                      borderBottom: index < enterpriseTiers.length - 1 ? '1px solid hsl(30, 15%, 90%)' : 'none',
+                      background: index % 2 === 0 ? 'hsl(35, 30%, 98%)' : 'white',
+                    }}
+                    className="enterprise-row"
+                  >
+                    <div style={{ fontWeight: 700, color: 'hsl(25, 20%, 15%)' }}>{tier.tier}</div>
+                    <div style={{ fontWeight: 600, color: 'hsl(25, 45%, 40%)' }}>{tier.price}</div>
+                    <div style={{ fontSize: '14px', color: 'hsl(25, 10%, 50%)' }}>{tier.profile}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ textAlign: 'center', marginTop: '32px' }}>
+                <button className="btn-primary" style={{ fontSize: '16px', padding: '18px 36px' }}>
+                  Konsultasi Enterprise
+                  <Icon name="ArrowRight" size={20} color="white" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ============================================
+    // FAQ
+    // ============================================
+    const FAQ = () => {
+      const [ref, isVisible] = useScrollReveal();
+      const [openIndex, setOpenIndex] = useState(null);
+
+      const faqs = [
+        {
+          q: 'Apa bedanya AICEO dengan ChatGPT atau AI umum lainnya?',
+          a: 'AICEO bukan AI pintar yang bisa jawab apa saja. AICEO adalah arsip keputusan dari pengalaman nyata pebisnis. Setiap knowledge melewati "LLM Negative Test" — kalau ChatGPT bisa jawab, kita tidak masukin. AICEO punya threshold angka konkret, kill criteria, dan failure scar dari kesalahan mahal yang sudah dibayar orang lain.',
+        },
+        {
+          q: 'Siapa target market AICEO?',
+          a: 'CEO/Founder dengan omzet Rp 500 juta - 10 miliar/bulan, tim 10-50 orang, yang sudah lewat fase survival tapi belum fully systemized. Bukan yang masih cari product-market fit atau solo founder.',
+        },
+        {
+          q: 'Bagaimana cara kerja credit system?',
+          a: '1 Credit = 1 Advice = 1 Keputusan. Ketika Anda atau tim mengajukan pertanyaan, sistem akan memberikan jawaban berdasarkan Decision Unit yang relevan, lengkap dengan threshold, batasan, dan pembelajaran dari kesalahan. HPP per advice kami sekitar Rp 50-75.',
+        },
+        {
+          q: 'Apa itu AICEO Enterprise / Digital Twin?',
+          a: 'Digital Twin adalah proses mengarsipkan cara berpikir dan pengalaman CEO Anda sendiri ke dalam sistem AI. Tim Anda bisa dapat jawaban yang konsisten dengan standar Anda 24/7, tanpa Anda harus menjawab berulang-ulang.',
+        },
+        {
+          q: 'Berapa lama proses implementasi Enterprise?',
+          a: 'Tergantung kompleksitas. Standard tier (Owner UMKM) sekitar 2-4 minggu. Executive/Legacy tier dengan operasi kompleks bisa 6-8 minggu. Proses meliputi interview, ekstraksi knowledge, validasi, dan deployment.',
+        },
+        {
+          q: 'Apakah data bisnis saya aman?',
+          a: 'Knowledge Enterprise hanya bisa diakses oleh tim Anda sendiri (per client isolation). Data tersimpan terenkripsi. Kami tidak membagikan data antar client. Setiap Digital Twin adalah private untuk organisasi Anda.',
+        },
+        {
+          q: 'Bagaimana jika AI menjawab salah?',
+          a: 'AICEO didesain dengan "Epistemic Honesty" — AI akan jujur jika tidak punya knowledge spesifik, bukan mengarang. Setiap jawaban merujuk ke Decision Unit yang ada. Jika tidak ada DU relevan, AI akan redirect ke pertanyaan yang lebih spesifik.',
+        },
+      ];
+
+      return (
+        <section id="faq" style={{ padding: '100px 24px' }}>
+          <div ref={ref} style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+              <div className="section-badge" style={{ background: 'hsl(199, 70%, 93%)', color: 'hsl(199, 70%, 40%)' }}>
+                <Icon name="MessageSquare" size={16} color="hsl(199, 70%, 40%)" />
+                <span>FAQ</span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 800, marginBottom: '16px', color: 'hsl(25, 20%, 15%)' }}>
+                Pertanyaan Umum
+              </h2>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {faqs.map((faq, index) => {
+                const isOpen = openIndex === index;
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      background: 'white',
+                      borderRadius: '16px',
+                      overflow: 'hidden',
+                      boxShadow: isOpen ? '0 10px 30px rgba(0,0,0,0.1)' : '0 2px 10px rgba(0,0,0,0.03)',
+                      border: `2px solid ${isOpen ? 'hsl(25, 45%, 85%)' : 'transparent'}`,
+                      transition: 'all 0.3s ease',
+                      opacity: isVisible ? 1 : 0,
+                      transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
+                    }}
+                  >
+                    <button
+                      onClick={() => setOpenIndex(isOpen ? null : index)}
+                      style={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '24px',
+                        background: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                      }}
+                    >
+                      <span style={{ fontSize: '16px', fontWeight: 600, color: 'hsl(25, 20%, 15%)', paddingRight: '16px' }}>
+                        {faq.q}
+                      </span>
+                      <span style={{
+                        transform: isOpen ? 'rotate(180deg)' : 'rotate(0)',
+                        transition: 'transform 0.3s ease',
+                        flexShrink: 0,
+                      }}>
+                        <Icon name="ChevronDown" size={20} color="hsl(25, 10%, 50%)" />
+                      </span>
+                    </button>
+                    <div style={{
+                      maxHeight: isOpen ? '500px' : '0',
+                      overflow: 'hidden',
+                      transition: 'max-height 0.3s ease',
+                    }}>
+                      <div style={{
+                        padding: '0 24px 24px',
+                        fontSize: '15px',
+                        color: 'hsl(25, 10%, 45%)',
+                        lineHeight: 1.7,
+                      }}>
+                        {faq.a}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ============================================
+    // CTA BANNER
+    // ============================================
+    const CTABanner = () => {
+      const [ref, isVisible] = useScrollReveal();
+
+      return (
+        <section ref={ref} style={{
+          padding: '80px 24px',
+          background: 'linear-gradient(135deg, hsl(25, 45%, 30%), hsl(35, 50%, 35%))',
+        }}>
+          <div style={{
+            maxWidth: '800px',
+            margin: '0 auto',
+            textAlign: 'center',
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.6s ease',
+          }}>
+            <h2 style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 800, color: 'white', marginBottom: '16px' }}>
+              Siap Belajar dari Kesalahan Orang Lain?
+            </h2>
+            <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.8)', marginBottom: '32px', maxWidth: '600px', margin: '0 auto 32px' }}>
+              Mulai dengan 40 credits. Cukup untuk merasakan bagaimana keputusan bisnis bisa lebih aman.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              <button style={{
+                background: 'white',
+                color: 'hsl(25, 45%, 30%)',
+                padding: '18px 36px',
+                borderRadius: '12px',
+                fontWeight: 700,
+                fontSize: '16px',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'all 0.3s ease',
+              }}>
+                Mulai Trial Gratis
+                <Icon name="ArrowRight" size={20} color="hsl(25, 45%, 30%)" />
+              </button>
+              <button style={{
+                background: 'transparent',
+                color: 'white',
+                padding: '18px 36px',
+                borderRadius: '12px',
+                fontWeight: 600,
+                fontSize: '16px',
+                border: '2px solid rgba(255,255,255,0.3)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'all 0.3s ease',
+              }}>
+                Hubungi Sales
+              </button>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ============================================
+    // FOOTER
+    // ============================================
+    const Footer = () => {
+      return (
+        <footer style={{
+          background: 'hsl(25, 20%, 12%)',
+          color: 'white',
+          padding: '64px 24px 32px',
+        }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '48px', marginBottom: '48px' }} className="footer-grid">
+              {/* Brand */}
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                  <div style={{
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '12px',
+                    background: 'linear-gradient(135deg, hsl(35, 70%, 50%), hsl(25, 45%, 40%))',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                    <Icon name="Shield" size={24} color="white" />
+                  </div>
+                  <div>
+                    <span style={{ fontWeight: 800, fontSize: '22px' }}>AICEO</span>
+                    <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>Decision Firewall for Growing Business</p>
+                  </div>
+                </div>
+                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, maxWidth: '400px' }}>
+                  Mengarsipkan cara gagal yang mahal — agar orang lain tidak perlu bayar mahal untuk pelajaran yang sama.
+                </p>
+              </div>
+
+              {/* Links */}
+              <div>
+                <h4 style={{ fontWeight: 700, marginBottom: '16px', fontSize: '15px' }}>Produk</h4>
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {['AICEO Public', 'AICEO Enterprise', 'Dokumentasi', 'API'].map((item) => (
+                    <li key={item}>
+                      <a href="#" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '14px' }}>
+                        {item}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Contact */}
+              <div>
+                <h4 style={{ fontWeight: 700, marginBottom: '16px', fontSize: '15px' }}>Kontak</h4>
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {['WhatsApp Sales', 'Email Support', 'Partnership', 'Careers'].map((item) => (
+                    <li key={item}>
+                      <a href="#" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '14px' }}>
+                        {item}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Bottom */}
+            <div style={{
+              borderTop: '1px solid rgba(255,255,255,0.1)',
+              paddingTop: '24px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '16px',
+            }}>
+              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)' }}>
+                © 2026 AICEO by Flexeet. All rights reserved.
+              </p>
+              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                Made with <Icon name="Heart" size={14} color="hsl(0, 65%, 55%)" /> for Indonesian Business Owners
+              </p>
+            </div>
+          </div>
+        </footer>
+      );
+    };
+
+    // ============================================
+    // MAIN APP
+    // ============================================
+    const App = () => {
+      return (
+        <React.Fragment>
+          <Header />
+          <main>
+            <Hero />
+            <StatsRow />
+            <PainPoints />
+            <SolutionFlow />
+            <Differentiators />
+            <Pricing />
+            <FAQ />
+            <CTABanner />
+          </main>
+          <Footer />
+        </React.Fragment>
+      );
+    };
+
+    // Render
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

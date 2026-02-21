@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Product Insights | CekatPilot</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f46e5",
+                        "surface": "#FFFFFF",
+                        "background": "#F3F4F6",
+                        "border-slate": "#E5E7EB",
+                        "header-text": "#111827",
+                        "secondary-text": "#6B7280",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-rounded {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background font-display text-header-text antialiased min-h-screen">
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-[280px] bg-white border-r border-border-slate flex flex-col z-20 shrink-0">
+            <div class="h-20 flex items-center px-8 border-b border-transparent">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-9 h-9 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200">
+                        <span class="material-symbols-rounded text-white">rocket_launch</span>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">CekatPilot</span>
+                </div>
+            </div>
+
+            <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+                <a href="master_home.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">grid_view</span>
+                    <span class="font-medium text-sm">Dashboard</span>
+                </a>
+
+                <div class="px-4 pt-6 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Analytics</p>
+                </div>
+                <a href="product_demand.html"
+                    class="flex items-center gap-3 px-4 py-3 bg-indigo-50 text-primary rounded-full transition-all group">
+                    <span class="material-symbols-rounded">inventory_2</span>
+                    <span class="font-bold text-sm">Product Demand</span>
+                </a>
+                <a href="conversion_funnel.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">filter_list</span>
+                    <span class="font-medium text-sm">Conversion Funnel</span>
+                </a>
+                <a href="roi_center.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">payments</span>
+                    <span class="font-medium text-sm">Financial ROI</span>
+                </a>
+                <a href="brand_leaderboard.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">leaderboard</span>
+                    <span class="font-medium text-sm">Leaderboard</span>
+                </a>
+                <a href="brand_growth.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">trending_up</span>
+                    <span class="font-medium text-sm">Growth Trends</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Intelligence</p>
+                </div>
+                <a href="ai_insight.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">psychology</span>
+                    <span class="font-medium text-sm">AI Insights</span>
+                </a>
+                <a href="peak_hour.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">schedule</span>
+                    <span class="font-medium text-sm">Peak Hour</span>
+                </a>
+                <a href="sla_management.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">timer</span>
+                    <span class="font-medium text-sm">SLA Center</span>
+                </a>
+                <a href="customer_loyalty.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">group</span>
+                    <span class="font-medium text-sm">Customers</span>
+                </a>
+
+                <div class="px-4 pt-4 pb-2">
+                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Planning</p>
+                </div>
+                <a href="predictive.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">auto_graph</span>
+                    <span class="font-medium text-sm">Predictions</span>
+                </a>
+                <a href="export_preview.html"
+                    class="flex items-center gap-3 px-4 py-3 text-secondary-text hover:text-header-text hover:bg-slate-50 rounded-full transition-all group">
+                    <span class="material-symbols-rounded">picture_as_pdf</span>
+                    <span class="font-medium text-sm">Report Builder</span>
+                </a>
+            </nav>
+
+            <div class="p-6 border-t border-border-slate">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Hijacket+Owner&background=FCD34D&color=fff" alt="AC"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-header-text truncate">Hijacket</p>
+                        <p class="text-xs text-secondary-text truncate">Owner</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background">
+            <header
+                class="flex items-center justify-between px-8 py-4 bg-white/80 backdrop-blur-md border-b border-border-slate sticky top-0 z-30">
+                <div class="flex items-center gap-4">
+                    <h2 class="text-xl font-bold text-slate-900">Product & Funnel</h2>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="relative">
+                        <span
+                            class="material-symbols-rounded absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+                        <input type="text" placeholder="Search..."
+                            class="pl-10 pr-4 py-2 bg-slate-50 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64 transition-all">
+                    </div>
+                    <div class="flex items-center gap-3 border-l border-slate-200 pl-6">
+                        <button
+                            class="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-primary transition-colors">
+                            <span class="material-symbols-rounded">notifications</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex-1 overflow-y-auto p-8">
+                <div class="max-w-7xl mx-auto space-y-8">
+
+                    <!-- 4.1 Conversion Funnel Visualization -->
+                    <div class="bg-white rounded-2xl border border-border-slate shadow-sm overflow-hidden">
+                        <div class="p-6 border-b border-border-slate flex justify-between items-center">
+                            <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                                <span class="material-symbols-rounded text-slate-400">filter_list</span>
+                                Conversion Funnel
+                            </h3>
+                            <button class="text-xs font-bold text-secondary-text hover:text-primary">Januari 2025
+                                ▼</button>
+                        </div>
+
+                        <div class="p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <!-- Funnel Chart -->
+                            <div class="lg:col-span-2 space-y-5">
+                                <!-- Stage 1 -->
+                                <div class="relative">
+                                    <div class="flex justify-between text-sm mb-1 z-10 relative">
+                                        <span class="font-bold text-slate-700">Chat Masuk</span>
+                                        <span class="font-mono text-slate-500">32.847 (100%)</span>
+                                    </div>
+                                    <div
+                                        class="h-10 bg-indigo-50 rounded-r-lg w-full flex items-center px-4 border-l-4 border-indigo-500">
+                                        <span class="text-xs text-indigo-400">Baseline</span>
+                                    </div>
+                                    <div
+                                        class="absolute right-10 top-12 text-xs font-bold text-red-400 flex flex-col items-center">
+                                        <span class="material-symbols-rounded text-base">arrow_downward</span>
+                                        28% Drop
+                                    </div>
+                                </div>
+
+                                <!-- Stage 2 -->
+                                <div class="relative pl-4">
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="font-medium text-slate-700">Tanya Produk</span>
+                                        <span class="font-mono text-slate-500">23.650 (72%)</span>
+                                    </div>
+                                    <div
+                                        class="h-10 bg-indigo-50 rounded-r-lg w-[72%] flex items-center px-4 border-l-4 border-indigo-400 relative">
+                                    </div>
+                                    <div
+                                        class="absolute right-[33%] top-12 text-xs font-bold text-red-400 flex flex-col items-center">
+                                        <span class="material-symbols-rounded text-base">arrow_downward</span>
+                                        18% Drop
+                                    </div>
+                                </div>
+
+                                <!-- Stage 3 (Price) -->
+                                <div class="relative pl-8">
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="font-medium text-slate-700">Tanya Harga</span>
+                                        <span class="font-mono text-slate-500">17.737 (54%)</span>
+                                    </div>
+                                    <div
+                                        class="h-10 bg-indigo-50 rounded-r-lg w-[54%] flex items-center px-4 border-l-4 border-indigo-300">
+                                    </div>
+                                    <!-- Alert for Biggest Drop -->
+                                    <div
+                                        class="absolute right-[50%] top-12 text-xs font-bold text-red-600 flex flex-col items-center animate-pulse">
+                                        <span class="material-symbols-rounded text-base">warning</span>
+                                        33% Drop (BIGGEST)
+                                    </div>
+                                </div>
+
+                                <!-- Stage 4 (Order) -->
+                                <div class="relative pl-12">
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="font-medium text-slate-700">Minta Order</span>
+                                        <span class="font-mono text-slate-500">6.898 (21%)</span>
+                                    </div>
+                                    <div
+                                        class="h-10 bg-indigo-50 rounded-r-lg w-[21%] flex items-center px-4 border-l-4 border-indigo-200">
+                                    </div>
+                                </div>
+
+                                <!-- Stage 5 (Closing) -->
+                                <div class="relative pl-16">
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="font-bold text-emerald-700">Closing (Paid)</span>
+                                        <span class="font-mono text-emerald-700 font-bold">4.927 (15%)</span>
+                                    </div>
+                                    <div
+                                        class="h-10 bg-emerald-100 rounded-r-lg w-[15%] flex items-center px-4 border-l-4 border-emerald-500 shadow-sm">
+                                        <span class="text-xs font-bold text-emerald-700">GOAL ACHIEVED</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Insight Box -->
+                            <div class="bg-red-50 rounded-2xl p-5 border border-red-100">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="material-symbols-rounded text-red-500">warning</span>
+                                    <h4 class="font-bold text-red-800 text-sm">ALERT: BIGGEST DROP</h4>
+                                </div>
+                                <p class="text-xs text-red-700 mb-4 font-bold">Stage: Tanya Harga → Minta Order (Drag
+                                    33%)</p>
+
+                                <p class="text-xs text-slate-600 mb-2 font-bold">AI Analysis dari chat yang drop:</p>
+                                <ul class="list-disc list-inside text-xs text-slate-600 space-y-1 mb-6">
+                                    <li>45% mention "mahal" / "budget"</li>
+                                    <li>28% mention "pikir-pikir dulu"</li>
+                                    <li>15% mention "cari yang lain"</li>
+                                </ul>
+
+                                <button
+                                    class="w-full py-2 bg-white border border-red-200 text-red-700 font-bold text-xs rounded-lg hover:bg-red-50 transition-colors shadow-sm">
+                                    Apply "Rescue Offer" Flow
+                                </button>
+                                <p class="text-[10px] text-slate-400 text-center mt-2">Est. recovery impact: +Rp
+                                    338jt/bulan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8.1 Product Performance from Chat -->
+                    <div class="bg-white rounded-2xl border border-border-slate shadow-sm overflow-hidden">
+                        <div class="p-6 border-b border-border-slate">
+                            <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                                <span class="material-symbols-rounded text-slate-400">package_2</span>
+                                Product Performance from Chat
+                            </h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left">
+                                <thead class="bg-slate-50 text-xs uppercase font-bold text-secondary-text">
+                                    <tr>
+                                        <th class="px-6 py-4">Product Name</th>
+                                        <th class="px-6 py-4">Inquiries</th>
+                                        <th class="px-6 py-4">Closing</th>
+                                        <th class="px-6 py-4">Conv. Rate</th>
+                                        <th class="px-6 py-4">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-border-slate">
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="px-6 py-4 font-medium text-slate-900">Aisya Jacket</td>
+                                        <td class="px-6 py-4 font-mono text-slate-500">4.200</td>
+                                        <td class="px-6 py-4 font-mono text-slate-500">630</td>
+                                        <td class="px-6 py-4 font-mono font-bold text-slate-700">15%</td>
+                                        <td class="px-6 py-4"><span
+                                                class="bg-emerald-50 text-emerald-700 text-xs font-bold px-2 py-1 rounded">Normal</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-red-50/30 hover:bg-red-50/50 transition-colors">
+                                        <td class="px-6 py-4 font-medium text-slate-900 flex items-center gap-2">
+                                            Bella Hoodie
+                                            <span class="material-symbols-rounded text-red-500 text-sm">warning</span>
+                                        </td>
+                                        <td class="px-6 py-4 font-mono text-slate-500">2.800</td>
+                                        <td class="px-6 py-4 font-mono text-slate-500">140</td>
+                                        <td class="px-6 py-4 font-mono font-bold text-red-600">5%</td>
+                                        <td class="px-6 py-4"><span
+                                                class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded">⚠️
+                                                LOW PERFORMER</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="px-6 py-4 font-medium text-slate-900 flex items-center gap-2">
+                                            Carla Vest
+                                            <span class="material-symbols-rounded text-amber-500 text-sm">star</span>
+                                        </td>
+                                        <td class="px-6 py-4 font-mono text-slate-500">1.890</td>
+                                        <td class="px-6 py-4 font-mono text-slate-500">378</td>
+                                        <td class="px-6 py-4 font-mono font-bold text-emerald-600">20%</td>
+                                        <td class="px-6 py-4"><span
+                                                class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2 py-1 rounded">🌟
+                                                STAR</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="p-4 bg-slate-50 border-t border-slate-100 text-center">
+                            <div
+                                class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm cursor-pointer hover:bg-slate-50">
+                                <span class="material-symbols-rounded text-slate-400">info</span>
+                                <span class="text-xs text-slate-600 font-medium">Why <span class="font-bold">Bella
+                                        Hoodie</span> low conversion? <span class="underline">View AI
+                                        Analysis</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,333 @@
+/* ===================================================================
+   FLEXEET CALCULATOR - REFACTORED CSS
+   =================================================================== */
+
+/* -------------------------------------------------------------------
+   1. DESIGN SYSTEM (VARIABLES)
+   ------------------------------------------------------------------- */
+:root {
+    /* Color Palette */
+    --color-primary: #2563EB; /* Biru yang lebih vibrant */
+    --color-primary-light: #3B82F6;
+    --color-success: #10B981; /* Hijau dari tema asli, cukup bagus */
+    --color-success-bg: #ECFDF5;
+    --color-danger: #EF4444; /* Merah dari tema asli */
+    --color-danger-bg: #FEF2F2;
+    --color-text-primary: #111827; /* Abu-abu gelap untuk teks utama */
+    --color-text-secondary: #4B5563; /* Abu-abu untuk sub-teks */
+    --color-border: #E5E7EB; /* Abu-abu sangat terang untuk border */
+    --color-background: #F9FAFB; /* Latar belakang utama yang sangat terang */
+    --color-white: #FFFFFF;
+
+    /* Typography */
+    --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    /* Spacing System (Base: 8px) */
+    --space-unit: 8px;
+    --space-1: calc(1 * var(--space-unit)); /* 8px */
+    --space-2: calc(2 * var(--space-unit)); /* 16px */
+    --space-3: calc(3 * var(--space-unit)); /* 24px */
+    --space-4: calc(4 * var(--space-unit)); /* 32px */
+    --space-5: calc(5 * var(--space-unit)); /* 40px */
+    --space-6: calc(6 * var(--space-unit)); /* 48px */
+
+    /* Border Radius */
+    --radius-sm: 0.5rem;   /* 8px */
+    --radius-md: 0.75rem;  /* 12px */
+    --radius-lg: 1rem;     /* 16px */
+    --radius-xl: 1.5rem;   /* 24px */
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* -------------------------------------------------------------------
+   2. BASE & LAYOUT
+   ------------------------------------------------------------------- */
+.calculator-container {
+    font-family: var(--font-family-sans);
+    background-color: var(--color-background);
+    padding: var(--space-5);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    /* Shadow yang lebih halus untuk kedalaman */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* -------------------------------------------------------------------
+   3. COMPONENTS
+   ------------------------------------------------------------------- */
+
+/* === HERO SECTION === */
+.calc-hero {
+    text-align: center;
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.calc-hero h3 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+}
+
+.calc-hero p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0 auto;
+    max-width: 600px; /* Batasi lebar untuk keterbacaan */
+}
+
+.calc-hero strong {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+/* === INPUT SECTION === */
+.simple-input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-4);
+    max-width: 700px;
+    margin: 0 auto var(--space-6);
+}
+
+.simple-input-box label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+    text-align: center;
+}
+
+.simple-input-box input {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    font-size: 2rem; /* Ukuran font lebih besar untuk dampak */
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    color: var(--color-primary);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: var(--transition-fast);
+}
+
+.simple-input-box input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15); /* Glow effect */
+}
+
+.input-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-top: var(--space-1);
+    text-align: center;
+}
+
+/* === COMPARISON CARDS === */
+.comparison-row {
+    display: flex;
+    align-items: center; /* Vertically align cards */
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin: var(--space-6) 0;
+}
+
+.vs-indicator {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: #D1D5DB; /* Lebih terlihat */
+    margin: 0 var(--space-2);
+}
+
+.comparison-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 2px solid transparent; /* Placeholder for solid border */
+    text-align: center;
+    transition: var(--transition-normal);
+}
+
+/* Standard Card (Tanpa Flexeet) */
+.comparison-card.standard {
+    background-color: var(--color-danger-bg);
+    border-color: var(--color-danger);
+}
+
+/* Flexeet Card (Recommended) */
+.comparison-card.flexeet {
+    background-color: var(--color-success-bg);
+    border-color: var(--color-success);
+    position: relative; /* Untuk badge */
+    transform: scale(1.03); /* Sedikit lebih menonjol */
+    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.1), 0 4px 6px -4px rgba(16, 185, 129, 0.1);
+}
+
+.comparison-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.comparison-card.flexeet::before {
+    content: '⭐ RECOMMENDED';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-success);
+    color: var(--color-white);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.05em;
+}
+
+.card-label {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-3);
+}
+.comparison-card.standard .card-label { color: var(--color-danger); }
+.comparison-card.flexeet .card-label { color: var(--color-success); }
+
+.big-number {
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1;
+    margin-bottom: var(--space-1);
+}
+.comparison-card.standard .big-number { color: var(--color-danger); }
+.comparison-card.flexeet .big-number { color: var(--color-success); }
+
+.card-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+}
+
+.card-details {
+    background-color: rgba(255, 255, 255, 0.7); /* Background lebih transparan */
+    backdrop-filter: blur(5px);
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+}
+.detail-item:last-child { border-bottom: none; }
+
+.detail-item span {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.detail-item strong {
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+/* === IMPACT SECTION === */
+.impact-box {
+    background: var(--color-primary);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    color: var(--color-white);
+    margin-top: var(--space-6);
+}
+
+.impact-box h4 {
+    font-size: 1.375rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-4);
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-4);
+}
+
+.impact-item .impact-number {
+    font-size: 3rem;
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-white);
+    margin-bottom: var(--space-1);
+}
+
+.impact-item .impact-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8); /* Opacity untuk kontras */
+}
+
+/* -------------------------------------------------------------------
+   4. RESPONSIVE MEDIA QUERIES
+   ------------------------------------------------------------------- */
+@media (max-width: 992px) {
+    .comparison-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .comparison-card {
+        width: 100%;
+        max-width: 450px;
+    }
+    .comparison-card.flexeet {
+        transform: scale(1); /* Reset scale on column layout */
+    }
+    .vs-indicator {
+        margin: var(--space-3) 0;
+        transform: rotate(90deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .calculator-container {
+        padding: var(--space-4);
+    }
+    :root {
+        /* Sedikit kecilkan font di mobile untuk ruang napas */
+        font-size: 14px;
+    }
+    .big-number { font-size: 3rem; }
+    .impact-item .impact-number { font-size: 2.5rem; }
+}
+
+@media (max-width: 480px) {
+    .simple-input-grid {
+        grid-template-columns: 1fr;
+    }
+    .impact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+}

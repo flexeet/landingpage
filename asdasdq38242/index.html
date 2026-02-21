@@ -1,0 +1,4743 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexeet × Laysander | AI Automation Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      /* Laysander Brand Colors */
+      --primary: #e40913;
+      --primary-dark: #bc0000;
+      --primary-light: #ff2d36;
+      
+      /* Neutrals */
+      --black: #111111;
+      --dark: #303030;
+      --dark-mid: #515151;
+      --gray: #828282;
+      --light-gray: #E1E1E1;
+      --off-white: #fafafa;
+      --white: #ffffff;
+      
+      /* Accent Colors */
+      --green: #13612e;
+      --green-light: #1a7a3a;
+      --blue: #1159af;
+      --blue-light: #1a6fd4;
+      --orange: #f7630c;
+      --yellow: #f5a524;
+      
+      /* Semantic Mapping */
+      --background: var(--off-white);
+      --foreground: var(--black);
+      --card: var(--white);
+      --card-alt: var(--off-white);
+      --secondary: var(--light-gray);
+      --muted: var(--gray);
+      --border: var(--light-gray);
+      --accent: var(--primary);
+      
+      /* Module Colors */
+      --finance-color: var(--green);
+      --finance-bg: #edf7f0;
+      --engineering-color: var(--blue);
+      --engineering-bg: #edf3fa;
+      --hr-color: var(--orange);
+      --hr-bg: #fef5ed;
+      --sales-color: #9333ea;
+      --sales-bg: #f5f0ff;
+      
+      /* Success/Error */
+      --success: var(--green);
+      --error: var(--primary);
+      --warning: var(--orange);
+      
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      
+      --content-width: 1290px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ==================== ANIMATIONS ==================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+
+    /* ==================== UTILITIES ==================== */
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-alt {
+      background: var(--white);
+    }
+
+    .section-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .section-badge.alt {
+      background: var(--dark);
+    }
+
+    .section-badge.outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(228, 9, 19, 0.3);
+    }
+
+    .btn-dark {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .btn-dark:hover {
+      background: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--dark);
+      border: 2px solid var(--dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+
+    .btn-outline-light:hover {
+      background: var(--white);
+      color: var(--dark);
+      border-color: var(--white);
+    }
+
+    /* ==================== HEADER ==================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+      padding: 12px 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--dark);
+    }
+
+    .logo-text span {
+      color: var(--primary);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav a {
+      padding: 10px 16px;
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+    }
+
+    .nav a:hover {
+      background: var(--secondary);
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--dark);
+    }
+
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
+
+    /* ==================== HERO ==================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+      background: linear-gradient(135deg, var(--black) 0%, var(--dark) 100%);
+      color: var(--white);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero-blob-1 {
+      width: 600px;
+      height: 600px;
+      background: var(--primary);
+      opacity: 0.15;
+      top: -150px;
+      right: -150px;
+    }
+
+    .hero-blob-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--primary-dark);
+      opacity: 0.1;
+      bottom: -100px;
+      left: -100px;
+      animation-delay: -4s;
+    }
+
+    .hero-blob-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--orange);
+      opacity: 0.08;
+      top: 40%;
+      left: 20%;
+      animation-delay: -2s;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 32px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      animation: fadeInDown 0.8s ease-out forwards;
+    }
+
+    .hero-badge i {
+      color: var(--primary);
+    }
+
+    .hero-title {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+
+    .hero-title .highlight {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(18px, 2.5vw, 22px);
+      color: rgba(255,255,255,0.7);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      animation: fadeInUp 0.8s ease-out 0.4s forwards;
+      opacity: 0;
+    }
+
+    .hero-clients {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 48px;
+      animation: fadeInUp 0.8s ease-out 0.5s forwards;
+      opacity: 0;
+    }
+
+    .hero-client {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-client-logo {
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .hero-client-logo.flexeet {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border: none;
+    }
+
+    .hero-client-logo.laysander {
+      background: var(--primary);
+      border: none;
+    }
+
+    .hero-client span {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-connector {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--orange));
+      position: relative;
+      border-radius: 100px;
+    }
+
+    .hero-connector::after {
+      content: '×';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--dark);
+      padding: 4px 12px;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 18px;
+      border-radius: 100px;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeInUp 0.8s ease-out 0.8s forwards;
+      opacity: 0;
+    }
+
+    .hero-scroll span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+    }
+
+    .hero-scroll-indicator {
+      width: 28px;
+      height: 44px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      position: relative;
+    }
+
+    .hero-scroll-indicator::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 100px;
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+
+    /* ==================== EXECUTIVE SUMMARY ==================== */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .summary-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+    }
+
+    .summary-card-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .summary-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+
+    .summary-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ==================== MODULES ==================== */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .module-card {
+      padding: 0;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.4s ease;
+    }
+
+    .module-card:hover {
+      border-color: var(--module-color);
+    }
+
+    .module-card[data-module="finance"] { --module-color: var(--finance-color); --module-bg: var(--finance-bg); }
+    .module-card[data-module="engineering"] { --module-color: var(--engineering-color); --module-bg: var(--engineering-bg); }
+    .module-card[data-module="hr"] { --module-color: var(--hr-color); --module-bg: var(--hr-bg); }
+    .module-card[data-module="sales"] { --module-color: var(--sales-color); --module-bg: var(--sales-bg); }
+
+    .module-header {
+      background: var(--module-bg);
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .module-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--module-color);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 100px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .module-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .module-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .module-price {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--module-color);
+      margin-top: 12px;
+    }
+
+    .module-content {
+      padding: 24px;
+    }
+
+    .module-section {
+      margin-bottom: 20px;
+    }
+
+    .module-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .module-section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .module-section-title i {
+      color: var(--module-color);
+    }
+
+    .module-list {
+      list-style: none;
+    }
+
+    .module-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .module-list li:last-child {
+      border-bottom: none;
+    }
+
+    .module-list li i {
+      color: var(--module-color);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .module-list li strong {
+      color: var(--dark);
+    }
+
+    .module-results {
+      background: var(--module-bg);
+      padding: 16px;
+      border-radius: var(--radius);
+    }
+
+    .module-result {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+
+    .module-result i {
+      color: var(--success);
+    }
+
+    .module-result strong {
+      color: var(--module-color);
+    }
+
+    /* ==================== MODULE DEMOS ==================== */
+    .module-demo {
+      margin-top: 48px;
+      padding: 40px;
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      border: 2px solid var(--border);
+      overflow: hidden;
+    }
+
+    .demo-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .demo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--white);
+    }
+
+    .demo-badge.finance { background: var(--finance-color); }
+    .demo-badge.engineering { background: var(--engineering-color); }
+    .demo-badge.hr { background: var(--hr-color); }
+    .demo-badge.sales { background: var(--sales-color); }
+
+    .demo-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .demo-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .demo-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .demo-section {
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .demo-section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .demo-section-number {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .demo-section-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* Dashboard Demo */
+    .demo-dashboard {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .demo-dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--off-white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-dashboard-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .demo-live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--success);
+      font-weight: 500;
+    }
+
+    .demo-live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .demo-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .demo-metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .demo-metric-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: var(--off-white);
+      border-radius: var(--radius);
+    }
+
+    .demo-metric-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+    }
+
+    .demo-metric-icon.green { background: var(--success); }
+    .demo-metric-icon.blue { background: var(--blue); }
+    .demo-metric-icon.orange { background: var(--orange); }
+    .demo-metric-icon.purple { background: var(--sales-color); }
+
+    .demo-metric-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .demo-metric-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .demo-metric-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .demo-metric-change {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .demo-metric-change.positive { color: var(--success); }
+    .demo-metric-change.negative { color: var(--primary); }
+    .demo-metric-change.neutral { color: var(--muted); }
+
+    .demo-chart-placeholder {
+      padding: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .demo-chart-bars {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      height: 120px;
+      gap: 8px;
+    }
+
+    .demo-chart-bar {
+      flex: 1;
+      height: var(--height);
+      background: var(--light-gray);
+      border-radius: 4px 4px 0 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .demo-chart-bar.active {
+      background: var(--primary);
+    }
+
+    .demo-chart-bar span {
+      padding: 8px 0;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .demo-chart-bar.active span {
+      color: var(--white);
+    }
+
+    /* Alert Demo */
+    .demo-alerts {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .demo-alert {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+      background: var(--white);
+      border-radius: var(--radius);
+      border-left: 4px solid;
+    }
+
+    .demo-alert.critical {
+      border-color: var(--primary);
+      background: #fef2f2;
+    }
+
+    .demo-alert.warning {
+      border-color: var(--orange);
+      background: var(--hr-bg);
+    }
+
+    .demo-alert.info {
+      border-color: var(--blue);
+      background: var(--engineering-bg);
+    }
+
+    .demo-alert-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .demo-alert.critical .demo-alert-icon {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .demo-alert.warning .demo-alert-icon {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .demo-alert.info .demo-alert-icon {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .demo-alert-content {
+      flex: 1;
+    }
+
+    .demo-alert-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .demo-alert-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .demo-alert-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .demo-alert-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .demo-btn-small {
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    .demo-btn-small.outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--dark);
+    }
+
+    /* WhatsApp Notification Demo */
+    .demo-wa-notification {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .demo-wa-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #25D366;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .demo-wa-message {
+      padding: 16px;
+      background: #E5DDD5;
+    }
+
+    .demo-wa-bubble {
+      background: var(--white);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 8px;
+      font-size: 13px;
+      line-height: 1.5;
+      max-width: 85%;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .demo-wa-time {
+      font-size: 11px;
+      color: var(--gray);
+      margin-top: 4px;
+      display: block;
+      text-align: right;
+    }
+
+    /* AI Chat Demo */
+    .demo-ai-chat {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .demo-ai-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--finance-color), var(--blue));
+      color: var(--white);
+    }
+
+    .demo-ai-avatar {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .demo-ai-name {
+      font-weight: 600;
+      display: block;
+    }
+
+    .demo-ai-status {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .demo-ai-content {
+      padding: 20px;
+    }
+
+    .demo-ai-insight {
+      background: var(--off-white);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .demo-ai-insight-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .demo-ai-insight-body {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .demo-ai-insight-body ul {
+      margin: 12px 0;
+      padding-left: 20px;
+    }
+
+    .demo-ai-insight-body li {
+      margin-bottom: 8px;
+    }
+
+    .demo-ai-recommendation {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 12px;
+      background: var(--finance-bg);
+      border-radius: var(--radius);
+      font-size: 13px;
+      color: var(--finance-color);
+    }
+
+    .demo-ai-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .demo-ai-metrics { grid-template-columns: 1fr; }
+    }
+
+    .demo-ai-metric {
+      background: var(--off-white);
+      padding: 16px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .demo-ai-metric .label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .demo-ai-metric .value {
+      display: block;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .demo-ai-metric .value.good { color: var(--success); }
+    .demo-ai-metric .value.warning { color: var(--orange); }
+
+    .demo-ai-metric .status {
+      display: block;
+      font-size: 11px;
+      margin-top: 4px;
+      color: var(--muted);
+    }
+
+    /* Phone Mockup */
+    .demo-phone {
+      width: 320px;
+      margin: 0 auto;
+      background: var(--dark);
+      border-radius: 36px;
+      padding: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .demo-phone.mini {
+      width: 260px;
+      border-radius: 24px;
+      padding: 6px;
+      overflow: hidden;
+    }
+
+    .demo-phone-header {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0;
+    }
+
+    .demo-phone-notch {
+      width: 100px;
+      height: 24px;
+      background: var(--dark);
+      border-radius: 0 0 16px 16px;
+    }
+
+    .demo-phone-screen {
+      background: var(--white);
+      border-radius: 28px;
+      overflow: hidden;
+    }
+
+    .demo-phone.mini .demo-phone-screen {
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .demo-chat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--off-white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-chat-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+    }
+
+    .demo-chat-avatar.blue { background: var(--blue); }
+    .demo-chat-avatar.purple { background: var(--sales-color); }
+
+    .demo-chat-name {
+      font-weight: 600;
+      font-size: 14px;
+      display: block;
+    }
+
+    .demo-chat-status {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .demo-chat-status.online {
+      color: var(--success);
+    }
+
+    .demo-chat-messages {
+      padding: 16px;
+      min-height: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: #f0f2f5;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .demo-message {
+      display: flex;
+      flex-direction: column;
+      max-width: 85%;
+      position: relative;
+    }
+
+    .demo-message.user {
+      align-self: flex-end;
+    }
+
+    .demo-message.bot {
+      align-self: flex-start;
+    }
+
+    .demo-message-bubble {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .demo-message.user .demo-message-bubble {
+      background: var(--primary);
+      color: var(--white);
+      border-bottom-right-radius: 4px;
+    }
+
+    .demo-message.bot .demo-message-bubble {
+      background: var(--white);
+      color: var(--dark);
+      border-bottom-left-radius: 4px;
+      overflow: hidden;
+    }
+
+    .demo-message-time {
+      font-size: 10px;
+      color: var(--gray);
+      margin-top: 4px;
+      align-self: flex-end;
+    }
+
+    .demo-message-steps {
+      margin-top: 12px;
+    }
+
+    .demo-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    .demo-step-num {
+      width: 20px;
+      height: 20px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .demo-part-card {
+      background: var(--off-white);
+      padding: 10px;
+      border-radius: var(--radius);
+      margin: 8px 0;
+      font-size: 12px;
+    }
+
+    .demo-chat-input {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    .demo-chat-input input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 13px;
+      font-family: inherit;
+    }
+
+    .demo-chat-send {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* Knowledge Base Demo */
+    .demo-kb {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .demo-kb-search {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--off-white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-kb-search input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--white);
+    }
+
+    .demo-kb-results {
+      padding: 16px;
+    }
+
+    .demo-kb-result {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .demo-kb-result:last-child {
+      border-bottom: none;
+    }
+
+    .demo-kb-result:hover {
+      background: var(--off-white);
+    }
+
+    .demo-kb-result-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--engineering-bg);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--engineering-color);
+      flex-shrink: 0;
+    }
+
+    .demo-kb-result-content {
+      flex: 1;
+    }
+
+    .demo-kb-result-content h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--dark);
+    }
+
+    .demo-kb-result-content p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .demo-kb-result-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .demo-kb-result-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .demo-kb-result-match {
+      background: var(--success);
+      color: var(--white);
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* CV Screening Demo */
+    .demo-cv-screening {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .demo-cv-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--off-white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-cv-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .demo-cv-stats {
+      display: flex;
+      gap: 16px;
+    }
+
+    .demo-cv-stat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .demo-cv-list {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .demo-cv-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: var(--off-white);
+      border-radius: var(--radius);
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .demo-cv-card.top {
+      background: var(--finance-bg);
+      border-color: var(--finance-color);
+    }
+
+    .demo-cv-card.rejected {
+      opacity: 0.6;
+    }
+
+    .demo-cv-rank {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--finance-color);
+      width: 40px;
+    }
+
+    .demo-cv-rank.dim {
+      color: var(--muted);
+    }
+
+    .demo-cv-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .demo-cv-avatar.dim {
+      background: var(--gray);
+    }
+
+    .demo-cv-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .demo-cv-info h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .demo-cv-info h4.dim {
+      color: var(--muted);
+    }
+
+    .demo-cv-info p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .demo-cv-info p.dim {
+      color: var(--gray);
+    }
+
+    .demo-cv-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .demo-cv-tags .tag {
+      padding: 4px 10px;
+      background: var(--white);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .demo-cv-tags .tag.green {
+      background: var(--finance-bg);
+      color: var(--finance-color);
+    }
+
+    .demo-cv-tags .tag.blue {
+      background: var(--engineering-bg);
+      color: var(--engineering-color);
+    }
+
+    .demo-cv-score {
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .demo-score-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: conic-gradient(var(--finance-color) calc(var(--score) * 3.6deg), var(--light-gray) 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .demo-score-circle::before {
+      content: '';
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      background: var(--white);
+      border-radius: 50%;
+    }
+
+    .demo-score-circle span {
+      position: relative;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--finance-color);
+    }
+
+    .demo-score-circle.rejected {
+      background: conic-gradient(var(--primary) calc(var(--score) * 3.6deg), var(--light-gray) 0);
+    }
+
+    .demo-score-circle.rejected span {
+      color: var(--primary);
+    }
+
+    .demo-score-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .demo-cv-validation {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .demo-validation-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .demo-validation-item.valid {
+      color: var(--success);
+    }
+
+    .demo-validation-item.warning {
+      color: var(--orange);
+    }
+
+    .demo-validation-item.invalid {
+      color: var(--primary);
+    }
+
+    /* Assessment Demo */
+    .demo-assessment {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .demo-assessment-card {
+      padding: 24px;
+    }
+
+    .demo-assessment-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-assessment-avatar {
+      width: 56px;
+      height: 56px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .demo-assessment-info h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .demo-assessment-info span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .demo-assessment-results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .demo-assessment-results { grid-template-columns: 1fr; }
+    }
+
+    .demo-disc h5,
+    .demo-mbti h5 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .demo-disc-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .demo-disc-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .demo-disc-bar .label {
+      width: 20px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .demo-disc-bar .bar {
+      flex: 1;
+      height: 24px;
+      background: var(--light-gray);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .demo-disc-bar .bar .fill {
+      height: 100%;
+      background: var(--blue);
+      border-radius: var(--radius);
+      transition: width 1s ease;
+    }
+
+    .demo-disc-bar.highlight .bar .fill {
+      background: var(--primary);
+    }
+
+    .demo-disc-bar .value {
+      width: 40px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .demo-disc-type {
+      margin-top: 16px;
+      padding: 12px;
+      background: var(--off-white);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .type-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .type-desc {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .demo-mbti-result {
+      text-align: center;
+      padding: 20px;
+      background: var(--engineering-bg);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+    }
+
+    .demo-mbti-type {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--engineering-color);
+      display: block;
+    }
+
+    .demo-mbti-name {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .demo-mbti-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .demo-mbti-fit {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+      background: var(--finance-bg);
+      border-radius: var(--radius);
+      color: var(--finance-color);
+      font-size: 13px;
+    }
+
+    /* Sales Flow Demo */
+    .demo-flow-container {
+      overflow-x: auto;
+      padding: 20px 0;
+    }
+
+    .demo-flow-step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 900px;
+    }
+
+    .demo-flow-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--primary);
+    }
+
+    .demo-flow-arrow span {
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .demo-wa-mini-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: #25D366;
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .demo-wa-mini-chat {
+      padding: 12px;
+      background: #E5DDD5;
+      min-height: 150px;
+    }
+
+    .demo-wa-mini-msg {
+      background: var(--white);
+      padding: 10px 12px;
+      border-radius: 0 8px 8px 8px;
+      font-size: 11px;
+      line-height: 1.5;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .demo-extracted-data {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px;
+      width: 220px;
+    }
+
+    .demo-extracted-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .demo-extracted-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .demo-extracted-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .demo-extracted-item .label {
+      color: var(--muted);
+      width: 60px;
+    }
+
+    .demo-extracted-item .value {
+      flex: 1;
+      font-weight: 500;
+    }
+
+    .demo-odoo-so {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      width: 220px;
+    }
+
+    .demo-odoo-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+      background: #714B67;
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .demo-odoo-content {
+      padding: 16px;
+    }
+
+    .demo-odoo-field {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    .demo-odoo-field .label {
+      color: var(--muted);
+    }
+
+    .demo-odoo-field .value {
+      font-weight: 500;
+    }
+
+    .demo-odoo-field .value.highlight {
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .demo-odoo-status {
+      margin-top: 12px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .status-badge.draft {
+      background: var(--hr-bg);
+      color: var(--hr-color);
+    }
+
+    /* Stock Chat Demo */
+    .demo-stock-chat {
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .demo-stock-table-inner {
+      width: 100%;
+      margin: 10px 0;
+      font-size: 12px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .demo-stock-table-inner th,
+    .demo-stock-table-inner td {
+      padding: 6px 4px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-stock-table-inner th {
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .demo-stock-table-inner th:nth-child(2),
+    .demo-stock-table-inner td:nth-child(2) {
+      text-align: center;
+    }
+
+    .demo-stock-table-inner th:nth-child(3),
+    .demo-stock-table-inner td:nth-child(3) {
+      text-align: right;
+    }
+
+    .demo-stock-table-inner tr:last-child td {
+      border-bottom: none;
+    }
+
+    .stock-ok {
+      color: var(--success);
+    }
+
+    .stock-empty {
+      color: var(--primary);
+    }
+
+    .demo-alt-product {
+      margin-top: 8px;
+    }
+
+    .demo-alt-item {
+      padding: 10px;
+      background: var(--off-white);
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    .demo-alt-item:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .demo-cv-card {
+        flex-wrap: wrap;
+      }
+      
+      .demo-cv-validation {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      
+      .demo-flow-container {
+        margin: 0 -24px;
+        padding: 20px 24px;
+      }
+    }
+
+    /* ==================== ARCHITECTURE ==================== */
+    .arch-layers {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .arch-layer {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 2px solid var(--border);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .arch-layer:hover,
+    .arch-layer.active {
+      border-color: var(--layer-color);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      transform: scale(1.02);
+    }
+
+    .arch-layer[data-layer="source"] { --layer-color: var(--primary); --layer-bg: #fef2f2; }
+    .arch-layer[data-layer="integration"] { --layer-color: var(--orange); --layer-bg: #fef5ed; }
+    .arch-layer[data-layer="ai"] { --layer-color: var(--blue); --layer-bg: #edf3fa; }
+    .arch-layer[data-layer="storage"] { --layer-color: var(--green); --layer-bg: #edf7f0; }
+    .arch-layer[data-layer="output"] { --layer-color: #9333ea; --layer-bg: #f5f0ff; }
+    .arch-layer[data-layer="deploy"] { --layer-color: var(--dark); --layer-bg: var(--off-white); }
+
+    .arch-layer-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .arch-layer-badge {
+      padding: 8px 16px;
+      background: var(--layer-color);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: var(--radius);
+      text-transform: uppercase;
+    }
+
+    .arch-layer-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .arch-layer-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .arch-layer-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--layer-bg);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--dark);
+      transition: all 0.3s ease;
+    }
+
+    .arch-layer-item i {
+      color: var(--layer-color);
+    }
+
+    .arch-arrow {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0;
+      color: var(--muted);
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .arch-arrow.active {
+      opacity: 1;
+      color: var(--primary);
+      animation: bounce 1s ease-in-out infinite;
+    }
+
+    /* ==================== PRICING ==================== */
+    .pricing-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .pricing-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pricing-main {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+    }
+
+    .pricing-header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .pricing-header h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .pricing-header p {
+      opacity: 0.9;
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+      padding: 16px 24px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-table th {
+      background: var(--off-white);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+    }
+
+    .pricing-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pricing-table tr:hover td {
+      background: var(--off-white);
+    }
+
+    .pricing-table .component {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--dark);
+    }
+
+    .pricing-table .component i {
+      color: var(--primary);
+    }
+
+    .pricing-table .price {
+      text-align: right;
+      font-weight: 700;
+      font-family: 'Poppins', monospace;
+      color: var(--dark);
+    }
+
+    .pricing-total {
+      background: var(--dark);
+      color: var(--white);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pricing-total-label {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .pricing-total-value {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .pricing-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .pricing-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+
+    .pricing-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--dark);
+    }
+
+    .pricing-card h4 i {
+      color: var(--primary);
+    }
+
+    .pricing-card-list {
+      list-style: none;
+    }
+
+    .pricing-card-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-card-list li:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-card-list li span {
+      color: var(--muted);
+    }
+
+    .pricing-card-list li strong {
+      color: var(--dark);
+    }
+
+    .pricing-card-total {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 2px solid var(--primary);
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+    }
+
+    .pricing-card-total .value {
+      color: var(--primary);
+    }
+
+    /* ==================== ROI ==================== */
+    .roi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .roi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .roi-benefits {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+    }
+
+    .roi-benefits h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--dark);
+    }
+
+    .roi-benefits h3 i {
+      color: var(--success);
+    }
+
+    .roi-benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: var(--finance-bg);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .roi-benefit-item:hover {
+      transform: translateX(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .roi-benefit-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .roi-benefit-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--success);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .roi-benefit-content {
+      flex: 1;
+    }
+
+    .roi-benefit-content span {
+      font-size: 14px;
+      color: var(--muted);
+      display: block;
+    }
+
+    .roi-benefit-content strong {
+      font-size: 16px;
+      color: var(--dark);
+    }
+
+    .roi-benefit-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--success);
+      font-family: 'Poppins', monospace;
+    }
+
+    .roi-summary {
+      background: var(--primary);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .roi-summary h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+
+    .roi-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .roi-metric {
+      text-align: center;
+      padding: 24px;
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .roi-metric-value {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .roi-metric-label {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .roi-highlight {
+      margin-top: 32px;
+      padding: 20px;
+      background: rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .roi-highlight-label {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 4px;
+    }
+
+    .roi-highlight-value {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    /* ==================== TIMELINE ==================== */
+    .timeline-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .timeline-total {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 32px;
+      background: var(--dark);
+      color: var(--white);
+      border-radius: var(--radius-lg);
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .timeline-total i {
+      color: var(--primary);
+    }
+
+    .timeline-track {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    .timeline-track::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 40px;
+      right: 40px;
+      height: 4px;
+      background: var(--light-gray);
+      border-radius: 100px;
+    }
+
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+      flex: 1;
+    }
+
+    .timeline-step-dot {
+      width: 56px;
+      height: 56px;
+      background: var(--card);
+      border: 4px solid var(--light-gray);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      transition: all 0.4s ease;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .timeline-step.active .timeline-step-dot {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(228, 9, 19, 0.4);
+    }
+
+    .timeline-step.completed .timeline-step-dot {
+      background: var(--success);
+      border-color: var(--success);
+      color: var(--white);
+    }
+
+    .timeline-step-content {
+      text-align: center;
+      max-width: 120px;
+    }
+
+    .timeline-step-week {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .timeline-step-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-track {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .timeline-track::before {
+        top: 0;
+        bottom: 0;
+        left: 27px;
+        width: 4px;
+        height: auto;
+      }
+
+      .timeline-step {
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      .timeline-step-content {
+        text-align: left;
+        max-width: none;
+      }
+    }
+
+    /* ==================== CTA ==================== */
+    .cta-section {
+      background: var(--dark);
+      padding: 80px 0;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+      background-image: 
+        radial-gradient(circle at 20% 50%, var(--white) 1px, transparent 1px),
+        radial-gradient(circle at 80% 50%, var(--white) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .cta-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--orange), var(--yellow));
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 10;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .cta-subtitle {
+      font-size: 18px;
+      opacity: 0.8;
+      margin-bottom: 32px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      padding: 18px 36px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .cta-btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(228, 9, 19, 0.4);
+    }
+
+    .cta-btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .cta-btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--white);
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 60px 0 32px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand {
+      max-width: 400px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .footer-logo-text {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .footer-logo-text span {
+      color: var(--primary);
+    }
+
+    .footer-tagline {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .footer-tech h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-tech-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      font-size: 13px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-tech-item:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .footer-tech-item i {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copyright {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-made {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-made i {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <div class="logo-icon">F</div>
+          <div class="logo-text">Flexeet <span>×</span> Laysander</div>
+        </div>
+        <nav class="nav">
+          <a href="#overview">Overview</a>
+          <a href="#modules">Modules</a>
+          <a href="#architecture">Arsitektur</a>
+          <a href="#pricing">Investment</a>
+          <a href="#timeline">Timeline</a>
+        </nav>
+        <button class="mobile-menu-btn">
+          <i data-lucide="menu" style="width:24px;height:24px"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+      <div class="hero-blob hero-blob-3"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i data-lucide="sparkles" style="width:16px;height:16px"></i>
+          Proposal Penawaran • Januari 2026
+        </div>
+        <h1 class="hero-title">
+          <span class="highlight">Automation & AI</span><br>
+          Integration System
+        </h1>
+        <p class="hero-subtitle">
+          Transformasi operasional PT Laysander Technology dengan solusi terintegrasi. 
+          Data dari Odoo menjadi insight otomatis, dashboard visual, dan asisten cerdas.
+        </p>
+        <div class="hero-clients">
+          <div class="hero-client">
+            <div class="hero-client-logo flexeet">F</div>
+            <span>FLEXEET</span>
+          </div>
+          <div class="hero-connector"></div>
+          <div class="hero-client">
+            <div class="hero-client-logo laysander">L</div>
+            <span>LAYSANDER</span>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a href="#pricing" class="btn btn-primary">
+            <i data-lucide="rocket" style="width:20px;height:20px"></i>
+            Lihat Investment
+          </a>
+          <a href="#modules" class="btn btn-outline-light">
+            <i data-lucide="layers" style="width:20px;height:20px"></i>
+            Explore Modules
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll untuk explore</span>
+      <div class="hero-scroll-indicator"></div>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section class="section section-alt" id="overview">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-badge">
+          <i data-lucide="target" style="width:14px;height:14px"></i>
+          Executive Summary
+        </div>
+        <h2 class="section-title">Prinsip & Tujuan Utama</h2>
+        <p class="section-subtitle">
+          Solusi yang dirancang khusus untuk kebutuhan PT Laysander Technology, 
+          dengan fokus pada keamanan data dan efisiensi operasional.
+        </p>
+      </div>
+      <div class="summary-grid">
+        <div class="card summary-card animate-on-scroll stagger-1">
+          <div class="summary-card-icon">
+            <i data-lucide="database" style="width:28px;height:28px"></i>
+          </div>
+          <h3>Odoo Tetap Utama</h3>
+          <p>Tidak ada perubahan pada sistem Odoo. Flexeet membangun intelligence layer di atasnya via API.</p>
+        </div>
+        <div class="card summary-card animate-on-scroll stagger-2">
+          <div class="summary-card-icon">
+            <i data-lucide="shield-check" style="width:28px;height:28px"></i>
+          </div>
+          <h3>Self-Hosted / On-Premise</h3>
+          <p>Semua deployment di server Laysander. Data tidak pernah keluar dari infrastruktur internal.</p>
+        </div>
+        <div class="card summary-card animate-on-scroll stagger-3">
+          <div class="summary-card-icon">
+            <i data-lucide="brain" style="width:28px;height:28px"></i>
+          </div>
+          <h3>AI-Powered Insights</h3>
+          <p>Mengubah data mentah menjadi insight actionable dengan AI yang menjelaskan PENYEBAB, bukan sekadar angka.</p>
+        </div>
+        <div class="card summary-card animate-on-scroll stagger-4">
+          <div class="summary-card-icon">
+            <i data-lucide="bell-ring" style="width:28px;height:28px"></i>
+          </div>
+          <h3>Real-Time Alerts</h3>
+          <p>Notifikasi otomatis via WhatsApp/Telegram untuk anomali: stok habis, rasio keuangan tidak sehat, dll.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section class="section" id="modules">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-badge alt">
+          <i data-lucide="boxes" style="width:14px;height:14px"></i>
+          Scope of Work
+        </div>
+        <h2 class="section-title">4 Module Terintegrasi</h2>
+        <p class="section-subtitle">
+          Solusi komprehensif untuk setiap divisi, saling terhubung untuk hasil maksimal.
+        </p>
+      </div>
+      <div class="modules-grid">
+        <!-- Module A: Finance -->
+        <div class="card module-card animate-on-scroll stagger-1" data-module="finance">
+          <div class="module-header">
+            <div class="module-badge">
+              <i data-lucide="trending-up" style="width:12px;height:12px"></i>
+              Module A
+            </div>
+            <h3 class="module-title">Finance Intelligence System</h3>
+            <p class="module-subtitle">Target User: Bu Susi & Tim Finance</p>
+            <div class="module-price">Rp 18.000.000</div>
+          </div>
+          <div class="module-content">
+            <div class="module-section">
+              <div class="module-section-title">
+                <i data-lucide="package" style="width:14px;height:14px"></i>
+                Deliverables
+              </div>
+              <ul class="module-list">
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Automated Reporting</strong> — Tarik data otomatis dari Odoo ke Dashboard</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Aging Stock Analysis</strong> — Laporan expired, slow-moving dengan alert</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Financial Ratios</strong> — Cash, Liquidity, Inventory Days otomatis</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>AI Insights (P&L)</strong> — Analisis penyebab perubahan biaya</span>
+                </li>
+              </ul>
+            </div>
+            <div class="module-results">
+              <div class="module-result">
+                <i data-lucide="zap" style="width:16px;height:16px"></i>
+                <span>Waktu pelaporan: <strong>4-6 jam → 10 menit</strong></span>
+              </div>
+              <div class="module-result">
+                <i data-lucide="eye" style="width:16px;height:16px"></i>
+                <span>Real-time visibility ke kondisi keuangan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module B: Engineering -->
+        <div class="card module-card animate-on-scroll stagger-2" data-module="engineering">
+          <div class="module-header">
+            <div class="module-badge">
+              <i data-lucide="wrench" style="width:12px;height:12px"></i>
+              Module B
+            </div>
+            <h3 class="module-title">Engineering Knowledge System</h3>
+            <p class="module-subtitle">Target User: Tim Engineering & Supervisor</p>
+            <div class="module-price">Rp 15.000.000</div>
+          </div>
+          <div class="module-content">
+            <div class="module-section">
+              <div class="module-section-title">
+                <i data-lucide="package" style="width:14px;height:14px"></i>
+                Deliverables
+              </div>
+              <ul class="module-list">
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Knowledge Base Database</strong> — Dokumen → Database terstruktur</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>AI Chatbot Internal</strong> — Jawab pertanyaan teknis via WA/Telegram</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Troubleshooting Flow</strong> — Guided diagnosis step-by-step</span>
+                </li>
+              </ul>
+            </div>
+            <div class="module-results">
+              <div class="module-result">
+                <i data-lucide="zap" style="width:16px;height:16px"></i>
+                <span>Beban supervisor: <strong>Berkurang 60-70%</strong></span>
+              </div>
+              <div class="module-result">
+                <i data-lucide="brain" style="width:16px;height:16px"></i>
+                <span>Knowledge tidak hilang saat resign</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module C: HR -->
+        <div class="card module-card animate-on-scroll stagger-3" data-module="hr">
+          <div class="module-header">
+            <div class="module-badge">
+              <i data-lucide="users" style="width:12px;height:12px"></i>
+              Module C
+            </div>
+            <h3 class="module-title">HR Recruitment Automation</h3>
+            <p class="module-subtitle">Target User: Tim HR</p>
+            <div class="module-price">Rp 10.000.000</div>
+          </div>
+          <div class="module-content">
+            <div class="module-section">
+              <div class="module-section-title">
+                <i data-lucide="package" style="width:14px;height:14px"></i>
+                Deliverables
+              </div>
+              <ul class="module-list">
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Automated CV Screening</strong> — AI filter & scoring otomatis</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Objective Validation</strong> — Jarak rumah, IPK, akreditasi via API</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Assessment Integration</strong> — Auto-input DISC/MBTI ke database</span>
+                </li>
+              </ul>
+            </div>
+            <div class="module-results">
+              <div class="module-result">
+                <i data-lucide="zap" style="width:16px;height:16px"></i>
+                <span>Screening CV: <strong>2-3 hari → 2-3 jam</strong></span>
+              </div>
+              <div class="module-result">
+                <i data-lucide="target" style="width:16px;height:16px"></i>
+                <span>Kualitas kandidat meningkat</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module D: Sales -->
+        <div class="card module-card animate-on-scroll stagger-4" data-module="sales">
+          <div class="module-header">
+            <div class="module-badge">
+              <i data-lucide="shopping-cart" style="width:12px;height:12px"></i>
+              Module D
+            </div>
+            <h3 class="module-title">Sales Operations Automation</h3>
+            <p class="module-subtitle">Target User: Tim Sales & Admin</p>
+            <div class="module-price">Rp 12.000.000</div>
+          </div>
+          <div class="module-content">
+            <div class="module-section">
+              <div class="module-section-title">
+                <i data-lucide="package" style="width:14px;height:14px"></i>
+                Deliverables
+              </div>
+              <ul class="module-list">
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Automated Order Input</strong> — Chat WA → Draft SO di Odoo</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Stock Alert System</strong> — Notif stok menipis + saran substitusi</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                  <span><strong>Stock Inquiry Chatbot</strong> — Cek stok instant via WA/Telegram</span>
+                </li>
+              </ul>
+            </div>
+            <div class="module-results">
+              <div class="module-result">
+                <i data-lucide="zap" style="width:16px;height:16px"></i>
+                <span>Input SO: <strong>10-15 menit → 2-3 menit</strong></span>
+              </div>
+              <div class="module-result">
+                <i data-lucide="clock" style="width:16px;height:16px"></i>
+                <span>Response cek stok: <strong>Instant</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE DEMOS -->
+      <!-- Demo A: Finance Intelligence -->
+      <div class="module-demo animate-on-scroll" id="demo-finance">
+        <div class="demo-header">
+          <div class="demo-badge finance">
+            <i data-lucide="play-circle" style="width:14px;height:14px"></i>
+            Demo Module A
+          </div>
+          <h3 class="demo-title">Finance Intelligence System</h3>
+          <p class="demo-subtitle">Preview dashboard dan fitur yang akan dibangun</p>
+        </div>
+        
+        <div class="demo-content">
+          <!-- Demo: Automated Dashboard -->
+          <div class="demo-section">
+            <div class="demo-section-header">
+              <span class="demo-section-number">01</span>
+              <span class="demo-section-name">Automated Dashboard</span>
+            </div>
+            <div class="demo-dashboard">
+              <div class="demo-dashboard-header">
+                <div class="demo-dashboard-title">
+                  <i data-lucide="bar-chart-3" style="width:20px;height:20px"></i>
+                  Financial Overview - Januari 2026
+                </div>
+                <div class="demo-dashboard-actions">
+                  <span class="demo-live-badge">
+                    <span class="demo-live-dot"></span>
+                    Live dari Odoo
+                  </span>
+                </div>
+              </div>
+              <div class="demo-metrics-grid">
+                <div class="demo-metric-card">
+                  <div class="demo-metric-icon green">
+                    <i data-lucide="trending-up" style="width:20px;height:20px"></i>
+                  </div>
+                  <div class="demo-metric-content">
+                    <span class="demo-metric-label">Revenue MTD</span>
+                    <span class="demo-metric-value">Rp 2.4M</span>
+                    <span class="demo-metric-change positive">+12.5%</span>
+                  </div>
+                </div>
+                <div class="demo-metric-card">
+                  <div class="demo-metric-icon blue">
+                    <i data-lucide="wallet" style="width:20px;height:20px"></i>
+                  </div>
+                  <div class="demo-metric-content">
+                    <span class="demo-metric-label">Cash Position</span>
+                    <span class="demo-metric-value">Rp 890jt</span>
+                    <span class="demo-metric-change positive">+5.2%</span>
+                  </div>
+                </div>
+                <div class="demo-metric-card">
+                  <div class="demo-metric-icon orange">
+                    <i data-lucide="package" style="width:20px;height:20px"></i>
+                  </div>
+                  <div class="demo-metric-content">
+                    <span class="demo-metric-label">Inventory Value</span>
+                    <span class="demo-metric-value">Rp 1.2M</span>
+                    <span class="demo-metric-change negative">-3.1%</span>
+                  </div>
+                </div>
+                <div class="demo-metric-card">
+                  <div class="demo-metric-icon purple">
+                    <i data-lucide="receipt" style="width:20px;height:20px"></i>
+                  </div>
+                  <div class="demo-metric-content">
+                    <span class="demo-metric-label">AR Outstanding</span>
+                    <span class="demo-metric-value">Rp 456jt</span>
+                    <span class="demo-metric-change neutral">0%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="demo-chart-placeholder">
+                <div class="demo-chart-bars">
+                  <div class="demo-chart-bar" style="--height: 65%"><span>Jan</span></div>
+                  <div class="demo-chart-bar" style="--height: 80%"><span>Feb</span></div>
+                  <div class="demo-chart-bar" style="--height: 45%"><span>Mar</span></div>
+                  <div class="demo-chart-bar" style="--height: 90%"><span>Apr</span></div>
+                  <div class="demo-chart-bar" style="--height: 70%"><span>May</span></div>
+                  <div class="demo-chart-bar active" style="--height: 85%"><span>Jun</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo: Aging Stock Alert -->
+          <div class="demo-section">
+            <div class="demo-section-header">
+              <span class="demo-section-number">02</span>
+              <span class="demo-section-name">Aging Stock Analysis & Alert</span>
+            </div>
+            <div class="demo-alerts">
+              <div class="demo-alert critical">
+                <div class="demo-alert-icon">
+                  <i data-lucide="alert-triangle" style="width:20px;height:20px"></i>
+                </div>
+                <div class="demo-alert-content">
+                  <div class="demo-alert-title">EXPIRED - Perlu Tindakan Segera</div>
+                  <div class="demo-alert-desc">Tinta UV Cyan 1L - SKU: TUV-CY-1L</div>
+                  <div class="demo-alert-meta">
+                    <span><i data-lucide="package" style="width:12px;height:12px"></i> 24 unit</span>
+                    <span><i data-lucide="calendar" style="width:12px;height:12px"></i> Expired 15 Jan 2026</span>
+                    <span><i data-lucide="map-pin" style="width:12px;height:12px"></i> Gudang Jakarta</span>
+                  </div>
+                </div>
+                <div class="demo-alert-action">
+                  <button class="demo-btn-small">Lihat Detail</button>
+                </div>
+              </div>
+              <div class="demo-alert warning">
+                <div class="demo-alert-icon">
+                  <i data-lucide="clock" style="width:20px;height:20px"></i>
+                </div>
+                <div class="demo-alert-content">
+                  <div class="demo-alert-title">NEAR EXPIRY - 30 Hari Lagi</div>
+                  <div class="demo-alert-desc">Printhead Epson DX5 - SKU: PH-EP-DX5</div>
+                  <div class="demo-alert-meta">
+                    <span><i data-lucide="package" style="width:12px;height:12px"></i> 8 unit</span>
+                    <span><i data-lucide="calendar" style="width:12px;height:12px"></i> Exp 28 Feb 2026</span>
+                    <span><i data-lucide="banknote" style="width:12px;height:12px"></i> Nilai: Rp 48jt</span>
+                  </div>
+                </div>
+                <div class="demo-alert-action">
+                  <button class="demo-btn-small outline">Promo?</button>
+                </div>
+              </div>
+              <div class="demo-alert info">
+                <div class="demo-alert-icon">
+                  <i data-lucide="trending-down" style="width:20px;height:20px"></i>
+                </div>
+                <div class="demo-alert-content">
+                  <div class="demo-alert-title">SLOW MOVING - 90+ Hari Tidak Terjual</div>
+                  <div class="demo-alert-desc">Cutter Blade 60° - SKU: CB-60-100</div>
+                  <div class="demo-alert-meta">
+                    <span><i data-lucide="package" style="width:12px;height:12px"></i> 156 unit</span>
+                    <span><i data-lucide="calendar" style="width:12px;height:12px"></i> Last sold: 95 hari lalu</span>
+                  </div>
+                </div>
+                <div class="demo-alert-action">
+                  <button class="demo-btn-small outline">Analisis</button>
+                </div>
+              </div>
+            </div>
+            <div class="demo-wa-notification">
+              <div class="demo-wa-header">
+                <i data-lucide="message-circle" style="width:16px;height:16px"></i>
+                WhatsApp Alert Preview
+              </div>
+              <div class="demo-wa-message">
+                <div class="demo-wa-bubble">
+                  <strong>🚨 Stock Alert - Laysander</strong><br><br>
+                  <strong>EXPIRED:</strong> 1 item perlu tindakan segera<br>
+                  <strong>NEAR EXPIRY:</strong> 3 item (30 hari)<br>
+                  <strong>SLOW MOVING:</strong> 12 item (90+ hari)<br><br>
+                  Total nilai at risk: <strong>Rp 124.5jt</strong><br><br>
+                  <span style="color:#667781">Lihat detail: dashboard.laysander.co.id</span>
+                </div>
+                <span class="demo-wa-time">09:00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo: AI P&L Insights -->
+          <div class="demo-section">
+            <div class="demo-section-header">
+              <span class="demo-section-number">03</span>
+              <span class="demo-section-name">AI-Powered P&L Insights</span>
+            </div>
+            <div class="demo-ai-chat">
+              <div class="demo-ai-header">
+                <div class="demo-ai-avatar">
+                  <i data-lucide="sparkles" style="width:20px;height:20px"></i>
+                </div>
+                <div class="demo-ai-info">
+                  <span class="demo-ai-name">Finance AI Assistant</span>
+                  <span class="demo-ai-status">Analyzing your P&L data...</span>
+                </div>
+              </div>
+              <div class="demo-ai-content">
+                <div class="demo-ai-insight">
+                  <div class="demo-ai-insight-header">
+                    <i data-lucide="lightbulb" style="width:16px;height:16px"></i>
+                    Key Insight - Januari 2026
+                  </div>
+                  <div class="demo-ai-insight-body">
+                    <p><strong>Gross Profit turun 8.3%</strong> dibanding bulan lalu. Ini disebabkan oleh:</p>
+                    <ul>
+                      <li><strong>COGS naik 12%</strong> karena kenaikan harga tinta import (USD +3.2%)</li>
+                      <li><strong>Diskon meningkat 15%</strong> untuk program clearance stock lama</li>
+                      <li><strong>Revenue hanya naik 2%</strong> meski volume order naik 8% (harga jual rata-rata turun)</li>
+                    </ul>
+                  </div>
+                  <div class="demo-ai-recommendation">
+                    <i data-lucide="target" style="width:14px;height:14px"></i>
+                    <span><strong>Rekomendasi:</strong> Review pricing strategy untuk product line dengan margin &lt;15%. Pertimbangkan adjust harga untuk offset kenaikan COGS.</span>
+                  </div>
+                </div>
+                <div class="demo-ai-metrics">
+                  <div class="demo-ai-metric">
+                    <span class="label">Cash Ratio</span>
+                    <span class="value good">1.8</span>
+                    <span class="status">Sehat</span>
+                  </div>
+                  <div class="demo-ai-metric">
+                    <span class="label">Inventory Days</span>
+                    <span class="value warning">68</span>
+                    <span class="status">Perlu perhatian</span>
+                  </div>
+                  <div class="demo-ai-metric">
+                    <span class="label">AR Days</span>
+                    <span class="value good">32</span>
+                    <span class="status">Normal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo B: Engineering Knowledge -->
+      <div class="module-demo animate-on-scroll" id="demo-engineering">
+        <div class="demo-header">
+          <div class="demo-badge engineering">
+            <i data-lucide="play-circle" style="width:14px;height:14px"></i>
+            Demo Module B
+          </div>
+          <h3 class="demo-title">Engineering Knowledge System</h3>
+          <p class="demo-subtitle">Chatbot & knowledge base untuk tim teknis</p>
+        </div>
+        
+        <div class="demo-content">
+          <!-- Demo: AI Chatbot -->
+          <div class="demo-section">
+            <div class="demo-section-header">
+              <span class="demo-section-number">01</span>
+              <span class="demo-section-name">AI Technical Chatbot</span>
+            </div>
+            <div class="demo-phone">
+              <div class="demo-phone-header">
+                <div class="demo-phone-notch"></div>
+              </div>
+              <div class="demo-phone-screen">
+                <div class="demo-chat-header">
+                  <div class="demo-chat-avatar blue">
+                    <i data-lucide="bot" style="width:20px;height:20px"></i>
+                  </div>
+                  <div class="demo-chat-info">
+                    <span class="demo-chat-name">Laysander Tech Support</span>
+                    <span class="demo-chat-status online">Online • AI-Powered</span>
+                  </div>
+                </div>
+                <div class="demo-chat-messages">
+                  <div class="demo-message user">
+                    <div class="demo-message-bubble">Printer Roland RF-640 error E-1102, sudah coba restart tapi masih muncul</div>
+                    <span class="demo-message-time">10:23</span>
+                  </div>
+                  <div class="demo-message bot">
+                    <div class="demo-message-bubble">
+                      <p>Error <strong>E-1102</strong> pada Roland RF-640 biasanya terkait dengan <strong>Head Temperature Sensor</strong>. Mari kita diagnosa:</p>
+                      <div class="demo-message-steps">
+                        <div class="demo-step">
+                          <span class="demo-step-num">1</span>
+                          <span>Cek suhu ruangan (ideal: 20-25°C)</span>
+                        </div>
+                        <div class="demo-step">
+                          <span class="demo-step-num">2</span>
+                          <span>Periksa kipas pendingin head - pastikan berputar normal</span>
+                        </div>
+                        <div class="demo-step">
+                          <span class="demo-step-num">3</span>
+                          <span>Clean sensor dengan IPA (lokasi: belakang carriage)</span>
+                        </div>
+                      </div>
+                      <p style="margin-top:8px;font-size:12px;color:#667781">📎 Saya lampirkan diagram lokasi sensor</p>
+                    </div>
+                    <span class="demo-message-time">10:23</span>
+                  </div>
+                  <div class="demo-message user">
+                    <div class="demo-message-bubble">Kipas nya bunyi kasar, sepertinya perlu ganti</div>
+                    <span class="demo-message-time">10:25</span>
+                  </div>
+                  <div class="demo-message bot">
+                    <div class="demo-message-bubble">
+                      <p>Bunyi kasar = bearing aus. Part yang dibutuhkan:</p>
+                      <div class="demo-part-card">
+                        <strong>Cooling Fan Assembly RF-640</strong><br>
+                        <span style="color:#667781">SKU: RF-FAN-01 • Stock: 12 unit</span><br>
+                        <span style="color:var(--success)">✓ Tersedia di Gudang Jakarta</span>
+                      </div>
+                      <p style="margin-top:8px">Mau saya buatkan <strong>ticket service</strong> untuk teknisi?</p>
+                    </div>
+                    <span class="demo-message-time">10:25</span>
+                  </div>
+                </div>
+                <div class="demo-chat-input">
+                  <input type="text" placeholder="Ketik pesan..." disabled>
+                  <button class="demo-chat-send">
+                    <i data-lucide="send" style="width:18px;height:18px"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo: Knowledge Base -->
+          <div class="demo-section">
+            <div class="demo-section-header">
+              <span class="demo-section-number">02</span>
+              <span class="demo-section-name">Searchable Knowledge Base</span>
+            </div>
+            <div class="demo-kb">
+              <div class="demo-kb-search">
+                <i data-lucide="search" style="width:20px;height:20px"></i>
+                <input type="text" placeholder="Cari troubleshooting, manual, SOP..." value="maintenance printhead" disabled>
+              </div>
+              <div class="demo-kb-results">
+                <div class="demo-kb-result">
+                  <div class="demo-kb-result-icon">
+                    <i data-lucide="file-text" style="width:20px;height:20px"></i>
+                  </div>
+                  <div class="demo-kb-result-content">
+                    <h4>SOP Maintenance Printhead Epson DX5/DX7</h4>
+                    <p>Prosedur lengkap pembersihan dan maintenance printhead untuk mesin dengan head Epson...</p>
+                    <div class="demo-kb-result-meta">
+                      <span><i data-lucide="folder" style="width:12px;height:12px"></i> Maintenance</span>
+                      <span><i data-lucide="eye" style="width:12px;height:12px"></i> 234 views</span>
+                      <span><i data-lucide="clock" style="width:12px;height:12px"></i> Updated 3 hari lalu</span>
+                    </div>
+                  </div>
+                  <div class="demo-kb-result-match">98% match</div>
+                </div>
+                <div class="demo-kb-result">
+                  <div class="demo-kb-result-icon">
+                    <i data-lucide="video" style="width:20px;height:20px"></i>
+                  </div>
+                  <div class="demo-kb-result-content">
+                    <h4>Video: Cara Ganti Printhead Roland VS-640</h4>
+                    <p>Tutorial video step-by-step penggantian printhead pada mesin Roland VS series...</p>
+                    <div class="demo-kb-result-meta">
+                      <span><i data-lucide="folder" style="width:12px;height:12px"></i> Tutorial</span>
+                      <span><i data-lucide="play" style="width:12px;height:12px"></i> 12:34</span>
+                    </div>
+                  </div>
+                  <div class="demo-kb-result-match">85% match</div>
+                </div>
+                <div class="demo-kb-result">
+                  <div class="demo-kb-result-icon">
+                    <i data-lucide="alert-circle" style="width:20px;height:20px"></i>
+                  </div>
+                  <div class="demo-kb-result-content">
+                    <h4>Troubleshoot: Printhead Clogged/Mampet</h4>
+                    <p>Diagnosa dan solusi untuk masalah printhead tersumbat, nozzle check gagal...</p>
+                    <div class="demo-kb-result-meta">
+                      <span><i data-lucide="folder" style="width:12px;height:12px"></i> Troubleshoot</span>
+                      <span><i data-lucide="star" style="width:12px;height:12px"></i> Popular</span>
+                    </div>
+                  </div>
+                  <div class="demo-kb-result-match">82% match</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo C: HR Recruitment -->
+      <div class="module-demo animate-on-scroll" id="demo-hr">
+        <div class="demo-header">
+          <div class="demo-badge hr">
+            <i data-lucide="play-circle" style="width:14px;height:14px"></i>
+            Demo Module C
+          </div>
+          <h3 class="demo-title">HR Recruitment Automation</h3>
+          <p class="demo-subtitle">Screening CV otomatis dengan AI scoring</p>
+        </div>
+        
+        <div class="demo-content">
+          <!-- Demo: CV Screening -->
+          <div class="demo-section">
+            <div class="demo-section-header">
+              <span class="demo-section-number">01</span>
+              <span class="demo-section-name">Automated CV Screening & Ranking</span>
+            </div>
+            <div class="demo-cv-screening">
+              <div class="demo-cv-header">
+                <div class="demo-cv-title">
+                  <i data-lucide="users" style="width:20px;height:20px"></i>
+                  Posisi: Service Engineer - Jakarta
+                </div>
+                <div class="demo-cv-stats">
+                  <span class="demo-cv-stat">
+                    <i data-lucide="file-text" style="width:14px;height:14px"></i>
+                    47 CV masuk
+                  </span>
+                  <span class="demo-cv-stat">
+                    <i data-lucide="filter" style="width:14px;height:14px"></i>
+                    12 lolos filter
+                  </span>
+                  <span class="demo-cv-stat">
+                    <i data-lucide="clock" style="width:14px;height:14px"></i>
+                    Processed: 2 menit
+                  </span>
+                </div>
+              </div>
+              <div class="demo-cv-list">
+                <div class="demo-cv-card top">
+                  <div class="demo-cv-rank">#1</div>
+                  <div class="demo-cv-avatar">AS</div>
+                  <div class="demo-cv-info">
+                    <h4>Ahmad Santoso</h4>
+                    <p>D3 Teknik Elektro • Politeknik Negeri Jakarta</p>
+                    <div class="demo-cv-tags">
+                      <span class="tag green">3 thn exp</span>
+                      <span class="tag blue">Roland certified</span>
+                      <span class="tag">Epson exp</span>
+                    </div>
+                  </div>
+                  <div class="demo-cv-score">
+                    <div class="demo-score-circle" style="--score: 92">
+                      <span>92</span>
+                    </div>
+                    <span class="demo-score-label">AI Score</span>
+                  </div>
+                  <div class="demo-cv-validation">
+                    <div class="demo-validation-item valid">
+                      <i data-lucide="check-circle" style="width:14px;height:14px"></i>
+                      <span>Jarak: 8km</span>
+                    </div>
+                    <div class="demo-validation-item valid">
+                      <i data-lucide="check-circle" style="width:14px;height:14px"></i>
+                      <span>IPK: 3.45</span>
+                    </div>
+                    <div class="demo-validation-item valid">
+                      <i data-lucide="check-circle" style="width:14px;height:14px"></i>
+                      <span>Akreditasi: A</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-cv-card">
+                  <div class="demo-cv-rank">#2</div>
+                  <div class="demo-cv-avatar">DP</div>
+                  <div class="demo-cv-info">
+                    <h4>Dewi Pratiwi</h4>
+                    <p>S1 Teknik Mesin • Universitas Trisakti</p>
+                    <div class="demo-cv-tags">
+                      <span class="tag green">2 thn exp</span>
+                      <span class="tag">Mimaki exp</span>
+                    </div>
+                  </div>
+                  <div class="demo-cv-score">
+                    <div class="demo-score-circle" style="--score: 85">
+                      <span>85</span>
+                    </div>
+                    <span class="demo-score-label">AI Score</span>
+                  </div>
+                  <div class="demo-cv-validation">
+                    <div class="demo-validation-item valid">
+                      <i data-lucide="check-circle" style="width:14px;height:14px"></i>
+                      <span>Jarak: 12km</span>
+                    </div>
+                    <div class="demo-validation-item valid">
+                      <i data-lucide="check-circle" style="width:14px;height:14px"></i>
+                      <span>IPK: 3.21</span>
+                    </div>
+                    <div class="demo-validation-item warning">
+                      <i data-lucide="alert-circle" style="width:14px;height:14px"></i>
+                      <span>Akreditasi: B</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-cv-card rejected">
+                  <div class="demo-cv-rank dim">#35</div>
+                  <div class="demo-cv-avatar dim">RH</div>
+                  <div class="demo-cv-info">
+                    <h4 class="dim">Rudi Hartono</h4>
+                    <p class="dim">SMA • Fresh Graduate</p>
+                  </div>
+                  <div class="demo-cv-score">
+                    <div class="demo-score-circle rejected" style="--score: 28">
+                      <span>28</span>
+                    </div>
+                    <span class="demo-score-label">Tidak Lolos</span>
+                  </div>
+                  <div class="demo-cv-validation">
+                    <div class="demo-validation-item invalid">
+                      <i data-lucide="x-circle" style="width:14px;height:14px"></i>
+                      <span>Min. D3 required</span>
+                    </div>
+                    <div class="demo-validation-item invalid">
+                      <i data-lucide="x-circle" style="width:14px;height:14px"></i>
+                      <span>No experience</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo: Assessment Integration -->
+          <div class="demo-section">
+            <div class="demo-section-header">
+              <span class="demo-section-number">02</span>
+              <span class="demo-section-name">Auto DISC/MBTI Integration</span>
+            </div>
+            <div class="demo-assessment">
+              <div class="demo-assessment-card">
+                <div class="demo-assessment-header">
+                  <div class="demo-assessment-avatar">AS</div>
+                  <div class="demo-assessment-info">
+                    <h4>Ahmad Santoso</h4>
+                    <span>Assessment completed: 28 Jan 2026</span>
+                  </div>
+                </div>
+                <div class="demo-assessment-results">
+                  <div class="demo-disc">
+                    <h5>DISC Profile</h5>
+                    <div class="demo-disc-bars">
+                      <div class="demo-disc-bar">
+                        <span class="label">D</span>
+                        <div class="bar"><div class="fill" style="width: 35%"></div></div>
+                        <span class="value">35%</span>
+                      </div>
+                      <div class="demo-disc-bar">
+                        <span class="label">I</span>
+                        <div class="bar"><div class="fill" style="width: 45%"></div></div>
+                        <span class="value">45%</span>
+                      </div>
+                      <div class="demo-disc-bar highlight">
+                        <span class="label">S</span>
+                        <div class="bar"><div class="fill" style="width: 72%"></div></div>
+                        <span class="value">72%</span>
+                      </div>
+                      <div class="demo-disc-bar">
+                        <span class="label">C</span>
+                        <div class="bar"><div class="fill" style="width: 68%"></div></div>
+                        <span class="value">68%</span>
+                      </div>
+                    </div>
+                    <div class="demo-disc-type">
+                      <span class="type-badge">SC Type</span>
+                      <span class="type-desc">Steady, detail-oriented, reliable</span>
+                    </div>
+                  </div>
+                  <div class="demo-mbti">
+                    <h5>MBTI</h5>
+                    <div class="demo-mbti-result">
+                      <span class="demo-mbti-type">ISTJ</span>
+                      <span class="demo-mbti-name">"The Inspector"</span>
+                    </div>
+                    <p class="demo-mbti-desc">Responsible, thorough, dependable. Great for technical roles requiring precision.</p>
+                    <div class="demo-mbti-fit">
+                      <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+                      <span><strong>Good fit</strong> untuk posisi Service Engineer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo D: Sales Operations -->
+      <div class="module-demo animate-on-scroll" id="demo-sales">
+        <div class="demo-header">
+          <div class="demo-badge sales">
+            <i data-lucide="play-circle" style="width:14px;height:14px"></i>
+            Demo Module D
+          </div>
+          <h3 class="demo-title">Sales Operations Automation</h3>
+          <p class="demo-subtitle">WhatsApp order ke Odoo, cek stok instant</p>
+        </div>
+        
+        <div class="demo-content">
+          <!-- Demo: WhatsApp to Odoo -->
+          <div class="demo-section">
+            <div class="demo-section-header">
+              <span class="demo-section-number">01</span>
+              <span class="demo-section-name">WhatsApp Order → Auto Draft SO</span>
+            </div>
+            <div class="demo-flow-container">
+              <div class="demo-flow-step">
+                <div class="demo-phone mini">
+                  <div class="demo-phone-screen">
+                    <div class="demo-wa-mini-header">
+                      <i data-lucide="message-circle" style="width:16px;height:16px"></i>
+                      WhatsApp
+                    </div>
+                    <div class="demo-wa-mini-chat">
+                      <div class="demo-wa-mini-msg incoming">
+                        <strong>PT Maju Jaya:</strong><br>
+                        Mau order:<br>
+                        - Tinta eco solvent cyan 5L x 10<br>
+                        - Printhead DX5 x 2<br>
+                        Kirim ke Surabaya ya
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-flow-arrow">
+                  <i data-lucide="arrow-right" style="width:24px;height:24px"></i>
+                  <span>AI Extract</span>
+                </div>
+                <div class="demo-extracted-data">
+                  <div class="demo-extracted-header">
+                    <i data-lucide="sparkles" style="width:16px;height:16px"></i>
+                    Data Extracted
+                  </div>
+                  <div class="demo-extracted-items">
+                    <div class="demo-extracted-item">
+                      <span class="label">Customer</span>
+                      <span class="value">PT Maju Jaya</span>
+                      <i data-lucide="check" style="width:14px;height:14px;color:var(--success)"></i>
+                    </div>
+                    <div class="demo-extracted-item">
+                      <span class="label">Item 1</span>
+                      <span class="value">Tinta Eco Cyan 5L × 10</span>
+                      <i data-lucide="check" style="width:14px;height:14px;color:var(--success)"></i>
+                    </div>
+                    <div class="demo-extracted-item">
+                      <span class="label">Item 2</span>
+                      <span class="value">Printhead DX5 × 2</span>
+                      <i data-lucide="check" style="width:14px;height:14px;color:var(--success)"></i>
+                    </div>
+                    <div class="demo-extracted-item">
+                      <span class="label">Shipping</span>
+                      <span class="value">Surabaya</span>
+                      <i data-lucide="check" style="width:14px;height:14px;color:var(--success)"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-flow-arrow">
+                  <i data-lucide="arrow-right" style="width:24px;height:24px"></i>
+                  <span>Create SO</span>
+                </div>
+                <div class="demo-odoo-so">
+                  <div class="demo-odoo-header">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23714B67'/%3E%3Ctext x='50' y='65' text-anchor='middle' fill='white' font-size='40' font-weight='bold'%3EO%3C/text%3E%3C/svg%3E" alt="Odoo" style="width:24px;height:24px">
+                    Draft Sales Order
+                  </div>
+                  <div class="demo-odoo-content">
+                    <div class="demo-odoo-field">
+                      <span class="label">SO Number</span>
+                      <span class="value">SO-2026-00847</span>
+                    </div>
+                    <div class="demo-odoo-field">
+                      <span class="label">Customer</span>
+                      <span class="value">PT Maju Jaya</span>
+                    </div>
+                    <div class="demo-odoo-field">
+                      <span class="label">Total</span>
+                      <span class="value highlight">Rp 18.500.000</span>
+                    </div>
+                    <div class="demo-odoo-status">
+                      <span class="status-badge draft">Draft - Perlu Review</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo: Stock Chatbot -->
+          <div class="demo-section">
+            <div class="demo-section-header">
+              <span class="demo-section-number">02</span>
+              <span class="demo-section-name">Instant Stock Inquiry via Chat</span>
+            </div>
+            <div class="demo-stock-chat">
+              <div class="demo-phone">
+                <div class="demo-phone-header">
+                  <div class="demo-phone-notch"></div>
+                </div>
+                <div class="demo-phone-screen">
+                  <div class="demo-chat-header">
+                    <div class="demo-chat-avatar purple">
+                      <i data-lucide="package" style="width:20px;height:20px"></i>
+                    </div>
+                    <div class="demo-chat-info">
+                      <span class="demo-chat-name">Laysander Stock Bot</span>
+                      <span class="demo-chat-status online">Online • Real-time Odoo</span>
+                    </div>
+                  </div>
+                  <div class="demo-chat-messages">
+                    <div class="demo-message user">
+                      <div class="demo-message-bubble">cek stok printhead dx5</div>
+                      <span class="demo-message-time">14:22</span>
+                    </div>
+                    <div class="demo-message bot">
+                      <div class="demo-message-bubble">
+                        <p><strong>📦 Stock Printhead DX5</strong></p>
+                        <table class="demo-stock-table-inner">
+                          <thead>
+                            <tr>
+                              <th>Gudang</th>
+                              <th>Qty</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Jakarta</td>
+                              <td>24</td>
+                              <td class="stock-ok">✓ Ready</td>
+                            </tr>
+                            <tr>
+                              <td>Surabaya</td>
+                              <td>8</td>
+                              <td class="stock-ok">✓ Ready</td>
+                            </tr>
+                            <tr>
+                              <td>Medan</td>
+                              <td>0</td>
+                              <td class="stock-empty">✗ Kosong</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <p style="margin-top:8px"><strong>Total: 32 unit</strong></p>
+                        <p style="font-size:12px;color:#667781">Harga: Rp 2.850.000/unit</p>
+                      </div>
+                      <span class="demo-message-time">14:22</span>
+                    </div>
+                    <div class="demo-message user">
+                      <div class="demo-message-bubble">ada alternatif yg lebih murah?</div>
+                      <span class="demo-message-time">14:23</span>
+                    </div>
+                    <div class="demo-message bot">
+                      <div class="demo-message-bubble">
+                        <p><strong>💡 Alternatif Printhead:</strong></p>
+                        <div class="demo-alt-product">
+                          <div class="demo-alt-item">
+                            <strong>DX5 Compatible (China)</strong><br>
+                            <span style="color:#667781">Rp 1.200.000 • Stock: 45 unit</span><br>
+                            <span style="color:var(--warning)">⚠️ Garansi 3 bulan vs 6 bulan original</span>
+                          </div>
+                          <div class="demo-alt-item">
+                            <strong>DX7 Printhead</strong><br>
+                            <span style="color:#667781">Rp 3.100.000 • Stock: 18 unit</span><br>
+                            <span style="color:var(--success)">✓ Higher resolution, longer life</span>
+                          </div>
+                        </div>
+                      </div>
+                      <span class="demo-message-time">14:23</span>
+                    </div>
+                  </div>
+                  <div class="demo-chat-input">
+                    <input type="text" placeholder="Ketik untuk cek stok..." disabled>
+                    <button class="demo-chat-send">
+                      <i data-lucide="send" style="width:18px;height:18px"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="section section-alt" id="architecture">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-badge">
+          <i data-lucide="cpu" style="width:14px;height:14px"></i>
+          Technical Architecture
+        </div>
+        <h2 class="section-title">Arsitektur Sistem</h2>
+        <p class="section-subtitle">
+          Layered architecture yang scalable dan maintainable, 
+          dengan fokus pada keamanan data on-premise.
+        </p>
+      </div>
+      <div class="arch-layers">
+        <div class="arch-layer animate-on-scroll stagger-1" data-layer="source">
+          <div class="arch-layer-header">
+            <div class="arch-layer-badge">Data Source</div>
+            <div class="arch-layer-title">Sistem input utama, tidak diubah</div>
+          </div>
+          <div class="arch-layer-items">
+            <div class="arch-layer-item">
+              <i data-lucide="database" style="width:18px;height:18px"></i>
+              Odoo ERP (Existing)
+            </div>
+          </div>
+        </div>
+        <div class="arch-arrow" id="arrow-1">
+          <i data-lucide="arrow-down" style="width:24px;height:24px"></i>
+        </div>
+        <div class="arch-layer animate-on-scroll stagger-2" data-layer="integration">
+          <div class="arch-layer-header">
+            <div class="arch-layer-badge">Integration Layer</div>
+            <div class="arch-layer-title">Automation workflow engine</div>
+          </div>
+          <div class="arch-layer-items">
+            <div class="arch-layer-item">
+              <i data-lucide="workflow" style="width:18px;height:18px"></i>
+              n8n (Self-Hosted)
+            </div>
+            <div class="arch-layer-item">
+              <i data-lucide="plug" style="width:18px;height:18px"></i>
+              Odoo API/Webhook
+            </div>
+          </div>
+        </div>
+        <div class="arch-arrow" id="arrow-2">
+          <i data-lucide="arrow-down" style="width:24px;height:24px"></i>
+        </div>
+        <div class="arch-layer animate-on-scroll stagger-3" data-layer="ai">
+          <div class="arch-layer-header">
+            <div class="arch-layer-badge">AI Layer</div>
+            <div class="arch-layer-title">Chatbot, analysis, insight generation</div>
+          </div>
+          <div class="arch-layer-items">
+            <div class="arch-layer-item">
+              <i data-lucide="bot" style="width:18px;height:18px"></i>
+              Cekat.AI
+            </div>
+            <div class="arch-layer-item">
+              <i data-lucide="sparkles" style="width:18px;height:18px"></i>
+              OpenAI / Local LLM
+            </div>
+          </div>
+        </div>
+        <div class="arch-arrow" id="arrow-3">
+          <i data-lucide="arrow-down" style="width:24px;height:24px"></i>
+        </div>
+        <div class="arch-layer animate-on-scroll stagger-4" data-layer="storage">
+          <div class="arch-layer-header">
+            <div class="arch-layer-badge">Database Layer</div>
+            <div class="arch-layer-title">Knowledge Base & historical data</div>
+          </div>
+          <div class="arch-layer-items">
+            <div class="arch-layer-item">
+              <i data-lucide="server" style="width:18px;height:18px"></i>
+              PostgreSQL
+            </div>
+            <div class="arch-layer-item">
+              <i data-lucide="search" style="width:18px;height:18px"></i>
+              Vector DB (Pinecone/Chroma)
+            </div>
+          </div>
+        </div>
+        <div class="arch-arrow" id="arrow-4">
+          <i data-lucide="arrow-down" style="width:24px;height:24px"></i>
+        </div>
+        <div class="arch-layer animate-on-scroll stagger-5" data-layer="output">
+          <div class="arch-layer-header">
+            <div class="arch-layer-badge">Presentation Layer</div>
+            <div class="arch-layer-title">Output yang mudah diakses user</div>
+          </div>
+          <div class="arch-layer-items">
+            <div class="arch-layer-item">
+              <i data-lucide="table" style="width:18px;height:18px"></i>
+              Google Sheets
+            </div>
+            <div class="arch-layer-item">
+              <i data-lucide="bar-chart-3" style="width:18px;height:18px"></i>
+              Custom Dashboard
+            </div>
+            <div class="arch-layer-item">
+              <i data-lucide="message-circle" style="width:18px;height:18px"></i>
+              WhatsApp / Telegram
+            </div>
+          </div>
+        </div>
+        <div class="arch-arrow" id="arrow-5">
+          <i data-lucide="arrow-down" style="width:24px;height:24px"></i>
+        </div>
+        <div class="arch-layer animate-on-scroll stagger-6" data-layer="deploy">
+          <div class="arch-layer-header">
+            <div class="arch-layer-badge">Deployment</div>
+            <div class="arch-layer-title">Full control, data tidak keluar</div>
+          </div>
+          <div class="arch-layer-items">
+            <div class="arch-layer-item">
+              <i data-lucide="shield-check" style="width:18px;height:18px"></i>
+              Self-Hosted di Server Laysander (On-Premise)
+            </div>
+            <div class="arch-layer-item">
+              <i data-lucide="lock" style="width:18px;height:18px"></i>
+              Data Encryption at Rest & In Transit
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-badge">
+          <i data-lucide="credit-card" style="width:14px;height:14px"></i>
+          Investment & Pricing
+        </div>
+        <h2 class="section-title">Paket All-in-One</h2>
+        <p class="section-subtitle">
+          Pendekatan holistik untuk hasil maksimal karena data antar divisi saling terintegrasi.
+        </p>
+      </div>
+      <div class="pricing-container">
+        <div class="pricing-main animate-on-scroll stagger-1">
+          <div class="pricing-header">
+            <h3>Setup (One-Time Payment)</h3>
+            <p>Investasi awal untuk development & deployment</p>
+          </div>
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Komponen</th>
+                <th style="text-align:right">Nilai</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="component">
+                  <i data-lucide="trending-up" style="width:18px;height:18px"></i>
+                  Module A: Finance Intelligence
+                </td>
+                <td class="price">Rp 18.000.000</td>
+              </tr>
+              <tr>
+                <td class="component">
+                  <i data-lucide="wrench" style="width:18px;height:18px"></i>
+                  Module B: Engineering Knowledge
+                </td>
+                <td class="price">Rp 15.000.000</td>
+              </tr>
+              <tr>
+                <td class="component">
+                  <i data-lucide="users" style="width:18px;height:18px"></i>
+                  Module C: HR Recruitment
+                </td>
+                <td class="price">Rp 10.000.000</td>
+              </tr>
+              <tr>
+                <td class="component">
+                  <i data-lucide="shopping-cart" style="width:18px;height:18px"></i>
+                  Module D: Sales Operations
+                </td>
+                <td class="price">Rp 12.000.000</td>
+              </tr>
+              <tr>
+                <td class="component">
+                  <i data-lucide="server" style="width:18px;height:18px"></i>
+                  Infrastructure Setup
+                </td>
+                <td class="price">Rp 8.000.000</td>
+              </tr>
+              <tr>
+                <td class="component">
+                  <i data-lucide="book-open" style="width:18px;height:18px"></i>
+                  Training & Documentation
+                </td>
+                <td class="price">Rp 5.000.000</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pricing-total">
+            <div class="pricing-total-label">TOTAL SETUP</div>
+            <div class="pricing-total-value">Rp 68.000.000</div>
+          </div>
+        </div>
+        <div class="pricing-sidebar">
+          <div class="pricing-card animate-on-scroll stagger-2">
+            <h4>
+              <i data-lucide="calendar" style="width:18px;height:18px"></i>
+              Maintenance Bulanan
+            </h4>
+            <ul class="pricing-card-list">
+              <li>
+                <span>Server Monitoring & Support</span>
+                <strong>Rp 1.500.000</strong>
+              </li>
+              <li>
+                <span>AI API Usage (estimasi)</span>
+                <strong>Rp 1.000.000</strong>
+              </li>
+              <li>
+                <span>Bug Fixes & Minor Updates</span>
+                <strong>Rp 1.300.000</strong>
+              </li>
+            </ul>
+            <div class="pricing-card-total">
+              <span>Total/bulan</span>
+              <span class="value">Rp 3.800.000</span>
+            </div>
+            <p style="font-size:12px;color:var(--muted);margin-top:12px">
+              *Dimulai setelah 1 bulan free support
+            </p>
+          </div>
+          <div class="pricing-card animate-on-scroll stagger-3">
+            <h4>
+              <i data-lucide="wallet" style="width:18px;height:18px"></i>
+              Payment Terms
+            </h4>
+            <ul class="pricing-card-list">
+              <li>
+                <span>Contract Signing</span>
+                <strong>30%</strong>
+              </li>
+              <li>
+                <span>PoC Completion (Week 2)</span>
+                <strong>40%</strong>
+              </li>
+              <li>
+                <span>Go-Live (Week 8)</span>
+                <strong>30%</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI -->
+  <section class="section section-alt" id="roi">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-badge alt">
+          <i data-lucide="chart-line" style="width:14px;height:14px"></i>
+          ROI Calculation
+        </div>
+        <h2 class="section-title">Return on Investment</h2>
+        <p class="section-subtitle">
+          Estimasi penghematan dan keuntungan yang akan didapat dalam 1 tahun pertama.
+        </p>
+      </div>
+      <div class="roi-grid">
+        <div class="roi-benefits animate-on-scroll stagger-1">
+          <h3>
+            <i data-lucide="trending-up" style="width:24px;height:24px"></i>
+            Benefit Tahun 1
+          </h3>
+          <div class="roi-benefit-item">
+            <div class="roi-benefit-icon">
+              <i data-lucide="clock" style="width:20px;height:20px"></i>
+            </div>
+            <div class="roi-benefit-content">
+              <span>Finance Reporting Efficiency</span>
+              <strong>4 jam/hari × 250 hari</strong>
+            </div>
+            <div class="roi-benefit-value">Rp 100jt</div>
+          </div>
+          <div class="roi-benefit-item">
+            <div class="roi-benefit-icon">
+              <i data-lucide="users" style="width:20px;height:20px"></i>
+            </div>
+            <div class="roi-benefit-content">
+              <span>Supervisor Load Reduction</span>
+              <strong>Berkurang 60%</strong>
+            </div>
+            <div class="roi-benefit-value">Rp 72jt</div>
+          </div>
+          <div class="roi-benefit-item">
+            <div class="roi-benefit-icon">
+              <i data-lucide="file-search" style="width:20px;height:20px"></i>
+            </div>
+            <div class="roi-benefit-content">
+              <span>HR Screening Efficiency</span>
+              <strong>2 hari → 2 jam</strong>
+            </div>
+            <div class="roi-benefit-value">Rp 24jt</div>
+          </div>
+          <div class="roi-benefit-item">
+            <div class="roi-benefit-icon">
+              <i data-lucide="shopping-cart" style="width:20px;height:20px"></i>
+            </div>
+            <div class="roi-benefit-content">
+              <span>Sales Operations</span>
+              <strong>Input SO + Cek Stok</strong>
+            </div>
+            <div class="roi-benefit-value">Rp 36jt</div>
+          </div>
+          <div class="roi-benefit-item">
+            <div class="roi-benefit-icon">
+              <i data-lucide="ban" style="width:20px;height:20px"></i>
+            </div>
+            <div class="roi-benefit-content">
+              <span>Lost Sales Prevention</span>
+              <strong>Response lebih cepat</strong>
+            </div>
+            <div class="roi-benefit-value">Rp 50jt</div>
+          </div>
+        </div>
+        <div class="roi-summary animate-on-scroll stagger-2">
+          <h3>Ringkasan ROI</h3>
+          <div class="roi-metrics">
+            <div class="roi-metric">
+              <div class="roi-metric-value">2.5×</div>
+              <div class="roi-metric-label">ROI Year 1</div>
+            </div>
+            <div class="roi-metric">
+              <div class="roi-metric-value">~5</div>
+              <div class="roi-metric-label">Bulan Payback</div>
+            </div>
+            <div class="roi-metric">
+              <div class="roi-metric-value">282jt</div>
+              <div class="roi-metric-label">Total Return</div>
+            </div>
+            <div class="roi-metric">
+              <div class="roi-metric-value">114jt</div>
+              <div class="roi-metric-label">Total Investment</div>
+            </div>
+          </div>
+          <div class="roi-highlight">
+            <div class="roi-highlight-label">Net Benefit Year 1</div>
+            <div class="roi-highlight-value">Rp 168.400.000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section" id="timeline">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-badge">
+          <i data-lucide="calendar-days" style="width:14px;height:14px"></i>
+          Project Timeline
+        </div>
+        <h2 class="section-title">Jadwal Pengerjaan</h2>
+        <p class="section-subtitle">
+          Target delivery 8 minggu dengan PoC di Week 2 untuk validasi approach.
+        </p>
+      </div>
+      <div class="timeline-container">
+        <div class="timeline-header animate-on-scroll">
+          <div class="timeline-total">
+            <i data-lucide="flag" style="width:24px;height:24px"></i>
+            Total: 8 Minggu (2 Bulan)
+          </div>
+        </div>
+        <div class="timeline-track animate-on-scroll stagger-1">
+          <div class="timeline-step completed" data-step="1">
+            <div class="timeline-step-dot">
+              <i data-lucide="check" style="width:24px;height:24px"></i>
+            </div>
+            <div class="timeline-step-content">
+              <div class="timeline-step-week">Week 1</div>
+              <div class="timeline-step-title">Discovery & Data Audit</div>
+            </div>
+          </div>
+          <div class="timeline-step active" data-step="2">
+            <div class="timeline-step-dot">2</div>
+            <div class="timeline-step-content">
+              <div class="timeline-step-week">Week 2</div>
+              <div class="timeline-step-title">PoC Demo ★</div>
+            </div>
+          </div>
+          <div class="timeline-step" data-step="3">
+            <div class="timeline-step-dot">3-4</div>
+            <div class="timeline-step-content">
+              <div class="timeline-step-week">Week 3-4</div>
+              <div class="timeline-step-title">Module A & B Dev</div>
+            </div>
+          </div>
+          <div class="timeline-step" data-step="4">
+            <div class="timeline-step-dot">5-6</div>
+            <div class="timeline-step-content">
+              <div class="timeline-step-week">Week 5-6</div>
+              <div class="timeline-step-title">Module C & D Dev</div>
+            </div>
+          </div>
+          <div class="timeline-step" data-step="5">
+            <div class="timeline-step-dot">7</div>
+            <div class="timeline-step-content">
+              <div class="timeline-step-week">Week 7</div>
+              <div class="timeline-step-title">Integration & Testing</div>
+            </div>
+          </div>
+          <div class="timeline-step" data-step="6">
+            <div class="timeline-step-dot">8</div>
+            <div class="timeline-step-content">
+              <div class="timeline-step-week">Week 8</div>
+              <div class="timeline-step-title">Go-Live & Training</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-accent"></div>
+    <div class="cta-bg-pattern"></div>
+    <div class="container">
+      <div class="cta-content animate-on-scroll">
+        <h2 class="cta-title">Ready to Transform Operations?</h2>
+        <p class="cta-subtitle">
+          PoC dalam 1 minggu setelah data diterima. Mari mulai diskusi untuk langkah selanjutnya.
+        </p>
+        <div class="cta-buttons">
+          <a href="#" class="cta-btn-primary">
+            <i data-lucide="message-circle" style="width:20px;height:20px"></i>
+            Hubungi Flexeet
+          </a>
+          <a href="#pricing" class="cta-btn-secondary">
+            <i data-lucide="file-text" style="width:20px;height:20px"></i>
+            Download Proposal
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-icon">F</div>
+            <div class="footer-logo-text">Flexeet <span>×</span> Laysander</div>
+          </div>
+          <p class="footer-tagline">
+            Proposal Automation & AI Integration System untuk PT Laysander Technology. 
+            Dokumen ini bersifat CONFIDENTIAL. Valid hingga 28 Februari 2026.
+          </p>
+        </div>
+        <div class="footer-tech">
+          <h4>Powered By</h4>
+          <div class="footer-tech-list">
+            <div class="footer-tech-item">
+              <i data-lucide="workflow" style="width:16px;height:16px"></i>
+              n8n
+            </div>
+            <div class="footer-tech-item">
+              <i data-lucide="bot" style="width:16px;height:16px"></i>
+              Cekat.AI
+            </div>
+            <div class="footer-tech-item">
+              <i data-lucide="database" style="width:16px;height:16px"></i>
+              PostgreSQL
+            </div>
+            <div class="footer-tech-item">
+              <i data-lucide="message-circle" style="width:16px;height:16px"></i>
+              WhatsApp
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          © 2026 Flexeet. All rights reserved.
+        </p>
+        <p class="footer-made">
+          Made with <i data-lucide="heart" style="width:14px;height:14px"></i> for Laysander Team
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      
+      if (currentScroll > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
+        if (target) {
+          const headerHeight = 80;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Scroll animations with Intersection Observer
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Architecture layer animation
+    let currentLayer = 0;
+    const layers = document.querySelectorAll('.arch-layer');
+    const arrows = document.querySelectorAll('.arch-arrow');
+    let layerInterval = null;
+
+    function animateLayers() {
+      layers.forEach((layer, i) => {
+        layer.classList.toggle('active', i === currentLayer);
+      });
+      arrows.forEach((arrow, i) => {
+        arrow.classList.toggle('active', i === currentLayer);
+      });
+      currentLayer = (currentLayer + 1) % layers.length;
+    }
+
+    // Start layer animation after scroll reveal
+    const archSection = document.getElementById('architecture');
+    const archObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        if (!layerInterval) {
+          layerInterval = setInterval(animateLayers, 2000);
+        }
+      }
+    }, { threshold: 0.3 });
+    
+    if (archSection) {
+      archObserver.observe(archSection);
+    }
+
+    // Timeline step animation
+    let currentStep = 0;
+    const steps = document.querySelectorAll('.timeline-step');
+    let timelineInterval = null;
+
+    function animateTimeline() {
+      steps.forEach((step, i) => {
+        step.classList.remove('active', 'completed');
+        const dot = step.querySelector('.timeline-step-dot');
+        
+        if (i < currentStep) {
+          step.classList.add('completed');
+          dot.innerHTML = '<i data-lucide="check" style="width:20px;height:20px"></i>';
+        } else if (i === currentStep) {
+          step.classList.add('active');
+          // Restore original content for active step
+          const stepNum = step.getAttribute('data-step');
+          if (stepNum === '1') {
+            dot.innerHTML = '<i data-lucide="check" style="width:20px;height:20px"></i>';
+          } else if (stepNum === '3') {
+            dot.textContent = '3-4';
+          } else if (stepNum === '4') {
+            dot.textContent = '5-6';
+          } else {
+            dot.textContent = stepNum;
+          }
+        } else {
+          const stepNum = step.getAttribute('data-step');
+          if (stepNum === '3') {
+            dot.textContent = '3-4';
+          } else if (stepNum === '4') {
+            dot.textContent = '5-6';
+          } else {
+            dot.textContent = stepNum;
+          }
+        }
+      });
+      
+      lucide.createIcons();
+      currentStep = (currentStep + 1) % (steps.length + 1);
+      if (currentStep === 0) currentStep = 1;
+    }
+
+    // Start timeline animation after scroll reveal
+    const timelineSection = document.getElementById('timeline');
+    const timelineObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        if (!timelineInterval) {
+          timelineInterval = setInterval(animateTimeline, 2500);
+        }
+      }
+    }, { threshold: 0.3 });
+    
+    if (timelineSection) {
+      timelineObserver.observe(timelineSection);
+    }
+
+    // Module card hover effect
+    document.querySelectorAll('.module-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.01)';
+      });
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = '';
+      });
+    });
+
+    // Mobile menu (basic toggle - you can enhance this)
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('.nav');
+    
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        nav.style.position = 'absolute';
+        nav.style.top = '100%';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.background = 'white';
+        nav.style.flexDirection = 'column';
+        nav.style.padding = '16px';
+        nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.1)';
+      });
+    }
+
+    // Reinitialize icons after any DOM changes
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

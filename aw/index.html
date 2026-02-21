@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aji Wanda - Membangun Bisnis Sebagai Roda Dakwah</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6B7F5C',
+                        'primary-dark': '#576849',
+                        secondary: '#C97D60',
+                        'secondary-light': '#D4917A',
+                        accent: '#E8A87C',
+                        cream: '#F5F1E8',
+                        'cream-dark': '#EDE7DA',
+                        coffee: '#3E2723',
+                        'coffee-light': '#5D4037',
+                        sage: '#A8B5A0',
+                        'sage-dark': '#8A9A80',
+                    },
+                    fontFamily: {
+                        'display': ['Plus Jakarta Sans', 'sans-serif'],
+                        'body': ['Plus Jakarta Sans', 'sans-serif'],
+                        'accent': ['DM Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 2s infinite',
+                        'float-slow': 'float 8s ease-in-out 1s infinite',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.6s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.6s ease-out forwards',
+                        'scale-in': 'scaleIn 0.5s ease-out forwards',
+                        'count-up': 'countUp 2s ease-out forwards',
+                        'progress-fill': 'progressFill 1.5s ease-out forwards',
+                        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        progressFill: {
+                            '0%': { width: '0%' },
+                            '100%': { width: 'var(--target-width)' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F1E8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A8B5A0;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8A9A80;
+        }
+        
+        /* Noise texture overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        /* Section reveal animation */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(2) { transition-delay: 100ms; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(3) { transition-delay: 200ms; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
+        
+        /* Progress bar animation */
+        .progress-bar {
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .progress-bar.animate {
+            width: var(--progress);
+        }
+        
+        /* Timeline connector */
+        .timeline-line {
+            background: linear-gradient(180deg, #6B7F5C 0%, #A8B5A0 100%);
+        }
+        
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(62, 39, 35, 0.15);
+        }
+        
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-content.open {
+            max-height: 500px;
+        }
+        
+        /* Layer flow animation */
+        .layer-item {
+            opacity: 0.4;
+            transform: scale(0.98);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .layer-item.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #6B7F5C 0%, #C97D60 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Blob shapes */
+        .blob-1 {
+            background: radial-gradient(circle at 30% 30%, rgba(107, 127, 92, 0.3) 0%, transparent 70%);
+        }
+        .blob-2 {
+            background: radial-gradient(circle at 70% 70%, rgba(201, 125, 96, 0.25) 0%, transparent 70%);
+        }
+        .blob-3 {
+            background: radial-gradient(circle at 50% 50%, rgba(232, 168, 124, 0.2) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-cream font-body text-coffee antialiased">
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- ==================== SECTION 1: HEADER ==================== -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-cream font-display font-bold text-lg group-hover:bg-primary-dark transition-colors">
+                        AW
+                    </div>
+                    <span class="font-display font-bold text-xl text-coffee hidden sm:block">Aji Wanda</span>
+                </a>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#journey" class="text-coffee-light hover:text-primary font-medium transition-colors">Journey</a>
+                    <a href="#philosophy" class="text-coffee-light hover:text-primary font-medium transition-colors">Filosofi</a>
+                    <a href="#hijacket" class="text-coffee-light hover:text-primary font-medium transition-colors">Hijacket</a>
+                    <a href="#principles" class="text-coffee-light hover:text-primary font-medium transition-colors">Prinsip</a>
+                    <a href="#impact" class="text-coffee-light hover:text-primary font-medium transition-colors">Impact</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-primary text-cream rounded-xl font-semibold hover:bg-primary-dark transition-colors">
+                        Hubungi
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-coffee hover:text-primary transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-cream shadow-2xl md:hidden">
+            <div class="p-6">
+                <button id="closeMobileMenu" class="absolute top-6 right-6 p-2 text-coffee hover:text-primary">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                <div class="mt-12 flex flex-col gap-6">
+                    <a href="#journey" class="text-lg font-medium text-coffee hover:text-primary transition-colors">Journey</a>
+                    <a href="#philosophy" class="text-lg font-medium text-coffee hover:text-primary transition-colors">Filosofi</a>
+                    <a href="#hijacket" class="text-lg font-medium text-coffee hover:text-primary transition-colors">Hijacket</a>
+                    <a href="#principles" class="text-lg font-medium text-coffee hover:text-primary transition-colors">Prinsip</a>
+                    <a href="#impact" class="text-lg font-medium text-coffee hover:text-primary transition-colors">Impact</a>
+                    <a href="#contact" class="mt-4 px-5 py-3 bg-primary text-cream rounded-xl font-semibold text-center hover:bg-primary-dark transition-colors">
+                        Hubungi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- ==================== SECTION 2: HERO ==================== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Floating Blobs -->
+        <div class="absolute top-20 left-10 w-96 h-96 blob-1 rounded-full animate-float blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-80 h-80 blob-2 rounded-full animate-float-delayed blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] blob-3 rounded-full animate-float-slow blur-3xl"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-sage/30 mb-8 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse-soft"></span>
+                <span class="font-accent font-medium text-sm text-coffee-light">Founder & CEO Hijacket</span>
+            </div>
+            
+            <!-- Main Headline -->
+            <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-coffee mb-6 animate-fade-in-up" style="animation-delay: 0.4s;">
+                Aji Wanda
+            </h1>
+            
+            <!-- Subheadline -->
+            <p class="font-display font-semibold text-2xl sm:text-3xl lg:text-4xl gradient-text mb-8 animate-fade-in-up" style="animation-delay: 0.6s;">
+                Membangun Bisnis Sebagai Roda Dakwah
+            </p>
+            
+            <!-- Description -->
+            <p class="text-lg sm:text-xl text-coffee-light max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in-up" style="animation-delay: 0.8s;">
+                10+ tahun membangun brand fashion modest yang beretika, dengan filosofi bisnis yang mengutamakan sistem, integritas, dan dampak sosial berkelanjutan.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 1s;">
+                <a href="#journey" class="group px-8 py-4 bg-primary text-cream rounded-2xl font-display font-bold text-lg hover:bg-primary-dark transition-all hover:shadow-xl hover:shadow-primary/20 flex items-center gap-2">
+                    Lihat Perjalanan
+                    <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
+                </a>
+                <a href="#philosophy" class="px-8 py-4 bg-white/60 backdrop-blur-sm text-coffee border-2 border-sage/30 rounded-2xl font-display font-bold text-lg hover:bg-white hover:border-primary/30 transition-all flex items-center gap-2">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                    Filosofi Bisnis
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-sage"></i>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 3: STATS ROW ==================== -->
+    <section id="stats" class="py-16 bg-white/40 backdrop-blur-sm border-y border-sage/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 stagger-children" id="statsGrid">
+                <div class="text-center">
+                    <div class="font-accent font-bold text-4xl sm:text-5xl text-primary mb-2">
+                        <span class="count-number" data-target="10">0</span>+
+                    </div>
+                    <p class="font-medium text-coffee-light">Tahun Perjalanan</p>
+                </div>
+                <div class="text-center">
+                    <div class="font-accent font-bold text-4xl sm:text-5xl text-secondary mb-2">
+                        <span class="count-number" data-target="90">0</span>%+
+                    </div>
+                    <p class="font-medium text-coffee-light">AI Adoption</p>
+                </div>
+                <div class="text-center">
+                    <div class="font-accent font-bold text-4xl sm:text-5xl text-primary mb-2">
+                        <span class="count-number" data-target="1.2">0</span>M
+                    </div>
+                    <p class="font-medium text-coffee-light">Cost Savings/Year</p>
+                </div>
+                <div class="text-center">
+                    <div class="font-accent font-bold text-4xl sm:text-5xl text-secondary mb-2">
+                        &lt;<span class="count-number" data-target="35">0</span>%
+                    </div>
+                    <p class="font-medium text-coffee-light">HPP Target</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 4: VERTICAL TIMELINE ==================== -->
+    <section id="journey" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-section">
+                <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-accent font-semibold text-sm rounded-full mb-4">
+                    PERJALANAN
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-coffee mb-4">
+                    Milestone Journey
+                </h2>
+                <p class="text-lg text-coffee-light max-w-2xl mx-auto">
+                    Dari laboratorium SMA hingga membangun brand fashion modest yang diakui nasional
+                </p>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-8 lg:left-1/2 top-0 bottom-0 w-0.5 timeline-line"></div>
+                
+                <!-- Timeline Items -->
+                <div class="space-y-12">
+                    <!-- 2007 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:pr-12 lg:text-right pl-20 lg:pl-0">
+                            <span class="font-accent font-bold text-primary text-lg">2007</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">Pelajaran Kepemimpinan Pertama</h3>
+                            <p class="text-coffee-light mt-2">Koordinator Karya Ilmiah Remaja di SMA — belajar bahwa tanggung jawab harus selalu lebih besar dari otoritas yang dimiliki.</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-cream"></div>
+                    </div>
+                    
+                    <!-- 2008 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:order-2 lg:pl-12 pl-20">
+                            <span class="font-accent font-bold text-secondary text-lg">2008</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">Masuk Politeknik Astra</h3>
+                            <p class="text-coffee-light mt-2">Memulai pendidikan Manufacturing Engineering — fondasi pemikiran sistematis dan process-oriented dalam bisnis.</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-cream"></div>
+                    </div>
+                    
+                    <!-- 2009 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:pr-12 lg:text-right pl-20 lg:pl-0">
+                            <span class="font-accent font-bold text-primary text-lg">2009</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">Mengenal Umar Usman</h3>
+                            <p class="text-coffee-light mt-2">Bertemu mentor yang mengubah perspektif — belajar bahwa bisnis bisa menjadi kendaraan untuk kebaikan dan dakwah.</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-cream"></div>
+                    </div>
+                    
+                    <!-- 2010 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:order-2 lg:pl-12 pl-20">
+                            <span class="font-accent font-bold text-secondary text-lg">2010</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">Pelajaran Integritas</h3>
+                            <p class="text-coffee-light mt-2">Meninggalkan bisnis menguntungkan karena masalah etika — keputusan yang membentuk prinsip "integritas di atas profit".</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-cream"></div>
+                    </div>
+                    
+                    <!-- 2015 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:pr-12 lg:text-right pl-20 lg:pl-0">
+                            <span class="font-accent font-bold text-primary text-lg">2015</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">Hijacket Lahir</h3>
+                            <p class="text-coffee-light mt-2">Bersama istri Sylviana Tifanni, memulai Hijacket — brand jaket hijab dengan modal bootstrap dan visi modest fashion.</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-cream"></div>
+                    </div>
+                    
+                    <!-- 2018 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:order-2 lg:pl-12 pl-20">
+                            <span class="font-accent font-bold text-secondary text-lg">2018</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">Omnichannel Transformation</h3>
+                            <p class="text-coffee-light mt-2">Membangun sistem omnichannel dengan unit economics ketat: HPP &lt;35%, Marketing &lt;20%, ROAS ≥4x.</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-cream"></div>
+                    </div>
+                    
+                    <!-- 2020 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:pr-12 lg:text-right pl-20 lg:pl-0">
+                            <span class="font-accent font-bold text-primary text-lg">2020</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">CSR Integration</h3>
+                            <p class="text-coffee-light mt-2">Partnership dengan Dompet Dhuafa — mengintegrasikan dampak sosial ke dalam model bisnis secara sistematis.</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-cream"></div>
+                    </div>
+                    
+                    <!-- 2023 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:order-2 lg:pl-12 pl-20">
+                            <span class="font-accent font-bold text-secondary text-lg">2023</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">AI Revolution Begins</h3>
+                            <p class="text-coffee-light mt-2">Implementasi AI chatbot customer service — biaya turun dari Rp4,000 ke Rp520/chat (87% lebih hemat).</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 bg-secondary rounded-full border-4 border-cream"></div>
+                    </div>
+                    
+                    <!-- 2024 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:pr-12 lg:text-right pl-20 lg:pl-0">
+                            <span class="font-accent font-bold text-primary text-lg">2024</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">Photo AI Implementation</h3>
+                            <p class="text-coffee-light mt-2">AI untuk foto produk — menghemat Rp1.2 miliar/tahun, menggantikan proses yang setara 5-10 manager.</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-cream"></div>
+                    </div>
+                    
+                    <!-- 2025 -->
+                    <div class="relative flex flex-col lg:flex-row lg:items-center reveal-section">
+                        <div class="lg:w-1/2 lg:order-2 lg:pl-12 pl-20">
+                            <span class="font-accent font-bold text-accent text-lg">2025</span>
+                            <h3 class="font-display font-bold text-xl text-coffee mt-1">JMFW Qualification</h3>
+                            <p class="text-coffee-light mt-2">Hijacket lolos kurasi Jakarta Muslim Fashion Week 2025 — pengakuan 10 tahun konsistensi dalam modest fashion.</p>
+                        </div>
+                        <div class="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 w-6 h-6 bg-accent rounded-full border-4 border-cream shadow-lg shadow-accent/30"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 5: CARDS GRID - Philosophy ==================== -->
+    <section id="philosophy" class="py-24 bg-white/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-section">
+                <span class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-accent font-semibold text-sm rounded-full mb-4">
+                    FILOSOFI
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-coffee mb-4">
+                    4 Pilar Filosofi Bisnis
+                </h2>
+                <p class="text-lg text-coffee-light max-w-2xl mx-auto">
+                    Prinsip-prinsip fundamental yang mendasari setiap keputusan bisnis selama satu dekade perjalanan
+                </p>
+            </div>
+            
+            <!-- Cards Grid -->
+            <div class="grid md:grid-cols-2 gap-8 stagger-children" id="philosophyGrid">
+                <!-- Card 1: Bisnis Sebagai Roda Dakwah -->
+                <div class="card-hover bg-white rounded-3xl p-8 border border-sage/20 shadow-sm">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="heart-handshake" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-coffee mb-4">Bisnis Sebagai Roda Dakwah</h3>
+                    <p class="text-coffee-light leading-relaxed mb-6">
+                        Bisnis bukan sekadar mencari profit, tapi kendaraan untuk memberikan manfaat. Setiap transaksi adalah kesempatan untuk berbagi kebaikan — dari kualitas produk hingga dampak sosial yang terukur.
+                    </p>
+                    <div class="flex items-center gap-2 text-primary font-medium">
+                        <i data-lucide="quote" class="w-5 h-5"></i>
+                        <span>"Jualan pakai hati, bukan cuma strategi"</span>
+                    </div>
+                </div>
+                
+                <!-- Card 2: Sistem > Superstar -->
+                <div class="card-hover bg-white rounded-3xl p-8 border border-sage/20 shadow-sm">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="workflow" class="w-8 h-8 text-secondary"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-coffee mb-4">Sistem Lebih Penting dari Superstar</h3>
+                    <p class="text-coffee-light leading-relaxed mb-6">
+                        Membangun bisnis yang bisa jalan tanpa ketergantungan pada individu tertentu. Dokumentasi, SOP, dan automasi adalah fondasi — bukan talenta langka yang sulit diganti.
+                    </p>
+                    <div class="flex items-center gap-2 text-secondary font-medium">
+                        <i data-lucide="quote" class="w-5 h-5"></i>
+                        <span>"Bisnis jalan, owner jalan-jalan"</span>
+                    </div>
+                </div>
+                
+                <!-- Card 3: Jam Terbang -->
+                <div class="card-hover bg-white rounded-3xl p-8 border border-sage/20 shadow-sm">
+                    <div class="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="plane" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-coffee mb-4">Jam Terbang di Atas Teori</h3>
+                    <p class="text-coffee-light leading-relaxed mb-6">
+                        Pengalaman langsung mengalahkan seribu teori. Seperti pilot — tidak ada yang mau diterbangkan oleh orang yang hanya baca buku tanpa pernah pegang pesawat.
+                    </p>
+                    <div class="flex items-center gap-2 text-accent font-medium">
+                        <i data-lucide="quote" class="w-5 h-5"></i>
+                        <span>"90% logic, 10% AI — bukan sebaliknya"</span>
+                    </div>
+                </div>
+                
+                <!-- Card 4: Integritas -->
+                <div class="card-hover bg-white rounded-3xl p-8 border border-sage/20 shadow-sm">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-coffee mb-4">Integritas di Atas Profit</h3>
+                    <p class="text-coffee-light leading-relaxed mb-6">
+                        Pernah meninggalkan bisnis menguntungkan karena masalah etika. Nama baik dan kepercayaan adalah aset yang tidak bisa dibeli — sekali rusak, sulit diperbaiki.
+                    </p>
+                    <div class="flex items-center gap-2 text-primary font-medium">
+                        <i data-lucide="quote" class="w-5 h-5"></i>
+                        <span>"Walk away from wrong money"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 6: LAYERED FLOW - Tech Stack ==================== -->
+    <section id="hijacket" class="py-24 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #6B7F5C 1px, transparent 0); background-size: 40px 40px;"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-section">
+                <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-accent font-semibold text-sm rounded-full mb-4">
+                    HIJACKET TECH STACK
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-coffee mb-4">
+                    Sistem Operasional AI-Powered
+                </h2>
+                <p class="text-lg text-coffee-light max-w-2xl mx-auto">
+                    Bagaimana teknologi mengubah operasional fashion brand tradisional menjadi mesin efisien
+                </p>
+            </div>
+            
+            <!-- Layered Flow Diagram -->
+            <div class="max-w-4xl mx-auto reveal-section">
+                <div class="space-y-6" id="layeredFlow">
+                    <!-- Layer 1: Input -->
+                    <div class="layer-item active p-6 bg-white rounded-2xl border-2 border-primary/20 shadow-lg cursor-pointer" data-layer="1">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-cream font-accent font-bold">
+                                01
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-xl text-coffee">Input Layer</h3>
+                                <p class="text-coffee-light text-sm">Data & Customer Touchpoints</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <div class="px-3 py-2 bg-primary/5 rounded-lg text-sm text-coffee-light flex items-center gap-2">
+                                <i data-lucide="message-circle" class="w-4 h-4 text-primary"></i>
+                                WhatsApp
+                            </div>
+                            <div class="px-3 py-2 bg-primary/5 rounded-lg text-sm text-coffee-light flex items-center gap-2">
+                                <i data-lucide="shopping-bag" class="w-4 h-4 text-primary"></i>
+                                Marketplace
+                            </div>
+                            <div class="px-3 py-2 bg-primary/5 rounded-lg text-sm text-coffee-light flex items-center gap-2">
+                                <i data-lucide="globe" class="w-4 h-4 text-primary"></i>
+                                Website
+                            </div>
+                            <div class="px-3 py-2 bg-primary/5 rounded-lg text-sm text-coffee-light flex items-center gap-2">
+                                <i data-lucide="instagram" class="w-4 h-4 text-primary"></i>
+                                Social Media
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="flex justify-center">
+                        <i data-lucide="chevron-down" class="w-8 h-8 text-sage"></i>
+                    </div>
+                    
+                    <!-- Layer 2: Processing -->
+                    <div class="layer-item p-6 bg-white rounded-2xl border-2 border-secondary/20 shadow-lg cursor-pointer" data-layer="2">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center text-cream font-accent font-bold">
+                                02
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-xl text-coffee">AI Processing Layer</h3>
+                                <p class="text-coffee-light text-sm">Automation & Intelligence</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 bg-secondary/5 rounded-xl">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i data-lucide="bot" class="w-5 h-5 text-secondary"></i>
+                                    <span class="font-semibold text-coffee">AI Chatbot</span>
+                                </div>
+                                <p class="text-sm text-coffee-light">Rp520/chat vs Rp4,000 manual</p>
+                                <span class="text-xs font-accent font-bold text-secondary">87% cost reduction</span>
+                            </div>
+                            <div class="p-4 bg-secondary/5 rounded-xl">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i data-lucide="camera" class="w-5 h-5 text-secondary"></i>
+                                    <span class="font-semibold text-coffee">Photo AI</span>
+                                </div>
+                                <p class="text-sm text-coffee-light">Automated product photography</p>
+                                <span class="text-xs font-accent font-bold text-secondary">Rp1.2B saved/year</span>
+                            </div>
+                            <div class="p-4 bg-secondary/5 rounded-xl">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i data-lucide="brain" class="w-5 h-5 text-secondary"></i>
+                                    <span class="font-semibold text-coffee">Analytics AI</span>
+                                </div>
+                                <p class="text-sm text-coffee-light">Real-time unit economics</p>
+                                <span class="text-xs font-accent font-bold text-secondary">Data-driven decisions</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="flex justify-center">
+                        <i data-lucide="chevron-down" class="w-8 h-8 text-sage"></i>
+                    </div>
+                    
+                    <!-- Layer 3: Team -->
+                    <div class="layer-item p-6 bg-white rounded-2xl border-2 border-accent/30 shadow-lg cursor-pointer" data-layer="3">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center text-coffee font-accent font-bold">
+                                03
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-xl text-coffee">Hybrid Team Layer</h3>
+                                <p class="text-coffee-light text-sm">Ring Model Organization</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-accent/10 rounded-xl">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i data-lucide="users" class="w-5 h-5 text-accent"></i>
+                                    <span class="font-semibold text-coffee">Ring 0 — Core</span>
+                                </div>
+                                <p class="text-sm text-coffee-light">4 Managers: Finance, Operations, Marketing, Creative</p>
+                            </div>
+                            <div class="p-4 bg-accent/10 rounded-xl">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i data-lucide="user-check" class="w-5 h-5 text-accent"></i>
+                                    <span class="font-semibold text-coffee">Ring 1 — Execution</span>
+                                </div>
+                                <p class="text-sm text-coffee-light">12-13 Supervisors + Remote Workforce</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="flex justify-center">
+                        <i data-lucide="chevron-down" class="w-8 h-8 text-sage"></i>
+                    </div>
+                    
+                    <!-- Layer 4: Output -->
+                    <div class="layer-item p-6 bg-gradient-to-br from-primary to-primary-dark rounded-2xl shadow-lg cursor-pointer" data-layer="4">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-cream font-accent font-bold">
+                                04
+                            </div>
+                            <div>
+                                <h3 class="font-display font-bold text-xl text-cream">Output Layer</h3>
+                                <p class="text-cream/70 text-sm">Business Results</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <div class="text-center p-3 bg-white/10 rounded-xl">
+                                <div class="font-accent font-bold text-2xl text-cream">HPP</div>
+                                <div class="text-cream/70 text-sm">&lt;35%</div>
+                            </div>
+                            <div class="text-center p-3 bg-white/10 rounded-xl">
+                                <div class="font-accent font-bold text-2xl text-cream">ROAS</div>
+                                <div class="text-cream/70 text-sm">≥4x</div>
+                            </div>
+                            <div class="text-center p-3 bg-white/10 rounded-xl">
+                                <div class="font-accent font-bold text-2xl text-cream">Marketing</div>
+                                <div class="text-cream/70 text-sm">&lt;20%</div>
+                            </div>
+                            <div class="text-center p-3 bg-white/10 rounded-xl">
+                                <div class="font-accent font-bold text-2xl text-cream">AI</div>
+                                <div class="text-cream/70 text-sm">90%+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 7: PROGRESS BARS - Financial Principles ==================== -->
+    <section id="principles" class="py-24 bg-white/30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-section">
+                <span class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-accent font-semibold text-sm rounded-full mb-4">
+                    FINANCIAL DISCIPLINE
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-coffee mb-4">
+                    Unit Economics Framework
+                </h2>
+                <p class="text-lg text-coffee-light max-w-2xl mx-auto">
+                    Threshold ketat yang menjaga kesehatan bisnis — tidak ada kompromi
+                </p>
+            </div>
+            
+            <!-- Progress Bars -->
+            <div class="space-y-8 reveal-section" id="progressSection">
+                <!-- HPP -->
+                <div class="bg-white rounded-2xl p-6 border border-sage/20 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="package" class="w-6 h-6 text-primary"></i>
+                            <span class="font-display font-bold text-lg text-coffee">HPP (Harga Pokok Produksi)</span>
+                        </div>
+                        <span class="font-accent font-bold text-2xl text-primary">&lt;35%</span>
+                    </div>
+                    <div class="h-4 bg-sage/20 rounded-full overflow-hidden">
+                        <div class="progress-bar h-full bg-gradient-to-r from-primary to-sage rounded-full" style="--progress: 35%"></div>
+                    </div>
+                    <p class="text-sm text-coffee-light mt-2">Kill criteria: HPP &gt;35% = margin tidak sehat, stop produksi</p>
+                </div>
+                
+                <!-- Marketing Budget -->
+                <div class="bg-white rounded-2xl p-6 border border-sage/20 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="megaphone" class="w-6 h-6 text-secondary"></i>
+                            <span class="font-display font-bold text-lg text-coffee">Marketing Budget</span>
+                        </div>
+                        <span class="font-accent font-bold text-2xl text-secondary">&lt;20%</span>
+                    </div>
+                    <div class="h-4 bg-secondary/20 rounded-full overflow-hidden">
+                        <div class="progress-bar h-full bg-gradient-to-r from-secondary to-secondary-light rounded-full" style="--progress: 20%"></div>
+                    </div>
+                    <p class="text-sm text-coffee-light mt-2">Optimal: 15-18% of revenue untuk sustainable growth</p>
+                </div>
+                
+                <!-- AI Adoption -->
+                <div class="bg-white rounded-2xl p-6 border border-sage/20 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="cpu" class="w-6 h-6 text-accent"></i>
+                            <span class="font-display font-bold text-lg text-coffee">AI Adoption Rate</span>
+                        </div>
+                        <span class="font-accent font-bold text-2xl text-accent">90%+</span>
+                    </div>
+                    <div class="h-4 bg-accent/20 rounded-full overflow-hidden">
+                        <div class="progress-bar h-full bg-gradient-to-r from-accent to-secondary rounded-full" style="--progress: 90%"></div>
+                    </div>
+                    <p class="text-sm text-coffee-light mt-2">Dari customer service, photo, hingga analytics — hampir semua ter-automate</p>
+                </div>
+                
+                <!-- Cost Savings -->
+                <div class="bg-white rounded-2xl p-6 border border-sage/20 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="trending-down" class="w-6 h-6 text-primary"></i>
+                            <span class="font-display font-bold text-lg text-coffee">Cost Reduction (vs Manual)</span>
+                        </div>
+                        <span class="font-accent font-bold text-2xl text-primary">87%</span>
+                    </div>
+                    <div class="h-4 bg-primary/20 rounded-full overflow-hidden">
+                        <div class="progress-bar h-full bg-gradient-to-r from-primary to-primary-dark rounded-full" style="--progress: 87%"></div>
+                    </div>
+                    <p class="text-sm text-coffee-light mt-2">Chatbot: Rp520 vs Rp4,000/chat — efisiensi tanpa mengorbankan kualitas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 8: TABLE MATRIX - Decision Framework ==================== -->
+    <section class="py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-section">
+                <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-accent font-semibold text-sm rounded-full mb-4">
+                    DECISION FRAMEWORK
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-coffee mb-4">
+                    Threshold & Kill Criteria
+                </h2>
+                <p class="text-lg text-coffee-light max-w-2xl mx-auto">
+                    Keputusan berbasis data dengan batasan yang jelas — tidak ada grey area
+                </p>
+            </div>
+            
+            <!-- Table -->
+            <div class="overflow-x-auto reveal-section">
+                <table class="w-full bg-white rounded-2xl overflow-hidden border border-sage/20 shadow-lg">
+                    <thead>
+                        <tr class="bg-primary text-cream">
+                            <th class="px-6 py-4 text-left font-display font-bold">Metric</th>
+                            <th class="px-6 py-4 text-center font-display font-bold">Target</th>
+                            <th class="px-6 py-4 text-center font-display font-bold">Kill Criteria</th>
+                            <th class="px-6 py-4 text-left font-display font-bold">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-sage/10">
+                        <tr class="hover:bg-cream/50 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="package" class="w-5 h-5 text-primary"></i>
+                                    <span class="font-semibold text-coffee">HPP</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-primary/10 text-primary font-accent font-bold rounded-full">&lt;35%</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-red-100 text-red-600 font-accent font-bold rounded-full">&gt;35%</span>
+                            </td>
+                            <td class="px-6 py-4 text-coffee-light">Stop produksi, renegosiasi supplier</td>
+                        </tr>
+                        <tr class="hover:bg-cream/50 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="target" class="w-5 h-5 text-secondary"></i>
+                                    <span class="font-semibold text-coffee">ROAS</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary font-accent font-bold rounded-full">≥4x</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-red-100 text-red-600 font-accent font-bold rounded-full">&lt;3x</span>
+                            </td>
+                            <td class="px-6 py-4 text-coffee-light">Pause campaign, audit creative & targeting</td>
+                        </tr>
+                        <tr class="hover:bg-cream/50 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="megaphone" class="w-5 h-5 text-accent"></i>
+                                    <span class="font-semibold text-coffee">Marketing %</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-accent/20 text-accent font-accent font-bold rounded-full">&lt;20%</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-red-100 text-red-600 font-accent font-bold rounded-full">&gt;25%</span>
+                            </td>
+                            <td class="px-6 py-4 text-coffee-light">Cut inefficient channels, focus organic</td>
+                        </tr>
+                        <tr class="hover:bg-cream/50 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="clock" class="w-5 h-5 text-primary"></i>
+                                    <span class="font-semibold text-coffee">Response Time</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-primary/10 text-primary font-accent font-bold rounded-full">&lt;5 min</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-red-100 text-red-600 font-accent font-bold rounded-full">&gt;30 min</span>
+                            </td>
+                            <td class="px-6 py-4 text-coffee-light">Escalate to AI chatbot atau tambah shift</td>
+                        </tr>
+                        <tr class="hover:bg-cream/50 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="star" class="w-5 h-5 text-secondary"></i>
+                                    <span class="font-semibold text-coffee">Customer Rating</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary font-accent font-bold rounded-full">≥4.8</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-3 py-1 bg-red-100 text-red-600 font-accent font-bold rounded-full">&lt;4.5</span>
+                            </td>
+                            <td class="px-6 py-4 text-coffee-light">Root cause analysis, QC audit</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 9: GROUPED CARDS - Achievements ==================== -->
+    <section id="impact" class="py-24 bg-white/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-section">
+                <span class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-accent font-semibold text-sm rounded-full mb-4">
+                    IMPACT & ACHIEVEMENTS
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-coffee mb-4">
+                    Dampak Nyata dalam Angka
+                </h2>
+                <p class="text-lg text-coffee-light max-w-2xl mx-auto">
+                    Bukan sekadar klaim — hasil terukur dari satu dekade konsistensi
+                </p>
+            </div>
+            
+            <!-- Grouped Cards -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Group 1: CSR & Social Impact -->
+                <div class="reveal-section">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+                            <i data-lucide="heart" class="w-5 h-5 text-cream"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-coffee">CSR & Social Impact</h3>
+                    </div>
+                    <div class="space-y-4 stagger-children">
+                        <div class="card-hover bg-white rounded-2xl p-5 border border-sage/20 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="handshake" class="w-6 h-6 text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee mb-1">Dompet Dhuafa Partnership</h4>
+                                    <p class="text-sm text-coffee-light">Integrasi donasi sistematis dalam setiap transaksi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-hover bg-white rounded-2xl p-5 border border-sage/20 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="users" class="w-6 h-6 text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee mb-1">Pemberdayaan Penjahit Lokal</h4>
+                                    <p class="text-sm text-coffee-light">Jaringan penjahit rumahan dengan standar kualitas terjaga</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-hover bg-white rounded-2xl p-5 border border-sage/20 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="book-open" class="w-6 h-6 text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee mb-1">Knowledge Sharing</h4>
+                                    <p class="text-sm text-coffee-light">Berbagi pengalaman melalui podcast & workshop untuk UMKM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group 2: Innovation -->
+                <div class="reveal-section" style="animation-delay: 0.2s;">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center">
+                            <i data-lucide="lightbulb" class="w-5 h-5 text-cream"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-coffee">Innovation</h3>
+                    </div>
+                    <div class="space-y-4 stagger-children">
+                        <div class="card-hover bg-white rounded-2xl p-5 border border-sage/20 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="bot" class="w-6 h-6 text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee mb-1">AI Chatbot Pioneer</h4>
+                                    <p class="text-sm text-coffee-light">Early adopter AI customer service di fashion industry</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-hover bg-white rounded-2xl p-5 border border-sage/20 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="camera" class="w-6 h-6 text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee mb-1">Photo AI System</h4>
+                                    <p class="text-sm text-coffee-light">Automated product photography dengan Rp1.2B savings/year</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-hover bg-white rounded-2xl p-5 border border-sage/20 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="database" class="w-6 h-6 text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee mb-1">Data-Driven Operations</h4>
+                                    <p class="text-sm text-coffee-light">Real-time unit economics dashboard untuk semua keputusan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group 3: Brand Recognition -->
+                <div class="reveal-section" style="animation-delay: 0.4s;">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center">
+                            <i data-lucide="award" class="w-5 h-5 text-coffee"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-coffee">Brand Recognition</h3>
+                    </div>
+                    <div class="space-y-4 stagger-children">
+                        <div class="card-hover bg-white rounded-2xl p-5 border border-sage/20 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="trophy" class="w-6 h-6 text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee mb-1">JMFW 2025 Qualification</h4>
+                                    <p class="text-sm text-coffee-light">Lolos kurasi Jakarta Muslim Fashion Week 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-hover bg-white rounded-2xl p-5 border border-sage/20 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="badge-check" class="w-6 h-6 text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee mb-1">Modest Fashion Leader</h4>
+                                    <p class="text-sm text-coffee-light">10 tahun konsistensi dalam hijab-compatible outerwear</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-hover bg-white rounded-2xl p-5 border border-sage/20 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="star" class="w-6 h-6 text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee mb-1">High Customer Rating</h4>
+                                    <p class="text-sm text-coffee-light">Maintaining ≥4.8 rating across all marketplaces</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 10: HIERARCHY - Team Structure ==================== -->
+    <section class="py-24">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-section">
+                <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-accent font-semibold text-sm rounded-full mb-4">
+                    TEAM STRUCTURE
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-coffee mb-4">
+                    Ring Model Organization
+                </h2>
+                <p class="text-lg text-coffee-light max-w-2xl mx-auto">
+                    Struktur tim yang scalable — hybrid workforce dengan AI amplification
+                </p>
+            </div>
+            
+            <!-- Ring Visualization -->
+            <div class="relative reveal-section">
+                <!-- Ring 0: Center -->
+                <div class="flex justify-center mb-8">
+                    <div class="relative">
+                        <div class="w-48 h-48 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center shadow-2xl shadow-primary/30">
+                            <div class="text-center text-cream">
+                                <div class="font-accent font-bold text-sm mb-1">RING 0</div>
+                                <div class="font-display font-bold text-lg">Founder</div>
+                                <div class="text-cream/70 text-sm mt-1">CEO + Creative Director</div>
+                            </div>
+                        </div>
+                        <!-- Pulsing ring -->
+                        <div class="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping"></div>
+                    </div>
+                </div>
+                
+                <!-- Connector -->
+                <div class="flex justify-center mb-8">
+                    <div class="w-0.5 h-12 bg-gradient-to-b from-primary to-sage"></div>
+                </div>
+                
+                <!-- Ring 1: Managers -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-white rounded-2xl p-4 border-2 border-secondary/30 shadow-lg text-center card-hover">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="wallet" class="w-6 h-6 text-secondary"></i>
+                        </div>
+                        <div class="font-display font-bold text-coffee">Finance</div>
+                        <div class="text-xs text-coffee-light mt-1">Manager</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 border-2 border-secondary/30 shadow-lg text-center card-hover">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="settings" class="w-6 h-6 text-secondary"></i>
+                        </div>
+                        <div class="font-display font-bold text-coffee">Operations</div>
+                        <div class="text-xs text-coffee-light mt-1">Manager</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 border-2 border-secondary/30 shadow-lg text-center card-hover">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="megaphone" class="w-6 h-6 text-secondary"></i>
+                        </div>
+                        <div class="font-display font-bold text-coffee">Marketing</div>
+                        <div class="text-xs text-coffee-light mt-1">Manager</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 border-2 border-secondary/30 shadow-lg text-center card-hover">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="palette" class="w-6 h-6 text-secondary"></i>
+                        </div>
+                        <div class="font-display font-bold text-coffee">Creative</div>
+                        <div class="text-xs text-coffee-light mt-1">Manager</div>
+                    </div>
+                </div>
+                
+                <!-- Label -->
+                <div class="text-center mb-8">
+                    <span class="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 rounded-full">
+                        <span class="font-accent font-bold text-secondary">RING 1</span>
+                        <span class="text-coffee-light">— 4 Core Managers</span>
+                    </span>
+                </div>
+                
+                <!-- Connector -->
+                <div class="flex justify-center mb-8">
+                    <div class="w-0.5 h-12 bg-gradient-to-b from-secondary to-sage"></div>
+                </div>
+                
+                <!-- Ring 2: Supervisors + Remote -->
+                <div class="bg-sage/10 rounded-3xl p-8 border border-sage/30">
+                    <div class="text-center mb-6">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-sage/20 rounded-full">
+                            <span class="font-accent font-bold text-primary">RING 2</span>
+                            <span class="text-coffee-light">— Execution Layer</span>
+                        </span>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-2xl p-5 border border-sage/20">
+                            <div class="flex items-center gap-3 mb-3">
+                                <i data-lucide="user-check" class="w-6 h-6 text-primary"></i>
+                                <span class="font-display font-bold text-coffee">Supervisors</span>
+                            </div>
+                            <p class="text-3xl font-accent font-bold text-primary mb-1">12-13</p>
+                            <p class="text-sm text-coffee-light">Team leads across departments</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-5 border border-sage/20">
+                            <div class="flex items-center gap-3 mb-3">
+                                <i data-lucide="globe" class="w-6 h-6 text-secondary"></i>
+                                <span class="font-display font-bold text-coffee">Remote Workforce</span>
+                            </div>
+                            <p class="text-3xl font-accent font-bold text-secondary mb-1">Hybrid</p>
+                            <p class="text-sm text-coffee-light">Flexible talent, project-based</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 11: COMPARISON TABLE ==================== -->
+    <section class="py-24 bg-white/30">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-section">
+                <span class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-accent font-semibold text-sm rounded-full mb-4">
+                    COMPARISON
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-coffee mb-4">
+                    Traditional vs Hijacket Model
+                </h2>
+                <p class="text-lg text-coffee-light max-w-2xl mx-auto">
+                    Bagaimana pendekatan AI-first mengubah unit economics fashion brand
+                </p>
+            </div>
+            
+            <!-- Comparison Table -->
+            <div class="overflow-x-auto reveal-section">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Aspect Column -->
+                    <div class="hidden md:block"></div>
+                    
+                    <!-- Traditional -->
+                    <div class="bg-coffee-light/5 rounded-2xl p-6 border border-coffee-light/20">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-coffee-light/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                                <i data-lucide="building" class="w-8 h-8 text-coffee-light"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-xl text-coffee">Traditional Model</h3>
+                            <p class="text-sm text-coffee-light">Cara konvensional</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Hijacket -->
+                    <div class="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-6 border-2 border-primary/30">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-3">
+                                <i data-lucide="rocket" class="w-8 h-8 text-cream"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-xl text-coffee">Hijacket Model</h3>
+                            <p class="text-sm text-primary font-medium">AI-First Approach</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comparison Rows -->
+                <div class="mt-6 space-y-4">
+                    <!-- Row 1 -->
+                    <div class="grid md:grid-cols-3 gap-4 items-center">
+                        <div class="font-semibold text-coffee flex items-center gap-2">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-sage"></i>
+                            Customer Service Cost
+                        </div>
+                        <div class="bg-coffee-light/5 rounded-xl p-4 text-center">
+                            <span class="font-accent font-bold text-xl text-coffee-light">Rp4,000</span>
+                            <span class="text-sm text-coffee-light">/chat</span>
+                        </div>
+                        <div class="bg-primary/10 rounded-xl p-4 text-center border border-primary/20">
+                            <span class="font-accent font-bold text-xl text-primary">Rp520</span>
+                            <span class="text-sm text-primary">/chat</span>
+                            <span class="block text-xs text-primary mt-1">87% savings</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 2 -->
+                    <div class="grid md:grid-cols-3 gap-4 items-center">
+                        <div class="font-semibold text-coffee flex items-center gap-2">
+                            <i data-lucide="camera" class="w-5 h-5 text-sage"></i>
+                            Product Photography
+                        </div>
+                        <div class="bg-coffee-light/5 rounded-xl p-4 text-center">
+                            <span class="font-accent font-bold text-xl text-coffee-light">Rp1.2B+</span>
+                            <span class="text-sm text-coffee-light">/year</span>
+                        </div>
+                        <div class="bg-primary/10 rounded-xl p-4 text-center border border-primary/20">
+                            <span class="font-accent font-bold text-xl text-primary">Near Zero</span>
+                            <span class="block text-xs text-primary mt-1">AI-generated</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 3 -->
+                    <div class="grid md:grid-cols-3 gap-4 items-center">
+                        <div class="font-semibold text-coffee flex items-center gap-2">
+                            <i data-lucide="users" class="w-5 h-5 text-sage"></i>
+                            Team Size (equiv.)
+                        </div>
+                        <div class="bg-coffee-light/5 rounded-xl p-4 text-center">
+                            <span class="font-accent font-bold text-xl text-coffee-light">20-30</span>
+                            <span class="text-sm text-coffee-light">people</span>
+                        </div>
+                        <div class="bg-primary/10 rounded-xl p-4 text-center border border-primary/20">
+                            <span class="font-accent font-bold text-xl text-primary">15-17</span>
+                            <span class="text-sm text-primary">+ AI</span>
+                            <span class="block text-xs text-primary mt-1">Hybrid model</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 4 -->
+                    <div class="grid md:grid-cols-3 gap-4 items-center">
+                        <div class="font-semibold text-coffee flex items-center gap-2">
+                            <i data-lucide="clock" class="w-5 h-5 text-sage"></i>
+                            Response Time
+                        </div>
+                        <div class="bg-coffee-light/5 rounded-xl p-4 text-center">
+                            <span class="font-accent font-bold text-xl text-coffee-light">15-30</span>
+                            <span class="text-sm text-coffee-light">minutes</span>
+                        </div>
+                        <div class="bg-primary/10 rounded-xl p-4 text-center border border-primary/20">
+                            <span class="font-accent font-bold text-xl text-primary">&lt;5</span>
+                            <span class="text-sm text-primary">minutes</span>
+                            <span class="block text-xs text-primary mt-1">24/7 availability</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 5 -->
+                    <div class="grid md:grid-cols-3 gap-4 items-center">
+                        <div class="font-semibold text-coffee flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-sage"></i>
+                            Scalability
+                        </div>
+                        <div class="bg-coffee-light/5 rounded-xl p-4 text-center">
+                            <span class="font-accent font-bold text-xl text-coffee-light">Linear</span>
+                            <span class="text-sm text-coffee-light">cost growth</span>
+                        </div>
+                        <div class="bg-primary/10 rounded-xl p-4 text-center border border-primary/20">
+                            <span class="font-accent font-bold text-xl text-primary">Marginal</span>
+                            <span class="text-sm text-primary">cost only</span>
+                            <span class="block text-xs text-primary mt-1">Near-infinite scale</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 12: ACCORDION - FAQ ==================== -->
+    <section class="py-24">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-section">
+                <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-accent font-semibold text-sm rounded-full mb-4">
+                    FAQ
+                </span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-coffee mb-4">
+                    Pertanyaan yang Sering Ditanyakan
+                </h2>
+            </div>
+            
+            <!-- Accordion -->
+            <div class="space-y-4 reveal-section" id="faqAccordion">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-2xl border border-sage/20 shadow-sm overflow-hidden">
+                    <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left hover:bg-cream/50 transition-colors">
+                        <span class="font-display font-bold text-lg text-coffee pr-4">Apa yang membedakan Hijacket dari brand fashion lain?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary flex-shrink-0 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-coffee-light leading-relaxed">
+                            Hijacket bukan sekadar brand fashion — ini adalah manifestasi dari filosofi "bisnis sebagai roda dakwah". Setiap produk dirancang dengan integritas: HPP di bawah 35%, margin yang fair, dan dampak sosial terukur melalui partnership dengan Dompet Dhuafa. Kami juga pioneer dalam implementasi AI di fashion industry Indonesia, dengan 90%+ operasional ter-automate.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-2xl border border-sage/20 shadow-sm overflow-hidden">
+                    <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left hover:bg-cream/50 transition-colors">
+                        <span class="font-display font-bold text-lg text-coffee pr-4">Bagaimana prinsip "jam terbang" diterapkan dalam bisnis?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary flex-shrink-0 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-coffee-light leading-relaxed">
+                            Seperti pilot yang tidak bisa terbang hanya dari membaca buku, keputusan bisnis harus didasarkan pada pengalaman nyata. Kami tidak percaya pada teori tanpa eksekusi. Setiap framework yang kami gunakan (unit economics, ring model, dll) adalah hasil 10+ tahun trial and error, bukan copy-paste dari textbook. "90% logic, 10% AI" — artinya AI adalah tool, bukan pengganti jam terbang.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-2xl border border-sage/20 shadow-sm overflow-hidden">
+                    <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left hover:bg-cream/50 transition-colors">
+                        <span class="font-display font-bold text-lg text-coffee pr-4">Mengapa memilih bootstrap daripada funding?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary flex-shrink-0 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-coffee-light leading-relaxed">
+                            Bootstrap memaksa disiplin. Ketika tidak ada uang investor untuk dibakar, setiap rupiah harus menghasilkan. Ini membentuk kebiasaan: HPP ketat, marketing efficiency terukur, dan growth yang sustainable. Kami percaya bisnis yang sehat adalah bisnis yang profitable dari hari pertama, bukan yang terus mengejar funding round.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-2xl border border-sage/20 shadow-sm overflow-hidden">
+                    <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left hover:bg-cream/50 transition-colors">
+                        <span class="font-display font-bold text-lg text-coffee pr-4">Bagaimana AI mengubah operasional Hijacket?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary flex-shrink-0 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-coffee-light leading-relaxed">
+                            AI bukan pengganti manusia, tapi penguat kapabilitas. Customer service dengan AI chatbot menghemat 87% biaya (Rp520 vs Rp4,000/chat). Photo AI untuk produk menghemat Rp1.2 miliar/tahun. Analytics AI memungkinkan keputusan real-time. Tapi tetap — manusia yang membuat keputusan strategis. AI hanya memproses data dan eksekusi repetitif.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="bg-white rounded-2xl border border-sage/20 shadow-sm overflow-hidden">
+                    <button class="accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left hover:bg-cream/50 transition-colors">
+                        <span class="font-display font-bold text-lg text-coffee pr-4">Apa arti "Modest & Humanity" sebagai tagline Hijacket?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary flex-shrink-0 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-6 pb-5 text-coffee-light leading-relaxed">
+                            "Modest" bukan hanya tentang fashion yang menutup aurat — tapi juga tentang sikap rendah hati dalam berbisnis. Tidak over-promise, tidak manipulatif, tidak mengeksploitasi. "Humanity" adalah reminder bahwa di balik setiap transaksi ada manusia: customer yang perlu dilayani dengan baik, karyawan yang perlu dihargai, dan masyarakat yang bisa dibantu. Bisnis yang baik adalah yang memanusiakan semua stakeholder-nya.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 14: CTA BANNER ==================== -->
+    <section id="contact" class="py-24 bg-gradient-to-br from-primary via-primary-dark to-coffee relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #F5F1E8 1px, transparent 0); background-size: 32px 32px;"></div>
+        </div>
+        
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal-section">
+            <h2 class="font-display font-extrabold text-4xl sm:text-5xl text-cream mb-6">
+                Tertarik Belajar Lebih Lanjut?
+            </h2>
+            <p class="text-xl text-cream/80 mb-10 max-w-2xl mx-auto">
+                Mari berdiskusi tentang bisnis, automation, atau kolaborasi. Saya selalu terbuka untuk berbagi pengalaman dan belajar bersama.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/6281234567890" class="group px-8 py-4 bg-cream text-coffee rounded-2xl font-display font-bold text-lg hover:bg-white transition-all hover:shadow-xl flex items-center gap-2">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Hubungi via WhatsApp
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="mailto:aji@hijacket.co.id" class="px-8 py-4 bg-transparent text-cream border-2 border-cream/30 rounded-2xl font-display font-bold text-lg hover:bg-cream/10 hover:border-cream/50 transition-all flex items-center gap-2">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SECTION 15: FOOTER ==================== -->
+    <footer class="py-16 bg-coffee text-cream/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-cream font-display font-bold text-xl">
+                            AW
+                        </div>
+                        <div>
+                            <div class="font-display font-bold text-xl text-cream">Aji Wanda</div>
+                            <div class="text-sm text-cream/50">Founder & CEO Hijacket</div>
+                        </div>
+                    </div>
+                    <p class="text-cream/60 leading-relaxed">
+                        Membangun bisnis sebagai roda dakwah — dengan sistem, integritas, dan dampak sosial yang terukur.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-display font-bold text-cream mb-4">Quick Links</h4>
+                    <div class="space-y-3">
+                        <a href="#journey" class="block hover:text-cream transition-colors">Perjalanan</a>
+                        <a href="#philosophy" class="block hover:text-cream transition-colors">Filosofi</a>
+                        <a href="#hijacket" class="block hover:text-cream transition-colors">Hijacket Tech</a>
+                        <a href="#impact" class="block hover:text-cream transition-colors">Impact</a>
+                    </div>
+                </div>
+                
+                <!-- Hijacket -->
+                <div>
+                    <h4 class="font-display font-bold text-cream mb-4">Hijacket</h4>
+                    <p class="text-cream/60 mb-4">
+                        <span class="font-accent font-semibold text-accent">"Modest & Humanity"</span>
+                    </p>
+                    <p class="text-sm text-cream/50 leading-relaxed">
+                        Brand jaket hijab premium dengan 10+ tahun konsistensi dalam modest fashion. Qualified for Jakarta Muslim Fashion Week 2025.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Bottom -->
+            <div class="pt-8 border-t border-cream/10 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-sm text-cream/40">
+                    © 2025 Aji Wanda. Built with integrity.
+                </p>
+                <div class="flex items-center gap-2 text-sm text-cream/40">
+                    <span>Powered by</span>
+                    <span class="px-2 py-1 bg-cream/10 rounded text-cream/60 font-mono text-xs">React</span>
+                    <span class="px-2 py-1 bg-cream/10 rounded text-cream/60 font-mono text-xs">Tailwind</span>
+                    <span class="px-2 py-1 bg-cream/10 rounded text-cream/60 font-mono text-xs">AI</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('bg-cream/95', 'backdrop-blur-md', 'shadow-sm');
+            } else {
+                header.classList.remove('bg-cream/95', 'backdrop-blur-md', 'shadow-sm');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+        
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+        
+        // Close mobile menu when clicking links
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+        
+        // Intersection Observer for reveal animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal-section, .stagger-children').forEach(el => {
+            revealObserver.observe(el);
+        });
+        
+        // Count up animation
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        countObserver.observe(document.getElementById('statsGrid'));
+        
+        function animateCounters() {
+            document.querySelectorAll('.count-number').forEach(counter => {
+                const target = parseFloat(counter.dataset.target);
+                const duration = 2000;
+                const start = 0;
+                const startTime = performance.now();
+                
+                function updateCount(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const current = start + (target - start) * easeOut;
+                    
+                    if (target % 1 !== 0) {
+                        counter.textContent = current.toFixed(1);
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    }
+                }
+                
+                requestAnimationFrame(updateCount);
+            });
+        }
+        
+        // Progress bars animation
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.progress-bar').forEach(bar => {
+                        bar.classList.add('animate');
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        progressObserver.observe(document.getElementById('progressSection'));
+        
+        // Layered flow auto-cycle
+        const layers = document.querySelectorAll('.layer-item');
+        let currentLayer = 0;
+        
+        function cycleLayer() {
+            layers.forEach(l => l.classList.remove('active'));
+            layers[currentLayer].classList.add('active');
+            currentLayer = (currentLayer + 1) % layers.length;
+        }
+        
+        // Click to activate layer
+        layers.forEach((layer, index) => {
+            layer.addEventListener('click', () => {
+                layers.forEach(l => l.classList.remove('active'));
+                layer.classList.add('active');
+                currentLayer = index;
+            });
+        });
+        
+        setInterval(cycleLayer, 3000);
+        
+        // Accordion
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const content = trigger.nextElementSibling;
+                const icon = trigger.querySelector('i');
+                const isOpen = content.classList.contains('open');
+                
+                // Close all
+                document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                document.querySelectorAll('.accordion-trigger i').forEach(i => i.style.transform = 'rotate(0deg)');
+                
+                // Open clicked if was closed
+                if (!isOpen) {
+                    content.classList.add('open');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
